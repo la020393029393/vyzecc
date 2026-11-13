@@ -3106,7 +3106,154 @@ end
 	local ragdollCountdownUntil = 0
 	local ragdollCountdownDuration = 2.6
 	local tracerGui = nil
-
+	do
+		local row = mkRow(32)
+		mkLabel(row, "ESP")
+		local arrow = Instance.new("TextButton", row)
+		arrow.Size = UDim2.new(0, 28, 0, 22)
+		arrow.Position = UDim2.new(1, -92, 0.5, -11)
+		arrow.BackgroundColor3 = Color3.fromRGB(18, 14, 24)
+		arrow.BorderSizePixel = 0
+		arrow.Text = ">"
+		arrow.TextColor3 = W
+		arrow.Font = Enum.Font.GothamBlack
+		arrow.TextSize = 14
+		arrow.ZIndex = 6
+		Instance.new("UICorner", arrow).CornerRadius = UDim.new(0, 7)
+		local pill, dot = mkPill(row, 48)
+		local on = false
+		local function sv(s) on = s; animPill(pill, dot, s) end
+		setEspVisual = sv
+		local clk = Instance.new("TextButton", pill)
+		clk.Size = UDim2.new(1, 0, 1, 0)
+		clk.BackgroundTransparency = 1
+		clk.Text = ""
+		clk.ZIndex = 5
+		clk.Activated:Connect(function()
+			on = not on
+			sv(on)
+			if on then enableESP() else disableESP() end
+			saveConfig()
+		end)
+		arrow.Activated:Connect(function()
+			espDetailsOpen = not espDetailsOpen
+			arrow.Text = espDetailsOpen and "v" or ">"
+			for _, r in ipairs(espDetailsRows) do r.Visible = espDetailsOpen end
+		end)
+	end
+	do
+		local row = mkRow(32)
+		row.Visible = false
+		table.insert(espDetailsRows, row)
+		mkLabel(row, "Show Tracer")
+		local pill, dot = mkPill(row, 48)
+		local on = false
+		local function sv(s) on = s; animPill(pill, dot, s) end
+		setEspTracersVisual = sv
+		local clk = Instance.new("TextButton", pill)
+		clk.Size = UDim2.new(1, 0, 1, 0)
+		clk.BackgroundTransparency = 1
+		clk.Text = ""
+		clk.ZIndex = 5
+		clk.Activated:Connect(function()
+			on = not on
+			sv(on)
+			espTracersEnabled = on
+			if not on then removeAllTracers() end
+			saveConfig()
+		end)
+	end
+	do
+		local row = mkRow(32)
+		row.Visible = false
+		table.insert(espDetailsRows, row)
+		mkLabel(row, "Ragdoll Countdown")
+		local pill, dot = mkPill(row, 48)
+		local on = false
+		local function sv(s) on = s; animPill(pill, dot, s) end
+		setRagdollCountdownVisual = sv
+		local clk = Instance.new("TextButton", pill)
+		clk.Size = UDim2.new(1, 0, 1, 0)
+		clk.BackgroundTransparency = 1
+		clk.Text = ""
+		clk.ZIndex = 5
+		clk.Activated:Connect(function()
+			on = not on
+			sv(on)
+			ragdollCountdownEnabled = on
+			if not on then destroyRagdollCountdown() end
+			saveConfig()
+		end)
+	end
+	setE01WarningVisual = mkToggle("Show E01 Warning", function(on)
+		showE01Warning = on == true
+		saveConfig()
+	end)
+	setAntiLagVisual = mkToggle("Anti Lag", function(on)
+		if on then enableAntiLag() else disableAntiLag() end
+		saveConfig()
+	end)
+	setBaseXRayVisual = mkToggle("X-Ray Base", function(on)
+		baseXRayEnabled = on == true
+		local plots = workspace:FindFirstChild("Plots")
+		if plots then
+			for _, p in ipairs(plots:GetDescendants()) do
+				if p:IsA("BasePart") then
+					local n = p.Name:lower()
+					local skip = n:find("brainrot") or n:find("animal") or n:find("pet") or n:find("handle")
+					local par = p.Parent
+					while par and par ~= plots and not skip do
+						local pn = tostring(par.Name):lower()
+						if par:IsA("Tool") or pn:find("brainrot") or pn:find("animal") or pn:find("pet") then skip = true end
+						par = par.Parent
+					end
+					if not skip then
+						if on then
+							if not p:GetAttribute("_VyzeXRay") then p:SetAttribute("_VyzeXRay", p.LocalTransparencyModifier) end
+							p.LocalTransparencyModifier = 0.65
+						else
+							local prev = p:GetAttribute("_VyzeXRay")
+							if prev ~= nil then p.LocalTransparencyModifier = prev end
+							p:SetAttribute("_VyzeXRay", nil)
+						end
+					end
+				end
+			end
+		end
+		saveConfig()
+	end)
+	setFovChangeVisual = mkToggle("FOV Change", function(on)
+		fovChangeEnabled = on == true
+		local cam = workspace.CurrentCamera
+		if cam then cam.FieldOfView = on and fieldOfViewVal or 70 end
+		saveConfig()
+	end)
+	do
+		local row = mkRow(32)
+		mkLabel(row, "FOV Value")
+		mkBox(row, fieldOfViewVal, 50, 56, function(v)
+			if v >= 40 and v <= 120 then
+				fieldOfViewVal = v
+				if fovChangeEnabled then
+					local cam = workspace.CurrentCamera
+					if cam then cam.FieldOfView = fieldOfViewVal end
+				end
+			end
+			saveConfig()
+		end)
+	end
+	setHeadlessVisual = mkToggle("Headless", function(on)
+		headlessEnabled = on == true
+		local char = LP.Character
+		local head = char and char:FindFirstChild("Head")
+		if head then
+			head.Transparency = on and 1 or 0
+			for _, c in ipairs(head:GetChildren()) do
+				if c:IsA("Decal") or c:IsA("Texture") then c.Transparency = on and 1 or 0 end
+			end
+		end
+		saveConfig()
+	end)
 	local function getTracerGui()
 		local pg = LP:FindFirstChildOfClass("PlayerGui")
 		if not pg then return nil end
@@ -3119,17 +3266,14 @@ end
 		tracerGui.Parent = pg
 		return tracerGui
 	end
-
 	local function removeTracer(plr)
 		local line = espTracerLines[plr]
 		if line then pcall(function() line:Destroy() end) end
 		espTracerLines[plr] = nil
 	end
-
 	local function removeAllTracers()
 		for plr in pairs(espTracerLines) do removeTracer(plr) end
 	end
-
 	local function setTracerLine(line, a, b)
 		local delta = b - a
 		local length = delta.Magnitude
@@ -3142,7 +3286,6 @@ end
 		line.Rotation = math.deg(math.atan2(delta.Y, delta.X))
 		line.Visible = true
 	end
-
 	local function destroyRagdollCountdown()
 		if ragdollCountdownLabel then
 			pcall(function() ragdollCountdownLabel:Destroy() end)
@@ -3150,9 +3293,7 @@ end
 		end
 		ragdollCountdownUntil = 0
 	end
-
 	Players.PlayerRemoving:Connect(removeTracer)
-
 	RunService.RenderStepped:Connect(function()
 		local cam = workspace.CurrentCamera
 		if espTracersEnabled and espEnabled and cam then
@@ -3199,7 +3340,6 @@ end
 				pcall(function() line.Visible = false end)
 			end
 		end
-
 		if ragdollCountdownEnabled then
 			local char = LP.Character
 			local hum = char and char:FindFirstChildOfClass("Humanoid")
@@ -3242,7 +3382,6 @@ end
 			destroyRagdollCountdown()
 		end
 	end)
-
 	mkSect("Movement")
 	do
 		local sv=mkToggleKB("Auto Left",KB.AutoLeft,
