@@ -1,5 +1,4 @@
 repeat task.wait() until game:IsLoaded()
-local function __vyze_main()
 local Players,RunService,UIS,TS,Lighting,HS = game:GetService("Players"),game:GetService("RunService"),game:GetService("UserInputService"),game:GetService("TweenService"),game:GetService("Lighting"),game:GetService("HttpService")
 local LP = Players.LocalPlayer
 local NS,CS = 60,30
@@ -17,6 +16,8 @@ local autoLeftSetVisual,autoRightSetVisual = nil,nil
 local speedLabel = nil
 local autoBatEnabled = false
 local autoSwingEnabled = true
+local _autoSwingWasBeforeAutoBat = autoSwingEnabled
+local _autoMedusaTool = nil
 local mirrorTPEnabled = true
 local setMirrorTPVisual = nil
 local autoBatSetVisual = nil
@@ -133,7 +134,7 @@ end)
 local instaResetBusy = false
 local instaResetBusyAt = 0
 local instaResetCamConn = nil
-local function releaseResetCamera()
+function releaseResetCamera()
 	if instaResetCamConn then
 		pcall(function() instaResetCamConn:Disconnect() end)
 		instaResetCamConn = nil
@@ -147,7 +148,7 @@ local function releaseResetCamera()
 		end)
 	end
 end
-local function holdResetCamera(oldCharacter)
+function holdResetCamera(oldCharacter)
 	local cam = workspace.CurrentCamera
 	if not cam then return end
 	local heldCF, heldFocus = cam.CFrame, cam.Focus
@@ -173,7 +174,7 @@ local function holdResetCamera(oldCharacter)
 		releaseResetCamera()
 	end)
 end
-local function instaFlingUp(character)
+function instaFlingUp(character)
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	if not (root and root:IsA("BasePart")) then return false end
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
@@ -205,7 +206,7 @@ local function instaFlingUp(character)
 	end)
 	return true
 end
-local function instaHardKill(character)
+function instaHardKill(character)
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 	if not humanoid then return end
 	pcall(function()
@@ -295,7 +296,7 @@ local _autoCarryFromSteal = false
 local _autoCarryGraceUntil = 0
 local _waitingForCarryPickup = false
 local _carryPickupWatchUntil = 0
-local _autoCarryReturnMode = nil
+local _autoCarryReturnMode = nil 
 local _stealAttrWasActive = false
 local MEDUSA_COOLDOWN = 25
 local batCounterDebounce = false
@@ -327,11 +328,11 @@ function getAutoBatSpeed()
 end
 local _pathSavedCarry = false
 local _pathSavedLaggerCarry = false
-local function rememberCarryForPath()
+function rememberCarryForPath()
 	_pathSavedCarry = (speedMode == true)
 	_pathSavedLaggerCarry = (laggerToggled == true and laggerPhase == 2)
 end
-local function restoreCarryAfterPath()
+function restoreCarryAfterPath()
 	if _pathSavedLaggerCarry then
 		if setLaggerCarryMode then setLaggerCarryMode(true) end
 	elseif _pathSavedCarry then
@@ -404,7 +405,7 @@ function findNearestPrompt()
 	end
 	return nearest
 end
-local function _promptDist(prompt)
+function _promptDist(prompt)
 	local char=LP.Character; if not char then return math.huge end
 	local root=char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso") or char:FindFirstChild("Torso")
 	if not root then return math.huge end
@@ -415,7 +416,7 @@ local function _promptDist(prompt)
 	if ok and cf then return (cf-root.Position).Magnitude end
 	return math.huge
 end
-local function isStealHitMedusa()
+function isStealHitMedusa()
 	local char = LP.Character
 	if not char then return false end
 	local hum = char:FindFirstChildOfClass("Humanoid")
@@ -429,7 +430,7 @@ local function isStealHitMedusa()
 	end
 	return false
 end
-local function isStealHitRagdolled()
+function isStealHitRagdolled()
 	local char = LP.Character
 	local hum = char and char:FindFirstChildOfClass("Humanoid")
 	if not hum or hum.Health <= 0 then return false end
@@ -452,13 +453,13 @@ local function isStealHitRagdolled()
 		or char:GetAttribute("Ragdolled") == true
 		or char:GetAttribute("Ragdoll") == true
 end
-local function clearStealHitSignals()
+function clearStealHitSignals()
 	for _, c in ipairs(Conns.stealHit) do
 		pcall(function() c:Disconnect() end)
 	end
 	Conns.stealHit = {}
 end
-local function triggerStopAtHit()
+function triggerStopAtHit()
 	if not ragdollStealEnabled or not Steal.AutoStealEnabled then return end
 	local med = isStealHitMedusa()
 	if not med and os.clock() < autoStealHitPauseUntil then return end
@@ -477,7 +478,7 @@ local function triggerStopAtHit()
 		end
 	end)
 end
-local function bindStealHitCharacter(char)
+function bindStealHitCharacter(char)
 	clearStealHitSignals()
 	local hum = char and char:FindFirstChildOfClass("Humanoid")
 	if not hum then return end
@@ -1031,7 +1032,7 @@ local DROP_ASCEND_DURATION = 0.18
 local DROP_ASCEND_SPEED = 150
 local dropConn = nil
 local dropPausedAutoTP = false
-local function getDropFloorY(character, root, humanoid)
+function getDropFloorY(character, root, humanoid)
 	if root.Position.Y <= -7 then return -7 end
 	local offset = (humanoid.HipHeight or 2) + root.Size.Y * 0.5 + 0.2
 	local blockNames = { "invis", "wall", "trigger", "barrier", "clip", "ghost" }
@@ -1093,7 +1094,7 @@ local function getDropFloorY(character, root, humanoid)
 	end
 	return -7
 end
-local function finishDrop()
+function finishDrop()
 	dropActive = false
 	if dropConn then
 		pcall(function() dropConn:Disconnect() end)
@@ -1275,18 +1276,19 @@ local headlessEnabled = false
 local baseXRayEnabled = false
 local setEspTracersVisual, setRagdollCountdownVisual, setE01WarningVisual
 local setFovChangeVisual, setHeadlessVisual, setBaseXRayVisual
+local fovValueBox = nil
 local setRagdollStealVisual
 local espHighlights = {}
 local espConn = nil
 local setEspVisual = nil
 local ESP_COLOR = Color3.fromRGB(160, 55, 220)
-local function clearESP()
+function clearESP()
 	for plr, hl in pairs(espHighlights) do
 		pcall(function() if hl then hl:Destroy() end end)
 		espHighlights[plr] = nil
 	end
 end
-local function updateESP()
+function updateESP()
 	if not espEnabled then
 		clearESP()
 		return
@@ -1471,7 +1473,7 @@ local BAT_CFG = {
 	velTrackClamp = 150, velSpoofMag = 250, velSpoofDiffBase = 80,
 	velTrackSamples = 6, velSmooth = 0.5, swingDist = 14,
 }
-local function batGetTrueVelocity(root, now)
+function batGetTrueVelocity(root, now)
 	if not root or not root.Parent then return Vector3.zero end
 	local rec = BatVTrack.records[root]
 	if not rec then
@@ -1502,7 +1504,7 @@ local function batGetTrueVelocity(root, now)
 	while #rec.s > BAT_CFG.velTrackSamples do table.remove(rec.s, 1) end
 	return rec.vel
 end
-local function batReadVelocity(target, now)
+function batReadVelocity(target, now)
 	local raw = target.AssemblyLinearVelocity
 	local tracked = batGetTrueVelocity(target, now)
 	if not tracked or tracked.Magnitude < 0.5 then
@@ -1515,14 +1517,14 @@ local function batReadVelocity(target, now)
 	if diff > math.max(BAT_CFG.velSpoofDiffBase, trackMag * 1.5) then return tracked end
 	return raw
 end
-local function batVTrackCleanup(now)
+function batVTrackCleanup(now)
 	if now - _batVtLastClean < 5 then return end
 	_batVtLastClean = now
 	for r in pairs(BatVTrack.records) do
 		if not r.Parent then BatVTrack.records[r] = nil end
 	end
 end
-local function batSwingBat(char, hum)
+function batSwingBat(char, hum)
 	if _batHittingCooldown then return end
 	_batHittingCooldown = true
 	pcall(function()
@@ -1539,6 +1541,31 @@ local function batSwingBat(char, hum)
 	end)
 	task.delay(BAT_CFG.swingCooldown, function() _batHittingCooldown = false end)
 end
+function isMedusaHeadTool(tool)
+	if not tool or not tool:IsA("Tool") then return false end
+	local n = tool.Name:lower():gsub("[%s%p]+", "")
+	return n:find("medusa", 1, true) ~= nil and n:find("head", 1, true) ~= nil
+end
+function autoUseMedusaHeadTool(tool)
+	if not autoSwingEnabled or not autoBatEnabled or not isMedusaHeadTool(tool) then return end
+	if _autoMedusaTool == tool then return end
+	_autoMedusaTool = tool
+	pcall(function()
+		if tool.Parent == LP.Character then tool:Activate() end
+	end)
+	task.delay(0.08, function()
+		if _autoMedusaTool == tool and tool.Parent == LP.Character and autoSwingEnabled and autoBatEnabled then
+			pcall(function() tool:Activate() end)
+		end
+	end)
+end
+function bindAutoMedusaHeadWatcher(char)
+	if not char then return end
+	char.ChildAdded:Connect(function(child) autoUseMedusaHeadTool(child) end)
+	for _, child in ipairs(char:GetChildren()) do autoUseMedusaHeadTool(child) end
+end
+if LP.Character then bindAutoMedusaHeadWatcher(LP.Character) end
+LP.CharacterAdded:Connect(function(char) bindAutoMedusaHeadWatcher(char) end)
 function startAutoBatLoop()
 	if autoBatConn then return end
 	autoBatConn = RunService.RenderStepped:Connect(function()
@@ -1653,6 +1680,9 @@ do
 end
 local _autoTPWasEnabled=false
 function enableAutoBat()
+	_autoSwingWasBeforeAutoBat = autoSwingEnabled
+	autoSwingEnabled = true
+	if setAutoSwingVisual then pcall(function() setAutoSwingVisual(true) end) end
 	if autoLeftEnabled then autoLeftEnabled=false;if autoLeftSetVisual then autoLeftSetVisual(false) end;stopAutoLeft() end
 	if autoRightEnabled then autoRightEnabled=false;if autoRightSetVisual then autoRightSetVisual(false) end;stopAutoRight() end
 	if autoTPEnabled then _autoTPWasEnabled=true;stopAutoTP();if setAutoTPVisual then setAutoTPVisual(false) end else _autoTPWasEnabled=false end
@@ -1660,9 +1690,13 @@ function enableAutoBat()
 	_autoBatHadTarget=false
 	_antiBatBypassPredictionData={}
 	autoBatEnabled=true
+	if getgenv().SlouriteStartAntiDie then
+		pcall(getgenv().SlouriteStartAntiDie)
+	end
 	startAutoBatLoop()
 end
 function disableAutoBat()
+	local restoreAutoSwing = _autoSwingWasBeforeAutoBat
 	autoBatEnabled=false
 	autoBatEquippedThisRun=false
 	_autoBatHadTarget=false
@@ -1689,6 +1723,11 @@ function disableAutoBat()
 		_autoTPWasEnabled=false;autoTPEnabled=true
 		if setAutoTPVisual then setAutoTPVisual(true) end;startAutoTP()
 	end
+	if getgenv().SlouriteStopAntiDie then
+		pcall(getgenv().SlouriteStopAntiDie)
+	end
+	autoSwingEnabled = restoreAutoSwing == true
+	if setAutoSwingVisual then pcall(function() setAutoSwingVisual(autoSwingEnabled) end) end
 end
 function queueAutoLeftStart()
 	autoLeftEnabled=true
@@ -1856,7 +1895,7 @@ function setLaggerCarryMode(on)
 	refreshSpeedModeLabel()
 	syncMobileModeButtons()
 end
-local function getCurrentSpeedModeName()
+function getCurrentSpeedModeName()
 	if laggerToggled then
 		return (laggerPhase == 2) and "Lagger Carry" or "Lagger"
 	elseif speedMode then
@@ -1864,17 +1903,17 @@ local function getCurrentSpeedModeName()
 	end
 	return "Normal"
 end
-local function isCarryName(name)
+function isCarryName(name)
 	local n = tostring(name or ""):lower()
 	return n:find("brainrot") or n:find("animal") or n:find("carry")
 		or n:find("grab") or n:find("steal") or n:find("hold")
 end
-local function isIgnoredCarryTool(name)
+function isIgnoredCarryTool(name)
 	local n = tostring(name or ""):lower()
 	return n:find("bat") or n:find("slap") or n:find("medusa")
 		or n:find("head") or n:find("stone")
 end
-local function isCarryingBrainrot(char)
+function isCarryingBrainrot(char)
 	if not char then return false end
 	for _, name in ipairs({"Carrying", "IsCarrying", "Grabbed", "Holding", "StealHold", "HasGrab"}) do
 		local v = char:FindFirstChild(name, true)
@@ -1896,7 +1935,7 @@ local function isCarryingBrainrot(char)
 	end
 	return false
 end
-local function enableCarrySpeedForSteal()
+function enableCarrySpeedForSteal()
 	_waitingForCarryPickup = false
 	_carryPickupWatchUntil = 0
 	if not _autoCarryFromSteal then
@@ -1913,7 +1952,7 @@ local function enableCarrySpeedForSteal()
 	end
 	pcall(saveConfig)
 end
-local function disableAutoCarrySpeed()
+function disableAutoCarrySpeed()
 	if not _autoCarryFromSteal and not _waitingForCarryPickup then return end
 	local wasAutoApplied = _autoCarryFromSteal == true
 	local returnMode = _autoCarryReturnMode
@@ -1938,7 +1977,7 @@ local function disableAutoCarrySpeed()
 	end
 	pcall(saveConfig)
 end
-local function startAutoCarryPickupWatch(seconds)
+function startAutoCarryPickupWatch(seconds)
 	if autoCarrySpeedEnabled ~= true then return end
 	_waitingForCarryPickup = true
 	_carryPickupWatchUntil = tick() + (seconds or 1.25)
@@ -2721,6 +2760,307 @@ function buildGui()
 		if on and LP.Character then bindStealHitCharacter(LP.Character) end
 		saveConfig()
 	end)
+do
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	local LP = Players.LocalPlayer
+	if LP then
+		local AntiDie = {
+			enabled = false,
+			invincibleUntil = 0,
+			healthConn = nil,
+			diedConn = nil,
+			stateConn = nil,
+			maxHealthConn = nil,
+			charConn = nil,
+			loop = nil,
+			threshold = 25,
+			invincibilityFrames = 0.5,
+		}
+		local antiDieEnabled = false
+		local function antiDieHumanoid()
+			local char = LP.Character
+			return char and char:FindFirstChildOfClass("Humanoid")
+		end
+		local function antiDieSuperHeal(hum)
+			if not hum or not hum.Parent or tick() < AntiDie.invincibleUntil then
+				return
+			end
+			local maxHealth = hum.MaxHealth
+			if maxHealth <= 0 or maxHealth == math.huge then
+				maxHealth = 100
+			end
+			pcall(function()
+				hum.Health = maxHealth
+			end)
+			AntiDie.invincibleUntil = tick() + AntiDie.invincibilityFrames
+		end
+		local function antiDieRepairCharacter(char)
+			if not char then return end
+			pcall(function()
+				local hum = char:FindFirstChildOfClass("Humanoid")
+				if hum then
+					hum.BreakJointsOnDeath = false
+					hum.RequiresNeck = false
+					hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+					hum:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, false)
+					hum:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
+				end
+				if not char:FindFirstChild("ForceField") then
+					local ff = Instance.new("ForceField")
+					ff.Visible = false
+					ff.Parent = char
+				end
+			end)
+		end
+		local function antiDieHookHumanoid(hum)
+			if not hum then return end
+			for _, key in ipairs({"healthConn", "diedConn", "stateConn", "maxHealthConn"}) do
+				local conn = AntiDie[key]
+				if conn then
+					pcall(function() conn:Disconnect() end)
+					AntiDie[key] = nil
+				end
+			end
+			local char = hum.Parent
+			pcall(function()
+				hum.BreakJointsOnDeath = false
+				hum.RequiresNeck = false
+				hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+				hum:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, false)
+				hum:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
+				if char and not char:FindFirstChild("ForceField") then
+					local ff = Instance.new("ForceField")
+					ff.Visible = false
+					ff.Parent = char
+				end
+			end)
+			AntiDie.healthConn = hum:GetPropertyChangedSignal("Health"):Connect(function()
+				if not AntiDie.enabled then return end
+				if hum.Health <= 0 or hum.Health <= AntiDie.threshold then
+					antiDieSuperHeal(hum)
+				end
+				if hum.Health > hum.MaxHealth then
+					pcall(function()
+						hum.Health = hum.MaxHealth
+					end)
+				end
+			end)
+			AntiDie.diedConn = hum.Died:Connect(function()
+				if AntiDie.enabled then
+					task.defer(function()
+						antiDieSuperHeal(hum)
+					end)
+				end
+			end)
+			AntiDie.stateConn = hum.StateChanged:Connect(function(_, state)
+				if not AntiDie.enabled then return end
+				if state == Enum.HumanoidStateType.Dead
+					or state == Enum.HumanoidStateType.Ragdoll
+					or state == Enum.HumanoidStateType.FallingDown then
+					pcall(function()
+						hum:ChangeState(Enum.HumanoidStateType.Running)
+					end)
+					antiDieSuperHeal(hum)
+				end
+			end)
+			AntiDie.maxHealthConn = hum:GetPropertyChangedSignal("MaxHealth"):Connect(function()
+				if AntiDie.enabled and hum.MaxHealth < 100 then
+					pcall(function()
+						hum.MaxHealth = math.huge
+					end)
+				end
+				if AntiDie.enabled and hum.Health <= 0 then
+					antiDieSuperHeal(hum)
+				end
+			end)
+			antiDieRepairCharacter(char)
+			antiDieSuperHeal(hum)
+		end
+		local function startAntiDie()
+			antiDieEnabled = true
+			AntiDie.enabled = true
+			_G.__SlouriteAntiDieOn = true
+			if AntiDie.charConn then
+				pcall(function() AntiDie.charConn:Disconnect() end)
+				AntiDie.charConn = nil
+			end
+			if AntiDie.loop then
+				pcall(function() AntiDie.loop:Disconnect() end)
+				AntiDie.loop = nil
+			end
+			antiDieHookHumanoid(antiDieHumanoid())
+			AntiDie.loop = RunService.Heartbeat:Connect(function()
+				if not AntiDie.enabled then return end
+				local char = LP.Character
+				local hum = char and char:FindFirstChildOfClass("Humanoid")
+				if not hum then return end
+				if hum.Health <= 0 or hum.Health <= AntiDie.threshold then
+					antiDieSuperHeal(hum)
+				end
+				pcall(function()
+					hum.BreakJointsOnDeath = false
+					hum.RequiresNeck = false
+					if not char:FindFirstChild("ForceField") then
+						local ff = Instance.new("ForceField")
+						ff.Visible = false
+						ff.Parent = char
+					end
+				end)
+			end)
+			AntiDie.charConn = LP.CharacterAdded:Connect(function(char)
+				task.wait(0.1)
+				if AntiDie.enabled then
+					antiDieHookHumanoid(
+						char:FindFirstChildOfClass("Humanoid") or char:WaitForChild("Humanoid", 3)
+					)
+				end
+			end)
+		end
+		local function stopAntiDie()
+			antiDieEnabled = false
+			AntiDie.enabled = false
+			_G.__SlouriteAntiDieOn = false
+			if AntiDie.loop then
+				pcall(function() AntiDie.loop:Disconnect() end)
+				AntiDie.loop = nil
+			end
+			if AntiDie.charConn then
+				pcall(function() AntiDie.charConn:Disconnect() end)
+				AntiDie.charConn = nil
+			end
+			for _, key in ipairs({"healthConn", "diedConn", "stateConn", "maxHealthConn"}) do
+				local conn = AntiDie[key]
+				if conn then
+					pcall(function() conn:Disconnect() end)
+					AntiDie[key] = nil
+				end
+			end
+			local hum = antiDieHumanoid()
+			if hum then
+				pcall(function()
+					hum.BreakJointsOnDeath = true
+					hum.RequiresNeck = true
+					hum:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
+					hum:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, true)
+					hum:SetStateEnabled(Enum.HumanoidStateType.FallingDown, true)
+				end)
+			end
+		end
+		getgenv().SlouriteStartAntiDie = startAntiDie
+		getgenv().SlouriteStopAntiDie = stopAntiDie
+		getgenv().setAntiDie = function(on)
+			if on then
+				startAntiDie()
+			else
+				stopAntiDie()
+			end
+		end
+		local antiFlingOn = false
+		local AntiFlingPlayersConns = {}
+		local AntiFlingHeartbeat = nil
+		local AntiFlingPlayerAdded = nil
+		local AntiFlingPlayerRemoving = nil
+		local function LimitPlayerVelocity(part)
+			if not part then return end
+			pcall(function()
+				local lv = part.AssemblyLinearVelocity
+				local av = part.AssemblyAngularVelocity
+				if lv.Magnitude > 100 then
+					part.AssemblyLinearVelocity = lv.Unit * 100
+				end
+				if av.Magnitude > 75 then
+					part.AssemblyAngularVelocity = av.Unit * 75
+				end
+			end)
+		end
+		local function SetupPlayerAntiFling(player)
+			if player == LP then return end
+			if AntiFlingPlayersConns[player] then
+				pcall(function() AntiFlingPlayersConns[player]:Disconnect() end)
+			end
+			AntiFlingPlayersConns[player] = player.CharacterAdded:Connect(function(char)
+				if not antiFlingOn then return end
+				task.wait(0.25)
+				local hrp = char:WaitForChild("HumanoidRootPart", 10)
+				if hrp then
+					pcall(function()
+						hrp:SetNetworkOwner(nil)
+					end)
+				end
+			end)
+			if player.Character then
+				local hrp = player.Character:FindFirstChild("HumanoidRootPart")
+				if hrp then
+					pcall(function()
+						hrp:SetNetworkOwner(nil)
+					end)
+				end
+			end
+		end
+		local function StartAntiFling()
+			antiFlingOn = true
+			for _, player in ipairs(Players:GetPlayers()) do
+				SetupPlayerAntiFling(player)
+			end
+			if AntiFlingPlayerAdded then
+				pcall(function() AntiFlingPlayerAdded:Disconnect() end)
+			end
+			if AntiFlingPlayerRemoving then
+				pcall(function() AntiFlingPlayerRemoving:Disconnect() end)
+			end
+			AntiFlingPlayerAdded = Players.PlayerAdded:Connect(function(player)
+				if antiFlingOn then
+					SetupPlayerAntiFling(player)
+				end
+			end)
+			AntiFlingPlayerRemoving = Players.PlayerRemoving:Connect(function(player)
+				if AntiFlingPlayersConns[player] then
+					pcall(function() AntiFlingPlayersConns[player]:Disconnect() end)
+					AntiFlingPlayersConns[player] = nil
+				end
+			end)
+			if AntiFlingHeartbeat then
+				pcall(function() AntiFlingHeartbeat:Disconnect() end)
+			end
+			AntiFlingHeartbeat = RunService.Heartbeat:Connect(function()
+				if not antiFlingOn then return end
+				for _, player in ipairs(Players:GetPlayers()) do
+					if player ~= LP and player.Character then
+						local hrp = player.Character:FindFirstChild("HumanoidRootPart")
+						if hrp then
+							LimitPlayerVelocity(hrp)
+						end
+					end
+				end
+			end)
+		end
+		local function StopAntiFling()
+			antiFlingOn = false
+			if AntiFlingHeartbeat then
+				pcall(function() AntiFlingHeartbeat:Disconnect() end)
+				AntiFlingHeartbeat = nil
+			end
+			if AntiFlingPlayerAdded then
+				pcall(function() AntiFlingPlayerAdded:Disconnect() end)
+				AntiFlingPlayerAdded = nil
+			end
+			if AntiFlingPlayerRemoving then
+				pcall(function() AntiFlingPlayerRemoving:Disconnect() end)
+				AntiFlingPlayerRemoving = nil
+			end
+			for _, conn in pairs(AntiFlingPlayersConns) do
+				pcall(function() conn:Disconnect() end)
+			end
+			AntiFlingPlayersConns = {}
+		end
+		getgenv().SlouriteStartAntiFling = StartAntiFling
+		getgenv().SlouriteStopAntiFling = StopAntiFling
+		getgenv().SlouriteAntiFlingEnabled = function()
+			return antiFlingOn
+		end
+	end
+end
 	mkSect("Misc")
 	do
 		local row=mkRow(32);mkLabel(row,"Instant Reset")
@@ -2730,6 +3070,23 @@ function buildGui()
 	end
 	setInfJumpVisual=mkToggle("Infinite Jump",function(on) infJumpEnabled=on end)
 	setAntiRagVisual=mkToggle("Anti Ragdoll",function(on) antiRagdollEnabled=on;if on then startAntiRagdoll() else stopAntiRagdoll() end end)
+	setUnwalkVisual=mkToggle("Unwalk",function(on) unwalkEnabled=on;if on then startUnwalk() else stopUnwalk() end end)
+	setAntiDieVisual=mkToggle("Anti Die",function(on)
+		if getgenv().setAntiDie then
+			pcall(getgenv().setAntiDie,on==true)
+		end
+		saveConfig()
+	end)
+	if setAntiDieVisual then setAntiDieVisual(false) end
+	setAntiFlingVisual=mkToggle("Anti Fling",function(on)
+		if on then
+			if getgenv().SlouriteStartAntiFling then pcall(getgenv().SlouriteStartAntiFling) end
+		else
+			if getgenv().SlouriteStopAntiFling then pcall(getgenv().SlouriteStopAntiFling) end
+		end
+		saveConfig()
+	end)
+	if setAntiFlingVisual then setAntiFlingVisual(false) end
 	setBatCounterVisual=mkToggle("Bat Counter",function(on)
 		batCounterEnabled=on
 		if on then startBatCounter() else stopBatCounter() end
@@ -2741,211 +3098,108 @@ function buildGui()
 		else stopMedusaCounter() end
 		saveConfig()
 	end)
-	setUnwalkVisual=mkToggle("Unwalk",function(on) unwalkEnabled=on;if on then startUnwalk() else stopUnwalk() end end)
 	mkSect("Visual")
 	local espDetailsOpen = false
 	local espDetailsRows = {}
 	local espTracerLines = {}
 	local ragdollCountdownLabel = nil
-	do
-		local row = mkRow(32)
-		mkLabel(row, "ESP")
-		local arrow = Instance.new("TextButton", row)
-		arrow.Size = UDim2.new(0, 28, 0, 22)
-		arrow.Position = UDim2.new(1, -92, 0.5, -11)
-		arrow.BackgroundColor3 = Color3.fromRGB(18, 14, 24)
-		arrow.BorderSizePixel = 0
-		arrow.Text = ">"
-		arrow.TextColor3 = W
-		arrow.Font = Enum.Font.GothamBlack
-		arrow.TextSize = 14
-		arrow.ZIndex = 6
-		Instance.new("UICorner", arrow).CornerRadius = UDim.new(0, 7)
-		local pill, dot = mkPill(row, 48)
-		local on = false
-		local function sv(s) on = s; animPill(pill, dot, s) end
-		setEspVisual = sv
-		local clk = Instance.new("TextButton", pill)
-		clk.Size = UDim2.new(1, 0, 1, 0)
-		clk.BackgroundTransparency = 1
-		clk.Text = ""
-		clk.ZIndex = 5
-		clk.Activated:Connect(function()
-			on = not on
-			sv(on)
-			if on then enableESP() else disableESP() end
-			saveConfig()
-		end)
-		arrow.Activated:Connect(function()
-			espDetailsOpen = not espDetailsOpen
-			arrow.Text = espDetailsOpen and "v" or ">"
-			for _, r in ipairs(espDetailsRows) do
-				r.Visible = espDetailsOpen
-			end
-		end)
+	local ragdollCountdownUntil = 0
+	local ragdollCountdownDuration = 2.6
+	local tracerGui = nil
+
+	local function getTracerGui()
+		local pg = LP:FindFirstChildOfClass("PlayerGui")
+		if not pg then return nil end
+		if tracerGui and tracerGui.Parent then return tracerGui end
+		tracerGui = Instance.new("ScreenGui")
+		tracerGui.Name = "VyzeTracerGui"
+		tracerGui.IgnoreGuiInset = true
+		tracerGui.ResetOnSpawn = false
+		tracerGui.DisplayOrder = 50
+		tracerGui.Parent = pg
+		return tracerGui
 	end
-	do
-		local row = mkRow(32)
-		row.Visible = false
-		table.insert(espDetailsRows, row)
-		mkLabel(row, "Show Tracer")
-		local pill, dot = mkPill(row, 48)
-		local on = false
-		local function sv(s) on = s; animPill(pill, dot, s) end
-		local clk = Instance.new("TextButton", pill)
-		clk.Size = UDim2.new(1, 0, 1, 0)
-		clk.BackgroundTransparency = 1
-		clk.Text = ""
-		clk.ZIndex = 5
-		setEspTracersVisual = sv
-		clk.Activated:Connect(function()
-			on = not on
-			sv(on)
-			espTracersEnabled = on
-			saveConfig()
-		end)
+
+	local function removeTracer(plr)
+		local line = espTracerLines[plr]
+		if line then pcall(function() line:Destroy() end) end
+		espTracerLines[plr] = nil
 	end
-	do
-		local row = mkRow(32)
-		row.Visible = false
-		table.insert(espDetailsRows, row)
-		mkLabel(row, "Ragdoll Countdown")
-		local pill, dot = mkPill(row, 48)
-		local on = false
-		local function sv(s) on = s; animPill(pill, dot, s) end
-		local clk = Instance.new("TextButton", pill)
-		clk.Size = UDim2.new(1, 0, 1, 0)
-		clk.BackgroundTransparency = 1
-		clk.Text = ""
-		clk.ZIndex = 5
-		setRagdollCountdownVisual = sv
-		clk.Activated:Connect(function()
-			on = not on
-			sv(on)
-			ragdollCountdownEnabled = on
-			if not on and ragdollCountdownLabel then
-				pcall(function() ragdollCountdownLabel:Destroy() end)
-				ragdollCountdownLabel = nil
-			end
-			saveConfig()
-		end)
+
+	local function removeAllTracers()
+		for plr in pairs(espTracerLines) do removeTracer(plr) end
 	end
-	setE01WarningVisual = mkToggle("Show E01 Warning", function(on)
-		showE01Warning = on == true
-		saveConfig()
-	end)
-	setAntiLagVisual = mkToggle("Anti Lag", function(on)
-		if on then enableAntiLag() else disableAntiLag() end
-		saveConfig()
-	end)
-	setBaseXRayVisual = mkToggle("X-Ray Base", function(on)
-		baseXRayEnabled = on == true
-		local plots = workspace:FindFirstChild("Plots")
-		if plots then
-			for _, p in ipairs(plots:GetDescendants()) do
-				if p:IsA("BasePart") then
-					local n = p.Name:lower()
-					local skip = n:find("brainrot") or n:find("animal") or n:find("pet") or n:find("handle")
-					local par = p.Parent
-					while par and par ~= plots and not skip do
-						local pn = tostring(par.Name):lower()
-						if par:IsA("Tool") then
-							skip = true
-						elseif pn:find("brainrot") or pn:find("animal") or pn:find("pet") then
-							skip = true
-						end
-						par = par.Parent
-					end
-					if not skip then
-						if on then
-							if not p:GetAttribute("_VyzeXRay") then
-								p:SetAttribute("_VyzeXRay", p.LocalTransparencyModifier)
-							end
-							p.LocalTransparencyModifier = 0.65
-						else
-							local prev = p:GetAttribute("_VyzeXRay")
-							if prev ~= nil then p.LocalTransparencyModifier = prev end
-							p:SetAttribute("_VyzeXRay", nil)
-						end
-					end
-				end
-			end
+
+	local function setTracerLine(line, a, b)
+		local delta = b - a
+		local length = delta.Magnitude
+		if length < 1 then
+			line.Visible = false
+			return
 		end
-		saveConfig()
-	end)
-	setFovChangeVisual = mkToggle("FOV Change", function(on)
-		fovChangeEnabled = on == true
-		if on then
-			workspace.CurrentCamera.FieldOfView = fieldOfViewVal
-		else
-			workspace.CurrentCamera.FieldOfView = 70
-		end
-		saveConfig()
-	end)
-	do
-		local row = mkRow(32)
-		mkLabel(row, "FOV Value")
-		mkBox(row, fieldOfViewVal, 50, 56, function(v)
-			if v >= 40 and v <= 120 then
-				fieldOfViewVal = v
-				if fovChangeEnabled then
-					workspace.CurrentCamera.FieldOfView = fieldOfViewVal
-				end
-			end
-			saveConfig()
-		end)
+		line.Position = UDim2.fromOffset((a.X + b.X) * 0.5, (a.Y + b.Y) * 0.5)
+		line.Size = UDim2.fromOffset(length, 2)
+		line.Rotation = math.deg(math.atan2(delta.Y, delta.X))
+		line.Visible = true
 	end
-	setHeadlessVisual = mkToggle("Headless", function(on)
-		headlessEnabled = on == true
-		local char = LP.Character
-		local head = char and char:FindFirstChild("Head")
-		if head then
-			head.Transparency = on and 1 or 0
-			for _, c in ipairs(head:GetChildren()) do
-				if c:IsA("Decal") or c:IsA("Texture") then
-					c.Transparency = on and 1 or 0
-				end
-			end
+
+	local function destroyRagdollCountdown()
+		if ragdollCountdownLabel then
+			pcall(function() ragdollCountdownLabel:Destroy() end)
+			ragdollCountdownLabel = nil
 		end
-		saveConfig()
-	end)
+		ragdollCountdownUntil = 0
+	end
+
+	Players.PlayerRemoving:Connect(removeTracer)
+
 	RunService.RenderStepped:Connect(function()
-		if espTracersEnabled and espEnabled then
+		local cam = workspace.CurrentCamera
+		if espTracersEnabled and espEnabled and cam then
 			local myRoot = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
-			local cam = workspace.CurrentCamera
-			if myRoot and cam then
+			if myRoot then
+				local a, onA = cam:WorldToViewportPoint(myRoot.Position)
 				for _, plr in ipairs(Players:GetPlayers()) do
 					if plr ~= LP and plr.Character then
 						local tr = plr.Character:FindFirstChild("HumanoidRootPart")
-						if tr then
-							local a, onA = cam:WorldToViewportPoint(myRoot.Position)
+						local hum = plr.Character:FindFirstChildOfClass("Humanoid")
+						if tr and hum and hum.Health > 0 then
 							local b, onB = cam:WorldToViewportPoint(tr.Position)
 							local line = espTracerLines[plr]
-							if Drawing and type(Drawing.new) == "function" then
-								if not line then
-									line = Drawing.new("Line")
-									line.Thickness = 1.5
-									line.Color = ESP_COLOR
-									line.Transparency = 0.85
+							if not line or not line.Parent then
+								local tg = getTracerGui()
+								if tg then
+									line = Instance.new("Frame")
+									line.Name = "Tracer_" .. tostring(plr.UserId)
+									line.AnchorPoint = Vector2.new(0.5, 0.5)
+									line.BorderSizePixel = 0
+									line.BackgroundColor3 = ESP_COLOR
+									line.BackgroundTransparency = 0.1
+									line.Size = UDim2.fromOffset(1, 2)
+									line.ZIndex = 3
+									line.Parent = tg
 									espTracerLines[plr] = line
 								end
-								if onA and onB and a.Z > 0 and b.Z > 0 then
-									line.From = Vector2.new(a.X, a.Y)
-									line.To = Vector2.new(b.X, b.Y)
-									line.Visible = true
-								else
-									line.Visible = false
-								end
 							end
+							if line and onA and onB and a.Z > 0 and b.Z > 0 then
+								setTracerLine(line, Vector2.new(a.X, a.Y), Vector2.new(b.X, b.Y))
+							elseif line then
+								line.Visible = false
+							end
+						else
+							removeTracer(plr)
 						end
 					end
 				end
+			else
+				removeAllTracers()
 			end
 		else
-			for plr, line in pairs(espTracerLines) do
+			for _, line in pairs(espTracerLines) do
 				pcall(function() line.Visible = false end)
 			end
 		end
+
 		if ragdollCountdownEnabled then
 			local char = LP.Character
 			local hum = char and char:FindFirstChildOfClass("Humanoid")
@@ -2954,31 +3208,41 @@ function buildGui()
 				local st = hum:GetState()
 				local rag = st == Enum.HumanoidStateType.Physics or st == Enum.HumanoidStateType.Ragdoll or st == Enum.HumanoidStateType.FallingDown or hum.PlatformStand
 				if rag then
-					if not ragdollCountdownLabel or not ragdollCountdownLabel.Parent then
+					if ragdollCountdownUntil <= 0 then ragdollCountdownUntil = tick() + ragdollCountdownDuration end
+					local remaining = math.max(0, ragdollCountdownUntil - tick())
+					if not ragdollCountdownLabel or not ragdollCountdownLabel.Parent or ragdollCountdownLabel.Adornee ~= head then
+						destroyRagdollCountdown()
 						local bb = Instance.new("BillboardGui")
 						bb.Name = "VyzeRagdollCD"
-						bb.Size = UDim2.new(0, 80, 0, 24)
+						bb.Size = UDim2.new(0, 110, 0, 30)
 						bb.StudsOffset = Vector3.new(0, 2.4, 0)
 						bb.AlwaysOnTop = true
 						bb.Adornee = head
 						bb.Parent = head
-						local tl = Instance.new("TextLabel", bb)
+						local tl = Instance.new("TextLabel")
 						tl.Size = UDim2.fromScale(1, 1)
 						tl.BackgroundTransparency = 1
 						tl.Font = Enum.Font.GothamBlack
-						tl.TextSize = 14
+						tl.TextSize = 16
 						tl.TextColor3 = Color3.fromRGB(255, 120, 120)
-						tl.TextStrokeTransparency = 0.3
-						tl.Text = "RAG"
+						tl.TextStrokeTransparency = 0.25
+						tl.Parent = bb
 						ragdollCountdownLabel = bb
 					end
-				elseif ragdollCountdownLabel then
-					pcall(function() ragdollCountdownLabel:Destroy() end)
-					ragdollCountdownLabel = nil
+					local tl = ragdollCountdownLabel:FindFirstChildOfClass("TextLabel")
+					if tl then tl.Text = string.format("RAG %.1fs", remaining) end
+					if remaining <= 0 then
+						destroyRagdollCountdown()
+					end
+				else
+					destroyRagdollCountdown()
 				end
 			end
+		else
+			destroyRagdollCountdown()
 		end
 	end)
+
 	mkSect("Movement")
 	do
 		local sv=mkToggleKB("Auto Left",KB.AutoLeft,
@@ -3147,6 +3411,7 @@ function loadConfigKeys()
 	if cfg.laggerCarrySpeed and type(cfg.laggerCarrySpeed)=="number" then LAGGER_CARRY_SPEED=cfg.laggerCarrySpeed end
 	if cfg.autoTPHeight and type(cfg.autoTPHeight)=="number" then autoTPHeight=cfg.autoTPHeight end
 	if cfg.autoSwing~=nil then autoSwingEnabled=cfg.autoSwing==true end
+	if type(cfg.fieldOfViewVal)=="number" then fieldOfViewVal=math.clamp(cfg.fieldOfViewVal,40,120) end
 	if cfg.mirrorTP~=nil then mirrorTPEnabled=cfg.mirrorTP==true end
 	if cfg.guiLocked~=nil then guiLocked=cfg.guiLocked==true end
 	if cfg.streamMode~=nil then streamMode=cfg.streamMode==true end
@@ -3166,6 +3431,10 @@ function loadConfigState()
 	setBoxReal(laggerBox, LAGGER_SPEED)
 	setBoxReal(laggerCarryBox, LAGGER_CARRY_SPEED)
 	setBoxReal(autoTPHeightBox, autoTPHeight)
+	if type(cfg.fieldOfViewVal)=="number" then
+		fieldOfViewVal = math.clamp(cfg.fieldOfViewVal, 40, 120)
+	end
+	setBoxReal(fovValueBox, fieldOfViewVal)
 	setBoxReal(guiSizeBox, guiSizeScale)
 	setBoxReal(mobileSizeBox, mobileBtnSize)
 	if setStreamModeVisual then setStreamModeVisual(streamMode) end
@@ -3277,5 +3546,3 @@ task.spawn(function()
 	if mobileButtonsHidden then setMobileButtonsVisible(false) end
 	applyMobileBtnSize()
 end)
-end
-__vyze_main()
