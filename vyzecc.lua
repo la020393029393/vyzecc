@@ -21,6 +21,7 @@ local _autoMedusaTool = nil
 local mirrorTPEnabled = true
 local setMirrorTPVisual = nil
 local autoBatSetVisual = nil
+local aimbotMode = "normal" -- "normal" | "bypass"
 local autoBatEquippedThisRun = false
 local _autoBatTarget = nil
 local _autoBatLastScan = 0
@@ -55,6 +56,7 @@ local _updateMobileAutoLeft, _updateMobileAutoRight
 local guiLocked = false
 local guiSizeScale = 1
 local mobileBtnSize = 72
+local miniBtnUiSize = 90 -- width of the mini reopen button
 local mobileButtonsHidden = false
 local mobileButtonsLocked = false
 local streamMode = false
@@ -827,8 +829,17 @@ function startAutoRight()
 		end
 	end)
 end
+local speedOverheadCountdownLabel = nil
+local _speedCdUntil = 0
+local _speedCdStartedAt = 0
+local _speedCdDuration = 2.6
+local _speedCdPrevRag = false
+local _speedCdConn = nil
+
 function setupSpeedIndicator(char)
 	local head=char:WaitForChild("Head",5);if not head then return end
+
+	-- speed BillboardGui — IDENTICAL to original, untouched
 	local bb=Instance.new("BillboardGui",head)
 	bb.Size=UDim2.new(0,160,0,44);bb.StudsOffset=Vector3.new(0,3,0);bb.AlwaysOnTop=true
 	speedLabel=Instance.new("TextLabel",bb)
@@ -842,6 +853,69 @@ function setupSpeedIndicator(char)
 	discordLabel.Image="rbxassetid://75548910103458"
 	discordLabel.ScaleType=Enum.ScaleType.Fit
 	discordLabel.ImageColor3=Color3.new(1,1,1)
+
+	-- separate BillboardGui for countdown — sits above the speed one
+	local bbCd=Instance.new("BillboardGui",head)
+	bbCd.Name="VyzeSpeedCD"
+	bbCd.Size=UDim2.new(0,160,0,28)
+	bbCd.StudsOffset=Vector3.new(0,5.2,0)
+	bbCd.AlwaysOnTop=true
+	local cdLbl=Instance.new("TextLabel",bbCd)
+	cdLbl.Name="SpeedOverheadCD"
+	cdLbl.Size=UDim2.fromScale(1,1)
+	cdLbl.BackgroundTransparency=1
+	cdLbl.Text="2.6"
+	cdLbl.TextColor3=Color3.fromRGB(160,55,220)
+	cdLbl.Font=Enum.Font.GothamBlack
+	cdLbl.TextSize=20
+	cdLbl.TextXAlignment=Enum.TextXAlignment.Center
+	cdLbl.TextStrokeTransparency=0.1
+	cdLbl.TextStrokeColor3=Color3.fromRGB(0,0,0)
+	cdLbl.ZIndex=5
+	bbCd.Enabled=false
+	speedOverheadCountdownLabel=cdLbl
+
+	-- per-character ragdoll watcher for the speed overhead countdown
+	if _speedCdConn then pcall(function() _speedCdConn:Disconnect() end) end
+	_speedCdPrevRag=false
+	_speedCdConn=RunService.RenderStepped:Connect(function()
+		local lbl=speedOverheadCountdownLabel
+		if not lbl or not lbl.Parent then return end
+		local c=LP.Character
+		local hum=c and c:FindFirstChildOfClass("Humanoid")
+		if not hum or hum.Health<=0 then
+			_speedCdPrevRag=false
+			local bbCd=lbl.Parent
+			if bbCd then bbCd.Enabled=false end
+			return
+		end
+		local st=hum:GetState()
+		local rag=hum.PlatformStand
+			or st==Enum.HumanoidStateType.Physics
+			or st==Enum.HumanoidStateType.Ragdoll
+			or st==Enum.HumanoidStateType.FallingDown
+
+		local bbCd = lbl.Parent
+		if rag and not _speedCdPrevRag then
+			-- fresh hit: restart countdown
+			_speedCdStartedAt=os.clock()
+			_speedCdUntil=_speedCdStartedAt+_speedCdDuration
+			lbl.Text=string.format("%.1f",_speedCdDuration)
+			if bbCd then bbCd.Enabled=true end
+		end
+		_speedCdPrevRag=rag
+
+		if bbCd and bbCd.Enabled then
+			local remaining=math.max(0,_speedCdUntil-os.clock())
+			lbl.Text=string.format("%.1f",remaining)
+			if remaining<=0 then
+				lbl.Text="0.0"
+				task.delay(0.25,function()
+					if bbCd and bbCd.Parent then bbCd.Enabled=false end
+				end)
+			end
+		end
+	end)
 end
 local antiRagdollV2ResetCooldown = 0
 function startAntiRagdoll()
@@ -1273,9 +1347,8 @@ local showE01Warning = false
 local fovChangeEnabled = false
 local fieldOfViewVal = 80
 local headlessEnabled = false
-local baseXRayEnabled = false
 local setEspTracersVisual, setRagdollCountdownVisual, setE01WarningVisual
-local setFovChangeVisual, setHeadlessVisual, setBaseXRayVisual
+local setFovChangeVisual, setHeadlessVisual
 local fovValueBox = nil
 local setRagdollStealVisual
 local espHighlights = {}
@@ -1467,11 +1540,23 @@ local BatVTrack = { records = {} }
 local _batVtLastClean = 0
 local _batHittingCooldown = false
 local BAT_CFG = {
-	aimHeight = 3.7, yBoost = 19.5, yVelY = 0.8, minJumpY = 13,
-	yClamp = Vector2.new(-70, 110), lerpAlpha = 0.8, predictLead = 0.14,
-	lookAheadOffset = 0.3, tiltSpeed = 42, swingCooldown = 0.08,
-	velTrackClamp = 150, velSpoofMag = 250, velSpoofDiffBase = 80,
-	velTrackSamples = 6, velSmooth = 0.5, swingDist = 14,
+	aimHeight      = 3.2,  -- closer to torso height for more reliable hit
+	yBoost         = 38,   -- snap to target Y much faster
+	yVelY          = 1.2,  -- follow target vertical vel harder
+	minJumpY       = 22,   -- stronger initial jump impulse off ground
+	yClamp         = Vector2.new(-90, 140),
+	lerpAlpha      = 0.95, -- near-instant velocity lerp
+	predictLead    = 0.22, -- lookahead further ahead of fast targets
+	lookAheadOffset= 0.5,
+	tiltSpeed      = 80,   -- snap facing much faster
+	swingCooldown  = 0.03, -- fire as fast as the server allows
+	velTrackClamp  = 200,
+	velSpoofMag    = 300,
+	velSpoofDiffBase=100,
+	velTrackSamples= 8,
+	velSmooth      = 0.35, -- tighter velocity tracking
+	swingDist      = 22,   -- start swinging earlier
+	snapDist       = 8,    -- if inside this dist, hard-snap CFrame on target
 }
 function batGetTrueVelocity(root, now)
 	if not root or not root.Parent then return Vector3.zero end
@@ -1540,6 +1625,20 @@ function batSwingBat(char, hum)
 		end
 	end)
 	task.delay(BAT_CFG.swingCooldown, function() _batHittingCooldown = false end)
+	-- also fire a second delayed swing to cover lag windows
+	task.delay(BAT_CFG.swingCooldown + 0.04, function()
+		if not autoBatEnabled then return end
+		local c=LP.Character;local h=c and c:FindFirstChildOfClass("Humanoid")
+		if c and h then
+			pcall(function()
+				local t=findAutoBatTool()
+				if t then
+					local r=t:FindFirstChildOfClass("RemoteEvent")
+					if r then r:FireServer() else t:Activate() end
+				end
+			end)
+		end
+	end)
 end
 function isMedusaHeadTool(tool)
 	if not tool or not tool:IsA("Tool") then return false end
@@ -1568,6 +1667,13 @@ if LP.Character then bindAutoMedusaHeadWatcher(LP.Character) end
 LP.CharacterAdded:Connect(function(char) bindAutoMedusaHeadWatcher(char) end)
 function startAutoBatLoop()
 	if autoBatConn then return end
+	-- bypass mode uses old conservative params
+	local BYPASS_CFG = {
+		aimHeight=ANTI_BAT_BYPASS_HEIGHT, yBoost=19.5, yVelY=0.8, minJumpY=13,
+		yClamp=Vector2.new(-70,110), lerpAlpha=0.8,
+		predictLead=ANTI_BAT_BYPASS_MAX_LEAD, lookAheadOffset=0.3,
+		tiltSpeed=ANTI_BAT_BYPASS_TURN_SPEED, swingDist=14,
+	}
 	autoBatConn = RunService.RenderStepped:Connect(function()
 		if not autoBatEnabled then return end
 		local char = LP.Character
@@ -1591,26 +1697,33 @@ function startAutoBatLoop()
 		end
 		_autoBatHadTarget = true
 		hum.AutoRotate = false
+		local cfg = aimbotMode == "bypass" and BYPASS_CFG or BAT_CFG
 		local now = os.clock()
 		batVTrackCleanup(now)
 		local targetVel = batReadVelocity(target, now)
 		local myPos = root.Position
 		local targetPos = target.Position
-		local predictPos = targetPos + targetVel * BAT_CFG.predictLead
-		predictPos = predictPos + target.CFrame.LookVector * BAT_CFG.lookAheadOffset
+		local dist = (targetPos - myPos).Magnitude
+		local predictPos = targetPos + targetVel * cfg.predictLead
+		predictPos = predictPos + target.CFrame.LookVector * cfg.lookAheadOffset
 		local direction = predictPos - myPos
 		local flat = Vector3.new(direction.X, 0, direction.Z)
 		if flat.Magnitude < 0.001 then return end
 		local flatDir = flat.Unit
 		local chaseSpeed = getAutoBatSpeed()
-		local desiredHeight = targetPos.Y + BAT_CFG.aimHeight
-		local yVel = (desiredHeight - myPos.Y) * BAT_CFG.yBoost + targetVel.Y * BAT_CFG.yVelY
+		local desiredHeight = targetPos.Y + cfg.aimHeight
+		local yVel = (desiredHeight - myPos.Y) * cfg.yBoost + targetVel.Y * cfg.yVelY
 		if hum.FloorMaterial ~= Enum.Material.Air then
-			yVel = math.max(yVel, BAT_CFG.minJumpY)
+			yVel = math.max(yVel, cfg.minJumpY)
 		end
-		yVel = math.clamp(yVel, BAT_CFG.yClamp.X, BAT_CFG.yClamp.Y)
-		local desiredVel = Vector3.new(flatDir.X * chaseSpeed, yVel, flatDir.Z * chaseSpeed)
-		local lerped = root.AssemblyLinearVelocity:Lerp(desiredVel, BAT_CFG.lerpAlpha)
+		yVel = math.clamp(yVel, cfg.yClamp.X, cfg.yClamp.Y)
+		local finalSpeed = chaseSpeed
+		if aimbotMode == "normal" then
+			local closeBoost = dist < 20 and (1 + (20 - dist) / 20 * 0.9) or 1
+			finalSpeed = chaseSpeed * closeBoost
+		end
+		local desiredVel = Vector3.new(flatDir.X * finalSpeed, yVel, flatDir.Z * finalSpeed)
+		local lerped = root.AssemblyLinearVelocity:Lerp(desiredVel, cfg.lerpAlpha)
 		applyMoveVelocityFull(root, lerped.X, lerped.Y, lerped.Z)
 		local speed3 = targetVel.Magnitude
 		local predictTime = math.clamp(speed3 / 150, 0.05, 0.2)
@@ -1625,11 +1738,10 @@ function startAutoBatLoop()
 			ry = math.clamp(ry, -2.5, 2.5)
 			rz = math.clamp(rz, -2.5, 2.5)
 			root.AssemblyAngularVelocity = root.CFrame:VectorToWorldSpace(
-				Vector3.new(rx * BAT_CFG.tiltSpeed, ry * BAT_CFG.tiltSpeed, rz * BAT_CFG.tiltSpeed)
+				Vector3.new(rx * cfg.tiltSpeed, ry * cfg.tiltSpeed, rz * cfg.tiltSpeed)
 			)
 		end
-		local dist = (targetPos - myPos).Magnitude
-		if dist < BAT_CFG.swingDist or autoSwingEnabled then
+		if dist < cfg.swingDist then
 			batSwingBat(char, hum)
 		end
 	end)
@@ -1796,7 +1908,7 @@ function saveConfig()
 	local cfg={
 		normalSpeed=NS,carrySpeed=CS,
 		dropBrainrotKey=ks(KB.DropBrainrot),autoLeftKey=ks(KB.AutoLeft),autoRightKey=ks(KB.AutoRight),
-		autoBatKey=ks(KB.AutoBat),laggerToggleKey=ks(KB.LaggerToggle),tpFloorKey=ks(KB.TPFloor),instaResetKey=ks(KB.InstaReset),guiHideKey=ks(KB.GuiHide),
+		aimbotMode=aimbotMode,autoBatKey=ks(KB.AutoBat),laggerToggleKey=ks(KB.LaggerToggle),tpFloorKey=ks(KB.TPFloor),instaResetKey=ks(KB.InstaReset),guiHideKey=ks(KB.GuiHide),
 		speedToggleKey=ks(KB.SpeedToggle),
 		grabRadius=Steal.StealRadius,stealDuration=Steal.StealDuration,
 		antiRagdoll=antiRagdollEnabled,autoStealEnabled=Steal.AutoStealEnabled,
@@ -1809,12 +1921,12 @@ function saveConfig()
 		antiLag=antiLagEnabled,espEnabled=espEnabled==true,
 		espTracersEnabled=espTracersEnabled==true,ragdollCountdownEnabled=ragdollCountdownEnabled==true,
 		showE01Warning=showE01Warning==true,fovChangeEnabled=fovChangeEnabled==true,fieldOfViewVal=fieldOfViewVal,
-		headlessEnabled=headlessEnabled==true,baseXRayEnabled=baseXRayEnabled==true,
+		headlessEnabled=headlessEnabled==true,
 		ragdollStealEnabled=ragdollStealEnabled==true,
 		autoTPEnabled=autoTPEnabled,autoTPHeight=autoTPHeight,
 		guiLocked=guiLocked,guiSizeScale=guiSizeScale,guiPos=guiPos,
 		progressBarPos=progressBarPos,miniBtnPos=miniBtnPos,
-		mobileBtnSize=mobileBtnSize,mobileButtonsHidden=mobileButtonsHidden,mobileButtonsLocked=mobileButtonsLocked,
+		mobileBtnSize=mobileBtnSize,miniBtnUiSize=miniBtnUiSize,mobileButtonsHidden=mobileButtonsHidden,mobileButtonsLocked=mobileButtonsLocked,
 		mobileBtnPositions=mobileBtnPositions,streamMode=streamMode
 	}
 	if writefile then pcall(function() writefile("vyzeCC.json",HS:JSONEncode(cfg)) end) end
@@ -2106,12 +2218,28 @@ function createMobilePanel()
 		container.Name = id
 		container.Size = UDim2.new(0, s, 0, s)
 		container.Position = UDim2.new(1, pos.x, 0.5, pos.y)
-		container.BackgroundColor3 = Color3.fromRGB(0,0,0)
+		container.BackgroundColor3 = Color3.fromRGB(255,255,255)
 		container.BorderSizePixel = 0
 		container.Visible = not mobileButtonsHidden
 		container.Active = true
 		container.Parent = gui
 		Instance.new("UICorner", container).CornerRadius = UDim.new(0, radius)
+		-- dark gradient identical to PrintedDuelsMobilePanel
+		local grad = Instance.new("UIGradient", container)
+		grad.Name = "BtnGrad"
+		grad.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0,    Color3.fromRGB(32,32,32)),
+			ColorSequenceKeypoint.new(0.35, Color3.fromRGB(24,24,24)),
+			ColorSequenceKeypoint.new(0.70, Color3.fromRGB(18,18,18)),
+			ColorSequenceKeypoint.new(1,    Color3.fromRGB(12,12,12)),
+		})
+		grad.Rotation = 90
+		-- stroke: white at rest, purple when active
+		local stroke = Instance.new("UIStroke", container)
+		stroke.Name = "NormalStroke"
+		stroke.Color = Color3.fromRGB(255,255,255)
+		stroke.Transparency = 0.5
+		stroke.Thickness = 1.4
 		local btn = Instance.new("TextButton")
 		btn.Size = UDim2.new(1,0,1,0)
 		btn.BackgroundTransparency = 1
@@ -2122,12 +2250,26 @@ function createMobilePanel()
 		btn.TextWrapped = true
 		btn.TextScaled = false
 		btn.AutoButtonColor = false
+		btn.ZIndex = 10
 		btn.Parent = container
 		local active = initialActive or false
 		local function setActive(state)
 			active = state
 			if isToggle then
-				container.BackgroundColor3 = active and Color3.fromRGB(160,55,220) or Color3.fromRGB(0,0,0)
+				-- active: purple stroke + slightly lighter bg tint
+				stroke.Color = active and Color3.fromRGB(160,55,220) or Color3.fromRGB(255,255,255)
+				stroke.Transparency = active and 0.1 or 0.5
+				grad.Color = active and ColorSequence.new({
+					ColorSequenceKeypoint.new(0,    Color3.fromRGB(55,18,80)),
+					ColorSequenceKeypoint.new(0.35, Color3.fromRGB(42,12,62)),
+					ColorSequenceKeypoint.new(0.70, Color3.fromRGB(32,8,48)),
+					ColorSequenceKeypoint.new(1,    Color3.fromRGB(22,4,34)),
+				}) or ColorSequence.new({
+					ColorSequenceKeypoint.new(0,    Color3.fromRGB(32,32,32)),
+					ColorSequenceKeypoint.new(0.35, Color3.fromRGB(24,24,24)),
+					ColorSequenceKeypoint.new(0.70, Color3.fromRGB(18,18,18)),
+					ColorSequenceKeypoint.new(1,    Color3.fromRGB(12,12,12)),
+				})
 			end
 		end
 		setActive(active)
@@ -2169,10 +2311,26 @@ function createMobilePanel()
 				setActive(newState)
 				if callback then callback(newState, setActive) end
 			else
-				container.BackgroundColor3 = Color3.fromRGB(160,55,220)
-				task.delay(0.15, function()
+				local flashStroke = container:FindFirstChildOfClass("UIStroke")
+				local flashGrad   = container:FindFirstChildOfClass("UIGradient")
+				if flashStroke then flashStroke.Color=Color3.fromRGB(160,55,220);flashStroke.Transparency=0.1 end
+				if flashGrad then flashGrad.Color=ColorSequence.new({
+					ColorSequenceKeypoint.new(0,Color3.fromRGB(55,18,80)),
+					ColorSequenceKeypoint.new(0.35,Color3.fromRGB(42,12,62)),
+					ColorSequenceKeypoint.new(0.70,Color3.fromRGB(32,8,48)),
+					ColorSequenceKeypoint.new(1,Color3.fromRGB(22,4,34)),
+				}) end
+				task.delay(0.18, function()
 					if container and container.Parent then
-						container.BackgroundColor3 = Color3.fromRGB(0,0,0)
+						local fs=container:FindFirstChildOfClass("UIStroke")
+						local fg=container:FindFirstChildOfClass("UIGradient")
+						if fs then fs.Color=Color3.fromRGB(255,255,255);fs.Transparency=0.5 end
+						if fg then fg.Color=ColorSequence.new({
+							ColorSequenceKeypoint.new(0,Color3.fromRGB(32,32,32)),
+							ColorSequenceKeypoint.new(0.35,Color3.fromRGB(24,24,24)),
+							ColorSequenceKeypoint.new(0.70,Color3.fromRGB(18,18,18)),
+							ColorSequenceKeypoint.new(1,Color3.fromRGB(12,12,12)),
+						}) end
 					end
 				end)
 				if callback then callback(setActive) end
@@ -2345,17 +2503,29 @@ function buildGui()
 	closeBtn.MouseEnter:Connect(function() TS:Create(closeBtn,TweenInfo.new(0.1),{BackgroundColor3=RED,TextColor3=Color3.fromRGB(255,255,255)}):Play() end)
 	closeBtn.MouseLeave:Connect(function() TS:Create(closeBtn,TweenInfo.new(0.1),{BackgroundColor3=REDDIM,TextColor3=Color3.fromRGB(220,180,255)}):Play() end)
 	local miniBtn=Instance.new("ImageButton",gui)
-	miniBtn.Size=UDim2.new(0,120,0,32);miniBtn.Position=UDim2.new(0,26,0,26)
-	miniBtn.BackgroundTransparency=1;miniBtn.BorderSizePixel=0
+	local _miniBtnH = 26
+	miniBtn.Size=UDim2.new(0,miniBtnUiSize,0,_miniBtnH)
+	miniBtn.Position=UDim2.new(0,26,0,26)
+	miniBtn.BackgroundColor3=Color3.fromRGB(0,0,0)
+	miniBtn.BackgroundTransparency=0.18
+	miniBtn.BorderSizePixel=0
 	miniBtn.Image=LOGO_ID
 	miniBtn.ScaleType=Enum.ScaleType.Fit
 	miniBtn.ImageColor3=Color3.new(1,1,1)
 	miniBtn.ZIndex=20;miniBtn.Visible=false
-	Instance.new("UICorner",miniBtn).CornerRadius=UDim.new(0,8)
+	Instance.new("UICorner",miniBtn).CornerRadius=UDim.new(0,7)
+	local miniBtnStroke=Instance.new("UIStroke",miniBtn)
+	miniBtnStroke.Color=Color3.fromRGB(55,15,80)
+	miniBtnStroke.Thickness=1.4
+	miniBtnStroke.Transparency=0.3
 	openMiniBtn = miniBtn
+	local function applyMiniBtnUiSize()
+		if not miniBtn or not miniBtn.Parent then return end
+		miniBtn.Size = UDim2.new(0, miniBtnUiSize, 0, _miniBtnH)
+	end
 	drag(miniBtn, nil, function() saveConfig() end)
-	miniBtn.MouseEnter:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0.2}):Play() end)
-	miniBtn.MouseLeave:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0}):Play() end)
+	miniBtn.MouseEnter:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0.1,BackgroundTransparency=0.05}):Play() end)
+	miniBtn.MouseLeave:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0,BackgroundTransparency=0.18}):Play() end)
 	local guiAnimToken = 0
 	local function showGui()
 		guiAnimToken = guiAnimToken + 1
@@ -2722,6 +2892,92 @@ function buildGui()
 			abOn=not abOn;svAutoBat(abOn)
 			if abOn then queueAutoBatStart() else autoBatEnabled=false;disableAutoBat() end
 			saveConfig()
+		end)
+
+		-- mode tab button "▾" to the left of the pill
+		local tabBtn=Instance.new("TextButton",abRow)
+		tabBtn.Size=UDim2.new(0,22,0,22)
+		tabBtn.Position=UDim2.new(1,-128,0.5,-11)
+		tabBtn.BackgroundColor3=Color3.fromRGB(40,14,60)
+		tabBtn.BorderSizePixel=0
+		tabBtn.Text="▾"
+		tabBtn.TextColor3=Color3.fromRGB(200,140,255)
+		tabBtn.Font=Enum.Font.GothamBold
+		tabBtn.TextSize=13
+		tabBtn.AutoButtonColor=false
+		tabBtn.ZIndex=6
+		Instance.new("UICorner",tabBtn).CornerRadius=UDim.new(0,6)
+		local tabStroke=Instance.new("UIStroke",tabBtn)
+		tabStroke.Color=Color3.fromRGB(160,55,220);tabStroke.Transparency=0.4;tabStroke.Thickness=1.2
+
+		-- sub-row (collapsed by default)
+		local modeRow=Instance.new("Frame",sf)
+		modeRow.Name="AimbotModeRow"
+		modeRow.Size=UDim2.new(1,0,0,36)
+		modeRow.BackgroundColor3=Color3.fromRGB(22,10,34)
+		modeRow.BackgroundTransparency=0.25
+		modeRow.BorderSizePixel=0
+		modeRow.LayoutOrder=abRow.LayoutOrder+1  -- sit right under Auto Bat
+		modeRow.Visible=false
+		Instance.new("UICorner",modeRow).CornerRadius=UDim.new(0,10)
+		local modeStroke=Instance.new("UIStroke",modeRow)
+		modeStroke.Color=Color3.fromRGB(160,55,220);modeStroke.Transparency=0.55;modeStroke.Thickness=1.2
+
+		-- label inside sub-row
+		local modeLbl=Instance.new("TextLabel",modeRow)
+		modeLbl.Size=UDim2.new(0,100,1,0);modeLbl.Position=UDim2.new(0,10,0,0)
+		modeLbl.BackgroundTransparency=1;modeLbl.Text="Aimbot Modes"
+		modeLbl.TextColor3=Color3.fromRGB(200,140,255);modeLbl.Font=Enum.Font.GothamBold;modeLbl.TextSize=10
+		modeLbl.TextXAlignment=Enum.TextXAlignment.Left
+
+		-- chip factory
+		local function mkChip(parent, label, xOff)
+			local chip=Instance.new("TextButton",parent)
+			chip.Size=UDim2.new(0,56,0,22)
+			chip.Position=UDim2.new(0,xOff,0.5,-11)
+			chip.BackgroundColor3=Color3.fromRGB(30,10,46)
+			chip.BorderSizePixel=0
+			chip.Text=label
+			chip.TextColor3=Color3.fromRGB(180,180,180)
+			chip.Font=Enum.Font.GothamBold
+			chip.TextSize=10
+			chip.AutoButtonColor=false
+			chip.ZIndex=5
+			Instance.new("UICorner",chip).CornerRadius=UDim.new(0,6)
+			local cs=Instance.new("UIStroke",chip)
+			cs.Color=Color3.fromRGB(80,80,80);cs.Transparency=0.4;cs.Thickness=1
+			return chip,cs
+		end
+
+		local normalChip, normalStroke = mkChip(modeRow,"NORMAL",112)
+		local bypassChip, bypassStroke = mkChip(modeRow,"BYPASS",174)
+
+		local function refreshChips()
+			local isNorm = aimbotMode == "normal"
+			normalChip.BackgroundColor3 = isNorm and Color3.fromRGB(55,15,80) or Color3.fromRGB(30,10,46)
+			normalChip.TextColor3      = isNorm and Color3.fromRGB(220,160,255) or Color3.fromRGB(160,160,160)
+			normalStroke.Color         = isNorm and Color3.fromRGB(160,55,220) or Color3.fromRGB(80,80,80)
+			normalStroke.Transparency  = isNorm and 0.1 or 0.4
+			bypassChip.BackgroundColor3= (not isNorm) and Color3.fromRGB(55,15,80) or Color3.fromRGB(30,10,46)
+			bypassChip.TextColor3      = (not isNorm) and Color3.fromRGB(220,160,255) or Color3.fromRGB(160,160,160)
+			bypassStroke.Color         = (not isNorm) and Color3.fromRGB(160,55,220) or Color3.fromRGB(80,80,80)
+			bypassStroke.Transparency  = (not isNorm) and 0.1 or 0.4
+		end
+		refreshChips()
+
+		normalChip.Activated:Connect(function()
+			aimbotMode="normal";refreshChips();saveConfig()
+		end)
+		bypassChip.Activated:Connect(function()
+			aimbotMode="bypass";refreshChips();saveConfig()
+		end)
+
+		-- toggle sub-row
+		local modeOpen=false
+		tabBtn.Activated:Connect(function()
+			modeOpen=not modeOpen
+			modeRow.Visible=modeOpen
+			tabBtn.Text=modeOpen and "▴" or "▾"
 		end)
 	end
 	setAutoSwingVisual=mkToggle("Auto Swing",function(on)
@@ -3104,7 +3360,9 @@ end
 	local espTracerLines = {}
 	local ragdollCountdownLabel = nil
 	local ragdollCountdownUntil = 0
+	local ragdollCountdownStartedAt = 0
 	local ragdollCountdownDuration = 2.6
+	local _prevRagState = false
 	local tracerGui = nil
 	do
 		local row = mkRow(32)
@@ -3193,35 +3451,7 @@ end
 		if on then enableAntiLag() else disableAntiLag() end
 		saveConfig()
 	end)
-	setBaseXRayVisual = mkToggle("X-Ray Base", function(on)
-		baseXRayEnabled = on == true
-		local plots = workspace:FindFirstChild("Plots")
-		if plots then
-			for _, p in ipairs(plots:GetDescendants()) do
-				if p:IsA("BasePart") then
-					local n = p.Name:lower()
-					local skip = n:find("brainrot") or n:find("animal") or n:find("pet") or n:find("handle")
-					local par = p.Parent
-					while par and par ~= plots and not skip do
-						local pn = tostring(par.Name):lower()
-						if par:IsA("Tool") or pn:find("brainrot") or pn:find("animal") or pn:find("pet") then skip = true end
-						par = par.Parent
-					end
-					if not skip then
-						if on then
-							if not p:GetAttribute("_VyzeXRay") then p:SetAttribute("_VyzeXRay", p.LocalTransparencyModifier) end
-							p.LocalTransparencyModifier = 0.65
-						else
-							local prev = p:GetAttribute("_VyzeXRay")
-							if prev ~= nil then p.LocalTransparencyModifier = prev end
-							p:SetAttribute("_VyzeXRay", nil)
-						end
-					end
-				end
-			end
-		end
-		saveConfig()
-	end)
+
 	setFovChangeVisual = mkToggle("FOV Change", function(on)
 		fovChangeEnabled = on == true
 		local cam = workspace.CurrentCamera
@@ -3292,6 +3522,7 @@ end
 			ragdollCountdownLabel = nil
 		end
 		ragdollCountdownUntil = 0
+		ragdollCountdownStartedAt = 0
 	end
 	Players.PlayerRemoving:Connect(removeTracer)
 	RunService.RenderStepped:Connect(function()
@@ -3344,41 +3575,64 @@ end
 			local char = LP.Character
 			local hum = char and char:FindFirstChildOfClass("Humanoid")
 			local head = char and char:FindFirstChild("Head")
-			if hum and head then
+			if hum and head and hum.Health > 0 then
 				local st = hum:GetState()
-				local rag = st == Enum.HumanoidStateType.Physics or st == Enum.HumanoidStateType.Ragdoll or st == Enum.HumanoidStateType.FallingDown or hum.PlatformStand
-				if rag then
-					if ragdollCountdownUntil <= 0 then ragdollCountdownUntil = tick() + ragdollCountdownDuration end
-					local remaining = math.max(0, ragdollCountdownUntil - tick())
-					if not ragdollCountdownLabel or not ragdollCountdownLabel.Parent or ragdollCountdownLabel.Adornee ~= head then
-						destroyRagdollCountdown()
+				local rag = hum.PlatformStand
+					or st == Enum.HumanoidStateType.Physics
+					or st == Enum.HumanoidStateType.Ragdoll
+					or st == Enum.HumanoidStateType.FallingDown
+
+				-- every fresh ragdoll entry (false → true) restarts the countdown
+				if rag and not _prevRagState then
+					destroyRagdollCountdown()
+					ragdollCountdownStartedAt = os.clock()
+					ragdollCountdownUntil = ragdollCountdownStartedAt + ragdollCountdownDuration
+					local pg = LP:FindFirstChildOfClass("PlayerGui")
+					if pg then
 						local bb = Instance.new("BillboardGui")
 						bb.Name = "VyzeRagdollCD"
-						bb.Size = UDim2.new(0, 110, 0, 30)
-						bb.StudsOffset = Vector3.new(0, 2.4, 0)
+						bb.Size = UDim2.new(0, 110, 0, 34)
+						bb.StudsOffset = Vector3.new(0, 2.8, 0)
 						bb.AlwaysOnTop = true
 						bb.Adornee = head
-						bb.Parent = head
+						bb.Parent = pg
 						local tl = Instance.new("TextLabel")
 						tl.Size = UDim2.fromScale(1, 1)
 						tl.BackgroundTransparency = 1
 						tl.Font = Enum.Font.GothamBlack
-						tl.TextSize = 16
+						tl.TextSize = 22
 						tl.TextColor3 = Color3.fromRGB(255, 120, 120)
-						tl.TextStrokeTransparency = 0.25
+						tl.TextStrokeTransparency = 0.15
+						tl.Text = string.format("%.1f", ragdollCountdownDuration)
 						tl.Parent = bb
 						ragdollCountdownLabel = bb
 					end
-					local tl = ragdollCountdownLabel:FindFirstChildOfClass("TextLabel")
-					if tl then tl.Text = string.format("RAG %.1fs", remaining) end
+				end
+				_prevRagState = rag
+
+				if rag then
+					local remaining = math.max(0, ragdollCountdownUntil - os.clock())
+					local tl = ragdollCountdownLabel and ragdollCountdownLabel:FindFirstChildOfClass("TextLabel")
+					if tl then
+						tl.Text = string.format("%.1f", remaining)
+					end
 					if remaining <= 0 then
-						destroyRagdollCountdown()
+						-- countdown finished: hide the label until next hit
+						if tl then tl.Text = "0.0" end
+						if ragdollCountdownStartedAt > 0 and os.clock() - ragdollCountdownStartedAt > ragdollCountdownDuration + 0.08 then
+							destroyRagdollCountdown()
+						end
 					end
 				else
+					-- exited ragdoll: destroy so it's gone until next hit
 					destroyRagdollCountdown()
 				end
+			else
+				_prevRagState = false
+				destroyRagdollCountdown()
 			end
 		else
+			_prevRagState = false
 			destroyRagdollCountdown()
 		end
 	end)
@@ -3452,6 +3706,16 @@ end
 				applyGuiSize()
 			else
 				setBoxReal(guiSizeBox, guiSizeScale)
+			end
+			saveConfig()
+		end)
+	end
+	do
+		local row=mkRow(32);mkLabel(row,"Mini Btn Size")
+		mkBox(row, miniBtnUiSize, 50, 56, function(v)
+			if v >= 40 and v <= 250 then
+				miniBtnUiSize = v
+				if applyMiniBtnUiSize then applyMiniBtnUiSize() end
 			end
 			saveConfig()
 		end)
@@ -3557,6 +3821,8 @@ function loadConfigKeys()
 	if cfg.autoCarrySpeedEnabled~=nil then autoCarrySpeedEnabled=cfg.autoCarrySpeedEnabled==true end
 	if cfg.guiSizeScale and type(cfg.guiSizeScale)=="number" then guiSizeScale=math.clamp(cfg.guiSizeScale,0.5,2.5) end
 	if cfg.mobileBtnSize and type(cfg.mobileBtnSize)=="number" then mobileBtnSize=math.clamp(cfg.mobileBtnSize,40,150) end
+	if cfg.aimbotMode and (cfg.aimbotMode=="normal" or cfg.aimbotMode=="bypass") then aimbotMode=cfg.aimbotMode end
+	if cfg.miniBtnUiSize and type(cfg.miniBtnUiSize)=="number" then miniBtnUiSize=math.clamp(cfg.miniBtnUiSize,40,250) end
 	if cfg.mobileButtonsHidden~=nil then mobileButtonsHidden=cfg.mobileButtonsHidden==true end
 	if cfg.mobileButtonsLocked~=nil then mobileButtonsLocked=cfg.mobileButtonsLocked==true end
 	if type(cfg.mobileBtnPositions)=="table" then mobileBtnPositions=cfg.mobileBtnPositions end
@@ -3576,6 +3842,7 @@ function loadConfigState()
 	setBoxReal(fovValueBox, fieldOfViewVal)
 	setBoxReal(guiSizeBox, guiSizeScale)
 	setBoxReal(mobileSizeBox, mobileBtnSize)
+	-- miniBtnUiSize box is anonymous (no stored ref), value already applied via applyMiniBtnUiSize at buildGui time
 	if setStreamModeVisual then setStreamModeVisual(streamMode) end
 	if applyStreamModeVisuals then applyStreamModeVisuals() end
 	if mainGuiFrame then
@@ -3644,30 +3911,7 @@ function loadConfigState()
 				end
 			end)
 		end
-		if cfg.baseXRayEnabled then
-			baseXRayEnabled=true
-			if setBaseXRayVisual then setBaseXRayVisual(true) end
-			task.defer(function()
-				local plots=workspace:FindFirstChild("Plots")
-				if not plots then return end
-				for _,part in ipairs(plots:GetDescendants()) do
-					if part:IsA("BasePart") then
-						local n=part.Name:lower()
-						local skip=n:find("brainrot") or n:find("animal") or n:find("pet") or n:find("handle")
-						local par=part.Parent
-						while par and par~=plots and not skip do
-							local pn=tostring(par.Name):lower()
-							if par:IsA("Tool") or pn:find("brainrot") or pn:find("animal") or pn:find("pet") then skip=true end
-							par=par.Parent
-						end
-						if not skip then
-							if not part:GetAttribute("_VyzeXRay") then part:SetAttribute("_VyzeXRay", part.LocalTransparencyModifier) end
-							part.LocalTransparencyModifier=0.65
-						end
-					end
-				end
-			end)
-		end
+
 		if cfg.ragdollStealEnabled then ragdollStealEnabled=true;if setRagdollStealVisual then setRagdollStealVisual(true) end;if LP.Character then bindStealHitCharacter(LP.Character) end end
 		if setGuiLockVisual then setGuiLockVisual(guiLocked) end
 		if setMobileHideVisual then setMobileHideVisual(mobileButtonsHidden) end
