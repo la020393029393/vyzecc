@@ -1,6 +1,28 @@
 repeat task.wait() until game:IsLoaded()
 local Players,RunService,UIS,TS,Lighting,HS = game:GetService("Players"),game:GetService("RunService"),game:GetService("UserInputService"),game:GetService("TweenService"),game:GetService("Lighting"),game:GetService("HttpService")
+local ContentProvider = game:GetService("ContentProvider")
 local LP = Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local function forceLoadImage(imageObject, assetId)
+    if not imageObject or not assetId then return end
+    task.spawn(function()
+        for attempt = 1, 4 do
+            if not imageObject or not imageObject.Parent then return end
+            pcall(function()
+                imageObject.Image = assetId
+                ContentProvider:PreloadAsync({imageObject})
+            end)
+            if imageObject and imageObject.Parent and imageObject.IsLoaded then
+                return
+            end
+            task.wait(0.15 * attempt)
+        end
+        if imageObject and imageObject.Parent then
+            pcall(function() imageObject.Image = assetId end)
+        end
+    end)
+end
 local NS,CS = 60,30
 local LAGGER_SPEED = 41
 local LAGGER_CARRY_SPEED = 20
@@ -55,6 +77,7 @@ local _updateMobileAutoLeft, _updateMobileAutoRight
 local guiLocked = false
 local guiSizeScale = 1
 local mobileBtnSize = 72
+local miniBtnUiSize = 90
 local mobileButtonsHidden = false
 local mobileButtonsLocked = false
 local streamMode = false
@@ -278,8 +301,8 @@ local KB = {
 local AP_L1,AP_L2 = Vector3.new(-476.47,-6.28,92.73),Vector3.new(-483.12,-4.95,94.81)
 local AP_R1,AP_R2 = Vector3.new(-476.16,-6.52,25.62),Vector3.new(-483.06,-5.03,25.48)
 local Steal = {
-	AutoStealEnabled=false, StealRadius=55, StealDuration=0.5,
-	Mode="half",
+	AutoStealEnabled=false, StealRadius=55, StealDuration=1.3,
+	Mode="normal",
 	HalfFireRange=10, HalfHoldMin=1.3, HalfHoldMax=2.6, HalfEntryDelay=0.3,
 	Data={}
 }
@@ -370,11 +393,11 @@ function resetProgressBar()
 	end
 end
 function findNearestPrompt()
-	local char=LP.Character; if not char then return nil end
+	local char=LP.Character; if not char then return nil, nil end
 	local root=char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso") or char:FindFirstChild("Torso")
-	if not root then return nil end
-	local plots=workspace:FindFirstChild("Plots"); if not plots then return nil end
-	local nearest,dist=nil,math.huge
+	if not root then return nil, nil end
+	local plots=workspace:FindFirstChild("Plots"); if not plots then return nil, nil end
+	local nearest,nearestPodName,dist=nil,nil,math.huge
 	for _,plot in ipairs(plots:GetChildren()) do
 		if plot:IsA("Model") and not isMyPlotByName(plot.Name) then
 			local pods=plot:FindFirstChild("AnimalPodiums")
@@ -397,14 +420,16 @@ function findNearestPrompt()
 									if pr:IsA("ProximityPrompt") and pr.ActionText and pr.ActionText:find("Steal") then found=pr end
 								end
 							end
-							if found then nearest,dist=found,d end
+							if found then
+								nearest,nearestPodName,dist=found,pod.Name,d
+							end
 						end
 					end
 				end
 			end
 		end
 	end
-	return nearest
+	return nearest,nearestPodName
 end
 function _promptDist(prompt)
 	local char=LP.Character; if not char then return math.huge end
@@ -442,17 +467,22 @@ function isStealHitRagdolled()
 		or st == Enum.HumanoidStateType.FallingDown then
 		return true
 	end
-	local attr = LP:GetAttribute("RagdollEndTime")
-		or char:GetAttribute("RagdollEndTime")
-		or hum:GetAttribute("RagdollEndTime")
-	if type(attr) == "number" then
-		local ok, now = pcall(function() return workspace:GetServerTimeNow() end)
-		if ok and attr > now then return true end
+	local function attrTrue(obj, name)
+		return obj and obj:GetAttribute(name) == true
 	end
-	return LP:GetAttribute("Ragdolled") == true
-		or LP:GetAttribute("Ragdoll") == true
-		or char:GetAttribute("Ragdolled") == true
-		or char:GetAttribute("Ragdoll") == true
+	local function futureEndTime(obj)
+		local value = obj and obj:GetAttribute("RagdollEndTime")
+		if type(value) ~= "number" then return false end
+		local ok, now = pcall(function() return workspace:GetServerTimeNow() end)
+		return ok and value > now
+	end
+	for _, obj in ipairs({LP, char, hum}) do
+		if attrTrue(obj, "Ragdolled") or attrTrue(obj, "Ragdoll")
+			or attrTrue(obj, "IsRagdolled") or futureEndTime(obj) then
+			return true
+		end
+	end
+	return false
 end
 function clearStealHitSignals()
 	for _, c in ipairs(Conns.stealHit) do
@@ -468,15 +498,12 @@ function triggerStopAtHit()
 	local token = autoStealHitToken
 	local pause = med and 3 or math.clamp(autoStealHitPauseSeconds, 0.1, 30)
 
-	-- Ragdoll hit: pause the existing progress timing instead of resetting it.
-	-- The steal/progress continues from the same point after 1.3 seconds.
 	if not med and isStealing then
 		autoStealHitPauseStartedAt = os.clock()
 		autoStealHitPauseUntil = autoStealHitPauseStartedAt + pause
 		return
 	end
 
-	-- Keep the existing non-ragdoll/Medusa handling intact.
 	autoStealHitPauseStartedAt = os.clock()
 	autoStealHitPauseUntil = autoStealHitPauseStartedAt + pause
 	if Conns.progress then Conns.progress:Disconnect(); Conns.progress = nil end
@@ -495,111 +522,308 @@ function bindStealHitCharacter(char)
 	clearStealHitSignals()
 	local hum = char and char:FindFirstChildOfClass("Humanoid")
 	if not hum then return end
+	local function checkHitState()
+		if not ragdollStealEnabled then return end
+		if not (isStealing or Steal.AutoStealEnabled) then return end
+		if isStealHitRagdolled() or isStealHitMedusa() then
+			triggerStopAtHit()
+		end
+	end
 	table.insert(Conns.stealHit, hum.StateChanged:Connect(function(_, new)
 		if new == Enum.HumanoidStateType.Physics
 			or new == Enum.HumanoidStateType.Ragdoll
 			or new == Enum.HumanoidStateType.FallingDown then
-			if isStealing or Steal.AutoStealEnabled then
-				triggerStopAtHit()
-			end
+			checkHitState()
 		end
 	end))
-	table.insert(Conns.stealHit, RunService.Heartbeat:Connect(function()
-		if not ragdollStealEnabled then return end
-		if not (isStealing or Steal.AutoStealEnabled) then return end
-		if isStealHitMedusa() then
-			triggerStopAtHit()
-		end
-	end))
-end
-function executeSteal(prompt)
-	if isStealing then return end
-	if ragdollStealEnabled and os.clock() < autoStealHitPauseUntil then return end
-	if not Steal.Data[prompt] then
-		Steal.Data[prompt]={hold={},trigger={},ready=true}
-		if getconnections then
-			for _,c in ipairs(getconnections(prompt.PromptButtonHoldBegan)) do if c.Function then table.insert(Steal.Data[prompt].hold,c.Function) end end
-			for _,c in ipairs(getconnections(prompt.Triggered)) do if c.Function then table.insert(Steal.Data[prompt].trigger,c.Function) end end
+	for _, obj in ipairs({LP, char, hum}) do
+		for _, attributeName in ipairs({"Ragdolled", "Ragdoll", "IsRagdolled", "RagdollEndTime"}) do
+			table.insert(Conns.stealHit, obj:GetAttributeChangedSignal(attributeName):Connect(checkHitState))
 		end
 	end
-	local data=Steal.Data[prompt]; if not data.ready then return end
-	data.ready=false; isStealing=true; stealStartTime=tick()
-	if Conns.progress then Conns.progress:Disconnect() end
-	Conns.progress=RunService.Heartbeat:Connect(function()
-		if not isStealing then Conns.progress:Disconnect(); Conns.progress=nil; return end
+	table.insert(Conns.stealHit, RunService.Heartbeat:Connect(checkHitState))
+end
+function executeSteal(prompt, podName)
+	if isStealing then return end
+	if ragdollStealEnabled and os.clock() < autoStealHitPauseUntil then return end
 
-		if ragdollStealEnabled and os.clock() < autoStealHitPauseUntil then
-			-- Freeze the fill while the 1.3s ragdoll pause is active.
-			return
-		end
+	if not Steal.Data[prompt] then
+		Steal.Data[prompt] = {hold = {}, trigger = {}, ready = true}
+		pcall(function()
+			if getconnections then
+				for _, c in ipairs(getconnections(prompt.PromptButtonHoldBegan)) do
+					if c.Function then table.insert(Steal.Data[prompt].hold, c.Function) end
+				end
+				for _, c in ipairs(getconnections(prompt.Triggered)) do
+					if c.Function then table.insert(Steal.Data[prompt].trigger, c.Function) end
+				end
+			end
+		end)
+	end
 
-		if ragdollStealEnabled and (isStealHitRagdolled() or isStealHitMedusa()) then
-			triggerStopAtHit()
-			return
-		end
+	local data = Steal.Data[prompt]
+	if not data.ready then return end
 
-		if autoStealHitPauseStartedAt > 0 and autoStealHitPauseUntil > 0 and os.clock() >= autoStealHitPauseUntil then
-			stealStartTime = stealStartTime + (autoStealHitPauseUntil - autoStealHitPauseStartedAt)
-			autoStealHitPauseStartedAt = 0
-			autoStealHitPauseUntil = 0
-		end
+	data.ready = false
+	isStealing = true
+	stealStartTime = tick()
 
-		local denom = (Steal.Mode=="half") and math.max(Steal.HalfHoldMax, 0.5) or Steal.StealDuration
-		local prog=math.clamp((tick()-stealStartTime)/denom,0,1)
-		if progressFill then
-			progressFill.Size=UDim2.new(math.clamp(prog,0,1),0,1,0)
-			local s = progressFill.Parent and progressFill.Parent:FindFirstChild("Shine")
-			if s then s.Visible = prog > 0.01 and prog < 1 end
-		end
-		if progressPct then progressPct.Text=math.floor(prog*100).."%" end
-	end)
-	if Steal.Mode=="half" then
+	if Steal.Mode == "half" then
+		if Conns.progress then Conns.progress:Disconnect(); Conns.progress = nil end
+		Conns.progress = RunService.Heartbeat:Connect(function()
+			if not isStealing then
+				Conns.progress:Disconnect()
+				Conns.progress = nil
+				return
+			end
+
+			if ragdollStealEnabled and os.clock() < autoStealHitPauseUntil then
+				return
+			end
+
+			if ragdollStealEnabled and (isStealHitRagdolled() or isStealHitMedusa()) then
+				triggerStopAtHit()
+				return
+			end
+
+			if autoStealHitPauseStartedAt > 0 and autoStealHitPauseUntil > 0
+				and os.clock() >= autoStealHitPauseUntil then
+				stealStartTime = stealStartTime + (autoStealHitPauseUntil - autoStealHitPauseStartedAt)
+				autoStealHitPauseStartedAt = 0
+				autoStealHitPauseUntil = 0
+			end
+
+			local denom = math.max(Steal.HalfHoldMax, 0.5)
+			local prog = math.clamp((tick() - stealStartTime) / denom, 0, 1)
+			if progressFill then
+				progressFill.Size = UDim2.new(prog, 0, 1, 0)
+				local shine = progressFill.Parent and progressFill.Parent:FindFirstChild("Shine")
+				if shine then shine.Visible = prog > 0.01 and prog < 1 end
+			end
+			if progressPct then progressPct.Text = math.floor(prog * 100) .. "%" end
+		end)
+
 		task.spawn(function()
-			for _,fn in ipairs(data.hold) do task.spawn(fn) end
+			for _, fn in ipairs(data.hold) do task.spawn(fn) end
 			task.wait(Steal.HalfHoldMin)
-			local inRange=_promptDist(prompt)<=Steal.HalfFireRange
-			while true do
-				if not isStealing then break end
-				local el=tick()-stealStartTime
-				if el>Steal.HalfHoldMax or not prompt.Parent then break end
-				if _promptDist(prompt)<=Steal.HalfFireRange then
+
+			local inRange = _promptDist(prompt) <= Steal.HalfFireRange
+			while isStealing do
+				local elapsed = tick() - stealStartTime
+				if elapsed > Steal.HalfHoldMax or not prompt.Parent then break end
+
+				if _promptDist(prompt) <= Steal.HalfFireRange then
 					if not inRange then task.wait(Steal.HalfEntryDelay) end
-					for _,fn in ipairs(data.trigger) do task.spawn(fn) end
+					for _, fn in ipairs(data.trigger) do task.spawn(fn) end
 					break
 				end
 				task.wait()
 			end
-			if Conns.progress then Conns.progress:Disconnect(); Conns.progress=nil end
+
+			if Conns.progress then Conns.progress:Disconnect(); Conns.progress = nil end
 			resetProgressBar()
-			task.wait(0.05); data.ready=true; isStealing=false
+			task.wait(0.05)
+			data.ready = true
+			isStealing = false
+
 			if autoCarrySpeedEnabled and _G.AutoCarrySpeed and _G.AutoCarrySpeed.WatchPickup then
 				pcall(function() _G.AutoCarrySpeed.WatchPickup(1.25) end)
 			end
 		end)
-	else
-		task.spawn(function()
-			for _,fn in ipairs(data.hold) do task.spawn(fn) end
-			local el=0
-			while el<Steal.StealDuration and isStealing do el=el+task.wait() end
-			if isStealing then
-				for _,fn in ipairs(data.trigger) do task.spawn(fn) end
-			end
-			if Conns.progress then Conns.progress:Disconnect(); Conns.progress=nil end
-			resetProgressBar()
-			task.wait(0.05); data.ready=true; isStealing=false
-			if autoCarrySpeedEnabled and _G.AutoCarrySpeed and _G.AutoCarrySpeed.WatchPickup then
-				pcall(function() _G.AutoCarrySpeed.WatchPickup(1.25) end)
-			end
-		end)
+		return
 	end
+
+	if Conns.progress then Conns.progress:Disconnect(); Conns.progress = nil end
+	resetProgressBar()
+
+	task.spawn(function()
+		local completed = false
+		local pausedTotal = 0
+
+		local function activeClock()
+			local now = os.clock()
+
+			if ragdollStealEnabled and autoStealHitPauseUntil > 0 then
+				if now < autoStealHitPauseUntil then
+					return nil
+				end
+
+				if autoStealHitPauseStartedAt > 0 then
+					pausedTotal = pausedTotal + math.max(
+						autoStealHitPauseUntil - autoStealHitPauseStartedAt, 0
+					)
+					autoStealHitPauseStartedAt = 0
+					autoStealHitPauseUntil = 0
+				end
+			end
+
+			return now - pausedTotal
+		end
+
+		local function finish(resetBar)
+			if completed then return end
+			completed = true
+
+			if Conns.progress then
+				Conns.progress:Disconnect()
+				Conns.progress = nil
+			end
+
+			if resetBar ~= false then resetProgressBar() end
+			data.ready = true
+			isStealing = false
+		end
+
+		local function waitForActiveClock()
+			while isStealing do
+				local value = activeClock()
+				if value then return value end
+				task.wait()
+			end
+			return nil
+		end
+
+		for _, fn in ipairs(data.hold) do
+			task.spawn(fn)
+		end
+
+		local duration = math.max(tonumber(Steal.StealDuration) or 1.3, 0.05)
+		local stopTime = duration * 0.73
+		local stopProgress = math.clamp(stopTime / duration, 0, 1)
+
+		local startTime = waitForActiveClock()
+		if not startTime then finish(); return end
+
+		while isStealing and Steal.AutoStealEnabled do
+			if ragdollStealEnabled and (isStealHitRagdolled() or isStealHitMedusa()) then
+				triggerStopAtHit()
+			end
+
+			local now = waitForActiveClock()
+			if not now then finish(); return end
+
+			local elapsed = now - startTime
+			if elapsed >= stopTime then break end
+
+			local progress = math.clamp(elapsed / duration, 0, stopProgress)
+			if progressFill then
+				progressFill.Size = UDim2.new(progress, 0, 1, 0)
+				local shine = progressFill.Parent and progressFill.Parent:FindFirstChild("Shine")
+				if shine then shine.Visible = progress > 0.01 end
+			end
+			if progressPct then
+				progressPct.Text = math.floor(progress * 100) .. "%"
+			end
+
+			if not prompt.Parent then finish(); return end
+			if _promptDist(prompt) > Steal.StealRadius then finish(); return end
+			task.wait()
+		end
+
+		if not isStealing or not Steal.AutoStealEnabled then finish(); return end
+
+		if progressFill then
+			progressFill.Size = UDim2.new(stopProgress, 0, 1, 0)
+			local shine = progressFill.Parent and progressFill.Parent:FindFirstChild("Shine")
+			if shine then shine.Visible = true end
+		end
+		if progressPct then
+			progressPct.Text = math.floor(stopProgress * 100) .. "%"
+		end
+
+		local phase2Start = waitForActiveClock()
+		if not phase2Start then finish(); return end
+		local phase2Timeout = math.max(
+			2.99 - stopTime - math.max(duration - stopTime, 0), 0.05
+		)
+
+		while isStealing and Steal.AutoStealEnabled do
+			if ragdollStealEnabled and (isStealHitRagdolled() or isStealHitMedusa()) then
+				triggerStopAtHit()
+			end
+
+			local now = waitForActiveClock()
+			if not now then finish(); return end
+
+			if now - phase2Start >= phase2Timeout then
+				finish()
+				return
+			end
+
+			if not prompt.Parent then finish(); return end
+
+			local distance = _promptDist(prompt)
+			if distance <= 9 then
+				break
+			elseif distance > Steal.StealRadius then
+				finish()
+				return
+			end
+
+			if progressFill then progressFill.Size = UDim2.new(stopProgress, 0, 1, 0) end
+			if progressPct then progressPct.Text = math.floor(stopProgress * 100) .. "%" end
+			task.wait()
+		end
+
+		if not isStealing or not Steal.AutoStealEnabled then finish(); return end
+
+		local fillStart = waitForActiveClock()
+		if not fillStart then finish(); return end
+		local fillDuration = math.max(duration - stopTime, 0.05)
+
+		while isStealing and Steal.AutoStealEnabled do
+			if ragdollStealEnabled and (isStealHitRagdolled() or isStealHitMedusa()) then
+				triggerStopAtHit()
+			end
+
+			local now = waitForActiveClock()
+			if not now then finish(); return end
+
+			local fillProgress = math.clamp((now - fillStart) / fillDuration, 0, 1)
+			local totalProgress = stopProgress + fillProgress * (1 - stopProgress)
+
+			if progressFill then
+				progressFill.Size = UDim2.new(totalProgress, 0, 1, 0)
+				local shine = progressFill.Parent and progressFill.Parent:FindFirstChild("Shine")
+				if shine then shine.Visible = totalProgress < 1 end
+			end
+			if progressPct then
+				progressPct.Text = math.floor(totalProgress * 100) .. "%"
+			end
+
+			if fillProgress >= 1 then break end
+			task.wait()
+		end
+
+		if isStealing and Steal.AutoStealEnabled then
+			for _, fn in ipairs(data.trigger) do task.spawn(fn) end
+
+			pcall(function()
+				local stealRemote = ReplicatedStorage:FindFirstChild("StealAnimal")
+				if stealRemote and podName then
+					stealRemote:FireServer(podName)
+				end
+				if prompt then
+					prompt:Fire()
+				end
+			end)
+		end
+
+		finish()
+
+		if autoCarrySpeedEnabled and _G.AutoCarrySpeed and _G.AutoCarrySpeed.WatchPickup then
+			pcall(function() _G.AutoCarrySpeed.WatchPickup(1.25) end)
+		end
+	end)
 end
+
 function startAutoSteal()
 	if Conns.autoSteal then return end
 	if LP.Character then bindStealHitCharacter(LP.Character) end
 	Conns.autoSteal=RunService.Heartbeat:Connect(function()
 		if not Steal.AutoStealEnabled or isStealing then return end
 		if ragdollStealEnabled and os.clock() < autoStealHitPauseUntil then return end
-		local p=findNearestPrompt(); if p then executeSteal(p) end
+		local p,podName=findNearestPrompt(); if p then executeSteal(p,podName) end
 	end)
 end
 function stopAutoSteal()
@@ -625,73 +849,22 @@ RunService.Stepped:Connect(function()
 end)
 local moveConn = nil
 local speedEnabled = true
-local spoofedVelocity = Vector3.zero
-local velocitySpoofActive = false
-local _mtOldIndex, _mtOldNewIndex
 local displayedSpeed = 0
 local _updateMobileCarry, _updateMobileLagger, _updateMobileLaggerCarry
+
 function setupVelocitySpoof()
-	if velocitySpoofActive then return end
-	local ok, mt = pcall(getrawmetatable, game)
-	if not ok or not mt then return end
-	if type(newcclosure) ~= "function" or type(checkcaller) ~= "function" or type(setreadonly) ~= "function" then return end
-	_mtOldIndex = mt.__index
-	_mtOldNewIndex = mt.__newindex
-	pcall(setreadonly, mt, false)
-	mt.__index = newcclosure(function(self, key)
-		if not checkcaller() and (key == "AssemblyLinearVelocity" or key == "Velocity")
-			and typeof(self) == "Instance" and self:IsA("BasePart") and self.Name == "HumanoidRootPart"
-			and LP.Character and self:IsDescendantOf(LP.Character) then
-			return spoofedVelocity
-		end
-		return _mtOldIndex(self, key)
-	end)
-	mt.__newindex = newcclosure(function(self, key, value)
-		if not checkcaller() and (key == "AssemblyLinearVelocity" or key == "Velocity")
-			and typeof(self) == "Instance" and self:IsA("BasePart") and self.Name == "HumanoidRootPart"
-			and LP.Character and self:IsDescendantOf(LP.Character) then
-			spoofedVelocity = value
-			return
-		end
-		return _mtOldNewIndex(self, key, value)
-	end)
-	pcall(setreadonly, mt, true)
-	velocitySpoofActive = true
+    return false
 end
-pcall(setupVelocitySpoof)
+
 function applyMoveVelocity(root, hx, hz)
-	if not root or not root.Parent then return end
-	local y = root.AssemblyLinearVelocity.Y
-	local horiz = Vector3.new(hx or 0, 0, hz or 0)
-	if horiz.Magnitude > 0.05 then
-		local unit = horiz.Unit
-		local speed = horiz.Magnitude
-		pcall(function()
-			if root.SetNetworkOwner then root:SetNetworkOwner(LP) end
-		end)
-		root.AssemblyLinearVelocity = Vector3.new(unit.X * speed, y, unit.Z * speed)
-		local visible = math.min(speed, 20)
-		spoofedVelocity = Vector3.new(unit.X * visible, y, unit.Z * visible)
-	else
-		root.AssemblyLinearVelocity = Vector3.new(0, y, 0)
-		spoofedVelocity = Vector3.new(0, y, 0)
-	end
+    if not root or not root.Parent then return end
+    local current = root.Velocity
+    root.Velocity = Vector3.new(hx or 0, current.Y, hz or 0)
 end
+
 function applyMoveVelocityFull(root, vx, vy, vz)
-	if not root or not root.Parent then return end
-	local real = Vector3.new(vx or 0, vy or 0, vz or 0)
-	local horiz = Vector3.new(real.X, 0, real.Z)
-	pcall(function()
-		if root.SetNetworkOwner then root:SetNetworkOwner(LP) end
-	end)
-	root.AssemblyLinearVelocity = real
-	if horiz.Magnitude > 0.05 then
-		local unit = horiz.Unit
-		local visible = math.min(horiz.Magnitude, 20)
-		spoofedVelocity = Vector3.new(unit.X * visible, real.Y, unit.Z * visible)
-	else
-		spoofedVelocity = Vector3.new(0, real.Y, 0)
-	end
+    if not root or not root.Parent then return end
+    root.Velocity = Vector3.new(vx or 0, vy or 0, vz or 0)
 end
 function getCurrentModeName()
 	if laggerToggled then
@@ -718,48 +891,57 @@ function updateDisplayedSpeed(target, dt)
 	updateSpeedLabelText()
 end
 function startMovement()
-	if moveConn then moveConn:Disconnect(); moveConn = nil end
-	pcall(setupVelocitySpoof)
-	moveConn = RunService.Heartbeat:Connect(function(dt)
-		dt = dt or (1/60)
-		if not speedEnabled then return end
-		local char = LP.Character
-		if not char then return end
-		local hum = char:FindFirstChildOfClass("Humanoid")
-		local root = char:FindFirstChild("HumanoidRootPart")
-		if not hum or not root or hum.Health <= 0 then return end
-		if autoBatEnabled or autoLeftEnabled or autoRightEnabled then
-			local disp = 0
-			if autoBatEnabled then
-				disp = getAutoBatSpeed()
-			elseif autoLeftEnabled or autoRightEnabled then
-				disp = getAutoPathSpeed()
-			end
-			local v = root.AssemblyLinearVelocity
-			local realMag = Vector3.new(v.X, 0, v.Z).Magnitude
-			updateDisplayedSpeed(realMag > 0.5 and disp or 0, dt)
-			return
-		end
-		if isRagdollState(hum) then
-			lastMoveDir = Vector3.zero
-			updateDisplayedSpeed(0, dt)
-			return
-		end
-		local direction = hum.MoveDirection
-		local targetDisp = 0
-		if direction.Magnitude > 0.05 then
-			direction = Vector3.new(direction.X, 0, direction.Z)
-			if direction.Magnitude > 0.001 then
-				direction = direction.Unit
-				lastMoveDir = direction
-				pcall(function() if root.SetNetworkOwner then root:SetNetworkOwner(LP) end end)
-				local spd = getActiveMoveSpeed()
-				applyMoveVelocity(root, direction.X * spd, direction.Z * spd)
-				targetDisp = spd
-			end
-		end
-		updateDisplayedSpeed(targetDisp, dt)
-	end)
+    if moveConn then moveConn:Disconnect(); moveConn = nil end
+    moveConn = RunService.Heartbeat:Connect(function(dt)
+        dt = dt or (1/60)
+        if not speedEnabled then return end
+        local char = LP.Character
+        if not char then return end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local root = char:FindFirstChild("HumanoidRootPart")
+        if not hum or not root or hum.Health <= 0 then return end
+
+        if autoBatEnabled or autoLeftEnabled or autoRightEnabled then
+            local disp = 0
+            if autoBatEnabled then
+                disp = getAutoBatSpeed()
+            elseif autoLeftEnabled or autoRightEnabled then
+                disp = getAutoPathSpeed()
+            end
+            local v = root.Velocity
+            local realMag = Vector3.new(v.X, 0, v.Z).Magnitude
+            updateDisplayedSpeed(realMag > 0.5 and disp or 0, dt)
+            return
+        end
+
+        if isRagdollState(hum) then
+            lastMoveDir = Vector3.zero
+            updateDisplayedSpeed(0, dt)
+            return
+        end
+
+        hum.UseJumpPower = true
+        hum.JumpPower = 40
+
+        local direction = hum.MoveDirection
+        local targetDisp = 0
+        if direction.Magnitude > 0 then
+            local flat = Vector3.new(direction.X, 0, direction.Z)
+            if flat.Magnitude > 0.001 then
+                flat = flat.Unit
+                lastMoveDir = flat
+                local speed = getActiveMoveSpeed()
+                local currentVelocity = root.Velocity
+                root.Velocity = Vector3.new(
+                    flat.X * speed,
+                    currentVelocity.Y,
+                    flat.Z * speed
+                )
+                targetDisp = speed
+            end
+        end
+        updateDisplayedSpeed(targetDisp, dt)
+    end)
 end
 function stopMovement()
 	if moveConn then moveConn:Disconnect(); moveConn = nil end
@@ -853,6 +1035,7 @@ function startAutoRight()
 		end
 	end)
 end
+local ragdollCountdownEnabled = false
 local speedOverheadCountdownLabel = nil
 local _speedCdUntil = 0
 local _speedCdStartedAt = 0
@@ -863,7 +1046,6 @@ local _speedCdConn = nil
 function setupSpeedIndicator(char)
 	local head=char:WaitForChild("Head",5);if not head then return end
 
-	-- Existing Speed overhead stays in place.
 	local bb=Instance.new("BillboardGui",head)
 	bb.Size=UDim2.new(0,160,0,44);bb.StudsOffset=Vector3.new(0,3,0);bb.AlwaysOnTop=true
 	speedLabel=Instance.new("TextLabel",bb)
@@ -877,8 +1059,8 @@ function setupSpeedIndicator(char)
 	discordLabel.Image="rbxassetid://75548910103458"
 	discordLabel.ScaleType=Enum.ScaleType.Fit
 	discordLabel.ImageColor3=Color3.new(1,1,1)
+	forceLoadImage(discordLabel, "rbxassetid://75548910103458")
 
-	-- Dedicated countdown above the Speed overhead.
 	local bbCd=Instance.new("BillboardGui",head)
 	bbCd.Name="VyzeSpeedCD"
 	bbCd.Size=UDim2.new(0,160,0,28)
@@ -901,43 +1083,45 @@ function setupSpeedIndicator(char)
 
 	if _speedCdConn then pcall(function() _speedCdConn:Disconnect() end) end
 	_speedCdPrevRag=false
+	_speedCdUntil=0
+	_speedCdStartedAt=0
 	_speedCdConn=RunService.RenderStepped:Connect(function()
 		local lbl=speedOverheadCountdownLabel
 		if not lbl or not lbl.Parent then return end
+		local bbCd=lbl.Parent
 		local c=LP.Character
 		local hum=c and c:FindFirstChildOfClass("Humanoid")
-		if not hum or hum.Health<=0 then
-			_speedCdPrevRag=false
-			local gui=lbl.Parent
-			if gui then gui.Enabled=false end
-			return
-		end
 		if not ragdollCountdownEnabled then
 			_speedCdPrevRag=false
-			lbl.Parent.Enabled=false
+			bbCd.Enabled=false
 			return
 		end
+		if not hum or hum.Health<=0 then
+			_speedCdPrevRag=false
+			bbCd.Enabled=false
+			return
+		end
+
 		local st=hum:GetState()
 		local rag=hum.PlatformStand
 			or st==Enum.HumanoidStateType.Physics
 			or st==Enum.HumanoidStateType.Ragdoll
 			or st==Enum.HumanoidStateType.FallingDown
-
 		if rag and not _speedCdPrevRag then
 			_speedCdStartedAt=os.clock()
 			_speedCdUntil=_speedCdStartedAt+_speedCdDuration
-			lbl.Parent.Enabled=true
+			lbl.Text=string.format("%.1f",_speedCdDuration)
+			bbCd.Enabled=true
 		end
 		_speedCdPrevRag=rag
 
-		if rag then
+		if bbCd.Enabled then
 			local remaining=math.max(0,_speedCdUntil-os.clock())
 			lbl.Text=string.format("%.1f",remaining)
-			if remaining<=0 and os.clock()-_speedCdStartedAt>_speedCdDuration+0.08 then
-				lbl.Parent.Enabled=false
+			if remaining<=0 then
+				lbl.Text="0.0"
+				bbCd.Enabled=false
 			end
-		else
-			lbl.Parent.Enabled=false
 		end
 	end)
 end
@@ -1366,7 +1550,6 @@ function disableAntiLag()
 end
 local espEnabled = false
 local espTracersEnabled = false
-local ragdollCountdownEnabled = false
 local showE01Warning = false
 local fovChangeEnabled = false
 local fieldOfViewVal = 80
@@ -1912,7 +2095,7 @@ function saveConfig()
 		autoTPEnabled=autoTPEnabled,autoTPHeight=autoTPHeight,
 		guiLocked=guiLocked,guiSizeScale=guiSizeScale,guiPos=guiPos,
 		progressBarPos=progressBarPos,miniBtnPos=miniBtnPos,
-		mobileBtnSize=mobileBtnSize,mobileButtonsHidden=mobileButtonsHidden,mobileButtonsLocked=mobileButtonsLocked,
+		mobileBtnSize=mobileBtnSize,miniBtnUiSize=miniBtnUiSize,mobileButtonsHidden=mobileButtonsHidden,mobileButtonsLocked=mobileButtonsLocked,
 		mobileBtnPositions=mobileBtnPositions,streamMode=streamMode
 	}
 	if writefile then pcall(function() writefile("vyzeCC.json",HS:JSONEncode(cfg)) end) end
@@ -2211,8 +2394,6 @@ function createMobilePanel()
 		container.Parent = gui
 		Instance.new("UICorner", container).CornerRadius = UDim.new(0, radius)
 
-		-- Reference side-button styling: dark gradient, white idle stroke,
-		-- purple stroke/gradient while active.
 		local grad = Instance.new("UIGradient", container)
 		grad.Name = "BtnGrad"
 		grad.Color = ColorSequence.new({
@@ -2431,14 +2612,7 @@ function buildGui()
 	mainBg.Visible=true
 	mainBg.Parent=main
 	Instance.new("UICorner",mainBg).CornerRadius=UDim.new(0,12)
-	task.spawn(function()
-		pcall(function()
-			game:GetService("ContentProvider"):PreloadAsync({"rbxassetid://96235452296851"})
-		end)
-		if mainBg and mainBg.Parent then
-			mainBg.Image="rbxassetid://96235452296851"
-		end
-	end)
+	forceLoadImage(mainBg, "rbxassetid://96235452296851")
 	local function applyGuiSize()
 		if not mainGuiFrame then return end
 		mainGuiFrame.Size = UDim2.new(0, math.floor(baseW * guiSizeScale), 0, math.floor(baseH * guiSizeScale))
@@ -2492,6 +2666,7 @@ function buildGui()
 	ttl.Image=LOGO_ID
 	ttl.ScaleType=Enum.ScaleType.Fit
 	ttl.ImageColor3=Color3.new(1,1,1)
+	forceLoadImage(ttl, LOGO_ID)
 	local closeBtn=Instance.new("TextButton",hdr)
 	closeBtn.Size=UDim2.new(0,28,0,28);closeBtn.Position=UDim2.new(1,-34,0.5,-14)
 	closeBtn.BackgroundColor3=REDDIM;closeBtn.BorderSizePixel=0
@@ -2500,17 +2675,30 @@ function buildGui()
 	closeBtn.MouseEnter:Connect(function() TS:Create(closeBtn,TweenInfo.new(0.1),{BackgroundColor3=RED,TextColor3=Color3.fromRGB(255,255,255)}):Play() end)
 	closeBtn.MouseLeave:Connect(function() TS:Create(closeBtn,TweenInfo.new(0.1),{BackgroundColor3=REDDIM,TextColor3=Color3.fromRGB(220,180,255)}):Play() end)
 	local miniBtn=Instance.new("ImageButton",gui)
-	miniBtn.Size=UDim2.new(0,120,0,32);miniBtn.Position=UDim2.new(0,26,0,26)
-	miniBtn.BackgroundTransparency=1;miniBtn.BorderSizePixel=0
+	local _miniBtnH = 26
+	miniBtn.Size=UDim2.new(0,miniBtnUiSize,0,_miniBtnH)
+	miniBtn.Position=UDim2.new(0,26,0,26)
+	miniBtn.BackgroundColor3=Color3.fromRGB(0,0,0)
+	miniBtn.BackgroundTransparency=0.18
+	miniBtn.BorderSizePixel=0
 	miniBtn.Image=LOGO_ID
 	miniBtn.ScaleType=Enum.ScaleType.Fit
 	miniBtn.ImageColor3=Color3.new(1,1,1)
+	forceLoadImage(miniBtn, LOGO_ID)
 	miniBtn.ZIndex=20;miniBtn.Visible=false
-	Instance.new("UICorner",miniBtn).CornerRadius=UDim.new(0,8)
+	Instance.new("UICorner",miniBtn).CornerRadius=UDim.new(0,7)
+	local miniBtnStroke=Instance.new("UIStroke",miniBtn)
+	miniBtnStroke.Color=Color3.fromRGB(55,15,80)
+	miniBtnStroke.Thickness=1.4
+	miniBtnStroke.Transparency=0.3
 	openMiniBtn = miniBtn
+	local function applyMiniBtnUiSize()
+		if not miniBtn or not miniBtn.Parent then return end
+		miniBtn.Size = UDim2.new(0, miniBtnUiSize, 0, _miniBtnH)
+	end
 	drag(miniBtn, nil, function() saveConfig() end)
-	miniBtn.MouseEnter:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0.2}):Play() end)
-	miniBtn.MouseLeave:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0}):Play() end)
+	miniBtn.MouseEnter:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0.1,BackgroundTransparency=0.05}):Play() end)
+	miniBtn.MouseLeave:Connect(function() TS:Create(miniBtn,TweenInfo.new(0.1),{ImageTransparency=0,BackgroundTransparency=0.18}):Play() end)
 	local guiAnimToken = 0
 	local function showGui()
 		guiAnimToken = guiAnimToken + 1
@@ -3259,6 +3447,7 @@ end
 	local espTracerLines = {}
 	local ragdollCountdownLabel = nil
 	local ragdollCountdownUntil = 0
+	local destroyRagdollCountdown
 	local ragdollCountdownDuration = 2.6
 	local tracerGui = nil
 	do
@@ -3441,7 +3630,7 @@ end
 		line.Rotation = math.deg(math.atan2(delta.Y, delta.X))
 		line.Visible = true
 	end
-	local function destroyRagdollCountdown()
+	destroyRagdollCountdown = function()
 		if ragdollCountdownLabel then
 			pcall(function() ragdollCountdownLabel:Destroy() end)
 			ragdollCountdownLabel = nil
@@ -3495,10 +3684,7 @@ end
 				pcall(function() line.Visible = false end)
 			end
 		end
-		-- Ragdoll countdown is rendered by setupSpeedIndicator() so it stays
-		-- above the Speed overhead and does not overlap it.
 		if not ragdollCountdownEnabled then
-			-- Keep the legacy cleanup path harmless.
 			destroyRagdollCountdown()
 		end
 	end)
@@ -3572,6 +3758,16 @@ end
 				applyGuiSize()
 			else
 				setBoxReal(guiSizeBox, guiSizeScale)
+			end
+			saveConfig()
+		end)
+	end
+	do
+		local row=mkRow(32);mkLabel(row,"Open Button Size")
+		mkBox(row, miniBtnUiSize, 50, 56, function(v)
+			if v >= 40 and v <= 250 then
+				miniBtnUiSize = v
+				applyMiniBtnUiSize()
 			end
 			saveConfig()
 		end)
@@ -3665,7 +3861,7 @@ function loadConfigKeys()
 	if cfg.normalSpeed then NS=cfg.normalSpeed end
 	if cfg.carrySpeed then CS=cfg.carrySpeed end
 	if cfg.grabRadius and type(cfg.grabRadius)=="number" then Steal.StealRadius=cfg.grabRadius else Steal.StealRadius=55 end
-	if cfg.stealDuration and type(cfg.stealDuration)=="number" then Steal.StealDuration=cfg.stealDuration else Steal.StealDuration=0.5 end
+	Steal.StealDuration=1.3
 	if cfg.laggerSpeed and type(cfg.laggerSpeed)=="number" then LAGGER_SPEED=cfg.laggerSpeed end
 	if cfg.laggerCarrySpeed and type(cfg.laggerCarrySpeed)=="number" then LAGGER_CARRY_SPEED=cfg.laggerCarrySpeed end
 	if cfg.autoTPHeight and type(cfg.autoTPHeight)=="number" then autoTPHeight=cfg.autoTPHeight end
@@ -3677,6 +3873,7 @@ function loadConfigKeys()
 	if cfg.autoCarrySpeedEnabled~=nil then autoCarrySpeedEnabled=cfg.autoCarrySpeedEnabled==true end
 	if cfg.guiSizeScale and type(cfg.guiSizeScale)=="number" then guiSizeScale=math.clamp(cfg.guiSizeScale,0.5,2.5) end
 	if cfg.mobileBtnSize and type(cfg.mobileBtnSize)=="number" then mobileBtnSize=math.clamp(cfg.mobileBtnSize,40,150) end
+	if cfg.miniBtnUiSize and type(cfg.miniBtnUiSize)=="number" then miniBtnUiSize=math.clamp(cfg.miniBtnUiSize,40,250) end
 	if cfg.mobileButtonsHidden~=nil then mobileButtonsHidden=cfg.mobileButtonsHidden==true end
 	if cfg.mobileButtonsLocked~=nil then mobileButtonsLocked=cfg.mobileButtonsLocked==true end
 	if type(cfg.mobileBtnPositions)=="table" then mobileBtnPositions=cfg.mobileBtnPositions end
