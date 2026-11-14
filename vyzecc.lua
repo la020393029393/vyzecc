@@ -1008,6 +1008,36 @@ _KC.ButtonL1,_KC.ButtonR1,_KC.ButtonL2,_KC.ButtonR2,
 _KC.ButtonL3,_KC.ButtonR3,_KC.ButtonSelect,_KC.ButtonStart,
 _KC.DPadLeft,_KC.DPadRight,_KC.DPadUp,_KC.DPadDown,
 }
+local _GP_LABELS={
+-- Roblox KeyCode + Nintendo / PlayStation
+ButtonA="ButtonA/NS-B/PS-X",
+ButtonB="ButtonB/NS-A/PS-O",
+ButtonX="ButtonX/NS-Y/PS-Square",
+ButtonY="ButtonY/NS-X/PS-Triangle",
+ButtonL1="ButtonL1",
+ButtonR1="ButtonR1",
+ButtonL2="ButtonL2",
+ButtonR2="ButtonR2",
+ButtonL3="ButtonL3",
+ButtonR3="ButtonR3",
+ButtonSelect="ButtonSelect",
+ButtonStart="ButtonStart",
+DPadLeft="DPadLeft",
+DPadRight="DPadRight",
+DPadUp="DPadUp",
+DPadDown="DPadDown",
+LeftControl="LeftControl",RightControl="RightControl",
+LeftShift="LeftShift",RightShift="RightShift",
+LeftAlt="LeftAlt",RightAlt="RightAlt",
+Space="Space",Return="Return",Backspace="Backspace",
+Escape="Escape",Tab="Tab",
+}
+local function _keyLabel(kc)
+if not kc then return "?" end
+local n=kc.Name
+-- prefer mapped label; gamepad names stay as ButtonX / DPadDown style
+return _GP_LABELS[n] or n
+end
 local function _bbc(onPicked,onCancel)
 _bindCaptureSeq=_bindCaptureSeq+1;local casName="VH_Bind_".._bindCaptureSeq;local active=true;local conn
 local function finish(kc,cancelled)
@@ -1017,19 +1047,65 @@ if cancelled then if onCancel then onCancel()end
 elseif onPicked then onPicked(kc)end
 end
 local _captureOpenedAt=tick()
-conn=UIS.InputBegan:Connect(function(i)
-if not active then return end;if tick()-_captureOpenedAt<0.03 then return end
+conn=UIS.InputBegan:Connect(function(i,gp)
+if not active then return end
+if tick()-_captureOpenedAt<0.02 then return end
 if i.UserInputType==Enum.UserInputType.Keyboard then
 if i.KeyCode==_KC.Escape then finish(nil,true)else finish(i.KeyCode,false)end
-elseif _isGamepadType(i.UserInputType)then local kc=i.KeyCode;if kc~=_KC.Thumbstick1 and kc~=_KC.Thumbstick2 then finish(kc,false)end end
+elseif _isGamepadType(i.UserInputType)then
+local kc=i.KeyCode
+if kc~=_KC.Thumbstick1 and kc~=_KC.Thumbstick2 and kc~=_KC.Unknown then finish(kc,false)end
+end
 end)
 pcall(function()
 game:GetService("ContextActionService"):BindActionAtPriority(casName,function(_,state,obj)
 if active and state==Enum.UserInputState.Begin then finish(obj.KeyCode,false)end
 return Enum.ContextActionResult.Sink
-end,false,3000,table.unpack(_gpbk))
+end,false,100000,table.unpack(_gpbk))
 end)
 return function()finish(nil,true)end
+end
+local _gpActionNames={}
+local function _refreshGamepadActions()
+local CAS=game:GetService("ContextActionService")
+for _,name in ipairs(_gpActionNames)do pcall(function()CAS:UnbindAction(name)end)end
+_gpActionNames={}
+local function bindOne(tag,kc,fn)
+if not kc then return end
+local name="VH_GP_"..tag
+_ti(_gpActionNames,name)
+pcall(function()
+CAS:BindActionAtPriority(name,function(_,state,_)
+if state==Enum.UserInputState.Begin then
+pcall(fn)
+end
+return Enum.ContextActionResult.Sink
+end,false,9000,kc)
+end)
+end
+bindOne("speed",Keys.speed,function()
+if _St.laggerMode~=0 then
+setLaggerMode(0);_St.speedToggled=false;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(false)end;if modeValLbl then modeValLbl.Text="Normal"end
+else
+_St.speedToggled=not _St.speedToggled;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(_St.speedToggled)end;if modeValLbl then modeValLbl.Text=_St.speedToggled and"Carry"or"Normal"end
+end
+end)
+bindOne("autoBat",Keys.autoBat,function()
+_St.autoBatToggled=not _St.autoBatToggled;if setAutoBat then setAutoBat(_St.autoBatToggled)end;if _St.autoBatToggled then _VH_forceDesyncOff();startBatAimbot()else stopBatAimbot()end
+end)
+bindOne("autoLeft",Keys.autoLeft,function()
+_St.autoLeftEnabled=not _St.autoLeftEnabled;if setAutoLeft then setAutoLeft(_St.autoLeftEnabled)end;if _St.autoLeftEnabled then _VH_forceAimbotOff();_VH_forceDesyncOff();startAutoLeft()else stopAutoLeft()end
+end)
+bindOne("autoRight",Keys.autoRight,function()
+_St.autoRightEnabled=not _St.autoRightEnabled;if setAutoRight then setAutoRight(_St.autoRightEnabled)end;if _St.autoRightEnabled then _VH_forceAimbotOff();_VH_forceDesyncOff();startAutoRight()else stopAutoRight()end
+end)
+bindOne("drop",Keys.dropBrainrot,function()if not _St.dropEnabled then runDropBrainrot()end end)
+bindOne("tpDown",Keys.tpDown,function()doTpDown()end)
+bindOne("guiHide",Keys.guiHide,function()toggleGuiVis()end)
+bindOne("lagger",Keys.lagger,function()toggleLaggerMode()end)
+bindOne("desync",Keys.desyncAimbot,function()
+_St.desyncAimbotEnabled=not _St.desyncAimbotEnabled;if setDesyncAimbot then setDesyncAimbot(_St.desyncAimbotEnabled)end;if _St.desyncAimbotEnabled then _VH_forceAimbotOff();startDesyncAimbot()else stopDesyncAimbot()end
+end)
 end
 do
 UIS.TouchStarted:Connect(function(touch)
@@ -1063,12 +1139,12 @@ local function mkLbl(parent,txt,x,y,w,h2,size,color,font,align) local l=_I(_TL,p
 local function _mkt(pg,label,defKey,defOn,onToggle,onKeyChange)
 local row,rs=mkRow(pg,42);mkLbl(row,label,10,0,0,42,10,C.white,_EGB);local keyBtn=nil
 if defKey then
-keyBtn=_I(_TB,row);keyBtn.Size=_U(0,54,0,25);keyBtn.Position=_U(1,-130,0.5,-12.5);keyBtn[_BgC]=C.void;keyBtn[_BgT]=1;keyBtn[_BSP]=0;keyBtn.Text=defKey.Name;keyBtn[_TC3]=C.dim;keyBtn.Font=_EGB;keyBtn[_TSz]=9;keyBtn[_ZI]=5;_I(_UCR,keyBtn)[_CRad]=_UD(0,7);local ks=_I(_USK,keyBtn);ks.Color=C.border;ks.Thickness=1.25;local kl=false;local kCancel;local function kReset()tw(ks,0.1,{Color=C.border});keyBtn[_TC3]=C.dim end
-local function kStop(k) kl=false;if kCancel then local c=kCancel;kCancel=nil;c()end;kReset();if k then keyBtn.Text=k.Name;if onKeyChange then onKeyChange(k)end end end
+keyBtn=_I(_TB,row);keyBtn.Size=_U(0,90,0,25);keyBtn.Position=_U(1,-166,0.5,-12.5);keyBtn[_BgC]=C.void;keyBtn[_BgT]=1;keyBtn[_BSP]=0;keyBtn.Text=_keyLabel(defKey);keyBtn[_TC3]=C.dim;keyBtn.Font=_EGB;keyBtn[_TSz]=7;keyBtn[_ZI]=5;_I(_UCR,keyBtn)[_CRad]=_UD(0,7);local ks=_I(_USK,keyBtn);ks.Color=C.border;ks.Thickness=1.25;local kl=false;local kCancel;local function kReset()tw(ks,0.1,{Color=C.border});keyBtn[_TC3]=C.dim end
+local function kStop(k) kl=false;if kCancel then local c=kCancel;kCancel=nil;c()end;kReset();if k then keyBtn.Text=_keyLabel(k);if onKeyChange then onKeyChange(k)end;if _refreshGamepadActions then pcall(_refreshGamepadActions)end end end
 local function kStartListening()
 if kl then kStop(nil);return end;kl=true;keyBtn.Text="...";keyBtn[_TC3]=C.purple;tw(ks,0.1,{Color=C.purple});kCancel=_bbc(
 function(k)kCancel=nil;kStop(k)end,
-function()kCancel=nil;kl=false;kReset()end
+function()kCancel=nil;kl=false;keyBtn.Text=_keyLabel(defKey);kReset()end
 )
 end
 _tc(keyBtn,kStartListening)
@@ -1099,13 +1175,13 @@ local row=mkRow(pg,42);mkLbl(row,label,10,0,0.5,42,10,C.white,_EGB);local v=_I(_
 return v
 end
 local function mkKeybind(pg,label,key,onChange)
-local row=mkRow(pg,42);mkLbl(row,label,10,0,0.55,42,10,C.white,_EGB);local btn=_I(_TB,row);btn:SetAttribute("CrimsonKeybindBox",true);btn.Size=_U(0,76,0,25);btn.Position=_U(1,-84,0.5,-12.5)
-btn[_BgC]=C.dpurple;btn[_BgT]=1;btn[_BSP]=0;btn.Text=key.Name;btn[_TC3]=C.lpurple;btn.Font=_EGB;btn[_TSz]=10;_I(_UCR,btn)[_CRad]=_UD(0,8);local bs=_I(_USK,btn);bs.Color=C.border;bs.Transparency=0.18;bs.Thickness=1.25;local listening=false;local lCancel;local function lReset()tw(bs,0.1,{Color=C.border});btn[_TC3]=C.lpurple end
-local function stop(k) listening=false;if lCancel then local c=lCancel;lCancel=nil;c()end;lReset();if k then btn.Text=k.Name;if onChange then onChange(k)end end end
+local row=mkRow(pg,42);mkLbl(row,label,10,0,0.55,42,10,C.white,_EGB);local btn=_I(_TB,row);btn:SetAttribute("CrimsonKeybindBox",true);btn.Size=_U(0,118,0,25);btn.Position=_U(1,-126,0.5,-12.5)
+btn[_BgC]=C.dpurple;btn[_BgT]=1;btn[_BSP]=0;btn.Text=_keyLabel(key);btn[_TC3]=C.lpurple;btn.Font=_EGB;btn[_TSz]=8;_I(_UCR,btn)[_CRad]=_UD(0,8);local bs=_I(_USK,btn);bs.Color=C.border;bs.Transparency=0.18;bs.Thickness=1.25;local listening=false;local lCancel;local function lReset()tw(bs,0.1,{Color=C.border});btn[_TC3]=C.lpurple end
+local function stop(k) listening=false;if lCancel then local c=lCancel;lCancel=nil;c()end;lReset();if k then btn.Text=_keyLabel(k);if onChange then onChange(k)end;if _refreshGamepadActions then pcall(_refreshGamepadActions)end end end
 local function startListening()
 if listening then stop(nil);return end;listening=true;btn.Text="...";btn[_TC3]=C.purple;tw(bs,0.1,{Color=C.purple});lCancel=_bbc(
 function(k)lCancel=nil;stop(k)end,
-function()lCancel=nil;listening=false;lReset()end
+function()lCancel=nil;listening=false;btn.Text=_keyLabel(key);lReset()end
 )
 end
 _tc(btn,startListening)
@@ -1551,6 +1627,18 @@ end
 _tw();gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Avatar Items")
 setKorbloxToggle=_mkt("Custom","Korblox",nil,false,function(on)_St.korbloxEnabled=on;applyKorbloxToChar(LP.Character,on)end)
 setHeadlessToggle=_mkt("Custom","Headless",nil,false,function(on)_St.headlessEnabled=on;applyHeadlessToChar(LP.Character,on)end)
+_tw();gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Gamepad Binds")
+do
+mkKeybind("Custom","Speed",Keys.speed,function(k)Keys.speed=k end)
+mkKeybind("Custom","Lagger",Keys.lagger,function(k)Keys.lagger=k;Keys.burst=k end)
+mkKeybind("Custom","Auto Bat",Keys.autoBat,function(k)Keys.autoBat=k end)
+mkKeybind("Custom","Auto Left",Keys.autoLeft,function(k)Keys.autoLeft=k end)
+mkKeybind("Custom","Auto Right",Keys.autoRight,function(k)Keys.autoRight=k end)
+mkKeybind("Custom","Drop Brainrot",Keys.dropBrainrot,function(k)Keys.dropBrainrot=k end)
+mkKeybind("Custom","TP Down",Keys.tpDown,function(k)Keys.tpDown=k end)
+mkKeybind("Custom","Hide GUI",Keys.guiHide,function(k)Keys.guiHide=k end)
+mkKeybind("Custom","Desync Aimbot",Keys.desyncAimbot,function(k)Keys.desyncAimbot=k end)
+end
 _tw();gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Safe Mode")
 do
 local hdrRow=mkRow("Custom",42);mkLbl(hdrRow,"Safe Mode",10,0,0.7,42,10,C.white,_EGB);local arrow=_I(_TB,hdrRow);arrow.Size=_U(0,40,0,40);arrow.Position=_U(1,-48,0.5,-20)
@@ -3534,12 +3622,12 @@ if type(cfg.normalSpeed)=="number"then _St.normalSpeed=cfg.normalSpeed;if normal
 if type(cfg.burstNormalSpeed)=="number"then _St.burstNormalSpeed=cfg.burstNormalSpeed;if burstNormalBox then burstNormalBox.Text=tostring(cfg.burstNormalSpeed)end end;if type(cfg.burstCarrySpeed)=="number"then _St.burstCarrySpeed=cfg.burstCarrySpeed;if burstCarryBox then burstCarryBox.Text=tostring(cfg.burstCarrySpeed)end end
 if type(cfg.bypassNormalSpeed)=="number"then _St.bypassNormalSpeed=cfg.bypassNormalSpeed;if bypassNormalBox then bypassNormalBox.Text=tostring(cfg.bypassNormalSpeed)end end;if type(cfg.bypassCarrySpeed)=="number"then _St.bypassCarrySpeed=cfg.bypassCarrySpeed;if bypassCarryBox then bypassCarryBox.Text=tostring(cfg.bypassCarrySpeed)end end
 if type(cfg.laggerMode)=="number"then _St.laggerMode=cfg.laggerMode;if cfg.laggerMode~=0 and setLaggerMode then setLaggerMode(cfg.laggerMode)end end;if cfg.burstPreset=="lagger"or cfg.burstPreset=="bypass"then _St.burstPreset=cfg.burstPreset;if setBurstPreset then setBurstPreset(cfg.burstPreset)end end
-if cfg.autoBatKey and Enum.KeyCode[cfg.autoBatKey]then Keys.autoBat=Enum.KeyCode[cfg.autoBatKey];if autoBatKeyBtn then autoBatKeyBtn.Text=cfg.autoBatKey end end;if cfg.speedKey and Enum.KeyCode[cfg.speedKey]then Keys.speed=Enum.KeyCode[cfg.speedKey];if speedKeyBtn then speedKeyBtn.Text=cfg.speedKey end end
-if cfg.autoLeftKey and Enum.KeyCode[cfg.autoLeftKey]then Keys.autoLeft=Enum.KeyCode[cfg.autoLeftKey];if autoLeftKeyBtn then autoLeftKeyBtn.Text=cfg.autoLeftKey end end;if cfg.autoRightKey and Enum.KeyCode[cfg.autoRightKey]then Keys.autoRight=Enum.KeyCode[cfg.autoRightKey];if autoRightKeyBtn then autoRightKeyBtn.Text=cfg.autoRightKey end end
-if cfg.dropBrainrotKey and Enum.KeyCode[cfg.dropBrainrotKey]then Keys.dropBrainrot=Enum.KeyCode[cfg.dropBrainrotKey];if dropBrainrotKeyBtn then dropBrainrotKeyBtn.Text=cfg.dropBrainrotKey end end
-if cfg.tpDownKey and Enum.KeyCode[cfg.tpDownKey]then Keys.tpDown=Enum.KeyCode[cfg.tpDownKey];if tpDownKeyBtn then tpDownKeyBtn.Text=cfg.tpDownKey end end;if cfg.guiHideKey and Enum.KeyCode[cfg.guiHideKey]then Keys.guiHide=Enum.KeyCode[cfg.guiHideKey];if guiHideKeyBtn then guiHideKeyBtn.Text=cfg.guiHideKey end end
+if cfg.autoBatKey and Enum.KeyCode[cfg.autoBatKey]then Keys.autoBat=Enum.KeyCode[cfg.autoBatKey];if autoBatKeyBtn then autoBatKeyBtn.Text=_keyLabel(Keys.autoBat)end end;if cfg.speedKey and Enum.KeyCode[cfg.speedKey]then Keys.speed=Enum.KeyCode[cfg.speedKey];if speedKeyBtn then speedKeyBtn.Text=_keyLabel(Keys.speed)end end
+if cfg.autoLeftKey and Enum.KeyCode[cfg.autoLeftKey]then Keys.autoLeft=Enum.KeyCode[cfg.autoLeftKey];if autoLeftKeyBtn then autoLeftKeyBtn.Text=_keyLabel(Keys.autoLeft)end end;if cfg.autoRightKey and Enum.KeyCode[cfg.autoRightKey]then Keys.autoRight=Enum.KeyCode[cfg.autoRightKey];if autoRightKeyBtn then autoRightKeyBtn.Text=_keyLabel(Keys.autoRight)end end
+if cfg.dropBrainrotKey and Enum.KeyCode[cfg.dropBrainrotKey]then Keys.dropBrainrot=Enum.KeyCode[cfg.dropBrainrotKey];if dropBrainrotKeyBtn then dropBrainrotKeyBtn.Text=_keyLabel(Keys.dropBrainrot)end end
+if cfg.tpDownKey and Enum.KeyCode[cfg.tpDownKey]then Keys.tpDown=Enum.KeyCode[cfg.tpDownKey];if tpDownKeyBtn then tpDownKeyBtn.Text=_keyLabel(Keys.tpDown)end end;if cfg.guiHideKey and Enum.KeyCode[cfg.guiHideKey]then Keys.guiHide=Enum.KeyCode[cfg.guiHideKey];if guiHideKeyBtn then guiHideKeyBtn.Text=_keyLabel(Keys.guiHide)end end
 if cfg.desyncAimbotKey and Enum.KeyCode[cfg.desyncAimbotKey]then Keys.desyncAimbot=Enum.KeyCode[cfg.desyncAimbotKey];if desyncAimbotKeyBtn then desyncAimbotKeyBtn.Text=cfg.desyncAimbotKey end end;if cfg.instaResetKey and Enum.KeyCode[cfg.instaResetKey]then Keys.instaReset=Enum.KeyCode[cfg.instaResetKey];if instaResetKeyBtn then instaResetKeyBtn.Text=cfg.instaResetKey end end;if cfg.burstKey and Enum.KeyCode[cfg.burstKey]then Keys.burst=Enum.KeyCode[cfg.burstKey];if _bkb then _bkb.Text=cfg.burstKey end end
-if cfg.laggerKey and Enum.KeyCode[cfg.laggerKey]then Keys.lagger=Enum.KeyCode[cfg.laggerKey];Keys.burst=Enum.KeyCode[cfg.laggerKey];if _lkb then _lkb.Text=cfg.laggerKey end end
+if cfg.laggerKey and Enum.KeyCode[cfg.laggerKey]then Keys.lagger=Enum.KeyCode[cfg.laggerKey];Keys.burst=Enum.KeyCode[cfg.laggerKey];if _lkb then _lkb.Text=_keyLabel(Keys.lagger)end end;pcall(function()if _refreshGamepadActions then _refreshGamepadActions()end end)
 if type(cfg.autoBatSpeed)=="number"then _St.autoBatSpeed=cfg.autoBatSpeed;if autoBatSpeedBox then autoBatSpeedBox.Text=tostring(cfg.autoBatSpeed)end end;if type(cfg.tpDownHeight)=="number"and cfg.tpDownHeight>=5 and cfg.tpDownHeight<=200 then _St.tpDownHeight=cfg.tpDownHeight;if autoTpHeightBox then autoTpHeightBox.Text=tostring(cfg.tpDownHeight)end end
 if type(cfg.fov)=="number"and cfg.fov>=70 and cfg.fov<=150 then
 _St.lockedFOV=cfg.fov;pcall(function()workspace.CurrentCamera.FieldOfView=cfg.fov end) if fovBox then fovBox.Text=tostring(_mf(cfg.fov))end;if setNormalFOVVisual then setNormalFOVVisual(cfg.fov)end end;if cfg.fovControlMode=="normal"or cfg.fovControlMode=="stretch"then if setFOVControlModeUI then setFOVControlModeUI(cfg.fovControlMode)else _St.fovControlMode=cfg.fovControlMode end end;if cfg.dropType=="Stand Drop"or cfg.dropType=="Jump Drop"then _St.dropType=cfg.dropType;if setDropType then setDropType(cfg.dropType)end end;if type(cfg.normalRadius)=="number"then Steal.NormalRadius=_mf(cfg.normalRadius)end
@@ -3820,7 +3908,9 @@ end)
 local burstActive=false;local savedNormalSpeed=nil;local savedCarrySpeed=nil;if _St.laggerMode~=0 and setLaggerMode then setLaggerMode(_St.laggerMode)end;if setBurstPreset then setBurstPreset(_St.burstPreset)end;if setStretchFOVVisual then setStretchFOVVisual(_St.stretchFOV)end;if _ssv then _ssv(_St.activeSky)end
 _St.activeBgImg="original";_St.lineEspColor="purple";if girlImg then girlImg.Image=_RBX.."138321246448736"end;if setMonoTheme then setMonoTheme("original")end
 UIS.InputBegan:Connect(function(inp,gp)
-if gp and inp.UserInputType==Enum.UserInputType.Keyboard then return end;if not _isTriggerInput(inp)then return end;local kc=inp.KeyCode;if kc==Keys.tpDown then doTpDown()
+if gp and inp.UserInputType==Enum.UserInputType.Keyboard then return end
+-- gamepad always accepted (CAS may also fire; actions are idempotent toggles)
+if not _isTriggerInput(inp)then return end;local kc=inp.KeyCode;if kc==Keys.tpDown then doTpDown()
 elseif kc==Keys.speed then
 if _St.laggerMode~=0 then
 setLaggerMode(0);_St.speedToggled=false;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(false)end;if modeValLbl then modeValLbl.Text="Normal"end
@@ -3842,6 +3932,7 @@ elseif kc==Keys.lagger then
 if burstActive then _St.normalSpeed=savedNormalSpeed or _St.normalSpeed;_St.carrySpeed=savedCarrySpeed or _St.carrySpeed;if normalBox then normalBox.Text=tostring(_St.normalSpeed)end;if carryBox then carryBox.Text=tostring(_St.carrySpeed)end;burstActive=false;_G._VH_burstActive=false end;toggleLaggerMode()
 end
 end)
+pcall(function()if _refreshGamepadActions then _refreshGamepadActions()end end)
 do
 local CARRY_HOLD=0.3;local FLICKER_GRACE=0.12;local SCAN_EVERY=0.1;local lastCarryTrue=-_mh;local lastCdSeen=-_mh;local _accum=0;local SAFE_WEAPON_WORDS={"bat","slap","medusa","head","stone"}
 local function safeIsWeaponName(n)
