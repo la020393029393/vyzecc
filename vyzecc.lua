@@ -1,2073 +1,9158 @@
-local function LPH_NO_VIRTUALIZE(f)return f end
-local _I,_U,_C,_TI,_Us,_tw,_ts,_td=Instance.new,UDim2.new,Color3.fromRGB,TweenInfo.new,UDim2.fromScale,task.wait,task.spawn,task.defer
-local _mc,_mf,_ma,_mh,_mr,_mx,_mn,_msq,_mat,_mas,_msin,_mcos,_mpi=math.clamp,math.floor,math.abs,math.huge,math.random,math.max,math.min,math.sqrt,math.atan2,math.asin,math.sin,math.cos,math.pi
-local _ti,_tr,_tf,_V3,_CF,_CSK,_UD=table.insert,table.remove,table.find,Vector3.new,CFrame.new,ColorSequenceKeypoint.new,UDim.new
-local _EGB,_EGBK,_EGS,_EGN=Enum.Font.GothamBold,Enum.Font.GothamBlack,Enum.Font.GothamSemibold,Enum.Font.Gotham
-local _ESQ,_ESB,_ESL,_ESS=Enum.EasingStyle.Quad,Enum.EasingStyle.Back,Enum.EasingStyle.Linear,Enum.EasingStyle.Sine
-local _EDO,_EDI,_EDN=Enum.EasingDirection.Out,Enum.EasingDirection.InOut,Enum.EasingDirection.In
-local _TXL,_TXC,_TXR=Enum.TextXAlignment.Left,Enum.TextXAlignment.Center,Enum.TextXAlignment.Right
-local _UIT,_UIB,_UIM=Enum.UserInputType.Touch,Enum.UserInputType.MouseButton1,Enum.UserInputType.MouseMovement
-local _KC,_HST,_CAP=Enum.KeyCode,Enum.HumanoidStateType,Enum.ContextActionResult.Pass
-local _HR,_TB,_UCR,_USK="HumanoidRootPart","TextButton","UICorner","UIStroke"
-local _TL,_IL,_FR,_SCF,_HM,_IB="TextLabel","ImageLabel","Frame","ScrollingFrame","Humanoid","ImageButton"
-local _RBX="rbxassetid://"
-local _BgT,_BgC,_BSP,_TC3="BackgroundTransparency","BackgroundColor3","BorderSizePixel","TextColor3"
-local _CRad,_TXAl,_ABC,_TST="CornerRadius","TextXAlignment","AutoButtonColor","TextStrokeTransparency"
-local _TSz,_ZI,_TSC="TextSize","ZIndex","TextStrokeColor3"
-local _ClD,_AbS="ClipsDescendants","AbsoluteSize"
+local G = {}
+
+G.WAVEHubV1 = Instance.new("ScreenGui")
+G.WAVEHubV1.Name = "MessageHub"
+G.WAVEHubV1.ResetOnSpawn = false
+G.WAVEHubV1.DisplayOrder = 2147483647
+G.WAVEHubV1.IgnoreGuiInset = true
+G.WAVEHubV1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+G.WAVEHubV1.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+
+G.MainOuter = Instance.new("Frame")
+G.MainOuter.Name = "MainOuter"
+G.MainOuter.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.MainOuter.BorderSizePixel = 0
+G.MainOuter.ClipsDescendants = true
+G.MainOuter.Position = UDim2.new(0, 28, 0, 42)
+G.MainOuter.Size = UDim2.new(0, 280, 0, 48)
+G.MainOuter.Visible = false
+G.MainOuter.Parent = G.WAVEHubV1
+
+G.UIScale = Instance.new("UIScale")
+G.UIScale.Scale = 0.69999998807907104
+G.UIScale.Parent = G.MainOuter
+
+G.UICorner = Instance.new("UICorner")
+G.UICorner.CornerRadius = UDim.new(0, 20)
+G.UICorner.Parent = G.MainOuter
+
+G.MenuBgImage = Instance.new("ImageLabel")
+G.MenuBgImage.Name = "MenuBgImage"
+G.MenuBgImage.BackgroundTransparency = 1
+G.MenuBgImage.BorderSizePixel = 0
+G.MenuBgImage.Size = UDim2.new(1, 0, 1, 0)
+G.MenuBgImage.Image = "rbxassetid://96235452296851"
+G.MenuBgImage.ResampleMode = Enum.ResamplerMode.Default
+G.MenuBgImage.ScaleType = Enum.ScaleType.Crop
+G.MenuBgImage.ImageTransparency = 0.55000001192092896
+G.MenuBgImage.ScaleType = Enum.ScaleType.Crop
+G.MenuBgImage.Parent = G.MainOuter
+
+G.UICorner_2 = Instance.new("UICorner")
+G.UICorner_2.CornerRadius = UDim.new(0, 20)
+G.UICorner_2.Parent = G.MenuBgImage
+
+G.MenuBgOverlay = Instance.new("Frame")
+G.MenuBgOverlay.Name = "MenuBgOverlay"
+G.MenuBgOverlay.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.MenuBgOverlay.BackgroundTransparency = 0.44999998807907104
+G.MenuBgOverlay.BorderSizePixel = 0
+G.MenuBgOverlay.Size = UDim2.new(1, 0, 1, 0)
+G.MenuBgOverlay.ZIndex = 2
+G.MenuBgOverlay.Parent = G.MainOuter
+
+G.UICorner_3 = Instance.new("UICorner")
+G.UICorner_3.CornerRadius = UDim.new(0, 20)
+G.UICorner_3.Parent = G.MenuBgOverlay
+
+G.HeaderBar = Instance.new("Frame")
+G.HeaderBar.Name = "HeaderBar"
+G.HeaderBar.BackgroundColor3 = Color3.fromRGB(12, 6, 22)
+G.HeaderBar.BorderSizePixel = 0
+G.HeaderBar.ClipsDescendants = true
+G.HeaderBar.Size = UDim2.new(1, 0, 0, 48)
+G.HeaderBar.ZIndex = 4
+G.HeaderBar.Parent = G.MainOuter
+
+G.UICorner_4 = Instance.new("UICorner")
+G.UICorner_4.CornerRadius = UDim.new(0, 20)
+G.UICorner_4.Parent = G.HeaderBar
+
+G.HeaderFill = Instance.new("Frame")
+G.HeaderFill.Name = "HeaderFill"
+G.HeaderFill.BackgroundColor3 = Color3.fromRGB(12, 6, 22)
+G.HeaderFill.BackgroundTransparency = 1
+G.HeaderFill.BorderSizePixel = 0
+G.HeaderFill.Position = UDim2.new(0, 0, 0.5, 0)
+G.HeaderFill.Size = UDim2.new(1, 0, 0.5, 0)
+G.HeaderFill.ZIndex = 5
+G.HeaderFill.Parent = G.HeaderBar
+
+G.WaveHeaderLogo = Instance.new("ImageLabel")
+G.WaveHeaderLogo.Name = "WaveHeaderLogo"
+G.WaveHeaderLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G.WaveHeaderLogo.BackgroundTransparency = 1
+G.WaveHeaderLogo.BorderSizePixel = 0
+G.WaveHeaderLogo.Position = UDim2.new(0, 12, 0, 8)
+G.WaveHeaderLogo.Size = UDim2.new(0, 116, 0, 32)
+G.WaveHeaderLogo.ZIndex = 6
+G.WaveHeaderLogo.Image = "rbxassetid://75548910103458"
+G.WaveHeaderLogo.ScaleType = Enum.ScaleType.Fit
+G.WaveHeaderLogo.Parent = G.HeaderBar
+
+G.UICorner_5 = Instance.new("UICorner")
+G.UICorner_5.CornerRadius = UDim.new(0, 14)
+G.UICorner_5.Parent = G.WaveHeaderLogo
+
+G.TextLabel = Instance.new("TextLabel")
+G.TextLabel.BackgroundTransparency = 1
+G.TextLabel.Position = UDim2.new(0, 48, 0, 10)
+G.TextLabel.Size = UDim2.new(0, 140, 0, 28)
+G.TextLabel.ZIndex = 6
+G.TextLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel.Text = ""
+G.TextLabel.Visible = false
+G.TextLabel.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel.TextSize = 16
+G.TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel.Parent = G.HeaderBar
+
+G.MinimizedTitleImage = Instance.new("ImageLabel")
+G.MinimizedTitleImage.Name = "MinimizedTitleImage"
+G.MinimizedTitleImage.BackgroundTransparency = 1
+G.MinimizedTitleImage.Position = UDim2.new(0, 14, 0, 10)
+G.MinimizedTitleImage.Size = UDim2.new(0, 116, 0, 32)
+G.MinimizedTitleImage.Visible = false
+G.MinimizedTitleImage.ZIndex = 7
+G.MinimizedTitleImage.Image = "rbxassetid://75548910103458"
+G.MinimizedTitleImage.ScaleType = Enum.ScaleType.Fit
+G.MinimizedTitleImage.Parent = G.HeaderBar
+
+G.TextButton = Instance.new("TextButton")
+G.TextButton.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.TextButton.BorderSizePixel = 0
+G.TextButton.Position = UDim2.new(1, -30, 0, 13)
+G.TextButton.Size = UDim2.new(0, 22, 0, 22)
+G.TextButton.ZIndex = 100
+G.TextButton.AutoButtonColor = false
+G.TextButton.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton.Text = "-"
+G.TextButton.TextColor3 = Color3.fromRGB(153, 135, 165)
+G.TextButton.TextSize = 14
+G.TextButton.Parent = G.HeaderBar
+
+G.UICorner_6 = Instance.new("UICorner")
+G.UICorner_6.CornerRadius = UDim.new(0, 2)
+G.UICorner_6.Parent = G.TextButton
+
+G.WaveNavigation = Instance.new("Frame")
+G.WaveNavigation.Name = "WaveNavigation"
+G.WaveNavigation.BackgroundTransparency = 1
+G.WaveNavigation.BorderSizePixel = 0
+G.WaveNavigation.Position = UDim2.new(0, 8, 0, 51)
+G.WaveNavigation.Size = UDim2.new(1, -16, 0, 40)
+G.WaveNavigation.ZIndex = 6
+G.WaveNavigation.Parent = G.MainOuter
+
+G.UIListLayout = Instance.new("UIListLayout")
+G.UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+G.UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+G.UIListLayout.Padding = UDim.new(0, 4)
+G.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+G.UIListLayout.Parent = G.WaveNavigation
+
+G.WaveNav_MAIN = Instance.new("TextButton")
+G.WaveNav_MAIN.Name = "WaveNav_MAIN"
+G.WaveNav_MAIN.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.WaveNav_MAIN.BorderSizePixel = 0
+G.WaveNav_MAIN.LayoutOrder = 1
+G.WaveNav_MAIN.Size = UDim2.new(0, 48, 0, 28)
+G.WaveNav_MAIN.ZIndex = 7
+G.WaveNav_MAIN.AutoButtonColor = false
+G.WaveNav_MAIN.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.WaveNav_MAIN.Text = "MAIN"
+G.WaveNav_MAIN.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.WaveNav_MAIN.Parent = G.WaveNavigation
+
+G.UICorner_7 = Instance.new("UICorner")
+G.UICorner_7.CornerRadius = UDim.new(0, 7)
+G.UICorner_7.Parent = G.WaveNav_MAIN
+
+G.UIStroke = Instance.new("UIStroke")
+G.UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke.Color = Color3.fromRGB(160, 80, 220)
+G.UIStroke.Thickness = 1.2000000476837158
+G.UIStroke.Parent = G.WaveNav_MAIN
+
+G.WaveNav_COMBAT = Instance.new("TextButton")
+G.WaveNav_COMBAT.Name = "WaveNav_COMBAT"
+G.WaveNav_COMBAT.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WaveNav_COMBAT.BackgroundTransparency = 0.2199999988079071
+G.WaveNav_COMBAT.BorderSizePixel = 0
+G.WaveNav_COMBAT.LayoutOrder = 2
+G.WaveNav_COMBAT.Size = UDim2.new(0, 48, 0, 28)
+G.WaveNav_COMBAT.ZIndex = 7
+G.WaveNav_COMBAT.AutoButtonColor = false
+G.WaveNav_COMBAT.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.WaveNav_COMBAT.Text = "COMBAT"
+G.WaveNav_COMBAT.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.WaveNav_COMBAT.Parent = G.WaveNavigation
+
+G.UICorner_8 = Instance.new("UICorner")
+G.UICorner_8.CornerRadius = UDim.new(0, 7)
+G.UICorner_8.Parent = G.WaveNav_COMBAT
+
+G.UIStroke_2 = Instance.new("UIStroke")
+G.UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_2.Color = Color3.fromRGB(119, 25, 185)
+G.UIStroke_2.Parent = G.WaveNav_COMBAT
+
+G.WaveNav_MISC = Instance.new("TextButton")
+G.WaveNav_MISC.Name = "WaveNav_MISC"
+G.WaveNav_MISC.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WaveNav_MISC.BackgroundTransparency = 0.2199999988079071
+G.WaveNav_MISC.BorderSizePixel = 0
+G.WaveNav_MISC.LayoutOrder = 3
+G.WaveNav_MISC.Size = UDim2.new(0, 48, 0, 28)
+G.WaveNav_MISC.ZIndex = 7
+G.WaveNav_MISC.AutoButtonColor = false
+G.WaveNav_MISC.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.WaveNav_MISC.Text = "MISC"
+G.WaveNav_MISC.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.WaveNav_MISC.Parent = G.WaveNavigation
+
+G.UICorner_9 = Instance.new("UICorner")
+G.UICorner_9.CornerRadius = UDim.new(0, 7)
+G.UICorner_9.Parent = G.WaveNav_MISC
+
+G.UIStroke_3 = Instance.new("UIStroke")
+G.UIStroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_3.Color = Color3.fromRGB(119, 25, 185)
+G.UIStroke_3.Parent = G.WaveNav_MISC
+
+G.WaveNav_VISUALS = Instance.new("TextButton")
+G.WaveNav_VISUALS.Name = "WaveNav_VISUALS"
+G.WaveNav_VISUALS.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WaveNav_VISUALS.BackgroundTransparency = 0.2199999988079071
+G.WaveNav_VISUALS.BorderSizePixel = 0
+G.WaveNav_VISUALS.LayoutOrder = 4
+G.WaveNav_VISUALS.Size = UDim2.new(0, 48, 0, 28)
+G.WaveNav_VISUALS.ZIndex = 7
+G.WaveNav_VISUALS.AutoButtonColor = false
+G.WaveNav_VISUALS.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.WaveNav_VISUALS.Text = "VISUALS"
+G.WaveNav_VISUALS.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.WaveNav_VISUALS.Parent = G.WaveNavigation
+
+G.UICorner_10 = Instance.new("UICorner")
+G.UICorner_10.CornerRadius = UDim.new(0, 7)
+G.UICorner_10.Parent = G.WaveNav_VISUALS
+
+G.UIStroke_4 = Instance.new("UIStroke")
+G.UIStroke_4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_4.Color = Color3.fromRGB(119, 25, 185)
+G.UIStroke_4.Parent = G.WaveNav_VISUALS
+
+G.WaveNav_CUSTOMIZE = Instance.new("TextButton")
+G.WaveNav_CUSTOMIZE.Name = "WaveNav_CUSTOMIZE"
+G.WaveNav_CUSTOMIZE.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WaveNav_CUSTOMIZE.BackgroundTransparency = 0.2199999988079071
+G.WaveNav_CUSTOMIZE.BorderSizePixel = 0
+G.WaveNav_CUSTOMIZE.LayoutOrder = 5
+G.WaveNav_CUSTOMIZE.Size = UDim2.new(0, 48, 0, 28)
+G.WaveNav_CUSTOMIZE.ZIndex = 7
+G.WaveNav_CUSTOMIZE.AutoButtonColor = false
+G.WaveNav_CUSTOMIZE.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.WaveNav_CUSTOMIZE.Text = "UI"
+G.WaveNav_CUSTOMIZE.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.WaveNav_CUSTOMIZE.Parent = G.WaveNavigation
+
+G.UICorner_11 = Instance.new("UICorner")
+G.UICorner_11.CornerRadius = UDim.new(0, 7)
+G.UICorner_11.Parent = G.WaveNav_CUSTOMIZE
+
+G.UIStroke_5 = Instance.new("UIStroke")
+G.UIStroke_5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_5.Color = Color3.fromRGB(119, 25, 185)
+G.UIStroke_5.Parent = G.WaveNav_CUSTOMIZE
+
+G.WavePage_Speed = Instance.new("ScrollingFrame")
+G.WavePage_Speed.Name = "WavePage_Speed"
+G.WavePage_Speed.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Speed.BackgroundTransparency = 1
+G.WavePage_Speed.BorderSizePixel = 0
+G.WavePage_Speed.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Speed.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Speed.Visible = false
+G.WavePage_Speed.ZIndex = 3
+G.WavePage_Speed.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Speed.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Speed.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Speed.ScrollBarImageTransparency = 0.5
+G.WavePage_Speed.ScrollBarThickness = 3
+G.WavePage_Speed.Parent = G.MainOuter
+
+G.UICorner_12 = Instance.new("UICorner")
+G.UICorner_12.CornerRadius = UDim.new(0, 20)
+G.UICorner_12.Parent = G.WavePage_Speed
+
+G.UIListLayout_2 = Instance.new("UIListLayout")
+G.UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_2.Parent = G.WavePage_Speed
+
+G.UIPadding = Instance.new("UIPadding")
+G.UIPadding.PaddingBottom = UDim.new(0, 12)
+G.UIPadding.PaddingLeft = UDim.new(0, 8)
+G.UIPadding.PaddingRight = UDim.new(0, 8)
+G.UIPadding.PaddingTop = UDim.new(0, 6)
+G.UIPadding.Parent = G.WavePage_Speed
+
+G.Frame = Instance.new("Frame")
+G.Frame.BackgroundTransparency = 1
+G.Frame.BorderSizePixel = 0
+G.Frame.LayoutOrder = 1
+G.Frame.Size = UDim2.new(1, 0, 0, 28)
+G.Frame.Parent = G.WavePage_Speed
+
+G.TextLabel_2 = Instance.new("TextLabel")
+G.TextLabel_2.BackgroundTransparency = 1
+G.TextLabel_2.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_2.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_2.Text = "SPEED"
+G.TextLabel_2.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_2.TextSize = 13
+G.TextLabel_2.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_2.Parent = G.Frame
+
+G.Frame_2 = Instance.new("Frame")
+G.Frame_2.BackgroundTransparency = 1
+G.Frame_2.BorderSizePixel = 0
+G.Frame_2.LayoutOrder = 2
+G.Frame_2.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_2.Parent = G.WavePage_Speed
+
+G.Frame_3 = Instance.new("Frame")
+G.Frame_3.BackgroundTransparency = 1
+G.Frame_3.BorderSizePixel = 0
+G.Frame_3.LayoutOrder = 2
+G.Frame_3.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_3.Parent = G.WavePage_Speed
+
+G.TextLabel_3 = Instance.new("TextLabel")
+G.TextLabel_3.BackgroundTransparency = 1
+G.TextLabel_3.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_3.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_3.Text = "Normal Speed"
+G.TextLabel_3.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_3.TextSize = 11
+G.TextLabel_3.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_3.Parent = G.Frame_3
+
+G.Frame_4 = Instance.new("Frame")
+G.Frame_4.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_4.BorderSizePixel = 0
+G.Frame_4.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_4.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_4.Parent = G.Frame_3
+
+G.UICorner_13 = Instance.new("UICorner")
+G.UICorner_13.CornerRadius = UDim.new(0, 6)
+G.UICorner_13.Parent = G.Frame_4
+
+G.UIStroke_6 = Instance.new("UIStroke")
+G.UIStroke_6.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_6.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_6.Parent = G.Frame_4
+
+G.TextBox = Instance.new("TextBox")
+G.TextBox.BackgroundTransparency = 1
+G.TextBox.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox.ZIndex = 8
+G.TextBox.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox.Text = "60"
+G.TextBox.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox.TextSize = 11
+G.TextBox.ClearTextOnFocus = false
+G.TextBox.Parent = G.Frame_4
+
+G.Frame_5 = Instance.new("Frame")
+G.Frame_5.BackgroundTransparency = 1
+G.Frame_5.BorderSizePixel = 0
+G.Frame_5.LayoutOrder = 3
+G.Frame_5.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_5.Parent = G.WavePage_Speed
+
+G.TextLabel_4 = Instance.new("TextLabel")
+G.TextLabel_4.BackgroundTransparency = 1
+G.TextLabel_4.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_4.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_4.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_4.Text = "Carry Speed"
+G.TextLabel_4.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_4.TextSize = 11
+G.TextLabel_4.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_4.Parent = G.Frame_5
+
+G.Frame_6 = Instance.new("Frame")
+G.Frame_6.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_6.BorderSizePixel = 0
+G.Frame_6.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_6.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_6.Parent = G.Frame_5
+
+G.UICorner_14 = Instance.new("UICorner")
+G.UICorner_14.CornerRadius = UDim.new(0, 6)
+G.UICorner_14.Parent = G.Frame_6
+
+G.UIStroke_7 = Instance.new("UIStroke")
+G.UIStroke_7.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_7.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_7.Parent = G.Frame_6
+
+G.TextBox_2 = Instance.new("TextBox")
+G.TextBox_2.BackgroundTransparency = 1
+G.TextBox_2.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_2.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_2.ZIndex = 8
+G.TextBox_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_2.Text = "30"
+G.TextBox_2.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_2.TextSize = 11
+G.TextBox_2.ClearTextOnFocus = false
+G.TextBox_2.Parent = G.Frame_6
+
+G.Frame_7 = Instance.new("Frame")
+G.Frame_7.BackgroundTransparency = 1
+G.Frame_7.BorderSizePixel = 0
+G.Frame_7.LayoutOrder = 6
+G.Frame_7.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_7.Parent = G.WavePage_Speed
+
+G.TextLabel_5 = Instance.new("TextLabel")
+G.TextLabel_5.BackgroundTransparency = 1
+G.TextLabel_5.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_5.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_5.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_5.Text = "Lagger Normal Speed"
+G.TextLabel_5.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_5.TextSize = 11
+G.TextLabel_5.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_5.Parent = G.Frame_7
+
+G.Frame_8 = Instance.new("Frame")
+G.Frame_8.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_8.BorderSizePixel = 0
+G.Frame_8.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_8.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_8.Parent = G.Frame_7
+
+G.UICorner_15 = Instance.new("UICorner")
+G.UICorner_15.CornerRadius = UDim.new(0, 6)
+G.UICorner_15.Parent = G.Frame_8
+
+G.UIStroke_8 = Instance.new("UIStroke")
+G.UIStroke_8.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_8.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_8.Parent = G.Frame_8
+
+G.TextBox_3 = Instance.new("TextBox")
+G.TextBox_3.BackgroundTransparency = 1
+G.TextBox_3.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_3.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_3.ZIndex = 8
+G.TextBox_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_3.Text = "15"
+G.TextBox_3.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_3.TextSize = 11
+G.TextBox_3.ClearTextOnFocus = false
+G.TextBox_3.Parent = G.Frame_8
+
+G.Frame_9 = Instance.new("Frame")
+G.Frame_9.BackgroundTransparency = 1
+G.Frame_9.BorderSizePixel = 0
+G.Frame_9.LayoutOrder = 7
+G.Frame_9.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_9.Parent = G.WavePage_Speed
+
+G.TextLabel_6 = Instance.new("TextLabel")
+G.TextLabel_6.BackgroundTransparency = 1
+G.TextLabel_6.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_6.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_6.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_6.Text = "Lagger Carry Speed"
+G.TextLabel_6.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_6.TextSize = 11
+G.TextLabel_6.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_6.Parent = G.Frame_9
+
+G.Frame_10 = Instance.new("Frame")
+G.Frame_10.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_10.BorderSizePixel = 0
+G.Frame_10.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_10.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_10.Parent = G.Frame_9
+
+G.UICorner_16 = Instance.new("UICorner")
+G.UICorner_16.CornerRadius = UDim.new(0, 6)
+G.UICorner_16.Parent = G.Frame_10
+
+G.UIStroke_9 = Instance.new("UIStroke")
+G.UIStroke_9.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_9.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_9.Parent = G.Frame_10
+
+G.TextBox_4 = Instance.new("TextBox")
+G.TextBox_4.BackgroundTransparency = 1
+G.TextBox_4.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_4.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_4.ZIndex = 8
+G.TextBox_4.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_4.Text = "10"
+G.TextBox_4.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_4.TextSize = 11
+G.TextBox_4.ClearTextOnFocus = false
+G.TextBox_4.Parent = G.Frame_10
+
+G.Frame_11 = Instance.new("Frame")
+G.Frame_11.BackgroundTransparency = 1
+G.Frame_11.BorderSizePixel = 0
+G.Frame_11.LayoutOrder = 7
+G.Frame_11.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_11.Parent = G.WavePage_Speed
+
+G.Frame_12 = Instance.new("Frame")
+G.Frame_12.BackgroundTransparency = 1
+G.Frame_12.BorderSizePixel = 0
+G.Frame_12.LayoutOrder = 5
+G.Frame_12.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_12.Parent = G.WavePage_Speed
+
+G.TextLabel_7 = Instance.new("TextLabel")
+G.TextLabel_7.BackgroundTransparency = 1
+G.TextLabel_7.Position = UDim2.new(0, 12, 0.5, -7)
+G.TextLabel_7.Size = UDim2.new(0, 100, 0, 14)
+G.TextLabel_7.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_7.Text = "Speed Mode"
+G.TextLabel_7.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_7.TextSize = 11
+G.TextLabel_7.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_7.Parent = G.Frame_12
+
+G.TextButton_2 = Instance.new("TextButton")
+G.TextButton_2.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_2.BorderSizePixel = 0
+G.TextButton_2.Position = UDim2.new(1, -88, 0.5, -13)
+G.TextButton_2.Size = UDim2.new(0, 80, 0, 26)
+G.TextButton_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_2.Text = "Normal"
+G.TextButton_2.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_2.TextSize = 11
+G.TextButton_2.Parent = G.Frame_12
+
+G.UICorner_17 = Instance.new("UICorner")
+G.UICorner_17.CornerRadius = UDim.new(0, 4)
+G.UICorner_17.Parent = G.TextButton_2
+
+G.UIStroke_10 = Instance.new("UIStroke")
+G.UIStroke_10.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_10.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_10.Parent = G.TextButton_2
+
+G.Frame_13 = Instance.new("Frame")
+G.Frame_13.BackgroundTransparency = 1
+G.Frame_13.BorderSizePixel = 0
+G.Frame_13.LayoutOrder = 9
+G.Frame_13.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_13.Parent = G.WavePage_Speed
+
+G.Frame_14 = Instance.new("Frame")
+G.Frame_14.BackgroundTransparency = 1
+G.Frame_14.BorderSizePixel = 0
+G.Frame_14.LayoutOrder = 9
+G.Frame_14.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_14.Parent = G.WavePage_Speed
+
+G.TextLabel_8 = Instance.new("TextLabel")
+G.TextLabel_8.BackgroundTransparency = 1
+G.TextLabel_8.Position = UDim2.new(0, 12, 0.5, -7)
+G.TextLabel_8.Size = UDim2.new(0, 100, 0, 14)
+G.TextLabel_8.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_8.Text = "Lagger Mode"
+G.TextLabel_8.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_8.TextSize = 11
+G.TextLabel_8.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_8.Parent = G.Frame_14
+
+G.TextButton_3 = Instance.new("TextButton")
+G.TextButton_3.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_3.BorderSizePixel = 0
+G.TextButton_3.Position = UDim2.new(1, -88, 0.5, -13)
+G.TextButton_3.Size = UDim2.new(0, 80, 0, 26)
+G.TextButton_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_3.Text = "Lagger Off"
+G.TextButton_3.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_3.TextSize = 11
+G.TextButton_3.Parent = G.Frame_14
+
+G.UICorner_18 = Instance.new("UICorner")
+G.UICorner_18.CornerRadius = UDim.new(0, 4)
+G.UICorner_18.Parent = G.TextButton_3
+
+G.UIStroke_11 = Instance.new("UIStroke")
+G.UIStroke_11.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_11.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_11.Parent = G.TextButton_3
+
+G.Frame_15 = Instance.new("Frame")
+G.Frame_15.BackgroundTransparency = 1
+G.Frame_15.BorderSizePixel = 0
+G.Frame_15.LayoutOrder = 11
+G.Frame_15.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_15.Parent = G.WavePage_Speed
+
+G.Frame_16 = Instance.new("Frame")
+G.Frame_16.BackgroundTransparency = 1
+G.Frame_16.BorderSizePixel = 0
+G.Frame_16.ClipsDescendants = true
+G.Frame_16.LayoutOrder = 26
+G.Frame_16.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_16.Visible = false
+G.Frame_16.Parent = G.WavePage_Speed
+
+G.TextLabel_9 = Instance.new("TextLabel")
+G.TextLabel_9.BackgroundTransparency = 1
+G.TextLabel_9.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_9.Size = UDim2.new(1, -148, 1, 0)
+G.TextLabel_9.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_9.Text = "Jump Mode"
+G.TextLabel_9.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_9.TextSize = 11
+G.TextLabel_9.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_9.Parent = G.Frame_16
+
+G.TextButton_4 = Instance.new("TextButton")
+G.TextButton_4.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_4.BorderSizePixel = 0
+G.TextButton_4.Position = UDim2.new(1, -88, 0.5, -13)
+G.TextButton_4.Size = UDim2.new(0, 80, 0, 26)
+G.TextButton_4.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_4.Text = "Tap"
+G.TextButton_4.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_4.TextSize = 11
+G.TextButton_4.Parent = G.Frame_16
+
+G.UICorner_19 = Instance.new("UICorner")
+G.UICorner_19.CornerRadius = UDim.new(0, 4)
+G.UICorner_19.Parent = G.TextButton_4
+
+G.UIStroke_12 = Instance.new("UIStroke")
+G.UIStroke_12.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_12.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_12.Parent = G.TextButton_4
+
+G.Frame_17 = Instance.new("Frame")
+G.Frame_17.BackgroundTransparency = 1
+G.Frame_17.BorderSizePixel = 0
+G.Frame_17.LayoutOrder = 13
+G.Frame_17.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_17.Parent = G.WavePage_Speed
+
+G.Frame_18 = Instance.new("Frame")
+G.Frame_18.BackgroundTransparency = 1
+G.Frame_18.BorderSizePixel = 0
+G.Frame_18.LayoutOrder = 4
+G.Frame_18.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_18.Parent = G.WavePage_Speed
+
+G.TextLabel_10 = Instance.new("TextLabel")
+G.TextLabel_10.BackgroundTransparency = 1
+G.TextLabel_10.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_10.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_10.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_10.Text = "Speed Bind"
+G.TextLabel_10.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_10.TextSize = 11
+G.TextLabel_10.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_10.Parent = G.Frame_18
+
+G.TextButton_5 = Instance.new("TextButton")
+G.TextButton_5.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_5.BorderSizePixel = 0
+G.TextButton_5.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_5.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_5.ZIndex = 8
+G.TextButton_5.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_5.Text = "…"
+G.TextButton_5.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_5.TextSize = 10
+G.TextButton_5.Parent = G.Frame_18
+
+G.UICorner_20 = Instance.new("UICorner")
+G.UICorner_20.CornerRadius = UDim.new(0, 6)
+G.UICorner_20.Parent = G.TextButton_5
+
+G.UIStroke_13 = Instance.new("UIStroke")
+G.UIStroke_13.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_13.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_13.Parent = G.TextButton_5
+
+G.Frame_19 = Instance.new("Frame")
+G.Frame_19.BackgroundTransparency = 1
+G.Frame_19.BorderSizePixel = 0
+G.Frame_19.LayoutOrder = 8
+G.Frame_19.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_19.Parent = G.WavePage_Speed
+
+G.TextLabel_11 = Instance.new("TextLabel")
+G.TextLabel_11.BackgroundTransparency = 1
+G.TextLabel_11.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_11.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_11.Text = "Lagger Bind"
+G.TextLabel_11.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_11.TextSize = 11
+G.TextLabel_11.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_11.Parent = G.Frame_19
+
+G.TextButton_6 = Instance.new("TextButton")
+G.TextButton_6.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_6.BorderSizePixel = 0
+G.TextButton_6.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_6.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_6.ZIndex = 8
+G.TextButton_6.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_6.Text = "…"
+G.TextButton_6.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_6.TextSize = 10
+G.TextButton_6.Parent = G.Frame_19
+
+G.UICorner_21 = Instance.new("UICorner")
+G.UICorner_21.CornerRadius = UDim.new(0, 6)
+G.UICorner_21.Parent = G.TextButton_6
+
+G.UIStroke_14 = Instance.new("UIStroke")
+G.UIStroke_14.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_14.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_14.Parent = G.TextButton_6
+
+G.Frame_20 = Instance.new("Frame")
+G.Frame_20.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_20.BackgroundTransparency = 1
+G.Frame_20.BorderSizePixel = 0
+G.Frame_20.LayoutOrder = 25
+G.Frame_20.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_20.Parent = G.WavePage_Speed
+
+G.TextLabel_12 = Instance.new("TextLabel")
+G.TextLabel_12.BackgroundTransparency = 1
+G.TextLabel_12.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_12.Size = UDim2.new(1, -120, 1, 0)
+G.TextLabel_12.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_12.Text = "Infinite Jump"
+G.TextLabel_12.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_12.TextSize = 11
+G.TextLabel_12.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_12.Parent = G.Frame_20
+
+G.WaveTogglePill = Instance.new("Frame")
+G.WaveTogglePill.Name = "WaveTogglePill"
+G.WaveTogglePill.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill.BorderSizePixel = 0
+G.WaveTogglePill.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill.ZIndex = 7
+G.WaveTogglePill:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill.Parent = G.Frame_20
+
+G.UICorner_22 = Instance.new("UICorner")
+G.UICorner_22.CornerRadius = UDim.new(0, 9)
+G.UICorner_22.Parent = G.WaveTogglePill
+
+G.UIStroke_15 = Instance.new("UIStroke")
+G.UIStroke_15.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_15.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_15.Parent = G.WaveTogglePill
+
+G.WaveToggleDot = Instance.new("Frame")
+G.WaveToggleDot.Name = "WaveToggleDot"
+G.WaveToggleDot.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot.BorderSizePixel = 0
+G.WaveToggleDot.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot.ZIndex = 8
+G.WaveToggleDot.Parent = G.WaveTogglePill
+
+G.UICorner_23 = Instance.new("UICorner")
+G.UICorner_23.CornerRadius = UDim.new(0, 6)
+G.UICorner_23.Parent = G.WaveToggleDot
+
+G.TextButton_7 = Instance.new("TextButton")
+G.TextButton_7.BackgroundTransparency = 1
+G.TextButton_7.BorderSizePixel = 0
+G.TextButton_7.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_7.ZIndex = 9
+G.TextButton_7.Text = ""
+G.TextButton_7.Parent = G.WaveTogglePill
+
+G.SizeDropdown = Instance.new("TextButton")
+G.SizeDropdown.Name = "SizeDropdown"
+G.SizeDropdown.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.SizeDropdown.BorderSizePixel = 0
+G.SizeDropdown.Position = UDim2.new(1, -106, 0.5, -11)
+G.SizeDropdown.Size = UDim2.new(0, 34, 0, 22)
+G.SizeDropdown.ZIndex = 9
+G.SizeDropdown.Text = ""
+G.SizeDropdown.Visible = false
+G.SizeDropdown.Parent = G.Frame_20
+
+G.UICorner_24 = Instance.new("UICorner")
+G.UICorner_24.CornerRadius = UDim.new(0, 4)
+G.UICorner_24.Parent = G.SizeDropdown
+
+G.UIStroke_16 = Instance.new("UIStroke")
+G.UIStroke_16.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_16.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_16.Parent = G.SizeDropdown
+
+G.Arrow = Instance.new("TextLabel")
+G.Arrow.Name = "Arrow"
+G.Arrow.BackgroundTransparency = 1
+G.Arrow.Size = UDim2.new(1, 0, 1, 0)
+G.Arrow.ZIndex = 10
+G.Arrow.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.Arrow.Text = "▼"
+G.Arrow.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.Arrow.TextSize = 16
+G.Arrow.Visible = false
+G.Arrow.Parent = G.SizeDropdown
+
+G.Frame_21 = Instance.new("Frame")
+G.Frame_21.BackgroundTransparency = 1
+G.Frame_21.BorderSizePixel = 0
+G.Frame_21.LayoutOrder = 17
+G.Frame_21.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_21.Parent = G.WavePage_Speed
+
+G.TextLabel_13 = Instance.new("TextLabel")
+G.TextLabel_13.BackgroundTransparency = 1
+G.TextLabel_13.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_13.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_13.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_13.Text = "MOVEMENT"
+G.TextLabel_13.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_13.TextSize = 13
+G.TextLabel_13.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_13.Parent = G.Frame_21
+
+G.Frame_22 = Instance.new("Frame")
+G.Frame_22.BackgroundTransparency = 1
+G.Frame_22.BorderSizePixel = 0
+G.Frame_22.LayoutOrder = 18
+G.Frame_22.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_22.Parent = G.WavePage_Speed
+
+G.Frame_23 = Instance.new("Frame")
+G.Frame_23.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_23.BackgroundTransparency = 1
+G.Frame_23.BorderSizePixel = 0
+G.Frame_23.LayoutOrder = 19
+G.Frame_23.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_23.Parent = G.WavePage_Speed
+
+G.TextLabel_14 = Instance.new("TextLabel")
+G.TextLabel_14.BackgroundTransparency = 1
+G.TextLabel_14.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_14.Size = UDim2.new(1, -148, 1, 0)
+G.TextLabel_14.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_14.Text = "Auto Carry Speed"
+G.TextLabel_14.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_14.TextSize = 11
+G.TextLabel_14.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_14.Parent = G.Frame_23
+
+G.WaveTogglePill_2 = Instance.new("Frame")
+G.WaveTogglePill_2.Name = "WaveTogglePill"
+G.WaveTogglePill_2.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_2.BorderSizePixel = 0
+G.WaveTogglePill_2.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_2.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_2.ZIndex = 7
+G.WaveTogglePill_2:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_2.Parent = G.Frame_23
+
+G.UICorner_25 = Instance.new("UICorner")
+G.UICorner_25.CornerRadius = UDim.new(0, 9)
+G.UICorner_25.Parent = G.WaveTogglePill_2
+
+G.UIStroke_17 = Instance.new("UIStroke")
+G.UIStroke_17.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_17.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_17.Parent = G.WaveTogglePill_2
+
+G.WaveToggleDot_2 = Instance.new("Frame")
+G.WaveToggleDot_2.Name = "WaveToggleDot"
+G.WaveToggleDot_2.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_2.BorderSizePixel = 0
+G.WaveToggleDot_2.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_2.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_2.ZIndex = 8
+G.WaveToggleDot_2.Parent = G.WaveTogglePill_2
+
+G.UICorner_26 = Instance.new("UICorner")
+G.UICorner_26.CornerRadius = UDim.new(0, 6)
+G.UICorner_26.Parent = G.WaveToggleDot_2
+
+G.TextButton_8 = Instance.new("TextButton")
+G.TextButton_8.BackgroundTransparency = 1
+G.TextButton_8.BorderSizePixel = 0
+G.TextButton_8.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_8.ZIndex = 9
+G.TextButton_8.Text = ""
+G.TextButton_8.Parent = G.WaveTogglePill_2
+
+G.TextButton_9 = Instance.new("TextButton")
+G.TextButton_9.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_9.BorderSizePixel = 0
+G.TextButton_9.Position = UDim2.new(1, -128, 0.5, -12)
+G.TextButton_9.Size = UDim2.new(0, 58, 0, 24)
+G.TextButton_9.ZIndex = 8
+G.TextButton_9.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_9.Text = "V1"
+G.TextButton_9.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_9.TextSize = 10
+G.TextButton_9.Parent = G.Frame_23
+
+G.UICorner_27 = Instance.new("UICorner")
+G.UICorner_27.CornerRadius = UDim.new(0, 4)
+G.UICorner_27.Parent = G.TextButton_9
+
+G.UIStroke_18 = Instance.new("UIStroke")
+G.UIStroke_18.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_18.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_18.Parent = G.TextButton_9
+
+G.Frame_24 = Instance.new("Frame")
+G.Frame_24.BackgroundTransparency = 1
+G.Frame_24.BorderSizePixel = 0
+G.Frame_24.LayoutOrder = 20
+G.Frame_24.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_24.Parent = G.WavePage_Speed
+
+G.TextLabel_15 = Instance.new("TextLabel")
+G.TextLabel_15.BackgroundTransparency = 1
+G.TextLabel_15.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_15.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_15.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_15.Text = "Auto Left"
+G.TextLabel_15.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_15.TextSize = 11
+G.TextLabel_15.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_15.Parent = G.Frame_24
+
+G.TextButton_10 = Instance.new("TextButton")
+G.TextButton_10.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_10.BorderSizePixel = 0
+G.TextButton_10.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_10.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_10.ZIndex = 8
+G.TextButton_10.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_10.Text = "Z"
+G.TextButton_10.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_10.TextSize = 10
+G.TextButton_10.Parent = G.Frame_24
+
+G.UICorner_28 = Instance.new("UICorner")
+G.UICorner_28.CornerRadius = UDim.new(0, 6)
+G.UICorner_28.Parent = G.TextButton_10
+
+G.UIStroke_19 = Instance.new("UIStroke")
+G.UIStroke_19.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_19.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_19.Parent = G.TextButton_10
+
+G.Frame_25 = Instance.new("Frame")
+G.Frame_25.BackgroundTransparency = 1
+G.Frame_25.BorderSizePixel = 0
+G.Frame_25.LayoutOrder = 21
+G.Frame_25.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_25.Parent = G.WavePage_Speed
+
+G.TextLabel_16 = Instance.new("TextLabel")
+G.TextLabel_16.BackgroundTransparency = 1
+G.TextLabel_16.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_16.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_16.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_16.Text = "Auto Right"
+G.TextLabel_16.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_16.TextSize = 11
+G.TextLabel_16.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_16.Parent = G.Frame_25
+
+G.TextButton_11 = Instance.new("TextButton")
+G.TextButton_11.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_11.BorderSizePixel = 0
+G.TextButton_11.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_11.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_11.ZIndex = 8
+G.TextButton_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_11.Text = "C"
+G.TextButton_11.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_11.TextSize = 10
+G.TextButton_11.Parent = G.Frame_25
+
+G.UICorner_29 = Instance.new("UICorner")
+G.UICorner_29.CornerRadius = UDim.new(0, 6)
+G.UICorner_29.Parent = G.TextButton_11
+
+G.UIStroke_20 = Instance.new("UIStroke")
+G.UIStroke_20.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_20.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_20.Parent = G.TextButton_11
+
+G.Frame_26 = Instance.new("Frame")
+G.Frame_26.BackgroundTransparency = 1
+G.Frame_26.BorderSizePixel = 0
+G.Frame_26.LayoutOrder = 22
+G.Frame_26.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_26.Parent = G.WavePage_Speed
+
+G.Frame_27 = Instance.new("Frame")
+G.Frame_27.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_27.BackgroundTransparency = 1
+G.Frame_27.BorderSizePixel = 0
+G.Frame_27.LayoutOrder = 28
+G.Frame_27.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_27.Parent = G.WavePage_Speed
+
+G.TextLabel_17 = Instance.new("TextLabel")
+G.TextLabel_17.BackgroundTransparency = 1
+G.TextLabel_17.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_17.Size = UDim2.new(1, -148, 1, 0)
+G.TextLabel_17.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_17.Text = "Anti Ragdoll"
+G.TextLabel_17.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_17.TextSize = 11
+G.TextLabel_17.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_17.Parent = G.Frame_27
+
+G.WaveTogglePill_3 = Instance.new("Frame")
+G.WaveTogglePill_3.Name = "WaveTogglePill"
+G.WaveTogglePill_3.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_3.BorderSizePixel = 0
+G.WaveTogglePill_3.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_3.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_3.ZIndex = 7
+G.WaveTogglePill_3:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_3.Parent = G.Frame_27
+
+G.UICorner_30 = Instance.new("UICorner")
+G.UICorner_30.CornerRadius = UDim.new(0, 9)
+G.UICorner_30.Parent = G.WaveTogglePill_3
+
+G.UIStroke_21 = Instance.new("UIStroke")
+G.UIStroke_21.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_21.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_21.Parent = G.WaveTogglePill_3
+
+G.WaveToggleDot_3 = Instance.new("Frame")
+G.WaveToggleDot_3.Name = "WaveToggleDot"
+G.WaveToggleDot_3.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_3.BorderSizePixel = 0
+G.WaveToggleDot_3.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_3.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_3.ZIndex = 8
+G.WaveToggleDot_3.Parent = G.WaveTogglePill_3
+
+G.UICorner_31 = Instance.new("UICorner")
+G.UICorner_31.CornerRadius = UDim.new(0, 6)
+G.UICorner_31.Parent = G.WaveToggleDot_3
+
+G.TextButton_12 = Instance.new("TextButton")
+G.TextButton_12.BackgroundTransparency = 1
+G.TextButton_12.BorderSizePixel = 0
+G.TextButton_12.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_12.ZIndex = 9
+G.TextButton_12.Text = ""
+G.TextButton_12.Parent = G.WaveTogglePill_3
+
+G.TextButton_13 = Instance.new("TextButton")
+G.TextButton_13.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_13.BorderSizePixel = 0
+G.TextButton_13.Position = UDim2.new(1, -128, 0.5, -12)
+G.TextButton_13.Size = UDim2.new(0, 58, 0, 24)
+G.TextButton_13.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_13.Text = "V1"
+G.TextButton_13.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_13.TextSize = 10
+G.TextButton_13.Visible = false
+G.TextButton_13.Parent = G.Frame_27
+
+G.UICorner_32 = Instance.new("UICorner")
+G.UICorner_32.CornerRadius = UDim.new(0, 4)
+G.UICorner_32.Parent = G.TextButton_13
+
+G.UIStroke_22 = Instance.new("UIStroke")
+G.UIStroke_22.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_22.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_22.Parent = G.TextButton_13
+
+G.Frame_28 = Instance.new("Frame")
+G.Frame_28.BackgroundTransparency = 1
+G.Frame_28.BorderSizePixel = 0
+G.Frame_28.LayoutOrder = 24
+G.Frame_28.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_28.Parent = G.WavePage_Speed
+
+G.TextLabel_18 = Instance.new("TextLabel")
+G.TextLabel_18.BackgroundTransparency = 1
+G.TextLabel_18.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_18.Size = UDim2.new(1, -148, 1, 0)
+G.TextLabel_18.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_18.Text = "Drop BR"
+G.TextLabel_18.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_18.TextSize = 11
+G.TextLabel_18.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_18.Parent = G.Frame_28
+
+G.TextButton_14 = Instance.new("TextButton")
+G.TextButton_14.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_14.BorderSizePixel = 0
+G.TextButton_14.Position = UDim2.new(1, -130, 0.5, -12)
+G.TextButton_14.Size = UDim2.new(0, 58, 0, 24)
+G.TextButton_14.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_14.Text = "Jump"
+G.TextButton_14.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_14.TextSize = 10
+G.TextButton_14.Parent = G.Frame_28
+
+G.UICorner_33 = Instance.new("UICorner")
+G.UICorner_33.CornerRadius = UDim.new(0, 4)
+G.UICorner_33.Parent = G.TextButton_14
+
+G.UIStroke_23 = Instance.new("UIStroke")
+G.UIStroke_23.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_23.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_23.Parent = G.TextButton_14
+
+G.TextButton_15 = Instance.new("TextButton")
+G.TextButton_15.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_15.BorderSizePixel = 0
+G.TextButton_15.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_15.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_15.ZIndex = 8
+G.TextButton_15.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_15.Text = "…"
+G.TextButton_15:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad")
+G.TextButton_15.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_15.TextSize = 10
+G.TextButton_15.Parent = G.Frame_28
+
+G.UICorner_34 = Instance.new("UICorner")
+G.UICorner_34.CornerRadius = UDim.new(0, 6)
+G.UICorner_34.Parent = G.TextButton_15
+
+G.UIStroke_24 = Instance.new("UIStroke")
+G.UIStroke_24.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_24.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_24.Parent = G.TextButton_15
+
+G.Frame_29 = Instance.new("Frame")
+G.Frame_29.BackgroundTransparency = 1
+G.Frame_29.BorderSizePixel = 0
+G.Frame_29.LayoutOrder = 25
+G.Frame_29.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_29.Parent = G.WavePage_Speed
+
+G.Frame_30 = Instance.new("Frame")
+G.Frame_30.BackgroundTransparency = 1
+G.Frame_30.BorderSizePixel = 0
+G.Frame_30.LayoutOrder = 26
+G.Frame_30.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_30.Parent = G.WavePage_Speed
+
+G.Frame_31 = Instance.new("Frame")
+G.Frame_31.BackgroundTransparency = 1
+G.Frame_31.BorderSizePixel = 0
+G.Frame_31.ClipsDescendants = true
+G.Frame_31.LayoutOrder = 27
+G.Frame_31.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_31.Visible = false
+G.Frame_31.Parent = G.WavePage_Speed
+
+G.TextLabel_19 = Instance.new("TextLabel")
+G.TextLabel_19.BackgroundTransparency = 1
+G.TextLabel_19.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_19.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_19.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_19.Text = "Jump Power"
+G.TextLabel_19.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_19.TextSize = 11
+G.TextLabel_19.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_19.Parent = G.Frame_31
+
+G.Frame_32 = Instance.new("Frame")
+G.Frame_32.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_32.BorderSizePixel = 0
+G.Frame_32.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_32.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_32.Parent = G.Frame_31
+
+G.UICorner_35 = Instance.new("UICorner")
+G.UICorner_35.CornerRadius = UDim.new(0, 6)
+G.UICorner_35.Parent = G.Frame_32
+
+G.UIStroke_25 = Instance.new("UIStroke")
+G.UIStroke_25.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_25.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_25.Parent = G.Frame_32
+
+G.TextBox_5 = Instance.new("TextBox")
+G.TextBox_5.BackgroundTransparency = 1
+G.TextBox_5.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_5.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_5.ZIndex = 8
+G.TextBox_5.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_5.Text = "55"
+G.TextBox_5.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_5.TextSize = 11
+G.TextBox_5.ClearTextOnFocus = false
+G.TextBox_5.Parent = G.Frame_32
+
+G.Frame_33 = Instance.new("Frame")
+G.Frame_33.BackgroundTransparency = 1
+G.Frame_33.BorderSizePixel = 0
+G.Frame_33.LayoutOrder = 75
+G.Frame_33.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_33.Parent = G.WavePage_Speed
+
+G.Frame_34 = Instance.new("Frame")
+G.Frame_34.BackgroundTransparency = 1
+G.Frame_34.BorderSizePixel = 0
+G.Frame_34.LayoutOrder = 1008
+G.Frame_34.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_34.Parent = G.WavePage_Speed
+
+G.TextLabel_20 = Instance.new("TextLabel")
+G.TextLabel_20.BackgroundTransparency = 1
+G.TextLabel_20.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_20.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_20.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_20.Text = "TELEPORT"
+G.TextLabel_20.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_20.TextSize = 13
+G.TextLabel_20.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_20.Parent = G.Frame_34
+
+G.Frame_35 = Instance.new("Frame")
+G.Frame_35.BackgroundTransparency = 1
+G.Frame_35.BorderSizePixel = 0
+G.Frame_35.LayoutOrder = 1009
+G.Frame_35.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_35.Parent = G.WavePage_Speed
+
+G.TextLabel_21 = Instance.new("TextLabel")
+G.TextLabel_21.BackgroundTransparency = 1
+G.TextLabel_21.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_21.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_21.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_21.Text = "TP Down"
+G.TextLabel_21.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_21.TextSize = 11
+G.TextLabel_21.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_21.Parent = G.Frame_35
+
+G.TextButton_16 = Instance.new("TextButton")
+G.TextButton_16.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_16.BorderSizePixel = 0
+G.TextButton_16.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_16.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_16.ZIndex = 8
+G.TextButton_16.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_16.Text = "…"
+G.TextButton_16:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad")
+G.TextButton_16.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_16.TextSize = 10
+G.TextButton_16.Parent = G.Frame_35
+
+G.UICorner_36 = Instance.new("UICorner")
+G.UICorner_36.CornerRadius = UDim.new(0, 6)
+G.UICorner_36.Parent = G.TextButton_16
+
+G.UIStroke_26 = Instance.new("UIStroke")
+G.UIStroke_26.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_26.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_26.Parent = G.TextButton_16
+
+G.Frame_36 = Instance.new("Frame")
+G.Frame_36.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_36.BackgroundTransparency = 1
+G.Frame_36.BorderSizePixel = 0
+G.Frame_36.LayoutOrder = 1010
+G.Frame_36.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_36.Parent = G.WavePage_Speed
+
+G.TextLabel_22 = Instance.new("TextLabel")
+G.TextLabel_22.BackgroundTransparency = 1
+G.TextLabel_22.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_22.Size = UDim2.new(1, -120, 1, 0)
+G.TextLabel_22.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_22.Text = "Auto Tp Down"
+G.TextLabel_22.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_22.TextSize = 11
+G.TextLabel_22.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_22.Parent = G.Frame_36
+
+G.Frame_37 = Instance.new("Frame")
+G.Frame_37.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.Frame_37.BorderSizePixel = 0
+G.Frame_37.Position = UDim2.new(1, -108, 0.5, -10)
+G.Frame_37.Size = UDim2.new(0, 40, 0, 20)
+G.Frame_37.Parent = G.Frame_36
+
+G.UICorner_37 = Instance.new("UICorner")
+G.UICorner_37.CornerRadius = UDim.new(0, 2)
+G.UICorner_37.Parent = G.Frame_37
+
+G.TextBox_6 = Instance.new("TextBox")
+G.TextBox_6.BackgroundTransparency = 1
+G.TextBox_6.Position = UDim2.new(0, 2, 0, 0)
+G.TextBox_6.Size = UDim2.new(1, -4, 1, 0)
+G.TextBox_6.ZIndex = 8
+G.TextBox_6.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_6.Text = "20"
+G.TextBox_6.TextColor3 = Color3.fromRGB(229, 220, 235)
+G.TextBox_6.TextSize = 10
+G.TextBox_6.ClearTextOnFocus = false
+G.TextBox_6.Parent = G.Frame_37
+
+G.UIStroke_27 = Instance.new("UIStroke")
+G.UIStroke_27.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_27.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_27.Parent = G.Frame_37
+
+G.WaveTogglePill_4 = Instance.new("Frame")
+G.WaveTogglePill_4.Name = "WaveTogglePill"
+G.WaveTogglePill_4.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_4.BorderSizePixel = 0
+G.WaveTogglePill_4.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_4.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_4.ZIndex = 7
+G.WaveTogglePill_4:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_4.Parent = G.Frame_36
+
+G.UICorner_38 = Instance.new("UICorner")
+G.UICorner_38.CornerRadius = UDim.new(0, 9)
+G.UICorner_38.Parent = G.WaveTogglePill_4
+
+G.UIStroke_28 = Instance.new("UIStroke")
+G.UIStroke_28.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_28.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_28.Parent = G.WaveTogglePill_4
+
+G.WaveToggleDot_4 = Instance.new("Frame")
+G.WaveToggleDot_4.Name = "WaveToggleDot"
+G.WaveToggleDot_4.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_4.BorderSizePixel = 0
+G.WaveToggleDot_4.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_4.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_4.ZIndex = 8
+G.WaveToggleDot_4.Parent = G.WaveTogglePill_4
+
+G.UICorner_39 = Instance.new("UICorner")
+G.UICorner_39.CornerRadius = UDim.new(0, 6)
+G.UICorner_39.Parent = G.WaveToggleDot_4
+
+G.TextButton_17 = Instance.new("TextButton")
+G.TextButton_17.BackgroundTransparency = 1
+G.TextButton_17.BorderSizePixel = 0
+G.TextButton_17.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_17.ZIndex = 9
+G.TextButton_17.Text = ""
+G.TextButton_17.Parent = G.WaveTogglePill_4
+
+G.WavePage_Movement = Instance.new("ScrollingFrame")
+G.WavePage_Movement.Name = "WavePage_Movement"
+G.WavePage_Movement.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Movement.BackgroundTransparency = 1
+G.WavePage_Movement.BorderSizePixel = 0
+G.WavePage_Movement.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Movement.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Movement.Visible = false
+G.WavePage_Movement.ZIndex = 3
+G.WavePage_Movement.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Movement.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Movement.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Movement.ScrollBarImageTransparency = 0.5
+G.WavePage_Movement.ScrollBarThickness = 3
+G.WavePage_Movement.Parent = G.MainOuter
+
+G.UIListLayout_3 = Instance.new("UIListLayout")
+G.UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_3.Parent = G.WavePage_Movement
+
+G.UIPadding_2 = Instance.new("UIPadding")
+G.UIPadding_2.PaddingBottom = UDim.new(0, 12)
+G.UIPadding_2.PaddingLeft = UDim.new(0, 8)
+G.UIPadding_2.PaddingRight = UDim.new(0, 8)
+G.UIPadding_2.PaddingTop = UDim.new(0, 6)
+G.UIPadding_2.Parent = G.WavePage_Movement
+
+G.WavePage_Misc = Instance.new("ScrollingFrame")
+G.WavePage_Misc.Name = "WavePage_Misc"
+G.WavePage_Misc.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Misc.BackgroundTransparency = 1
+G.WavePage_Misc.BorderSizePixel = 0
+G.WavePage_Misc.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Misc.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Misc.Visible = false
+G.WavePage_Misc.ZIndex = 3
+G.WavePage_Misc.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Misc.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Misc.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Misc.ScrollBarImageTransparency = 0.5
+G.WavePage_Misc.ScrollBarThickness = 3
+G.WavePage_Misc.Parent = G.MainOuter
+
+G.UIListLayout_4 = Instance.new("UIListLayout")
+G.UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_4.Parent = G.WavePage_Misc
+
+G.UIPadding_3 = Instance.new("UIPadding")
+G.UIPadding_3.PaddingBottom = UDim.new(0, 12)
+G.UIPadding_3.PaddingLeft = UDim.new(0, 8)
+G.UIPadding_3.PaddingRight = UDim.new(0, 8)
+G.UIPadding_3.PaddingTop = UDim.new(0, 6)
+G.UIPadding_3.Parent = G.WavePage_Misc
+
+G.Frame_38 = Instance.new("Frame")
+G.Frame_38.BackgroundTransparency = 1
+G.Frame_38.BorderSizePixel = 0
+G.Frame_38.LayoutOrder = 19
+G.Frame_38.Visible = true
+G.Frame_38.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_38.Parent = G.WavePage_Misc
+
+G.TextLabel_23 = Instance.new("TextLabel")
+G.TextLabel_23.BackgroundTransparency = 1
+G.TextLabel_23.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_23.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_23.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_23.Text = "ANIMATIONS"
+G.TextLabel_23.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_23.TextSize = 13
+G.TextLabel_23.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_23.Parent = G.Frame_38
+
+G.Frame_39 = Instance.new("Frame")
+G.Frame_39.BackgroundTransparency = 1
+G.Frame_39.BorderSizePixel = 0
+G.Frame_39.LayoutOrder = 28
+G.Frame_39.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_39.Parent = G.WavePage_Misc
+
+G.Frame_40 = Instance.new("Frame")
+G.Frame_40.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_40.BackgroundTransparency = 1
+G.Frame_40.BorderSizePixel = 0
+G.Frame_40.LayoutOrder = 23
+G.Frame_40.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_40.Parent = G.WavePage_Misc
+
+G.TextLabel_24 = Instance.new("TextLabel")
+G.TextLabel_24.BackgroundTransparency = 1
+G.TextLabel_24.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_24.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_24.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_24.Text = "Unwalk"
+G.TextLabel_24.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_24.TextSize = 11
+G.TextLabel_24.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_24.Parent = G.Frame_40
+
+G.WaveTogglePill_5 = Instance.new("Frame")
+G.WaveTogglePill_5.Name = "WaveTogglePill"
+G.WaveTogglePill_5.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_5.BorderSizePixel = 0
+G.WaveTogglePill_5.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_5.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_5.ZIndex = 7
+G.WaveTogglePill_5:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_5.Parent = G.Frame_40
+
+G.UICorner_40 = Instance.new("UICorner")
+G.UICorner_40.CornerRadius = UDim.new(0, 9)
+G.UICorner_40.Parent = G.WaveTogglePill_5
+
+G.UIStroke_29 = Instance.new("UIStroke")
+G.UIStroke_29.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_29.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_29.Parent = G.WaveTogglePill_5
+
+G.WaveToggleDot_5 = Instance.new("Frame")
+G.WaveToggleDot_5.Name = "WaveToggleDot"
+G.WaveToggleDot_5.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_5.BorderSizePixel = 0
+G.WaveToggleDot_5.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_5.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_5.ZIndex = 8
+G.WaveToggleDot_5.Parent = G.WaveTogglePill_5
+
+G.UICorner_41 = Instance.new("UICorner")
+G.UICorner_41.CornerRadius = UDim.new(0, 6)
+G.UICorner_41.Parent = G.WaveToggleDot_5
+
+G.TextButton_18 = Instance.new("TextButton")
+G.TextButton_18.BackgroundTransparency = 1
+G.TextButton_18.BorderSizePixel = 0
+G.TextButton_18.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_18.ZIndex = 9
+G.TextButton_18.Text = ""
+G.TextButton_18.Parent = G.WaveTogglePill_5
+
+G.Frame_41 = Instance.new("Frame")
+G.Frame_41.BackgroundTransparency = 1
+G.Frame_41.BorderSizePixel = 0
+G.Frame_41.LayoutOrder = 30
+G.Frame_41.Size = UDim2.new(1, 0, 0, 6)
+G.Frame_41.Parent = G.WavePage_Misc
+
+G.Frame_42 = Instance.new("Frame")
+G.Frame_42.BackgroundTransparency = 1
+G.Frame_42.BorderSizePixel = 0
+G.Frame_42.LayoutOrder = 32
+G.Frame_42.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_42.Parent = G.WavePage_Misc
+
+G.Frame_43 = Instance.new("Frame")
+G.Frame_43.BackgroundTransparency = 1
+G.Frame_43.BorderSizePixel = 0
+G.Frame_43.LayoutOrder = 50
+G.Frame_43.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_43.Parent = G.WavePage_Misc
+
+G.Frame_44 = Instance.new("Frame")
+G.Frame_44.BackgroundTransparency = 1
+G.Frame_44.BorderSizePixel = 0
+G.Frame_44.LayoutOrder = 34
+G.Frame_44.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_44.Parent = G.WavePage_Misc
+
+G.Frame_45 = Instance.new("Frame")
+G.Frame_45.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_45.BackgroundTransparency = 1
+G.Frame_45.BorderSizePixel = 0
+G.Frame_45.LayoutOrder = 6
+G.Frame_45.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_45.Parent = G.WavePage_Misc
+
+G.TextLabel_25 = Instance.new("TextLabel")
+G.TextLabel_25.BackgroundTransparency = 1
+G.TextLabel_25.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_25.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_25.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_25.Text = "Ragdoll Timer"
+G.TextLabel_25.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_25.TextSize = 11
+G.TextLabel_25.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_25.Parent = G.Frame_45
+
+G.WaveTogglePill_6 = Instance.new("Frame")
+G.WaveTogglePill_6.Name = "WaveTogglePill"
+G.WaveTogglePill_6.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_6.BorderSizePixel = 0
+G.WaveTogglePill_6.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_6.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_6.ZIndex = 7
+G.WaveTogglePill_6:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_6.Parent = G.Frame_45
+
+G.UICorner_42 = Instance.new("UICorner")
+G.UICorner_42.CornerRadius = UDim.new(0, 9)
+G.UICorner_42.Parent = G.WaveTogglePill_6
+
+G.UIStroke_30 = Instance.new("UIStroke")
+G.UIStroke_30.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_30.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_30.Parent = G.WaveTogglePill_6
+
+G.WaveToggleDot_6 = Instance.new("Frame")
+G.WaveToggleDot_6.Name = "WaveToggleDot"
+G.WaveToggleDot_6.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_6.BorderSizePixel = 0
+G.WaveToggleDot_6.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_6.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_6.ZIndex = 8
+G.WaveToggleDot_6.Parent = G.WaveTogglePill_6
+
+G.UICorner_43 = Instance.new("UICorner")
+G.UICorner_43.CornerRadius = UDim.new(0, 6)
+G.UICorner_43.Parent = G.WaveToggleDot_6
+
+G.TextButton_19 = Instance.new("TextButton")
+G.TextButton_19.BackgroundTransparency = 1
+G.TextButton_19.BorderSizePixel = 0
+G.TextButton_19.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_19.ZIndex = 9
+G.TextButton_19.Text = ""
+G.TextButton_19.Parent = G.WaveTogglePill_6
+
+G.Frame_46 = Instance.new("Frame")
+G.Frame_46.BackgroundTransparency = 1
+G.Frame_46.BorderSizePixel = 0
+G.Frame_46.LayoutOrder = 45
+G.Frame_46.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_46.Parent = G.WavePage_Misc
+
+G.Frame_47 = Instance.new("Frame")
+G.Frame_47.BackgroundTransparency = 1
+G.Frame_47.BorderSizePixel = 0
+G.Frame_47.LayoutOrder = 37
+G.Frame_47.Size = UDim2.new(1, 0, 0, 6)
+G.Frame_47.Parent = G.WavePage_Misc
+
+G.Frame_48 = Instance.new("Frame")
+G.Frame_48.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_48.BackgroundTransparency = 1
+G.Frame_48.BorderSizePixel = 0
+G.Frame_48.LayoutOrder = 8
+G.Frame_48.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_48.Parent = G.WavePage_Misc
+
+G.TextLabel_26 = Instance.new("TextLabel")
+G.TextLabel_26.BackgroundTransparency = 1
+G.TextLabel_26.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_26.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_26.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_26.Text = "Kick Warning"
+G.TextLabel_26.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_26.TextSize = 11
+G.TextLabel_26.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_26.Parent = G.Frame_48
+
+G.WaveTogglePill_7 = Instance.new("Frame")
+G.WaveTogglePill_7.Name = "WaveTogglePill"
+G.WaveTogglePill_7.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_7.BorderSizePixel = 0
+G.WaveTogglePill_7.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_7.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_7.ZIndex = 7
+G.WaveTogglePill_7:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_7.Parent = G.Frame_48
+
+G.UICorner_44 = Instance.new("UICorner")
+G.UICorner_44.CornerRadius = UDim.new(0, 9)
+G.UICorner_44.Parent = G.WaveTogglePill_7
+
+G.UIStroke_31 = Instance.new("UIStroke")
+G.UIStroke_31.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_31.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_31.Parent = G.WaveTogglePill_7
+
+G.WaveToggleDot_7 = Instance.new("Frame")
+G.WaveToggleDot_7.Name = "WaveToggleDot"
+G.WaveToggleDot_7.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_7.BorderSizePixel = 0
+G.WaveToggleDot_7.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_7.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_7.ZIndex = 8
+G.WaveToggleDot_7.Parent = G.WaveTogglePill_7
+
+G.UICorner_45 = Instance.new("UICorner")
+G.UICorner_45.CornerRadius = UDim.new(0, 6)
+G.UICorner_45.Parent = G.WaveToggleDot_7
+
+G.TextButton_20 = Instance.new("TextButton")
+G.TextButton_20.BackgroundTransparency = 1
+G.TextButton_20.BorderSizePixel = 0
+G.TextButton_20.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_20.ZIndex = 9
+G.TextButton_20.Text = ""
+G.TextButton_20.Parent = G.WaveTogglePill_7
+
+G.Frame_49 = Instance.new("Frame")
+G.Frame_49.BackgroundTransparency = 1
+G.Frame_49.BorderSizePixel = 0
+G.Frame_49.LayoutOrder = 39
+G.Frame_49.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_49.Parent = G.WavePage_Misc
+
+G.Frame_50 = Instance.new("Frame")
+G.Frame_50.BackgroundTransparency = 1
+G.Frame_50.BorderSizePixel = 0
+G.Frame_50.LayoutOrder = 48
+G.Frame_50.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_50.Parent = G.WavePage_Misc
+
+G.Frame_51 = Instance.new("Frame")
+G.Frame_51.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_51.BackgroundTransparency = 1
+G.Frame_51.BorderSizePixel = 0
+G.Frame_51.LayoutOrder = 7
+G.Frame_51.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_51.Parent = G.WavePage_Misc
+
+G.TextLabel_27 = Instance.new("TextLabel")
+G.TextLabel_27.BackgroundTransparency = 1
+G.TextLabel_27.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_27.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_27.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_27.Text = "Enemy Ragdoll Timer"
+G.TextLabel_27.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_27.TextSize = 11
+G.TextLabel_27.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_27.Parent = G.Frame_51
+
+G.WaveTogglePill_8 = Instance.new("Frame")
+G.WaveTogglePill_8.Name = "WaveTogglePill"
+G.WaveTogglePill_8.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_8.BorderSizePixel = 0
+G.WaveTogglePill_8.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_8.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_8.ZIndex = 7
+G.WaveTogglePill_8:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_8.Parent = G.Frame_51
+
+G.UICorner_46 = Instance.new("UICorner")
+G.UICorner_46.CornerRadius = UDim.new(0, 9)
+G.UICorner_46.Parent = G.WaveTogglePill_8
+
+G.UIStroke_32 = Instance.new("UIStroke")
+G.UIStroke_32.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_32.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_32.Parent = G.WaveTogglePill_8
+
+G.WaveToggleDot_8 = Instance.new("Frame")
+G.WaveToggleDot_8.Name = "WaveToggleDot"
+G.WaveToggleDot_8.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_8.BorderSizePixel = 0
+G.WaveToggleDot_8.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_8.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_8.ZIndex = 8
+G.WaveToggleDot_8.Parent = G.WaveTogglePill_8
+
+G.UICorner_47 = Instance.new("UICorner")
+G.UICorner_47.CornerRadius = UDim.new(0, 6)
+G.UICorner_47.Parent = G.WaveToggleDot_8
+
+G.TextButton_21 = Instance.new("TextButton")
+G.TextButton_21.BackgroundTransparency = 1
+G.TextButton_21.BorderSizePixel = 0
+G.TextButton_21.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_21.ZIndex = 9
+G.TextButton_21.Text = ""
+G.TextButton_21.Parent = G.WaveTogglePill_8
+
+G.Frame_52 = Instance.new("Frame")
+G.Frame_52.BackgroundTransparency = 1
+G.Frame_52.BorderSizePixel = 0
+G.Frame_52.LayoutOrder = 42
+G.Frame_52.Size = UDim2.new(1, 0, 0, 4)
+G.Frame_52.Parent = G.WavePage_Misc
+
+G.Frame_53 = Instance.new("Frame")
+G.Frame_53.BackgroundTransparency = 1
+G.Frame_53.BorderSizePixel = 0
+G.Frame_53.LayoutOrder = 3
+G.Frame_53.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_53.Parent = G.WavePage_Misc
+
+G.TextLabel_28 = Instance.new("TextLabel")
+G.TextLabel_28.BackgroundTransparency = 1
+G.TextLabel_28.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_28.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_28.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_28.Text = "HELPERS"
+G.TextLabel_28.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_28.TextSize = 13
+G.TextLabel_28.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_28.Parent = G.Frame_53
+
+G.Frame_54 = Instance.new("Frame")
+G.Frame_54.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_54.BackgroundTransparency = 1
+G.Frame_54.BorderSizePixel = 0
+G.Frame_54.LayoutOrder = 4
+G.Frame_54.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_54.Parent = G.WavePage_Misc
+
+G.TextLabel_29 = Instance.new("TextLabel")
+G.TextLabel_29.BackgroundTransparency = 1
+G.TextLabel_29.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_29.Size = UDim2.new(1, -120, 1, 0)
+G.TextLabel_29.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_29.Text = "Body Lock"
+G.TextLabel_29.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_29.TextSize = 11
+G.TextLabel_29.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_29.Parent = G.Frame_54
+
+G.Frame_55 = Instance.new("Frame")
+G.Frame_55.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.Frame_55.BorderSizePixel = 0
+G.Frame_55.Position = UDim2.new(1, -108, 0.5, -10)
+G.Frame_55.Size = UDim2.new(0, 40, 0, 20)
+G.Frame_55.Parent = G.Frame_54
+
+G.UICorner_48 = Instance.new("UICorner")
+G.UICorner_48.CornerRadius = UDim.new(0, 2)
+G.UICorner_48.Parent = G.Frame_55
+
+G.TextBox_7 = Instance.new("TextBox")
+G.TextBox_7.BackgroundTransparency = 1
+G.TextBox_7.Position = UDim2.new(0, 2, 0, 0)
+G.TextBox_7.Size = UDim2.new(1, -4, 1, 0)
+G.TextBox_7.ZIndex = 8
+G.TextBox_7.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_7.Text = "20"
+G.TextBox_7.TextColor3 = Color3.fromRGB(229, 220, 235)
+G.TextBox_7.TextSize = 10
+G.TextBox_7.ClearTextOnFocus = false
+G.TextBox_7.Parent = G.Frame_55
+
+G.UIStroke_33 = Instance.new("UIStroke")
+G.UIStroke_33.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_33.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_33.Parent = G.Frame_55
+
+G.WaveTogglePill_9 = Instance.new("Frame")
+G.WaveTogglePill_9.Name = "WaveTogglePill"
+G.WaveTogglePill_9.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_9.BorderSizePixel = 0
+G.WaveTogglePill_9.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_9.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_9.ZIndex = 7
+G.WaveTogglePill_9:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_9.Parent = G.Frame_54
+
+G.UICorner_49 = Instance.new("UICorner")
+G.UICorner_49.CornerRadius = UDim.new(0, 9)
+G.UICorner_49.Parent = G.WaveTogglePill_9
+
+G.UIStroke_34 = Instance.new("UIStroke")
+G.UIStroke_34.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_34.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_34.Parent = G.WaveTogglePill_9
+
+G.WaveToggleDot_9 = Instance.new("Frame")
+G.WaveToggleDot_9.Name = "WaveToggleDot"
+G.WaveToggleDot_9.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_9.BorderSizePixel = 0
+G.WaveToggleDot_9.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_9.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_9.ZIndex = 8
+G.WaveToggleDot_9.Parent = G.WaveTogglePill_9
+
+G.UICorner_50 = Instance.new("UICorner")
+G.UICorner_50.CornerRadius = UDim.new(0, 6)
+G.UICorner_50.Parent = G.WaveToggleDot_9
+
+G.TextButton_22 = Instance.new("TextButton")
+G.TextButton_22.BackgroundTransparency = 1
+G.TextButton_22.BorderSizePixel = 0
+G.TextButton_22.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_22.ZIndex = 9
+G.TextButton_22.Text = ""
+G.TextButton_22.Parent = G.WaveTogglePill_9
+
+G.Frame_56 = Instance.new("Frame")
+G.Frame_56.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_56.BackgroundTransparency = 1
+G.Frame_56.BorderSizePixel = 0
+G.Frame_56.LayoutOrder = 20
+G.Frame_56.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_56.Visible = false
+G.Frame_56.Parent = G.WavePage_Misc
+
+G.TextLabel_30 = Instance.new("TextLabel")
+G.TextLabel_30.BackgroundTransparency = 1
+G.TextLabel_30.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_30.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_30.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_30.Text = "Slum's Anim Pack"
+G.TextLabel_30.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_30.TextSize = 11
+G.TextLabel_30.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_30.Parent = G.Frame_56
+
+G.WaveTogglePill_10 = Instance.new("Frame")
+G.WaveTogglePill_10.Name = "WaveTogglePill"
+G.WaveTogglePill_10.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_10.BorderSizePixel = 0
+G.WaveTogglePill_10.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_10.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_10.ZIndex = 7
+G.WaveTogglePill_10:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_10.Parent = G.Frame_56
+
+G.UICorner_51 = Instance.new("UICorner")
+G.UICorner_51.CornerRadius = UDim.new(0, 9)
+G.UICorner_51.Parent = G.WaveTogglePill_10
+
+G.UIStroke_35 = Instance.new("UIStroke")
+G.UIStroke_35.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_35.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_35.Parent = G.WaveTogglePill_10
+
+G.WaveToggleDot_10 = Instance.new("Frame")
+G.WaveToggleDot_10.Name = "WaveToggleDot"
+G.WaveToggleDot_10.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_10.BorderSizePixel = 0
+G.WaveToggleDot_10.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_10.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_10.ZIndex = 8
+G.WaveToggleDot_10.Parent = G.WaveTogglePill_10
+
+G.UICorner_52 = Instance.new("UICorner")
+G.UICorner_52.CornerRadius = UDim.new(0, 6)
+G.UICorner_52.Parent = G.WaveToggleDot_10
+
+G.TextButton_23 = Instance.new("TextButton")
+G.TextButton_23.BackgroundTransparency = 1
+G.TextButton_23.BorderSizePixel = 0
+G.TextButton_23.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_23.ZIndex = 9
+G.TextButton_23.Text = ""
+G.TextButton_23.Parent = G.WaveTogglePill_10
+
+G.Frame_57 = Instance.new("Frame")
+G.Frame_57.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_57.BackgroundTransparency = 1
+G.Frame_57.BorderSizePixel = 0
+G.Frame_57.LayoutOrder = 21
+G.Frame_57.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_57.Visible = false
+G.Frame_57.Parent = G.WavePage_Misc
+
+G.TextLabel_31 = Instance.new("TextLabel")
+G.TextLabel_31.BackgroundTransparency = 1
+G.TextLabel_31.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_31.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_31.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_31.Text = "Instinct's Anim Pack"
+G.TextLabel_31.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_31.TextSize = 11
+G.TextLabel_31.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_31.Parent = G.Frame_57
+
+G.WaveTogglePill_11 = Instance.new("Frame")
+G.WaveTogglePill_11.Name = "WaveTogglePill"
+G.WaveTogglePill_11.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_11.BorderSizePixel = 0
+G.WaveTogglePill_11.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_11.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_11.ZIndex = 7
+G.WaveTogglePill_11:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_11.Parent = G.Frame_57
+
+G.UICorner_53 = Instance.new("UICorner")
+G.UICorner_53.CornerRadius = UDim.new(0, 9)
+G.UICorner_53.Parent = G.WaveTogglePill_11
+
+G.UIStroke_36 = Instance.new("UIStroke")
+G.UIStroke_36.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_36.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_36.Parent = G.WaveTogglePill_11
+
+G.WaveToggleDot_11 = Instance.new("Frame")
+G.WaveToggleDot_11.Name = "WaveToggleDot"
+G.WaveToggleDot_11.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_11.BorderSizePixel = 0
+G.WaveToggleDot_11.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_11.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_11.ZIndex = 8
+G.WaveToggleDot_11.Parent = G.WaveTogglePill_11
+
+G.UICorner_54 = Instance.new("UICorner")
+G.UICorner_54.CornerRadius = UDim.new(0, 6)
+G.UICorner_54.Parent = G.WaveToggleDot_11
+
+G.TextButton_24 = Instance.new("TextButton")
+G.TextButton_24.BackgroundTransparency = 1
+G.TextButton_24.BorderSizePixel = 0
+G.TextButton_24.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_24.ZIndex = 9
+G.TextButton_24.Text = ""
+G.TextButton_24.Parent = G.WaveTogglePill_11
+
+G.Frame_58 = Instance.new("Frame")
+G.Frame_58.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_58.BackgroundTransparency = 1
+G.Frame_58.BorderSizePixel = 0
+G.Frame_58.LayoutOrder = 22
+G.Frame_58.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_58.Visible = false
+G.Frame_58.Parent = G.WavePage_Misc
+
+G.TextLabel_32 = Instance.new("TextLabel")
+G.TextLabel_32.BackgroundTransparency = 1
+G.TextLabel_32.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_32.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_32.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_32.Text = "R6 Anim Pack"
+G.TextLabel_32.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_32.TextSize = 11
+G.TextLabel_32.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_32.Parent = G.Frame_58
+
+G.WaveTogglePill_12 = Instance.new("Frame")
+G.WaveTogglePill_12.Name = "WaveTogglePill"
+G.WaveTogglePill_12.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_12.BorderSizePixel = 0
+G.WaveTogglePill_12.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_12.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_12.ZIndex = 7
+G.WaveTogglePill_12:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_12.Parent = G.Frame_58
+
+G.UICorner_55 = Instance.new("UICorner")
+G.UICorner_55.CornerRadius = UDim.new(0, 9)
+G.UICorner_55.Parent = G.WaveTogglePill_12
+
+G.UIStroke_37 = Instance.new("UIStroke")
+G.UIStroke_37.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_37.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_37.Parent = G.WaveTogglePill_12
+
+G.WaveToggleDot_12 = Instance.new("Frame")
+G.WaveToggleDot_12.Name = "WaveToggleDot"
+G.WaveToggleDot_12.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_12.BorderSizePixel = 0
+G.WaveToggleDot_12.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_12.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_12.ZIndex = 8
+G.WaveToggleDot_12.Parent = G.WaveTogglePill_12
+
+G.UICorner_56 = Instance.new("UICorner")
+G.UICorner_56.CornerRadius = UDim.new(0, 6)
+G.UICorner_56.Parent = G.WaveToggleDot_12
+
+G.TextButton_25 = Instance.new("TextButton")
+G.TextButton_25.BackgroundTransparency = 1
+G.TextButton_25.BorderSizePixel = 0
+G.TextButton_25.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_25.ZIndex = 9
+G.TextButton_25.Text = ""
+G.TextButton_25.Parent = G.WaveTogglePill_12
+
+G.WavePage_Visuals = Instance.new("ScrollingFrame")
+G.WavePage_Visuals.Name = "WavePage_Visuals"
+G.WavePage_Visuals.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Visuals.BackgroundTransparency = 1
+G.WavePage_Visuals.BorderSizePixel = 0
+G.WavePage_Visuals.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Visuals.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Visuals.Visible = false
+G.WavePage_Visuals.ZIndex = 3
+G.WavePage_Visuals.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Visuals.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Visuals.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Visuals.ScrollBarImageTransparency = 0.5
+G.WavePage_Visuals.ScrollBarThickness = 3
+G.WavePage_Visuals.Parent = G.MainOuter
+
+G.UIListLayout_5 = Instance.new("UIListLayout")
+G.UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_5.Parent = G.WavePage_Visuals
+
+G.UIPadding_4 = Instance.new("UIPadding")
+G.UIPadding_4.PaddingBottom = UDim.new(0, 12)
+G.UIPadding_4.PaddingLeft = UDim.new(0, 8)
+G.UIPadding_4.PaddingRight = UDim.new(0, 8)
+G.UIPadding_4.PaddingTop = UDim.new(0, 6)
+G.UIPadding_4.Parent = G.WavePage_Visuals
+
+G.Frame_59 = Instance.new("Frame")
+G.Frame_59.BackgroundTransparency = 1
+G.Frame_59.BorderSizePixel = 0
+G.Frame_59.LayoutOrder = 1
+G.Frame_59.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_59.Parent = G.WavePage_Visuals
+
+G.TextLabel_33 = Instance.new("TextLabel")
+G.TextLabel_33.BackgroundTransparency = 1
+G.TextLabel_33.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_33.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_33.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_33.Text = "PERFORMANCE"
+G.TextLabel_33.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_33.TextSize = 13
+G.TextLabel_33.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_33.Parent = G.Frame_59
+
+G.Frame_60 = Instance.new("Frame")
+G.Frame_60.BackgroundTransparency = 1
+G.Frame_60.BorderSizePixel = 0
+G.Frame_60.LayoutOrder = 52
+G.Frame_60.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_60.Parent = G.WavePage_Visuals
+
+G.Frame_61 = Instance.new("Frame")
+G.Frame_61.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_61.BackgroundTransparency = 1
+G.Frame_61.BorderSizePixel = 0
+G.Frame_61.LayoutOrder = 2
+G.Frame_61.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_61.Parent = G.WavePage_Visuals
+
+G.TextLabel_34 = Instance.new("TextLabel")
+G.TextLabel_34.BackgroundTransparency = 1
+G.TextLabel_34.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_34.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_34.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_34.Text = "Anti Lag"
+G.TextLabel_34.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_34.TextSize = 11
+G.TextLabel_34.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_34.Parent = G.Frame_61
+
+G.WaveTogglePill_13 = Instance.new("Frame")
+G.WaveTogglePill_13.Name = "WaveTogglePill"
+G.WaveTogglePill_13.BackgroundColor3 = Color3.fromRGB(125, 24, 195)
+G.WaveTogglePill_13.BorderSizePixel = 0
+G.WaveTogglePill_13.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_13.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_13.ZIndex = 7
+G.WaveTogglePill_13:SetAttribute("WaveStyledOn", false)
+G.WaveTogglePill_13:SetAttribute("WaveStyledTheme", "default")
+G.WaveTogglePill_13:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_13.Parent = G.Frame_61
+
+G.UICorner_57 = Instance.new("UICorner")
+G.UICorner_57.CornerRadius = UDim.new(0, 9)
+G.UICorner_57.Parent = G.WaveTogglePill_13
+
+G.UIStroke_38 = Instance.new("UIStroke")
+G.UIStroke_38.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_38.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_38.Parent = G.WaveTogglePill_13
+
+G.WaveToggleDot_13 = Instance.new("Frame")
+G.WaveToggleDot_13.Name = "WaveToggleDot"
+G.WaveToggleDot_13.BackgroundColor3 = Color3.fromRGB(249, 240, 255)
+G.WaveToggleDot_13.BorderSizePixel = 0
+G.WaveToggleDot_13.Position = UDim2.new(1, -15, 0.5, -6)
+G.WaveToggleDot_13.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_13.ZIndex = 8
+G.WaveToggleDot_13.Parent = G.WaveTogglePill_13
+
+G.UICorner_58 = Instance.new("UICorner")
+G.UICorner_58.CornerRadius = UDim.new(0, 6)
+G.UICorner_58.Parent = G.WaveToggleDot_13
+
+G.TextButton_26 = Instance.new("TextButton")
+G.TextButton_26.BackgroundTransparency = 1
+G.TextButton_26.BorderSizePixel = 0
+G.TextButton_26.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_26.ZIndex = 9
+G.TextButton_26.Text = ""
+G.TextButton_26.Parent = G.WaveTogglePill_13
+
+G.Frame_62 = Instance.new("Frame")
+G.Frame_62.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_62.BackgroundTransparency = 1
+G.Frame_62.BorderSizePixel = 0
+G.Frame_62.LayoutOrder = 3
+G.Frame_62.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_62.Parent = G.WavePage_Visuals
+
+G.TextLabel_35 = Instance.new("TextLabel")
+G.TextLabel_35.BackgroundTransparency = 1
+G.TextLabel_35.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_35.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_35.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_35.Text = "FPS Boost"
+G.TextLabel_35.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_35.TextSize = 11
+G.TextLabel_35.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_35.Parent = G.Frame_62
+
+G.WaveTogglePill_14 = Instance.new("Frame")
+G.WaveTogglePill_14.Name = "WaveTogglePill"
+G.WaveTogglePill_14.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_14.BorderSizePixel = 0
+G.WaveTogglePill_14.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_14.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_14.ZIndex = 7
+G.WaveTogglePill_14:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_14.Parent = G.Frame_62
+
+G.UICorner_59 = Instance.new("UICorner")
+G.UICorner_59.CornerRadius = UDim.new(0, 9)
+G.UICorner_59.Parent = G.WaveTogglePill_14
+
+G.UIStroke_39 = Instance.new("UIStroke")
+G.UIStroke_39.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_39.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_39.Parent = G.WaveTogglePill_14
+
+G.WaveToggleDot_14 = Instance.new("Frame")
+G.WaveToggleDot_14.Name = "WaveToggleDot"
+G.WaveToggleDot_14.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_14.BorderSizePixel = 0
+G.WaveToggleDot_14.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_14.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_14.ZIndex = 8
+G.WaveToggleDot_14.Parent = G.WaveTogglePill_14
+
+G.UICorner_60 = Instance.new("UICorner")
+G.UICorner_60.CornerRadius = UDim.new(0, 6)
+G.UICorner_60.Parent = G.WaveToggleDot_14
+
+G.TextButton_27 = Instance.new("TextButton")
+G.TextButton_27.BackgroundTransparency = 1
+G.TextButton_27.BorderSizePixel = 0
+G.TextButton_27.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_27.ZIndex = 9
+G.TextButton_27.Text = ""
+G.TextButton_27.Parent = G.WaveTogglePill_14
+
+G.Frame_63 = Instance.new("Frame")
+G.Frame_63.BackgroundTransparency = 1
+G.Frame_63.BorderSizePixel = 0
+G.Frame_63.LayoutOrder = 10004
+G.Frame_63.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_63.Parent = G.WavePage_Visuals
+
+G.TextLabel_36 = Instance.new("TextLabel")
+G.TextLabel_36.BackgroundTransparency = 1
+G.TextLabel_36.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_36.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_36.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_36.Text = "ACCESSORIES"
+G.TextLabel_36.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_36.TextSize = 13
+G.TextLabel_36.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_36.Parent = G.Frame_63
+
+G.Frame_64 = Instance.new("Frame")
+G.Frame_64.BackgroundTransparency = 1
+G.Frame_64.BorderSizePixel = 0
+G.Frame_64.LayoutOrder = 56
+G.Frame_64.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_64.Parent = G.WavePage_Visuals
+
+G.Frame_65 = Instance.new("Frame")
+G.Frame_65.BackgroundTransparency = 1
+G.Frame_65.BorderSizePixel = 0
+G.Frame_65.LayoutOrder = 7
+G.Frame_65.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_65.Parent = G.WavePage_Visuals
+
+G.TextLabel_37 = Instance.new("TextLabel")
+G.TextLabel_37.BackgroundTransparency = 1
+G.TextLabel_37.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_37.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_37.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_37.Text = "ESP"
+G.TextLabel_37.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_37.TextSize = 13
+G.TextLabel_37.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_37.Parent = G.Frame_65
+
+G.Frame_66 = Instance.new("Frame")
+G.Frame_66.BackgroundTransparency = 1
+G.Frame_66.BorderSizePixel = 0
+G.Frame_66.LayoutOrder = 58
+G.Frame_66.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_66.Parent = G.WavePage_Visuals
+
+G.Frame_67 = Instance.new("Frame")
+G.Frame_67.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_67.BackgroundTransparency = 1
+G.Frame_67.BorderSizePixel = 0
+G.Frame_67.LayoutOrder = 8
+G.Frame_67.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_67.Parent = G.WavePage_Visuals
+
+G.TextLabel_38 = Instance.new("TextLabel")
+G.TextLabel_38.BackgroundTransparency = 1
+G.TextLabel_38.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_38.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_38.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_38.Text = "ESP + Tracers"
+G.TextLabel_38.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_38.TextSize = 11
+G.TextLabel_38.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_38.Parent = G.Frame_67
+
+G.WaveTogglePill_15 = Instance.new("Frame")
+G.WaveTogglePill_15.Name = "WaveTogglePill"
+G.WaveTogglePill_15.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_15.BorderSizePixel = 0
+G.WaveTogglePill_15.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_15.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_15.ZIndex = 7
+G.WaveTogglePill_15:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_15.Parent = G.Frame_67
+
+G.UICorner_61 = Instance.new("UICorner")
+G.UICorner_61.CornerRadius = UDim.new(0, 9)
+G.UICorner_61.Parent = G.WaveTogglePill_15
+
+G.UIStroke_40 = Instance.new("UIStroke")
+G.UIStroke_40.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_40.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_40.Parent = G.WaveTogglePill_15
+
+G.WaveToggleDot_15 = Instance.new("Frame")
+G.WaveToggleDot_15.Name = "WaveToggleDot"
+G.WaveToggleDot_15.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_15.BorderSizePixel = 0
+G.WaveToggleDot_15.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_15.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_15.ZIndex = 8
+G.WaveToggleDot_15.Parent = G.WaveTogglePill_15
+
+G.UICorner_62 = Instance.new("UICorner")
+G.UICorner_62.CornerRadius = UDim.new(0, 6)
+G.UICorner_62.Parent = G.WaveToggleDot_15
+
+G.TextButton_28 = Instance.new("TextButton")
+G.TextButton_28.BackgroundTransparency = 1
+G.TextButton_28.BorderSizePixel = 0
+G.TextButton_28.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_28.ZIndex = 9
+G.TextButton_28.Text = ""
+G.TextButton_28.Parent = G.WaveTogglePill_15
+
+G.Frame_68 = Instance.new("Frame")
+G.Frame_68.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_68.BackgroundTransparency = 1
+G.Frame_68.BorderSizePixel = 0
+G.Frame_68.LayoutOrder = 6
+G.Frame_68.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_68.Parent = G.WavePage_Visuals
+
+G.TextLabel_39 = Instance.new("TextLabel")
+G.TextLabel_39.BackgroundTransparency = 1
+G.TextLabel_39.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_39.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_39.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_39.Text = "Remove Accessories"
+G.TextLabel_39.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_39.TextSize = 11
+G.TextLabel_39.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_39.Parent = G.Frame_68
+
+G.WaveTogglePill_16 = Instance.new("Frame")
+G.WaveTogglePill_16.Name = "WaveTogglePill"
+G.WaveTogglePill_16.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_16.BorderSizePixel = 0
+G.WaveTogglePill_16.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_16.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_16.ZIndex = 7
+G.WaveTogglePill_16:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_16.Parent = G.Frame_68
+
+G.UICorner_63 = Instance.new("UICorner")
+G.UICorner_63.CornerRadius = UDim.new(0, 9)
+G.UICorner_63.Parent = G.WaveTogglePill_16
+
+G.UIStroke_41 = Instance.new("UIStroke")
+G.UIStroke_41.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_41.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_41.Parent = G.WaveTogglePill_16
+
+G.WaveToggleDot_16 = Instance.new("Frame")
+G.WaveToggleDot_16.Name = "WaveToggleDot"
+G.WaveToggleDot_16.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_16.BorderSizePixel = 0
+G.WaveToggleDot_16.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_16.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_16.ZIndex = 8
+G.WaveToggleDot_16.Parent = G.WaveTogglePill_16
+
+G.UICorner_64 = Instance.new("UICorner")
+G.UICorner_64.CornerRadius = UDim.new(0, 6)
+G.UICorner_64.Parent = G.WaveToggleDot_16
+
+G.TextButton_29 = Instance.new("TextButton")
+G.TextButton_29.BackgroundTransparency = 1
+G.TextButton_29.BorderSizePixel = 0
+G.TextButton_29.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_29.ZIndex = 9
+G.TextButton_29.Text = ""
+G.TextButton_29.Parent = G.WaveTogglePill_16
+
+G.Frame_69 = Instance.new("Frame")
+G.Frame_69.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_69.BackgroundTransparency = 1
+G.Frame_69.BorderSizePixel = 0
+G.Frame_69.LayoutOrder = 4
+G.Frame_69.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_69.Parent = G.WavePage_Visuals
+
+G.TextLabel_40 = Instance.new("TextLabel")
+G.TextLabel_40.BackgroundTransparency = 1
+G.TextLabel_40.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_40.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_40.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_40.Text = "Dark Mode"
+G.TextLabel_40.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_40.TextSize = 11
+G.TextLabel_40.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_40.Parent = G.Frame_69
+
+G.WaveTogglePill_17 = Instance.new("Frame")
+G.WaveTogglePill_17.Name = "WaveTogglePill"
+G.WaveTogglePill_17.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_17.BorderSizePixel = 0
+G.WaveTogglePill_17.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_17.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_17.ZIndex = 7
+G.WaveTogglePill_17:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_17.Parent = G.Frame_69
+
+G.UICorner_65 = Instance.new("UICorner")
+G.UICorner_65.CornerRadius = UDim.new(0, 9)
+G.UICorner_65.Parent = G.WaveTogglePill_17
+
+G.UIStroke_42 = Instance.new("UIStroke")
+G.UIStroke_42.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_42.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_42.Parent = G.WaveTogglePill_17
+
+G.WaveToggleDot_17 = Instance.new("Frame")
+G.WaveToggleDot_17.Name = "WaveToggleDot"
+G.WaveToggleDot_17.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_17.BorderSizePixel = 0
+G.WaveToggleDot_17.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_17.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_17.ZIndex = 8
+G.WaveToggleDot_17.Parent = G.WaveTogglePill_17
+
+G.UICorner_66 = Instance.new("UICorner")
+G.UICorner_66.CornerRadius = UDim.new(0, 6)
+G.UICorner_66.Parent = G.WaveToggleDot_17
+
+G.TextButton_30 = Instance.new("TextButton")
+G.TextButton_30.BackgroundTransparency = 1
+G.TextButton_30.BorderSizePixel = 0
+G.TextButton_30.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_30.ZIndex = 9
+G.TextButton_30.Text = ""
+G.TextButton_30.Parent = G.WaveTogglePill_17
+
+G.Frame_70 = Instance.new("Frame")
+G.Frame_70.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_70.BackgroundTransparency = 1
+G.Frame_70.BorderSizePixel = 0
+G.Frame_70.LayoutOrder = 5
+G.Frame_70.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_70.Visible = false
+G.Frame_70.Parent = G.WavePage_Visuals
+
+G.TextLabel_41 = Instance.new("TextLabel")
+G.TextLabel_41.BackgroundTransparency = 1
+G.TextLabel_41.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_41.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_41.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_41.Text = "Wave Mode"
+G.TextLabel_41.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_41.TextSize = 11
+G.TextLabel_41.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_41.Parent = G.Frame_70
+
+G.WaveTogglePill_18 = Instance.new("Frame")
+G.WaveTogglePill_18.Name = "WaveTogglePill"
+G.WaveTogglePill_18.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_18.BorderSizePixel = 0
+G.WaveTogglePill_18.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_18.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_18.ZIndex = 7
+G.WaveTogglePill_18:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_18.Parent = G.Frame_70
+
+G.UICorner_67 = Instance.new("UICorner")
+G.UICorner_67.CornerRadius = UDim.new(0, 9)
+G.UICorner_67.Parent = G.WaveTogglePill_18
+
+G.UIStroke_43 = Instance.new("UIStroke")
+G.UIStroke_43.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_43.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_43.Parent = G.WaveTogglePill_18
+
+G.WaveToggleDot_18 = Instance.new("Frame")
+G.WaveToggleDot_18.Name = "WaveToggleDot"
+G.WaveToggleDot_18.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_18.BorderSizePixel = 0
+G.WaveToggleDot_18.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_18.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_18.ZIndex = 8
+G.WaveToggleDot_18.Parent = G.WaveTogglePill_18
+
+G.UICorner_68 = Instance.new("UICorner")
+G.UICorner_68.CornerRadius = UDim.new(0, 6)
+G.UICorner_68.Parent = G.WaveToggleDot_18
+
+G.TextButton_31 = Instance.new("TextButton")
+G.TextButton_31.BackgroundTransparency = 1
+G.TextButton_31.BorderSizePixel = 0
+G.TextButton_31.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_31.ZIndex = 9
+G.TextButton_31.Text = ""
+G.TextButton_31.Parent = G.WaveTogglePill_18
+
+G.Frame_71 = Instance.new("Frame")
+G.Frame_71.BackgroundTransparency = 1
+G.Frame_71.BorderSizePixel = 0
+G.Frame_71.LayoutOrder = 63
+G.Frame_71.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_71.Parent = G.WavePage_Visuals
+
+G.Frame_72 = Instance.new("Frame")
+G.Frame_72.BackgroundTransparency = 1
+G.Frame_72.BorderSizePixel = 0
+G.Frame_72.LayoutOrder = 10002
+G.Frame_72.Size = UDim2.new(1, 0, 0, 36)
+G.Frame_72.Parent = G.WavePage_Visuals
+
+G.TextLabel_42 = Instance.new("TextLabel")
+G.TextLabel_42.BackgroundTransparency = 1
+G.TextLabel_42.Position = UDim2.new(0, 14, 0, 11)
+G.TextLabel_42.Size = UDim2.new(0, 60, 0, 14)
+G.TextLabel_42.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_42.Text = "FOV:"
+G.TextLabel_42.TextColor3 = Color3.fromRGB(97, 85, 105)
+G.TextLabel_42.TextSize = 10
+G.TextLabel_42.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_42.Parent = G.Frame_72
+
+G.TextLabel_43 = Instance.new("TextLabel")
+G.TextLabel_43.BackgroundTransparency = 1
+G.TextLabel_43.Position = UDim2.new(1, -44, 0, 11)
+G.TextLabel_43.Size = UDim2.new(0, 30, 0, 14)
+G.TextLabel_43.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_43.Text = "70"
+G.TextLabel_43.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_43.TextSize = 10
+G.TextLabel_43.TextXAlignment = Enum.TextXAlignment.Right
+G.TextLabel_43.Parent = G.Frame_72
+
+G.Frame_73 = Instance.new("Frame")
+G.Frame_73.BackgroundColor3 = Color3.fromRGB(44, 14, 65)
+G.Frame_73.BorderSizePixel = 0
+G.Frame_73.Position = UDim2.new(0, 52, 0.5, -3)
+G.Frame_73.Size = UDim2.new(1, -110, 0, 6)
+G.Frame_73.Parent = G.Frame_72
+
+G.UICorner_69 = Instance.new("UICorner")
+G.UICorner_69.CornerRadius = UDim.new(0, 3)
+G.UICorner_69.Parent = G.Frame_73
+
+G.Frame_74 = Instance.new("Frame")
+G.Frame_74.BackgroundColor3 = Color3.fromRGB(160, 80, 220)
+G.Frame_74.BorderSizePixel = 0
+G.Frame_74.Size = UDim2.new(0, 0, 1, 0)
+G.Frame_74.Parent = G.Frame_73
+
+G.UICorner_70 = Instance.new("UICorner")
+G.UICorner_70.CornerRadius = UDim.new(0, 3)
+G.UICorner_70.Parent = G.Frame_74
+
+G.Frame_75 = Instance.new("Frame")
+G.Frame_75.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G.Frame_75.BorderSizePixel = 0
+G.Frame_75.Position = UDim2.new(0, -6, 0.5, -6)
+G.Frame_75.Size = UDim2.new(0, 12, 0, 12)
+G.Frame_75.ZIndex = 3
+G.Frame_75.Parent = G.Frame_73
+
+G.UICorner_71 = Instance.new("UICorner")
+G.UICorner_71.CornerRadius = UDim.new(0, 6)
+G.UICorner_71.Parent = G.Frame_75
+
+G.TextButton_32 = Instance.new("TextButton")
+G.TextButton_32.BackgroundTransparency = 1
+G.TextButton_32.Position = UDim2.new(0, 0, 0, -12)
+G.TextButton_32.Size = UDim2.new(1, 0, 1, 24)
+G.TextButton_32.ZIndex = 4
+G.TextButton_32.Text = ""
+G.TextButton_32.Parent = G.Frame_73
+
+G.Frame_76 = Instance.new("Frame")
+G.Frame_76.BackgroundTransparency = 1
+G.Frame_76.BorderSizePixel = 0
+G.Frame_76.LayoutOrder = 65
+G.Frame_76.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_76.Parent = G.WavePage_Visuals
+
+G.Frame_77 = Instance.new("Frame")
+G.Frame_77.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_77.BackgroundTransparency = 1
+G.Frame_77.BorderSizePixel = 0
+G.Frame_77.LayoutOrder = 10001
+G.Frame_77.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_77.Parent = G.WavePage_Visuals
+
+G.TextLabel_44 = Instance.new("TextLabel")
+G.TextLabel_44.BackgroundTransparency = 1
+G.TextLabel_44.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_44.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_44.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_44.Text = "FOV"
+G.TextLabel_44.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_44.TextSize = 11
+G.TextLabel_44.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_44.Parent = G.Frame_77
+
+G.WaveTogglePill_19 = Instance.new("Frame")
+G.WaveTogglePill_19.Name = "WaveTogglePill"
+G.WaveTogglePill_19.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_19.BorderSizePixel = 0
+G.WaveTogglePill_19.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_19.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_19.ZIndex = 7
+G.WaveTogglePill_19:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_19.Parent = G.Frame_77
+
+G.UICorner_72 = Instance.new("UICorner")
+G.UICorner_72.CornerRadius = UDim.new(0, 9)
+G.UICorner_72.Parent = G.WaveTogglePill_19
+
+G.UIStroke_44 = Instance.new("UIStroke")
+G.UIStroke_44.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_44.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_44.Parent = G.WaveTogglePill_19
+
+G.WaveToggleDot_19 = Instance.new("Frame")
+G.WaveToggleDot_19.Name = "WaveToggleDot"
+G.WaveToggleDot_19.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_19.BorderSizePixel = 0
+G.WaveToggleDot_19.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_19.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_19.ZIndex = 8
+G.WaveToggleDot_19.Parent = G.WaveTogglePill_19
+
+G.UICorner_73 = Instance.new("UICorner")
+G.UICorner_73.CornerRadius = UDim.new(0, 6)
+G.UICorner_73.Parent = G.WaveToggleDot_19
+
+G.TextButton_33 = Instance.new("TextButton")
+G.TextButton_33.BackgroundTransparency = 1
+G.TextButton_33.BorderSizePixel = 0
+G.TextButton_33.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_33.ZIndex = 9
+G.TextButton_33.Text = ""
+G.TextButton_33.Parent = G.WaveTogglePill_19
+
+G.Frame_78 = Instance.new("Frame")
+G.Frame_78.BackgroundTransparency = 1
+G.Frame_78.BorderSizePixel = 0
+G.Frame_78.LayoutOrder = 10006
+G.Frame_78.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_78.Parent = G.WavePage_Visuals
+
+G.TextLabel_45 = Instance.new("TextLabel")
+G.TextLabel_45.BackgroundTransparency = 1
+G.TextLabel_45.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_45.Size = UDim2.new(1, -108, 1, 0)
+G.TextLabel_45.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_45.Text = "Korblox"
+G.TextLabel_45.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_45.TextSize = 11
+G.TextLabel_45.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_45.Parent = G.Frame_78
+
+G.TextButton_34 = Instance.new("TextButton")
+G.TextButton_34.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_34.BorderSizePixel = 0
+G.TextButton_34.Position = UDim2.new(1, -88, 0.5, -13)
+G.TextButton_34.Size = UDim2.new(0, 80, 0, 26)
+G.TextButton_34.ZIndex = 8
+G.TextButton_34.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_34.Text = "Off"
+G.TextButton_34.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_34.TextSize = 11
+G.TextButton_34.Parent = G.Frame_78
+
+G.UICorner_74 = Instance.new("UICorner")
+G.UICorner_74.CornerRadius = UDim.new(0, 4)
+G.UICorner_74.Parent = G.TextButton_34
+
+G.UIStroke_45 = Instance.new("UIStroke")
+G.UIStroke_45.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_45.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_45.Parent = G.TextButton_34
+
+G.Frame_79 = Instance.new("Frame")
+G.Frame_79.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_79.BackgroundTransparency = 1
+G.Frame_79.BorderSizePixel = 0
+G.Frame_79.LayoutOrder = 10005
+G.Frame_79.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_79.Parent = G.WavePage_Visuals
+
+G.TextLabel_46 = Instance.new("TextLabel")
+G.TextLabel_46.BackgroundTransparency = 1
+G.TextLabel_46.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_46.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_46.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_46.Text = "Headless"
+G.TextLabel_46.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_46.TextSize = 11
+G.TextLabel_46.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_46.Parent = G.Frame_79
+
+G.WaveTogglePill_20 = Instance.new("Frame")
+G.WaveTogglePill_20.Name = "WaveTogglePill"
+G.WaveTogglePill_20.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_20.BorderSizePixel = 0
+G.WaveTogglePill_20.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_20.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_20.ZIndex = 7
+G.WaveTogglePill_20:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_20.Parent = G.Frame_79
+
+G.UICorner_75 = Instance.new("UICorner")
+G.UICorner_75.CornerRadius = UDim.new(0, 9)
+G.UICorner_75.Parent = G.WaveTogglePill_20
+
+G.UIStroke_46 = Instance.new("UIStroke")
+G.UIStroke_46.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_46.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_46.Parent = G.WaveTogglePill_20
+
+G.WaveToggleDot_20 = Instance.new("Frame")
+G.WaveToggleDot_20.Name = "WaveToggleDot"
+G.WaveToggleDot_20.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_20.BorderSizePixel = 0
+G.WaveToggleDot_20.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_20.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_20.ZIndex = 8
+G.WaveToggleDot_20.Parent = G.WaveTogglePill_20
+
+G.UICorner_76 = Instance.new("UICorner")
+G.UICorner_76.CornerRadius = UDim.new(0, 6)
+G.UICorner_76.Parent = G.WaveToggleDot_20
+
+G.TextButton_35 = Instance.new("TextButton")
+G.TextButton_35.BackgroundTransparency = 1
+G.TextButton_35.BorderSizePixel = 0
+G.TextButton_35.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_35.ZIndex = 9
+G.TextButton_35.Text = ""
+G.TextButton_35.Parent = G.WaveTogglePill_20
+
+G.Frame_80 = Instance.new("Frame")
+G.Frame_80.BackgroundTransparency = 1
+G.Frame_80.BorderSizePixel = 0
+G.Frame_80.LayoutOrder = 69
+G.Frame_80.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_80.Parent = G.WavePage_Visuals
+
+G.Frame_81 = Instance.new("Frame")
+G.Frame_81.BackgroundTransparency = 1
+G.Frame_81.BorderSizePixel = 0
+G.Frame_81.LayoutOrder = 70
+G.Frame_81.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_81.Parent = G.WavePage_Visuals
+
+G.TextLabel_47 = Instance.new("TextLabel")
+G.TextLabel_47.BackgroundTransparency = 1
+G.TextLabel_47.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_47.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_47.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_47.Text = "GEARS"
+G.TextLabel_47.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_47.TextSize = 13
+G.TextLabel_47.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_47.Parent = G.Frame_81
+
+G.Frame_82 = Instance.new("Frame")
+G.Frame_82.BackgroundTransparency = 1
+G.Frame_82.BorderSizePixel = 0
+G.Frame_82.LayoutOrder = 71
+G.Frame_82.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_82.Parent = G.WavePage_Visuals
+
+G.Frame_83 = Instance.new("Frame")
+G.Frame_83.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_83.BackgroundTransparency = 1
+G.Frame_83.BorderSizePixel = 0
+G.Frame_83.LayoutOrder = 72
+G.Frame_83.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_83.Parent = G.WavePage_Visuals
+
+G.TextLabel_48 = Instance.new("TextLabel")
+G.TextLabel_48.BackgroundTransparency = 1
+G.TextLabel_48.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_48.Size = UDim2.new(1, -104, 1, 0)
+G.TextLabel_48.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_48.Text = "Bat Skin"
+G.TextLabel_48.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_48.TextSize = 11
+G.TextLabel_48.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_48.Parent = G.Frame_83
+
+G.TextButton_36 = Instance.new("TextButton")
+G.TextButton_36.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_36.BorderSizePixel = 0
+G.TextButton_36.Position = UDim2.new(1, -70, 0.5, -13)
+G.TextButton_36.Size = UDim2.new(0, 44, 0, 26)
+G.TextButton_36.Text = "--"
+G.TextButton_36.AutoButtonColor = false
+G.TextButton_36.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_36.Text = "OPEN"
+G.TextButton_36.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_36.TextSize = 11
+G.TextButton_36.Parent = G.Frame_83
+
+G.UICorner_77 = Instance.new("UICorner")
+G.UICorner_77.CornerRadius = UDim.new(0, 4)
+G.UICorner_77.Parent = G.TextButton_36
+G.BatSkinPrev = Instance.new("TextButton")
+G.BatSkinPrev.Name = "BatSkinPrev"
+G.BatSkinPrev.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.BatSkinPrev.BorderSizePixel = 0
+G.BatSkinPrev.Position = UDim2.new(1, -102, 0.5, -13)
+G.BatSkinPrev.Size = UDim2.new(0, 26, 0, 26)
+G.BatSkinPrev.Font = Enum.Font.GothamBold
+G.BatSkinPrev.Text = "‹"
+G.BatSkinPrev.TextSize = 20
+G.BatSkinPrev.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.BatSkinPrev.Parent = G.Frame_83
+G.BatSkinNext = Instance.new("TextButton")
+G.BatSkinNext.Name = "BatSkinNext"
+G.BatSkinNext.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.BatSkinNext.BorderSizePixel = 0
+G.BatSkinNext.Position = UDim2.new(1, -28, 0.5, -13)
+G.BatSkinNext.Size = UDim2.new(0, 26, 0, 26)
+G.BatSkinNext.Font = Enum.Font.GothamBold
+G.BatSkinNext.Text = "›"
+G.BatSkinNext.TextSize = 20
+G.BatSkinNext.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.BatSkinNext.Parent = G.Frame_83
+for _, b in ipairs({G.BatSkinPrev, G.BatSkinNext}) do
+    Instance.new("UICorner", b).CornerRadius = UDim.new(0, 4)
+end
+
+G.UIStroke_47 = Instance.new("UIStroke")
+G.UIStroke_47.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_47.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_47.Parent = G.TextButton_36
+
+G.Frame_84 = Instance.new("Frame")
+G.Frame_84.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_84.BackgroundTransparency = 1
+G.Frame_84.BorderSizePixel = 0
+G.Frame_84.LayoutOrder = 73
+G.Frame_84.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_84.Parent = G.WavePage_Visuals
+
+G.TextLabel_49 = Instance.new("TextLabel")
+G.TextLabel_49.BackgroundTransparency = 1
+G.TextLabel_49.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_49.Size = UDim2.new(1, -104, 1, 0)
+G.TextLabel_49.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_49.Text = "Medusa Skin"
+G.TextLabel_49.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_49.TextSize = 11
+G.TextLabel_49.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_49.Parent = G.Frame_84
+
+G.TextButton_37 = Instance.new("TextButton")
+G.TextButton_37.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_37.BorderSizePixel = 0
+G.TextButton_37.Position = UDim2.new(1, -70, 0.5, -13)
+G.TextButton_37.Size = UDim2.new(0, 44, 0, 26)
+G.TextButton_37.Text = "--"
+G.TextButton_37.AutoButtonColor = false
+G.TextButton_37.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_37.Text = "OPEN"
+G.TextButton_37.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_37.TextSize = 11
+G.TextButton_37.Parent = G.Frame_84
+
+G.UICorner_78 = Instance.new("UICorner")
+G.UICorner_78.CornerRadius = UDim.new(0, 4)
+G.UICorner_78.Parent = G.TextButton_37
+G.MedusaSkinPrev = Instance.new("TextButton")
+G.MedusaSkinPrev.Name = "MedusaSkinPrev"
+G.MedusaSkinPrev.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.MedusaSkinPrev.BorderSizePixel = 0
+G.MedusaSkinPrev.Position = UDim2.new(1, -102, 0.5, -13)
+G.MedusaSkinPrev.Size = UDim2.new(0, 26, 0, 26)
+G.MedusaSkinPrev.Font = Enum.Font.GothamBold
+G.MedusaSkinPrev.Text = "‹"
+G.MedusaSkinPrev.TextSize = 20
+G.MedusaSkinPrev.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.MedusaSkinPrev.Parent = G.Frame_84
+G.MedusaSkinNext = Instance.new("TextButton")
+G.MedusaSkinNext.Name = "MedusaSkinNext"
+G.MedusaSkinNext.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.MedusaSkinNext.BorderSizePixel = 0
+G.MedusaSkinNext.Position = UDim2.new(1, -28, 0.5, -13)
+G.MedusaSkinNext.Size = UDim2.new(0, 26, 0, 26)
+G.MedusaSkinNext.Font = Enum.Font.GothamBold
+G.MedusaSkinNext.Text = "›"
+G.MedusaSkinNext.TextSize = 20
+G.MedusaSkinNext.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.MedusaSkinNext.Parent = G.Frame_84
+for _, b in ipairs({G.MedusaSkinPrev, G.MedusaSkinNext}) do
+    Instance.new("UICorner", b).CornerRadius = UDim.new(0, 4)
+end
+
+G.UIStroke_48 = Instance.new("UIStroke")
+G.UIStroke_48.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_48.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_48.Parent = G.TextButton_37
+
+for _, gearFrame in ipairs({G.Frame_81, G.Frame_82, G.Frame_83, G.Frame_84}) do
+    if gearFrame then gearFrame.Visible = false; gearFrame.Size = UDim2.new(1, 0, 0, 0) end
+end
+
+G.Frame_85 = Instance.new("Frame")
+G.Frame_85.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_85.BackgroundTransparency = 1
+G.Frame_85.BorderSizePixel = 0
+G.Frame_85.LayoutOrder = 10003
+G.Frame_85.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_85.Parent = G.WavePage_Visuals
+
+G.TextLabel_50 = Instance.new("TextLabel")
+G.TextLabel_50.BackgroundTransparency = 1
+G.TextLabel_50.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_50.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_50.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_50.Text = "Stretch Rez"
+G.TextLabel_50.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_50.TextSize = 11
+G.TextLabel_50.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_50.Parent = G.Frame_85
+
+G.WaveTogglePill_21 = Instance.new("Frame")
+G.WaveTogglePill_21.Name = "WaveTogglePill"
+G.WaveTogglePill_21.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_21.BorderSizePixel = 0
+G.WaveTogglePill_21.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_21.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_21.ZIndex = 7
+G.WaveTogglePill_21:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_21.Parent = G.Frame_85
+
+G.UICorner_79 = Instance.new("UICorner")
+G.UICorner_79.CornerRadius = UDim.new(0, 9)
+G.UICorner_79.Parent = G.WaveTogglePill_21
+
+G.UIStroke_49 = Instance.new("UIStroke")
+G.UIStroke_49.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_49.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_49.Parent = G.WaveTogglePill_21
+
+G.WaveToggleDot_21 = Instance.new("Frame")
+G.WaveToggleDot_21.Name = "WaveToggleDot"
+G.WaveToggleDot_21.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_21.BorderSizePixel = 0
+G.WaveToggleDot_21.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_21.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_21.ZIndex = 8
+G.WaveToggleDot_21.Parent = G.WaveTogglePill_21
+
+G.UICorner_80 = Instance.new("UICorner")
+G.UICorner_80.CornerRadius = UDim.new(0, 6)
+G.UICorner_80.Parent = G.WaveToggleDot_21
+
+G.TextButton_38 = Instance.new("TextButton")
+G.TextButton_38.BackgroundTransparency = 1
+G.TextButton_38.BorderSizePixel = 0
+G.TextButton_38.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_38.ZIndex = 9
+G.TextButton_38.Text = ""
+G.TextButton_38.Parent = G.WaveTogglePill_21
+
+G.Frame_86 = Instance.new("Frame")
+G.Frame_86.BackgroundTransparency = 1
+G.Frame_86.BorderSizePixel = 0
+G.Frame_86.LayoutOrder = 10000
+G.Frame_86.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_86.Parent = G.WavePage_Visuals
+
+G.TextLabel_51 = Instance.new("TextLabel")
+G.TextLabel_51.BackgroundTransparency = 1
+G.TextLabel_51.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_51.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_51.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_51.Text = "CAMERA"
+G.TextLabel_51.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_51.TextSize = 13
+G.TextLabel_51.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_51.Parent = G.Frame_86
+
+G.WavePage_Steal = Instance.new("ScrollingFrame")
+G.WavePage_Steal.Name = "WavePage_Steal"
+G.WavePage_Steal.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Steal.BackgroundTransparency = 1
+G.WavePage_Steal.BorderSizePixel = 0
+G.WavePage_Steal.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Steal.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Steal.Visible = false
+G.WavePage_Steal.ZIndex = 3
+G.WavePage_Steal.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Steal.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Steal.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Steal.ScrollBarImageTransparency = 0.5
+G.WavePage_Steal.ScrollBarThickness = 3
+G.WavePage_Steal.Parent = G.MainOuter
+
+G.UIListLayout_6 = Instance.new("UIListLayout")
+G.UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_6.Parent = G.WavePage_Steal
+
+G.UIPadding_5 = Instance.new("UIPadding")
+G.UIPadding_5.PaddingBottom = UDim.new(0, 12)
+G.UIPadding_5.PaddingLeft = UDim.new(0, 8)
+G.UIPadding_5.PaddingRight = UDim.new(0, 8)
+G.UIPadding_5.PaddingTop = UDim.new(0, 6)
+G.UIPadding_5.Parent = G.WavePage_Steal
+
+G.WavePage_Combat = Instance.new("ScrollingFrame")
+G.WavePage_Combat.Name = "WavePage_Combat"
+G.WavePage_Combat.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Combat.BackgroundTransparency = 1
+G.WavePage_Combat.BorderSizePixel = 0
+G.WavePage_Combat.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Combat.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Combat.Visible = false
+G.WavePage_Combat.ZIndex = 3
+G.WavePage_Combat.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Combat.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Combat.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Combat.ScrollBarImageTransparency = 0.5
+G.WavePage_Combat.ScrollBarThickness = 3
+G.WavePage_Combat.Parent = G.MainOuter
+
+G.UIListLayout_7 = Instance.new("UIListLayout")
+G.UIListLayout_7.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_7.Parent = G.WavePage_Combat
+
+G.UIPadding_6 = Instance.new("UIPadding")
+G.UIPadding_6.PaddingBottom = UDim.new(0, 12)
+G.UIPadding_6.PaddingLeft = UDim.new(0, 8)
+G.UIPadding_6.PaddingRight = UDim.new(0, 8)
+G.UIPadding_6.PaddingTop = UDim.new(0, 6)
+G.UIPadding_6.Parent = G.WavePage_Combat
+
+G.Frame_87 = Instance.new("Frame")
+G.Frame_87.BackgroundTransparency = 1
+G.Frame_87.BorderSizePixel = 0
+G.Frame_87.LayoutOrder = 1
+G.Frame_87.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_87.Parent = G.WavePage_Combat
+
+G.TextLabel_52 = Instance.new("TextLabel")
+G.TextLabel_52.BackgroundTransparency = 1
+G.TextLabel_52.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_52.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_52.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_52.Text = "AIMBOT"
+G.TextLabel_52.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_52.TextSize = 13
+G.TextLabel_52.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_52.Parent = G.Frame_87
+
+G.Frame_88 = Instance.new("Frame")
+G.Frame_88.BackgroundTransparency = 1
+G.Frame_88.BorderSizePixel = 0
+G.Frame_88.LayoutOrder = 81
+G.Frame_88.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_88.Parent = G.WavePage_Combat
+
+G.Frame_89 = Instance.new("Frame")
+G.Frame_89.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_89.BackgroundTransparency = 1
+G.Frame_89.BorderSizePixel = 0
+G.Frame_89.LayoutOrder = 6
+G.Frame_89.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_89.Parent = G.WavePage_Combat
+
+G.TextLabel_53 = Instance.new("TextLabel")
+G.TextLabel_53.BackgroundTransparency = 1
+G.TextLabel_53.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_53.Size = UDim2.new(1, -120, 1, 0)
+G.TextLabel_53.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_53.Text = "Bat Speed"
+G.TextLabel_53.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_53.TextSize = 11
+G.TextLabel_53.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_53.Parent = G.Frame_89
+
+G.WaveTogglePill_22 = Instance.new("Frame")
+G.WaveTogglePill_22.Name = "WaveTogglePill"
+G.WaveTogglePill_22.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_22.BorderSizePixel = 0
+G.WaveTogglePill_22.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_22.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_22.ZIndex = 7
+G.WaveTogglePill_22:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_22.Parent = G.Frame_89
+
+G.UICorner_81 = Instance.new("UICorner")
+G.UICorner_81.CornerRadius = UDim.new(0, 9)
+G.UICorner_81.Parent = G.WaveTogglePill_22
+
+G.UIStroke_50 = Instance.new("UIStroke")
+G.UIStroke_50.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_50.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_50.Parent = G.WaveTogglePill_22
+
+G.WaveToggleDot_22 = Instance.new("Frame")
+G.WaveToggleDot_22.Name = "WaveToggleDot"
+G.WaveToggleDot_22.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_22.BorderSizePixel = 0
+G.WaveToggleDot_22.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_22.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_22.ZIndex = 8
+G.WaveToggleDot_22.Parent = G.WaveTogglePill_22
+
+G.UICorner_82 = Instance.new("UICorner")
+G.UICorner_82.CornerRadius = UDim.new(0, 6)
+G.UICorner_82.Parent = G.WaveToggleDot_22
+
+G.TextButton_39 = Instance.new("TextButton")
+G.TextButton_39.BackgroundTransparency = 1
+G.TextButton_39.BorderSizePixel = 0
+G.TextButton_39.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_39.ZIndex = 9
+G.TextButton_39.Text = ""
+G.TextButton_39.Parent = G.WaveTogglePill_22
+
+G.SizeDropdown_2 = Instance.new("TextButton")
+G.SizeDropdown_2.Name = "SizeDropdown"
+G.SizeDropdown_2.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.SizeDropdown_2.BorderSizePixel = 0
+G.SizeDropdown_2.Position = UDim2.new(1, -106, 0.5, -11)
+G.SizeDropdown_2.Size = UDim2.new(0, 34, 0, 22)
+G.SizeDropdown_2.ZIndex = 9
+G.SizeDropdown_2.Text = ""
+G.SizeDropdown_2.Parent = G.Frame_89
+
+G.UICorner_83 = Instance.new("UICorner")
+G.UICorner_83.CornerRadius = UDim.new(0, 4)
+G.UICorner_83.Parent = G.SizeDropdown_2
+
+G.UIStroke_51 = Instance.new("UIStroke")
+G.UIStroke_51.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_51.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_51.Parent = G.SizeDropdown_2
+
+G.Arrow_2 = Instance.new("TextLabel")
+G.Arrow_2.Name = "Arrow"
+G.Arrow_2.BackgroundTransparency = 1
+G.Arrow_2.Size = UDim2.new(1, 0, 1, 0)
+G.Arrow_2.ZIndex = 10
+G.Arrow_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.Arrow_2.Text = "▼"
+G.Arrow_2.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.Arrow_2.TextSize = 16
+G.Arrow_2.Parent = G.SizeDropdown_2
+
+G.Frame_90 = Instance.new("Frame")
+G.Frame_90.BackgroundTransparency = 1
+G.Frame_90.BorderSizePixel = 0
+G.Frame_90.ClipsDescendants = true
+G.Frame_90.LayoutOrder = 7
+G.Frame_90.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_90.Visible = false
+G.Frame_90.Parent = G.WavePage_Combat
+
+G.TextLabel_54 = Instance.new("TextLabel")
+G.TextLabel_54.BackgroundTransparency = 1
+G.TextLabel_54.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_54.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_54.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_54.Text = "Normal Aimbot Speed"
+G.TextLabel_54.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_54.TextSize = 11
+G.TextLabel_54.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_54.Parent = G.Frame_90
+
+G.Frame_91 = Instance.new("Frame")
+G.Frame_91.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_91.BorderSizePixel = 0
+G.Frame_91.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_91.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_91.Parent = G.Frame_90
+
+G.UICorner_84 = Instance.new("UICorner")
+G.UICorner_84.CornerRadius = UDim.new(0, 6)
+G.UICorner_84.Parent = G.Frame_91
+
+G.UIStroke_52 = Instance.new("UIStroke")
+G.UIStroke_52.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_52.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_52.Parent = G.Frame_91
+
+G.TextBox_8 = Instance.new("TextBox")
+G.TextBox_8.BackgroundTransparency = 1
+G.TextBox_8.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_8.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_8.ZIndex = 8
+G.TextBox_8.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_8.Text = "58"
+G.TextBox_8.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_8.TextSize = 11
+G.TextBox_8.ClearTextOnFocus = false
+G.TextBox_8.Parent = G.Frame_91
+
+G.Frame_92 = Instance.new("Frame")
+G.Frame_92.BackgroundTransparency = 1
+G.Frame_92.BorderSizePixel = 0
+G.Frame_92.ClipsDescendants = true
+G.Frame_92.LayoutOrder = 8
+G.Frame_92.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_92.Visible = false
+G.Frame_92.Parent = G.WavePage_Combat
+
+G.TextLabel_55 = Instance.new("TextLabel")
+G.TextLabel_55.BackgroundTransparency = 1
+G.TextLabel_55.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_55.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_55.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_55.Text = "Lagger Aimbot Speed"
+G.TextLabel_55.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_55.TextSize = 11
+G.TextLabel_55.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_55.Parent = G.Frame_92
+
+G.Frame_93 = Instance.new("Frame")
+G.Frame_93.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_93.BorderSizePixel = 0
+G.Frame_93.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_93.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_93.Parent = G.Frame_92
+
+G.UICorner_85 = Instance.new("UICorner")
+G.UICorner_85.CornerRadius = UDim.new(0, 6)
+G.UICorner_85.Parent = G.Frame_93
+
+G.UIStroke_53 = Instance.new("UIStroke")
+G.UIStroke_53.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_53.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_53.Parent = G.Frame_93
+
+G.TextBox_9 = Instance.new("TextBox")
+G.TextBox_9.BackgroundTransparency = 1
+G.TextBox_9.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_9.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_9.ZIndex = 8
+G.TextBox_9.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_9.Text = "40"
+G.TextBox_9.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_9.TextSize = 11
+G.TextBox_9.ClearTextOnFocus = false
+G.TextBox_9.Parent = G.Frame_93
+
+G.Frame_94 = Instance.new("Frame")
+G.Frame_94.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_94.BackgroundTransparency = 1
+G.Frame_94.BorderSizePixel = 0
+G.Frame_94.LayoutOrder = 9
+G.Frame_94.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_94.Parent = G.WavePage_Combat
+
+G.TextLabel_56 = Instance.new("TextLabel")
+G.TextLabel_56.BackgroundTransparency = 1
+G.TextLabel_56.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_56.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_56.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_56.Text = "Auto Swing"
+G.TextLabel_56.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_56.TextSize = 11
+G.TextLabel_56.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_56.Parent = G.Frame_94
+
+G.WaveTogglePill_23 = Instance.new("Frame")
+G.WaveTogglePill_23.Name = "WaveTogglePill"
+G.WaveTogglePill_23.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_23.BorderSizePixel = 0
+G.WaveTogglePill_23.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_23.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_23.ZIndex = 7
+G.WaveTogglePill_23:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_23.Parent = G.Frame_94
+
+G.UICorner_86 = Instance.new("UICorner")
+G.UICorner_86.CornerRadius = UDim.new(0, 9)
+G.UICorner_86.Parent = G.WaveTogglePill_23
+
+G.UIStroke_54 = Instance.new("UIStroke")
+G.UIStroke_54.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_54.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_54.Parent = G.WaveTogglePill_23
+
+G.WaveToggleDot_23 = Instance.new("Frame")
+G.WaveToggleDot_23.Name = "WaveToggleDot"
+G.WaveToggleDot_23.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_23.BorderSizePixel = 0
+G.WaveToggleDot_23.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_23.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_23.ZIndex = 8
+G.WaveToggleDot_23.Parent = G.WaveTogglePill_23
+
+G.UICorner_87 = Instance.new("UICorner")
+G.UICorner_87.CornerRadius = UDim.new(0, 6)
+G.UICorner_87.Parent = G.WaveToggleDot_23
+
+G.TextButton_40 = Instance.new("TextButton")
+G.TextButton_40.BackgroundTransparency = 1
+G.TextButton_40.BorderSizePixel = 0
+G.TextButton_40.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_40.ZIndex = 9
+G.TextButton_40.Text = ""
+G.TextButton_40.Parent = G.WaveTogglePill_23
+
+G.Frame_95 = Instance.new("Frame")
+G.Frame_95.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_95.BackgroundTransparency = 1
+G.Frame_95.BorderSizePixel = 0
+G.Frame_95.LayoutOrder = 86
+G.Frame_95.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_95.Visible = false
+G.Frame_95.Parent = G.WavePage_Combat
+
+G.TextLabel_57 = Instance.new("TextLabel")
+G.TextLabel_57.BackgroundTransparency = 1
+G.TextLabel_57.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_57.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_57.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_57.Text = "Auto Lagger"
+G.TextLabel_57.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_57.TextSize = 11
+G.TextLabel_57.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_57.Parent = G.Frame_95
+
+G.WaveTogglePill_24 = Instance.new("Frame")
+G.WaveTogglePill_24.Name = "WaveTogglePill"
+G.WaveTogglePill_24.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_24.BorderSizePixel = 0
+G.WaveTogglePill_24.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_24.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_24.ZIndex = 7
+G.WaveTogglePill_24:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_24.Parent = G.Frame_95
+
+G.UICorner_88 = Instance.new("UICorner")
+G.UICorner_88.CornerRadius = UDim.new(0, 9)
+G.UICorner_88.Parent = G.WaveTogglePill_24
+
+G.UIStroke_55 = Instance.new("UIStroke")
+G.UIStroke_55.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_55.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_55.Parent = G.WaveTogglePill_24
+
+G.WaveToggleDot_24 = Instance.new("Frame")
+G.WaveToggleDot_24.Name = "WaveToggleDot"
+G.WaveToggleDot_24.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_24.BorderSizePixel = 0
+G.WaveToggleDot_24.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_24.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_24.ZIndex = 8
+G.WaveToggleDot_24.Parent = G.WaveTogglePill_24
+
+G.UICorner_89 = Instance.new("UICorner")
+G.UICorner_89.CornerRadius = UDim.new(0, 6)
+G.UICorner_89.Parent = G.WaveToggleDot_24
+
+G.TextButton_41 = Instance.new("TextButton")
+G.TextButton_41.BackgroundTransparency = 1
+G.TextButton_41.BorderSizePixel = 0
+G.TextButton_41.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_41.ZIndex = 9
+G.TextButton_41.Text = ""
+G.TextButton_41.Parent = G.WaveTogglePill_24
+
+G.Frame_96 = Instance.new("Frame")
+G.Frame_96.BackgroundTransparency = 1
+G.Frame_96.BorderSizePixel = 0
+G.Frame_96.LayoutOrder = 5
+G.Frame_96.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_96.Parent = G.WavePage_Combat
+
+G.TextLabel_58 = Instance.new("TextLabel")
+G.TextLabel_58.BackgroundTransparency = 1
+G.TextLabel_58.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_58.Size = UDim2.new(1, -84, 1, 0)
+G.TextLabel_58.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_58.Text = "Aimbot Bind"
+G.TextLabel_58.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_58.TextSize = 11
+G.TextLabel_58.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_58.Parent = G.Frame_96
+
+G.TextButton_42 = Instance.new("TextButton")
+G.TextButton_42.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.TextButton_42.BorderSizePixel = 0
+G.TextButton_42.Position = UDim2.new(1, -54, 0.5, -12)
+G.TextButton_42.Size = UDim2.new(0, 44, 0, 24)
+G.TextButton_42.ZIndex = 8
+G.TextButton_42.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_42.Text = "…"
+G.TextButton_42.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextButton_42.TextSize = 10
+G.TextButton_42.Parent = G.Frame_96
+
+G.UICorner_90 = Instance.new("UICorner")
+G.UICorner_90.CornerRadius = UDim.new(0, 6)
+G.UICorner_90.Parent = G.TextButton_42
+
+G.UIStroke_56 = Instance.new("UIStroke")
+G.UIStroke_56.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_56.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_56.Parent = G.TextButton_42
+
+G.TextButton_43 = Instance.new("TextButton")
+G.TextButton_43.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_43.BorderSizePixel = 0
+G.TextButton_43.Position = UDim2.new(1, -130, 0.5, -12)
+G.TextButton_43.Size = UDim2.new(0, 58, 0, 24)
+G.TextButton_43.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_43.Text = "Normal"
+G.TextButton_43.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_43.TextSize = 10
+G.TextButton_43.Parent = G.Frame_96
+
+G.UICorner_91 = Instance.new("UICorner")
+G.UICorner_91.CornerRadius = UDim.new(0, 4)
+G.UICorner_91.Parent = G.TextButton_43
+
+G.UIStroke_57 = Instance.new("UIStroke")
+G.UIStroke_57.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_57.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_57.Parent = G.TextButton_43
+
+G.Frame_97 = Instance.new("Frame")
+G.Frame_97.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_97.BackgroundTransparency = 1
+G.Frame_97.BorderSizePixel = 0
+G.Frame_97.LayoutOrder = 1007
+G.Frame_97.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_97.Visible = false
+G.Frame_97.Parent = G.WavePage_Combat
+
+G.TextLabel_59 = Instance.new("TextLabel")
+G.TextLabel_59.BackgroundTransparency = 1
+G.TextLabel_59.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_59.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_59.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_59.Text = "Show Lagger"
+G.TextLabel_59.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_59.TextSize = 11
+G.TextLabel_59.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_59.Parent = G.Frame_97
+
+G.WaveTogglePill_25 = Instance.new("Frame")
+G.WaveTogglePill_25.Name = "WaveTogglePill"
+G.WaveTogglePill_25.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_25.BorderSizePixel = 0
+G.WaveTogglePill_25.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_25.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_25.ZIndex = 7
+G.WaveTogglePill_25:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_25.Parent = G.Frame_97
+
+G.UICorner_92 = Instance.new("UICorner")
+G.UICorner_92.CornerRadius = UDim.new(0, 9)
+G.UICorner_92.Parent = G.WaveTogglePill_25
+
+G.UIStroke_58 = Instance.new("UIStroke")
+G.UIStroke_58.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_58.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_58.Parent = G.WaveTogglePill_25
+
+G.WaveToggleDot_25 = Instance.new("Frame")
+G.WaveToggleDot_25.Name = "WaveToggleDot"
+G.WaveToggleDot_25.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_25.BorderSizePixel = 0
+G.WaveToggleDot_25.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_25.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_25.ZIndex = 8
+G.WaveToggleDot_25.Parent = G.WaveTogglePill_25
+
+G.UICorner_93 = Instance.new("UICorner")
+G.UICorner_93.CornerRadius = UDim.new(0, 6)
+G.UICorner_93.Parent = G.WaveToggleDot_25
+
+G.TextButton_44 = Instance.new("TextButton")
+G.TextButton_44.BackgroundTransparency = 1
+G.TextButton_44.BorderSizePixel = 0
+G.TextButton_44.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_44.ZIndex = 9
+G.TextButton_44.Text = ""
+G.TextButton_44.Parent = G.WaveTogglePill_25
+
+G.Frame_98 = Instance.new("Frame")
+G.Frame_98.BackgroundTransparency = 1
+G.Frame_98.BorderSizePixel = 0
+G.Frame_98.LayoutOrder = 98
+G.Frame_98.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_98.Parent = G.WavePage_Combat
+
+G.Frame_99 = Instance.new("Frame")
+G.Frame_99.BackgroundTransparency = 1
+G.Frame_99.BorderSizePixel = 0
+G.Frame_99.LayoutOrder = 91
+G.Frame_99.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_99.Parent = G.WavePage_Combat
+
+G.Frame_100 = Instance.new("Frame")
+G.Frame_100.BackgroundTransparency = 1
+G.Frame_100.BorderSizePixel = 0
+G.Frame_100.LayoutOrder = 1000
+G.Frame_100.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_100.Parent = G.WavePage_Combat
+
+G.TextLabel_60 = Instance.new("TextLabel")
+G.TextLabel_60.BackgroundTransparency = 1
+G.TextLabel_60.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_60.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_60.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_60.Text = "COUNTERS"
+G.TextLabel_60.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_60.TextSize = 13
+G.TextLabel_60.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_60.Parent = G.Frame_100
+
+G.Frame_101 = Instance.new("Frame")
+G.Frame_101.BackgroundTransparency = 1
+G.Frame_101.BorderSizePixel = 0
+G.Frame_101.LayoutOrder = 93
+G.Frame_101.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_101.Parent = G.WavePage_Combat
+
+G.Frame_102 = Instance.new("Frame")
+G.Frame_102.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_102.BackgroundTransparency = 1
+G.Frame_102.BorderSizePixel = 0
+G.Frame_102.LayoutOrder = 1001
+G.Frame_102.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_102.Parent = G.WavePage_Combat
+
+G.TextLabel_61 = Instance.new("TextLabel")
+G.TextLabel_61.BackgroundTransparency = 1
+G.TextLabel_61.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_61.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_61.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_61.Text = "Bat Counter"
+G.TextLabel_61.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_61.TextSize = 11
+G.TextLabel_61.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_61.Parent = G.Frame_102
+
+G.WaveTogglePill_26 = Instance.new("Frame")
+G.WaveTogglePill_26.Name = "WaveTogglePill"
+G.WaveTogglePill_26.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_26.BorderSizePixel = 0
+G.WaveTogglePill_26.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_26.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_26.ZIndex = 7
+G.WaveTogglePill_26:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_26.Parent = G.Frame_102
+
+G.UICorner_94 = Instance.new("UICorner")
+G.UICorner_94.CornerRadius = UDim.new(0, 9)
+G.UICorner_94.Parent = G.WaveTogglePill_26
+
+G.UIStroke_59 = Instance.new("UIStroke")
+G.UIStroke_59.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_59.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_59.Parent = G.WaveTogglePill_26
+
+G.WaveToggleDot_26 = Instance.new("Frame")
+G.WaveToggleDot_26.Name = "WaveToggleDot"
+G.WaveToggleDot_26.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_26.BorderSizePixel = 0
+G.WaveToggleDot_26.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_26.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_26.ZIndex = 8
+G.WaveToggleDot_26.Parent = G.WaveTogglePill_26
+
+G.UICorner_95 = Instance.new("UICorner")
+G.UICorner_95.CornerRadius = UDim.new(0, 6)
+G.UICorner_95.Parent = G.WaveToggleDot_26
+
+G.TextButton_45 = Instance.new("TextButton")
+G.TextButton_45.BackgroundTransparency = 1
+G.TextButton_45.BorderSizePixel = 0
+G.TextButton_45.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_45.ZIndex = 9
+G.TextButton_45.Text = ""
+G.TextButton_45.Parent = G.WaveTogglePill_26
+
+G.Frame_103 = Instance.new("Frame")
+G.Frame_103.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_103.BackgroundTransparency = 1
+G.Frame_103.BorderSizePixel = 0
+G.Frame_103.LayoutOrder = 1002
+G.Frame_103.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_103.Parent = G.WavePage_Combat
+
+G.TextLabel_62 = Instance.new("TextLabel")
+G.TextLabel_62.BackgroundTransparency = 1
+G.TextLabel_62.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_62.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_62.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_62.Text = "Medusa Counter"
+G.TextLabel_62.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_62.TextSize = 11
+G.TextLabel_62.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_62.Parent = G.Frame_103
+
+G.WaveTogglePill_27 = Instance.new("Frame")
+G.WaveTogglePill_27.Name = "WaveTogglePill"
+G.WaveTogglePill_27.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_27.BorderSizePixel = 0
+G.WaveTogglePill_27.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_27.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_27.ZIndex = 7
+G.WaveTogglePill_27:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_27.Parent = G.Frame_103
+
+G.UICorner_96 = Instance.new("UICorner")
+G.UICorner_96.CornerRadius = UDim.new(0, 9)
+G.UICorner_96.Parent = G.WaveTogglePill_27
+
+G.UIStroke_60 = Instance.new("UIStroke")
+G.UIStroke_60.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_60.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_60.Parent = G.WaveTogglePill_27
+
+G.WaveToggleDot_27 = Instance.new("Frame")
+G.WaveToggleDot_27.Name = "WaveToggleDot"
+G.WaveToggleDot_27.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_27.BorderSizePixel = 0
+G.WaveToggleDot_27.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_27.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_27.ZIndex = 8
+G.WaveToggleDot_27.Parent = G.WaveTogglePill_27
+
+G.UICorner_97 = Instance.new("UICorner")
+G.UICorner_97.CornerRadius = UDim.new(0, 6)
+G.UICorner_97.Parent = G.WaveToggleDot_27
+
+G.TextButton_46 = Instance.new("TextButton")
+G.TextButton_46.BackgroundTransparency = 1
+G.TextButton_46.BorderSizePixel = 0
+G.TextButton_46.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_46.ZIndex = 9
+G.TextButton_46.Text = ""
+G.TextButton_46.Parent = G.WaveTogglePill_27
+
+G.Frame_104 = Instance.new("Frame")
+G.Frame_104.BackgroundTransparency = 1
+G.Frame_104.BorderSizePixel = 0
+G.Frame_104.LayoutOrder = 96
+G.Frame_104.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_104.Parent = G.WavePage_Combat
+
+G.Frame_105 = Instance.new("Frame")
+G.Frame_105.BackgroundTransparency = 1
+G.Frame_105.BorderSizePixel = 0
+G.Frame_105.LayoutOrder = 1006
+G.Frame_105.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_105.Visible = false
+G.Frame_105.Parent = G.WavePage_Combat
+
+G.TextLabel_63 = Instance.new("TextLabel")
+G.TextLabel_63.BackgroundTransparency = 1
+G.TextLabel_63.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_63.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_63.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_63.Text = "LAGGER PANEL"
+G.TextLabel_63.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_63.TextSize = 13
+G.TextLabel_63.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_63.Parent = G.Frame_105
+
+G.Frame_106 = Instance.new("Frame")
+G.Frame_106.BackgroundTransparency = 1
+G.Frame_106.BorderSizePixel = 0
+G.Frame_106.LayoutOrder = 903
+G.Frame_106.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_106.Parent = G.WavePage_Combat
+
+G.TextLabel_64 = Instance.new("TextLabel")
+G.TextLabel_64.BackgroundTransparency = 1
+G.TextLabel_64.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_64.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_64.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_64.Text = "Steal Radius"
+G.TextLabel_64.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_64.TextSize = 11
+G.TextLabel_64.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_64.Parent = G.Frame_106
+
+G.Frame_107 = Instance.new("Frame")
+G.Frame_107.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_107.BorderSizePixel = 0
+G.Frame_107.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_107.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_107.Parent = G.Frame_106
+
+G.UICorner_98 = Instance.new("UICorner")
+G.UICorner_98.CornerRadius = UDim.new(0, 6)
+G.UICorner_98.Parent = G.Frame_107
+
+G.UIStroke_61 = Instance.new("UIStroke")
+G.UIStroke_61.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_61.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_61.Parent = G.Frame_107
+
+G.TextBox_10 = Instance.new("TextBox")
+G.TextBox_10.BackgroundTransparency = 1
+G.TextBox_10.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_10.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_10.ZIndex = 8
+G.TextBox_10.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_10.Text = "60"
+G.TextBox_10.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_10.TextSize = 11
+G.TextBox_10.ClearTextOnFocus = false
+G.TextBox_10.Parent = G.Frame_107
+
+G.Frame_108 = Instance.new("Frame")
+G.Frame_108.BackgroundTransparency = 1
+G.Frame_108.BorderSizePixel = 0
+G.Frame_108.LayoutOrder = 904
+G.Frame_108.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_108.Parent = G.WavePage_Combat
+
+G.TextLabel_65 = Instance.new("TextLabel")
+G.TextLabel_65.BackgroundTransparency = 1
+G.TextLabel_65.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_65.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_65.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_65.Text = "Steal Duration"
+G.TextLabel_65.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_65.TextSize = 11
+G.TextLabel_65.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_65.Parent = G.Frame_108
+
+G.Frame_109 = Instance.new("Frame")
+G.Frame_109.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_109.BorderSizePixel = 0
+G.Frame_109.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_109.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_109.Parent = G.Frame_108
+
+G.UICorner_99 = Instance.new("UICorner")
+G.UICorner_99.CornerRadius = UDim.new(0, 6)
+G.UICorner_99.Parent = G.Frame_109
+
+G.UIStroke_62 = Instance.new("UIStroke")
+G.UIStroke_62.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_62.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_62.Parent = G.Frame_109
+
+G.TextBox_11 = Instance.new("TextBox")
+G.TextBox_11.BackgroundTransparency = 1
+G.TextBox_11.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_11.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_11.ZIndex = 8
+G.TextBox_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_11.Text = "1.35"
+G.TextBox_11.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_11.TextSize = 11
+G.TextBox_11.ClearTextOnFocus = false
+G.TextBox_11.Parent = G.Frame_109
+
+G.Frame_110 = Instance.new("Frame")
+G.Frame_110.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_110.BackgroundTransparency = 1
+G.Frame_110.BorderSizePixel = 0
+G.Frame_110.LayoutOrder = 902
+G.Frame_110.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_110.Parent = G.WavePage_Combat
+
+G.TextLabel_66 = Instance.new("TextLabel")
+G.TextLabel_66.BackgroundTransparency = 1
+G.TextLabel_66.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_66.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_66.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_66.Text = "Ragdoll Steal"
+G.TextLabel_66.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_66.TextSize = 11
+G.TextLabel_66.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_66.Parent = G.Frame_110
+
+G.WaveTogglePill_28 = Instance.new("Frame")
+G.WaveTogglePill_28.Name = "WaveTogglePill"
+G.WaveTogglePill_28.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_28.BorderSizePixel = 0
+G.WaveTogglePill_28.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_28.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_28.ZIndex = 7
+G.WaveTogglePill_28:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_28.Parent = G.Frame_110
+
+G.UICorner_100 = Instance.new("UICorner")
+G.UICorner_100.CornerRadius = UDim.new(0, 9)
+G.UICorner_100.Parent = G.WaveTogglePill_28
+
+G.UIStroke_63 = Instance.new("UIStroke")
+G.UIStroke_63.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_63.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_63.Parent = G.WaveTogglePill_28
+
+G.WaveToggleDot_28 = Instance.new("Frame")
+G.WaveToggleDot_28.Name = "WaveToggleDot"
+G.WaveToggleDot_28.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_28.BorderSizePixel = 0
+G.WaveToggleDot_28.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_28.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_28.ZIndex = 8
+G.WaveToggleDot_28.Parent = G.WaveTogglePill_28
+
+G.UICorner_101 = Instance.new("UICorner")
+G.UICorner_101.CornerRadius = UDim.new(0, 6)
+G.UICorner_101.Parent = G.WaveToggleDot_28
+
+G.TextButton_47 = Instance.new("TextButton")
+G.TextButton_47.BackgroundTransparency = 1
+G.TextButton_47.BorderSizePixel = 0
+G.TextButton_47.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_47.ZIndex = 9
+G.TextButton_47.Text = ""
+G.TextButton_47.Parent = G.WaveTogglePill_28
+
+G.Frame_111 = Instance.new("Frame")
+G.Frame_111.BackgroundTransparency = 1
+G.Frame_111.BorderSizePixel = 0
+G.Frame_111.LayoutOrder = 900
+G.Frame_111.Size = UDim2.new(1, 0, 0, 22)
+G.Frame_111.Parent = G.WavePage_Combat
+
+G.TextLabel_67 = Instance.new("TextLabel")
+G.TextLabel_67.BackgroundTransparency = 1
+G.TextLabel_67.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_67.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_67.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_67.Text = "STEAL"
+G.TextLabel_67.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_67.TextSize = 13
+G.TextLabel_67.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_67.Parent = G.Frame_111
+
+G.Frame_112 = Instance.new("Frame")
+G.Frame_112.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_112.BackgroundTransparency = 1
+G.Frame_112.BorderSizePixel = 0
+G.Frame_112.LayoutOrder = 901
+G.Frame_112.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_112.Parent = G.WavePage_Combat
+
+G.TextLabel_68 = Instance.new("TextLabel")
+G.TextLabel_68.BackgroundTransparency = 1
+G.TextLabel_68.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_68.Size = UDim2.new(1, -148, 1, 0)
+G.TextLabel_68.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_68.Text = "Auto Steal"
+G.TextLabel_68.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_68.TextSize = 11
+G.TextLabel_68.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_68.Parent = G.Frame_112
+
+G.TextButton_48 = Instance.new("TextButton")
+G.TextButton_48.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.TextButton_48.BorderSizePixel = 0
+G.TextButton_48.Position = UDim2.new(1, -128, 0.5, -12)
+G.TextButton_48.Size = UDim2.new(0, 58, 0, 24)
+G.TextButton_48.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_48.Text = "Normal"
+G.TextButton_48.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.TextButton_48.TextSize = 10
+G.TextButton_48.Parent = G.Frame_112
+
+G.UICorner_102 = Instance.new("UICorner")
+G.UICorner_102.CornerRadius = UDim.new(0, 4)
+G.UICorner_102.Parent = G.TextButton_48
+
+G.UIStroke_64 = Instance.new("UIStroke")
+G.UIStroke_64.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_64.Color = Color3.fromRGB(42, 18, 70)
+G.UIStroke_64.Parent = G.TextButton_48
+
+G.WaveTogglePill_29 = Instance.new("Frame")
+G.WaveTogglePill_29.Name = "WaveTogglePill"
+G.WaveTogglePill_29.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_29.BorderSizePixel = 0
+G.WaveTogglePill_29.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_29.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_29.ZIndex = 7
+G.WaveTogglePill_29:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_29.Parent = G.Frame_112
+
+G.UICorner_103 = Instance.new("UICorner")
+G.UICorner_103.CornerRadius = UDim.new(0, 9)
+G.UICorner_103.Parent = G.WaveTogglePill_29
+
+G.UIStroke_65 = Instance.new("UIStroke")
+G.UIStroke_65.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_65.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_65.Parent = G.WaveTogglePill_29
+
+G.WaveToggleDot_29 = Instance.new("Frame")
+G.WaveToggleDot_29.Name = "WaveToggleDot"
+G.WaveToggleDot_29.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_29.BorderSizePixel = 0
+G.WaveToggleDot_29.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_29.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_29.ZIndex = 8
+G.WaveToggleDot_29.Parent = G.WaveTogglePill_29
+
+G.UICorner_104 = Instance.new("UICorner")
+G.UICorner_104.CornerRadius = UDim.new(0, 6)
+G.UICorner_104.Parent = G.WaveToggleDot_29
+
+G.TextButton_49 = Instance.new("TextButton")
+G.TextButton_49.BackgroundTransparency = 1
+G.TextButton_49.BorderSizePixel = 0
+G.TextButton_49.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_49.ZIndex = 9
+G.TextButton_49.Text = ""
+G.TextButton_49.Parent = G.WaveTogglePill_29
+
+G.WavePage_Interface = Instance.new("ScrollingFrame")
+G.WavePage_Interface.Name = "WavePage_Interface"
+G.WavePage_Interface.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WavePage_Interface.BackgroundTransparency = 1
+G.WavePage_Interface.BorderSizePixel = 0
+G.WavePage_Interface.Position = UDim2.new(0, 3, 0, 92)
+G.WavePage_Interface.Size = UDim2.new(1, -3, 1, -92)
+G.WavePage_Interface.Visible = false
+G.WavePage_Interface.ZIndex = 3
+G.WavePage_Interface.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.WavePage_Interface.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.WavePage_Interface.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.WavePage_Interface.ScrollBarImageTransparency = 0.5
+G.WavePage_Interface.ScrollBarThickness = 3
+G.WavePage_Interface.Parent = G.MainOuter
+
+G.UIListLayout_8 = Instance.new("UIListLayout")
+G.UIListLayout_8.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_8.Parent = G.WavePage_Interface
+
+G.UIPadding_7 = Instance.new("UIPadding")
+G.UIPadding_7.PaddingBottom = UDim.new(0, 12)
+G.UIPadding_7.PaddingLeft = UDim.new(0, 8)
+G.UIPadding_7.PaddingRight = UDim.new(0, 8)
+G.UIPadding_7.PaddingTop = UDim.new(0, 6)
+G.UIPadding_7.Parent = G.WavePage_Interface
+
+G.Frame_116 = Instance.new("Frame")
+G.Frame_116.BackgroundTransparency = 1
+G.Frame_116.BorderSizePixel = 0
+G.Frame_116.LayoutOrder = 3
+G.Frame_116.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_116.Parent = G.WavePage_Interface
+
+G.TextLabel_70 = Instance.new("TextLabel")
+G.TextLabel_70.BackgroundTransparency = 1
+G.TextLabel_70.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_70.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_70.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_70.Text = "INTERFACE"
+G.TextLabel_70.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_70.TextSize = 13
+G.TextLabel_70.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_70.Parent = G.Frame_116
+
+G.Frame_117 = Instance.new("Frame")
+G.Frame_117.BackgroundTransparency = 1
+G.Frame_117.BorderSizePixel = 0
+G.Frame_117.LayoutOrder = 104
+G.Frame_117.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_117.Parent = G.WavePage_Interface
+
+G.ButtonsHeader = Instance.new("Frame")
+G.ButtonsHeader.Name = "ButtonsHeader"
+G.ButtonsHeader.BackgroundTransparency = 1
+G.ButtonsHeader.BorderSizePixel = 0
+G.ButtonsHeader.LayoutOrder = 100
+G.ButtonsHeader.Size = UDim2.new(1, 0, 0, 28)
+G.ButtonsHeader.Parent = G.WavePage_Interface
+
+G.TextLabel_71 = Instance.new("TextLabel")
+G.TextLabel_71.BackgroundTransparency = 1
+G.TextLabel_71.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_71.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_71.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_71.Text = "BUTTONS"
+G.TextLabel_71.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_71.TextSize = 13
+G.TextLabel_71.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_71.Parent = G.ButtonsHeader
+
+G.Frame_118 = Instance.new("Frame")
+G.Frame_118.BackgroundTransparency = 1
+G.Frame_118.BorderSizePixel = 0
+G.Frame_118.LayoutOrder = 4
+G.Frame_118.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_118.Parent = G.WavePage_Interface
+
+G.TextLabel_72 = Instance.new("TextLabel")
+G.TextLabel_72.BackgroundTransparency = 1
+G.TextLabel_72.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_72.Size = UDim2.new(1, -120, 1, 0)
+G.TextLabel_72.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_72.Text = "UI Size"
+G.TextLabel_72.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_72.TextSize = 11
+G.TextLabel_72.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_72.Parent = G.Frame_118
+
+G.Frame_119 = Instance.new("Frame")
+G.Frame_119.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_119.BorderSizePixel = 0
+G.Frame_119.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_119.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_119.Parent = G.Frame_118
+
+G.UICorner_113 = Instance.new("UICorner")
+G.UICorner_113.CornerRadius = UDim.new(0, 6)
+G.UICorner_113.Parent = G.Frame_119
+
+G.UIStroke_74 = Instance.new("UIStroke")
+G.UIStroke_74.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_74.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_74.Parent = G.Frame_119
+
+G.TextBox_12 = Instance.new("TextBox")
+G.TextBox_12.BackgroundTransparency = 1
+G.TextBox_12.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_12.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_12.ZIndex = 8
+G.TextBox_12.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_12.Text = "0.7"
+G.TextBox_12.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_12.TextSize = 11
+G.TextBox_12.ClearTextOnFocus = false
+G.TextBox_12.Parent = G.Frame_119
+
+G.SizeDropdown_3 = Instance.new("TextButton")
+G.SizeDropdown_3.Name = "SizeDropdown"
+G.SizeDropdown_3.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.SizeDropdown_3.BorderSizePixel = 0
+G.SizeDropdown_3.Position = UDim2.new(1, -106, 0.5, -11)
+G.SizeDropdown_3.Size = UDim2.new(0, 34, 0, 22)
+G.SizeDropdown_3.ZIndex = 9
+G.SizeDropdown_3.Text = ""
+G.SizeDropdown_3.Parent = G.Frame_118
+
+G.UICorner_114 = Instance.new("UICorner")
+G.UICorner_114.CornerRadius = UDim.new(0, 4)
+G.UICorner_114.Parent = G.SizeDropdown_3
+
+G.UIStroke_75 = Instance.new("UIStroke")
+G.UIStroke_75.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_75.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_75.Parent = G.SizeDropdown_3
+
+G.Arrow_3 = Instance.new("TextLabel")
+G.Arrow_3.Name = "Arrow"
+G.Arrow_3.BackgroundTransparency = 1
+G.Arrow_3.Size = UDim2.new(1, 0, 1, 0)
+G.Arrow_3.ZIndex = 10
+G.Arrow_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.Arrow_3.Text = "▼"
+G.Arrow_3.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.Arrow_3.TextSize = 16
+G.Arrow_3.Parent = G.SizeDropdown_3
+
+G.Frame_120 = Instance.new("Frame")
+G.Frame_120.BackgroundTransparency = 1
+G.Frame_120.BorderSizePixel = 0
+G.Frame_120.ClipsDescendants = true
+G.Frame_120.LayoutOrder = 5
+G.Frame_120.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_120.Visible = false
+G.Frame_120.Parent = G.WavePage_Interface
+
+G.TextLabel_73 = Instance.new("TextLabel")
+G.TextLabel_73.BackgroundTransparency = 1
+G.TextLabel_73.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_73.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_73.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_73.Text = "Mobile Buttons Size"
+G.TextLabel_73.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_73.TextSize = 11
+G.TextLabel_73.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_73.Parent = G.Frame_120
+
+G.Frame_121 = Instance.new("Frame")
+G.Frame_121.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_121.BorderSizePixel = 0
+G.Frame_121.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_121.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_121.Parent = G.Frame_120
+
+G.UICorner_115 = Instance.new("UICorner")
+G.UICorner_115.CornerRadius = UDim.new(0, 6)
+G.UICorner_115.Parent = G.Frame_121
+
+G.UIStroke_76 = Instance.new("UIStroke")
+G.UIStroke_76.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_76.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_76.Parent = G.Frame_121
+
+G.TextBox_13 = Instance.new("TextBox")
+G.TextBox_13.BackgroundTransparency = 1
+G.TextBox_13.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_13.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_13.ZIndex = 8
+G.TextBox_13.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_13.Text = "0.7"
+G.TextBox_13.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_13.TextSize = 11
+G.TextBox_13.ClearTextOnFocus = false
+G.TextBox_13.Parent = G.Frame_121
+
+G.Frame_122 = Instance.new("Frame")
+G.Frame_122.BackgroundTransparency = 1
+G.Frame_122.BorderSizePixel = 0
+G.Frame_122.ClipsDescendants = true
+G.Frame_122.LayoutOrder = 6
+G.Frame_122.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_122.Visible = false
+G.Frame_122.Parent = G.WavePage_Interface
+
+G.TextLabel_74 = Instance.new("TextLabel")
+G.TextLabel_74.BackgroundTransparency = 1
+G.TextLabel_74.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_74.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_74.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_74.Text = "Steal Bar Size"
+G.TextLabel_74.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_74.TextSize = 11
+G.TextLabel_74.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_74.Parent = G.Frame_122
+
+G.Frame_123 = Instance.new("Frame")
+G.Frame_123.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_123.BorderSizePixel = 0
+G.Frame_123.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_123.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_123.Parent = G.Frame_122
+
+G.UICorner_116 = Instance.new("UICorner")
+G.UICorner_116.CornerRadius = UDim.new(0, 6)
+G.UICorner_116.Parent = G.Frame_123
+
+G.UIStroke_77 = Instance.new("UIStroke")
+G.UIStroke_77.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_77.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_77.Parent = G.Frame_123
+
+G.TextBox_14 = Instance.new("TextBox")
+G.TextBox_14.BackgroundTransparency = 1
+G.TextBox_14.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_14.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_14.ZIndex = 8
+G.TextBox_14.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_14.Text = "0.7"
+G.TextBox_14.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_14.TextSize = 11
+G.TextBox_14.ClearTextOnFocus = false
+G.TextBox_14.Parent = G.Frame_123
+
+G.Frame_124 = Instance.new("Frame")
+G.Frame_124.BackgroundTransparency = 1
+G.Frame_124.BorderSizePixel = 0
+G.Frame_124.ClipsDescendants = true
+G.Frame_124.LayoutOrder = 7
+G.Frame_124.Size = UDim2.new(1, 0, 0, 38)
+G.Frame_124.Parent = G.WavePage_Interface
+
+G.TextLabel_76 = Instance.new("TextLabel")
+G.TextLabel_76.BackgroundTransparency = 1
+G.TextLabel_76.Position = UDim2.new(0, 14, 0, 0)
+G.TextLabel_76.Size = UDim2.new(1, -78, 1, 0)
+G.TextLabel_76.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_76.Text = "OpenUi Button"
+G.TextLabel_76.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_76.TextSize = 11
+G.TextLabel_76.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_76.Parent = G.Frame_124
+
+G.Frame_126 = Instance.new("Frame")
+G.Frame_126.BackgroundColor3 = Color3.fromRGB(14, 8, 28)
+G.Frame_126.BorderSizePixel = 0
+G.Frame_126.Position = UDim2.new(1, -64, 0.5, -13)
+G.Frame_126.Size = UDim2.new(0, 54, 0, 26)
+G.Frame_126.Parent = G.Frame_124
+
+G.UICorner_118 = Instance.new("UICorner")
+G.UICorner_118.CornerRadius = UDim.new(0, 6)
+G.UICorner_118.Parent = G.Frame_126
+
+G.UIStroke_79 = Instance.new("UIStroke")
+G.UIStroke_79.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_79.Color = Color3.fromRGB(45, 20, 75)
+G.UIStroke_79.Parent = G.Frame_126
+
+G.TextBox_16 = Instance.new("TextBox")
+G.TextBox_16.BackgroundTransparency = 1
+G.TextBox_16.Position = UDim2.new(0, 3, 0, 0)
+G.TextBox_16.Size = UDim2.new(1, -6, 1, 0)
+G.TextBox_16.ZIndex = 8
+G.TextBox_16.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_16.Text = "0.7"
+G.TextBox_16.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.TextBox_16.TextSize = 11
+G.TextBox_16.ClearTextOnFocus = false
+G.TextBox_16.Parent = G.Frame_126
+
+G.Frame_125 = Instance.new("Frame")
+G.Frame_125.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_125.BackgroundTransparency = 1
+G.Frame_125.BorderSizePixel = 0
+G.Frame_125.LayoutOrder = 8
+G.Frame_125.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_125.Parent = G.WavePage_Interface
+
+G.TextLabel_75 = Instance.new("TextLabel")
+G.TextLabel_75.BackgroundTransparency = 1
+G.TextLabel_75.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_75.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_75.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_75.Text = "Remove UI Image"
+G.TextLabel_75.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_75.TextSize = 11
+G.TextLabel_75.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_75.Parent = G.Frame_125
+
+G.WaveTogglePill_30 = Instance.new("Frame")
+G.WaveTogglePill_30.Name = "WaveTogglePill"
+G.WaveTogglePill_30.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_30.BorderSizePixel = 0
+G.WaveTogglePill_30.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_30.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_30.ZIndex = 7
+G.WaveTogglePill_30:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_30.Parent = G.Frame_125
+
+G.UICorner_117 = Instance.new("UICorner")
+G.UICorner_117.CornerRadius = UDim.new(0, 9)
+G.UICorner_117.Parent = G.WaveTogglePill_30
+
+G.UIStroke_78 = Instance.new("UIStroke")
+G.UIStroke_78.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_78.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_78.Parent = G.WaveTogglePill_30
+
+G.WaveToggleDot_30 = Instance.new("Frame")
+G.WaveToggleDot_30.Name = "WaveToggleDot"
+G.WaveToggleDot_30.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_30.BorderSizePixel = 0
+G.WaveToggleDot_30.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_30.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_30.ZIndex = 8
+G.WaveToggleDot_30.Parent = G.WaveTogglePill_30
+
+G.UICorner_118 = Instance.new("UICorner")
+G.UICorner_118.CornerRadius = UDim.new(0, 6)
+G.UICorner_118.Parent = G.WaveToggleDot_30
+
+G.TextButton_52 = Instance.new("TextButton")
+G.TextButton_52.BackgroundTransparency = 1
+G.TextButton_52.BorderSizePixel = 0
+G.TextButton_52.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_52.ZIndex = 9
+G.TextButton_52.Text = ""
+G.TextButton_52.Parent = G.WaveTogglePill_30
+
+G.Frame_126 = Instance.new("Frame")
+G.Frame_126.BackgroundTransparency = 1
+G.Frame_126.BorderSizePixel = 0
+G.Frame_126.LayoutOrder = 111
+G.Frame_126.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_126.Parent = G.WavePage_Interface
+
+G.Frame_127 = Instance.new("Frame")
+G.Frame_127.BackgroundTransparency = 1
+G.Frame_127.BorderSizePixel = 0
+G.Frame_127.LayoutOrder = 112
+G.Frame_127.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_127.Parent = G.WavePage_Interface
+
+G.Frame_128 = Instance.new("Frame")
+G.Frame_128.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_128.BackgroundTransparency = 1
+G.Frame_128.BorderSizePixel = 0
+G.Frame_128.LayoutOrder = 101
+G.Frame_128.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_128.Parent = G.WavePage_Interface
+
+G.TextLabel_76 = Instance.new("TextLabel")
+G.TextLabel_76.BackgroundTransparency = 1
+G.TextLabel_76.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_76.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_76.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_76.Text = "Hide Buttons"
+G.TextLabel_76.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_76.TextSize = 11
+G.TextLabel_76.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_76.Parent = G.Frame_128
+
+G.WaveTogglePill_31 = Instance.new("Frame")
+G.WaveTogglePill_31.Name = "WaveTogglePill"
+G.WaveTogglePill_31.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_31.BorderSizePixel = 0
+G.WaveTogglePill_31.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_31.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_31.ZIndex = 7
+G.WaveTogglePill_31:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_31.Parent = G.Frame_128
+
+G.UICorner_119 = Instance.new("UICorner")
+G.UICorner_119.CornerRadius = UDim.new(0, 9)
+G.UICorner_119.Parent = G.WaveTogglePill_31
+
+G.UIStroke_79 = Instance.new("UIStroke")
+G.UIStroke_79.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_79.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_79.Parent = G.WaveTogglePill_31
+
+G.WaveToggleDot_31 = Instance.new("Frame")
+G.WaveToggleDot_31.Name = "WaveToggleDot"
+G.WaveToggleDot_31.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_31.BorderSizePixel = 0
+G.WaveToggleDot_31.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_31.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_31.ZIndex = 8
+G.WaveToggleDot_31.Parent = G.WaveTogglePill_31
+
+G.UICorner_120 = Instance.new("UICorner")
+G.UICorner_120.CornerRadius = UDim.new(0, 6)
+G.UICorner_120.Parent = G.WaveToggleDot_31
+
+G.TextButton_53 = Instance.new("TextButton")
+G.TextButton_53.BackgroundTransparency = 1
+G.TextButton_53.BorderSizePixel = 0
+G.TextButton_53.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_53.ZIndex = 9
+G.TextButton_53.Text = ""
+G.TextButton_53.Parent = G.WaveTogglePill_31
+
+G.Frame_129 = Instance.new("Frame")
+G.Frame_129.BackgroundTransparency = 1
+G.Frame_129.BorderSizePixel = 0
+G.Frame_129.LayoutOrder = 114
+G.Frame_129.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_129.Parent = G.WavePage_Interface
+
+G.Frame_130 = Instance.new("Frame")
+G.Frame_130.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_130.BackgroundTransparency = 1
+G.Frame_130.BorderSizePixel = 0
+G.Frame_130.LayoutOrder = 102
+G.Frame_130.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_130.Parent = G.WavePage_Interface
+
+G.TextLabel_77 = Instance.new("TextLabel")
+G.TextLabel_77.BackgroundTransparency = 1
+G.TextLabel_77.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_77.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_77.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_77.Text = "Hide Button Panel"
+G.TextLabel_77.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_77.TextSize = 11
+G.TextLabel_77.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_77.Parent = G.Frame_130
+
+G.WaveTogglePill_32 = Instance.new("Frame")
+G.WaveTogglePill_32.Name = "WaveTogglePill"
+G.WaveTogglePill_32.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_32.BorderSizePixel = 0
+G.WaveTogglePill_32.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_32.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_32.ZIndex = 7
+G.WaveTogglePill_32:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_32.Parent = G.Frame_130
+
+G.UICorner_121 = Instance.new("UICorner")
+G.UICorner_121.CornerRadius = UDim.new(0, 9)
+G.UICorner_121.Parent = G.WaveTogglePill_32
+
+G.UIStroke_80 = Instance.new("UIStroke")
+G.UIStroke_80.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_80.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_80.Parent = G.WaveTogglePill_32
+
+G.WaveToggleDot_32 = Instance.new("Frame")
+G.WaveToggleDot_32.Name = "WaveToggleDot"
+G.WaveToggleDot_32.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_32.BorderSizePixel = 0
+G.WaveToggleDot_32.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_32.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_32.ZIndex = 8
+G.WaveToggleDot_32.Parent = G.WaveTogglePill_32
+
+G.UICorner_122 = Instance.new("UICorner")
+G.UICorner_122.CornerRadius = UDim.new(0, 6)
+G.UICorner_122.Parent = G.WaveToggleDot_32
+
+G.TextButton_54 = Instance.new("TextButton")
+G.TextButton_54.BackgroundTransparency = 1
+G.TextButton_54.BorderSizePixel = 0
+G.TextButton_54.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_54.ZIndex = 9
+G.TextButton_54.Text = ""
+G.TextButton_54.Parent = G.WaveTogglePill_32
+
+G.Frame_131 = Instance.new("Frame")
+G.Frame_131.BackgroundTransparency = 1
+G.Frame_131.BorderSizePixel = 0
+G.Frame_131.LayoutOrder = 116
+G.Frame_131.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_131.Parent = G.WavePage_Interface
+
+G.Frame_132 = Instance.new("Frame")
+G.Frame_132.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_132.BackgroundTransparency = 1
+G.Frame_132.BorderSizePixel = 0
+G.Frame_132.LayoutOrder = 103
+G.Frame_132.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_132.Parent = G.WavePage_Interface
+
+G.TextLabel_78 = Instance.new("TextLabel")
+G.TextLabel_78.BackgroundTransparency = 1
+G.TextLabel_78.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_78.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_78.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_78.Text = "Unlock Button Panel"
+G.TextLabel_78.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_78.TextSize = 11
+G.TextLabel_78.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_78.Parent = G.Frame_132
+
+G.WaveTogglePill_33 = Instance.new("Frame")
+G.WaveTogglePill_33.Name = "WaveTogglePill"
+G.WaveTogglePill_33.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_33.BorderSizePixel = 0
+G.WaveTogglePill_33.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_33.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_33.ZIndex = 7
+G.WaveTogglePill_33:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_33.Parent = G.Frame_132
+
+G.UICorner_123 = Instance.new("UICorner")
+G.UICorner_123.CornerRadius = UDim.new(0, 9)
+G.UICorner_123.Parent = G.WaveTogglePill_33
+
+G.UIStroke_81 = Instance.new("UIStroke")
+G.UIStroke_81.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_81.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_81.Parent = G.WaveTogglePill_33
+
+G.WaveToggleDot_33 = Instance.new("Frame")
+G.WaveToggleDot_33.Name = "WaveToggleDot"
+G.WaveToggleDot_33.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_33.BorderSizePixel = 0
+G.WaveToggleDot_33.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_33.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_33.ZIndex = 8
+G.WaveToggleDot_33.Parent = G.WaveTogglePill_33
+
+G.UICorner_124 = Instance.new("UICorner")
+G.UICorner_124.CornerRadius = UDim.new(0, 6)
+G.UICorner_124.Parent = G.WaveToggleDot_33
+
+G.TextButton_55 = Instance.new("TextButton")
+G.TextButton_55.BackgroundTransparency = 1
+G.TextButton_55.BorderSizePixel = 0
+G.TextButton_55.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_55.ZIndex = 9
+G.TextButton_55.Text = ""
+G.TextButton_55.Parent = G.WaveTogglePill_33
+
+G.Frame_133 = Instance.new("Frame")
+G.Frame_133.BackgroundTransparency = 1
+G.Frame_133.BorderSizePixel = 0
+G.Frame_133.LayoutOrder = 118
+G.Frame_133.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_133.Parent = G.WavePage_Interface
+
+G.Frame_134 = Instance.new("Frame")
+G.Frame_134.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_134.BackgroundTransparency = 1
+G.Frame_134.BorderSizePixel = 0
+G.Frame_134.LayoutOrder = 104
+G.Frame_134.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_134.Parent = G.WavePage_Interface
+
+G.TextLabel_79 = Instance.new("TextLabel")
+G.TextLabel_79.BackgroundTransparency = 1
+G.TextLabel_79.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_79.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_79.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_79.Text = "Unlock Buttons"
+G.TextLabel_79.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_79.TextSize = 11
+G.TextLabel_79.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_79.Parent = G.Frame_134
+
+G.WaveTogglePill_34 = Instance.new("Frame")
+G.WaveTogglePill_34.Name = "WaveTogglePill"
+G.WaveTogglePill_34.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_34.BorderSizePixel = 0
+G.WaveTogglePill_34.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_34.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_34.ZIndex = 7
+G.WaveTogglePill_34:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_34.Parent = G.Frame_134
+
+G.UICorner_125 = Instance.new("UICorner")
+G.UICorner_125.CornerRadius = UDim.new(0, 9)
+G.UICorner_125.Parent = G.WaveTogglePill_34
+
+G.UIStroke_82 = Instance.new("UIStroke")
+G.UIStroke_82.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_82.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_82.Parent = G.WaveTogglePill_34
+
+G.WaveToggleDot_34 = Instance.new("Frame")
+G.WaveToggleDot_34.Name = "WaveToggleDot"
+G.WaveToggleDot_34.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_34.BorderSizePixel = 0
+G.WaveToggleDot_34.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_34.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_34.ZIndex = 8
+G.WaveToggleDot_34.Parent = G.WaveTogglePill_34
+
+G.UICorner_126 = Instance.new("UICorner")
+G.UICorner_126.CornerRadius = UDim.new(0, 6)
+G.UICorner_126.Parent = G.WaveToggleDot_34
+
+G.TextButton_56 = Instance.new("TextButton")
+G.TextButton_56.BackgroundTransparency = 1
+G.TextButton_56.BorderSizePixel = 0
+G.TextButton_56.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_56.ZIndex = 9
+G.TextButton_56.Text = ""
+G.TextButton_56.Parent = G.WaveTogglePill_34
+
+G.Frame_135 = Instance.new("Frame")
+G.Frame_135.BackgroundTransparency = 1
+G.Frame_135.BorderSizePixel = 0
+G.Frame_135.LayoutOrder = 120
+G.Frame_135.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_135.Parent = G.WavePage_Interface
+
+G.Frame_136 = Instance.new("Frame")
+G.Frame_136.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_136.BackgroundTransparency = 1
+G.Frame_136.BorderSizePixel = 0
+G.Frame_136.LayoutOrder = 8
+G.Frame_136.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_136.Parent = G.WavePage_Interface
+
+G.TextLabel_80 = Instance.new("TextLabel")
+G.TextLabel_80.BackgroundTransparency = 1
+G.TextLabel_80.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_80.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_80.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_80.Text = "Lock UI"
+G.TextLabel_80.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_80.TextSize = 11
+G.TextLabel_80.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_80.Parent = G.Frame_136
+
+G.WaveTogglePill_35 = Instance.new("Frame")
+G.WaveTogglePill_35.Name = "WaveTogglePill"
+G.WaveTogglePill_35.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.WaveTogglePill_35.BorderSizePixel = 0
+G.WaveTogglePill_35.Position = UDim2.new(1, -54, 0.5, -9)
+G.WaveTogglePill_35.Size = UDim2.new(0, 40, 0, 18)
+G.WaveTogglePill_35.ZIndex = 7
+G.WaveTogglePill_35:SetAttribute("WaveToggleOn", false)
+G.WaveTogglePill_35.Parent = G.Frame_136
+
+G.UICorner_127 = Instance.new("UICorner")
+G.UICorner_127.CornerRadius = UDim.new(0, 9)
+G.UICorner_127.Parent = G.WaveTogglePill_35
+
+G.UIStroke_83 = Instance.new("UIStroke")
+G.UIStroke_83.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_83.Color = Color3.fromRGB(55, 25, 90)
+G.UIStroke_83.Parent = G.WaveTogglePill_35
+
+G.WaveToggleDot_35 = Instance.new("Frame")
+G.WaveToggleDot_35.Name = "WaveToggleDot"
+G.WaveToggleDot_35.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.WaveToggleDot_35.BorderSizePixel = 0
+G.WaveToggleDot_35.Position = UDim2.new(0, 3, 0.5, -6)
+G.WaveToggleDot_35.Size = UDim2.new(0, 12, 0, 12)
+G.WaveToggleDot_35.ZIndex = 8
+G.WaveToggleDot_35.Parent = G.WaveTogglePill_35
+
+G.UICorner_128 = Instance.new("UICorner")
+G.UICorner_128.CornerRadius = UDim.new(0, 6)
+G.UICorner_128.Parent = G.WaveToggleDot_35
+
+G.TextButton_57 = Instance.new("TextButton")
+G.TextButton_57.BackgroundTransparency = 1
+G.TextButton_57.BorderSizePixel = 0
+G.TextButton_57.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_57.ZIndex = 9
+G.TextButton_57.Text = ""
+G.TextButton_57.Parent = G.WaveTogglePill_35
+
+
+
+G.Frame_137 = Instance.new("Frame")
+G.Frame_137.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_137.BackgroundTransparency = 1
+G.Frame_137.BorderSizePixel = 0
+G.Frame_137.LayoutOrder = 105
+G.Frame_137.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_137.Parent = G.WavePage_Interface
+
+G.TextLabel_81 = Instance.new("TextLabel")
+G.TextLabel_81.BackgroundTransparency = 1
+G.TextLabel_81.Position = UDim2.new(0, 12, 0.5, -7)
+G.TextLabel_81.Size = UDim2.new(0, 100, 0, 14)
+G.TextLabel_81.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_81.Text = "Reset Buttons"
+G.TextLabel_81.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_81.TextSize = 11
+G.TextLabel_81.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_81.Parent = G.Frame_137
+
+G.TextButton_58 = Instance.new("TextButton")
+G.TextButton_58.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.TextButton_58.BorderSizePixel = 0
+G.TextButton_58.Position = UDim2.new(1, -88, 0.5, -13)
+G.TextButton_58.Size = UDim2.new(0, 80, 0, 26)
+G.TextButton_58.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_58.Text = "Reset"
+G.TextButton_58.TextColor3 = Color3.fromRGB(203, 185, 215)
+G.TextButton_58.TextSize = 11
+G.TextButton_58.Parent = G.Frame_137
+
+G.UICorner_129 = Instance.new("UICorner")
+G.UICorner_129.CornerRadius = UDim.new(0, 4)
+G.UICorner_129.Parent = G.TextButton_58
+
+G.UIStroke_84 = Instance.new("UIStroke")
+G.UIStroke_84.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_84.Color = Color3.fromRGB(61, 20, 90)
+G.UIStroke_84.Parent = G.TextButton_58
+
+G.Frame_138 = Instance.new("Frame")
+G.Frame_138.BackgroundTransparency = 1
+G.Frame_138.BorderSizePixel = 0
+G.Frame_138.LayoutOrder = 123
+G.Frame_138.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_138.Parent = G.WavePage_Interface
+
+G.Frame_139 = Instance.new("Frame")
+G.Frame_139.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_139.BackgroundTransparency = 1
+G.Frame_139.BorderSizePixel = 0
+G.Frame_139.LayoutOrder = 107
+G.Frame_139.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_139.Parent = G.WavePage_Interface
+
+G.TextLabel_82 = Instance.new("TextLabel")
+G.TextLabel_82.BackgroundTransparency = 1
+G.TextLabel_82.Position = UDim2.new(0, 12, 0.5, -7)
+G.TextLabel_82.Size = UDim2.new(0, 100, 0, 14)
+G.TextLabel_82.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_82.Text = "Reset Config"
+G.TextLabel_82.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_82.TextSize = 11
+G.TextLabel_82.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_82.Parent = G.Frame_139
+
+G.TextButton_59 = Instance.new("TextButton")
+G.TextButton_59.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.TextButton_59.BorderSizePixel = 0
+G.TextButton_59.Position = UDim2.new(1, -88, 0.5, -13)
+G.TextButton_59.Size = UDim2.new(0, 80, 0, 26)
+G.TextButton_59.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_59.Text = "Reset"
+G.TextButton_59.TextColor3 = Color3.fromRGB(203, 185, 215)
+G.TextButton_59.TextSize = 11
+G.TextButton_59.Parent = G.Frame_139
+
+G.UICorner_130 = Instance.new("UICorner")
+G.UICorner_130.CornerRadius = UDim.new(0, 4)
+G.UICorner_130.Parent = G.TextButton_59
+
+G.UIStroke_85 = Instance.new("UIStroke")
+G.UIStroke_85.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_85.Color = Color3.fromRGB(61, 20, 90)
+G.UIStroke_85.Parent = G.TextButton_59
+
+G.Frame_140 = Instance.new("Frame")
+G.Frame_140.BackgroundTransparency = 1
+G.Frame_140.BorderSizePixel = 0
+G.Frame_140.LayoutOrder = 125
+G.Frame_140.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_140.Parent = G.WavePage_Interface
+
+G.Frame_141 = Instance.new("Frame")
+G.Frame_141.BackgroundTransparency = 1
+G.Frame_141.BorderSizePixel = 0
+G.Frame_141.LayoutOrder = 106
+G.Frame_141.Size = UDim2.new(1, 0, 0, 28)
+G.Frame_141.Parent = G.WavePage_Interface
+
+G.TextLabel_83 = Instance.new("TextLabel")
+G.TextLabel_83.BackgroundTransparency = 1
+G.TextLabel_83.Position = UDim2.new(0, 8, 0, 0)
+G.TextLabel_83.Size = UDim2.new(1, -14, 1, 0)
+G.TextLabel_83.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_83.Text = "CONFIG"
+G.TextLabel_83.TextColor3 = Color3.fromRGB(160, 80, 220)
+G.TextLabel_83.TextSize = 13
+G.TextLabel_83.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_83.Parent = G.Frame_141
+
+G.Frame_142 = Instance.new("Frame")
+G.Frame_142.BackgroundTransparency = 1
+G.Frame_142.BorderSizePixel = 0
+G.Frame_142.LayoutOrder = 127
+G.Frame_142.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_142.Parent = G.WavePage_Interface
+
+G.Frame_143 = Instance.new("Frame")
+G.Frame_143.BackgroundTransparency = 1
+G.Frame_143.BorderSizePixel = 0
+G.Frame_143.LayoutOrder = 108
+G.Frame_143.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_143.Parent = G.WavePage_Interface
+
+G.Frame_144 = Instance.new("Frame")
+G.Frame_144.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.Frame_144.BorderSizePixel = 0
+G.Frame_144.Position = UDim2.new(0, 0, 0, 4)
+G.Frame_144.Size = UDim2.new(1, 0, 0, 26)
+G.Frame_144.Parent = G.Frame_143
+
+G.UICorner_131 = Instance.new("UICorner")
+G.UICorner_131.CornerRadius = UDim.new(0, 2)
+G.UICorner_131.Parent = G.Frame_144
+
+G.UIStroke_86 = Instance.new("UIStroke")
+G.UIStroke_86.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_86.Color = Color3.fromRGB(58, 18, 85)
+G.UIStroke_86.Parent = G.Frame_144
+
+G.TextBox_15 = Instance.new("TextBox")
+G.TextBox_15.BackgroundTransparency = 1
+G.TextBox_15.Position = UDim2.new(0, 4, 0, 0)
+G.TextBox_15.Size = UDim2.new(1, -8, 1, 0)
+G.TextBox_15.ZIndex = 9
+G.TextBox_15.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextBox_15.Text = ""
+G.TextBox_15.TextColor3 = Color3.fromRGB(229, 220, 235)
+G.TextBox_15.TextSize = 11
+G.TextBox_15.TextXAlignment = Enum.TextXAlignment.Left
+G.TextBox_15.ClearTextOnFocus = false
+G.TextBox_15.PlaceholderColor3 = Color3.fromRGB(70, 28, 100)
+G.TextBox_15.PlaceholderText = "Config name..."
+G.TextBox_15.Parent = G.Frame_144
+
+G.Frame_145 = Instance.new("Frame")
+G.Frame_145.BackgroundTransparency = 1
+G.Frame_145.BorderSizePixel = 0
+G.Frame_145.LayoutOrder = 129
+G.Frame_145.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_145.Parent = G.WavePage_Interface
+
+G.Frame_146 = Instance.new("Frame")
+G.Frame_146.BackgroundTransparency = 1
+G.Frame_146.BorderSizePixel = 0
+G.Frame_146.LayoutOrder = 109
+G.Frame_146.Size = UDim2.new(1, 0, 0, 34)
+G.Frame_146.Parent = G.WavePage_Interface
+
+G.TextButton_60 = Instance.new("TextButton")
+G.TextButton_60.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.TextButton_60.BorderSizePixel = 0
+G.TextButton_60.Position = UDim2.new(0, 0, 0, 3)
+G.TextButton_60.Size = UDim2.new(0.48, -3, 0, 28)
+G.TextButton_60.ZIndex = 9
+G.TextButton_60.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_60.Text = "Save Config"
+G.TextButton_60.TextColor3 = Color3.fromRGB(203, 185, 215)
+G.TextButton_60.TextSize = 11
+G.TextButton_60.Parent = G.Frame_146
+G.TextButton_60.Position = UDim2.new(0, 0, 0, 3)
+G.TextButton_70 = Instance.new("TextButton")
+G.TextButton_70.Name = "LoadConfigButton"
+G.TextButton_70.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.TextButton_70.BorderSizePixel = 0
+G.TextButton_70.Position = UDim2.new(0.52, 3, 0, 3)
+G.TextButton_70.Size = UDim2.new(0.48, -3, 0, 28)
+G.TextButton_70.ZIndex = 9
+G.TextButton_70.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextButton_70.Text = "Load Config"
+G.TextButton_70.TextColor3 = Color3.fromRGB(203, 185, 215)
+G.TextButton_70.TextSize = 11
+G.TextButton_70.Parent = G.Frame_146
+Instance.new("UICorner", G.TextButton_70).CornerRadius = UDim.new(0, 2)
+local loadStroke = Instance.new("UIStroke", G.TextButton_70)
+loadStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+loadStroke.Color = Color3.fromRGB(61, 20, 90)
+
+G.UICorner_132 = Instance.new("UICorner")
+G.UICorner_132.CornerRadius = UDim.new(0, 2)
+G.UICorner_132.Parent = G.TextButton_60
+
+G.UIStroke_87 = Instance.new("UIStroke")
+G.UIStroke_87.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_87.Color = Color3.fromRGB(61, 20, 90)
+G.UIStroke_87.Parent = G.TextButton_60
+
+
+G.TextButton_60.Position = UDim2.new(0, 0, 0, 3)
+G.TextButton_60.Size = UDim2.new(0.48, -3, 0, 28)
+G.TextButton_60.Text = "Save Config"
+G.TextButton_70.Position = UDim2.new(0.52, 3, 0, 3)
+G.TextButton_70.Size = UDim2.new(0.48, -3, 0, 28)
+G.TextButton_70.Visible = true
+G.TextButton_70.AutoButtonColor = true
+G.TextButton_70.BackgroundColor3 = Color3.fromRGB(70, 28, 120)
+G.TextButton_70.TextColor3 = Color3.fromRGB(245, 235, 255)
+G.TextButton_70.TextSize = 12
+G.TextButton_60.AutoButtonColor = true
+G.TextButton_60.BackgroundColor3 = Color3.fromRGB(70, 28, 120)
+G.TextButton_60.TextColor3 = Color3.fromRGB(245, 235, 255)
+G.TextButton_60.TextSize = 12
+for _, configRow in ipairs({G.Frame_143, G.Frame_144, G.Frame_145}) do
+	if configRow then
+		configRow.Visible = false
+		configRow.Size = UDim2.new(1, 0, 0, 0)
+	end
+end
+
+G.Frame_147 = Instance.new("Frame")
+G.Frame_147.BackgroundTransparency = 1
+G.Frame_147.BorderSizePixel = 0
+G.Frame_147.LayoutOrder = 131
+G.Frame_147.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_147.Parent = G.WavePage_Interface
+
+G.Frame_148 = Instance.new("Frame")
+G.Frame_148.AutomaticSize = Enum.AutomaticSize.Y
+G.Frame_148.BackgroundTransparency = 1
+G.Frame_148.BorderSizePixel = 0
+G.Frame_148.LayoutOrder = 110
+G.Frame_148.Size = UDim2.new(1, 0, 0, 0)
+G.Frame_148.Parent = G.WavePage_Interface
+
+G.UIListLayout_10 = Instance.new("UIListLayout")
+G.UIListLayout_10.Padding = UDim.new(0, 4)
+G.UIListLayout_10.SortOrder = Enum.SortOrder.LayoutOrder
+G.UIListLayout_10.Parent = G.Frame_148
+
+G.EmptyLabel = Instance.new("TextLabel")
+G.EmptyLabel.Name = "EmptyLabel"
+G.EmptyLabel.BackgroundTransparency = 1
+G.EmptyLabel.LayoutOrder = 1
+G.EmptyLabel.Size = UDim2.new(1, 0, 0, 22)
+G.EmptyLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.EmptyLabel.Text = ""
+G.EmptyLabel.TextColor3 = Color3.fromRGB(104, 38, 150)
+G.EmptyLabel.TextSize = 10
+G.EmptyLabel.Parent = G.Frame_148
+
+G.Frame_149 = Instance.new("Frame")
+G.Frame_149.BackgroundTransparency = 1
+G.Frame_149.BorderSizePixel = 0
+G.Frame_149.LayoutOrder = 133
+G.Frame_149.Size = UDim2.new(1, 0, 0, 2)
+G.Frame_149.Parent = G.WavePage_Interface
+
+G.WaveMiniRestoreButton = Instance.new("ImageButton")
+G.WaveMiniRestoreButton.Name = "WaveMiniRestoreButton"
+G.WaveMiniRestoreButton.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.WaveMiniRestoreButton.BackgroundTransparency = 0.08
+G.WaveMiniRestoreButton.BorderSizePixel = 0
+G.WaveMiniRestoreButton.Position = UDim2.new(0, 98, 0, 68)
+G.WaveMiniRestoreButton.Size = UDim2.new(0, 52, 0, 52)
+G.WaveMiniRestoreButton.ZIndex = 150
+G.WaveMiniRestoreButton.Image = "rbxthumb://type=Asset&id=117439302562449&w=420&h=420"
+G.WaveMiniRestoreButton.ImageTransparency = 0
+G.WaveMiniRestoreButton.ScaleType = Enum.ScaleType.Fit
+G.WaveMiniRestoreButton.AutoButtonColor = false
+G.WaveMiniRestoreButton.Parent = G.WAVEHubV1
+
+G.WaveMiniRestoreCorner = Instance.new("UICorner")
+G.WaveMiniRestoreCorner.CornerRadius = UDim.new(0, 12)
+G.WaveMiniRestoreCorner.Parent = G.WaveMiniRestoreButton
+
+G.WaveMiniRestoreStroke = Instance.new("UIStroke")
+G.WaveMiniRestoreStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.WaveMiniRestoreStroke.Color = Color3.fromRGB(126, 20, 200)
+G.WaveMiniRestoreStroke.Thickness = 1.5
+G.WaveMiniRestoreStroke.Parent = G.WaveMiniRestoreButton
+
+G.WAVEMiniRestoreScale = Instance.new("UIScale")
+G.WAVEMiniRestoreScale.Name = "WAVEMiniRestoreScale"
+G.WAVEMiniRestoreScale.Scale = 0.7
+G.WAVEMiniRestoreScale.Parent = G.WaveMiniRestoreButton
+
+G.WaveMiniRestoreTitle = Instance.new("TextLabel")
+G.WaveMiniRestoreTitle.Name = "WaveMiniRestoreTitle"
+G.WaveMiniRestoreTitle.BackgroundTransparency = 1
+G.WaveMiniRestoreTitle.Visible = false
+G.WaveMiniRestoreTitle.Parent = G.WAVEHubV1
+
+G.WaveLogoPreloadHolder = Instance.new("Frame")
+G.WaveLogoPreloadHolder.Name = "WaveLogoPreloadHolder"
+G.WaveLogoPreloadHolder.BackgroundTransparency = 1
+G.WaveLogoPreloadHolder.Position = UDim2.new(1, 20, 1, 20)
+G.WaveLogoPreloadHolder.Size = UDim2.new(0, 1, 0, 1)
+G.WaveLogoPreloadHolder.Visible = false
+G.WaveLogoPreloadHolder.Parent = G.WAVEHubV1
+
+G.LogoPreload_default = Instance.new("ImageLabel")
+G.LogoPreload_default.Name = "LogoPreload_default"
+G.LogoPreload_default.BackgroundTransparency = 1
+G.LogoPreload_default.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_default.Visible = false
+G.LogoPreload_default.Image = "rbxthumb://type=Asset&id=75548910103458&w=420&h=420"
+G.LogoPreload_default.Parent = G.WaveLogoPreloadHolder
+
+G.LogoPreload_kira = Instance.new("ImageLabel")
+G.LogoPreload_kira.Name = "LogoPreload_kira"
+G.LogoPreload_kira.BackgroundTransparency = 1
+G.LogoPreload_kira.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_kira.Visible = false
+G.LogoPreload_kira.Image = "rbxthumb://type=Asset&id=125547726098040&w=420&h=420"
+G.LogoPreload_kira.Parent = G.WaveLogoPreloadHolder
+
+G.LogoPreload_dio = Instance.new("ImageLabel")
+G.LogoPreload_dio.Name = "LogoPreload_dio"
+G.LogoPreload_dio.BackgroundTransparency = 1
+G.LogoPreload_dio.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_dio.Visible = false
+G.LogoPreload_dio.Image = "rbxthumb://type=Asset&id=125749412993183&w=420&h=420"
+G.LogoPreload_dio.Parent = G.WaveLogoPreloadHolder
+
+G.LogoPreload_kingcrimson = Instance.new("ImageLabel")
+G.LogoPreload_kingcrimson.Name = "LogoPreload_kingcrimson"
+G.LogoPreload_kingcrimson.BackgroundTransparency = 1
+G.LogoPreload_kingcrimson.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_kingcrimson.Visible = false
+G.LogoPreload_kingcrimson.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/wave_king_crimson_minilogo.png"
+G.LogoPreload_kingcrimson:SetAttribute("WaveImageRequest", "https://files.catbox.moe/lxi4pf.png")
+G.LogoPreload_kingcrimson.Parent = G.WaveLogoPreloadHolder
+
+G.LogoPreload_t636k9 = Instance.new("ImageLabel")
+G.LogoPreload_t636k9.Name = "LogoPreload_t636k9"
+G.LogoPreload_t636k9.BackgroundTransparency = 1
+G.LogoPreload_t636k9.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_t636k9.Visible = false
+G.LogoPreload_t636k9.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/wave_t636k9_minilogo.png"
+G.LogoPreload_t636k9:SetAttribute("WaveImageRequest", "https://files.catbox.moe/q7tes7.png")
+G.LogoPreload_t636k9.Parent = G.WaveLogoPreloadHolder
+
+G.LogoPreload_customwave = Instance.new("ImageLabel")
+G.LogoPreload_customwave.Name = "LogoPreload_customwave"
+G.LogoPreload_customwave.BackgroundTransparency = 1
+G.LogoPreload_customwave.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_customwave.Visible = false
+G.LogoPreload_customwave.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/wave_custom_minilogo_v3.png"
+G.LogoPreload_customwave:SetAttribute("WaveImageRequest", "https://files.catbox.moe/b2w3ck.png")
+G.LogoPreload_customwave.Parent = G.WaveLogoPreloadHolder
+
+G.MobileStackPanel = Instance.new("Frame")
+G.MobileStackPanel.Name = "MobileStackPanel"
+G.MobileStackPanel.Active = true
+G.MobileStackPanel.BackgroundColor3 = Color3.fromRGB(18, 4, 28)
+G.MobileStackPanel.BorderSizePixel = 0
+G.MobileStackPanel.Position = UDim2.new(1, -170, 0.5, -145)
+G.MobileStackPanel.Size = UDim2.new(0, 154, 0, 290)
+G.MobileStackPanel.ZIndex = 10
+G.MobileStackPanel.Parent = G.WAVEHubV1
+
+G.UICorner_133 = Instance.new("UICorner")
+G.UICorner_133.CornerRadius = UDim.new(0, 18)
+G.UICorner_133.Parent = G.MobileStackPanel
+
+G.UIStroke_88 = Instance.new("UIStroke")
+G.UIStroke_88.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.UIStroke_88.Color = Color3.fromRGB(46, 14, 68)
+G.UIStroke_88.Parent = G.MobileStackPanel
+
+G.BgImage = Instance.new("ImageLabel")
+G.BgImage.Name = "BgImage"
+G.BgImage.BackgroundTransparency = 1
+G.BgImage.BorderSizePixel = 0
+G.BgImage.Size = UDim2.new(1, 0, 1, 0)
+G.BgImage.Image = "rbxassetid://96235452296851"
+G.BgImage.ImageTransparency = 1
+G.BgImage.Visible = false
+G.BgImage.ScaleType = Enum.ScaleType.Crop
+G.BgImage:SetAttribute("WaveAppliedPanelSrc", "rbxthumb://type=Asset&id=139548602866176&w=420&h=420")
+G.BgImage.Parent = G.MobileStackPanel
+
+G.UICorner_134 = Instance.new("UICorner")
+G.UICorner_134.CornerRadius = UDim.new(0, 18)
+G.UICorner_134.Parent = G.BgImage
+
+G.BgOverlay = Instance.new("Frame")
+G.BgOverlay.Name = "BgOverlay"
+G.BgOverlay.BackgroundColor3 = Color3.fromRGB(18, 4, 28)
+G.BgOverlay.BackgroundTransparency = 1
+G.BgOverlay.BorderSizePixel = 0
+G.BgOverlay.Size = UDim2.new(1, 0, 1, 0)
+G.BgOverlay.ZIndex = 2
+G.BgOverlay.Parent = G.MobileStackPanel
+
+G.UICorner_135 = Instance.new("UICorner")
+G.UICorner_135.CornerRadius = UDim.new(0, 18)
+G.UICorner_135.Parent = G.BgOverlay
+
+G.StackBtn_autoLeft = Instance.new("Frame")
+G.StackBtn_autoLeft.Name = "StackBtn_autoLeft"
+G.StackBtn_autoLeft.Active = true
+G.StackBtn_autoLeft.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_autoLeft.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_autoLeft.BorderSizePixel = 0
+G.StackBtn_autoLeft.Position = UDim2.new(0, 14, 0, 14)
+G.StackBtn_autoLeft.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_autoLeft.ZIndex = 12
+G.StackBtn_autoLeft.Parent = G.MobileStackPanel
+
+G.UICorner_136 = Instance.new("UICorner")
+G.UICorner_136.CornerRadius = UDim.new(0, 10)
+G.UICorner_136.Parent = G.StackBtn_autoLeft
+
+G.TextLabel_84 = Instance.new("TextLabel")
+G.TextLabel_84.BackgroundTransparency = 1
+G.TextLabel_84.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_84.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_84.ZIndex = 6
+G.TextLabel_84.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_84.Text = "AUTO LEFT"
+G.TextLabel_84.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_84.TextSize = 9
+G.TextLabel_84.TextWrapped = true
+G.TextLabel_84.Parent = G.StackBtn_autoLeft
+
+G.TextButton_61 = Instance.new("TextButton")
+G.TextButton_61.BackgroundTransparency = 1
+G.TextButton_61.BorderSizePixel = 0
+G.TextButton_61.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_61.ZIndex = 20
+G.TextButton_61.Text = ""
+G.TextButton_61.Parent = G.StackBtn_autoLeft
+
+G.StackBtn_autoRight = Instance.new("Frame")
+G.StackBtn_autoRight.Name = "StackBtn_autoRight"
+G.StackBtn_autoRight.Active = true
+G.StackBtn_autoRight.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_autoRight.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_autoRight.BorderSizePixel = 0
+G.StackBtn_autoRight.Position = UDim2.new(0, 82, 0, 14)
+G.StackBtn_autoRight.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_autoRight.ZIndex = 12
+G.StackBtn_autoRight.Parent = G.MobileStackPanel
+
+G.UICorner_137 = Instance.new("UICorner")
+G.UICorner_137.CornerRadius = UDim.new(0, 10)
+G.UICorner_137.Parent = G.StackBtn_autoRight
+
+G.TextLabel_85 = Instance.new("TextLabel")
+G.TextLabel_85.BackgroundTransparency = 1
+G.TextLabel_85.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_85.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_85.ZIndex = 6
+G.TextLabel_85.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_85.Text = "AUTO RIGHT"
+G.TextLabel_85.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_85.TextSize = 9
+G.TextLabel_85.TextWrapped = true
+G.TextLabel_85.Parent = G.StackBtn_autoRight
+
+G.TextButton_62 = Instance.new("TextButton")
+G.TextButton_62.BackgroundTransparency = 1
+G.TextButton_62.BorderSizePixel = 0
+G.TextButton_62.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_62.ZIndex = 20
+G.TextButton_62.Text = ""
+G.TextButton_62.Parent = G.StackBtn_autoRight
+
+G.StackBtn_aimbot = Instance.new("Frame")
+G.StackBtn_aimbot.Name = "StackBtn_aimbot"
+G.StackBtn_aimbot.Active = true
+G.StackBtn_aimbot.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_aimbot.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_aimbot.BorderSizePixel = 0
+G.StackBtn_aimbot.Position = UDim2.new(0, 14, 0, 82)
+G.StackBtn_aimbot.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_aimbot.ZIndex = 12
+G.StackBtn_aimbot.Parent = G.MobileStackPanel
+
+G.UICorner_138 = Instance.new("UICorner")
+G.UICorner_138.CornerRadius = UDim.new(0, 10)
+G.UICorner_138.Parent = G.StackBtn_aimbot
+
+G.TextLabel_86 = Instance.new("TextLabel")
+G.TextLabel_86.BackgroundTransparency = 1
+G.TextLabel_86.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_86.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_86.ZIndex = 6
+G.TextLabel_86.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_86.Text = "AIMBOT"
+G.TextLabel_86.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_86.TextSize = 9
+G.TextLabel_86.TextWrapped = true
+G.TextLabel_86.Parent = G.StackBtn_aimbot
+
+G.TextButton_63 = Instance.new("TextButton")
+G.TextButton_63.BackgroundTransparency = 1
+G.TextButton_63.BorderSizePixel = 0
+G.TextButton_63.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_63.ZIndex = 20
+G.TextButton_63.Text = ""
+G.TextButton_63.Parent = G.StackBtn_aimbot
+
+G.StackBtn_lagger = Instance.new("Frame")
+G.StackBtn_lagger.Name = "StackBtn_lagger"
+G.StackBtn_lagger.Active = true
+G.StackBtn_lagger.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_lagger.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_lagger.BorderSizePixel = 0
+G.StackBtn_lagger.Position = UDim2.new(0, 82, 0, 82)
+G.StackBtn_lagger.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_lagger.ZIndex = 12
+G.StackBtn_lagger.Parent = G.MobileStackPanel
+
+G.UICorner_139 = Instance.new("UICorner")
+G.UICorner_139.CornerRadius = UDim.new(0, 10)
+G.UICorner_139.Parent = G.StackBtn_lagger
+
+G.TextLabel_87 = Instance.new("TextLabel")
+G.TextLabel_87.BackgroundTransparency = 1
+G.TextLabel_87.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_87.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_87.ZIndex = 6
+G.TextLabel_87.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_87.Text = "LAGGER NORMAL"
+G.TextLabel_87.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_87.TextSize = 9
+G.TextLabel_87.TextWrapped = true
+G.TextLabel_87.Parent = G.StackBtn_lagger
+
+G.TextButton_64 = Instance.new("TextButton")
+G.TextButton_64.BackgroundTransparency = 1
+G.TextButton_64.BorderSizePixel = 0
+G.TextButton_64.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_64.ZIndex = 20
+G.TextButton_64.Text = ""
+G.TextButton_64.Parent = G.StackBtn_lagger
+
+G.StackBtn_drop = Instance.new("Frame")
+G.StackBtn_drop.Name = "StackBtn_drop"
+G.StackBtn_drop.Active = true
+G.StackBtn_drop.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_drop.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_drop.BorderSizePixel = 0
+G.StackBtn_drop.Position = UDim2.new(0, 14, 0, 150)
+G.StackBtn_drop.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_drop.ZIndex = 12
+G.StackBtn_drop.Parent = G.MobileStackPanel
+
+G.UICorner_140 = Instance.new("UICorner")
+G.UICorner_140.CornerRadius = UDim.new(0, 10)
+G.UICorner_140.Parent = G.StackBtn_drop
+
+G.TextLabel_88 = Instance.new("TextLabel")
+G.TextLabel_88.BackgroundTransparency = 1
+G.TextLabel_88.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_88.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_88.ZIndex = 6
+G.TextLabel_88.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_88.Text = "DROP BR"
+G.TextLabel_88.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_88.TextSize = 9
+G.TextLabel_88.TextWrapped = true
+G.TextLabel_88.Parent = G.StackBtn_drop
+
+G.TextButton_65 = Instance.new("TextButton")
+G.TextButton_65.BackgroundTransparency = 1
+G.TextButton_65.BorderSizePixel = 0
+G.TextButton_65.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_65.ZIndex = 20
+G.TextButton_65.Text = ""
+G.TextButton_65.Parent = G.StackBtn_drop
+
+G.StackBtn_lagger2 = Instance.new("Frame")
+G.StackBtn_lagger2.Name = "StackBtn_lagger2"
+G.StackBtn_lagger2.Active = true
+G.StackBtn_lagger2.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_lagger2.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_lagger2.BorderSizePixel = 0
+G.StackBtn_lagger2.Position = UDim2.new(0, 82, 0, 150)
+G.StackBtn_lagger2.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_lagger2.ZIndex = 12
+G.StackBtn_lagger2.Parent = G.MobileStackPanel
+
+G.UICorner_141 = Instance.new("UICorner")
+G.UICorner_141.CornerRadius = UDim.new(0, 10)
+G.UICorner_141.Parent = G.StackBtn_lagger2
+
+G.TextLabel_89 = Instance.new("TextLabel")
+G.TextLabel_89.BackgroundTransparency = 1
+G.TextLabel_89.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_89.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_89.ZIndex = 6
+G.TextLabel_89.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_89.Text = "LAGGER CARRY"
+G.TextLabel_89.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_89.TextSize = 9
+G.TextLabel_89.TextWrapped = true
+G.TextLabel_89.Parent = G.StackBtn_lagger2
+
+G.TextButton_66 = Instance.new("TextButton")
+G.TextButton_66.BackgroundTransparency = 1
+G.TextButton_66.BorderSizePixel = 0
+G.TextButton_66.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_66.ZIndex = 20
+G.TextButton_66.Text = ""
+G.TextButton_66.Parent = G.StackBtn_lagger2
+
+G.StackBtn_tpDown = Instance.new("Frame")
+G.StackBtn_tpDown.Name = "StackBtn_tpDown"
+G.StackBtn_tpDown.Active = true
+G.StackBtn_tpDown.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_tpDown.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_tpDown.BorderSizePixel = 0
+G.StackBtn_tpDown.Position = UDim2.new(0, 14, 0, 218)
+G.StackBtn_tpDown.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_tpDown.ZIndex = 12
+G.StackBtn_tpDown.Parent = G.MobileStackPanel
+
+G.UICorner_142 = Instance.new("UICorner")
+G.UICorner_142.CornerRadius = UDim.new(0, 10)
+G.UICorner_142.Parent = G.StackBtn_tpDown
+
+G.TextLabel_90 = Instance.new("TextLabel")
+G.TextLabel_90.BackgroundTransparency = 1
+G.TextLabel_90.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_90.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_90.ZIndex = 6
+G.TextLabel_90.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_90.Text = "TP DOWN"
+G.TextLabel_90.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_90.TextSize = 9
+G.TextLabel_90.TextWrapped = true
+G.TextLabel_90.Parent = G.StackBtn_tpDown
+
+G.TextButton_67 = Instance.new("TextButton")
+G.TextButton_67.BackgroundTransparency = 1
+G.TextButton_67.BorderSizePixel = 0
+G.TextButton_67.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_67.ZIndex = 20
+G.TextButton_67.Text = ""
+G.TextButton_67.Parent = G.StackBtn_tpDown
+
+G.StackBtn_carrySpeed = Instance.new("Frame")
+G.StackBtn_carrySpeed.Name = "StackBtn_carrySpeed"
+G.StackBtn_carrySpeed.Active = true
+G.StackBtn_carrySpeed.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.StackBtn_carrySpeed.BackgroundTransparency = 0.10000000149011612
+G.StackBtn_carrySpeed.BorderSizePixel = 0
+G.StackBtn_carrySpeed.Position = UDim2.new(0, 82, 0, 218)
+G.StackBtn_carrySpeed.Size = UDim2.new(0, 58, 0, 58)
+G.StackBtn_carrySpeed.ZIndex = 12
+G.StackBtn_carrySpeed.Parent = G.MobileStackPanel
+
+G.UICorner_143 = Instance.new("UICorner")
+G.UICorner_143.CornerRadius = UDim.new(0, 10)
+G.UICorner_143.Parent = G.StackBtn_carrySpeed
+
+G.TextLabel_91 = Instance.new("TextLabel")
+G.TextLabel_91.BackgroundTransparency = 1
+G.TextLabel_91.Position = UDim2.new(0, 5, 0, 5)
+G.TextLabel_91.Size = UDim2.new(1, -10, 1, -10)
+G.TextLabel_91.ZIndex = 6
+G.TextLabel_91.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_91.Text = "CARRY SPEED"
+G.TextLabel_91.TextColor3 = Color3.fromRGB(255, 255, 255)
+G.TextLabel_91.TextSize = 9
+G.TextLabel_91.TextWrapped = true
+G.TextLabel_91.Parent = G.StackBtn_carrySpeed
+
+G.TextButton_68 = Instance.new("TextButton")
+G.TextButton_68.BackgroundTransparency = 1
+G.TextButton_68.BorderSizePixel = 0
+G.TextButton_68.Size = UDim2.new(1, 0, 1, 0)
+G.TextButton_68.ZIndex = 20
+G.TextButton_68.Text = ""
+G.TextButton_68.Parent = G.StackBtn_carrySpeed
+
+G.WAVEButtonScale = Instance.new("UIScale")
+G.WAVEButtonScale.Name = "WAVEButtonScale"
+G.WAVEButtonScale.Scale = 0.69999998807907104
+G.WAVEButtonScale.Parent = G.MobileStackPanel
+
+local StealBarRoot = Instance.new("Frame")
+StealBarRoot.Name = "StealBarRoot"
+StealBarRoot.AnchorPoint = Vector2.new(0.5, 1)
+StealBarRoot.BackgroundColor3 = Color3.fromRGB(14, 8, 24)
+StealBarRoot.BorderSizePixel = 0
+StealBarRoot.Position = UDim2.new(0.5, 0, 1, -100)
+StealBarRoot.Size = UDim2.new(0, 315, 0, 53)
+StealBarRoot.ZIndex = 50
+StealBarRoot.Parent = G.WAVEHubV1
+
+local StealUICorner = Instance.new("UICorner")
+StealUICorner.CornerRadius = UDim.new(0, 10)
+StealUICorner.Parent = StealBarRoot
+
+local StealUIStroke = Instance.new("UIStroke")
+StealUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+StealUIStroke.Color = Color3.fromRGB(91, 20, 140)
+StealUIStroke.Thickness = 1.5
+StealUIStroke.Parent = StealBarRoot
+
+local StealLabel = Instance.new("TextLabel")
+StealLabel.Name = "StealLabel"
+StealLabel.BackgroundTransparency = 1
+StealLabel.Position = UDim2.new(0, 0, 0, -2)
+StealLabel.Size = UDim2.new(1, 0, 0, 24)
+StealLabel.ZIndex = 56
+StealLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+StealLabel.Text = "discord.gg/XNByTnwf25"
+StealLabel.TextColor3 = Color3.fromRGB(220, 160, 255)
+StealLabel.TextSize = 12
+StealLabel.Parent = StealBarRoot
+
+local StealPingLabel = Instance.new("TextLabel")
+StealPingLabel.Name = "PingLabel"
+StealPingLabel.BackgroundTransparency = 1
+StealPingLabel.Position = UDim2.new(0, 8, 1, -20)
+StealPingLabel.Size = UDim2.new(0, 80, 0, 18)
+StealPingLabel.ZIndex = 56
+StealPingLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+StealPingLabel.Text = "PING: --"
+StealPingLabel.TextColor3 = Color3.fromRGB(110, 50, 180)
+StealPingLabel.TextSize = 10
+StealPingLabel.TextXAlignment = Enum.TextXAlignment.Left
+StealPingLabel.Parent = StealBarRoot
+
+local StealFpsLabel = Instance.new("TextLabel")
+StealFpsLabel.Name = "FpsLabel"
+StealFpsLabel.BackgroundTransparency = 1
+StealFpsLabel.Position = UDim2.new(1, -78, 1, -20)
+StealFpsLabel.Size = UDim2.new(0, 70, 0, 18)
+StealFpsLabel.ZIndex = 56
+StealFpsLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+StealFpsLabel.Text = "FPS: --"
+StealFpsLabel.TextColor3 = Color3.fromRGB(110, 50, 180)
+StealFpsLabel.TextSize = 10
+StealFpsLabel.TextXAlignment = Enum.TextXAlignment.Right
+StealFpsLabel.Parent = StealBarRoot
+
+
+local StealRadiusLabel = Instance.new("TextLabel")
+StealRadiusLabel.Name = "RadiusLabel"
+StealRadiusLabel.BackgroundTransparency = 1
+StealRadiusLabel.Visible = false
+StealRadiusLabel.Size = UDim2.new(0, 0, 0, 0)
+StealRadiusLabel.Text = ""
+StealRadiusLabel.Parent = StealBarRoot
+
+local ProgressTrack = Instance.new("Frame")
+ProgressTrack.Name = "ProgressTrack"
+ProgressTrack.BackgroundColor3 = Color3.fromRGB(28, 12, 42)
+ProgressTrack.BorderSizePixel = 0
+ProgressTrack.Position = UDim2.new(0, 14, 0.5, -5)
+ProgressTrack.Size = UDim2.new(1, -28, 0, 10)
+ProgressTrack.ZIndex = 52
+ProgressTrack.Parent = StealBarRoot
+
+local ProgressUICorner = Instance.new("UICorner")
+ProgressUICorner.CornerRadius = UDim.new(1, 0)
+ProgressUICorner.Parent = ProgressTrack
+
+local ProgressStroke = Instance.new("UIStroke")
+ProgressStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+ProgressStroke.Color = Color3.fromRGB(90, 35, 140)
+ProgressStroke.Thickness = 1
+ProgressStroke.Transparency = 0.35
+ProgressStroke.Parent = ProgressTrack
+
+local Fill = Instance.new("Frame")
+Fill.Name = "Fill"
+Fill.BackgroundColor3 = Color3.fromRGB(180, 70, 255)
+Fill.BorderSizePixel = 0
+Fill.Size = UDim2.new(0, 0, 1, 0)
+Fill.ZIndex = 53
+Fill.Parent = ProgressTrack
+
+local FillUICorner = Instance.new("UICorner")
+FillUICorner.CornerRadius = UDim.new(1, 0)
+FillUICorner.Parent = Fill
+
+local FillGradient = Instance.new("UIGradient")
+FillGradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 140, 40)),
+	ColorSequenceKeypoint.new(0.55, Color3.fromRGB(200, 70, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(140, 40, 255)),
+})
+FillGradient.Rotation = 0
+FillGradient.Parent = Fill
+
+local StealClickBtn = Instance.new("TextButton")
+StealClickBtn.BackgroundTransparency = 1
+StealClickBtn.Size = UDim2.new(1, 0, 1, 0)
+StealClickBtn.ZIndex = 55
+StealClickBtn.Text = ""
+StealClickBtn.Parent = StealBarRoot
+
+local StealScale = Instance.new("UIScale")
+StealScale.Scale = 0.7
+StealScale.Parent = StealBarRoot
+
+local HttpService = game:GetService("HttpService")
+pcall(function()
+	local CP = game:GetService("ContentProvider")
+	local assets = {
+		"rbxassetid://75548910103458",
+		"rbxassetid://96235452296851",
+	}
+	task.spawn(function() pcall(function() CP:PreloadAsync(assets) end) end)
+end)
+
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+
+local LocalPlayer = Players.LocalPlayer
+
+
+local localSpeedBillboard = nil
+local localRagOverheadLabel = nil
+do
+	local ContentProvider = game:GetService("ContentProvider")
+	local SPEED_IMAGE = "rbxassetid://75548910103458"
+	local speedBillboard = nil
+	local speedImage = nil
+	local speedText = nil
+	local speedConn = nil
+	local characterConn = nil
+
+	
+	task.spawn(function()
+		pcall(function()
+			ContentProvider:PreloadAsync({SPEED_IMAGE})
+		end)
+	end)
+
+	local function removeSpeedDisplay()
+		if speedConn then
+			speedConn:Disconnect()
+			speedConn = nil
+		end
+		if speedBillboard then
+			speedBillboard:Destroy()
+			speedBillboard = nil
+		end
+		speedImage = nil
+		speedText = nil
+		localSpeedBillboard = nil
+		localRagOverheadLabel = nil
+	end
+
+	local function attachSpeedDisplay(character)
+		removeSpeedDisplay()
+		if not character then return end
+
+		local head = character:FindFirstChild("Head") or character:WaitForChild("Head", 8)
+		local root = character:FindFirstChild("HumanoidRootPart") or character:WaitForChild("HumanoidRootPart", 8)
+		if not head or not root or not character.Parent then return end
+
+		local billboard = Instance.new("BillboardGui")
+		billboard.Name = "WaveLocalSpeedDisplay"
+		billboard.Adornee = head
+		billboard.AlwaysOnTop = true
+		billboard.LightInfluence = 0
+		billboard.MaxDistance = 250
+		billboard.Size = UDim2.fromOffset(190, 148)
+		billboard.StudsOffsetWorldSpace = Vector3.new(0, 2.15, 0)
+
+		
+		local image = Instance.new("ImageLabel")
+		image.Name = "VyzeLogo"
+		image.BackgroundTransparency = 1
+		image.AnchorPoint = Vector2.new(0.5, 0)
+		image.Position = UDim2.new(0.5, 0, 0, 28)
+		image.Size = UDim2.fromOffset(76, 66)
+		image.Image = SPEED_IMAGE
+		image.ScaleType = Enum.ScaleType.Fit
+		image.Parent = billboard
+
+		local label = Instance.new("TextLabel")
+		label.Name = "SpeedText"
+		label.BackgroundTransparency = 1
+		label.AnchorPoint = Vector2.new(0.5, 0)
+		label.Position = UDim2.new(0.5, 0, 0, 96)
+		label.Size = UDim2.new(1, -8, 0, 43)
+		label.Font = Enum.Font.GothamBold
+		label.Text = "Speed: 0.0"
+		label.TextColor3 = Color3.fromRGB(170, 75, 255)
+		label.TextSize = 25
+		label.TextStrokeColor3 = Color3.fromRGB(12, 6, 22)
+		label.TextStrokeTransparency = 0.15
+		label.TextXAlignment = Enum.TextXAlignment.Center
+		label.Parent = billboard
+
+		billboard.Parent = LocalPlayer:WaitForChild("PlayerGui")
+		speedBillboard = billboard
+		localSpeedBillboard = billboard
+		speedImage = image
+		speedText = label
+
+		
+		local lastText = "Speed: 0.0"
+		local elapsed = 0
+		speedConn = RunService.Heartbeat:Connect(function(dt)
+			if not billboard.Parent or not root.Parent then
+				removeSpeedDisplay()
+				return
+			end
+
+			elapsed += dt
+			if elapsed < 0.05 then return end
+			elapsed = 0
+
+			local humanoid = character:FindFirstChildOfClass("Humanoid")
+			local moving = humanoid and humanoid.MoveDirection.Magnitude > 0.05
+			local configuredSpeed = 0
+			
+			
+			if moving and type(_G._VioletteccGetSpeed) == "function" then
+				local ok, value = pcall(_G._VioletteccGetSpeed)
+				if ok then configuredSpeed = tonumber(value) or 0 end
+			end
+			local displayedSpeed = moving and configuredSpeed or 0
+			local newText = string.format("Speed: %.1f", displayedSpeed)
+			if newText ~= lastText and label.Parent then
+				lastText = newText
+				label.Text = newText
+			end
+		end)
+	end
+
+	if characterConn then characterConn:Disconnect() end
+	characterConn = LocalPlayer.CharacterAdded:Connect(function(character)
+		task.defer(attachSpeedDisplay, character)
+	end)
+	if LocalPlayer.Character then
+		task.defer(attachSpeedDisplay, LocalPlayer.Character)
+	end
+
+	G.WAVEHubV1.Destroying:Connect(function()
+		removeSpeedDisplay()
+		if characterConn then
+			characterConn:Disconnect()
+			characterConn = nil
+		end
+	end)
+end
+
+local Mouse = LocalPlayer:GetMouse()
+local _V3 = Vector3.new
+local _HST = Enum.HumanoidStateType
+local _HM = "Humanoid"
+local _HR = "HumanoidRootPart"
+
+G.MainOuter.Visible = true
+G.MainOuter.Size = UDim2.new(0, 280, 0, 420)
+G.MainOuter.ClipsDescendants = true
+G.MainOuter.Active = true
+
+for _, page in pairs({G.WavePage_Speed, G.WavePage_Combat, G.WavePage_Misc, G.WavePage_Visuals, G.WavePage_Interface, G.WavePage_Steal, G.WavePage_Movement}) do
+	if page then page.Visible = false end
+end
+
+local isMinimized = false
+local currentPage = nil
+local stealProgress = 0
+local stealActive = false
+local radiusValue = 60
+local mobileToggles = {}
+local startBatAimbot, stopBatAimbot
+
+local St = {
+	normalSpeed = tonumber(G.TextBox and G.TextBox.Text) or 60,
+	carrySpeed = tonumber(G.TextBox_2 and G.TextBox_2.Text) or 30,
+	burstNormalSpeed = tonumber(G.TextBox_3 and G.TextBox_3.Text) or 15,
+	burstCarrySpeed = tonumber(G.TextBox_4 and G.TextBox_4.Text) or 10,
+	speedToggled = false,
+	laggerMode = 0,
+	_prevCarry = nil,
+	_prevSpeed = false,
+	lastMoveDir = _V3(0, 0, 0),
+	speedChangeMethod = "v2",
+	antiRagdollEnabled = false,
+	autoBatToggled = false,
+	desyncAimbotEnabled = false,
+	autoLeftEnabled = false,
+	autoRightEnabled = false,
+	_autoCarryHandoff = false,
+	dropEnabled = false,
+	_tpInProgress = false,
+	guiScale = tonumber(G.TextBox_12 and G.TextBox_12.Text) or 0.7,
+	sideButtonScale = tonumber(G.TextBox_13 and G.TextBox_13.Text) or 0.7,
+	progressBarSize = tonumber(G.TextBox_14 and G.TextBox_14.Text) or 0.7,
+	openUiButtonScale = tonumber(G.TextBox_16 and G.TextBox_16.Text) or 0.7,
+	uiLocked = false,              
+	sideButtonsLocked = false,     
+	sidePanelLocked = false,       
+	sideButtonsVisible = true,
+	sidePanelVisible = true,
+}
+
+local Keys = { speed = Enum.KeyCode.LeftShift, lagger = Enum.KeyCode.LeftControl, aimbot = Enum.KeyCode.E, drop = Enum.KeyCode.X, tpDown = Enum.KeyCode.T, autoLeft = Enum.KeyCode.Z, autoRight = Enum.KeyCode.C }
+local KeyBindings = {
+	speed={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.LeftShift,platform="Keyboard"},
+	lagger={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.LeftControl,platform="Keyboard"},
+	aimbot={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.E,platform="Keyboard"},
+	drop={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.X,platform="Keyboard"},
+	tpDown={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.T,platform="Keyboard"},
+	autoLeft={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.Z,platform="Keyboard"},
+	autoRight={inputType=Enum.UserInputType.Keyboard,keyCode=Enum.KeyCode.C,platform="Keyboard"},
+}
+local function getBindPlatform(inputType)
+	if inputType ~= Enum.UserInputType.Gamepad1 then return "Keyboard" end
+	local ok,gs=pcall(game.GetService,game,"GuiService")
+	if ok and gs then
+		local ok2,platform=pcall(function() return gs:GetPlatform() end)
+		if ok2 then
+			local n=tostring(platform)
+			if n:find("PlayStation") then return "PlayStation" end
+			if n:find("Xbox") then return "Xbox" end
+		end
+	end
+	return "Gamepad"
+end
+local function setBinding(name,inputType,keyCode,platform)
+	if not name then return end
+	inputType=inputType or Enum.UserInputType.Keyboard; keyCode=keyCode or Enum.KeyCode.Unknown
+	KeyBindings[name]={inputType=inputType,keyCode=keyCode,platform=platform or getBindPlatform(inputType)}; Keys[name]=keyCode
+end
+local function bindingMatches(name,input)
+	local b=KeyBindings[name]; return b and input and b.keyCode~=Enum.KeyCode.Unknown and input.UserInputType==b.inputType and input.KeyCode==b.keyCode
+end
+local function bindingText(name)
+	local b=KeyBindings[name]
+	if not b or not b.keyCode or b.keyCode==Enum.KeyCode.Unknown then return "…" end
+	if b.inputType == Enum.UserInputType.Gamepad1 then
+		return b.keyCode.Name
+	end
+	return b.keyCode.Name
+end
+
+local MOVE_KEYS = {
+	[Enum.KeyCode.W] = true, [Enum.KeyCode.A] = true,
+	[Enum.KeyCode.S] = true, [Enum.KeyCode.D] = true,
+	[Enum.KeyCode.Up] = true, [Enum.KeyCode.Left] = true,
+	[Enum.KeyCode.Down] = true, [Enum.KeyCode.Right] = true,
+}
+
+local rebinding = nil
+
+local function setSideButtonState(frame, on, duration)
+    if not frame then return end
+    local target = on and Color3.fromRGB(126, 20, 200) or Color3.fromRGB(18, 8, 28)
+    TweenService:Create(frame, TweenInfo.new(duration or 0.15, Enum.EasingStyle.Quad), {
+        BackgroundColor3 = target
+    }):Play()
+end
+
+local AutoPath = {
+    L = false,
+    R = false,
+    phaseL = 1,
+    phaseR = 1,
+    connL = nil,
+    connR = nil,
+}
+
+
+local AP = {
+    L1 = Vector3.new(-476.48, -6.28, 92.73),
+    L2 = Vector3.new(-483.12, -4.95, 94.80),
+    L_FACE = Vector3.new(-482.25, -4.96, 92.09),
+    R1 = Vector3.new(-476.16, -6.52, 25.62),
+    R2 = Vector3.new(-483.06, -5.03, 25.48),
+    R_FACE = Vector3.new(-482.06, -6.93, 35.47),
+}
+
+
+local AUTO_NORMAL_L1 = AP.L1
+local AUTO_NORMAL_L2 = AP.L2
+local AUTO_NORMAL_R1 = AP.R1
+local AUTO_NORMAL_R2 = AP.R2
+local AUTO_WAYPOINTS = {
+    L1 = AP.L1, LEND = AP.L2, LFINAL = AP.L_FACE,
+    R1 = AP.R1, REND = AP.R2, RFINAL = AP.R_FACE,
+}
+
+local function autoRootHumanoid()
+    local char = LocalPlayer.Character
+    if not char then return nil, nil end
+    return char:FindFirstChild("HumanoidRootPart"), char:FindFirstChildOfClass("Humanoid")
+end
+
+local function autoFlat(root, target)
+    return Vector3.new(target.X - root.Position.X, 0, target.Z - root.Position.Z)
+end
+
+
+
+local function autoPathSpeed()
+    local speed = (St.laggerMode == 1) and St.burstNormalSpeed or St.normalSpeed
+    return math.max(1, tonumber(speed) or 60)
+end
+
+local function autoSpeed()
+    return autoPathSpeed()
+end
+
+local function autoCarrySpeed()
+    return math.max(1, tonumber(St.carrySpeed) or 30)
+end
+
+local function autoStop(which)
+    local root, hum = autoRootHumanoid()
+    if hum then hum:Move(Vector3.zero, false) end
+    if root then
+        root.AssemblyLinearVelocity = Vector3.new(0, root.AssemblyLinearVelocity.Y, 0)
+        root.AssemblyAngularVelocity = Vector3.zero
+    end
+    if which == "L" then
+        if AutoPath.connL then AutoPath.connL:Disconnect(); AutoPath.connL = nil end
+        AutoPath.L = false
+        AutoPath.phaseL = 1
+        St.autoLeftEnabled = false
+        mobileToggles["AUTO LEFT"] = false
+        if G.StackBtn_autoLeft then
+            pcall(function() setSideButtonState(G.StackBtn_autoLeft, false) end)
+            pcall(function() setFrameOn(G.StackBtn_autoLeft, false) end)
+        end
+    else
+        if AutoPath.connR then AutoPath.connR:Disconnect(); AutoPath.connR = nil end
+        AutoPath.R = false
+        AutoPath.phaseR = 1
+        St.autoRightEnabled = false
+        mobileToggles["AUTO RIGHT"] = false
+        if G.StackBtn_autoRight then
+            pcall(function() setSideButtonState(G.StackBtn_autoRight, false) end)
+            pcall(function() setFrameOn(G.StackBtn_autoRight, false) end)
+        end
+    end
+end
+
+local function autoTryRouteSteal()
+    local hook = _G._RaVeTryAutoRouteSteal
+    if type(hook) == "function" then pcall(hook) end
+end
+
+
+local function autoStartLeft()
+    if AutoPath.connL then AutoPath.connL:Disconnect() end
+    if AutoPath.R then autoStop("R") end
+    AutoPath.L = true
+    St.autoLeftEnabled = true
+    mobileToggles["AUTO LEFT"] = true
+    if G.StackBtn_autoLeft then
+        pcall(function() setSideButtonState(G.StackBtn_autoLeft, true) end)
+        pcall(function() setFrameOn(G.StackBtn_autoLeft, true) end)
+    end
+    AutoPath.phaseL = 1
+    
+    pcall(function()
+        if _G._VezyBatAimbotOn and type(stopBatAimbot) == "function" then stopBatAimbot() end
+    end)
+    AutoPath.connL = RunService.Heartbeat:Connect(function()
+        if not AutoPath.L or not St.autoLeftEnabled then return end
+        local root, hum = autoRootHumanoid()
+        if not root or not hum or hum.Health <= 0 then return end
+        local spd = autoPathSpeed()
+
+        if AutoPath.phaseL == 1 then
+            local tgt = Vector3.new(AP.L1.X, root.Position.Y, AP.L1.Z)
+            if (tgt - root.Position).Magnitude < 1 then
+                AutoPath.phaseL = 2
+                local d = AP.L2 - root.Position
+                local mv = Vector3.new(d.X, 0, d.Z)
+                if mv.Magnitude > 0.01 then
+                    mv = mv.Unit
+                    hum:Move(mv, false)
+                    root.AssemblyLinearVelocity = Vector3.new(mv.X * spd, root.AssemblyLinearVelocity.Y, mv.Z * spd)
+                end
+                return
+            end
+            local d = AP.L1 - root.Position
+            local mv = Vector3.new(d.X, 0, d.Z)
+            if mv.Magnitude > 0.01 then
+                mv = mv.Unit
+                hum:Move(mv, false)
+                root.AssemblyLinearVelocity = Vector3.new(mv.X * spd, root.AssemblyLinearVelocity.Y, mv.Z * spd)
+            end
+        elseif AutoPath.phaseL == 2 then
+            local tgt = Vector3.new(AP.L2.X, root.Position.Y, AP.L2.Z)
+            if (tgt - root.Position).Magnitude < 1 then
+                hum:Move(Vector3.zero, false)
+                root.AssemblyLinearVelocity = Vector3.zero
+                
+                local facePos = Vector3.new(AP.L_FACE.X, root.Position.Y, AP.L_FACE.Z)
+                if (facePos - root.Position).Magnitude > 0.01 then
+                    pcall(function() root.CFrame = CFrame.new(root.Position, facePos) end)
+                end
+                St._autoCarryHandoff = true
+                task.delay(2, function()
+                    if St then St._autoCarryHandoff = false end
+                end)
+                autoTryRouteSteal()
+                autoStop("L")
+                return
+            end
+            local d = AP.L2 - root.Position
+            local mv = Vector3.new(d.X, 0, d.Z)
+            if mv.Magnitude > 0.01 then
+                mv = mv.Unit
+                hum:Move(mv, false)
+                root.AssemblyLinearVelocity = Vector3.new(mv.X * spd, root.AssemblyLinearVelocity.Y, mv.Z * spd)
+            end
+        end
+    end)
+end
+
+local function autoStartRight()
+    if AutoPath.connR then AutoPath.connR:Disconnect() end
+    if AutoPath.L then autoStop("L") end
+    AutoPath.R = true
+    St.autoRightEnabled = true
+    mobileToggles["AUTO RIGHT"] = true
+    if G.StackBtn_autoRight then
+        pcall(function() setSideButtonState(G.StackBtn_autoRight, true) end)
+        pcall(function() setFrameOn(G.StackBtn_autoRight, true) end)
+    end
+    AutoPath.phaseR = 1
+    pcall(function()
+        if _G._VezyBatAimbotOn and type(stopBatAimbot) == "function" then stopBatAimbot() end
+    end)
+    AutoPath.connR = RunService.Heartbeat:Connect(function()
+        if not AutoPath.R or not St.autoRightEnabled then return end
+        local root, hum = autoRootHumanoid()
+        if not root or not hum or hum.Health <= 0 then return end
+        local spd = autoPathSpeed()
+
+        if AutoPath.phaseR == 1 then
+            local tgt = Vector3.new(AP.R1.X, root.Position.Y, AP.R1.Z)
+            if (tgt - root.Position).Magnitude < 1 then
+                AutoPath.phaseR = 2
+                local d = AP.R2 - root.Position
+                local mv = Vector3.new(d.X, 0, d.Z)
+                if mv.Magnitude > 0.01 then
+                    mv = mv.Unit
+                    hum:Move(mv, false)
+                    root.AssemblyLinearVelocity = Vector3.new(mv.X * spd, root.AssemblyLinearVelocity.Y, mv.Z * spd)
+                end
+                return
+            end
+            local d = AP.R1 - root.Position
+            local mv = Vector3.new(d.X, 0, d.Z)
+            if mv.Magnitude > 0.01 then
+                mv = mv.Unit
+                hum:Move(mv, false)
+                root.AssemblyLinearVelocity = Vector3.new(mv.X * spd, root.AssemblyLinearVelocity.Y, mv.Z * spd)
+            end
+        elseif AutoPath.phaseR == 2 then
+            local tgt = Vector3.new(AP.R2.X, root.Position.Y, AP.R2.Z)
+            if (tgt - root.Position).Magnitude < 1 then
+                hum:Move(Vector3.zero, false)
+                root.AssemblyLinearVelocity = Vector3.zero
+                local facePos = Vector3.new(AP.R_FACE.X, root.Position.Y, AP.R_FACE.Z)
+                if (facePos - root.Position).Magnitude > 0.01 then
+                    pcall(function() root.CFrame = CFrame.new(root.Position, facePos) end)
+                end
+                St._autoCarryHandoff = true
+                task.delay(2, function()
+                    if St then St._autoCarryHandoff = false end
+                end)
+                autoTryRouteSteal()
+                autoStop("R")
+                return
+            end
+            local d = AP.R2 - root.Position
+            local mv = Vector3.new(d.X, 0, d.Z)
+            if mv.Magnitude > 0.01 then
+                mv = mv.Unit
+                hum:Move(mv, false)
+                root.AssemblyLinearVelocity = Vector3.new(mv.X * spd, root.AssemblyLinearVelocity.Y, mv.Z * spd)
+            end
+        end
+    end)
+end
+
+local function toggleAutoLeft(on)
+    if on == nil then on = not AutoPath.L end
+    if on then autoStartLeft() else autoStop("L") end
+end
+
+local function toggleAutoRight(on)
+    if on == nil then on = not AutoPath.R end
+    if on then autoStartRight() else autoStop("R") end
+end
+
+_G._VynxToggleAutoLeft = toggleAutoLeft
+_G._VynxToggleAutoRight = toggleAutoRight
+_G._VynxStartFullAutoLeft = function() toggleAutoLeft(true) end
+_G._VynxStopFullAutoLeft = function() toggleAutoLeft(false) end
+_G._VynxStartFullAutoRight = function() toggleAutoRight(true) end
+_G._VynxStopFullAutoRight = function() toggleAutoRight(false) end
+_G._AdaptSetAutoLeft = toggleAutoLeft
+_G._AdaptSetAutoRight = toggleAutoRight
+
+UserInputService.InputBegan:Connect(function(input, processed)
+    if (processed and input.UserInputType == Enum.UserInputType.Keyboard) or rebinding then return end
+    if bindingMatches("autoLeft", input) then
+        toggleAutoLeft()
+    elseif bindingMatches("autoRight", input) then
+        toggleAutoRight()
+    end
+end)
+
+LocalPlayer.CharacterRemoving:Connect(function()
+    autoStop("L")
+    autoStop("R")
+end)
+
+
+
+
+for _, hiddenRow in ipairs({G.Frame_128, G.Frame_129, G.Frame_130, G.Frame_131, G.Frame_132, G.Frame_133, G.Frame_134}) do
+    if hiddenRow then hiddenRow.Visible = false; hiddenRow.Size = UDim2.new(1, 0, 0, 0) end
+end
+
+local pages = {
+	MAIN     = G.WavePage_Speed,
+	COMBAT   = G.WavePage_Combat,
+	MISC     = G.WavePage_Misc,
+	VISUALS  = G.WavePage_Visuals,
+	UI       = G.WavePage_Interface,
+	STEAL    = G.WavePage_Steal,
+	MOVEMENT = G.WavePage_Movement,
+}
+
+local navButtons = {
+	MAIN    = {btn = G.WaveNav_MAIN,      stroke = G.UIStroke},
+	COMBAT  = {btn = G.WaveNav_COMBAT,    stroke = G.UIStroke_2},
+	MISC    = {btn = G.WaveNav_MISC,      stroke = G.UIStroke_3},
+	VISUALS = {btn = G.WaveNav_VISUALS,   stroke = G.UIStroke_4},
+	UI      = {btn = G.WaveNav_CUSTOMIZE, stroke = G.UIStroke_5},
+}
+
+local dragControllers = {}
+
+
+
+
+
+local function makeDraggable(frame, handle, lockCheck, opts)
+	opts = opts or {}
+	handle = handle or frame
+	local threshold = tonumber(opts.threshold) or 0
+	local sensitivity = tonumber(opts.sensitivity) or 1
+	local dragging, pending, dragInput, dragStart, startPos, startAbs
+	local enabled = true
+	local keepOnScreen = opts.keepOnScreen == true
+
+	
+	local function parentScale()
+		local sc = 1
+		local inst = frame.Parent
+		while inst do
+			local u = inst:FindFirstChildOfClass("UIScale")
+			if u and u.Scale > 0 then sc = sc * u.Scale end
+			inst = inst.Parent
+		end
+		return sc
+	end
+
+	
+	local function getBounds()
+		local gui = frame:FindFirstAncestorWhichIsA("ScreenGui")
+		if gui and gui.AbsoluteSize.X > 0 and gui.AbsoluteSize.Y > 0 then
+			return gui.AbsolutePosition, gui.AbsoluteSize
+		end
+		local cam = workspace.CurrentCamera
+		return Vector2.new(0, 0), (cam and cam.ViewportSize or Vector2.new(1920, 1080))
+	end
+
+	if frame and frame:IsA("GuiObject") then frame.Active = true end
+	if handle and handle:IsA("GuiObject") then handle.Active = true end
+
+	local function finishDrag()
+		dragging = false
+		pending = false
+		dragInput = nil
+	end
+
+	local function beginDrag(input)
+		if not enabled or (lockCheck and lockCheck()) then return end
+		if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then return end
+		pending = true
+		dragging = (threshold <= 0)
+		dragInput = input
+		dragStart = input.Position
+		startPos = frame.Position
+		startAbs = frame.AbsolutePosition
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then finishDrag() end
+		end)
+	end
+
+	local function update(input)
+		if not enabled or not input then return end
+		if not dragging and not pending then return end
+		if lockCheck and lockCheck() then finishDrag(); return end
+		local delta = input.Position - dragStart
+		if pending and not dragging then
+			if delta.Magnitude < threshold then return end
+			dragging = true
+			pending = false
+			if type(opts.onDragStart) == "function" then
+				pcall(opts.onDragStart)
+			end
+			
+			startPos = frame.Position
+			startAbs = frame.AbsolutePosition
+			dragStart = input.Position
+			delta = Vector2.new(0, 0)
+		end
+		if not dragging then return end
+		
+		
+		
+		local bpos, bsize = getBounds()
+		local size = frame.AbsoluteSize
+		
+		local origin = startAbs or frame.AbsolutePosition
+		local desired = Vector2.new(origin.X + delta.X * sensitivity, origin.Y + delta.Y * sensitivity)
+		local minX, maxX, minY, maxY
+		if keepOnScreen then
+			minX, maxX = bpos.X, bpos.X + math.max(0, bsize.X - size.X)
+			minY, maxY = bpos.Y, bpos.Y + math.max(0, bsize.Y - size.Y)
+		else
+			minX, maxX = bpos.X - size.X * 0.7, bpos.X + bsize.X - size.X * 0.3
+			minY, maxY = bpos.Y, bpos.Y + math.max(0, bsize.Y - 40)
+		end
+		local tx = math.clamp(desired.X, minX, maxX)
+		local ty = math.clamp(desired.Y, minY, maxY)
+		local sc = parentScale()
+		
+		frame.Position = UDim2.new(
+			startPos.X.Scale, startPos.X.Offset + (tx - origin.X) / sc,
+			startPos.Y.Scale, startPos.Y.Offset + (ty - origin.Y) / sc
+		)
+	end
+
+	
+	handle.InputBegan:Connect(beginDrag)
+	if frame ~= handle then
+		
+		frame.InputBegan:Connect(function(input)
+			if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then return end
+			
+			local pos = input.Position
+			for _, child in ipairs(frame:GetChildren()) do
+				if child:IsA("GuiObject") and child.Visible then
+					local ap = child.AbsolutePosition
+					local as = child.AbsoluteSize
+					if pos.X >= ap.X and pos.X <= ap.X + as.X and pos.Y >= ap.Y and pos.Y <= ap.Y + as.Y then
+						return
+					end
+				end
+			end
+			beginDrag(input)
+		end)
+	end
+
+	UserInputService.InputChanged:Connect(function(input)
+		if not dragging and not pending then return end
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			update(input)
+		end
+	end)
+	UserInputService.InputEnded:Connect(function(input)
+		if (dragging or pending) and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+			finishDrag()
+		end
+	end)
+
+	local ctrl = {
+		setEnabled = function(v) enabled = v and true or false; if not enabled then finishDrag() end end,
+		isEnabled = function() return enabled end,
+	}
+	table.insert(dragControllers, ctrl)
+	return ctrl
+end
+
+
+local mainDrag = makeDraggable(G.MainOuter, G.HeaderBar, function() return St.uiLocked == true end, {sensitivity = 1, threshold = 0})
+
+local stealDrag = makeDraggable(StealBarRoot, StealBarRoot, function() return St.uiLocked == true end, {sensitivity = 1, threshold = 6, keepOnScreen = true})
+if G.MobileStackPanel then G.MobileStackPanel.Active = true end
+
+local panelDrag = makeDraggable(G.MobileStackPanel, G.MobileStackPanel, function() return St.sidePanelLocked == true or St.uiLocked == true end, {sensitivity = 1, threshold = 4, keepOnScreen = true})
+
+
+local buttonDrags = {}
+local stackFrames = {
+	G.StackBtn_autoLeft, G.StackBtn_autoRight, G.StackBtn_aimbot, G.StackBtn_lagger,
+	G.StackBtn_drop, G.StackBtn_lagger2, G.StackBtn_tpDown, G.StackBtn_carrySpeed,
+}
+
+local defaultButtonPositions = {}
+local defaultPanelPos = G.MobileStackPanel.Position
+local defaultMainPos = G.MainOuter.Position
+local defaultStealPos = StealBarRoot.Position
+
+for _, fr in ipairs(stackFrames) do
+	if fr then
+		fr.Active = true
+		defaultButtonPositions[fr] = fr.Position
+		local dragHandle = fr:FindFirstChildWhichIsA("TextButton") or fr
+		
+		local ctrl = makeDraggable(fr, dragHandle, function() return St.uiLocked == true end, {
+			sensitivity = 1, threshold = 8, keepOnScreen = true,
+			onDragStart = function()
+				fr:SetAttribute("_SideButtonWasDragged", true)
+				task.delay(0.6, function()
+					if fr and fr.Parent then fr:SetAttribute("_SideButtonWasDragged", false) end
+				end)
+			end
+		})
+		buttonDrags[fr] = ctrl
+		ctrl.setEnabled(true)
+	end
+end
+panelDrag.setEnabled(false) 
+
+
+local function applyOpenUiButtonScale(v)
+	v = math.clamp(tonumber(v) or St.openUiButtonScale, 0.4, 1.6)
+	St.openUiButtonScale = v
+	if G.WAVEMiniRestoreScale then G.WAVEMiniRestoreScale.Scale = v end
+	if G.TextBox_16 then G.TextBox_16.Text = string.format("%.2f", v) end
+end
+
+local function applyGuiScale(v)
+	v = math.clamp(tonumber(v) or St.guiScale, 0.4, 1.6)
+	St.guiScale = v
+	if G.UIScale then G.UIScale.Scale = v end
+	if G.TextBox_12 then G.TextBox_12.Text = string.format("%.2f", v) end
+end
+
+local function applyButtonScale(v)
+	v = math.clamp(tonumber(v) or St.sideButtonScale, 0.4, 1.6)
+	St.sideButtonScale = v
+	if G.WAVEButtonScale then G.WAVEButtonScale.Scale = v end
+	if G.TextBox_13 then G.TextBox_13.Text = string.format("%.2f", v) end
+	if G.TextButton_ButtonUI then G.TextButton_ButtonUI.Text = tostring(math.floor(v * 100 + 0.5)) .. "%" end
+end
+
+
+
+local function applyStealBarScale(v)
+	v = math.clamp(tonumber(v) or St.progressBarSize, 0.4, 1.6)
+	St.progressBarSize = v
+	if StealScale then StealScale.Scale = v end
+	if G.TextBox_14 then G.TextBox_14.Text = string.format("%.2f", v) end
+end
+
+applyGuiScale(St.guiScale)
+applyButtonScale(St.sideButtonScale)
+applyStealBarScale(St.progressBarSize)
+applyOpenUiButtonScale(St.openUiButtonScale)
+
+G.WaveMiniRestoreButton.Visible = false
+G.WaveMiniRestoreTitle.Visible = false
+
+local function setMinimized(state)
+	isMinimized = state
+	if state then
+		TweenService:Create(G.MainOuter, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			BackgroundTransparency = 1
+		}):Play()
+		task.delay(0.12, function()
+			G.MainOuter.Visible = false
+			G.MainOuter.BackgroundTransparency = 0
+		end)
+		G.WaveMiniRestoreButton.Visible = true
+		G.WaveMiniRestoreTitle.Visible = true
+		G.TextButton.Text = "+"
+		if G.WAVEMiniRestoreScale then
+			G.WAVEMiniRestoreScale.Scale = 0.4
+			TweenService:Create(G.WAVEMiniRestoreScale, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
+		end
+	else
+		G.MainOuter.Visible = true
+		G.MainOuter.BackgroundTransparency = 1
+		TweenService:Create(G.MainOuter, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			BackgroundTransparency = 0
+		}):Play()
+		G.WaveMiniRestoreButton.Visible = false
+		G.WaveMiniRestoreTitle.Visible = false
+		G.TextButton.Text = "-"
+	end
+end
+
+G.TextButton.MouseButton1Click:Connect(function()
+	setMinimized(not isMinimized)
+end)
+G.WaveMiniRestoreButton.MouseButton1Click:Connect(function()
+	setMinimized(false)
+end)
+G.WaveMiniRestoreTitle.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		setMinimized(false)
+	end
+end)
+
+local function selectPage(pageName)
+	
+	
+	local pageChanged = currentPage ~= pageName
+	currentPage = pageName
+	for _, page in pairs(pages) do
+		if page then page.Visible = false end
+	end
+	local target = pages[pageName]
+	if target then
+		target.Visible = true
+		target.CanvasPosition = Vector2.new(0, 0)
+	end
+	for name, data in pairs(navButtons) do
+		local selected = (name == pageName)
+		if pageChanged or not data.btn:GetAttribute("WaveNavStyled") then
+			TweenService:Create(data.btn, TweenInfo.new(0.15), {
+				BackgroundColor3 = selected and Color3.fromRGB(95, 40, 160) or Color3.fromRGB(18, 8, 28),
+				BackgroundTransparency = selected and 0 or 0.22,
+				TextColor3 = selected and Color3.fromRGB(249, 240, 255) or Color3.fromRGB(150, 100, 200)
+			}):Play()
+			if data.stroke then
+				TweenService:Create(data.stroke, TweenInfo.new(0.15), {
+					Color = selected and Color3.fromRGB(160, 80, 220) or Color3.fromRGB(119, 25, 185),
+					Thickness = selected and 1.4 or 1
+				}):Play()
+			end
+			data.btn:SetAttribute("WaveNavStyled", true)
+		end
+	end
+end
+
+G.WaveNav_MAIN.MouseButton1Click:Connect(function() selectPage("MAIN") end)
+G.WaveNav_COMBAT.MouseButton1Click:Connect(function() selectPage("COMBAT") end)
+G.WaveNav_MISC.MouseButton1Click:Connect(function() selectPage("MISC") end)
+G.WaveNav_VISUALS.MouseButton1Click:Connect(function() selectPage("VISUALS") end)
+G.WaveNav_CUSTOMIZE.MouseButton1Click:Connect(function() selectPage("UI") end)
+selectPage("MAIN")
+
+local function setToggleVisual(pill, on)
+	local dot = pill:FindFirstChild("WaveToggleDot")
+	if not dot then return end
+	pill:SetAttribute("WaveToggleOn", on)
+	local pillColor = on and Color3.fromRGB(110, 50, 180) or Color3.fromRGB(24, 12, 40)
+	local dotColor = on and Color3.fromRGB(249, 240, 255) or Color3.fromRGB(40, 20, 70)
+	local stroke = pill:FindFirstChildOfClass("UIStroke")
+	local strokeColor = on and Color3.fromRGB(160, 90, 230) or Color3.fromRGB(55, 25, 90)
+	TweenService:Create(pill, TweenInfo.new(0.18, Enum.EasingStyle.Quad), {BackgroundColor3 = pillColor}):Play()
+	TweenService:Create(dot, TweenInfo.new(0.18, Enum.EasingStyle.Quad), {
+		BackgroundColor3 = dotColor,
+		Position = on and UDim2.new(1, -15, 0.5, -6) or UDim2.new(0, 3, 0.5, -6)
+	}):Play()
+	if stroke then
+		TweenService:Create(stroke, TweenInfo.new(0.18), {Color = strokeColor}):Play()
+	end
+end
+
+local _waveToggleCallbacks = setmetatable({}, {__mode = "k"})
+local _waveToggleConnections = setmetatable({}, {__mode = "k"})
+local _waveToggleFallbackConnections = setmetatable({}, {__mode = "k"})
+local function wireNamedToggle(pill, initial, onChange)
+	if not pill then return end
+	if _waveToggleFallbackConnections[pill] then
+		pcall(function() _waveToggleFallbackConnections[pill]:Disconnect() end)
+		_waveToggleFallbackConnections[pill] = nil
+	end
+	_waveToggleCallbacks[pill] = onChange
+	local btn = pill:FindFirstChildOfClass("TextButton")
+	if initial ~= nil and pill:GetAttribute("WaveToggleInitialized") ~= true then
+		setToggleVisual(pill, initial)
+		pill:SetAttribute("WaveToggleInitialized", true)
+	end
+	if btn and not _waveToggleConnections[pill] then
+		_waveToggleConnections[pill] = btn.Activated:Connect(function()
+			local cur = pill:GetAttribute("WaveToggleOn") == true
+			local nxt = not cur
+			setToggleVisual(pill, nxt)
+			local callback = _waveToggleCallbacks[pill]
+			if callback then
+				local ok, err = pcall(callback, nxt)
+				if not ok then warn("Toggle callback failed: " .. tostring(err)) end
+			end
+			if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+		end)
+	end
+end
+
+
+do
+local _fps={descConn=nil,lightCache=nil,terrainCache=nil,baseParts={},effectsDisabled={},meshParts={},models={},attachments={}}
+local function processFPSObj(v)
+pcall(function()
+if v:IsA("Model")then
+if _fps.models[v]==nil then _fps.models[v]={LevelOfDetail=v.LevelOfDetail,ModelStreamingMode=v.ModelStreamingMode} end
+v.LevelOfDetail=Enum.ModelLevelOfDetail.Disabled;v.ModelStreamingMode=Enum.ModelStreamingMode.Nonatomic
+elseif v:IsA("MeshPart")then
+if _fps.meshParts[v]==nil then _fps.meshParts[v]={Material=v.Material,Reflectance=v.Reflectance,CastShadow=v.CastShadow,DoubleSided=v.DoubleSided,RenderFidelity=v.RenderFidelity}end
+v.CastShadow=false;v.DoubleSided=false;v.RenderFidelity=Enum.RenderFidelity.Performance
+elseif v:IsA("BasePart")then
+if _fps.baseParts[v]==nil then _fps.baseParts[v]={Material=v.Material,Reflectance=v.Reflectance,CastShadow=v.CastShadow}end
+v.CastShadow=false;v.Material=Enum.Material.Plastic;v.Reflectance=0
+elseif v:IsA("Fire")or v:IsA("SpotLight")or v:IsA("Smoke")or v:IsA("Sparkles")or v:IsA("ParticleEmitter")or v:IsA("Trail")or v:IsA("Beam")then
+if v.Enabled then table.insert(_fps.effectsDisabled,v)end;v.Enabled=false
+elseif v:IsA("Explosion")then v.BlastPressure=1;v.BlastRadius=1
+elseif v:IsA("Attachment")then
+if _fps.attachments[v]==nil then _fps.attachments[v]=v.Visible end
+v.Visible=false
+end
+end)
+end
+local function applyFPSBoost()
+local _fpsObjects=workspace:GetDescendants();for i,v in ipairs(_fpsObjects)do processFPSObj(v);if i%180==0 then task.wait()end end;_fpsObjects=nil
+pcall(function()
+local lighting=game:GetService("Lighting");if not _fps.lightCache then _fps.lightCache={GlobalShadows=lighting.GlobalShadows,FogEnd=lighting.FogEnd,Brightness=lighting.Brightness} end
+for _,v in pairs(lighting:GetDescendants())do
+pcall(function()
+if v:IsA("BloomEffect")or v:IsA("BlurEffect")or v:IsA("SunRaysEffect")or v:IsA("DepthOfFieldEffect")or v:IsA("ColorCorrectionEffect")then if v.Enabled then table.insert(_fps.effectsDisabled,v)end;v.Enabled=false end
+end)
+end
+lighting.GlobalShadows=false;lighting.FogEnd=9e9;lighting.Brightness=0;local terrain=workspace:FindFirstChildOfClass("Terrain")
+if terrain then
+if not _fps.terrainCache then _fps.terrainCache={WaterReflectance=terrain.WaterReflectance,WaterTransparency=terrain.WaterTransparency,WaterWaveSize=terrain.WaterWaveSize,WaterWaveSpeed=terrain.WaterWaveSpeed} end;terrain.WaterReflectance=0;terrain.WaterTransparency=0.7;terrain.WaterWaveSize=0;terrain.WaterWaveSpeed=0
+end
+end)
+if _fps.descConn then _fps.descConn:Disconnect()end
+_fps.descConn=workspace.DescendantAdded:Connect(function(v)if St.fpsBoostEnabled then task.spawn(processFPSObj,v)end end)
+end
+local function disableFPSBoost()
+St.fpsBoostEnabled=false;if _fps.descConn then _fps.descConn:Disconnect();_fps.descConn=nil end
+for model,info in pairs(_fps.models)do pcall(function()if model and model.Parent then model.LevelOfDetail=info.LevelOfDetail;model.ModelStreamingMode=info.ModelStreamingMode end end)end
+for mesh,info in pairs(_fps.meshParts)do pcall(function()if mesh and mesh.Parent then mesh.Material=info.Material;mesh.Reflectance=info.Reflectance;mesh.CastShadow=info.CastShadow;mesh.DoubleSided=info.DoubleSided;mesh.RenderFidelity=info.RenderFidelity end end)end
+for part,info in pairs(_fps.baseParts)do pcall(function()if part and part.Parent then part.Material=info.Material;part.Reflectance=info.Reflectance;part.CastShadow=info.CastShadow end end)end
+for attachment,visible in pairs(_fps.attachments)do pcall(function()if attachment and attachment.Parent then attachment.Visible=visible end end)end
+_fps.models={};_fps.meshParts={};_fps.baseParts={};_fps.attachments={}
+for _,v in ipairs(_fps.effectsDisabled)do pcall(function()if v and v.Parent then v.Enabled=true end end)end
+_fps.effectsDisabled={}
+pcall(function()
+local lighting=game:GetService("Lighting");if _fps.lightCache then lighting.GlobalShadows=_fps.lightCache.GlobalShadows;lighting.FogEnd=_fps.lightCache.FogEnd;lighting.Brightness=_fps.lightCache.Brightness;_fps.lightCache=nil end;local terrain=workspace:FindFirstChildOfClass("Terrain")
+if terrain and _fps.terrainCache then terrain.WaterReflectance=_fps.terrainCache.WaterReflectance;terrain.WaterTransparency=_fps.terrainCache.WaterTransparency;terrain.WaterWaveSize=_fps.terrainCache.WaterWaveSize;terrain.WaterWaveSpeed=_fps.terrainCache.WaterWaveSpeed;_fps.terrainCache=nil end
+end)
+end
+
+if G.Frame_62 then G.Frame_62.Visible = false end
+end
+
+wireNamedToggle(G.WaveTogglePill_35, false, function(on)
+	
+	
+	St.uiLocked = on == true
+	St.lockUI = on == true
+end)
+
+
+St.sideButtonsLocked = false
+St.sidePanelLocked = false
+for _, ctrl in pairs(buttonDrags) do ctrl.setEnabled(true) end
+
+local hidePanelPill = G.WaveTogglePill_32
+local function setSidePanelBackgroundVisible(visible)
+	local show = visible == true
+	if G.MobileStackPanel then
+		G.MobileStackPanel.BackgroundTransparency = show and 0 or 1
+	end
+	if G.UIStroke_88 then
+		G.UIStroke_88.Transparency = show and 0 or 1
+	end
+	if G.BgImage then
+		G.BgImage.ImageTransparency = show and 0 or 1
+	end
+	if G.BgOverlay then
+		G.BgOverlay.BackgroundTransparency = 1
+	end
+end
+
+St.sidePanelVisible = false
+if hidePanelPill then hidePanelPill:SetAttribute("WaveToggleOn", false) end
+setSidePanelBackgroundVisible(false)
+
+if G.TextButton_58 then
+	G.TextButton_58.MouseButton1Click:Connect(function()
+		for fr, pos in pairs(defaultButtonPositions) do
+			if fr and fr.Parent then fr.Position = pos end
+		end
+		if G.MobileStackPanel then G.MobileStackPanel.Position = defaultPanelPos end
+		local old = G.TextButton_58.Text
+		G.TextButton_58.Text = "OK"
+		task.delay(0.6, function()
+			if G.TextButton_58 then G.TextButton_58.Text = old end
+		end)
+	end)
+end
+
+local function bindScaleBox(box, applyFn)
+	if not box then return end
+	box.ClearTextOnFocus = false
+	box.Focused:Connect(function()
+		box.TextColor3 = Color3.fromRGB(249, 240, 255)
+	end)
+	box.FocusLost:Connect(function()
+		box.TextColor3 = Color3.fromRGB(150, 100, 200)
+		local n = tonumber(box.Text)
+		if n then
+			applyFn(n)
+		else
+			applyFn(nil) 
+		end
+	end)
+end
+
+bindScaleBox(G.TextBox_12, applyGuiScale)
+bindScaleBox(G.TextBox_13, applyButtonScale)
+bindScaleBox(G.TextBox_14, applyStealBarScale)
+bindScaleBox(G.TextBox_16, applyOpenUiButtonScale)
+
+local function saveInterfaceScaleBoxes()
+	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+end
+for _, box in ipairs({G.TextBox_12, G.TextBox_13, G.TextBox_14, G.TextBox_16}) do
+	if box then
+		box.FocusLost:Connect(saveInterfaceScaleBoxes)
+		box:GetPropertyChangedSignal("Text"):Connect(function()
+			if not box:IsFocused() then saveInterfaceScaleBoxes() end
+		end)
+	end
+end
+
+local interfaceSizeOpen = false
+local function setInterfaceSizeOpen(state)
+	interfaceSizeOpen = state == true
+	if G.Frame_120 then G.Frame_120.Visible = interfaceSizeOpen end
+	if G.Frame_122 then G.Frame_122.Visible = interfaceSizeOpen end
+	if G.Frame_124 then G.Frame_124.Visible = interfaceSizeOpen end
+	if G.Arrow_3 then G.Arrow_3.Text = interfaceSizeOpen and "▲" or "▼" end
+end
+if G.SizeDropdown_3 then
+	G.SizeDropdown_3.Active = true
+	G.SizeDropdown_3.AutoButtonColor = false
+	G.SizeDropdown_3.Activated:Connect(function()
+		setInterfaceSizeOpen(not interfaceSizeOpen)
+	end)
+end
+setInterfaceSizeOpen(false)
+
+local function updateSpeedModeButton()
+	if not G.TextButton_2 then return end
+	if St.laggerMode ~= 0 then
+		G.TextButton_2.Text = "Lagger"
+	else
+		G.TextButton_2.Text = St.speedToggled and "Carry" or "Normal"
+	end
+end
+
+local function updateLaggerModeButton()
+	if not G.TextButton_3 then return end
+	if St.laggerMode == 0 then
+		G.TextButton_3.Text = "Lagger Off"
+	elseif St.laggerMode == 1 then
+		G.TextButton_3.Text = "Lagger On"
+	else
+		G.TextButton_3.Text = "Lagger Carry"
+	end
+end
+
+local function setLaggerMode(mode)
+	if mode == St.laggerMode then return end
+	local oldMode = St.laggerMode
+	if mode == 0 then
+		St.carrySpeed = St._prevCarry or St.carrySpeed
+		St.speedToggled = St._prevSpeed or false
+		if G.TextBox_2 then G.TextBox_2.Text = tostring(math.floor(St.carrySpeed)) end
+	elseif mode == 1 or mode == 2 then
+		if oldMode == 0 then
+			St._prevCarry = St.carrySpeed
+			St._prevSpeed = St.speedToggled
+		end
+		St.speedToggled = false
+	end
+	St.laggerMode = mode
+	updateSpeedModeButton()
+	updateLaggerModeButton()
+	syncMobileSpeedVisuals()
+	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+end
+
+local function toggleLaggerMode()
+	
+	if St.laggerMode == 0 then
+		setLaggerMode(2)
+	elseif St.laggerMode == 2 then
+		setLaggerMode(1)
+	else
+		setLaggerMode(0)
+	end
+end
+
+local function toggleSpeedMode()
+	if St.laggerMode ~= 0 then
+		setLaggerMode(0)
+		St.speedToggled = false
+	else
+		St.speedToggled = not St.speedToggled
+	end
+	updateSpeedModeButton()
+	syncMobileSpeedVisuals()
+	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+end
+
+local function setFrameOn(frame, on)
+	if not frame then return end
+	TweenService:Create(frame, TweenInfo.new(0.15), {
+		BackgroundColor3 = on and Color3.fromRGB(126, 20, 200) or Color3.fromRGB(18, 8, 28)
+	}):Play()
+end
+
+function syncMobileSpeedVisuals()
+	setFrameOn(G.StackBtn_carrySpeed, St.laggerMode == 0 and St.speedToggled)
+	setFrameOn(G.StackBtn_lagger, St.laggerMode == 1)
+	setFrameOn(G.StackBtn_lagger2, St.laggerMode == 2)
+	setFrameOn(G.StackBtn_autoLeft, AutoPath.L)
+	setFrameOn(G.StackBtn_autoRight, AutoPath.R)
+	mobileToggles["CARRY SPEED"] = St.laggerMode == 0 and St.speedToggled
+	mobileToggles["LAGGER NORMAL"] = St.laggerMode == 1
+	mobileToggles["LAGGER CARRY"] = St.laggerMode == 2
+end
+
+if G.TextButton_2 then
+	G.TextButton_2.MouseButton1Click:Connect(toggleSpeedMode)
+end
+if G.TextButton_3 then
+	G.TextButton_3.MouseButton1Click:Connect(toggleLaggerMode)
+end
+updateSpeedModeButton()
+updateLaggerModeButton()
+
+local function bindSpeedBox(box, key)
+	if not box then return end
+	box.ClearTextOnFocus = false
+	box.Focused:Connect(function()
+		box.TextColor3 = Color3.fromRGB(249, 240, 255)
+	end)
+	box.FocusLost:Connect(function()
+		box.TextColor3 = Color3.fromRGB(150, 100, 200)
+		local n = tonumber(box.Text)
+		if n and n > 0 and n <= 500 then
+			St[key] = math.floor(n)
+			box.Text = tostring(St[key])
+		else
+			box.Text = tostring(math.floor(St[key] or 0))
+		end
+		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	end)
+end
+
+bindSpeedBox(G.TextBox, "normalSpeed")
+bindSpeedBox(G.TextBox_2, "carrySpeed")
+bindSpeedBox(G.TextBox_3, "burstNormalSpeed")
+bindSpeedBox(G.TextBox_4, "burstCarrySpeed")
+
+local function keyCodeToName(kc) return (kc and kc~=Enum.KeyCode.Unknown) and kc.Name or "NONE" end
+
+
+local SUPPORTED_GAMEPAD_KEYS = {
+	[Enum.KeyCode.ButtonA] = true, [Enum.KeyCode.ButtonB] = true,
+	[Enum.KeyCode.ButtonX] = true, [Enum.KeyCode.ButtonY] = true,
+	[Enum.KeyCode.ButtonL1] = true, [Enum.KeyCode.ButtonL2] = true,
+	[Enum.KeyCode.ButtonL3] = true, [Enum.KeyCode.ButtonR1] = true,
+	[Enum.KeyCode.ButtonR2] = true, [Enum.KeyCode.ButtonR3] = true,
+	[Enum.KeyCode.ButtonStart] = true, [Enum.KeyCode.ButtonSelect] = true,
+	[Enum.KeyCode.DPadUp] = true, [Enum.KeyCode.DPadDown] = true,
+	[Enum.KeyCode.DPadLeft] = true, [Enum.KeyCode.DPadRight] = true,
+}
+
+local function startRebind(which,btn)
+	if rebinding then return end
+	rebinding=which
+	if btn then btn.Text="…"; btn.TextColor3=Color3.fromRGB(249,240,255) end
+
+	local connections = {}
+	local function finishRebind(input)
+		if not rebinding then return end
+		local kb = input.UserInputType == Enum.UserInputType.Keyboard
+		local gp = input.UserInputType == Enum.UserInputType.Gamepad1
+		if not (kb or gp) or input.KeyCode == Enum.KeyCode.Unknown then return end
+		if gp and not SUPPORTED_GAMEPAD_KEYS[input.KeyCode] then return end
+
+		if kb and input.KeyCode == Enum.KeyCode.Escape then
+			if btn then btn.Text=bindingText(which); btn.TextColor3=Color3.fromRGB(150,100,200) end
+		else
+			setBinding(which,input.UserInputType,input.KeyCode,getBindPlatform(input.UserInputType))
+			if btn then btn.Text=bindingText(which); btn.TextColor3=Color3.fromRGB(150,100,200) end
+			if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+		end
+
+		rebinding=nil
+		for _, connection in ipairs(connections) do
+			if connection.Connected then connection:Disconnect() end
+		end
+	end
+
+	connections[#connections+1] = UserInputService.InputBegan:Connect(function(input,gameProcessed)
+		if gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard then return end
+		finishRebind(input)
+	end)
+
+	
+	connections[#connections+1] = UserInputService.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Gamepad1 and input.KeyCode == Enum.KeyCode.ButtonL2 then
+			finishRebind(input)
+		end
+	end)
+end
+if G.TextButton_5 then G.TextButton_5.Text=bindingText("speed"); G.TextButton_5:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad"); G.TextButton_5.MouseButton1Click:Connect(function() startRebind("speed",G.TextButton_5) end) end
+if G.TextButton_6 then G.TextButton_6.Text=bindingText("lagger"); G.TextButton_6:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad"); G.TextButton_6.MouseButton1Click:Connect(function() startRebind("lagger",G.TextButton_6) end) end
+if G.TextButton_10 then G.TextButton_10.Text=bindingText("autoLeft"); G.TextButton_10:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad"); G.TextButton_10.MouseButton1Click:Connect(function() startRebind("autoLeft",G.TextButton_10) end) end
+if G.TextButton_11 then G.TextButton_11.Text=bindingText("autoRight"); G.TextButton_11:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad"); G.TextButton_11.MouseButton1Click:Connect(function() startRebind("autoRight",G.TextButton_11) end) end
+
+if _G._WAVE_speedControllerCleanup then pcall(_G._WAVE_speedControllerCleanup) end
+local _speedControllerToken = {}
+_G._WAVE_speedControllerToken = _speedControllerToken
+
+local HIJACK = _G._VelHijackStore
+if type(HIJACK) ~= "table" then
+	HIJACK = { v = Vector3.zero }
+	_G._VelHijackStore = HIJACK
+end
+HIJACK.v = Vector3.zero
+
+_G._VioletteccFakeSpeed = tonumber(_G._VioletteccFakeSpeed) or 16
+
+_G._VioletteccGetSpeed = function()
+	if St.laggerMode == 1 then return St.burstNormalSpeed end
+	if St.laggerMode == 2 then return St.burstCarrySpeed end
+	return St.speedToggled and St.carrySpeed or St.normalSpeed
+end
+
+if not _G._VelHijackInstalled then
+	local ok = pcall(function()
+		local _mt = getrawmetatable(game)
+		setreadonly(_mt, false)
+
+		local _oi = _mt.__index
+		local _on = _mt.__newindex
+
+		local function isOurRoot(t, k)
+			local _tk = tostring(k)
+			if _tk ~= "AssemblyLinearVelocity" and _tk ~= "Velocity" then return false end
+			if typeof(t) ~= "Instance" or not t:IsA("BasePart") then return false end
+			local _tn = t.Name
+			if _tn ~= "HumanoidRootPart" and _tn ~= "Torso" and _tn ~= "UpperTorso" then return false end
+			local char = LocalPlayer.Character
+			return char ~= nil and t:IsDescendantOf(char)
+		end
+
+		local wrap = (type(newcclosure) == "function") and newcclosure or function(f) return f end
+		local noVirt = (type(LPH_NO_VIRTUALIZE) == "function") and LPH_NO_VIRTUALIZE or function(f) return f end
+
+		_mt.__index = wrap(noVirt(function(t, k)
+			if type(checkcaller) == "function" and not checkcaller() then
+				local good, mine = pcall(isOurRoot, t, k)
+				if good and mine then return HIJACK.v end
+			end
+			return _oi(t, k)
+		end))
+
+		_mt.__newindex = wrap(noVirt(function(t, k, v)
+			if type(checkcaller) == "function" and not checkcaller() then
+				local good, mine = pcall(isOurRoot, t, k)
+				if good and mine then
+					HIJACK.v = v
+					return
+				end
+			end
+			return _on(t, k, v)
+		end))
+
+		setreadonly(_mt, true)
+	end)
+	_G._VelHijackInstalled = ok and true or false
+end
+
+local _r = Random.new()
+local _acc = 0
+local moveConn = nil
+
+local function _gc()
+	local c = LocalPlayer.Character
+	if not c then return nil, nil, nil end
+	local h = c:FindFirstChildOfClass("Humanoid")
+	local r = c:FindFirstChild("HumanoidRootPart")
+	if h and h.Health > 0 and r then return c, h, r end
+	return nil, nil, nil
+end
+
+local function startMovement()
+	if moveConn then moveConn:Disconnect() moveConn = nil end
+	moveConn = RunService.PreSimulation:Connect(function()
+		if _G._WAVE_speedControllerToken ~= _speedControllerToken then return end
+		local c, h, r = _gc()
+		if not c or not h or not r then return end
+		if _G._VezyBatAimbotOn then return end
+		local st = h:GetState()
+		if h.PlatformStand or st == Enum.HumanoidStateType.Physics or st == Enum.HumanoidStateType.Ragdoll or st == Enum.HumanoidStateType.FallingDown then
+			local ragSpeed = St.laggerMode == 2 and St.burstCarrySpeed or St.burstNormalSpeed
+			local rs = math.max(0, tonumber(ragSpeed) or 0)
+			local dir = h.MoveDirection
+			if dir.Magnitude > 0.05 and rs > 0 then
+				local u = dir.Unit
+				r.AssemblyLinearVelocity = Vector3.new(u.X * rs, r.AssemblyLinearVelocity.Y, u.Z * rs)
+			else
+				r.AssemblyLinearVelocity = Vector3.new(0, r.AssemblyLinearVelocity.Y, 0)
+			end
+			return
+		end
+		local dir = h.MoveDirection
+		if St.autoLeftEnabled or St.autoRightEnabled then
+			
+			return
+		end
+		if dir.Magnitude > 0.05 then
+			pcall(function() if r.SetNetworkOwner then r:SetNetworkOwner(LocalPlayer) end end)
+			local speed
+			local carryActive = St.speedToggled or LocalPlayer:GetAttribute("Stealing") == true
+			if St._autoCarryHandoff and carryActive then
+				speed = math.max(1, tonumber(St.carrySpeed) or 30)
+			elseif St.laggerMode == 1 then
+				speed = math.max(1, tonumber(St.burstNormalSpeed) or 15)
+			elseif St.laggerMode == 2 then
+				speed = math.max(1, tonumber(St.burstCarrySpeed) or 10)
+			elseif carryActive then
+				speed = math.max(1, tonumber(St.carrySpeed) or 30)
+			else
+				speed = math.max(1, tonumber(St.normalSpeed) or 60)
+			end
+			
+			
+			if St.autoLeftEnabled or St.autoRightEnabled then
+				
+			end
+			local u = dir.Unit
+			r.AssemblyLinearVelocity = Vector3.new(u.X * speed, r.AssemblyLinearVelocity.Y, u.Z * speed)
+			St.lastMoveDir = u
+		else
+			r.AssemblyLinearVelocity = Vector3.new(0, r.AssemblyLinearVelocity.Y, 0)
+		end
+	end)
+end
+
+local function stopMovement()
+	if moveConn then moveConn:Disconnect() moveConn = nil end
+	HIJACK.v = Vector3.zero
+end
+
+startMovement()
+
+_G._WAVE_speedControllerCleanup = function()
+	stopMovement()
+	if _G._WAVE_speedControllerToken == _speedControllerToken then
+		_G._WAVE_speedControllerToken = nil
+	end
+end
+
+G.WAVEHubV1.Destroying:Connect(function()
+	if _G._WAVE_speedControllerToken == _speedControllerToken then
+		_G._WAVE_speedControllerCleanup()
+	end
+end)
+
+UserInputService.InputBegan:Connect(function(inp, gp)
+	if gp and inp.UserInputType == Enum.UserInputType.Keyboard then return end
+	if inp.UserInputType ~= Enum.UserInputType.Keyboard and inp.UserInputType ~= Enum.UserInputType.Gamepad1 then return end
+	if rebinding then return end
+	if bindingMatches("speed", inp) then
+		if St.laggerMode ~= 0 then
+			setLaggerMode(0)
+			St.speedToggled = false
+		else
+			St.speedToggled = not St.speedToggled
+		end
+		updateSpeedModeButton()
+		syncMobileSpeedVisuals()
+		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	elseif bindingMatches("lagger", inp) then
+		toggleLaggerMode()
+	end
+end)
+
+local stackBtns = {
+	{frame = G.StackBtn_autoLeft,   btn = G.TextButton_61, name = "AUTO LEFT"},
+	{frame = G.StackBtn_autoRight,  btn = G.TextButton_62, name = "AUTO RIGHT"},
+	{frame = G.StackBtn_aimbot,     btn = G.TextButton_63, name = "AIMBOT"},
+	{frame = G.StackBtn_lagger,     btn = G.TextButton_64, name = "LAGGER NORMAL"},
+	{frame = G.StackBtn_drop,       btn = G.TextButton_65, name = "DROP BR"},
+	{frame = G.StackBtn_lagger2,    btn = G.TextButton_66, name = "LAGGER CARRY"},
+	{frame = G.StackBtn_tpDown,     btn = G.TextButton_67, name = "TP DOWN"},
+	{frame = G.StackBtn_carrySpeed, btn = G.TextButton_68, name = "CARRY SPEED"},
+}
+
+for _, data in ipairs(stackBtns) do
+	mobileToggles[data.name] = false
+	if data.btn and data.frame then
+		data.btn.MouseButton1Click:Connect(function()
+			if data.frame:GetAttribute("_SideButtonWasDragged") then
+				data.frame:SetAttribute("_SideButtonWasDragged", false)
+				return
+			end
+			mobileToggles[data.name] = not mobileToggles[data.name]
+			local on = mobileToggles[data.name]
+
+			if data.name == "AUTO LEFT" then
+				toggleAutoLeft(on)
+				setFrameOn(G.StackBtn_autoLeft, AutoPath.L)
+				mobileToggles["AUTO LEFT"] = AutoPath.L
+			elseif data.name == "AUTO RIGHT" then
+				toggleAutoRight(on)
+				setFrameOn(G.StackBtn_autoRight, AutoPath.R)
+				mobileToggles["AUTO RIGHT"] = AutoPath.R
+			elseif data.name == "AIMBOT" then
+				if on then startBatAimbot() else stopBatAimbot() end
+				on = _G._VezyBatAimbotOn == true
+				mobileToggles["AIMBOT"] = on
+			elseif data.name == "CARRY SPEED" then
+				if St.laggerMode ~= 0 then setLaggerMode(0) end
+				St.speedToggled = on
+				updateSpeedModeButton()
+			elseif data.name == "LAGGER NORMAL" then
+				if on then setLaggerMode(1) else setLaggerMode(0) end
+			elseif data.name == "LAGGER CARRY" then
+				if on then setLaggerMode(2) else setLaggerMode(0) end
+			end
+
+			if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+			if data.name ~= "AUTO LEFT" and data.name ~= "AUTO RIGHT" and data.name ~= "DROP BR" and data.name ~= "TP DOWN" then
+				local targetColor = on and Color3.fromRGB(126, 20, 200) or Color3.fromRGB(18, 8, 28)
+				TweenService:Create(data.frame, TweenInfo.new(0.18, Enum.EasingStyle.Quad), {
+					BackgroundColor3 = targetColor
+				}):Play()
+			end
+
+			local scaleObj = data.frame:FindFirstChildOfClass("UIScale")
+			if not scaleObj then
+				scaleObj = Instance.new("UIScale")
+				scaleObj.Parent = data.frame
+			end
+			scaleObj.Scale = 0.85
+			TweenService:Create(scaleObj, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
+		end)
+	end
+end
+
+local function setStealProgress(p)
+	stealProgress = math.clamp(p, 0, 1)
+	TweenService:Create(Fill, TweenInfo.new(0.08), {
+		Size = UDim2.new(stealProgress, 0, 1, 0)
+	}):Play()
+end
+
+StealClickBtn.MouseButton1Click:Connect(function()
+	stealActive = not stealActive
+	if stealActive then
+		StealLabel.Text = "STEALING..."
+		StealLabel.TextColor3 = Color3.fromRGB(50, 220, 120)
+		StealUIStroke.Color = Color3.fromRGB(30, 180, 100)
+	else
+		StealLabel.Text = "discord.gg/XNByTnwf25"
+		StealLabel.TextColor3 = Color3.fromRGB(110, 50, 180)
+		StealUIStroke.Color = Color3.fromRGB(91, 20, 140)
+		setStealProgress(0)
+	end
+end)
+
+RunService.RenderStepped:Connect(function(dt)
+	if stealActive then
+		setStealProgress(stealProgress + dt * 0.22)
+		if stealProgress >= 1 then
+			stealActive = false
+			StealLabel.Text = "STOLEN!"
+			StealLabel.TextColor3 = Color3.fromRGB(80, 255, 120)
+			StealUIStroke.Color = Color3.fromRGB(50, 220, 100)
+			task.delay(1.4, function()
+				if not stealActive then
+					StealLabel.Text = "discord.gg/XNByTnwf25"
+					StealLabel.TextColor3 = Color3.fromRGB(110, 50, 180)
+					StealUIStroke.Color = Color3.fromRGB(91, 20, 140)
+					setStealProgress(0)
+				end
+			end)
+		end
+	end
+end)
+
+local frameCount = 0
+local lastTime = tick()
+RunService.RenderStepped:Connect(function()
+	frameCount = frameCount + 1
+	local now = tick()
+	if now - lastTime >= 0.5 then
+		local fps = math.floor(frameCount / (now - lastTime))
+		frameCount = 0
+		lastTime = now
+		StealFpsLabel.Text = "FPS: " .. fps
+	end
+end)
+
 task.spawn(function()
-local _startupOK,_startupErr=xpcall(LPH_NO_VIRTUALIZE(function()
-repeat _tw()until game:IsLoaded();local _PL=game:GetService("Players");local _RS=game:GetService("RunService");local UIS=game:GetService("UserInputService")
-pcall(function()if setfpscap then setfpscap(99999)end end);pcall(function()if set_fps_cap then set_fps_cap(99999)end end);pcall(function()if setfflag then setfflag("DFIntTaskSchedulerTargetFps","99999")end end)
-local _TS=game:GetService("TweenService");local _HS=game:GetService("HttpService");local _CP=game:GetService("ContentProvider");local _LT=game:GetService("Lighting");local LP=_PL.LocalPlayer;local _op=print;local _ow=warn;local _cbs=false
-print=function(...) if _cbs then return end;_op(...) end;warn=function(...) if _cbs then return end;_ow(...) end
-do local previous=_G._CRIMSON_CONFIG_AUTOSAVE;if type(previous)=="table"then previous.running=false;for _,conn in ipairs(previous.connections or{})do pcall(function()conn:Disconnect()end)end end end
-local function _sack()
-local cg=game:GetService("CoreGui");local _cbr=false;local function lockConsole() _cbs=true end
-local _armed=false
-local function lockClipboard()
-if _cbr then return end;_cbr=true
-_ts(function()
-while true do
-pcall(function()setclipboard("")end)
-pcall(function()toclipboard("")end) _tw(0.01) end
-end)
-end
-local function onDetect(inst)
-lockConsole();lockClipboard()
-pcall(function()
-inst.ChildAdded:Connect(function(child)
-pcall(function()child:Destroy()end)
-end)
-end)
-pcall(function()
-for _,child in ipairs(inst:GetChildren())do
-pcall(function()child:Destroy()end)
-end
-end)
-pcall(function()_PL.LocalPlayer:Kick("nice try lol")end)
-_td(function()
-pcall(function()inst:Destroy()end)
-end)
-end
-local _whitelist={
-RobloxGui=true,RobloxLoadingGui=true,RobloxPromptGui=true,
-CoreScripts=true,VoiceChatInternal=true,
-RobloxActivityHistory=true,PlayerList=true,Chat=true,
-EmotesMenu=true,SettingsHub=true,BubbleChat=true,
-TopBarApp=true,InGameMenu=true,PurchasePromptApp=true,
-RobloxGuiBase=true,DevConsoleMaster=true,BuilderGui=true,
-GraphicalConsole=true,ControlFrame=true,
-}
-local _knownFolders={}
-local function _snapshot()
-for _,inst in ipairs(cg:GetChildren())do if inst:IsA("Folder")then _knownFolders[inst]=true end end
-end
-_ts(function()
-repeat _tw()until game:IsLoaded()
-_tw(3)
-_snapshot()
-_tw(1);_snapshot()
-_armed=true
-cg.ChildAdded:Connect(function(child)
-if not _armed then return end
-if child:IsA("Folder")and not _knownFolders[child]and not _whitelist[child.Name]then onDetect(child) end
-end)
-_ts(function()
-while true do _tw(0.5);if _armed then for _,inst in ipairs(cg:GetChildren())do if inst:IsA("Folder")and not _knownFolders[inst]and not _whitelist[inst.Name]then onDetect(inst) end end end end
-end)
-end)
-_ts(function()
-repeat _tw()until game:IsLoaded()
-_tw(3)
-pcall(function()setclipboard("")end)
-pcall(function()toclipboard("")end)
-while true do
-_tw(0.2)
-if _armed then
-pcall(function()
-local clip=getclipboard and getclipboard();if type(clip)=="string"and#clip>50 and(clip:find("Instance%.new",1,false)or clip:find("ScreenGui",1,true))
-then
-lockConsole();lockClipboard()
-pcall(function()_PL.LocalPlayer:Kick("nice try lol")end)
-end
-end)
-end
-end
-end)
-end
--- Crimson build: anti-copy/clipboard/kick layer intentionally disabled.
-_tw()
-local _introSource=[[
-local _I,_U,_C,_TI,_Us,_tw,_ts,_UD,_mc,_mf,_ma,_mh,_mx,_mn,_ti,_tr,_EGB,_ESQ,_ESB,_EDO,_EDI,_BgT,_BgC,_BSP,_TC3,_ZI,_TSz=Instance.new,UDim2.new,Color3.fromRGB,TweenInfo.new,UDim2.fromScale,task.wait,task.spawn,UDim.new,math.clamp,math.floor,math.abs,math.huge,math.max,math.min,table.insert,table.remove,Enum.Font.GothamBold,Enum.EasingStyle.Quad,Enum.EasingStyle.Back,Enum.EasingDirection.Out,Enum.EasingDirection.InOut,"BackgroundTransparency","BackgroundColor3","BorderSizePixel","TextColor3","ZIndex","TextSize"
-local Players=game:GetService("Players");local TweenService=game:GetService("TweenService");local Lighting=game:GetService("Lighting");local UserInputService=game:GetService("UserInputService");local TextService=game:GetService("TextService");local player=Players.LocalPlayer;local playerGui=player:WaitForChild("PlayerGui");local screenGui=_I("ScreenGui")
-screenGui.Name="VampireIntro";screenGui.IgnoreGuiInset=true;screenGui.ResetOnSpawn=false;screenGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;screenGui.Parent=playerGui;local introSkipped=false;local skipConnection=nil;local introSound=nil
-local SOUND_ID=(_G and _G.__VioletteIntroSoundId and tonumber(_G.__VioletteIntroSoundId))or 120267378058133;local SKIP_SECONDS=10;local _theme=(_G and _G._VH_introTheme)or"original";local _isMono=(_theme~="original")
-local _isGreen=(_theme=="forest"or _theme=="jungle"or _theme=="16948826915"or _theme=="102609114992392");local _isBlue=(_theme=="ocean"or _theme=="79809183056960");local _isBlack=(_theme=="79455822331118"or _theme=="8180153808"or _theme=="11761613059");local _isPurple=(_theme=="123540425987418"or _theme=="122195659108931");local _isBrown=(_theme=="6457947928");local _isGray=(_theme=="vampire"or _theme=="139546609567893");local _isPink=(_theme=="14430330747"or _theme=="17256388271");local _isYellow=(_theme=="golden"or _theme=="132372803152269")
-local PURPLE_MAIN=_isBlack and _C(22,22,22)or _isGray and _C(155,155,155)or _isYellow and _C(235,185,20)or _isGreen and _C(50,195,80)or _isBlue and _C(50,130,255)or _isPurple and _C(165,75,235)or _isBrown and _C(155,98,55)or _isPink and _C(235,85,165)or _C(165,75,235)
-local PURPLE_GLOW=_isBlack and _C(8,8,8)or _isGray and _C(100,100,100)or _isYellow and _C(180,140,10)or _isGreen and _C(30,145,55)or _isBlue and _C(30,90,210)or _isPurple and _C(110,40,180)or _isBrown and _C(105,62,30)or _isPink and _C(180,45,120)or _C(110,40,180);local PURPLE_LIGHT=_isBlack and _C(58,58,58)or _isGray and _C(195,195,195)or _isYellow and _C(255,220,70)or _isGreen and _C(100,230,125)or _isBlue and _C(100,175,255)or _isPurple and _C(210,140,255)or _isBrown and _C(205,150,95)or _isPink and _C(255,145,205)or _C(210,140,255);local blur=_I("BlurEffect");blur.Size=0
-blur.Parent=Lighting;local overlay=_I("Frame");overlay.Size=_Us(1,1);overlay[_BgC]=_C(0,0,0);overlay[_BgT]=0.3;overlay[_BSP]=0;overlay[_ZI]=1;overlay.Parent=screenGui
-local darkOverlay=_I("Frame");darkOverlay.Size=_Us(1,1);darkOverlay[_BgC]=(_isBlack or _isGray)and _C(8,8,8)or _isYellow and _C(15,12,0)or _isGreen and _C(0,15,5)or _isBlue and _C(0,6,18)or _isPurple and _C(10,3,18)or _isBrown and _C(16,8,3)or _isPink and _C(18,3,10)or _C(15,0,0);darkOverlay[_BgT]=0.5
-darkOverlay[_BSP]=0;darkOverlay[_ZI]=1;darkOverlay.Parent=screenGui;local vignette=_I("ImageLabel");vignette.Size=_Us(1,1);vignette[_BgT]=1;vignette.Image="rbxassetid://195611797";vignette.ImageColor3=_C(0,0,0)
-vignette.ImageTransparency=0.35;vignette[_ZI]=2;vignette.Parent=screenGui;local container=_I("Frame");container.Size=_U(0,850,0,130);container.AnchorPoint=Vector2.new(0.5,0.5);container.Position=_U(0.5,0,0.5,0);container[_BgT]=1
-container[_BSP]=0;container.ClipsDescendants=false;container[_ZI]=5;container.Parent=screenGui;local mainLabel=_I("TextLabel");mainLabel.Size=_U(1,0,1,0);mainLabel.AnchorPoint=Vector2.new(0.5,0.5);mainLabel.Position=_U(0.5,0,0.5,0)
-mainLabel[_BgT]=1;mainLabel.Text="VAMPIRE";mainLabel[_TC3]=_C(255,255,255);mainLabel.TextStrokeColor3=_C(0,0,0);mainLabel.TextStrokeTransparency=0;mainLabel.Font=Enum.Font.GothamBlack;mainLabel[_TSz]=88;mainLabel.TextXAlignment=Enum.TextXAlignment.Center
-mainLabel.TextTransparency=1;mainLabel[_ZI]=5;mainLabel.Parent=container;local leftLabel=_I("TextLabel");leftLabel.Size=_U(0,480,1,0);leftLabel.AnchorPoint=Vector2.new(1,0.5);leftLabel.Position=_U(0.5,-8,0.5,0);leftLabel[_BgT]=1
-leftLabel.Text="VAMP";leftLabel[_TC3]=_C(255,255,255);leftLabel.TextStrokeColor3=_C(0,0,0);leftLabel.TextStrokeTransparency=0;leftLabel.Font=Enum.Font.GothamBlack;leftLabel[_TSz]=88;leftLabel.TextXAlignment=Enum.TextXAlignment.Right;leftLabel.TextTransparency=1
-leftLabel[_ZI]=5;leftLabel.Visible=true;leftLabel.Parent=container;local rightLabel=_I("TextLabel");rightLabel.Size=_U(0,200,1,0);rightLabel.AnchorPoint=Vector2.new(0,0.5);rightLabel.Position=_U(0.5,-8,0.5,0);rightLabel[_BgT]=1
-rightLabel.Text="IRE";rightLabel[_TC3]=_C(255,255,255);rightLabel.TextStrokeColor3=_C(0,0,0);rightLabel.TextStrokeTransparency=0;rightLabel.Font=Enum.Font.GothamBlack;rightLabel[_TSz]=88;rightLabel.TextXAlignment=Enum.TextXAlignment.Left;rightLabel.TextTransparency=1
-rightLabel[_ZI]=5;rightLabel.Visible=true;rightLabel.Parent=container;local lightBeam=_I("Frame");lightBeam.Size=_U(0,0,1.1,0);lightBeam.AnchorPoint=Vector2.new(0,0.5);lightBeam.Position=_U(0,-20,0.5,0);lightBeam[_BgC]=PURPLE_MAIN
-lightBeam[_BgT]=0.5;lightBeam[_BSP]=0;lightBeam[_ZI]=6;lightBeam.Parent=container;local beamGlow=_I("Frame");beamGlow.Size=_U(0,0,1.3,0);beamGlow.AnchorPoint=Vector2.new(0,0.5);beamGlow.Position=_U(0,-20,0.5,0)
-beamGlow[_BgC]=PURPLE_GLOW;beamGlow[_BgT]=0.7;beamGlow[_BSP]=0;beamGlow[_ZI]=5;beamGlow.Parent=container;local beamSparkles=_I("Frame");beamSparkles.Size=_U(0,0,1,0);beamSparkles.AnchorPoint=Vector2.new(0,0.5)
-beamSparkles.Position=_U(0,-20,0.5,0);beamSparkles[_BgC]=_C(255,255,255);beamSparkles[_BgT]=0.8;beamSparkles[_BSP]=0;beamSparkles[_ZI]=7;beamSparkles.Parent=container;local subLabel=_I("TextLabel");subLabel.Size=_U(1,0,0,40)
-subLabel.AnchorPoint=Vector2.new(0.5,0);subLabel.Position=_U(0.5,0,0.5,70);subLabel[_BgT]=1;subLabel.Text="vampire hub";subLabel[_TC3]=PURPLE_MAIN;subLabel.Font=_EGB;subLabel[_TSz]=14;subLabel.TextXAlignment=Enum.TextXAlignment.Center
-subLabel.TextTransparency=1;subLabel[_ZI]=5;subLabel.Parent=screenGui;local subLabel2=_I("TextLabel");subLabel2.Size=_U(1,0,0,25);subLabel2.AnchorPoint=Vector2.new(0.5,0);subLabel2.Position=_U(0.5,0,0.5,105);subLabel2[_BgT]=1
-subLabel2.Text="DOUBLE TAP TO SKIP";subLabel2[_TC3]=_isMono and _C(140,140,140)or _C(196,160,255);subLabel2.Font=Enum.Font.Gotham;subLabel2[_TSz]=11;subLabel2.TextXAlignment=Enum.TextXAlignment.Center;subLabel2.TextTransparency=1;subLabel2[_ZI]=5;subLabel2.Parent=screenGui
-local accentBar=_I("Frame");accentBar.Size=_U(0,0,0,2);accentBar.AnchorPoint=Vector2.new(0.5,0);accentBar.Position=_U(0.5,0,0.5,62);accentBar[_BgC]=PURPLE_MAIN;accentBar[_BgT]=0;accentBar[_BSP]=0;accentBar[_ZI]=5
-accentBar.Parent=screenGui;local flashFrame=_I("Frame");flashFrame.Size=_Us(1,1);flashFrame[_BgC]=_C(255,255,255);flashFrame[_BgT]=1;flashFrame[_BSP]=0;flashFrame[_ZI]=10;flashFrame.Parent=screenGui
-local glitchContainer=_I("Frame");glitchContainer.Size=_U(1,0,1,0);glitchContainer[_BgT]=1;glitchContainer[_ZI]=6;glitchContainer.Parent=screenGui;local dripContainer=_I("Frame");dripContainer.Size=_U(1,0,1,0);dripContainer[_BgT]=1
-dripContainer[_ZI]=7;dripContainer.Parent=screenGui;local skipBtnFrame=_I("Frame");skipBtnFrame.Size=_U(0,90,0,34);skipBtnFrame.AnchorPoint=Vector2.new(1,1);skipBtnFrame.Position=_U(1,-18,1,-18);skipBtnFrame[_BgC]=_isMono and _C(30,30,30)or _C(50,8,8);skipBtnFrame[_BgT]=0.25
-skipBtnFrame[_BSP]=0;skipBtnFrame[_ZI]=15;skipBtnFrame.Parent=screenGui;local _skipCorner=_I("UICorner");_skipCorner.CornerRadius=_UD(0,8);_skipCorner.Parent=skipBtnFrame;local _skipStroke=_I("UIStroke");_skipStroke.Color=PURPLE_MAIN
-_skipStroke.Thickness=1.5;_skipStroke.Transparency=0.3;_skipStroke.Parent=skipBtnFrame;local tapToRemoveLabel=_I("TextButton");tapToRemoveLabel.Size=_Us(1,1);tapToRemoveLabel[_BgT]=1;tapToRemoveLabel.Text="SKIP  ›";tapToRemoveLabel[_TC3]=PURPLE_MAIN
-tapToRemoveLabel.Font=_EGB;tapToRemoveLabel[_TSz]=13;tapToRemoveLabel.TextXAlignment=Enum.TextXAlignment.Center;tapToRemoveLabel.TextTransparency=0;tapToRemoveLabel[_ZI]=16;tapToRemoveLabel.Parent=skipBtnFrame
-tapToRemoveLabel.Activated:Connect(function()skipIntro()end)
-local function doFlash(color,alpha,duration)
-flashFrame[_BgC]=color or Color3.new(1,1,1);flashFrame[_BgT]=1-(alpha or 0.85)
-task.delay(duration or 0.06,function()
-if not introSkipped then
-TweenService:Create(flashFrame,_TI(0.1,_ESQ),{BackgroundTransparency=1}):Play()
-else
-flashFrame[_BgT]=1
-end
-end)
-end
-local function runLightBeam()
-lightBeam.Size=_U(0,45,1.1,0);beamGlow.Size=_U(0,65,1.3,0);beamSparkles.Size=_U(0,45,1,0);lightBeam[_BgT]=0.35;beamGlow[_BgT]=0.55;beamSparkles[_BgT]=0.75;local beamTween=TweenService:Create(lightBeam,_TI(0.8,_ESQ,_EDI),{Position=_U(1,20,0.5,0)});beamTween:Play()
-TweenService:Create(beamGlow,_TI(0.8,_ESQ,_EDI),{Position=_U(1,20,0.5,0)}):Play();TweenService:Create(beamSparkles,_TI(0.8,_ESQ,_EDI),{Position=_U(1,20,0.5,0)}):Play();local pulseCount=0;local pulseConnection
-pulseConnection=game:GetService("RunService").Heartbeat:Connect(function()
-if introSkipped then if pulseConnection then pulseConnection:Disconnect()end;return end;pulseCount=pulseCount+1;if pulseCount%3==0 then local p=0.3+math.sin(pulseCount*0.5)*0.15;lightBeam[_BgT]=0.3-(p*0.2);beamGlow[_BgT]=0.5-(p*0.1);beamSparkles[_BgT]=0.7-(p*0.15) end
-end)
-beamTween.Completed:Wait();if pulseConnection then pulseConnection:Disconnect()end;TweenService:Create(lightBeam,_TI(0.25),{BackgroundTransparency=1,Size=_U(0,0,1.1,0)}):Play();TweenService:Create(beamGlow,_TI(0.25),{BackgroundTransparency=1,Size=_U(0,0,1.3,0)}):Play();TweenService:Create(beamSparkles,_TI(0.25),{BackgroundTransparency=1,Size=_U(0,0,1,0)}):Play()
-end
-local function changeToPurple() _tw(0.2);TweenService:Create(mainLabel,_TI(0.4,_ESQ),{TextColor3=_isMono and _C(180,180,180)or _C(210,140,255)}):Play() end;local glitchChars={"!","#","%","/","[","]","░","▒","▓","—","=","*","^","~","¦","¤"}
-local function glitchText(lbl,original)
-if introSkipped then return end;for i=1,4 do if introSkipped then break end;local s="";for c in original:gmatch(".")do s=s..(math.random()<0.35 and glitchChars[math.random(#glitchChars)]or c)end;lbl.Text=s;_tw(0.03) end;if not introSkipped then lbl.Text=original end
-end
-local function addGlitchBar()
-local bar=_I("Frame");bar.Size=_U(1,0,0,math.random(2,12));bar.Position=_U(0,0,math.random(10,90)/100,0);bar[_BgC]=PURPLE_MAIN;bar[_BgT]=math.random(45,70)/100;bar[_BSP]=0;bar[_ZI]=6;bar.Parent=glitchContainer
-task.delay(0.1,function()
-if bar then
-TweenService:Create(bar,_TI(0.1),{BackgroundTransparency=1}):Play()
-task.delay(0.1,function()bar:Destroy()end)
-end
-end)
-end
-local function shakeScreen(intensity,duration)
-if introSkipped then return end;local startTime=tick();local steps=math.ceil(duration/0.05)
-for _=1,steps do
-if introSkipped then break end;local elapsed=tick()-startTime;local cur=intensity*(1-(elapsed/duration));if cur<1 then cur=1 end;local ox=math.random(-_mf(cur),_mf(cur));local oy=math.random(-_mf(cur*0.5),_mf(cur*0.5));leftLabel.Position=_U(0.5,-8+ox,0.5,oy);rightLabel.Position=_U(0.5,8+ox,0.5,oy);_tw(0.05)
-end
-if not introSkipped then TweenService:Create(leftLabel,_TI(0.05),{Position=_U(0.5,-8,0.5,0)}):Play();TweenService:Create(rightLabel,_TI(0.05),{Position=_U(0.5,8,0.5,0)}):Play() end
-end
-local function setupAudio()
-introSound=_I("Sound");introSound.SoundId="rbxassetid://"..SOUND_ID;introSound.Volume=0.7;introSound.PlayOnRemove=false;introSound.Parent=screenGui;introSound.Loaded:Wait();introSound:Play();introSound.TimePosition=SKIP_SECONDS
-return introSound
-end
-local function fadeOutAudio(duration)
-if not introSound then return end;local startVolume=introSound.Volume;local steps=10;for i=1,steps do if introSkipped or not introSound then break end;introSound.Volume=startVolume*(1-(i/steps));_tw(duration/steps) end;if introSound then introSound.Volume=0;introSound:Stop()end
-end
-local function stopAudio() if introSound then introSound:Stop();introSound:Destroy()end end;local activeDrips=0
-local function createDrip(startX,startY,width,height,duration,delay)
-_tw(delay);if introSkipped then return end;activeDrips=activeDrips+1;local drip=_I("Frame");drip.Size=_U(0,width,0,height);drip.Position=_U(0.5,startX,0.5,startY);drip[_BgC]=PURPLE_MAIN;drip[_BgT]=0.25;drip[_BSP]=0;drip[_ZI]=7;drip.Parent=dripContainer;local stretch=TweenService:Create(drip,_TI(duration*0.35),{Size=_U(0,width,0,height+22),BackgroundTransparency=0.1})
-stretch:Play();_tw(duration*0.35);if introSkipped then drip:Destroy();activeDrips=activeDrips-1;return end;local fall=TweenService:Create(drip,_TI(duration*0.65,_ESQ,Enum.EasingDirection.In),{
-Position=_U(0.5,startX+math.random(-3,3),0.5,startY+80),
-BackgroundTransparency=1
-})
-fall:Play()
-fall.Completed:Connect(function()drip:Destroy();activeDrips=activeDrips-1 end)
-end
-local function startDripping()
-if introSkipped then return end;local fullText="VAMPIRE";local font=Enum.Font.GothamBlack;local textSize=88;local textBoundsFull=TextService:GetTextSize(fullText,textSize,font,Vector2.new(_mh,_mh));local textHeight=textBoundsFull.Y;local delayCounter=0;local drips={}
-for i=1,#fullText do
-local char=fullText:sub(i,i);local charBounds=TextService:GetTextSize(char,textSize,font,Vector2.new(_mh,_mh));local charWidth=charBounds.X;local precedingWidth=0
-if i>1 then precedingWidth=TextService:GetTextSize(fullText:sub(1,i-1),textSize,font,Vector2.new(_mh,_mh)).X end;local totalTextWidth=textBoundsFull.X;local charCenterX=-totalTextWidth/2+precedingWidth+charWidth/2;local startY=textHeight/2+3
-local dripWidth=_mc(_mf(charWidth*0.35),3,7);local dripHeight=math.random(4,7);local dur=0.5+math.random()*0.2;local del=delayCounter*0.07;_ti(drips,{startX=charCenterX+math.random(-2,2),startY=startY+math.random(0,4),width=dripWidth,height=dripHeight,duration=dur,delay=del});delayCounter=delayCounter+1
-end
-for _,d in ipairs(drips)do if introSkipped then break end;createDrip(d.startX,d.startY,d.width,d.height,d.duration,d.delay) end
-end
-function skipIntro()
-if introSkipped then return end;introSkipped=true;stopAudio();if skipConnection then skipConnection:Disconnect()end;doFlash(_isMono and _C(200,200,200)or _C(210,140,255),0.8,0.1);mainLabel.Text="VAMPIRE";local fadeInfo=_TI(0.25,_ESQ,Enum.EasingDirection.In);TweenService:Create(mainLabel,fadeInfo,{TextTransparency=1}):Play()
-TweenService:Create(leftLabel,fadeInfo,{TextTransparency=1}):Play();TweenService:Create(rightLabel,fadeInfo,{TextTransparency=1}):Play();TweenService:Create(subLabel,fadeInfo,{TextTransparency=1}):Play();TweenService:Create(subLabel2,fadeInfo,{TextTransparency=1}):Play()
-TweenService:Create(accentBar,fadeInfo,{BackgroundTransparency=1}):Play();TweenService:Create(overlay,fadeInfo,{BackgroundTransparency=1}):Play();TweenService:Create(darkOverlay,fadeInfo,{BackgroundTransparency=1}):Play();TweenService:Create(blur,_TI(0.25),{Size=0}):Play();_tw(0.3);screenGui:Destroy();blur:Destroy()
-end
-local function playIntro()
-setupAudio();local _lastTapTime=0
-skipConnection=UserInputService.InputBegan:Connect(function(input,gameProcessed)
-if gameProcessed then return end
-if input.UserInputType==Enum.UserInputType.Touch or input.UserInputType==Enum.UserInputType.MouseButton1 then
-local now=tick()
-if now-_lastTapTime<=0.4 then
-skipIntro()
-else
-_lastTapTime=now
-end
-end
-end)
-_ts(function()
-while not introSkipped and skipBtnFrame.Parent do for t=0.25,0.6,0.05 do if introSkipped then break end;skipBtnFrame[_BgT]=t;_tw(0.06)end;for t=0.6,0.25,-0.05 do if introSkipped then break end;skipBtnFrame[_BgT]=t;_tw(0.06)end end
-end)
-leftLabel.Position=_U(-0.9,0,-0.6,0);rightLabel.Position=_U(1.9,0,1.6,0);leftLabel.Rotation=-30;rightLabel.Rotation=30;mainLabel.TextTransparency=1;TweenService:Create(blur,_TI(0.7),{Size=18}):Play();TweenService:Create(overlay,_TI(0.7),{BackgroundTransparency=0.2}):Play();TweenService:Create(darkOverlay,_TI(0.7),{BackgroundTransparency=0.4}):Play()
-_tw(0.35);if introSkipped then return end;TweenService:Create(leftLabel,_TI(0.45),{TextTransparency=0}):Play();TweenService:Create(rightLabel,_TI(0.45),{TextTransparency=0}):Play();TweenService:Create(leftLabel,_TI(0.55,Enum.EasingStyle.Elastic,_EDO),{Position=_U(0.5,-220,0.5,-80),Rotation=-15}):Play()
-TweenService:Create(rightLabel,_TI(0.55,Enum.EasingStyle.Elastic,_EDO),{Position=_U(0.5,120,0.5,80),Rotation=15}):Play();_tw(0.45);if introSkipped then return end;local smooth=_TI(0.4,_ESQ,_EDO)
-TweenService:Create(leftLabel,smooth,{Position=_U(0.5,-170,0.5,-50),Rotation=-8}):Play();TweenService:Create(rightLabel,smooth,{Position=_U(0.5,80,0.5,50),Rotation=8}):Play();_tw(0.35);if introSkipped then return end
-TweenService:Create(leftLabel,smooth,{Position=_U(0.5,-120,0.5,-25),Rotation=-4}):Play();TweenService:Create(rightLabel,smooth,{Position=_U(0.5,40,0.5,25),Rotation=4}):Play();_tw(0.3);if introSkipped then return end
-TweenService:Create(leftLabel,smooth,{Position=_U(0.5,-60,0.5,-10),Rotation=-2}):Play();TweenService:Create(rightLabel,smooth,{Position=_U(0.5,-10,0.5,10),Rotation=2}):Play();_tw(0.25);if introSkipped then return end;local glitchEnd=tick()+0.9
-while tick()<glitchEnd and not introSkipped do
-local ox=math.random(-20,20);local oy=math.random(-10,10);leftLabel.Position=_U(0.5,-60+ox,0.5,-10+oy);rightLabel.Position=_U(0.5,-10+ox,0.5,10+oy);if math.random()<0.35 then _ts(glitchText,leftLabel,"VAMP")end;if math.random()<0.35 then _ts(glitchText,rightLabel,"IRE")end;if math.random()<0.4 then addGlitchBar()end;if math.random()<0.1 then doFlash(PURPLE_MAIN,0.2,0.03)end;_tw(0.045)
-end
-if introSkipped then return end;leftLabel.Visible=false;rightLabel.Visible=false;mainLabel.TextTransparency=0;mainLabel[_TC3]=_C(255,255,255);doFlash(PURPLE_MAIN,0.5,0.05);_tw(0.08);if introSkipped then return end
-TweenService:Create(mainLabel,_TI(0.12,_ESB,Enum.EasingDirection.In),{Position=_U(0.5,0,0.5,0),TextSize=92}):Play();_tw(0.12);if introSkipped then return end;TweenService:Create(mainLabel,_TI(0.1),{TextSize=88}):Play()
-doFlash(_C(255,255,255),0.95,0.05);_tw(0.02);doFlash(PURPLE_MAIN,0.65,0.08);_ts(shakeScreen,10,0.25);runLightBeam();changeToPurple();TweenService:Create(accentBar,_TI(0.5,Enum.EasingStyle.Elastic,_EDO),{Size=_U(0,420,0,2)}):Play();_tw(0.18)
-if introSkipped then return end;TweenService:Create(subLabel,_TI(0.4),{TextTransparency=0.05}):Play();TweenService:Create(subLabel2,_TI(0.4),{TextTransparency=0.15}):Play();_tw(0.1)
-doFlash(_C(255,255,255),0.3,0.04);TweenService:Create(subLabel,_TI(0.2),{TextSize=15}):Play();_tw(0.2);TweenService:Create(subLabel,_TI(0.2),{TextSize=14}):Play();_tw(0.65);if introSkipped then return end;startDripping();while activeDrips>0 and not introSkipped do _tw(0.1)end
-if introSkipped then return end;_tw(0.45);fadeOutAudio(1.2);local fadeInfo=_TI(0.85,_ESQ,Enum.EasingDirection.In);TweenService:Create(mainLabel,fadeInfo,{TextTransparency=1}):Play();TweenService:Create(subLabel,fadeInfo,{TextTransparency=1}):Play()
-TweenService:Create(subLabel2,fadeInfo,{TextTransparency=1}):Play();TweenService:Create(accentBar,fadeInfo,{BackgroundTransparency=1}):Play();TweenService:Create(overlay,fadeInfo,{BackgroundTransparency=1}):Play();TweenService:Create(darkOverlay,fadeInfo,{BackgroundTransparency=1}):Play()
-TweenService:Create(blur,_TI(0.85),{Size=0}):Play();TweenService:Create(dripContainer,fadeInfo,{BackgroundTransparency=1}):Play();_tw(0.9);stopAudio();if skipConnection then skipConnection:Disconnect()end;screenGui:Destroy();blur:Destroy()
-end
-playIntro()
-]]
-local _introSkipOnLoad=true
-do
-local function _earlyRead(n)local c;pcall(function()if readfile then c=readfile(n)end end);return c end
-local function _earlyExists(n)
-local e=false
-pcall(function()
-if isfile then e=isfile(n)
-elseif readfile then local c=readfile(n);e=(c~=nil)end
-end)
-return e
-end
-local _VALID_THEMES={
-original=true,vampire=true,golden=true,
-forest=true,jungle=true,ocean=true,
-["79809183056960"]=true,["79455822331118"]=true,["16948826915"]=true,
-["101793424727240"]=true,["123540425987418"]=true,["122195659108931"]=true,
-["6457947928"]=true,["102609114992392"]=true,["8180153808"]=true,
-["11761613059"]=true,["139546609567893"]=true,["14430330747"]=true,
-["17256388271"]=true,["132372803152269"]=true,
-}
-_G._VH_introTheme="original"
-local _earlyConfig=nil
-if _earlyExists("CrimsonHubConfig.json")then
-local raw=_earlyRead("CrimsonHubConfig.json")
-if raw then
-local ok,d=pcall(function()return game:GetService("HttpService"):JSONDecode(raw)end)
-if ok and type(d)=="table"then
-_earlyConfig=d
-if d.showIntro==false then _introSkipOnLoad=true end;if type(d.activeBgImg)=="string"and _VALID_THEMES[d.activeBgImg]then _G._VH_introTheme=d.activeBgImg end;_G._VH_monoIntro=(_G._VH_introTheme~="original")
-local favs={};if type(d.favoriteBackgrounds)=="table"then for k,v in pairs(d.favoriteBackgrounds)do local id=type(k)=="number"and v or k;local enabled=type(k)=="number"or v==true;if enabled and type(id)=="string"and _VALID_THEMES[id]then favs[id]=true end end end;_G._VH_bgFavorites=favs
-end
-end
-end
-local _introState=_earlyRead("CrimsonHubIntro.state")
-if _introState=="off"then _introSkipOnLoad=true elseif _introState=="on"then _introSkipOnLoad=false end
-end
-local _introSongId=120267378058133;_G.__VioletteIntroSoundId=_introSongId
-_introSkipOnLoad=true;_introSource=nil
-_tw()
-local function _isGamepadType(t)
-return t==Enum.UserInputType.Gamepad1 or t==Enum.UserInputType.Gamepad2 or t==Enum.UserInputType.Gamepad3 or t==Enum.UserInputType.Gamepad4
-end
-local function _isBindableInput(i)
-if i.UserInputType==Enum.UserInputType.Keyboard then return true end
-if _isGamepadType(i.UserInputType)then
-local kc=i.KeyCode;if kc==_KC.Thumbstick1 or kc==_KC.Thumbstick2 then return false end
-return true
-end
-return false
-end
-local function _isTriggerInput(i)
-return i.UserInputType==Enum.UserInputType.Keyboard or _isGamepadType(i.UserInputType)
-end
-local function _wfs(name,data)
-local okWrite=false
-pcall(function()if writefile then writefile(name,data);okWrite=true end end)
-return okWrite
-end
-local function _rfs(name)
-local content=nil
-pcall(function()if readfile then content=readfile(name)end end)
-return content
-end
-local function _isFileSafe(name)
-local exists=false
-pcall(function()
-if isfile then exists=isfile(name)
-elseif readfile then local c=readfile(name);exists=(c~=nil)end
-end)
-return exists
-end
-local _St={
-normalSpeed=61,carrySpeed=29,
-speedToggled=false,autoBatToggled=false,
-autoBatVersion="v1",
-speedChangeMethod="v2",
-speedChangeMethodSaved="v2",
-hittingCooldown=false,infJumpEnabled=false,infJumpMode="hold",
-antiRagdollEnabled=false,
-fpsBoostEnabled=false,
-guiVisible=true,
-safeModeEnabled=true,dropBrainrotMode=false,
-stealBarPos=nil,
-isStealing=false,stealStartTime=nil,lastStealTick=0,stealPausedUntil=0,
-lastKnownHealth=100,
-autoLeftEnabled=false,autoRightEnabled=false,
-autoLeftPhase=1,autoRightPhase=1,
-medusaLastUsed=0,medusaDebounce=false,medusaCounterEnabled=false,resetBeforeMedEnabled=false,
-instantResetOnDeathEnabled=false,
-_tpInProgress=false,
-lastMoveDir=_V3(0,0,0),
-unwalkEnabled=false,
-bodyLockEnabled=false,
-bodyLockRadius=48,
-headlessEnabled=false,
-korbloxEnabled=false,
-dropEnabled=false,
-dropType="Jump Drop",
-holdInfJumpEnabled=true,
-batCounterEnabled=false,
-autoSwingEnabled=true,
-burstNormalSpeed=45,burstCarrySpeed=15,
-bypassNormalSpeed=45,bypassCarrySpeed=18,
-laggerMode=0,_prevCarry=nil,_prevSpeed=false,burstPreset="lagger",
-autoBatSpeed=58,
-mirrorTPDownEnabled=false,
-desyncAimbotEnabled=false,
-disablePredictionAt180=true,
-lockedFOV=workspace.CurrentCamera.FieldOfView,fovControlMode="normal",
-stretchRezEnabled=false,stretchedResEnabled=false,stretchFOV=120,
-activeSky="default",
-activeBgImg="original",
-bgFavorites=_G._VH_bgFavorites or{},
-stealMode="normal",
-semiVersion="v2",
-animEnabled=false,
-autoTpDownEnabled=false,tpDownHeight=20,
-sideButtonsVisible=true,
-guiScale=0.90,
-progressBarSize=0.80,
-showProgressBar=true,
-stopOnHitEnabled=true,
-showProgressFPS=true,
-showProgressPing=true,
-sideButtonPositions={},
-sideButtonScale=1,
-sideButtonType="square",
-sideButtonLook="purple",
-sideButtonDragMode="one",
-sideButtonDragModeSaved="one",
-sideButtonsLocked=false,
-hiddenSideButtons={},
-safetyLocked=false,
-autoPlayMode="normal",
-introEnabled=not _introSkipOnLoad,
-lineEspEnabled=false,
-lineEspColor="purple",
-selectedAnim="None",
-espAuraEnabled=true,
-espLineEnabled=true,
-espProfileEnabled=true,
-}
-if type(_earlyConfig)=="table"then
-local _ec=_earlyConfig
-local _earlyMap={
-normalSpeed="normalSpeed",carrySpeed="carrySpeed",burstNormalSpeed="burstNormalSpeed",burstCarrySpeed="burstCarrySpeed",
-bypassNormalSpeed="bypassNormalSpeed",bypassCarrySpeed="bypassCarrySpeed",laggerMode="laggerMode",burstPreset="burstPreset",
-autoBatVersion="autoBatVersion",autoBatSpeed="autoBatSpeed",tpDownHeight="tpDownHeight",stretchFOV="stretchFOV",autoBat="autoBatToggled",
-guiScale="guiScale",progressBarSize="progressBarSize",sideButtonScale="sideButtonScale",sideButtonsVisible="sideButtonsVisible",
-sideButtonsLocked="sideButtonsLocked",safeModeEnabled="safeModeEnabled",dropBrainrotMode="dropBrainrotMode",autoPlayMode="autoPlayMode",
-selectedAnim="selectedAnim",lineEspEnabled="lineEspEnabled",lineEspColor="lineEspColor",stopOnHitEnabled="stopOnHitEnabled",
-infJump="infJumpEnabled",holdInfJump="holdInfJumpEnabled",antiRagdollEnabled="antiRagdollEnabled",fpsBoost="fpsBoostEnabled",
-medusaCounter="medusaCounterEnabled",resetBeforeMed="resetBeforeMedEnabled",instantResetOnDeath="instantResetOnDeathEnabled",
-unwalkEnabled="unwalkEnabled",bodyLockEnabled="bodyLockEnabled",headlessEnabled="headlessEnabled",korbloxEnabled="korbloxEnabled",
-autoTpDown="autoTpDownEnabled",desyncAimbotEnabled="desyncAimbotEnabled",autoSwing="autoSwingEnabled",batCounter="batCounterEnabled",
-mirrorTPDownEnabled="mirrorTPDownEnabled",speedToggled="speedToggled",dropEnabled="dropEnabled",
-animEnabled="animEnabled",showProgressBar="showProgressBar",showProgressFPS="showProgressFPS",showProgressPing="showProgressPing",
-}
-for _ck,_sk in pairs(_earlyMap)do if _ec[_ck]~=nil then _St[_sk]=_ec[_ck]end end
-if type(_ec.activeSky)=="string"and(_ec.activeSky=="default"or _ec.activeSky=="blue"or _ec.activeSky=="night"or _ec.activeSky=="day")then _St.activeSky=_ec.activeSky else _St.activeSky="default"end
-if type(_ec.hiddenSideButtons)=="table"then _St.hiddenSideButtons=_ec.hiddenSideButtons end
-if _ec.sideButtonsVisible==nil then _St.sideButtonsVisible=true end
-if _ec.sideButtonDragMode=="one"or _ec.sideButtonDragMode=="all"then _St.sideButtonDragMode=_ec.sideButtonDragMode;_St.sideButtonDragModeSaved=_ec.sideButtonDragMode end
-end
-local setStopOnHit
-local setMirrorTPDown
-local applySideButtonLook
-local setSideButtonDragModeUI
-local setFOVControlModeUI,setNormalFOVVisual
-local _pbPositioned=false
-local function _apbl(forcePos)
-if not pbFrame then return end;_St.showProgressBar=true;_St.showProgressFPS=true;_St.showProgressPing=true;local s=_mc(_St.progressBarSize or 1,0.6,1.4);local statsWidth=158;local frameWidth=352;local frameHeight=57;pbFrame.Size=_U(0,frameWidth*s,0,frameHeight*s)
-if forcePos or not _pbPositioned then
-if _St.stealBarPos then local a,b,c2,d=_St.stealBarPos:match("([^,]+),([^,]+),([^,]+),([^,]+)");if a then pbFrame.Position=_U(tonumber(a),tonumber(b),tonumber(c2),tonumber(d))else pbFrame.Position=_U(0.5,-(frameWidth*s)/2,1,-78)end else pbFrame.Position=_U(0.5,-(frameWidth*s)/2,1,-78)end
-_pbPositioned=true
-end
-pbFrame.Visible=true
-if pbBg then pbBg.Size=_U(0,328*s,0,18*s);pbBg.Position=_U(0,12*s,0,32*s) end;if stealLbl then stealLbl.Visible=false end;if progressPct then progressPct.Size=_U(0,90*s,0,25*s);progressPct.Position=_U(0,13*s,0,4*s);progressPct[_TSz]=16*s end;if _prl then _prl.Visible=(_St.showProgressFPS or _St.showProgressPing)==true;_prl.Size=_U(0,statsWidth*s,0,24*s);_prl.Position=_U(1,-(statsWidth+13)*s,0,5*s);_prl[_TSz]=11*s end
-
-end
-local Keys={
-autoBat=_KC.E,speed=_KC.V,lagger=_KC.Q,
-guiHide=_KC.LeftControl,
-autoLeft=_KC.Z,
-autoRight=_KC.C,
-dropBrainrot=_KC.H,tpDown=_KC.T,
-desyncAimbot=_KC.G,
-instaReset=_KC.Y,
-burst=_KC.Q,
-}
-if type(_earlyConfig)=="table"then
-local _keyMap={autoBatKey="autoBat",speedKey="speed",autoLeftKey="autoLeft",autoRightKey="autoRight",dropBrainrotKey="dropBrainrot",tpDownKey="tpDown",guiHideKey="guiHide",desyncAimbotKey="desyncAimbot",instaResetKey="instaReset",burstKey="burst",laggerKey="lagger"}
-for _cfgKey,_keyName in pairs(_keyMap)do local _savedName=_earlyConfig[_cfgKey];if type(_savedName)=="string"and _KC[_savedName]then Keys[_keyName]=_KC[_savedName]end end
-end
-local SIDE_DEFS={
-{key="drop",label="DROP\nBRAINROT"},
-{key="autoLeft",label="AUTO\nLEFT"},
-{key="aimbot",label="BAT\nAIMBOT"},
-{key="autoRight",label="AUTO\nRIGHT"},
-{key="tpDown",label="TP\nDOWN"},
-{key="carrySpeed",label="CARRY\nSPEED"},
-{key="laggerCarry",label="LAGGER\nCARRY"},
-{key="lagger",label="LAGGER\nNORMAL"},
-}
-local SIDE_BUTTON_LAYOUT_VERSION=4
-local _sbr={};local SIDE_BUTTON_BASE_SIZE=60;local SIDE_BUTTON_BASE_GAP=8;local SIDE_BUTTON_MIN_WIDTH=36;local SIDE_BUTTON_MAX_WIDTH=220;local SIDE_BUTTON_MIN_HEIGHT=32;local SIDE_BUTTON_MAX_HEIGHT=130
-local function getSideButtonDefaultSize(def)
-local scale=_mc(tonumber(_St.sideButtonScale)or 1,0.5,1.5);local height=_mf(SIDE_BUTTON_BASE_SIZE*scale+0.5);local width=height;if def and def.wide then width=_mf(SIDE_BUTTON_BASE_SIZE*2*scale+SIDE_BUTTON_BASE_GAP+0.5) end
-return width,height
-end
-local function getSideButtonSize(def)
-return getSideButtonDefaultSize(def)
-end
-local function applySideButtonSize(key)
-local ref=_sbr[key];if not(ref and ref.frame)then return end
-for _,def in ipairs(SIDE_DEFS)do
-if def.key==key then
-local width,height=getSideButtonDefaultSize(def);ref.frame.Size=_U(0,width,0,height)
-return
-end
-end
-end
-local function applySideButtonType()
-_St.sideButtonType="square"
-
-for _,def in ipairs(SIDE_DEFS)do
-applySideButtonSize(def.key)
-
-local ref=_sbr[def.key]
-if ref and ref.frame then
-local buttonCorner=ref.frame:FindFirstChildOfClass(_UCR)
-if buttonCorner then
-buttonCorner[_CRad]=_UD(0,10)
-end
-end
-end
-
-end
-local Steal={
-AutoStealEnabled=false,StealRadius=61,StealDuration=1.3,
-NormalRadius=61,NormalDuration=1.3,SemiRadius=61,SemiDuration=1.3,
-Data={},plotCache={},plotCacheTime={},
-cachedPrompts={},promptCacheTime=0,
-}
-local MOVE_KEYS={
-[_KC.W]=true,[_KC.A]=true,
-[_KC.S]=true,[_KC.D]=true,
-[_KC.Up]=true,[_KC.Left]=true,
-[_KC.Down]=true,[_KC.Right]=true,
-}
-local PLOT_CACHE_DURATION=2;local PROMPT_CACHE_REFRESH=0.15;local STEAL_COOLDOWN=0.1;local AUTO_START_DELAY=0.7;local MEDUSA_COOLDOWN=25;local DROP_AUTO_OFF_DELAY=0.15;local POS={
-L1=_V3(-476.48,-6.28,92.73),L2=_V3(-483.12,-4.95,94.80),
-R1=_V3(-476.16,-6.52,25.62),R2=_V3(-483.04,-5.09,23.14),
-}
-local Conns={
-autoSteal=nil,antiRag=nil,
-autoLeft=nil,autoRight=nil,
-anchor={},progress=nil,batAimbot=nil,autoTpDown=nil,desyncAimbot=nil,
-}
-local _moveCollisionParams=RaycastParams.new()
-_moveCollisionParams.FilterType=Enum.RaycastFilterType.Exclude
-_moveCollisionParams.IgnoreWater=true
-pcall(function()_moveCollisionParams.RespectCanCollide=true end)
-local _requestStepAssist=nil
-local function _isWalkableStep(root,direction,travelDistance,collisionRadius,char)
-local hum=char and char:FindFirstChildOfClass(_HM)
-if not hum or direction.Magnitude<0.01 then return false end
-local groundHit=workspace:Raycast(root.Position,_V3(0,-7,0),_moveCollisionParams)
-if not groundHit or groundHit.Normal.Y<0.45 then return false end
-local maxStepHeight=math.clamp((hum.HipHeight or 2)+0.25,1.35,2.35)
-local ahead=root.Position+direction.Unit*(collisionRadius+math.min(travelDistance,0.65)+0.08)
-local probeOrigin=_V3(ahead.X,groundHit.Position.Y+maxStepHeight+0.25,ahead.Z)
-local topHit=workspace:Raycast(probeOrigin,_V3(0,-maxStepHeight-0.45,0),_moveCollisionParams)
-if not topHit or topHit.Normal.Y<0.55 then return false end
-local rise=topHit.Position.Y-groundHit.Position.Y
-if rise>0.05 and rise<=maxStepHeight then
-local rootGroundOffset=(hum.HipHeight or 2)+(root.Size.Y*0.5)
-return true,topHit.Position.Y+rootGroundOffset+0.06
-end
-return false
-end
-local function _resolveCollisionHorizontal(root,desiredVelocity,dt)
-local resolved=_V3(desiredVelocity.X,0,desiredVelocity.Z)
-if not(root and root.Parent)or resolved.Magnitude<0.01 then return resolved,false end
-local originalMagnitude=resolved.Magnitude
-local char=LP.Character
-_moveCollisionParams.FilterDescendantsInstances=char and{char}or{}
-local frameTime=math.clamp(dt or(1/60),1/240,1/15)
-local collisionRadius=math.clamp(math.max(root.Size.X,root.Size.Z)*0.5,0.90,1.02)
-local collisionSkin=0.14
-local blocked=false
-local firstWallNormal=nil
-local sharpCorner=false
-local firstTravel=resolved.Magnitude*frameTime
-local hasStep,stepTargetY=_isWalkableStep(root,resolved,firstTravel,collisionRadius,char)
-if hasStep and _requestStepAssist then _requestStepAssist(root,stepTargetY)end
-for _=1,2 do
-if resolved.Magnitude<0.02 then break end
-local travelDistance=resolved.Magnitude*frameTime
-local castVector=resolved.Unit*(travelDistance+collisionSkin)
-local hit=nil
-local spherecastWorked=pcall(function()hit=workspace:Spherecast(root.Position,collisionRadius,castVector,_moveCollisionParams)end)
-if not spherecastWorked then hit=workspace:Raycast(root.Position,resolved.Unit*(travelDistance+collisionRadius+collisionSkin),_moveCollisionParams)end
-if not hit then break end
-local hum=char and char:FindFirstChildOfClass(_HM)
-local maxSlopeAngle=hum and hum.MaxSlopeAngle or 45
-local walkableNormalY=math.cos(math.rad(math.clamp(maxSlopeAngle,0,89)))
-if hit.Normal.Y>=walkableNormalY then break end
-local isLowStep,lowStepTargetY=_isWalkableStep(root,resolved,travelDistance,collisionRadius,char)
-if isLowStep then if _requestStepAssist then _requestStepAssist(root,lowStepTargetY)end;break end
-local normal=_V3(hit.Normal.X,0,hit.Normal.Z)
-if normal.Magnitude<0.05 then break end
-normal=normal.Unit
-local intoWall=resolved:Dot(normal)
-if intoWall>=0 then break end
-blocked=true
-if firstWallNormal and firstWallNormal:Dot(normal)<0.55 then sharpCorner=true;resolved=Vector3.zero;break end
-firstWallNormal=firstWallNormal or normal
-resolved=resolved-normal*intoWall
-end
-if resolved.Magnitude<0.04 then resolved=Vector3.zero end
-if resolved.Magnitude>originalMagnitude then resolved=resolved.Unit*originalMagnitude end
-return resolved,blocked,sharpCorner
-end
-local _deadCharacters=setmetatable({},{__mode="k"})
-local function _isAliveRoot(root)
-if not(root and root.Parent)then return false end
-local char=root.Parent
-if char~=LP.Character or _deadCharacters[char]then return false end
-local hum=char:FindFirstChildOfClass(_HM)
-return hum~=nil and hum.Health>0 and hum:GetState()~=_HST.Dead
-end
-local function _cleanupDeadCharacterMotion(char)
-if not char or _deadCharacters[char]then return end
-_deadCharacters[char]=true
-for _,obj in ipairs(char:GetDescendants())do
-local scriptOwned=obj.Name:sub(1,7)=="Vampire"or obj.Name:sub(1,4)=="WAVE"
-if obj:IsA("LinearVelocity")and scriptOwned then
-pcall(function()obj.Enabled=false end);pcall(function()obj.VectorVelocity=Vector3.zero end);pcall(function()obj.PlaneVelocity=Vector2.zero end);pcall(function()obj.LineVelocity=0 end);pcall(function()obj:Destroy()end)
-elseif obj:IsA("Attachment")and scriptOwned then
-pcall(function()obj:Destroy()end)
-elseif obj:IsA("BasePart")then
-pcall(function()obj.AssemblyLinearVelocity=Vector3.zero;obj.AssemblyAngularVelocity=Vector3.zero;obj.Anchored=true end)
-end
-end
-end
-local _namedVectorPulseTokens=setmetatable({},{__mode="k"})
-local function _getNamedVectorLinearVelocity(root,prefix)
-if not _isAliveRoot(root)then return nil end
-local attachmentName=prefix.."Attachment";local velocityName=prefix.."LinearVelocity"
-local attachment=root:FindFirstChild(attachmentName)
-if not(attachment and attachment:IsA("Attachment"))then attachment=_I("Attachment");attachment.Name=attachmentName;attachment.Parent=root end
-local linearVelocity=root:FindFirstChild(velocityName)
-if not(linearVelocity and linearVelocity:IsA("LinearVelocity"))then linearVelocity=_I("LinearVelocity");linearVelocity.Name=velocityName;linearVelocity.Parent=root end
-linearVelocity.Attachment0=attachment;linearVelocity.RelativeTo=Enum.ActuatorRelativeTo.World
-pcall(function()linearVelocity.VelocityConstraintMode=Enum.VelocityConstraintMode.Vector end)
-pcall(function()linearVelocity.ForceLimitsEnabled=false end)
-return linearVelocity
-end
-local function _setNamedVectorLinearVelocity(root,prefix,velocity)
-local linearVelocity=_getNamedVectorLinearVelocity(root,prefix);if not linearVelocity then return nil end
-_namedVectorPulseTokens[linearVelocity]=nil;linearVelocity.VectorVelocity=velocity or Vector3.zero;linearVelocity.Enabled=true
-return linearVelocity
-end
-local function _stopNamedVectorLinearVelocity(root,prefix)
-if not root then return end
-local linearVelocity=root:FindFirstChild(prefix.."LinearVelocity")
-if linearVelocity and linearVelocity:IsA("LinearVelocity")then _namedVectorPulseTokens[linearVelocity]=nil;pcall(function()linearVelocity.Enabled=false;linearVelocity.VectorVelocity=Vector3.zero;linearVelocity.LineVelocity=0;linearVelocity:Destroy()end)end
-local attachment=root:FindFirstChild(prefix.."Attachment")
-if attachment and attachment:IsA("Attachment")then pcall(function()attachment:Destroy()end)end
-end
-local function _pulseNamedVectorLinearVelocity(root,prefix,velocity,duration)
-local linearVelocity=_getNamedVectorLinearVelocity(root,prefix);if not linearVelocity then return nil end
-local token={};_namedVectorPulseTokens[linearVelocity]=token;linearVelocity.VectorVelocity=velocity or Vector3.zero;linearVelocity.Enabled=true
-task.delay(duration or 0.1,function()
-if _namedVectorPulseTokens[linearVelocity]~=token then return end;_namedVectorPulseTokens[linearVelocity]=nil
-if linearVelocity.Parent then _stopNamedVectorLinearVelocity(root,prefix)end
-end)
-return linearVelocity
-end
-local function _getNamedVerticalLinearVelocity(root,prefix)
-if not _isAliveRoot(root)then return nil end
-local attachmentName=prefix.."Attachment";local velocityName=prefix.."LinearVelocity"
-local attachment=root:FindFirstChild(attachmentName)
-if not(attachment and attachment:IsA("Attachment"))then attachment=_I("Attachment");attachment.Name=attachmentName;attachment.Parent=root end
-local linearVelocity=root:FindFirstChild(velocityName)
-if not(linearVelocity and linearVelocity:IsA("LinearVelocity"))then linearVelocity=_I("LinearVelocity");linearVelocity.Name=velocityName;linearVelocity.Parent=root end
-linearVelocity.Attachment0=attachment;linearVelocity.RelativeTo=Enum.ActuatorRelativeTo.World
-linearVelocity.VelocityConstraintMode=Enum.VelocityConstraintMode.Line;linearVelocity.LineDirection=_V3(0,1,0)
-pcall(function()linearVelocity.ForceLimitsEnabled=false end)
-return linearVelocity
-end
-local function _pulseNamedVerticalLinearVelocity(root,prefix,verticalSpeed,duration)
-local linearVelocity=_getNamedVerticalLinearVelocity(root,prefix);if not linearVelocity then return nil end
-local token={};_namedVectorPulseTokens[linearVelocity]=token;linearVelocity.LineVelocity=verticalSpeed or 0;linearVelocity.Enabled=true
-task.delay(duration or 0.1,function()
-if _namedVectorPulseTokens[linearVelocity]~=token then return end;_namedVectorPulseTokens[linearVelocity]=nil
-if linearVelocity.Parent then _stopNamedVectorLinearVelocity(root,prefix)end
-end)
-return linearVelocity
-end
-local function _readRootVelocity(root)
-if not(root and root.Parent)then return Vector3.zero end
-local ok,velocity=pcall(function()return root:GetVelocityAtPosition(root.Position)end)
-return ok and velocity or Vector3.zero
-end
-local _stepAssistStates=setmetatable({},{__mode="k"})
-_requestStepAssist=function(root,targetY)
-if not _isAliveRoot(root)or type(targetY)~="number"or targetY<=root.Position.Y+0.05 then return end
-local now=tick();local current=_stepAssistStates[root]
-if current then current.targetY=math.max(current.targetY,targetY);current.expires=math.max(current.expires,now+0.32);return end
-local state={targetY=targetY,expires=now+0.32};_stepAssistStates[root]=state
-_ts(function()
-while _stepAssistStates[root]==state and _isAliveRoot(root)and tick()<state.expires do
-local remaining=state.targetY-root.Position.Y
-if remaining<=0.05 then break end
-local char=root.Parent;_moveCollisionParams.FilterDescendantsInstances={char}
-if workspace:Raycast(root.Position,_V3(0,3.05+math.min(remaining,2.35),0),_moveCollisionParams)then break end
-local stepLV=_getNamedVerticalLinearVelocity(root,"VampireStep");if not stepLV then break end
-stepLV.LineVelocity=math.clamp(remaining*11,7,17);stepLV.Enabled=true
-_RS.Heartbeat:Wait()
-end
-if _stepAssistStates[root]==state then _stepAssistStates[root]=nil end
-_stopNamedVectorLinearVelocity(root,"VampireStep")
-end)
-end
-batCounterDebounce=false;NORMAL_STRETCH_FOV=70;local LOGO_ID=_RBX.."75548910103458";local IMG_BG=_RBX.."138321246448736"
-local Anims={
-idle1=_RBX.."133806214992291",idle2=_RBX.."94970088341563",
-walk=_RBX.."707897309",run=_RBX.."707861613",
-jump=_RBX.."116936326516985",fall=_RBX.."116936326516985",
-climb=_RBX.."116936326516985",swim=_RBX.."116936326516985",
-swimidle=_RBX.."116936326516985",
-}
-local ANIM_PACKS={
-["Tryhard"]=Anims,
-["Adidas Community"]={idle1=_RBX.."122257458498464",idle2=_RBX.."102357151005774",walk=_RBX.."122150855457006",run=_RBX.."82598234841035",jump=_RBX.."75290611992385",fall=_RBX.."98600215928904",climb=_RBX.."88763136693023",swim=_RBX.."133308483266208",swimidle=_RBX.."109346520324160"},
-["Vampire"]={idle1=_RBX.."10921315373",idle2=_RBX.."10921315373",walk=_RBX.."10921326949",run=_RBX.."10921320299",jump=_RBX.."10921322186",fall=_RBX.."10921321317",climb=_RBX.."10921314188",swim=_RBX.."10921324408",swimidle=_RBX.."10921325443"},
-["Catwalk Glam"]={idle1=_RBX.."133806214992291",idle2=_RBX.."94970088341563",walk=_RBX.."109168724482748",run=_RBX.."81024476153754",jump=_RBX.."116936326516985",fall=_RBX.."92294537340807",climb=_RBX.."119377220967554",swim=_RBX.."134591743181628",swimidle=_RBX.."98854111361360"},
-["Astronaut"]={idle1=_RBX.."10921034824",idle2=_RBX.."10921036806",walk=_RBX.."10921046031",run=_RBX.."10921039308",jump=_RBX.."10921042494",fall=_RBX.."10921040576",climb=_RBX.."10921032124",swim=_RBX.."10921044000",swimidle=_RBX.."10921045006"},
-["Elder"]={idle1=_RBX.."10921101664",idle2=_RBX.."10921102574",walk=_RBX.."10921111375",run=_RBX.."10921104374",jump=_RBX.."10921107367",fall=_RBX.."10921105765",climb=_RBX.."10921100400",swim=_RBX.."10921108971",swimidle=_RBX.."10921110146"},
-["Mage"]={idle1=_RBX.."10921144709",idle2=_RBX.."10921145797",walk=_RBX.."10921152678",run=_RBX.."10921148209",jump=_RBX.."10921149743",fall=_RBX.."10921148939",climb=_RBX.."10921143404",swim=_RBX.."10921150788",swimidle=_RBX.."10921151661"},
-["Amazon Unboxed"]={idle1=_RBX.."98281136301627",idle2=_RBX.."98281136301627",walk=_RBX.."90478085024465",run=_RBX.."134824450619865",jump=_RBX.."121454505477205",fall=_RBX.."94788218468396",climb=_RBX.."121145883950231",swim=_RBX.."105962919001086",swimidle=_RBX.."129126268464847"},
-}
-local ANIM_ORDER={"None","Tryhard","Adidas Community","Vampire","Catwalk Glam","Astronaut","Elder","Mage","Amazon Unboxed"}
-local savedAnimate=nil;local originalAnims=nil;local animHeartbeatConn=nil
-do
-local function isPackAnim(id)
-if not id then return false end;for _,v in pairs(Anims)do if v==id then return true end end
-return false
-end
-local function saveOriginalAnims(char)
-local animate=char:FindFirstChild("Animate");if not animate then return end;local function g(o)return o and o.AnimationId or nil end;local ids={
-idle1=g(animate.idle and animate.idle.Animation1),idle2=g(animate.idle and animate.idle.Animation2),
-walk=g(animate.walk and animate.walk.WalkAnim),run=g(animate.run and animate.run.RunAnim),
-jump=g(animate.jump and animate.jump.JumpAnim),fall=g(animate.fall and animate.fall.FallAnim),
-climb=g(animate.climb and animate.climb.ClimbAnim),swim=g(animate.swim and animate.swim.Swim),
-swimidle=g(animate.swimidle and animate.swimidle.SwimIdle),
-}
-if not isPackAnim(ids.walk)then originalAnims=ids end
-end
-local function applyAnimPack(char)
-local animate=char:FindFirstChild("Animate");if not animate then return end;local function s(o,id)if o then o.AnimationId=id end end;s(animate.idle and animate.idle.Animation1,Anims.idle1);s(animate.idle and animate.idle.Animation2,Anims.idle2);s(animate.walk and animate.walk.WalkAnim,Anims.walk);s(animate.run and animate.run.RunAnim,Anims.run)
-s(animate.jump and animate.jump.JumpAnim,Anims.jump);s(animate.fall and animate.fall.FallAnim,Anims.fall);s(animate.climb and animate.climb.ClimbAnim,Anims.climb);s(animate.swim and animate.swim.Swim,Anims.swim);s(animate.swimidle and animate.swimidle.SwimIdle,Anims.swimidle)
-end
-local function restoreOriginalAnims(char)
-if not originalAnims then return end;local animate=char:FindFirstChild("Animate");if not animate then return end
-local function s(o,id)if o and id then o.AnimationId=id end end;s(animate.idle and animate.idle.Animation1,originalAnims.idle1)
-s(animate.idle and animate.idle.Animation2,originalAnims.idle2);s(animate.walk and animate.walk.WalkAnim,originalAnims.walk);s(animate.run and animate.run.RunAnim,originalAnims.run);s(animate.jump and animate.jump.JumpAnim,originalAnims.jump)
-s(animate.fall and animate.fall.FallAnim,originalAnims.fall);s(animate.climb and animate.climb.ClimbAnim,originalAnims.climb);s(animate.swim and animate.swim.Swim,originalAnims.swim);s(animate.swimidle and animate.swimidle.SwimIdle,originalAnims.swimidle);local hum2=char:FindFirstChildOfClass(_HM)
-if hum2 then for _,t in ipairs(hum2:GetPlayingAnimationTracks())do t:Stop(0)end;hum2:ChangeState(_HST.Running) end
-end
-startUnwalk=function()
-if _St.unwalkEnabled then return end;_St.unwalkEnabled=true;local c=LP.Character;if not c then return end;local hum=c:FindFirstChildOfClass(_HM);if hum then for _,t in ipairs(hum:GetPlayingAnimationTracks())do t:Stop()end end;local anim=c:FindFirstChild("Animate");if anim then savedAnimate=anim:Clone();anim:Destroy()end
-end
-stopUnwalk=function()
-if not _St.unwalkEnabled then return end;_St.unwalkEnabled=false;local c=LP.Character;if c and savedAnimate then savedAnimate.Parent=c;savedAnimate.Disabled=false;savedAnimate=nil end
-_ts(function()
-_tw(0.15);local char=LP.Character;if not char then return end;if _St.animEnabled then saveOriginalAnims(char);applyAnimPack(char)
-else restoreOriginalAnims(char)end
-end)
-end
-local bodyLockConn=nil
-local function getNearestBodyLockTarget()
-local char=LP.Character;local root=char and char:FindFirstChild(_HR);if not root then return nil end
-local nearest,shortest=nil,_mh
-for _,plr in ipairs(_PL:GetPlayers())do
-if plr~=LP and plr.Character then
-local tr=plr.Character:FindFirstChild(_HR);local hum=plr.Character:FindFirstChildOfClass(_HM)
-if tr and hum and hum.Health>0 then
-local d=(tr.Position-root.Position).Magnitude
-if d<=_St.bodyLockRadius and d<shortest then shortest=d;nearest=plr end
-end
-end
-end
-return nearest
-end
-startBodyLock=function()
-if bodyLockConn then return end;_St.bodyLockEnabled=true
-bodyLockConn=_RS.Heartbeat:Connect(function()
-if not _St.bodyLockEnabled then return end
-local char=LP.Character;local myRoot=char and char:FindFirstChild(_HR);local hum=char and char:FindFirstChildOfClass(_HM)
-if not myRoot or not hum or hum.Health<=0 then return end
-local target=getNearestBodyLockTarget()
-if target and target.Character and target.Character:FindFirstChild(_HR)then
-local targetPos=target.Character[_HR].Position;local myPos=myRoot.Position;local offset=_V3(targetPos.X,myPos.Y,targetPos.Z)-myPos
-if offset.Magnitude>0.1 then
-hum.AutoRotate=false;local lookDir=offset.Unit;local currentDir=myRoot.CFrame.LookVector;local cross=currentDir:Cross(lookDir);local currentVel=myRoot.AssemblyAngularVelocity
-myRoot.AssemblyAngularVelocity=_V3(currentVel.X,cross.Y*40,currentVel.Z)
-end
-else
-hum.AutoRotate=true
-end
-end)
-end
-stopBodyLock=function()
-_St.bodyLockEnabled=false;if bodyLockConn then bodyLockConn:Disconnect();bodyLockConn=nil end
-local hum=LP.Character and LP.Character:FindFirstChildOfClass(_HM);if hum then hum.AutoRotate=true end
-end
-local HEADLESS_MESH_ID=_RBX.."1095708";local KORBLOX_MESH_ID=_RBX.."101851696";local KORBLOX_TEXTURE_ID=_RBX.."101851254";local DARK_GREY_COLOR=_C(64,64,64)
-local function _removeFace(head)local face=head:FindFirstChild("face");if face then face:Destroy()end end
-applyHeadlessToChar=function(char,enabled)
-if not char then return end;local head=char:FindFirstChild("Head");if not head then return end
-if enabled then
-head.Transparency=1;head.CanCollide=false;_removeFace(head)
-if head:FindFirstChild("HeadlessMesh")then return end
-for _,child in ipairs(head:GetChildren())do if child:IsA("SpecialMesh")and child.MeshId==HEADLESS_MESH_ID then child:Destroy()end end
-local mesh=_I("SpecialMesh");mesh.MeshType=Enum.MeshType.FileMesh;mesh.MeshId=HEADLESS_MESH_ID;mesh.Scale=_V3(0.001,0.001,0.001);mesh.Name="HeadlessMesh";mesh.Parent=head
-head:GetPropertyChangedSignal("Transparency"):Connect(function()if _St.headlessEnabled and head.Transparency~=1 then head.Transparency=1 end end)
-head.ChildAdded:Connect(function(child)if _St.headlessEnabled and child.Name=="face"and child:IsA("Decal")then child:Destroy()end end)
-else
-head.Transparency=0;head.CanCollide=true
-for _,child in ipairs(head:GetChildren())do if child:IsA("SpecialMesh")and child.Name=="HeadlessMesh"then child:Destroy()end end
-_removeFace(head)
-end
-end
-applyKorbloxToChar=function(char,enabled)
-if not char then return end;local humanoid=char:FindFirstChildOfClass(_HM);if not humanoid then return end
-if enabled then
-if humanoid.RigType==Enum.HumanoidRigType.R6 then
-local rightLeg=char:FindFirstChild("Right Leg")
-if rightLeg then
-if rightLeg:FindFirstChild("KorbloxMesh")then return end
-for _,child in ipairs(rightLeg:GetChildren())do if child:IsA("SpecialMesh")or child:IsA("CharacterMesh")then child:Destroy()end end
-rightLeg.Color=DARK_GREY_COLOR
-rightLeg:GetPropertyChangedSignal("Color"):Connect(function()if _St.korbloxEnabled and rightLeg.Color~=DARK_GREY_COLOR then rightLeg.Color=DARK_GREY_COLOR end end)
-local mesh=_I("SpecialMesh");mesh.MeshType=Enum.MeshType.FileMesh;mesh.MeshId=KORBLOX_MESH_ID;mesh.TextureId=KORBLOX_TEXTURE_ID;mesh.Scale=_V3(1,1,1);mesh.Name="KorbloxMesh";mesh.Parent=rightLeg
-end
-elseif humanoid.RigType==Enum.HumanoidRigType.R15 then
-local rightUpperLeg=char:FindFirstChild("RightUpperLeg")
-if rightUpperLeg then
-if char:FindFirstChild("KorbloxLeg")then return end
-rightUpperLeg.Transparency=1;local rightLowerLeg=char:FindFirstChild("RightLowerLeg");local rightFoot=char:FindFirstChild("RightFoot");if rightLowerLeg then rightLowerLeg.Transparency=1 end;if rightFoot then rightFoot.Transparency=1 end
-local oldK=char:FindFirstChild("KorbloxLeg");if oldK then oldK:Destroy()end
-local korbloxLeg=_I("Part");korbloxLeg.Name="KorbloxLeg";korbloxLeg.Size=_V3(1,2,1);korbloxLeg.Anchored=false;korbloxLeg.CanCollide=false;korbloxLeg.Color=DARK_GREY_COLOR;korbloxLeg.Parent=char
-local mesh=_I("SpecialMesh");mesh.MeshType=Enum.MeshType.FileMesh;mesh.MeshId=KORBLOX_MESH_ID;mesh.TextureId=KORBLOX_TEXTURE_ID;mesh.Scale=_V3(1,1,1);mesh.Name="KorbloxMesh";mesh.Parent=korbloxLeg
-local weld=_I("Weld");weld.Part0=rightUpperLeg;weld.Part1=korbloxLeg;weld.C0=_CF(0,-0.8,0);weld.Name="KorbloxWeld";weld.Parent=korbloxLeg
-end
-end
-else
-if humanoid.RigType==Enum.HumanoidRigType.R6 then
-local rightLeg=char:FindFirstChild("Right Leg")
-if rightLeg then
-for _,child in ipairs(rightLeg:GetChildren())do if child:IsA("SpecialMesh")and child.Name=="KorbloxMesh"then child:Destroy()end end
-rightLeg.Color=_C(255,255,255)
-end
-elseif humanoid.RigType==Enum.HumanoidRigType.R15 then
-local rightUpperLeg=char:FindFirstChild("RightUpperLeg")
-if rightUpperLeg then
-rightUpperLeg.Transparency=0;local rightLowerLeg=char:FindFirstChild("RightLowerLeg");local rightFoot=char:FindFirstChild("RightFoot");if rightLowerLeg then rightLowerLeg.Transparency=0 end;if rightFoot then rightFoot.Transparency=0 end
-local korbloxLeg=char:FindFirstChild("KorbloxLeg");if korbloxLeg then korbloxLeg:Destroy()end
-end
-end
-end
-end
-applyCharterToChar=function(char)
-if not char then return end;applyHeadlessToChar(char,_St.headlessEnabled);applyKorbloxToChar(char,_St.korbloxEnabled)
-end
-startAnim=function()
-if _St.animEnabled then return end;_St.animEnabled=true;if animHeartbeatConn then animHeartbeatConn:Disconnect();animHeartbeatConn=nil end;local char=LP.Character
-if char then
-saveOriginalAnims(char);applyAnimPack(char);local hum=char:FindFirstChildOfClass(_HM);if hum then for _,t in ipairs(hum:GetPlayingAnimationTracks())do t:Stop(0)end;hum:ChangeState(_HST.Running) end
-end
-animHeartbeatConn=game:GetService("RunService").Heartbeat:Connect(function()
-if not _St.animEnabled then return end;local c=LP.Character;if c then applyAnimPack(c)end
-end)
-end
-stopAnim=function() if not _St.animEnabled then return end;_St.animEnabled=false;if animHeartbeatConn then animHeartbeatConn:Disconnect();animHeartbeatConn=nil end;local char=LP.Character;if char then restoreOriginalAnims(char)end end
-local function applySelectedAnimPack(char)
-local pack=ANIM_PACKS[_St.selectedAnim];if not pack then return end;local animate=char:FindFirstChild("Animate");if not animate then return end;local function s(o,id)if o and id then o.AnimationId=id end end
-s(animate.idle and animate.idle.Animation1,pack.idle1);s(animate.idle and animate.idle.Animation2,pack.idle2);s(animate.walk and animate.walk.WalkAnim,pack.walk);s(animate.run and animate.run.RunAnim,pack.run)
-s(animate.jump and animate.jump.JumpAnim,pack.jump);s(animate.fall and animate.fall.FallAnim,pack.fall);s(animate.climb and animate.climb.ClimbAnim,pack.climb);s(animate.swim and animate.swim.Swim,pack.swim);s(animate.swimidle and animate.swimidle.SwimIdle,pack.swimidle)
-end
-setSelectedAnim=function(name)
-_St.selectedAnim=name;local char=LP.Character
-if name=="None"then
-_St.animEnabled=false;if animHeartbeatConn then animHeartbeatConn:Disconnect();animHeartbeatConn=nil end;if char then restoreOriginalAnims(char)end
-return
-end
-_St.animEnabled=true;if animHeartbeatConn then animHeartbeatConn:Disconnect();animHeartbeatConn=nil end
-if char then
-saveOriginalAnims(char);applySelectedAnimPack(char);local hum=char:FindFirstChildOfClass(_HM);if hum then for _,t in ipairs(hum:GetPlayingAnimationTracks())do t:Stop(0)end;hum:ChangeState(_HST.Running) end
-end
-animHeartbeatConn=game:GetService("RunService").Heartbeat:Connect(function()
-if not _St.animEnabled then return end;local c=LP.Character;if c then applySelectedAnimPack(c)end
-end)
-end
-end
-for _,n in pairs({"VAMPIRE HUB","VampireHub","VHub","FROSTY HUB","FrostyHub","CRIMSON HUB","CrimsonHub"})do local o=game:GetService("CoreGui"):FindFirstChild(n);if o then o:Destroy()end end;if _G._VH_ESP and _G._VH_ESP.cleanup then pcall(_G._VH_ESP.cleanup)end;local C={
-void=_C(0,0,0),
-ink=_C(0,0,0),
-card=_C(0,0,0),
-row=_C(24,13,36),
-purple=_C(139,92,246),
-dpurple=_C(43,20,68),
-lpurple=_C(196,160,255),
-white=_C(255,255,255),
-dim=_C(225,225,230),
-gold=_C(210,180,255),
-border=_C(43,20,68),
-on=_C(139,92,246),
-off=_C(0,0,0),
-stkBg=_C(18,9,29),
-stkBrd=_C(75,42,112),
-stkAct=_C(112,65,180),
-}
-local _ARROW_CLOSED=">";local _ARROW_OPEN=">";local _treg={}
-do
-tw=function(o,t,p,s,d) _TS:Create(o,_TI(t,s or _ESQ,d or _EDO),p):Play() end;gui=_I("ScreenGui")
-gui.Name="CrimsonHub";gui.ResetOnSpawn=false;gui.DisplayOrder=10;gui.IgnoreGuiInset=false;gui.Enabled=true
-pcall(function()if syn and syn.protect_gui then syn.protect_gui(gui)end end)
-if not pcall(function()gui.Parent=game:GetService("CoreGui")end)then gui.Parent=LP:WaitForChild("PlayerGui") end;root=_I("CanvasGroup",gui)
-root.Name="CrimsonHub_Root";root.AnchorPoint=Vector2.new(0,0.5);root.Size=_U(0,356,0,566);root.Position=_U(0,20,0.5,0);root.Visible=true;root[_BgC]=C.ink;root[_BgT]=0;root[_BSP]=0;root.Active=true;root[_ClD]=false;_I(_UCR,root)[_CRad]=_UD(0,14);local rootStroke=_I(_USK,root);rootStroke.Color=_C(75,42,112);rootStroke.Transparency=0.22;rootStroke.Thickness=1.25;local uiScale=_I("UIScale",root);uiScale.Scale=_St.guiScale
-local function _removeCrimsonOutline(obj)
-if obj and obj:IsA(_USK)then pcall(function()obj.Enabled=false end);pcall(function()obj.Thickness=0 end)end
-end
-_removeCrimsonOutline(rootStroke);for _,obj in ipairs(root:GetDescendants())do _removeCrimsonOutline(obj)end
-root.DescendantAdded:Connect(_removeCrimsonOutline)
-makeDraggable=function(frame,sh,isMain)
-local drag,inp2,ds,sp=false,nil,nil,nil;local ss,sc
-frame.InputBegan:Connect(function(i)
-if i.UserInputType==_UIB or i.UserInputType==_UIT then
-drag=true;ds=i.Position;sp=frame.Position;if sh then ss=sh.Position end
-i.Changed:Connect(function()if i.UserInputState==Enum.UserInputState.End then drag=false end end)
-end
-end)
-frame.InputChanged:Connect(function(i)
-if i.UserInputType==_UIM or i.UserInputType==_UIT then inp2=i end
-end)
-UIS.InputChanged:Connect(function(i)
-if i==inp2 and drag then local dx=i.Position.X-ds.X;local dy=i.Position.Y-ds.Y;frame.Position=_U(sp.X.Scale,sp.X.Offset+dx,sp.Y.Scale,sp.Y.Offset+dy);if sh and ss then sh.Position=_U(ss.X.Scale,ss.X.Offset+dx,ss.Y.Scale,ss.Y.Offset+dy)end end
-end)
-end
-makeDraggable(root,nil,true);local girlImg
-girlImg=_I(_IL,root);girlImg.Size=_Us(1,1);girlImg.Position=_U(0,0,0,0);girlImg[_BgT]=1;girlImg.Image=_RBX.."138321246448736";girlImg.ScaleType=Enum.ScaleType.Crop;girlImg.ImageTransparency=0;girlImg[_ZI]=1;girlImg[_BSP]=0;girlImg[_ClD]=true;_I(_UCR,girlImg)[_CRad]=_UD(0,14)
-local _imagePreloadQueue={};local _imagePreloadRunning=false
-local function _queueImagePreload(obj)
-if not obj or not(obj:IsA("ImageLabel")or obj:IsA("ImageButton"))then return end
-local imageId=obj.Image;if type(imageId)~="string"or imageId==""then return end
-_ti(_imagePreloadQueue,obj)
-if _imagePreloadRunning then return end
-_imagePreloadRunning=true
-_ts(function()
-while #_imagePreloadQueue>0 do
-local batch={};for _=1,24 do local item=_tr(_imagePreloadQueue,1);if not item then break end;if item.Parent then _ti(batch,item)end end
-if #batch>0 then pcall(function()_CP:PreloadAsync(batch)end)end
-_tw()
-end
-_imagePreloadRunning=false
-end)
-end
-local function _watchImagePreload(obj)
-if obj and(obj:IsA("ImageLabel")or obj:IsA("ImageButton"))then
-obj:GetPropertyChangedSignal("Image"):Connect(function()_queueImagePreload(obj)end)
-_queueImagePreload(obj)
-end
-end
-root.DescendantAdded:Connect(_watchImagePreload)
-_queueImagePreload(girlImg)
-local bgShade=_I(_FR,root);bgShade.Size=_Us(1,1);bgShade.Position=_U(0,0,0,0);bgShade[_BgC]=_C(0,0,0);bgShade[_BgT]=1;bgShade[_BSP]=0;bgShade[_ZI]=1;_I(_UCR,bgShade)[_CRad]=_UD(0,14)
-local portrait=_I(_FR,root);portrait.Size=_U(1,0,0,122);portrait.Position=_U(0,0,0,0);portrait[_BgT]=1;portrait[_BSP]=0;portrait[_ClD]=false;portrait[_ZI]=2
-do
-local crimsonTitle=_I(_TL,portrait);crimsonTitle.Size=_U(1,0,0,30);crimsonTitle.Position=_U(0,0,0,10);crimsonTitle[_BgT]=1;crimsonTitle.Text="";crimsonTitle[_TC3]=_C(255,255,255);crimsonTitle.Font=Enum.Font.FredokaOne;crimsonTitle[_TSz]=27;crimsonTitle[_TXAl]=_TXC;crimsonTitle[_ZI]=6;crimsonTitle.Visible=false
-local titleGrad=_I("UIGradient",crimsonTitle);titleGrad.Color=ColorSequence.new(_C(255,255,255));local crimsonGlow=_I(_USK,crimsonTitle);crimsonGlow.Color=_C(255,255,255);crimsonGlow.Transparency=1;crimsonGlow.Thickness=0
-local hubLogo=_I(_IL,portrait);hubLogo.Name="CrimsonHubLogo";hubLogo.AnchorPoint=Vector2.new(0.5,0);hubLogo.Position=_U(0.5,0,0,7);hubLogo.Size=_U(0,210,0,34);hubLogo[_BgT]=1;hubLogo.Image=LOGO_ID;hubLogo.ImageColor3=_C(255,255,255);hubLogo.ScaleType=Enum.ScaleType.Fit;hubLogo[_ZI]=7;hubLogo[_BSP]=0;_queueImagePreload(hubLogo)
-local profileImage="rbxthumb://type=AvatarHeadShot&id="..tostring(LP.UserId).."&w=150&h=150";_ts(function()local ok,img=pcall(function()return _PL:GetUserThumbnailAsync(LP.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size150x150)end);if ok and img and img~=""and avatar and avatar.Parent then avatar.Image=img end end)
-local halo=_I(_FR,portrait);halo.AnchorPoint=Vector2.new(0.5,0);halo.Position=_U(0.5,0,0,40);halo.Size=_U(0,80,0,80);halo[_BgC]=C.purple;halo[_BgT]=1;halo.Visible=false;halo[_BSP]=0;halo[_ZI]=4;_I(_UCR,halo)[_CRad]=_UD(0,40)
-local profileBg=_I(_FR,portrait);profileBg.AnchorPoint=Vector2.new(0.5,0);profileBg.Position=_U(0.5,0,0,44);profileBg.Size=_U(0,72,0,72);profileBg[_BgC]=C.dpurple;profileBg[_BgT]=1;profileBg.Visible=false;profileBg[_BSP]=0;profileBg[_ZI]=5;_I(_UCR,profileBg)[_CRad]=_UD(0,36);local pbs=_I(_USK,profileBg);pbs.Color=C.lpurple;pbs.Transparency=1;pbs.Thickness=1.7;local pbg=_I("UIGradient",profileBg);pbg.Color=ColorSequence.new({_CSK(0,_C(5,0,1)),_CSK(0.4,_C(65,28,105)),_CSK(0.72,_C(150,95,235)),_CSK(1,_C(20,0,4))});pbg.Rotation=45
-local avatar=_I(_IL,portrait);avatar.AnchorPoint=Vector2.new(0.5,0);avatar.Position=_U(0.5,0,0,48);avatar.Size=_U(0,64,0,64);avatar[_BgC]=C.void;avatar[_BgT]=0;avatar[_BSP]=0;avatar.Image=profileImage;avatar.ScaleType=Enum.ScaleType.Crop;avatar[_ZI]=6;_I(_UCR,avatar)[_CRad]=_UD(0,32);local avs=_I(_USK,avatar);avs.Color=C.border;avs.Transparency=1;avs.Thickness=0
-end
-local headerDivider=_I(_FR,root);headerDivider.Size=_U(1,-34,0,1);headerDivider.Position=_U(0,17,0,122);headerDivider[_BgC]=_C(75,42,112);headerDivider[_BgT]=1;headerDivider[_BSP]=0;headerDivider[_ZI]=6;headerDivider.Visible=false
-ctrl=_I(_FR,root);ctrl.Size=_U(1,-26,1,-144);ctrl.Position=_U(0,13,0,132);ctrl[_BgT]=1;ctrl[_BSP]=0;ctrl[_ClD]=true;ctrl[_ZI]=2
-local TAB_NAMES={"Main","Move","Custom","Config"};local tabBtns={};local activePage=nil;tabStack=_I(_FR,root);tabStack.Size=_U(1,0,0,122);tabStack.Position=_U(0,0,0,0)
-tabStack[_BgT]=1;tabStack[_BSP]=0;tabStack[_ZI]=8;pageHost=_I(_FR,ctrl);pageHost.Size=_Us(1,1);pageHost.Position=_U(0,0,0,0);pageHost[_BgT]=1;pageHost[_BSP]=0;pageHost[_ClD]=true;pageHost[_ZI]=4
-local function makePage()
-local sf=_I(_SCF,pageHost);sf.Size=_U(1,0,1,0);sf[_BgT]=1;sf[_BSP]=0;sf.ScrollBarThickness=0;sf.ScrollBarImageColor3=C.purple;sf.AutomaticCanvasSize=Enum.AutomaticSize.Y;sf.CanvasSize=_U(0,0,0,0)
-sf.Visible=false;sf[_ZI]=4;local ll=_I("UIListLayout",sf);ll.SortOrder=Enum.SortOrder.LayoutOrder;ll.Padding=_UD(0,4);local pp=_I("UIPadding",sf);pp.PaddingLeft=_UD(0,10);pp.PaddingRight=_UD(0,16);pp.PaddingTop=_UD(0,10);pp.PaddingBottom=_UD(0,52)
-return sf
-end
-local pages={};for _,n in ipairs(TAB_NAMES)do pages[n]=makePage()end
-local function switchTab(name)
-if activePage then activePage.Visible=false end
-if name~="Main" and _G._VH_collapseAnimDropdown then pcall(_G._VH_collapseAnimDropdown) end
-activePage=pages[name];activePage.Visible=true
-for n,btn in pairs(tabBtns)do
-if n==name then
-tw(btn,0.15,{BackgroundColor3=C.purple,BackgroundTransparency=0});btn[_TC3]=C.white;local st=btn:FindFirstChildOfClass(_USK);if st then tw(st,0.15,{Color=C.lpurple,Transparency=0.05,Thickness=1.6})end
-else
-tw(btn,0.15,{BackgroundColor3=C.void,BackgroundTransparency=0});btn[_TC3]=C.dim;local st=btn:FindFirstChildOfClass(_USK);if st then tw(st,0.15,{Color=C.border,Transparency=0.48,Thickness=1.15})end
-end
-end
-end
-_treg={}
-local function _ibp(btn)
-if not pages then return false end
-for _,page in pairs(pages)do
-if btn:IsDescendantOf(page)then
-return page~=activePage
-end
-end
-return false
-end
-pcall(function()
-game:GetService("ContextActionService"):BindActionAtPriority(
-"VH_GlobalTap",
-function(_,state,inp)
-if state~=Enum.UserInputState.Begin then return _CAP end;local x,y=inp.Position.X,inp.Position.Y;local tapInsideRoot=false;if root and root.Visible then local rp=root.AbsolutePosition;local rs=root[_AbS];tapInsideRoot=(x>=rp.X and x<=rp.X+rs.X and y>=rp.Y and y<=rp.Y+rs.Y) end
-for _,e in ipairs(_treg)do
-if not e.cd and not e.ibFired and e.btn[_AbS].X>0 and not _ibp(e.btn)then
-if tapInsideRoot and not e.btn:IsDescendantOf(root)then
-else
-local ap=e.btn.AbsolutePosition;local as=e.btn[_AbS];if x>=ap.X and x<=ap.X+as.X and y>=ap.Y and y<=ap.Y+as.Y then if e.fire then _ts(e.fire)end end
-end
-end
-end
-return _CAP
-end,
-false,2001,_UIT
-)
-end)
-local function _ppop(btn)
-if not btn then return end
-local ok,isGui=pcall(function()return btn:IsA("GuiObject")end)
-if not ok or not isGui then return end;local okT,txt=pcall(function()return btn.Text end) if btn[_BgT]>=1 and(not okT or txt==nil or txt=="")then return end;local sc=btn:FindFirstChild("VHPop");if not sc then sc=_I("UIScale");sc.Name="VHPop";sc.Parent=btn end;sc.Scale=0.93;tw(sc,0.13,{Scale=1},_ESB) end
-local function _tc(btn,cb)
-local entry={btn=btn,cb=cb,cd=false,ibFired=false}
-local function fire()
-if entry.cd then return end;if _ibp(btn)then return end;if not(btn and btn.Parent)then return end;if btn[_AbS].X<=0 or btn[_AbS].Y<=0 then return end
-entry.cd=true;task.delay(0.25,function()entry.cd=false;entry.ibFired=false end) _ppop(btn);pcall(cb) end;entry.fire=fire;_ti(_treg,entry)
-local _pressedInside=false
-btn.InputBegan:Connect(function(i)
-if i.UserInputType==_UIB or i.UserInputType==_UIT then
-local ap=btn.AbsolutePosition;local as=btn[_AbS];local px,py=i.Position.X,i.Position.Y
-if px>=ap.X and px<=ap.X+as.X and py>=ap.Y and py<=ap.Y+as.Y then _pressedInside=true end
-end
-end)
-btn.InputEnded:Connect(function(i)
-if i.UserInputType==_UIB or i.UserInputType==_UIT then
-if _pressedInside then
-local ap=btn.AbsolutePosition;local as=btn[_AbS];local px,py=i.Position.X,i.Position.Y
-if px>=ap.X and px<=ap.X+as.X and py>=ap.Y and py<=ap.Y+as.Y then entry.ibFired=true;fire() end
-end
-_pressedInside=false
-end
-end)
-end
-local _bindCaptureSeq=0;local _gpbk={
-_KC.ButtonA,_KC.ButtonB,_KC.ButtonX,_KC.ButtonY,
-_KC.ButtonL1,_KC.ButtonR1,_KC.ButtonL2,_KC.ButtonR2,
-_KC.ButtonL3,_KC.ButtonR3,_KC.ButtonSelect,_KC.ButtonStart,
-_KC.DPadLeft,_KC.DPadRight,_KC.DPadUp,_KC.DPadDown,
-}
-local _GP_LABELS={
--- Roblox KeyCode + Nintendo / PlayStation
-ButtonA="ButtonA/NS-B/PS-X",
-ButtonB="ButtonB/NS-A/PS-O",
-ButtonX="ButtonX/NS-Y/PS-Square",
-ButtonY="ButtonY/NS-X/PS-Triangle",
-ButtonL1="ButtonL1",
-ButtonR1="ButtonR1",
-ButtonL2="ButtonL2",
-ButtonR2="ButtonR2",
-ButtonL3="ButtonL3",
-ButtonR3="ButtonR3",
-ButtonSelect="ButtonSelect",
-ButtonStart="ButtonStart",
-DPadLeft="DPadLeft",
-DPadRight="DPadRight",
-DPadUp="DPadUp",
-DPadDown="DPadDown",
-LeftControl="LeftControl",RightControl="RightControl",
-LeftShift="LeftShift",RightShift="RightShift",
-LeftAlt="LeftAlt",RightAlt="RightAlt",
-Space="Space",Return="Return",Backspace="Backspace",
-Escape="Escape",Tab="Tab",
-}
-local function _keyLabel(kc)
-if not kc then return "?" end
-local n=kc.Name
--- prefer mapped label; gamepad names stay as ButtonX / DPadDown style
-return _GP_LABELS[n] or n
-end
-local function _bbc(onPicked,onCancel)
-_bindCaptureSeq=_bindCaptureSeq+1;local casName="VH_Bind_".._bindCaptureSeq;local active=true;local conn
-local function finish(kc,cancelled)
-if not active then return end;active=false;if conn then conn:Disconnect();conn=nil end
-pcall(function()game:GetService("ContextActionService"):UnbindAction(casName)end)
-if cancelled then if onCancel then onCancel()end
-elseif onPicked then onPicked(kc)end
-end
-local _captureOpenedAt=tick()
-conn=UIS.InputBegan:Connect(function(i,gp)
-if not active then return end
-if tick()-_captureOpenedAt<0.02 then return end
-if i.UserInputType==Enum.UserInputType.Keyboard then
-if i.KeyCode==_KC.Escape then finish(nil,true)else finish(i.KeyCode,false)end
-elseif _isGamepadType(i.UserInputType)then
-local kc=i.KeyCode
-if kc~=_KC.Thumbstick1 and kc~=_KC.Thumbstick2 and kc~=_KC.Unknown then finish(kc,false)end
-end
-end)
-pcall(function()
-game:GetService("ContextActionService"):BindActionAtPriority(casName,function(_,state,obj)
-if active and state==Enum.UserInputState.Begin then finish(obj.KeyCode,false)end
-return Enum.ContextActionResult.Sink
-end,false,100000,table.unpack(_gpbk))
-end)
-return function()finish(nil,true)end
-end
-local _gpActionNames={}
-local function _refreshGamepadActions()
-local CAS=game:GetService("ContextActionService")
-for _,name in ipairs(_gpActionNames)do pcall(function()CAS:UnbindAction(name)end)end
-_gpActionNames={}
-local function bindOne(tag,kc,fn)
-if not kc then return end
-local name="VH_GP_"..tag
-_ti(_gpActionNames,name)
-pcall(function()
-CAS:BindActionAtPriority(name,function(_,state,_)
-if state==Enum.UserInputState.Begin then
-pcall(fn)
-end
-return Enum.ContextActionResult.Sink
-end,false,9000,kc)
-end)
-end
-bindOne("speed",Keys.speed,function()
-if _St.laggerMode~=0 then
-setLaggerMode(0);_St.speedToggled=false;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(false)end;if modeValLbl then modeValLbl.Text="Normal"end
-else
-_St.speedToggled=not _St.speedToggled;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(_St.speedToggled)end;if modeValLbl then modeValLbl.Text=_St.speedToggled and"Carry"or"Normal"end
-end
-end)
-bindOne("autoBat",Keys.autoBat,function()
-_St.autoBatToggled=not _St.autoBatToggled;if setAutoBat then setAutoBat(_St.autoBatToggled)end;if _St.autoBatToggled then _VH_forceDesyncOff();startBatAimbot()else stopBatAimbot()end
-end)
-bindOne("autoLeft",Keys.autoLeft,function()
-_St.autoLeftEnabled=not _St.autoLeftEnabled;if setAutoLeft then setAutoLeft(_St.autoLeftEnabled)end;if _St.autoLeftEnabled then _VH_forceAimbotOff();_VH_forceDesyncOff();startAutoLeft()else stopAutoLeft()end
-end)
-bindOne("autoRight",Keys.autoRight,function()
-_St.autoRightEnabled=not _St.autoRightEnabled;if setAutoRight then setAutoRight(_St.autoRightEnabled)end;if _St.autoRightEnabled then _VH_forceAimbotOff();_VH_forceDesyncOff();startAutoRight()else stopAutoRight()end
-end)
-bindOne("drop",Keys.dropBrainrot,function()if not _St.dropEnabled then runDropBrainrot()end end)
-bindOne("tpDown",Keys.tpDown,function()doTpDown()end)
-bindOne("guiHide",Keys.guiHide,function()toggleGuiVis()end)
-bindOne("lagger",Keys.lagger,function()toggleLaggerMode()end)
-bindOne("desync",Keys.desyncAimbot,function()
-_St.desyncAimbotEnabled=not _St.desyncAimbotEnabled;if setDesyncAimbot then setDesyncAimbot(_St.desyncAimbotEnabled)end;if _St.desyncAimbotEnabled then _VH_forceAimbotOff();startDesyncAimbot()else stopDesyncAimbot()end
-end)
-end
-do
-UIS.TouchStarted:Connect(function(touch)
-local pos=touch.Position
-for _,e in ipairs(_treg)do
-if not e.cd and e.btn and e.btn.Parent and e.btn[_AbS].X>0 and e.btn[_AbS].Y>0 then
-local ap=e.btn.AbsolutePosition;local as=e.btn[_AbS];if pos.X>=ap.X and pos.X<=ap.X+as.X and pos.Y>=ap.Y and pos.Y<=ap.Y+as.Y then if e.fire then _ts(e.fire)end;break end
-end
-end
-end)
-end
-local TAB_DISPLAY={Main="MAIN",Move="COMBAT",Config="SETTINGS",Custom="CUSTOMIZE"};local TAB_POS={Main=_U(0,16,0,45),Move=_U(0,16,0,82),Custom=_U(1,-113,0,45),Config=_U(1,-113,0,82)}
-for i,name in ipairs(TAB_NAMES)do
-local btn=_I(_TB,tabStack);btn.Size=_U(0,97,0,34);btn.Position=TAB_POS[name];btn[_BgC]=_C(0,0,0);btn[_BgT]=0;btn[_BSP]=0
-btn.Text=TAB_DISPLAY[name]or name;btn[_BgC]=name=="Main"and C.purple or C.void;btn[_BgT]=0;btn[_TC3]=name=="Main"and C.white or C.dim;btn[_TSC]=_C(0,0,0);btn[_TST]=0.42;btn.Font=_EGBK;btn[_TSz]=9;btn.LayoutOrder=i;btn[_ZI]=9;btn[_ABC]=false;_I(_UCR,btn)[_CRad]=_UD(0,7);local btnStroke=_I(_USK,btn);btnStroke.Color=name=="Main"and C.lpurple or C.stkBrd;btnStroke.Transparency=name=="Main"and 0.05 or 0.48;btnStroke.Thickness=name=="Main"and 1.6 or 1.15;tabBtns[name]=btn
-_tc(btn,function()switchTab(name)end)
-end
-activePage=pages["Main"];activePage.Visible=true;local rowCounts={Main=0,Move=0,Config=0,Custom=0};local function nextLO(pg)rowCounts[pg]=rowCounts[pg]+1;return rowCounts[pg]end;local function gap(pg,h2) local f=_I(_FR,pages[pg]);f.Size=_U(1,0,0,h2 or 5);f[_BgT]=1;f[_BSP]=0;f.LayoutOrder=nextLO(pg) end
-local function sect(pg,label)
-local f=_I(_FR,pages[pg]);f.Size=_U(1,0,0,23);f[_BgT]=1;f[_BSP]=0;f.LayoutOrder=nextLO(pg);local bar=_I(_FR,f);bar.Size=_U(0,3,1,0);bar[_BgC]=C.border;bar[_BSP]=0;_I(_UCR,bar)[_CRad]=_UD(1,0);local lbl=_I(_TL,f);lbl.Size=_U(1,-12,1,0);lbl.Position=_U(0,10,0,0);lbl[_BgT]=1;lbl.Text=label:upper();lbl[_TC3]=C.border;lbl.Font=_EGB;lbl[_TSz]=11;lbl[_TXAl]=_TXL
-return lbl
-end
-local function div(pg) local f=_I(_FR,pages[pg]);f.Size=_U(0.85,0,0,1);f.Position=_U(0.075,0,0,0);f[_BgT]=1;f[_BSP]=0;f.LayoutOrder=nextLO(pg) end
-local function mkRow(pg,h2)
-local f=_I(_FR,pages[pg]);f.Size=_U(1,0,0,h2 or 38);f[_BgC]=_C(35,3,8);f[_BgT]=1;f[_BSP]=0;f.LayoutOrder=nextLO(pg);_I(_UCR,f)[_CRad]=_UD(0,12);local rs=_I(_USK,f);rs.Color=C.border;rs.Transparency=0.32;rs.Thickness=1.15
-f.MouseEnter:Connect(function()tw(f,0.1,{BackgroundTransparency=1});tw(rs,0.1,{Color=C.border,Transparency=0.04,Thickness=1.45})end)
-f.MouseLeave:Connect(function()tw(f,0.1,{BackgroundTransparency=1});tw(rs,0.1,{Color=C.border,Transparency=0.32,Thickness=1.15})end)
-return f,rs
-end
-local function mkLbl(parent,txt,x,y,w,h2,size,color,font,align) local l=_I(_TL,parent);l.Size=_U(w or 0.55,0,0,h2 or 42);l.Position=_U(0,x or 10,0,y or 0);l[_BgT]=1;l.Text=txt;l[_TC3]=color or C.white;l[_TSC]=_C(0,0,0);l[_TST]=0.32;l.Font=font or _EGB;l[_TSz]=size or 11;l[_TXAl]=align or _TXL;return l end
-local function _mkt(pg,label,defKey,defOn,onToggle,onKeyChange)
-local row,rs=mkRow(pg,42);mkLbl(row,label,10,0,0,42,10,C.white,_EGB);local keyBtn=nil
-if defKey then
-keyBtn=_I(_TB,row);keyBtn.Size=_U(0,90,0,25);keyBtn.Position=_U(1,-166,0.5,-12.5);keyBtn[_BgC]=C.void;keyBtn[_BgT]=1;keyBtn[_BSP]=0;keyBtn.Text=_keyLabel(defKey);keyBtn[_TC3]=C.dim;keyBtn.Font=_EGB;keyBtn[_TSz]=7;keyBtn[_ZI]=5;_I(_UCR,keyBtn)[_CRad]=_UD(0,7);local ks=_I(_USK,keyBtn);ks.Color=C.border;ks.Thickness=1.25;local kl=false;local kCancel;local function kReset()tw(ks,0.1,{Color=C.border});keyBtn[_TC3]=C.dim end
-local function kStop(k) kl=false;if kCancel then local c=kCancel;kCancel=nil;c()end;kReset();if k then keyBtn.Text=_keyLabel(k);if onKeyChange then onKeyChange(k)end;if _refreshGamepadActions then pcall(_refreshGamepadActions)end end end
-local function kStartListening()
-if kl then kStop(nil);return end;kl=true;keyBtn.Text="...";keyBtn[_TC3]=C.purple;tw(ks,0.1,{Color=C.purple});kCancel=_bbc(
-function(k)kCancel=nil;kStop(k)end,
-function()kCancel=nil;kl=false;keyBtn.Text=_keyLabel(defKey);kReset()end
-)
-end
-_tc(keyBtn,kStartListening)
-end
-local pill=_I(_FR,row);pill.Size=_U(0,38,0,20);pill.Position=_U(1,-57,0.5,-10);pill[_BgC]=defOn and C.void or _C(0,0,0);pill[_BgT]=defOn and 0 or 0;pill[_BSP]=0;pill[_ZI]=5;_I(_UCR,pill)[_CRad]=_UD(1,0);local ps=_I(_USK,pill);ps.Color=C.border;ps.Transparency=defOn and 1 or 0.28;ps.Thickness=1.5;local knob=_I(_FR,pill);knob.Size=_U(0,16,0,16)
-knob.Position=defOn and _U(1,-19,0.5,-8)or _U(0,2,0.5,-8);knob[_BgC]=defOn and C.purple or _C(255,255,255);knob[_BSP]=0;knob[_ZI]=6;_I(_UCR,knob)[_CRad]=_UD(1,0);local isOn=defOn or false
-local function setV(on) isOn=on;tw(pill,0.16,{BackgroundColor3=on and C.void or _C(0,0,0),BackgroundTransparency=0});tw(ps,0.16,{Color=C.border,Transparency=on and 1 or 0.28});tw(knob,0.18,{Position=on and _U(1,-19,0.5,-8)or _U(0,2,0.5,-8),BackgroundColor3=on and C.purple or _C(255,255,255)},_ESB) end;local clk=_I(_TB,row);clk.Size=_U(0,38,0,20);clk.Position=_U(1,-57,0.5,-10);clk[_BgT]=1;clk.Text="";clk[_ZI]=7
-_tc(clk,function()isOn=not isOn;setV(isOn);if onToggle then pcall(onToggle,isOn)end end)
-if keyBtn then keyBtn[_ZI]=6 end;pill[_ZI]=5;knob[_ZI]=6
-return setV,keyBtn,row
-end
-local function mkInput(pg,label,default,onChange)
-local row=mkRow(pg,42);mkLbl(row,label,10,0,0,42,10,C.white,_EGB);local box=_I("TextBox",row);box.Size=_U(0,88,0,32);box.Position=_U(1,-96,0.5,-16)
-box[_BgC]=C.dpurple;box[_BgT]=0.04;box[_BSP]=0;box.Text=tostring(default);box[_TC3]=C.lpurple;box.Font=_EGB;box[_TSz]=12;box.ClearTextOnFocus=true;box.MultiLine=false;_I(_UCR,box)[_CRad]=_UD(0,8);local bs=_I(_USK,box);bs.Color=C.border;bs.Transparency=0.22;bs.Thickness=1.25;local currentVal=tostring(default)
-box.Focused:Connect(function()tw(bs,0.1,{Color=C.purple})end)
-box.FocusLost:Connect(function()
-tw(bs,0.1,{Color=C.border})
-if onChange then
-local n=tonumber(box.Text);if n then onChange(box.Text);currentVal=box.Text
-else box.Text=currentVal end
-end
-end)
-box.TouchTap:Connect(function()box:CaptureFocus()end)
-return box
-end
-local function mkStatus(pg,label,val)
-local row=mkRow(pg,42);mkLbl(row,label,10,0,0.5,42,10,C.white,_EGB);local v=_I(_TL,row);v.Size=_U(0.45,-8,1,0);v.Position=_U(0.52,0,0,0);v[_BgT]=1;v.Text=val;v[_TC3]=C.purple;v.Font=_EGBK;v[_TSz]=12;v[_TXAl]=_TXR
-return v
-end
-local function mkKeybind(pg,label,key,onChange)
-local row=mkRow(pg,42);mkLbl(row,label,10,0,0.55,42,10,C.white,_EGB);local btn=_I(_TB,row);btn:SetAttribute("CrimsonKeybindBox",true);btn.Size=_U(0,118,0,25);btn.Position=_U(1,-126,0.5,-12.5)
-btn[_BgC]=C.dpurple;btn[_BgT]=1;btn[_BSP]=0;btn.Text=_keyLabel(key);btn[_TC3]=C.lpurple;btn.Font=_EGB;btn[_TSz]=8;_I(_UCR,btn)[_CRad]=_UD(0,8);local bs=_I(_USK,btn);bs.Color=C.border;bs.Transparency=0.18;bs.Thickness=1.25;local listening=false;local lCancel;local function lReset()tw(bs,0.1,{Color=C.border});btn[_TC3]=C.lpurple end
-local function stop(k) listening=false;if lCancel then local c=lCancel;lCancel=nil;c()end;lReset();if k then btn.Text=_keyLabel(k);if onChange then onChange(k)end;if _refreshGamepadActions then pcall(_refreshGamepadActions)end end end
-local function startListening()
-if listening then stop(nil);return end;listening=true;btn.Text="...";btn[_TC3]=C.purple;tw(bs,0.1,{Color=C.purple});lCancel=_bbc(
-function(k)lCancel=nil;stop(k)end,
-function()lCancel=nil;listening=false;btn.Text=_keyLabel(key);lReset()end
-)
-end
-_tc(btn,startListening)
-return btn
-end
-local function mkBtn(pg,label,onClick)
-local btn=_I(_TB,pages[pg]);btn:SetAttribute("CrimsonTransparentAction",true);btn.Size=_U(1,0,0,42);btn[_BSP]=0;btn.LayoutOrder=nextLO(pg);btn.Text=label;btn[_TC3]=C.lpurple;btn[_TSC]=_C(0,0,0);btn[_TST]=0.42;btn.Font=_EGBK;btn[_TSz]=12;btn[_BgC]=C.purple;btn[_BgT]=1;_I(_UCR,btn)[_CRad]=_UD(0,12);local bs=_I(_USK,btn);bs.Color=C.border;bs.Transparency=0.12;bs.Thickness=1.35
-_tc(btn,function()
-tw(bs,0.07,{Color=C.border,Transparency=0,Thickness=1.7});btn[_TC3]=C.white
-task.delay(0.18,function()tw(bs,0.14,{Color=C.border,Transparency=0.12,Thickness=1.35});btn[_TC3]=C.lpurple end)
-if onClick then pcall(onClick)end
-end)
-btn.MouseEnter:Connect(function()tw(bs,0.1,{Color=C.border,Transparency=0,Thickness=1.6});btn[_TC3]=C.white end)
-btn.MouseLeave:Connect(function()tw(bs,0.1,{Color=C.border,Transparency=0.12,Thickness=1.35});btn[_TC3]=C.lpurple end)
-return btn
-end
-_tw();sect("Main","Speed")
-normalBox=mkInput("Main","Normal Speed",_St.normalSpeed,function(v)local n=tonumber(v);if n and n>0 and n<=500 then _St.normalSpeed=n end end)
-carryBox=mkInput("Main","Carry Speed",_St.carrySpeed,function(v)local n=tonumber(v);if n and n>0 and n<=500 then _St.carrySpeed=n end end)
-speedKeyBtn=mkKeybind("Main","Speed Key",Keys.speed,function(k)Keys.speed=k end)
-modeValLbl=mkStatus("Main","Mode","Normal")
-gap("Main",3);div("Main");gap("Main",3);laggerSectLbl=sect("Main","Lagger Speed")
-do
-setBurstPreset=function(mode) _St.burstPreset="lagger" end
-local function _updateLaggerBtns()
-if _sbr and _sbr.lagger then _sbr.lagger.setOn(_St.laggerMode==1)end;if _sbr and _sbr.laggerCarry then _sbr.laggerCarry.setOn(_St.laggerMode==2)end;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(_St.laggerMode==0 and _St.speedToggled)end
-end
-_VH_speedToNormal=function()
-_St.speedToggled=false;_St._prevSpeed=false;_St._prevCarry=_St.carrySpeed;if _St.laggerMode~=0 then _St.laggerMode=0;_St.carrySpeed=_St._prevCarry or _St.carrySpeed end;if modeValLbl then modeValLbl.Text="Normal"end
-if _sbr then if _sbr.lagger then _sbr.lagger.setOn(false)end;if _sbr.laggerCarry then _sbr.laggerCarry.setOn(false)end;if _sbr.carrySpeed then _sbr.carrySpeed.setOn(false)end end
-end
-setLaggerMode=function(mode)
-if mode==_St.laggerMode then return end;local oldMode=_St.laggerMode
-if mode==0 then
-_St.carrySpeed=_St._prevCarry or 29;_St.speedToggled=_St._prevSpeed or false;if modeValLbl then modeValLbl.Text=_St.speedToggled and"Carry"or"Normal"end
-elseif mode==1 then
-if oldMode==0 then _St._prevCarry=_St.carrySpeed;_St._prevSpeed=_St.speedToggled end;_St.speedToggled=false;if modeValLbl then modeValLbl.Text="Lagger"end
-elseif mode==2 then if oldMode==0 then _St._prevCarry=_St.carrySpeed;_St._prevSpeed=_St.speedToggled end;_St.speedToggled=false;if modeValLbl then modeValLbl.Text="Lagger Carry"end end
-_St.laggerMode=mode;_updateLaggerBtns()
-end
-end
-toggleLaggerMode=function()
-if _St.laggerMode==0 then
-if _St.speedToggled then setLaggerMode(2)else setLaggerMode(1)end
-else
-setLaggerMode(0)
-end
-end
-burstNormalBox=mkInput("Main","Lagger Normal",_St.burstNormalSpeed,function(v)local n=tonumber(v);if n and n>0 and n<=500 then _St.burstNormalSpeed=n end end)
-burstCarryBox=mkInput("Main","Lagger Carry",_St.burstCarrySpeed,function(v)local n=tonumber(v);if n and n>0 and n<=500 then _St.burstCarrySpeed=n end end)
-_lkb=mkKeybind("Main","Lagger Key",Keys.lagger,function(k)
-Keys.lagger=k;Keys.burst=k
-end)
-_lkr=_lkb.Parent;_bkb=_lkb;_bkr=_lkr
-gap("Main",3);div("Main");gap("Main",3);sect("Main","Combat")
-do
-local vRow=mkRow("Main",42);mkLbl(vRow,"Aimbot Version",10,0,0,42,10,C.white,_EGB);local v1Btn=_I(_TB,vRow);v1Btn.Size=_U(0,46,0,28);v1Btn.Position=_U(1,-176,0.5,-14);v1Btn[_BSP]=0;v1Btn.Text="V1";v1Btn.Font=_EGB;v1Btn[_TSz]=11;v1Btn[_ABC]=false;v1Btn[_ZI]=5;_I(_UCR,v1Btn)[_CRad]=_UD(0,9);local v1S=_I(_USK,v1Btn);v1S.Thickness=1.5
-local v2Btn=_I(_TB,vRow);v2Btn.Size=_U(0,46,0,28);v2Btn.Position=_U(1,-126,0.5,-14);v2Btn[_BSP]=0;v2Btn.Text="V2";v2Btn.Font=_EGB;v2Btn[_TSz]=11;v2Btn[_ABC]=false;v2Btn[_ZI]=5;_I(_UCR,v2Btn)[_CRad]=_UD(0,9);local v2S=_I(_USK,v2Btn);v2S.Thickness=1.5
-local v3Btn=_I(_TB,vRow);v3Btn.Size=_U(0,46,0,28);v3Btn.Position=_U(1,-76,0.5,-14);v3Btn[_BSP]=0;v3Btn.Text="V3";v3Btn.Font=_EGB;v3Btn[_TSz]=11;v3Btn[_ABC]=false;v3Btn[_ZI]=5;_I(_UCR,v3Btn)[_CRad]=_UD(0,9);local v3S=_I(_USK,v3Btn);v3S.Thickness=1.5
-local function refreshVersionUI()
-local ver=_St.autoBatVersion;for _,e in ipairs({{v1Btn,v1S,"v1"},{v2Btn,v2S,"v2"},{v3Btn,v3S,"v3"}})do local on=(ver==e[3]);tw(e[1],0.15,{BackgroundColor3=on and C.purple or C.void});e[1][_TC3]=on and C.white or C.dim;tw(e[2],0.15,{Color=on and C.purple or C.border})end
-end
-setAimbotVersion=function(ver) if _St.autoBatToggled then stopBatAimbot()end;_St.autoBatVersion=ver;refreshVersionUI();if _St.autoBatToggled then startBatAimbot()end end;refreshVersionUI()
-_tc(v1Btn,function()setAimbotVersion("v1")end)
-_tc(v2Btn,function()setAimbotVersion("v2")end)
-_tc(v3Btn,function()setAimbotVersion("v3")end)
-end
-
-setAutoSwingVisual=_mkt("Main","Auto Swing",nil,_St.autoSwingEnabled,function(on)
-_St.autoSwingEnabled=on
+	while true do
+		task.wait(1.5)
+		local ok, ping = pcall(function()
+			return math.floor(LocalPlayer:GetNetworkPing() * 1000)
+		end)
+		if ok and ping then
+			StealPingLabel.Text = "PING: " .. ping .. "ms"
+			if ping < 80 then
+				StealPingLabel.TextColor3 = Color3.fromRGB(50, 220, 120)
+			elseif ping < 150 then
+				StealPingLabel.TextColor3 = Color3.fromRGB(110, 50, 180)
+			else
+				StealPingLabel.TextColor3 = Color3.fromRGB(220, 80, 80)
+			end
+		end
+	end
 end)
 
-setMirrorTPDown,_=_mkt("Main","Mirror TP Down",nil,_St.mirrorTPDownEnabled,function(on)
-_St.mirrorTPDownEnabled=on
-end)
 
-setAutoBat,autoBatKeyBtn=_mkt("Main","Auto Bat",Keys.autoBat,false,function(on)_St.autoBatToggled=on;if on then _VH_forceDesyncOff();startBatAimbot()else stopBatAimbot()end;if _sbr and _sbr.aimbot then _sbr.aimbot.setOn(on)end end,function(k)Keys.autoBat=k end)
-autoBatSpeedBox=mkInput("Main","Aimbot Speed",_St.autoBatSpeed,function(v)local n=tonumber(v);if n and n>0 and n<=500 then _St.autoBatSpeed=n end end)
-_St.disablePredictionAt180=true
-setBatCounterVisual=_mkt("Main","Bat Counter",nil,false,function(on)_St.batCounterEnabled=on;if on then startBatCounter()else stopBatCounter()end end)
-gap("Main",3);div("Main");gap("Main",3);sect("Main","Mechanics")
-do
-local jumpModeRow=mkRow("Main",42);mkLbl(jumpModeRow,"Inf Jump",10,0,0,42,10,C.white,_EGB);local holdBtn=_I(_TB,jumpModeRow);holdBtn.Size=_U(0,72,0,28);holdBtn.Position=_U(1,-156,0.5,-14);holdBtn[_BgC]=C.purple;holdBtn[_BgT]=0;holdBtn[_BSP]=0;holdBtn.Text="HOLD";holdBtn[_TC3]=C.white;holdBtn.Font=_EGB;holdBtn[_TSz]=10;holdBtn[_ABC]=false;holdBtn[_ZI]=5;_I(_UCR,holdBtn)[_CRad]=_UD(0,9);local holdStroke=_I(_USK,holdBtn);holdStroke.Color=C.border;holdStroke.Thickness=1.5
-local clickBtn=_I(_TB,jumpModeRow);clickBtn.Size=_U(0,72,0,28);clickBtn.Position=_U(1,-80,0.5,-14);clickBtn[_BgC]=C.void;clickBtn[_BgT]=0;clickBtn[_BSP]=0;clickBtn.Text="CLICK";clickBtn[_TC3]=C.dim;clickBtn.Font=_EGB;clickBtn[_TSz]=10;clickBtn[_ABC]=false;clickBtn[_ZI]=5;_I(_UCR,clickBtn)[_CRad]=_UD(0,9);local clickStroke=_I(_USK,clickBtn);clickStroke.Color=C.border;clickStroke.Thickness=1.5
-setInfJumpMode=function(mode)
-mode=mode=="click"and"click"or"hold";local holdMode=mode=="hold";_St.infJumpMode=mode;_St.holdInfJumpEnabled=holdMode;_St.infJumpEnabled=not holdMode
-if holdMode then if startHoldInfJump then startHoldInfJump()end else if stopHoldInfJump then stopHoldInfJump()end end
-tw(holdBtn,0.15,{BackgroundColor3=holdMode and C.purple or C.void});holdBtn[_TC3]=holdMode and C.white or C.dim;tw(clickBtn,0.15,{BackgroundColor3=(not holdMode)and C.purple or C.void});clickBtn[_TC3]=(not holdMode)and C.white or C.dim
-end
-setInfJump=function(on)if on then setInfJumpMode("click")end end;setHoldInfJump=function(on)if on then setInfJumpMode("hold")end end
-_tc(holdBtn,function()setInfJumpMode("hold")end);_tc(clickBtn,function()setInfJumpMode("click")end);_St.infJumpMode="hold";_St.holdInfJumpEnabled=true;_St.infJumpEnabled=false
-end
-setAntiRag=function(on) _St.antiRagdollEnabled=on;if on then startAntiRagdoll()else stopAntiRagdoll()end end
-antiRagToggleSet,_=_mkt("Main","Anti Ragdoll",nil,false,function(on)setAntiRag(on)end)
-setFps=_mkt("Main","FPS Boost",nil,false,function(on)_St.fpsBoostEnabled=on;if on then pcall(applyFPSBoost)else pcall(disableFPSBoost)end end)
-setAntiLagVisual=_mkt("Main","Anti Lag",nil,false,function(on)if on then enableAntiLag()else disableAntiLag()end end)
-setMedusaCounter=_mkt("Main","Medusa Counter",nil,false,function(on)_St.medusaCounterEnabled=on;if on then setupMedusaCounter(LP.Character)else stopMedusaCounter()end end)
-setUnwalkToggle=_mkt("Main","Unwalk",nil,false,function(on)if on then startUnwalk()else stopUnwalk()end end)
-setBodyLockToggle=_mkt("Main","Body Lock",nil,false,function(on)if on then startBodyLock()else stopBodyLock()end end)
-do
-local headerRow=mkRow("Main",42);mkLbl(headerRow,"Animations",10,0,0.6,42,10,C.white,_EGB);local valLbl=_I(_TL,headerRow);valLbl.Size=_U(0,100,1,0);valLbl.Position=_U(1,-158,0,0);valLbl[_BgT]=1;valLbl.Text=_St.selectedAnim;valLbl[_TC3]=C.purple;valLbl.Font=_EGB;valLbl[_TSz]=11;valLbl[_TXAl]=_TXR;valLbl[_ZI]=5;local arrow=_I(_TB,headerRow)
-arrow.Size=_U(0,40,0,40);arrow.Position=_U(1,-48,0.5,-20);arrow[_BgC]=C.void;arrow[_BSP]=0;arrow.Text=_ARROW_CLOSED;arrow[_TC3]=C.lpurple;arrow.Font=_EGBK;arrow[_TSz]=18;arrow[_ABC]=false;arrow[_ZI]=5;_I(_UCR,arrow)[_CRad]=_UD(0,10);local arrowStk=_I(_USK,arrow);arrowStk.Color=C.border;arrowStk.Thickness=1.5;local optionRows={};local expanded=false
-local function refreshHighlight() for name,r in pairs(optionRows)do local sel=(name==_St.selectedAnim);r.frame[_BgC]=sel and C.stkAct or C.void;local st=r.frame:FindFirstChildOfClass(_USK);if st then st.Color=sel and C.purple or C.border end end end
-for _,name in ipairs(ANIM_ORDER)do
-local optBtn=_I(_TB,pages["Main"]);optBtn.Size=_U(1,-14,0,32);optBtn.Position=_U(0,7,0,0);optBtn[_BgC]=C.void;optBtn[_BSP]=0;optBtn.Text=name;optBtn[_TC3]=C.white;optBtn.Font=_EGB
-optBtn[_TSz]=10;optBtn[_ABC]=false;optBtn.LayoutOrder=nextLO("Main");optBtn.Visible=false;optBtn[_ZI]=8;_I(_UCR,optBtn)[_CRad]=_UD(0,9);local ostk=_I(_USK,optBtn);ostk.Color=C.border;ostk.Thickness=1.5;optionRows[name]={frame=optBtn}
-_tc(optBtn,function()
-if not optBtn.Visible then return end
-if activePage~=pages["Main"] then return end
-setSelectedAnim(name);valLbl.Text=name;refreshHighlight();_scfg()
-end)
-end
-setAnimDropdown=function(name) valLbl.Text=name;refreshHighlight() end
-local function collapseAnimDropdown()
-expanded=false
-arrow.Text=_ARROW_CLOSED
-for _,r in pairs(optionRows)do r.frame.Visible=false end
-end
-local function toggleExpand()
-expanded=not expanded
-arrow.Text=expanded and _ARROW_OPEN or _ARROW_CLOSED
-for _,r in pairs(optionRows)do r.frame.Visible=expanded end
-end
-_G._VH_collapseAnimDropdown=collapseAnimDropdown
-local clk=_I(_TB,headerRow);clk.Size=_U(1,0,1,0);clk[_BgT]=1;clk.Text="";clk[_ZI]=6;_tc(clk,toggleExpand);refreshHighlight()
-end
-_tw();sect("Move","Auto Grab")
-setInstaGrab=_mkt("Move","Insta Grab",nil,false,function(on)
-if on then
-Steal.AutoStealEnabled=true
-pcall(function()if type(startAutoSteal)=="function"then startAutoSteal()end end)
-else
-Steal.AutoStealEnabled=false
-pcall(function()if type(stopAutoSteal)=="function"then stopAutoSteal()end end)
-end
-end)
-gap("Move",2)
-do
-local swRow=mkRow("Move",42);mkLbl(swRow,"Grab Mode",10,0,0.38,42,10,C.white,_EGB);local normBtn=_I(_TB,swRow);normBtn.Size=_U(0,72,0,28);normBtn.Position=_U(1,-156,0.5,-14);normBtn[_BSP]=0;normBtn.Text="Normal";normBtn.Font=_EGB;normBtn[_TSz]=10;normBtn[_ABC]=false;normBtn[_ZI]=5;_I(_UCR,normBtn)[_CRad]=_UD(0,9);local normS=_I(_USK,normBtn);normS.Thickness=1.5
-local normalV2Btn=_I(_TB,swRow);normalV2Btn.Size=_U(0,72,0,28);normalV2Btn.Position=_U(1,-80,0.5,-14);normalV2Btn[_BSP]=0;normalV2Btn.Text="Normal V2";normalV2Btn.Font=_EGB;normalV2Btn[_TSz]=9;normalV2Btn[_ABC]=false;normalV2Btn[_ZI]=5;_I(_UCR,normalV2Btn)[_CRad]=_UD(0,9);local normalV2S=_I(_USK,normalV2Btn);normalV2S.Thickness=1.5;_St.semiVersion="v2";setSemiVersion=function(_)_St.semiVersion="v2"end;local radRow2=mkRow("Move",44);mkLbl(radRow2,"Radius",10,0,0,44,10,C.dim,_EGB);local radBtn=_I(_TB,radRow2);radBtn:SetAttribute("CrimsonValueBox",true);radBtn.Size=_U(0,100,0,30);radBtn.Position=_U(1,-108,0.5,-15)
-radBtn[_BgC]=C.void;radBtn[_BSP]=0;radBtn.Text=tostring(Steal.StealRadius);radBtn[_TC3]=_C(210,140,255);radBtn.Font=_EGB;radBtn[_TSz]=13;_I(_UCR,radBtn)[_CRad]=_UD(0,10);_I(_USK,radBtn).Color=C.purple;stealRadBtn=radBtn;local typingRad=false
-local function openRad()
-if typingRad then return end;typingRad=true;local tb=_I("TextBox",radRow2);tb.Size=radBtn.Size;tb.Position=radBtn.Position;tb[_BgC]=C.dpurple;tb[_BgT]=0.12;tb[_BSP]=0;tb.Text=radBtn.Text;tb[_TC3]=C.purple;tb.Font=_EGBK;tb[_TSz]=13;tb.ClearTextOnFocus=false;_I(_UCR,tb)[_CRad]=_UD(0,10);_I(_USK,tb).Color=C.purple;tb:CaptureFocus()
-tb.FocusLost:Connect(function()
-local n=tonumber(tb.Text)
-if n and n>=5 and n<=300 then
-Steal.StealRadius=_mf(n);Steal.NormalRadius=Steal.StealRadius
-radBtn.Text=tostring(Steal.StealRadius);Steal.cachedPrompts={};Steal.promptCacheTime=0
-end
-tb:Destroy();typingRad=false
-end)
-end
-_tc(radBtn,openRad);local durRow2=mkRow("Move",44);mkLbl(durRow2,"Duration (s)",10,0,0,44,10,C.dim,_EGB);local durBtn=_I(_TB,durRow2);durBtn:SetAttribute("CrimsonValueBox",true)
-durBtn.Size=_U(0,100,0,30);durBtn.Position=_U(1,-108,0.5,-15);durBtn[_BgC]=C.void;durBtn[_BSP]=0;durBtn.Text=tostring(Steal.StealDuration);durBtn[_TC3]=_C(210,140,255);durBtn.Font=_EGB;durBtn[_TSz]=13;_I(_UCR,durBtn)[_CRad]=_UD(0,10);_I(_USK,durBtn).Color=C.purple;stealDurBtn=durBtn;local typingDur=false
-local function openDur()
-if typingDur then return end;typingDur=true;local tb=_I("TextBox",durRow2);tb.Size=durBtn.Size;tb.Position=durBtn.Position;tb[_BgC]=C.dpurple;tb[_BgT]=0.12;tb[_BSP]=0;tb.Text=durBtn.Text;tb[_TC3]=C.purple;tb.Font=_EGBK;tb[_TSz]=13;tb.ClearTextOnFocus=false;_I(_UCR,tb)[_CRad]=_UD(0,10);_I(_USK,tb).Color=C.purple;tb:CaptureFocus()
-tb.FocusLost:Connect(function()
-local n=tonumber(tb.Text)
-if n and n>=0.01 and n<=5 then
-Steal.StealDuration=n;Steal.NormalDuration=Steal.StealDuration
-durBtn.Text=tostring(Steal.StealDuration)
-end
-tb:Destroy();typingDur=false
-end)
-end
-_tc(durBtn,openDur);refreshStealUI=function() if radBtn then radBtn.Text=tostring(Steal.StealRadius)end;if durBtn then durBtn.Text=tostring(Steal.StealDuration)end end
-setStealModeUI=function(m,skipSaveCurrent)
-if m~="normal" and m~="normalv2" then m="normal" end
-if not skipSaveCurrent then
-Steal.NormalRadius=Steal.StealRadius;Steal.NormalDuration=Steal.StealDuration
-end
-_St.stealMode=m
-Steal.StealRadius=Steal.NormalRadius;Steal.StealDuration=Steal.NormalDuration
-radBtn.Text=tostring(Steal.StealRadius);durBtn.Text=tostring(Steal.StealDuration)
-local normOn=(m=="normal");local normalV2On=(m=="normalv2")
-tw(normBtn,0.15,{BackgroundColor3=normOn and C.purple or C.void})
-normBtn[_TC3]=normOn and C.white or C.dim;tw(normS,0.15,{Color=normOn and C.purple or C.border})
-tw(normalV2Btn,0.15,{BackgroundColor3=normalV2On and C.purple or C.void});normalV2Btn[_TC3]=normalV2On and C.white or C.dim;tw(normalV2S,0.15,{Color=normalV2On and C.purple or C.border})
-if Steal.AutoStealEnabled then stopAutoSteal();startAutoSteal()end
-end
-if _St.stealMode=="semi" then _St.stealMode="normal" end
-setStealModeUI(_St.stealMode,true)
-_tc(normBtn,function()setStealModeUI("normal")end)
-_tc(normalV2Btn,function()setStealModeUI("normalv2")end)
+
+St.autoCarryOn = false
+St.autoCarryMode = "V1" 
+St.antiRagdollEnabled = false
+St.antiRagdollMode = "V2" 
+St.infJumpEnabled = false
+
+_G._VynxAutoSpeedOn = false
+_G._VynxAutoSpeedMode = "On Pick Up"
+_G._VynxAutoSpeedRange = tonumber(_G._VynxAutoSpeedRange) or 15
+
+local function paintCarryFromAuto(on)
+	if on then
+		if St.laggerMode ~= 0 then setLaggerMode(0) end
+		St.speedToggled = true
+	else
+	end
+	updateSpeedModeButton()
+	syncMobileSpeedVisuals()
 end
 
-gap("Move",3);div("Move");gap("Move",3);sect("Move","Progress Bar")
-setStopOnHit,_=_mkt("Move","Stop On Hit",nil,_St.stopOnHitEnabled,function(on)
-_St.stopOnHitEnabled=on
-end)
-do
-local hdrRow=mkRow("Move",42);_pbsh=hdrRow;mkLbl(hdrRow,"Progress Bar Size",10,0,0.6,42,10,C.white,_EGB);local minusBtn=_I(_TB,hdrRow);minusBtn.Size=_U(0,28,0,28);minusBtn.Position=_U(1,-118,0.5,-14);minusBtn[_BgC]=C.void;minusBtn[_BSP]=0;minusBtn.Text="-";minusBtn[_TC3]=C.lpurple;minusBtn.Font=_EGBK;minusBtn[_TSz]=16;minusBtn[_ZI]=5
-_I(_UCR,minusBtn)[_CRad]=_UD(0,8);_I(_USK,minusBtn).Color=C.border;local _cv=_I(_TL,hdrRow);_cv.Size=_U(0,42,0,28);_cv.Position=_U(1,-86,0.5,-14);_cv[_BgC]=C.void;_cv[_BSP]=0;_cv.Text=string.format("%.2f",_St.progressBarSize);_cv[_TC3]=C.purple;_cv.Font=_EGBK;_cv[_TSz]=13;_cv[_ZI]=5;_I(_UCR,_cv)[_CRad]=_UD(0,8);_I(_USK,_cv).Color=C.border
-local _pb=_I(_TB,hdrRow);_pb.Size=_U(0,28,0,28);_pb.Position=_U(1,-40,0.5,-14);_pb[_BgC]=C.void;_pb[_BSP]=0;_pb.Text="+";_pb[_TC3]=C.lpurple;_pb.Font=_EGBK;_pb[_TSz]=16;_pb[_ZI]=5;_I(_UCR,_pb)[_CRad]=_UD(0,8);_I(_USK,_pb).Color=C.border
-local function applyProgressBarSize() _St.progressBarSize=_mc(_St.progressBarSize,0.6,1.4);_cv.Text=string.format("%.2f",_St.progressBarSize);_apbl() end
-_tc(minusBtn,function()_St.progressBarSize=_mc(_St.progressBarSize-0.05,0.6,1.4);applyProgressBarSize()end)
-_tc(_pb,function()_St.progressBarSize=_mc(_St.progressBarSize+0.05,0.6,1.4);applyProgressBarSize()end) _G._applyProgressBarSize=applyProgressBarSize
-end
-_St.showProgressBar=true;_St.showProgressFPS=true;_St.showProgressPing=true
-gap("Move",3);div("Move");gap("Move",3);sect("Move","Teleport")
-tpDownKeyBtn=mkKeybind("Move","TP Down",Keys.tpDown,function(k)Keys.tpDown=k end)
-setAutoTpDown=_mkt("Move","Auto TP Down",nil,false,function(on)_St.autoTpDownEnabled=on;if on then startAutoTpDown()else stopAutoTpDown()end end)
-autoTpHeightBox=mkInput("Move","TP Down Height",_St.tpDownHeight,function(v)local n=tonumber(v);if n and n>=5 and n<=200 then _St.tpDownHeight=n end end)
-dropBrainrotKeyBtn=mkKeybind("Move","Drop Brainrot",Keys.dropBrainrot,function(k)Keys.dropBrainrot=k end)
-do
-local row=mkRow("Move",42);mkLbl(row,"Drop Type",10,0,0,42,10,C.white,_EGB);local standBtn=_I(_TB,row);standBtn.Size=_U(0,72,0,28);standBtn.Position=_U(1,-156,0.5,-14);standBtn[_BSP]=0;standBtn.Text="Stand Drop";standBtn.Font=_EGB;standBtn[_TSz]=10;standBtn[_ABC]=false;standBtn[_ZI]=5;local sc=_I(_UCR,standBtn);sc[_CRad]=_UD(0,9);local ss=_I(_USK,standBtn);ss.Thickness=1.5
-local jumpBtn=_I(_TB,row);jumpBtn.Size=_U(0,72,0,28);jumpBtn.Position=_U(1,-80,0.5,-14);jumpBtn[_BSP]=0;jumpBtn.Text="Jump Drop";jumpBtn.Font=_EGB;jumpBtn[_TSz]=10;jumpBtn[_ABC]=false;jumpBtn[_ZI]=5;local jc=_I(_UCR,jumpBtn);jc[_CRad]=_UD(0,9);local js=_I(_USK,jumpBtn);js.Thickness=1.5
-setDropType=function(t)
-_St.dropType=t;local standOn=(t=="Stand Drop");tw(standBtn,0.15,{BackgroundColor3=standOn and C.purple or C.void});standBtn[_TC3]=standOn and C.white or C.dim;tw(ss,0.15,{Color=standOn and C.purple or C.border});tw(jumpBtn,0.15,{BackgroundColor3=(not standOn)and C.purple or C.void});jumpBtn[_TC3]=(not standOn)and C.white or C.dim;tw(js,0.15,{Color=(not standOn)and C.purple or C.border})
-end
-_tc(standBtn,function()setDropType("Stand Drop")end)
-_tc(jumpBtn,function()setDropType("Jump Drop")end)
-end
-gap("Move",3);div("Move");gap("Move",3);sect("Move","Auto Left / Right")
-setAutoLeft,autoLeftKeyBtn=_mkt("Move","Auto Left",Keys.autoLeft,false,
-function(on)
-_St.autoLeftEnabled=on
-if on then
-_VH_forceAimbotOff();_VH_forceDesyncOff();_St.autoRightEnabled=false;stopAutoRight();if _sbr and _sbr.autoRight then _sbr.autoRight.setOn(false)end;if setAutoRight then setAutoRight(false)end;startAutoLeft()
-else
-stopAutoLeft()
-end
-if _sbr and _sbr.autoLeft then _sbr.autoLeft.setOn(on)end
-end,
-function(k)Keys.autoLeft=k end)
-setAutoRight,autoRightKeyBtn=_mkt("Move","Auto Right",Keys.autoRight,false,
-function(on)
-_St.autoRightEnabled=on
-if on then
-_VH_forceAimbotOff();_VH_forceDesyncOff();_St.autoLeftEnabled=false;stopAutoLeft();if _sbr and _sbr.autoLeft then _sbr.autoLeft.setOn(false)end;if setAutoLeft then setAutoLeft(false)end;startAutoRight()
-else
-stopAutoRight()
-end
-if _sbr and _sbr.autoRight then _sbr.autoRight.setOn(on)end
-end,
-function(k)Keys.autoRight=k end)
-do
-local row=mkRow("Move",42);mkLbl(row,"Auto Play Mode",10,0,0,42,10,C.white,_EGB);local normalBtn=_I(_TB,row);normalBtn.Size=_U(0,72,0,28);normalBtn.Position=_U(1,-156,0.5,-14);normalBtn[_BSP]=0;normalBtn.Text="Normal";normalBtn.Font=_EGB;normalBtn[_TSz]=10;normalBtn[_ABC]=false;normalBtn[_ZI]=5;_I(_UCR,normalBtn)[_CRad]=_UD(0,9);local ns=_I(_USK,normalBtn);ns.Thickness=1.5;local fullBtn=_I(_TB,row)
-fullBtn.Size=_U(0,72,0,28);fullBtn.Position=_U(1,-80,0.5,-14);fullBtn[_BSP]=0;fullBtn.Text="Full Auto";fullBtn.Font=_EGB;fullBtn[_TSz]=10;fullBtn[_ABC]=false;fullBtn[_ZI]=5;_I(_UCR,fullBtn)[_CRad]=_UD(0,9);local fs=_I(_USK,fullBtn);fs.Thickness=1.5
-setAutoPlayModeUI=function(mode)
-_St.autoPlayMode=mode;local normalOn=(mode=="normal");tw(normalBtn,0.15,{BackgroundColor3=normalOn and C.purple or C.void});normalBtn[_TC3]=normalOn and C.white or C.dim
-tw(ns,0.15,{Color=normalOn and C.purple or C.border});tw(fullBtn,0.15,{BackgroundColor3=(not normalOn)and C.purple or C.void});fullBtn[_TC3]=(not normalOn)and C.white or C.dim;tw(fs,0.15,{Color=(not normalOn)and C.purple or C.border});if _St.autoLeftEnabled then stopAutoLeft();startAutoLeft() end;if _St.autoRightEnabled then stopAutoRight();startAutoRight() end
-end
-_tc(normalBtn,function()setAutoPlayModeUI("normal")end)
-_tc(fullBtn,function()setAutoPlayModeUI("full")end) setAutoPlayModeUI(_St.autoPlayMode) end;_tw();gap("Move",6);sect("Config","Interface")
-do
-local hdrRow=mkRow("Config",42);mkLbl(hdrRow,"GUI Scale",10,0,0.6,42,10,C.white,_EGB);local hdrVal=_I(_TL,hdrRow);hdrVal.Size=_U(0,50,0,28);hdrVal.Position=_U(1,-112,0.5,-14);hdrVal[_BgT]=1;hdrVal.Text=string.format("%.2f",_St.guiScale);hdrVal[_TC3]=C.purple;hdrVal.Font=_EGBK;hdrVal[_TSz]=13;hdrVal[_ZI]=5;hdrVal[_TXAl]=_TXR
-local arrow=_I(_TB,hdrRow);arrow.Size=_U(0,40,0,40);arrow.Position=_U(1,-48,0.5,-20);arrow[_BgC]=C.void;arrow[_BSP]=0;arrow.Text=_ARROW_CLOSED;arrow[_TC3]=C.lpurple;arrow.Font=_EGBK;arrow[_TSz]=18;arrow[_ABC]=false;arrow[_ZI]=5;_I(_UCR,arrow)[_CRad]=_UD(0,10);local arrowStk=_I(_USK,arrow);arrowStk.Color=C.border;arrowStk.Thickness=1.5;local ctrlRow=mkRow("Config",42)
-ctrlRow.Visible=false;local minusBtn=_I(_TB,ctrlRow);minusBtn.Size=_U(0,28,0,28);minusBtn.Position=_U(1,-118,0.5,-14);minusBtn[_BgC]=C.void;minusBtn[_BSP]=0;minusBtn.Text="-";minusBtn[_TC3]=C.lpurple;minusBtn.Font=_EGBK;minusBtn[_TSz]=16;minusBtn[_ZI]=5;_I(_UCR,minusBtn)[_CRad]=_UD(0,8);_I(_USK,minusBtn).Color=C.border;local _cv=_I(_TL,ctrlRow);_cv:SetAttribute("CrimsonValueBox",true)
-_cv.Size=_U(0,42,0,28);_cv.Position=_U(1,-86,0.5,-14);_cv[_BgC]=C.void;_cv[_BSP]=0;_cv.Text=string.format("%.2f",_St.guiScale);_cv[_TC3]=C.purple;_cv.Font=_EGBK;_cv[_TSz]=13;_cv[_ZI]=5;_I(_UCR,_cv)[_CRad]=_UD(0,8);_I(_USK,_cv).Color=C.border;local _pb=_I(_TB,ctrlRow);_pb.Size=_U(0,28,0,28);_pb.Position=_U(1,-40,0.5,-14)
-_pb[_BgC]=C.void;_pb[_BSP]=0;_pb.Text="+";_pb[_TC3]=C.lpurple;_pb.Font=_EGBK;_pb[_TSz]=16;_pb[_ZI]=5;_I(_UCR,_pb)[_CRad]=_UD(0,8);_I(_USK,_pb).Color=C.border;local expanded_gs=false
-local function applyGUIScale() _St.guiScale=_mc(_St.guiScale,0.5,1.5);uiScale.Scale=_St.guiScale;_cv.Text=string.format("%.2f",_St.guiScale);hdrVal.Text=string.format("%.2f",_St.guiScale) end;local clk=_I(_TB,hdrRow);clk.Size=_U(1,0,1,0);clk[_BgT]=1;clk.Text="";clk[_ZI]=6
-_tc(clk,function()
-expanded_gs=not expanded_gs;arrow.Text=expanded_gs and _ARROW_OPEN or _ARROW_CLOSED;ctrlRow.Visible=expanded_gs
-end)
-_tc(minusBtn,function()_St.guiScale=_mc(_St.guiScale-0.05,0.5,1.5);applyGUIScale()end)
-_tc(_pb,function()_St.guiScale=_mc(_St.guiScale+0.05,0.5,1.5);applyGUIScale()end)
-_G._applyGUIScaleLabel=function() _cv.Text=string.format("%.2f",_St.guiScale);hdrVal.Text=string.format("%.2f",_St.guiScale) end;_G._applyGUIScale=applyGUIScale
-end
-guiHideKeyBtn=mkKeybind("Config","Hide GUI",Keys.guiHide,function(k)Keys.guiHide=k end)
-local setSideToggle;local _setIntroToggle;_St.introEnabled=false
-local C_ORIG={purple=C.purple,dpurple=C.dpurple,lpurple=C.lpurple,on=C.on,stkBg=C.stkBg,stkBrd=C.stkBrd,stkAct=C.stkAct};local C_GRAY={purple=_C(155,155,155),dpurple=_C(100,100,100),lpurple=_C(195,195,195),on=_C(155,155,155),stkBg=_C(20,20,20),stkBrd=_C(60,60,60),stkAct=_C(120,120,120)}
-local C_YELLOW={purple=_C(235,185,20),dpurple=_C(180,140,10),lpurple=_C(255,220,70),on=_C(235,185,20),stkBg=_C(18,15,4),stkBrd=_C(80,65,15),stkAct=_C(140,110,20)};local C_GREEN={purple=_C(50,195,80),dpurple=_C(30,145,55),lpurple=_C(100,230,125),on=_C(50,195,80),stkBg=_C(5,18,8),stkBrd=_C(20,70,30),stkAct=_C(30,120,50)}
-local C_BLUE={purple=_C(165,75,235),dpurple=_C(110,40,180),lpurple=_C(210,140,255),on=_C(165,75,235),stkBg=_C(14,6,22),stkBrd=_C(65,28,95),stkAct=_C(120,50,175)};local C_BLACK={purple=_C(23,23,23),dpurple=_C(7,7,7),lpurple=_C(59,59,59),on=_C(23,23,23),stkBg=_C(5,5,5),stkBrd=_C(25,25,25),stkAct=_C(49,49,49)}
-local C_PURPLE={purple=_C(165,75,235),dpurple=_C(110,40,180),lpurple=_C(210,140,255),on=_C(165,75,235),stkBg=_C(14,6,22),stkBrd=_C(65,28,95),stkAct=_C(120,50,175)};local C_BROWN={purple=_C(155,98,55),dpurple=_C(105,62,30),lpurple=_C(205,150,95),on=_C(155,98,55),stkBg=_C(18,10,5),stkBrd=_C(70,42,22),stkAct=_C(120,72,35)}
-local C_PINK={purple=_C(235,85,165),dpurple=_C(180,45,120),lpurple=_C(255,145,205),on=_C(235,85,165),stkBg=_C(22,5,13),stkBrd=_C(90,25,60),stkAct=_C(165,45,105)};local setMonoTheme
-do
-local BG_CHOICES={
-{id="original",img=_RBX.."138321246448736"},
+local AC = {
+	active = false,
+	previous = nil, 
+	graceUntil = 0,
+	conn = nil,
 }
-local bgThumbBtns={};local bgThumbStrokes={};local bgThumbStars={};local COL_COUNT=3;local THUMB_W,THUMB_H,THUMB_GAP=67,51,9;local ROW_COUNT=_mf((#BG_CHOICES+COL_COUNT-1)/COL_COUNT);local BG_CONTENT_H=ROW_COUNT*THUMB_H+(ROW_COUNT-1)*THUMB_GAP+10;local BG_POP_W,BG_POP_H=246,299;local bgPickerFrame=_I(_FR,gui)
-bgPickerFrame.Name="VH_BgPicker";bgPickerFrame.AnchorPoint=Vector2.new(0.5,0.5);bgPickerFrame.Size=_U(0,BG_POP_W,0,BG_POP_H);bgPickerFrame.Position=_U(0.5,0,0.5,0);bgPickerFrame[_BgC]=_C(12,12,16);bgPickerFrame[_BgT]=0.04;bgPickerFrame[_BSP]=0;bgPickerFrame[_ZI]=50
-bgPickerFrame.Visible=false;bgPickerFrame.Active=true;_I(_UCR,bgPickerFrame)[_CRad]=_UD(0,18);local _bpStroke=_I(_USK,bgPickerFrame);_bpStroke.Thickness=1.5;_bpStroke.Transparency=0.3;local _bpTitle=_I(_TL,bgPickerFrame);_bpTitle.Size=_U(1,-92,0,32);_bpTitle.Position=_U(0,16,0,6);_bpTitle[_BgT]=1;_bpTitle.Text="Change Background"
-_bpTitle[_TC3]=C.white;_bpTitle.Font=_EGB;_bpTitle[_TSz]=15;_bpTitle[_TXAl]=_TXL;_bpTitle[_ZI]=51;local _bpLine=_I(_FR,bgPickerFrame);_bpLine.Size=_U(0,51,0,2);_bpLine.Position=_U(0,16,0,35)
-_bpLine[_BSP]=0;_bpLine[_ZI]=51;_I(_UCR,_bpLine)[_CRad]=_UD(1,0);local _bpClose=_I(_TB,bgPickerFrame);_bpClose.Size=_U(0,67,0,28);_bpClose.Position=_U(1,-76,0,8);_bpClose[_BgC]=_C(22,6,6);_bpClose[_BSP]=0;_bpClose.Text="Close";_bpClose[_TC3]=C.white;_bpClose.Font=_EGB;_bpClose[_TSz]=13;_bpClose[_ABC]=false;_bpClose[_ZI]=51
-_I(_UCR,_bpClose)[_CRad]=_UD(0,9);local _bpCloseStk=_I(_USK,_bpClose);_bpCloseStk.Thickness=1.5;local bgScroll=_I(_SCF,bgPickerFrame);bgScroll.Size=_U(1,-16,1,-52);bgScroll.Position=_U(0,7,0,44);bgScroll[_BgT]=1;bgScroll[_BSP]=0;bgScroll.Active=true;bgScroll.ScrollingEnabled=true;bgScroll.ScrollingDirection=Enum.ScrollingDirection.Y;bgScroll.ElasticBehavior=Enum.ElasticBehavior.Always;bgScroll.CanvasSize=_U(0,0,0,BG_CONTENT_H);bgScroll.ScrollBarThickness=8;bgScroll.ScrollBarImageColor3=C.purple;bgScroll.ScrollBarImageTransparency=0.05;bgScroll.VerticalScrollBarInset=Enum.ScrollBarInset.ScrollBar;bgScroll[_ZI]=51;local BG_GRID_W=COL_COUNT*THUMB_W+(COL_COUNT-1)*THUMB_GAP
-local function refreshBgFavoriteLayout(resetScroll)
-local ordered={};for i,opt in ipairs(BG_CHOICES)do if _St.bgFavorites[opt.id]then _ti(ordered,i)end end;for i,opt in ipairs(BG_CHOICES)do if not _St.bgFavorites[opt.id]then _ti(ordered,i)end end
-for displayIndex,sourceIndex in ipairs(ordered)do local col=(displayIndex-1)%COL_COUNT;local row2=_mf((displayIndex-1)/COL_COUNT);local btn=bgThumbBtns[sourceIndex];if btn then btn.Position=_U(0.5,-BG_GRID_W/2+col*(THUMB_W+THUMB_GAP),0,row2*(THUMB_H+THUMB_GAP))end;local star=bgThumbStars[sourceIndex];if star then star[_TC3]=_St.bgFavorites[BG_CHOICES[sourceIndex].id]and _C(255,215,45)or _C(235,235,235)end end
-if resetScroll then bgScroll.CanvasPosition=Vector2.new(0,0)end
-end
-_G._VH_refreshBgFavorites=refreshBgFavoriteLayout
-for i,opt in ipairs(BG_CHOICES)do
-local btn=_I(_IB,bgScroll);btn.Size=_U(0,THUMB_W,0,THUMB_H);btn.Image=opt.img;btn.ScaleType=Enum.ScaleType.Crop;btn[_BgC]=_C(0,0,0);btn[_BSP]=0;btn[_ABC]=false;btn[_ZI]=52;_I(_UCR,btn)[_CRad]=_UD(0,8);local s=_I(_USK,btn);s.Thickness=2;s.Color=C.border;bgThumbBtns[i]=btn;bgThumbStrokes[i]=s
-local star=_I(_TB,btn);star.Name="FavoriteStar";star.AnchorPoint=Vector2.new(1,1);star.Size=_U(0,28,0,28);star.Position=_U(1,-3,1,-3);star[_BgC]=_C(0,0,0);star[_BgT]=0.22;star[_BSP]=0;star.Text="★";star[_TC3]=_C(235,235,235);star.Font=_EGBK;star[_TSz]=21;star[_ABC]=false;star[_ZI]=54;_I(_UCR,star)[_CRad]=_UD(1,0);local starStroke=_I(_USK,star);starStroke.Color=_C(0,0,0);starStroke.Thickness=1.5;starStroke.Transparency=0.15;bgThumbStars[i]=star
-star.Activated:Connect(function()if _St.bgFavorites[opt.id]then _St.bgFavorites[opt.id]=nil else _St.bgFavorites[opt.id]=true end;refreshBgFavoriteLayout(true);if _scfg then _scfg(true)end end)
-btn.Activated:Connect(function()
-_St.activeBgImg=opt.id;if setBgImgVisual then setBgImgVisual(opt.id)end;_scfg()
-end)
-end
-refreshBgFavoriteLayout(false)
-local _bpAnimating=false
-local function openBgPicker()
-if _bpAnimating then return end;_bpAnimating=true;bgPickerFrame.Size=_U(0,BG_POP_W*0.82,0,BG_POP_H*0.82);bgPickerFrame[_BgT]=1;bgPickerFrame.Visible=true;_TS:Create(bgPickerFrame,_TI(0.26,_ESB,_EDO),{Size=_U(0,BG_POP_W,0,BG_POP_H)}):Play();_TS:Create(bgPickerFrame,_TI(0.18),{BackgroundTransparency=0.04}):Play()
-task.delay(0.28,function()_bpAnimating=false end)
-end
-local function closeBgPicker()
-if _bpAnimating then return end;_bpAnimating=true;_TS:Create(bgPickerFrame,_TI(0.16),{Size=_U(0,BG_POP_W*0.82,0,BG_POP_H*0.82),BackgroundTransparency=1}):Play()
-task.delay(0.16,function()
-bgPickerFrame.Visible=false;bgPickerFrame.Size=_U(0,BG_POP_W,0,BG_POP_H);bgPickerFrame[_BgT]=0.04;_bpAnimating=false
-end)
-end
-_tc(_bpClose,closeBgPicker);_G._VH_openBgPicker=openBgPicker;local function _bpSetThemeColor(col) _bpStroke.Color=col;_bpLine[_BgC]=col;_bpCloseStk.Color=col;bgScroll.ScrollBarImageColor3=col end;_G._VH_bgPickerSetTheme=_bpSetThemeColor;_bpSetThemeColor(C.purple);local _curP={
-purple=C_ORIG.purple,
-dpurple=C_ORIG.dpurple,
-lpurple=C_ORIG.lpurple,
-on=C_ORIG.on,
-stkBg=C_ORIG.stkBg,
-stkBrd=C_ORIG.stkBrd,
-stkAct=C_ORIG.stkAct,
-}
-local function _refreshTabs()
-if not tabBtns then return end;for n,btn in pairs(tabBtns)do local isActive=pages and(pages[n]==activePage);btn[_BgC]=isActive and C.purple or C.void;btn[_BgT]=0;btn[_TC3]=isActive and C.white or C.dim;local st=btn:FindFirstChildOfClass(_USK);if st then st.Color=isActive and C.lpurple or C.border;st.Transparency=isActive and 0.05 or 0.48;st.Thickness=isActive and 1.6 or 1.15 end end
-end
-local _appliedMonoTheme="original";local _themeBindings=setmetatable({},{__mode="k"})
-setMonoTheme=function(themeId)
-if themeId==true then themeId="vampire"
-elseif themeId==false then themeId="original"end
-if themeId==_appliedMonoTheme then return end
-local isGreen=(themeId=="forest"or themeId=="jungle"or themeId=="16948826915"or themeId=="102609114992392");local isBlue=(themeId=="ocean"or themeId=="79809183056960");local isBlack=(themeId=="79455822331118"or themeId=="8180153808"or themeId=="11761613059");local isGray=(themeId=="vampire"or themeId=="139546609567893");local isYellow=(themeId=="golden"or themeId=="132372803152269");local isPurple=(themeId=="123540425987418"or themeId=="122195659108931");local isBrown=(themeId=="6457947928");local isPink=(themeId=="14430330747"or themeId=="17256388271");local palette=isGray and C_GRAY or isYellow and C_YELLOW or isGreen and C_GREEN or isBlue and C_BLUE or isBlack and C_BLACK or isPurple and C_PURPLE or isBrown and C_BROWN or isPink and C_PINK or C_ORIG
-local gradCol=palette.purple;local titleCol=isGray and _C(180,180,180)or palette.purple
-local speedCol=isGray and _C(160,160,160)or palette.lpurple;local newP={
-purple=palette.purple,
-dpurple=palette.dpurple,
-lpurple=palette.lpurple,
-on=palette.on,
-stkBg=palette.stkBg,
-stkBrd=palette.stkBrd,
-stkAct=palette.stkAct,
-}
-local wasBlack=(_appliedMonoTheme=="79455822331118"or _appliedMonoTheme=="8180153808"or _appliedMonoTheme=="11761613059");local matchTolerance=wasBlack and 0.001 or 0.05
-local function _close(a,b)
-return _ma(a.R-b.R)<matchTolerance and _ma(a.G-b.G)<matchTolerance and _ma(a.B-b.B)<matchTolerance
-end
-local function _colorKey(c)
-for k,oc in pairs(_curP)do if _close(c,oc)then return k end end
-return nil
-end
-local _themeObjects=gui:GetDescendants()
-for _,obj in ipairs(_themeObjects)do
-local binding=_themeBindings[obj]
-local isStealBarThemeObject=pbFrame and(obj==pbFrame or obj:IsDescendantOf(pbFrame))
-if isStealBarThemeObject then
-_themeBindings[obj]=nil
-elseif obj:IsA("UIGradient")then
-if binding and binding.gradient then pcall(function()obj.Color=ColorSequence.new(gradCol)end)
-else local ok,cs=pcall(function()return obj.Color end);if ok then for _,kp in ipairs(cs.Keypoints)do if _colorKey(kp.Value)then binding={gradient=true};_themeBindings[obj]=binding;pcall(function()obj.Color=ColorSequence.new(gradCol)end);break end end end end
-else
-binding=binding or{};for _,p in ipairs({"BackgroundColor3","TextColor3","Color","ImageColor3","ScrollBarImageColor3"})do local key=binding[p];if not key then local ok2,col=pcall(function()return obj[p]end);if ok2 and typeof(col)=="Color3"then key=_colorKey(col);if key then binding[p]=key end end end;if key then pcall(function()obj[p]=newP[key]end)end end;if next(binding)then _themeBindings[obj]=binding end
-end
-end
-for k,v in pairs(palette)do C[k]=v end;_curP=newP;_appliedMonoTheme=themeId;if applyBillboardTheme then applyBillboardTheme()end;_refreshTabs();_St.sideButtonLook="purple";if applySideButtonLook then applySideButtonLook(true)end
-pcall(function()
-for _,obj in ipairs(_themeObjects)do if obj:IsA(_SCF)then obj.ScrollBarImageColor3=C.purple end end
-end)
-pcall(function()
-for _,player in ipairs(_PL:GetPlayers())do if player~=LP and player.Character then local hl=player.Character:FindFirstChild("VampireHighlight");if hl then hl.FillColor=C.purple;hl.OutlineColor=C.purple end;local head=player.Character:FindFirstChild("Head");local profile=head and head:FindFirstChild("CrimsonProfileESP");local profileStroke=profile and profile:FindFirstChild("CrimsonProfileStroke",true);if profileStroke then profileStroke.Color=C.purple end end end
-end)
-_themeObjects=nil
-end
-setBgImgVisual=function(activeId)
-activeId="original";if girlImg then girlImg.Image=_RBX.."138321246448736"end;_St.activeBgImg=activeId;if setMonoTheme then setMonoTheme(activeId)end
-end
-if bgPickerFrame then bgPickerFrame:Destroy();bgPickerFrame=nil end;bgThumbBtns={};bgThumbStrokes={};bgThumbStars={};_G._VH_openBgPicker=nil;_G._VH_bgPickerSetTheme=nil;_G._VH_refreshBgFavorites=function()end
-end
-local _sbsh
-do
-local hdrRow=mkRow("Config",42);_sbsh=hdrRow;mkLbl(hdrRow,"Side Button Scale",10,0,0.6,42,10,C.white,_EGB);local minusBtn=_I(_TB,hdrRow)
-minusBtn.Size=_U(0,28,0,28);minusBtn.Position=_U(1,-118,0.5,-14);minusBtn[_BgC]=C.void;minusBtn[_BSP]=0;minusBtn.Text="-";minusBtn[_TC3]=C.lpurple;minusBtn.Font=_EGBK;minusBtn[_TSz]=16;minusBtn[_ZI]=5;_I(_UCR,minusBtn)[_CRad]=_UD(0,8)
-_I(_USK,minusBtn).Color=C.border;local _cv=_I(_TL,hdrRow);_cv.Size=_U(0,42,0,28);_cv.Position=_U(1,-86,0.5,-14);_cv[_BgC]=C.void;_cv[_BSP]=0;_cv.Text=string.format("%.2f",_St.sideButtonScale);_cv[_TC3]=C.purple;_cv.Font=_EGBK;_cv[_TSz]=13;_cv[_ZI]=5;_I(_UCR,_cv)[_CRad]=_UD(0,8);_I(_USK,_cv).Color=C.border
-local _pb=_I(_TB,hdrRow);_pb.Size=_U(0,28,0,28);_pb.Position=_U(1,-40,0.5,-14);_pb[_BgC]=C.void;_pb[_BSP]=0;_pb.Text="+";_pb[_TC3]=C.lpurple;_pb.Font=_EGBK;_pb[_TSz]=16;_pb[_ZI]=5;_I(_UCR,_pb)[_CRad]=_UD(0,8);_I(_USK,_pb).Color=C.border
-local function _asbs()
-_St.sideButtonScale=_mc(_St.sideButtonScale,0.5,1.5);_cv.Text=string.format("%.2f",_St.sideButtonScale);if not SIDE_DEFS then return end;local hasCustom=_St.sideButtonPositions and next(_St.sideButtonPositions)~=nil
-for i,def in ipairs(SIDE_DEFS)do
-local ref=_sbr[def.key];if ref and ref.frame then local btn=ref.frame;applySideButtonSize(def.key);btn[_TSz]=def.wide and(14*_St.sideButtonScale)or(11*_St.sideButtonScale);if not hasCustom then btn.Position=sideDefaultPos(i) end end
-end
-end
-_tc(minusBtn,function()
-_St.sideButtonScale=_mc(_St.sideButtonScale-0.05,0.5,1.5);_asbs()
-end)
-_tc(_pb,function()
-_St.sideButtonScale=_mc(_St.sideButtonScale+0.05,0.5,1.5);_asbs()
-end)
-_G._applySideButtonScale=_asbs
-end
-gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","FOV")
-do
-local modeRow=mkRow("Custom",42);mkLbl(modeRow,"FOV",10,0,0,42,10,C.white,_EGB)
-local normalModeBtn=_I(_TB,modeRow);normalModeBtn.Size=_U(0,62,0,28);normalModeBtn.Position=_U(1,-138,0.5,-14);normalModeBtn[_BSP]=0;normalModeBtn.Text="Normal";normalModeBtn.Font=_EGB;normalModeBtn[_TSz]=10;normalModeBtn[_ABC]=false;normalModeBtn[_ZI]=5;_I(_UCR,normalModeBtn)[_CRad]=_UD(0,9);local normalModeStroke=_I(_USK,normalModeBtn);normalModeStroke.Thickness=1.5
-local stretchModeBtn=_I(_TB,modeRow);stretchModeBtn.Size=_U(0,62,0,28);stretchModeBtn.Position=_U(1,-70,0.5,-14);stretchModeBtn[_BSP]=0;stretchModeBtn.Text="Stretch";stretchModeBtn.Font=_EGB;stretchModeBtn[_TSz]=10;stretchModeBtn[_ABC]=false;stretchModeBtn[_ZI]=5;_I(_UCR,stretchModeBtn)[_CRad]=_UD(0,9);local stretchModeStroke=_I(_USK,stretchModeBtn);stretchModeStroke.Thickness=1.5
+local softSteal = { spots = {}, nextScan = 0, latched = false, held = false, armed = true }
 
-local STRETCH_CHOICES={"Normal",90,120};local stretchBtns={};local stretchStrokes={};local stretchRow=mkRow("Custom",42);mkLbl(stretchRow,"Stretch FOV",10,0,0,42,10,C.white,_EGB);local STRETCH_W=40;local STRETCH_GAP=6
-for i,choice in ipairs(STRETCH_CHOICES)do
-local b=_I(_TB,stretchRow);b.Size=_U(0,STRETCH_W,0,28);local fromRight=(#STRETCH_CHOICES-i)*(STRETCH_W+STRETCH_GAP);b.Position=_U(1,-8-STRETCH_W-fromRight,0.5,-14);b[_BSP]=0;b.Text=(choice=="Normal")and"Norm"or tostring(choice);b.Font=_EGB;b[_TSz]=10;b[_ABC]=false;b[_ZI]=5;_I(_UCR,b)[_CRad]=_UD(0,9);local s=_I(_USK,b);s.Thickness=1.5;stretchBtns[i]=b;stretchStrokes[i]=s;_tc(b,function()setStretchFOV(choice)end)
-end
-setStretchFOVVisual=function(activeChoice)
-for i,choice in ipairs(STRETCH_CHOICES)do local norm=choice=="Normal";local matches=norm and(activeChoice=="Normal"or activeChoice==NORMAL_STRETCH_FOV)or tonumber(activeChoice)==choice;tw(stretchBtns[i],0.15,{BackgroundColor3=matches and C.purple or C.void});stretchBtns[i][_TC3]=matches and C.white or C.dim;tw(stretchStrokes[i],0.15,{Color=matches and C.purple or C.border})end
+local function isIgnoredCarryTool(name)
+	local n = tostring(name or ""):lower()
+	return n:find("bat") or n:find("slap") or n:find("medusa")
+		or n:find("head") or n:find("stone")
 end
 
-local NORMAL_CHOICES={70,90,110,120};local normalBtns={};local normalStrokes={};local normalRow=mkRow("Custom",42);mkLbl(normalRow,"Normal FOV",10,0,0,42,10,C.white,_EGB);local NORMAL_W=34;local NORMAL_GAP=3
-for i,choice in ipairs(NORMAL_CHOICES)do
-local b=_I(_TB,normalRow);b.Size=_U(0,NORMAL_W,0,28);local fromRight=(#NORMAL_CHOICES-i)*(NORMAL_W+NORMAL_GAP);b.Position=_U(1,-8-NORMAL_W-fromRight,0.5,-14);b[_BSP]=0;b.Text=tostring(choice);b.Font=_EGB;b[_TSz]=9;b[_ABC]=false;b[_ZI]=5;_I(_UCR,b)[_CRad]=_UD(0,9);local s=_I(_USK,b);s.Thickness=1.5;normalBtns[i]=b;normalStrokes[i]=s
-_tc(b,function()_St.lockedFOV=choice;if not _St.stretchedResEnabled then pcall(function()workspace.CurrentCamera.FieldOfView=choice end)end;if fovBox then fovBox.Text=tostring(choice)end;if setNormalFOVVisual then setNormalFOVVisual(choice)end end)
-end
-setNormalFOVVisual=function(activeChoice)
-for i,choice in ipairs(NORMAL_CHOICES)do local matches=tonumber(activeChoice)==choice;tw(normalBtns[i],0.15,{BackgroundColor3=matches and C.purple or C.void});normalBtns[i][_TC3]=matches and C.white or C.dim;tw(normalStrokes[i],0.15,{Color=matches and C.purple or C.border})end
+local function isCarryingBrainrot(char)
+	if not char then return false end
+	local LP = LocalPlayer
+	if LP:GetAttribute("Stealing") == true or LP:GetAttribute("AntiKick") == true
+		or char:GetAttribute("Stealing") == true then return true end
+	for _, name in ipairs({"Carrying", "IsCarrying", "Grabbed", "Holding", "StealHold", "HasGrab"}) do
+		local value = char:FindFirstChild(name, true)
+		if value and ((value:IsA("BoolValue") and value.Value)
+			or (value:IsA("ObjectValue") and value.Value)
+			or (value:IsA("StringValue") and value.Value ~= "")) then return true end
+	end
+	for _, child in ipairs(char:GetChildren()) do
+		local n = child.Name:lower()
+		if child:IsA("Tool") and not isIgnoredCarryTool(n) then return true end
+		if child:IsA("Model") and child:FindFirstChildWhichIsA("BasePart", true)
+			and (n:find("brainrot") or n:find("animal") or n:find("carry")
+				or n:find("grab") or n:find("steal") or n:find("hold")) then return true end
+	end
+	return false
 end
 
-setFOVControlModeUI=function(mode)
-if mode~="stretch"then mode="normal"end;_St.fovControlMode=mode;local normalOn=mode=="normal";normalRow.Visible=normalOn;stretchRow.Visible=not normalOn
-tw(normalModeBtn,0.15,{BackgroundColor3=normalOn and C.purple or C.void});normalModeBtn[_TC3]=normalOn and C.white or C.dim;tw(normalModeStroke,0.15,{Color=normalOn and C.purple or C.border})
-tw(stretchModeBtn,0.15,{BackgroundColor3=(not normalOn)and C.purple or C.void});stretchModeBtn[_TC3]=(not normalOn)and C.white or C.dim;tw(stretchModeStroke,0.15,{Color=(not normalOn)and C.purple or C.border})
-if normalOn then if disableStretchRez then disableStretchRez()end elseif enableStretchRez then enableStretchRez()end
+local function enableAutoCarrySpeed()
+	if AC.active then AC.graceUntil = tick() + 0.75; return end
+	AC.previous = { speedToggled = St.speedToggled, laggerMode = St.laggerMode }
+	AC.active = true
+	AC.graceUntil = tick() + 0.75
+	if St.laggerMode ~= 0 then setLaggerMode(0) end
+	St.speedToggled = true
+	updateSpeedModeButton()
+	syncMobileSpeedVisuals()
 end
-_tc(normalModeBtn,function()setFOVControlModeUI("normal")end);_tc(stretchModeBtn,function()setFOVControlModeUI("stretch")end)
-setStretchFOVVisual(_St.stretchFOV);setNormalFOVVisual(_St.lockedFOV);setFOVControlModeUI(_St.fovControlMode)
+
+local function disableAutoCarrySpeed()
+	if not AC.active then return end
+	local previous = AC.previous
+	AC.active, AC.previous = false, nil
+	if previous then
+		if previous.laggerMode and previous.laggerMode ~= 0 then
+			setLaggerMode(previous.laggerMode)
+		else
+			St.speedToggled = previous.speedToggled and true or false
+			updateSpeedModeButton()
+			syncMobileSpeedVisuals()
+		end
+	end
 end
-gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Sky Colors")
-do
-local _SKY_OPTS={
-{id="default",label="Def"},
-{id="blue",label="Blue"},
-{id="night",label="Night"},
-{id="day",label="Day"},
+
+local function softStealScan()
+	local spots = {}
+	local plots = workspace:FindFirstChild("Plots")
+	if not plots then softSteal.spots = spots; return end
+	for _, plot in ipairs(plots:GetChildren()) do
+		local sign = plot:FindFirstChild("PlotSign")
+		local yourBase = sign and sign:FindFirstChild("YourBase")
+		local mine = yourBase and yourBase:IsA("BillboardGui") and yourBase.Enabled == true
+		if not mine then
+			local podiums = plot:FindFirstChild("AnimalPodiums")
+			if podiums then
+				for _, podium in ipairs(podiums:GetChildren()) do
+					local base = podium:FindFirstChild("Base")
+					local spawnPart = base and base:FindFirstChild("Spawn")
+					if spawnPart then spots[#spots + 1] = spawnPart.Position end
+				end
+			end
+		end
+	end
+	softSteal.spots = spots
+end
+
+local function softStealInRange(char)
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if not root then return false end
+	local range = tonumber(_G._VynxAutoSpeedRange) or 15
+	local target = _G._VioletteccStealTargetPos or _G._RaVeStealTargetPos
+	if typeof(target) == "Vector3" and (root.Position - target).Magnitude <= range then
+		return true
+	end
+	local now = tick()
+	if now >= softSteal.nextScan then
+		softSteal.nextScan = now + 0.5
+		softStealScan()
+	end
+	for _, spot in ipairs(softSteal.spots) do
+		if (root.Position - spot).Magnitude <= range then return true end
+	end
+	return false
+end
+
+local function softStealApply()
+	if not AC.active then
+		AC.previous = { speedToggled = St.speedToggled, laggerMode = St.laggerMode }
+		AC.active = true
+	end
+	AC.graceUntil = tick() + 0.75
+	if St.laggerMode ~= 0 then setLaggerMode(0) end
+	St.speedToggled = true
+	updateSpeedModeButton()
+	syncMobileSpeedVisuals()
+end
+
+local function startAutoSpeed()
+	if AC.conn then AC.conn:Disconnect() AC.conn = nil end
+	AC.conn = RunService.RenderStepped:Connect(function()
+		if not St.autoCarryOn then
+			disableAutoCarrySpeed()
+			return
+		end
+		local char = LocalPlayer.Character
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		if not char or not hum or hum.Health <= 0 then
+			disableAutoCarrySpeed()
+			return
+		end
+
+		if St.autoCarryMode == "V2" then
+			local inRange = softStealInRange(char)
+			local carrying = isCarryingBrainrot(char)
+			if not inRange then softSteal.armed = true end
+			if not inRange or St.speedToggled ~= true then softSteal.latched = false end
+			if inRange and softSteal.armed and not softSteal.latched then
+				softSteal.latched = true
+				softSteal.held = false
+				softStealApply()
+			end
+			if AC.active then
+				if carrying then
+					softSteal.held = true
+					AC.graceUntil = tick() + 0.75
+				elseif softSteal.held then
+					softSteal.held = false
+					softSteal.latched = false
+					softSteal.armed = false
+					disableAutoCarrySpeed()
+				elseif not inRange and tick() > AC.graceUntil then
+					softSteal.latched = false
+					disableAutoCarrySpeed()
+				end
+			end
+			return
+		end
+
+		if isCarryingBrainrot(char) then
+			enableAutoCarrySpeed()
+		elseif AC.active then
+			disableAutoCarrySpeed()
+		end
+	end)
+end
+
+local function stopAutoSpeed()
+	if AC.conn then AC.conn:Disconnect() AC.conn = nil end
+	softSteal.latched, softSteal.held, softSteal.armed = false, false, true
+	disableAutoCarrySpeed()
+end
+
+LocalPlayer.CharacterAdded:Connect(function()
+	softSteal.latched, softSteal.held, softSteal.armed = false, false, true
+end)
+
+_G._CandyIsCarrying = isCarryingBrainrot
+_G.AutoCarrySpeed = {
+	IsCarryingBrainrot = isCarryingBrainrot,
+	Enable = enableAutoCarrySpeed,
+	Disable = disableAutoCarrySpeed,
 }
-local _skyLabels={default="Def",blue="Blue",night="Night",day="Day"};local hdrRow=mkRow("Custom",42);mkLbl(hdrRow,"Sky Mode",10,0,0.6,42,10,C.white,_EGB);local hdrVal=_I(_TL,hdrRow);hdrVal.Size=_U(0,64,0,28);hdrVal.Position=_U(1,-126,0.5,-14);hdrVal[_BgT]=1;hdrVal.Text=_skyLabels[_St.activeSky]or"Def";hdrVal[_TC3]=C.purple;hdrVal.Font=_EGBK
-hdrVal[_TSz]=12;hdrVal[_ZI]=5;hdrVal[_TXAl]=_TXR;local arrow=_I(_TB,hdrRow);arrow.Size=_U(0,40,0,40);arrow.Position=_U(1,-48,0.5,-20);arrow[_BgC]=C.void;arrow[_BSP]=0;arrow.Text=_ARROW_CLOSED;arrow[_TC3]=C.lpurple;arrow.Font=_EGBK;arrow[_TSz]=18;arrow[_ABC]=false;arrow[_ZI]=5
-_I(_UCR,arrow)[_CRad]=_UD(0,10);local arrowStk=_I(_USK,arrow);arrowStk.Color=C.border;arrowStk.Thickness=1.5;local ctrlRow=mkRow("Custom",42);ctrlRow.Visible=false;local SKY_BTN_W=42;local SKY_BTN_GAP=3;local _custSkyBtns={};local _custSkyStrokes={}
-for i,opt in ipairs(_SKY_OPTS)do
-local b=_I(_TB,ctrlRow);b.Size=_U(0,SKY_BTN_W,0,28);local fromRight=(#_SKY_OPTS-i)*(SKY_BTN_W+SKY_BTN_GAP);b.Position=_U(1,-8-SKY_BTN_W-fromRight,0.5,-14);b[_BSP]=0;b.Text=opt.label;b.Font=_EGB;b[_TSz]=9;b[_ABC]=false;b[_ZI]=5;_I(_UCR,b)[_CRad]=_UD(0,9);local s=_I(_USK,b);s.Thickness=1.5;_custSkyBtns[i]=b;_custSkyStrokes[i]=s
-_tc(b,function()applySky(opt.id)end)
-end
-local _prevSkyVisual=_ssv
-_ssv=function(activeId)
-if _prevSkyVisual then _prevSkyVisual(activeId)end;if activeId==nil then activeId="default"end;hdrVal.Text=_skyLabels[activeId]or"Def";for i,opt in ipairs(_SKY_OPTS)do local matches=(opt.id==activeId);tw(_custSkyBtns[i],0.15,{BackgroundColor3=matches and C.purple or C.void});_custSkyBtns[i][_TC3]=matches and C.white or C.dim;tw(_custSkyStrokes[i],0.15,{Color=matches and C.purple or C.border}) end
-end
-local expanded_sky=false;local clk=_I(_TB,hdrRow);clk.Size=_U(1,0,1,0);clk[_BgT]=1;clk.Text="";clk[_ZI]=6
-_tc(clk,function()
-expanded_sky=not expanded_sky;arrow.Text=expanded_sky and _ARROW_OPEN or _ARROW_CLOSED;ctrlRow.Visible=expanded_sky
+
+wireNamedToggle(G.WaveTogglePill_2, false, function(on)
+	St.autoCarryOn = on
+	_G._VynxAutoSpeedOn = on
+	if on then startAutoSpeed() else stopAutoSpeed() end
 end)
-_ssv(_St.activeSky)
+
+if G.TextButton_9 then
+	G.TextButton_9.Text = St.autoCarryMode
+	G.TextButton_9.MouseButton1Click:Connect(function()
+		St.autoCarryMode = (St.autoCarryMode == "V1") and "V2" or "V1"
+		_G._VynxAutoSpeedMode = (St.autoCarryMode == "V2") and "Soft Steal" or "On Pick Up"
+		G.TextButton_9.Text = St.autoCarryMode
+		softSteal.latched, softSteal.held, softSteal.armed = false, false, true
+		if St.autoCarryOn then
+			stopAutoSpeed()
+			startAutoSpeed()
+		end
+	end)
 end
-_tw();gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Avatar Items")
-setKorbloxToggle=_mkt("Custom","Korblox",nil,false,function(on)_St.korbloxEnabled=on;applyKorbloxToChar(LP.Character,on)end)
-setHeadlessToggle=_mkt("Custom","Headless",nil,false,function(on)_St.headlessEnabled=on;applyHeadlessToChar(LP.Character,on)end)
-_tw();gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Gamepad Binds")
-do
-mkKeybind("Custom","Speed",Keys.speed,function(k)Keys.speed=k end)
-mkKeybind("Custom","Lagger",Keys.lagger,function(k)Keys.lagger=k;Keys.burst=k end)
-mkKeybind("Custom","Auto Bat",Keys.autoBat,function(k)Keys.autoBat=k end)
-mkKeybind("Custom","Auto Left",Keys.autoLeft,function(k)Keys.autoLeft=k end)
-mkKeybind("Custom","Auto Right",Keys.autoRight,function(k)Keys.autoRight=k end)
-mkKeybind("Custom","Drop Brainrot",Keys.dropBrainrot,function(k)Keys.dropBrainrot=k end)
-mkKeybind("Custom","TP Down",Keys.tpDown,function(k)Keys.tpDown=k end)
-mkKeybind("Custom","Hide GUI",Keys.guiHide,function(k)Keys.guiHide=k end)
-mkKeybind("Custom","Desync Aimbot",Keys.desyncAimbot,function(k)Keys.desyncAimbot=k end)
-end
-_tw();gap("Custom",2);div("Custom");gap("Custom",2);sect("Custom","Safe Mode")
-do
-local hdrRow=mkRow("Custom",42);mkLbl(hdrRow,"Safe Mode",10,0,0.7,42,10,C.white,_EGB);local arrow=_I(_TB,hdrRow);arrow.Size=_U(0,40,0,40);arrow.Position=_U(1,-48,0.5,-20)
-arrow[_BgC]=C.void;arrow[_BSP]=0;arrow.Text=_ARROW_CLOSED;arrow[_TC3]=C.lpurple;arrow.Font=_EGBK;arrow[_TSz]=18;arrow[_ABC]=false;arrow[_ZI]=5;_I(_UCR,arrow)[_CRad]=_UD(0,10);local arrowStroke=_I(_USK,arrow);arrowStroke.Color=C.border;arrowStroke.Thickness=1.5;local smRow,dbRow
-setSafeMode,_,smRow=_mkt("Custom","Safe Mode",nil,_St.safeModeEnabled,function(on)
-_St.safeModeEnabled=on;if on then _St.dropBrainrotMode=false;if setDropBrainrotMode then setDropBrainrotMode(false)end end
-end)
-setDropBrainrotMode,_,dbRow=_mkt("Custom","Drop Brainrot",nil,_St.dropBrainrotMode,function(on)
-_St.dropBrainrotMode=on;if on then _St.safeModeEnabled=false;if setSafeMode then setSafeMode(false)end end
-end)
-smRow.LayoutOrder=nextLO("Custom");dbRow.LayoutOrder=nextLO("Custom");smRow.Visible=false;dbRow.Visible=false;local expanded=false
-local function refreshSafeMode() smRow.Visible=expanded;dbRow.Visible=expanded end;refreshSafeMode();local clk=_I(_TB,hdrRow);clk.Size=_Us(1,1);clk[_BgT]=1;clk.Text="";clk[_ZI]=6
-_tc(clk,function()expanded=not expanded;arrow.Text=expanded and _ARROW_OPEN or _ARROW_CLOSED;refreshSafeMode()end)
-end
-_tw();gap("Config",2);div("Config");gap("Config",2);sect("Config","Mobile Buttons");_St.sideButtonType="square";_St.sideButtonLook="purple";applySideButtonType();local sideButtonsRow
-setSideToggle,_,sideButtonsRow=_mkt("Config","Side Buttons",nil,true,function(on)
-if type(setSideVisible)=="function"then setSideVisible(on)end
-end)
-local dragRow=mkRow("Config",42);mkLbl(dragRow,"Drag",10,0,0,42,10,C.white,_EGB)
-local dragOneBtn=_I(_TB,dragRow);dragOneBtn.Size=_U(0,62,0,28);dragOneBtn.Position=_U(1,-138,0.5,-14);dragOneBtn[_BSP]=0;dragOneBtn.Text="One";dragOneBtn.Font=_EGB;dragOneBtn[_TSz]=10;dragOneBtn[_ABC]=false;dragOneBtn[_ZI]=5;_I(_UCR,dragOneBtn)[_CRad]=_UD(0,9);local dragOneStroke=_I(_USK,dragOneBtn);dragOneStroke.Thickness=1.5
-local dragAllBtn=_I(_TB,dragRow);dragAllBtn.Size=_U(0,62,0,28);dragAllBtn.Position=_U(1,-70,0.5,-14);dragAllBtn[_BSP]=0;dragAllBtn.Text="All";dragAllBtn.Font=_EGB;dragAllBtn[_TSz]=10;dragAllBtn[_ABC]=false;dragAllBtn[_ZI]=5;_I(_UCR,dragAllBtn)[_CRad]=_UD(0,9);local dragAllStroke=_I(_USK,dragAllBtn);dragAllStroke.Thickness=1.5
-setSideButtonDragModeUI=function(mode)
-if mode~="all"then mode="one"end;_St.sideButtonDragMode=mode;local oneOn=mode=="one"
-tw(dragOneBtn,0.12,{BackgroundColor3=oneOn and C.purple or C.void});dragOneBtn[_TC3]=oneOn and C.white or C.dim;tw(dragOneStroke,0.12,{Color=oneOn and C.purple or C.border})
-tw(dragAllBtn,0.12,{BackgroundColor3=(not oneOn)and C.purple or C.void});dragAllBtn[_TC3]=(not oneOn)and C.white or C.dim;tw(dragAllStroke,0.12,{Color=(not oneOn)and C.purple or C.border})
-end
-_tc(dragOneBtn,function()setSideButtonDragModeUI("one")end);_tc(dragAllBtn,function()setSideButtonDragModeUI("all")end);setSideButtonDragModeUI(_St.sideButtonDragMode)
-if _sbsh then _sbsh.LayoutOrder=nextLO("Config")end
-mkBtn("Config","Reset Button Positions",function()
-for i,def in ipairs(SIDE_DEFS)do if _sbr[def.key]and _sbr[def.key].frame then _sbr[def.key].frame.Position=sideDefaultPos(i) end end;_St.sideButtonPositions={};_scfg()
-end)
-setLockButtons,_=_mkt("Config","Lock Buttons",nil,false,function(on)
-_St.sideButtonsLocked=on
-end)
-gap("Config",4)
-do
-local _MOBILE_OPTS={
-{key="autoLeft",label="Auto Left"},
-{key="autoRight",label="Auto Right"},
-{key="aimbot",label="Bat Aimbot"},
-{key="lagger",label="Lagger Speed"},
-{key="laggerCarry",label="Lagger Carry"},
-{key="drop",label="Drop"},
-{key="carrySpeed",label="Carry Speed"},
-{key="tpDown",label="TP Down"},
+
+local AntiRagdoll = {
+	Enabled = false,
+	Connection = nil,
+	ResetCooldown = 0,
 }
-local _sideVis={};local _mbToggleRows={};local hdrRow=mkRow("Config",42);mkLbl(hdrRow,"Choose Mobile Buttons",10,0,0.75,42,10,C.white,_EGB)
-local arrow=_I(_TB,hdrRow);arrow.Size=_U(0,40,0,40);arrow.Position=_U(1,-48,0.5,-20);arrow[_BgC]=C.void;arrow[_BSP]=0;arrow.Text=_ARROW_CLOSED;arrow[_TC3]=C.lpurple;arrow.Font=_EGBK;arrow[_TSz]=18;arrow[_ABC]=false;arrow[_ZI]=5;_I(_UCR,arrow)[_CRad]=_UD(0,10);local arrowStk=_I(_USK,arrow);arrowStk.Color=C.border;arrowStk.Thickness=1.5;if not _G._VH_mbSetVis then _G._VH_mbSetVis={}end
-for i,opt in ipairs(_MOBILE_OPTS)do
-local _isHidden=false;for _,hk in ipairs(_St.hiddenSideButtons or{})do if hk==opt.key then _isHidden=true;break end end;_sideVis[opt.key]=not _isHidden;local trow=mkRow("Config",36);trow.Visible=false;_mbToggleRows[i]=trow;mkLbl(trow,opt.label,12,0,0.6,36,9,C.white,_EGN);local pill=_I(_TB,trow)
-pill.Size=_U(0,66,0,24);pill.Position=_U(1,-76,0.5,-12);local _initOn=not _isHidden;pill[_BgC]=_initOn and C.purple or C.void;pill[_BSP]=0;pill.Text=_initOn and"ON"or"OFF"
-pill[_TC3]=_initOn and C.white or C.dim;pill.Font=_EGB;pill[_TSz]=11;pill[_ABC]=false;pill[_ZI]=5;_I(_UCR,pill)[_CRad]=_UD(0,8);local pillStk=_I(_USK,pill);pillStk.Thickness=1.5;pillStk.Color=_initOn and C.purple or C.border;local _key=opt.key
-local function _setPillOn(on)
-_sideVis[_key]=on;local _hid=_St.hiddenSideButtons or{};local _found=false;for j,k in ipairs(_hid)do if k==_key then _found=j;break end end;if on and _found then _tr(_hid,_found)
-elseif not on and not _found then _ti(_hid,_key)end
-_St.hiddenSideButtons=_hid;tw(pill,0.12,{BackgroundColor3=on and C.purple or C.void});pill[_TC3]=on and C.white or C.dim;tw(pillStk,0.12,{Color=on and C.purple or C.border});pill.Text=on and"ON"or"OFF";if _sbr[_key]and _sbr[_key].frame then _sbr[_key].frame.Visible=on end
+
+local function arIsRagdolled()
+	local char = LocalPlayer.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	if not hum then return false end
+	local state = hum:GetState()
+	return state == Enum.HumanoidStateType.Physics
+		or state == Enum.HumanoidStateType.Ragdoll
+		or state == Enum.HumanoidStateType.FallingDown
 end
-_G._VH_mbSetVis[_key]=_setPillOn
-_tc(pill,function()_setPillOn(not _sideVis[_key])end)
+
+local function arRecoverV1(hum, root)
+	pcall(function()
+		hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+		root.AssemblyLinearVelocity = Vector3.zero
+		root.AssemblyAngularVelocity = Vector3.zero
+		hum.PlatformStand = false
+		hum.Sit = false
+		hum.AutoRotate = true
+	end)
 end
-local expanded_mb=false;local clk=_I(_TB,hdrRow);clk.Size=_U(1,0,1,0);clk[_BgT]=1;clk.Text="";clk[_ZI]=6
-_tc(clk,function()
-expanded_mb=not expanded_mb;arrow.Text=expanded_mb and _ARROW_OPEN or _ARROW_CLOSED;for _,r in ipairs(_mbToggleRows)do r.Visible=expanded_mb end
+
+local function arRecoverV2(hum, root, char)
+	pcall(function()
+		hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+		root.Velocity = Vector3.zero
+		root.RotVelocity = Vector3.zero
+		root.AssemblyLinearVelocity = Vector3.zero
+		root.AssemblyAngularVelocity = Vector3.zero
+		for _, obj in ipairs(char:GetDescendants()) do
+			if obj:IsA("Motor6D") then obj.Enabled = true end
+			if obj:IsA("Constraint") then obj.Enabled = true end
+		end
+		workspace.CurrentCamera.CameraSubject = hum
+		local PM = LocalPlayer.PlayerScripts:FindFirstChild("PlayerModule")
+		if PM then
+			local ok, CM = pcall(require, PM:FindFirstChild("ControlModule"))
+			if ok and CM and CM.Enable then CM:Enable() end
+		end
+		hum.AutoRotate = true
+		hum.PlatformStand = false
+		hum.Sit = false
+	end)
+end
+
+local function arStart()
+	if AntiRagdoll.Connection then return end
+	AntiRagdoll.Enabled = true
+	AntiRagdoll.Connection = RunService.Heartbeat:Connect(function()
+		if not St.antiRagdollEnabled then return end
+		local char = LocalPlayer.Character
+		if not char then return end
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local root = char:FindFirstChild("HumanoidRootPart")
+		if not hum or not root or hum.Health <= 0 then return end
+		if _G.dropActive then return end
+
+		local state, now = hum:GetState(), tick()
+		if state == Enum.HumanoidStateType.Physics
+			or state == Enum.HumanoidStateType.Ragdoll
+			or state == Enum.HumanoidStateType.FallingDown then
+			if now - AntiRagdoll.ResetCooldown > 0.15 then
+				AntiRagdoll.ResetCooldown = now
+				arRecoverV2(hum, root, char)
+			end
+		end
+	end)
+end
+
+local function arStop()
+	AntiRagdoll.Enabled = false
+	if AntiRagdoll.Connection then
+		AntiRagdoll.Connection:Disconnect()
+		AntiRagdoll.Connection = nil
+	end
+	AntiRagdoll.ResetCooldown = 0
+end
+
+LocalPlayer.CharacterAdded:Connect(function()
+	task.wait(0.5)
+	if not St.antiRagdollEnabled then return end
+	if AntiRagdoll.Connection then
+		AntiRagdoll.Connection:Disconnect()
+		AntiRagdoll.Connection = nil
+	end
+	arStart()
 end)
+
+_G._VioletteccStartAntiRagdoll = arStart
+_G._VioletteccStopAntiRagdoll = arStop
+
+wireNamedToggle(G.WaveTogglePill_3, false, function(on)
+	St.antiRagdollEnabled = on
+	if on then arStart() else arStop() end
+end)
+
+St.antiRagdollMode = "V2"
+if G.TextButton_13 then G.TextButton_13.Visible = false end
+
+
+local _ijConns = {}
+local _padJumpHeld = false
+
+local function stopInfJump()
+	for _, c in ipairs(_ijConns) do pcall(function() c:Disconnect() end) end
+	_ijConns = {}
+	_padJumpHeld = false
 end
-gap("Config",2)
-_tw();gap("Custom",4);
-local function corner(parent,r)local c=_I(_UCR,parent);c[_CRad]=_UD(0,r);return c end;local function pcorner(parent)local c=_I(_UCR,parent);c[_CRad]=_UD(1,0);return c end;local function strokeFn(parent,col,th)local s=_I(_USK,parent);s.Color=col;s.Thickness=th;return s end;local _BAR_RED1=_C(196,140,255);local _BAR_RED2=_C(85,42,130);pbFrame=_I(_FR,gui);pbFrame.Visible=false
-pbFrame.Size=_U(0,352,0,57);pbFrame.Position=_U(0.5,-176,1,-78);pbFrame[_BgC]=_C(2,3,5);pbFrame[_BSP]=0;pbFrame.Active=true;corner(pbFrame,18);local outerBarStroke=strokeFn(pbFrame,_C(75,42,112),1.5);outerBarStroke.Transparency=0.12
-makeDraggable(pbFrame);pbBg=_I(_FR,pbFrame);pbBg.Size=_U(0,328,0,18);pbBg.Position=_U(0,12,0,32);pbBg[_BgC]=_C(7,8,10);pbBg[_BSP]=0;pbBg[_ClD]=true;corner(pbBg,9);local trackStroke=strokeFn(pbBg,_C(25,27,31),1);trackStroke.Transparency=0.18;progressFill=_I(_FR,pbBg);progressFill.Size=_U(0,0,1,0);progressFill[_BgC]=_BAR_RED1;progressFill[_BSP]=0;corner(progressFill,9)
-do local g=_I("UIGradient",progressFill);g.Color=ColorSequence.new({_CSK(0,_BAR_RED1),_CSK(1,_BAR_RED2)}) end
-do stealLbl=_I(_TL,pbFrame);stealLbl.Visible=false;stealLbl[_BgT]=1;stealLbl.Text="" end
-progressPct=_I(_TL,pbFrame);progressPct.Size=_U(0,90,0,25);progressPct.Position=_U(0,13,0,4);progressPct[_BgT]=1;progressPct.Text="";progressPct.Visible=false;progressPct[_TC3]=_C(248,248,250);progressPct.Font=_EGBK;progressPct[_TSz]=16;progressPct[_TXAl]=_TXL;progressPct[_ZI]=3;progressPct[_TST]=0.62;progressPct[_TSC]=Color3.new(0,0,0)
-do
-local _fillGradShim=progressFill and progressFill:FindFirstChildOfClass("UIGradient")
-local function _fillColor(c1,c2)
-if not progressFill then return end;c1=_BAR_RED1;c2=_BAR_RED2;progressFill[_BgC]=c1
-if _fillGradShim then
-_fillGradShim.Color=ColorSequence.new({
-_CSK(0,c1),
-_CSK(1,c2),
-})
+
+local function startInfJump()
+	stopInfJump()
+	_ijConns[#_ijConns + 1] = UserInputService.JumpRequest:Connect(function()
+		if not St.infJumpEnabled then return end
+	end)
+	_ijConns[#_ijConns + 1] = UserInputService.InputBegan:Connect(function(input, gp)
+		if input.KeyCode == Enum.KeyCode.Space or input.KeyCode == Enum.KeyCode.ButtonA then
+			_padJumpHeld = true
+		end
+	end)
+	_ijConns[#_ijConns + 1] = UserInputService.InputEnded:Connect(function(input)
+		if input.KeyCode == Enum.KeyCode.Space or input.KeyCode == Enum.KeyCode.ButtonA then
+			_padJumpHeld = false
+		end
+	end)
+	_ijConns[#_ijConns + 1] = RunService.Heartbeat:Connect(function()
+		if not St.infJumpEnabled then return end
+		local char = LocalPlayer.Character
+		if not char then return end
+		local root = char:FindFirstChild("HumanoidRootPart")
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		if not root or not hum or hum.Health <= 0 then return end
+		local held = UserInputService:IsKeyDown(Enum.KeyCode.Space) or _padJumpHeld or hum.Jump == true
+		local velocity = root.AssemblyLinearVelocity
+		if held and velocity.Y < 35 then
+			root.AssemblyLinearVelocity = Vector3.new(velocity.X, 55, velocity.Z)
+		elseif velocity.Y < -120 then
+			root.AssemblyLinearVelocity = Vector3.new(velocity.X, -120, velocity.Z)
+		end
+	end)
 end
+
+wireNamedToggle(G.WaveTogglePill, false, function(on)
+	St.infJumpEnabled = on
+	if on then startInfJump() else stopInfJump() end
+end)
+
+if G.Frame_16 then G.Frame_16.Visible = false end
+if G.SizeDropdown then G.SizeDropdown.Visible = false end
+if G.Arrow then G.Arrow.Visible = false end
+
+local _actionAntiDie = { drop = false, aimbot = false, tpDown = false }
+local _actionAntiDieEnabled = false
+local _actionAntiDieConn = nil
+local _actionAntiDieCharConn = nil
+local function _setActionAntiDieSource(name, on)
+	_actionAntiDie[name] = on == true
+	local want = _actionAntiDie.drop or _actionAntiDie.aimbot or _actionAntiDie.tpDown
+	if want == _actionAntiDieEnabled then return end
+	_actionAntiDieEnabled = want
+	if _actionAntiDieConn then _actionAntiDieConn:Disconnect(); _actionAntiDieConn = nil end
+	if _actionAntiDieCharConn then _actionAntiDieCharConn:Disconnect(); _actionAntiDieCharConn = nil end
+	local function protect(char)
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		if not hum then return end
+		pcall(function()
+			hum.BreakJointsOnDeath = false
+			hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+			if hum.Health <= 0 then hum.Health = hum.MaxHealth end
+		end)
+	end
+	if want then
+		protect(LocalPlayer.Character)
+		_actionAntiDieCharConn = LocalPlayer.CharacterAdded:Connect(function(char)
+			task.wait(0.05)
+			if _actionAntiDieEnabled then protect(char) end
+		end)
+		_actionAntiDieConn = RunService.Heartbeat:Connect(function()
+			if not _actionAntiDieEnabled then return end
+			local char = LocalPlayer.Character
+			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			if not hum then return end
+			if hum.BreakJointsOnDeath then hum.BreakJointsOnDeath = false end
+			if hum:GetStateEnabled(Enum.HumanoidStateType.Dead) then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false) end
+			if hum.Health <= 0 then hum.Health = hum.MaxHealth end
+		end)
+	end
 end
-local function _themeC1()return _BAR_RED1 end
-local function _themeC2()return _BAR_RED2 end
-_G.StealBar={
-SetProgress=function(p)
-p=_mc(tonumber(p)or 0,0,1);if progressFill then progressFill.Size=_U(p,0,1,0)end;if progressPct then progressPct.Text="" end
-if p>=1 then
-_fillColor(_C(245,220,195),_C(220,190,160))
-else
-_fillColor(_themeC1(),_themeC2())
+
+St.dropType = "Jump Drop" 
+St.dropKey = Enum.KeyCode.X
+local Drop = { active = false }
+_G._RaVeDropToken = _G._RaVeDropToken or 0
+
+local dropConn = nil
+local function runDropBrainrot()
+	if Drop.active then return end
+	local char = LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	if not root or not hum or hum.Health <= 0 then return end
+
+	Drop.active = true
+	_G.dropActive = true
+	_G.IsDropping = true
+	_setActionAntiDieSource("drop", true)
+	setSideButtonState(G.StackBtn_drop, true, 0.08)
+	task.delay(0.3, function()
+		setSideButtonState(G.StackBtn_drop, false, 0.12)
+		_setActionAntiDieSource("drop", false)
+	end)
+	local startY = root.Position.Y
+	local startedAt = tick()
+
+	if dropConn then dropConn:Disconnect(); dropConn = nil end
+	dropConn = RunService.Heartbeat:Connect(function()
+		local currentChar = LocalPlayer.Character
+		local currentRoot = currentChar and currentChar:FindFirstChild("HumanoidRootPart")
+		local currentHum = currentChar and currentChar:FindFirstChildOfClass("Humanoid")
+		if currentChar ~= char or not currentRoot or not currentHum or currentHum.Health <= 0 then
+			if dropConn then dropConn:Disconnect(); dropConn = nil end
+			Drop.active = false
+			_G.dropActive = false
+			_G.IsDropping = false
+			_setActionAntiDieSource("drop", false)
+			return
+		end
+
+		if tick() - startedAt >= 0.2 then
+			if dropConn then dropConn:Disconnect(); dropConn = nil end
+			local _, yaw = currentRoot.CFrame:ToEulerAnglesYXZ()
+			currentRoot.CFrame = CFrame.new(currentRoot.Position.X, startY, currentRoot.Position.Z) * CFrame.Angles(0, yaw, 0)
+			currentRoot.AssemblyLinearVelocity = Vector3.zero
+			pcall(function() currentRoot.Velocity = Vector3.zero end)
+			Drop.active = false
+			_G.dropActive = false
+			_G.IsDropping = false
+			_setActionAntiDieSource("drop", false)
+			return
+		end
+
+		currentRoot.AssemblyLinearVelocity = Vector3.new(
+			currentRoot.AssemblyLinearVelocity.X,
+			150,
+			currentRoot.AssemblyLinearVelocity.Z
+		)
+	end)
 end
-end,
-SetState=function(s)
-end,
-Reset=function()
-if progressFill then progressFill.Size=_U(0,0,1,0)end;if progressPct then progressPct.Text=""end;_fillColor(_themeC1(),_themeC2())
-end,
+
+_G._VynxRunDrop = runDropBrainrot
+
+if G.TextButton_14 then
+	G.TextButton_14.Visible = false
+end
+
+if G.TextButton_15 then
+	G.TextButton_15.Text = bindingText("drop")
+	G.TextButton_15:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad")
+	G.TextButton_15.MouseButton1Click:Connect(function()
+		startRebind("drop", G.TextButton_15)
+	end)
+end
+
+St.tpDownKey = Enum.KeyCode.Unknown
+St.autoTpDownEnabled = false
+St.autoTpDownHeight = tonumber(G.TextBox_6 and G.TextBox_6.Text) or 20
+_G._VynxAutoTPDownEnabled = false
+_G._VynxAutoTPDownHeightTrigger = St.autoTpDownHeight
+
+local function runTPDown()
+	_setActionAntiDieSource("tpDown", true)
+	setSideButtonState(G.StackBtn_tpDown, true, 0.08)
+	task.delay(0.3, function()
+		setSideButtonState(G.StackBtn_tpDown, false, 0.12)
+		_setActionAntiDieSource("tpDown", false)
+	end)
+	pcall(function()
+		local c = LocalPlayer.Character
+		if not c then return end
+		local hrp = c:FindFirstChild("HumanoidRootPart")
+		if not hrp then return end
+		St._tpInProgress = true
+		hrp.CFrame = CFrame.new(hrp.Position.X, -7.00, hrp.Position.Z)
+			* CFrame.Angles(0, select(2, hrp.CFrame:ToEulerAnglesYXZ()), 0)
+		task.delay(0.1, function() St._tpInProgress = false end)
+	end)
+end
+
+_G._VynxRunTPDown = runTPDown
+
+if G.TextButton_16 then
+	G.TextButton_16.Text = "…"
+	G.TextButton_16.MouseButton1Click:Connect(function()
+		startRebind("tpDown", G.TextButton_16)
+	end)
+end
+
+if G.TextBox_6 then
+	G.TextBox_6.FocusLost:Connect(function()
+		local n = tonumber(G.TextBox_6.Text)
+		if n and n >= 5 and n <= 200 then
+			St.autoTpDownHeight = n
+			_G._VynxAutoTPDownHeightTrigger = n
+			G.TextBox_6.Text = tostring(math.floor(n))
+		else
+			G.TextBox_6.Text = tostring(St.autoTpDownHeight)
+		end
+	end)
+end
+
+wireNamedToggle(G.WaveTogglePill_4, false, function(on)
+	St.autoTpDownEnabled = on
+	_G._VynxAutoTPDownEnabled = on
+end)
+
+RunService.Heartbeat:Connect(function()
+	if not St.autoTpDownEnabled then return end
+	local char = LocalPlayer.Character
+	if not char then return end
+	if not isCarryingBrainrot(char) then return end
+	local root = char:FindFirstChild("HumanoidRootPart")
+	if not root then return end
+	local rp = RaycastParams.new()
+	rp.FilterDescendantsInstances = { char }
+	rp.FilterType = Enum.RaycastFilterType.Exclude
+	local hit = workspace:Raycast(root.Position, Vector3.new(0, -2000, 0), rp)
+	if not hit then return end
+	local trigger = St.autoTpDownHeight or 20
+	if root.Position.Y - hit.Position.Y > trigger then
+		runTPDown()
+	end
+end)
+
+UserInputService.InputBegan:Connect(function(inp, gp)
+	if gp and inp.UserInputType == Enum.UserInputType.Keyboard then return end
+	if inp.UserInputType ~= Enum.UserInputType.Keyboard and inp.UserInputType ~= Enum.UserInputType.Gamepad1 then return end
+	if rebinding then return end
+	if bindingMatches("drop", inp) then
+		runDropBrainrot()
+	elseif bindingMatches("tpDown", inp) then
+		runTPDown()
+	end
+end)
+
+if G.TextButton_65 then
+	G.TextButton_65.MouseButton1Click:Connect(function()
+		runDropBrainrot()
+	end)
+end
+if G.TextButton_67 then
+	G.TextButton_67.MouseButton1Click:Connect(function()
+		runTPDown()
+	end)
+end
+
+local function buildLateSection()
+local specialPills = {
+	[G.WaveTogglePill] = true,
+	[G.WaveTogglePill_5] = true,
+	[G.WaveTogglePill_2] = true,
+	[G.WaveTogglePill_3] = true,
+	[G.WaveTogglePill_4] = true,
+	[G.WaveTogglePill_22] = true,
+	[G.WaveTogglePill_23] = true,
+	[G.WaveTogglePill_24] = true,
+	[G.WaveTogglePill_25] = true,
+	[G.WaveTogglePill_26] = true,
+	[G.WaveTogglePill_27] = true,
+	[G.WaveTogglePill_29] = true,
+	[G.WaveTogglePill_31] = true,
+	[G.WaveTogglePill_32] = true,
+	[G.WaveTogglePill_33] = true,
+	[G.WaveTogglePill_34] = true,
+	[G.WaveTogglePill_35] = true,
 }
+
+local toggleCount = 0
+for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
+	if desc.Name == "WaveTogglePill" and desc:IsA("Frame") and not specialPills[desc] then
+		local clickBtn = desc:FindFirstChildOfClass("TextButton")
+		if clickBtn then
+			toggleCount = toggleCount + 1
+			setToggleVisual(desc, desc:GetAttribute("WaveToggleOn") == true)
+			
+			
+			
+			
+		end
+	end
 end
-_prl=_I(_TL,pbFrame);_prl.Size=_U(0,158,0,24);_prl.Position=_U(1,-171,0,5);_prl[_BgT]=1;_prl.Text="";_prl.Visible=false;_prl[_TC3]=_C(184,184,193);_prl.Font=_EGB;_prl[_TSz]=11;_prl[_TXAl]=_TXR;_prl[_ZI]=3
-_apbl();mini=_I(_TB,gui);mini.Name="CrimsonMini";mini.Size=_U(0,145,0,42);mini.Position=_U(0,26,0,26);mini[_BgC]=C.void;mini[_BgT]=0;mini[_BSP]=0;mini.Text="";mini[_ZI]=20;mini.Visible=true;_I(_UCR,mini)[_CRad]=_UD(0,15)
+
+local textBoxCount = 0
+for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
+	if desc:IsA("TextBox") then
+		textBoxCount = textBoxCount + 1
+		desc.ClearTextOnFocus = false
+		desc.TextEditable = true
+	end
+end
+
+local extraBtnCount = 0
+for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
+	if desc:IsA("TextButton") then
+		if desc.Parent and desc.Parent.Name == "WaveTogglePill" then
+		elseif desc.Parent == G.HeaderBar then
+		elseif desc.Name:match("^WaveNav_") then
+		else
+			extraBtnCount = extraBtnCount + 1
+			desc.MouseButton1Down:Connect(function()
+				local s = desc:FindFirstChildOfClass("UIScale")
+				if not s then
+					s = Instance.new("UIScale")
+					s.Parent = desc
+				end
+				TweenService:Create(s, TweenInfo.new(0.08), {Scale = 0.92}):Play()
+			end)
+			desc.MouseButton1Up:Connect(function()
+				local s = desc:FindFirstChildOfClass("UIScale")
+				if s then TweenService:Create(s, TweenInfo.new(0.12, Enum.EasingStyle.Back), {Scale = 1}):Play() end
+			end)
+			desc.MouseLeave:Connect(function()
+				local s = desc:FindFirstChildOfClass("UIScale")
+				if s then TweenService:Create(s, TweenInfo.new(0.12), {Scale = 1}):Play() end
+			end)
+		end
+	end
+end
+
+if G.Frame_95 then G.Frame_95.Visible = false end 
+if G.Frame_97 then G.Frame_97.Visible = false end 
+if G.Frame_105 then G.Frame_105.Visible = false end 
+
+_G._VezyBatAimbotSpeed = tonumber(G.TextBox_8 and G.TextBox_8.Text) or 58
+_G._VezyBatAimbotSpeedLagger = tonumber(G.TextBox_9 and G.TextBox_9.Text) or 40
+_G._VezyBatAimbotOn = false
+_G._VezyBatAimbotMode = "new" 
+_G._VioletteccAimbotAutoSwing = false
+
+local batSpeedOpen = false
+local function setBatSpeedOpen(on)
+	batSpeedOpen = on and true or false
+	if G.Frame_90 then
+		G.Frame_90.Visible = batSpeedOpen
+		G.Frame_90.Size = UDim2.new(1, 0, 0, 38)
+	end
+	if G.Frame_92 then
+		G.Frame_92.Visible = batSpeedOpen
+		G.Frame_92.Size = UDim2.new(1, 0, 0, 38)
+	end
+	if G.Arrow_2 then
+		G.Arrow_2.Text = batSpeedOpen and "▲" or "▼"
+	end
+	local page = G.WavePage_Combat
+	if page then
+		local lay = page:FindFirstChildOfClass("UIListLayout")
+		if lay then
+			pcall(function()
+				local sf = page:FindFirstAncestorOfClass("ScrollingFrame")
+				if sf then
+					sf.CanvasSize = UDim2.new(0, 0, 0, lay.AbsoluteContentSize.Y + 20)
+				end
+			end)
+		end
+	end
+end
+
+local _batSpeedClickAt = 0
+local function toggleBatSpeedOpen()
+	local now = os.clock()
+	if now - _batSpeedClickAt < 0.18 then return end
+	_batSpeedClickAt = now
+	setBatSpeedOpen(not batSpeedOpen)
+end
+
+if G.WaveTogglePill_22 then
+	setToggleVisual(G.WaveTogglePill_22, false)
+end
+
+if G.SizeDropdown_2 then
+	G.SizeDropdown_2.Active = true
+	G.SizeDropdown_2.AutoButtonColor = false
+	G.SizeDropdown_2.Activated:Connect(toggleBatSpeedOpen)
+end
+if G.Arrow_2 then
+end
+
+setBatSpeedOpen(false)
+
+if G.TextBox_8 then
+	G.TextBox_8.FocusLost:Connect(function()
+		local n = tonumber(G.TextBox_8.Text)
+		if n and n > 0 and n < 200 then
+			_G._VezyBatAimbotSpeed = n
+			G.TextBox_8.Text = tostring(n)
+		else
+			G.TextBox_8.Text = tostring(_G._VezyBatAimbotSpeed or 58)
+		end
+		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+	end)
+end
+if G.TextBox_9 then
+	G.TextBox_9.FocusLost:Connect(function()
+		local n = tonumber(G.TextBox_9.Text)
+		if n and n > 0 and n < 200 then
+			_G._VezyBatAimbotSpeedLagger = n
+			G.TextBox_9.Text = tostring(n)
+		else
+			G.TextBox_9.Text = tostring(_G._VezyBatAimbotSpeedLagger or 40)
+		end
+		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+	end)
+end
+
+wireNamedToggle(G.WaveTogglePill_23, false, function(on)
+	_G._VioletteccAimbotAutoSwing = on and true or false
+	if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+end)
+
+local Aim = { conn = nil, target = nil, equipped = false, nextTargetScan = 0, nextSwing = 0 }
+if G.TextButton_42 then G.TextButton_42.Text = bindingText("aimbot"); G.TextButton_42:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad") end
+if G.TextButton_42 then G.TextButton_42.MouseButton1Click:Connect(function() startRebind("aimbot", G.TextButton_42) end) end
+
+local function aimbotSpeed()
+	
+	
+	if St.laggerMode ~= 0 then
+		return math.clamp(tonumber(_G._VezyBatAimbotSpeedLagger) or 40, 1, 200)
+	end
+	return math.clamp(tonumber(_G._VezyBatAimbotSpeed) or 58, 1, 200)
+end
+
+local function findBatTool()
+	local char = LocalPlayer.Character
+	if not char then return nil end
+	for _, t in ipairs(char:GetChildren()) do
+		if t:IsA("Tool") and (t.Name:lower():find("bat") or t.Name:lower():find("medusa")) then
+			return t
+		end
+	end
+	local bp = LocalPlayer:FindFirstChild("Backpack")
+	if bp then
+		for _, t in ipairs(bp:GetChildren()) do
+			if t:IsA("Tool") and (t.Name:lower():find("bat") or t.Name:lower():find("medusa")) then
+				return t
+			end
+		end
+	end
+	return nil
+end
+
+local function closestEnemyRoot()
+	local char = LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if not root then return nil end
+	local best, bd = nil, 120
+	for _, p in ipairs(Players:GetPlayers()) do
+		if p ~= LocalPlayer and p.Character then
+			local tr = p.Character:FindFirstChild("HumanoidRootPart")
+			local hm = p.Character:FindFirstChildOfClass("Humanoid")
+			if tr and hm and hm.Health > 0 then
+				local d = (tr.Position - root.Position).Magnitude
+				if d < bd then best, bd = tr, d end
+			end
+		end
+	end
+	return best
+end
+
+local function stepNormal(root, hum, target)
+	local targetVelocity = target.AssemblyLinearVelocity
+	local targetPosition = target.Position
+	local aimPosition = targetPosition + targetVelocity * 0.14 + target.CFrame.LookVector * 0.3
+	local direction = aimPosition - root.Position
+	local flat = Vector3.new(direction.X, 0, direction.Z)
+	flat = flat.Magnitude < 0.05 and root.CFrame.LookVector or flat.Unit
+	local vertical = (targetPosition.Y + 3.7 - root.Position.Y) * 19.5 + targetVelocity.Y * 0.8
+	if hum.FloorMaterial ~= Enum.Material.Air then vertical = math.max(vertical, 13) end
+	vertical = math.clamp(vertical, -70, 110)
+	local speed = aimbotSpeed()
+	root.AssemblyLinearVelocity = root.AssemblyLinearVelocity:Lerp(
+		Vector3.new(flat.X * speed, vertical, flat.Z * speed), 0.8
+	)
+	local facing = targetPosition + targetVelocity * math.clamp(targetVelocity.Magnitude / 150, 0.05, 0.2)
+	if (facing - root.Position).Magnitude > 0.1 then
+		local rx, ry, rz = (root.CFrame:Inverse() * CFrame.lookAt(root.Position, facing)):ToEulerAnglesXYZ()
+		root.AssemblyAngularVelocity = root.CFrame:VectorToWorldSpace(Vector3.new(
+			math.clamp(rx, -2.5, 2.5) * 42,
+			math.clamp(ry, -2.5, 2.5) * 42,
+			math.clamp(rz, -2.5, 2.5) * 42
+		))
+	end
+end
+
+local VIS = { track = setmetatable({}, { __mode = "k" }), nextSwingAt = 0, lastClean = 0 }
+local function visTrueVelocity(rootPart, now)
+	if not rootPart or not rootPart.Parent then return Vector3.zero end
+	local rec = VIS.track[rootPart]
+	if not rec then
+		rec = { s = {}, vel = Vector3.zero, ready = false }
+		VIS.track[rootPart] = rec
+	end
+	local pos = rootPart.Position
+	local last = rec.s[#rec.s]
+	if last then
+		local ddt = now - last.t
+		if ddt > 1 / 240 and ddt < 0.2 then
+			local raw = (pos - last.pos) / ddt
+			local clamped = Vector3.new(
+				math.clamp(raw.X, -150, 150),
+				math.clamp(raw.Y, -150, 150),
+				math.clamp(raw.Z, -150, 150)
+			)
+			if rec.ready then rec.vel = rec.vel:Lerp(clamped, 0.5) else rec.vel = clamped; rec.ready = true end
+		end
+	end
+	table.insert(rec.s, { pos = pos, t = now })
+	while #rec.s > 6 do table.remove(rec.s, 1) end
+	return rec.vel
+end
+local function visReadVelocity(tgt, now)
+	local raw = tgt.AssemblyLinearVelocity
+	local tracked = visTrueVelocity(tgt, now)
+	if not tracked or tracked.Magnitude < 0.5 then
+		if raw.Magnitude > 400 then return Vector3.zero end
+		return raw
+	end
+	local diff = (raw - tracked).Magnitude
+	if raw.Magnitude > 250 then return tracked end
+	if diff > math.max(80, tracked.Magnitude * 1.5) then return tracked end
+	return raw
+end
+local function stepBypass(root, hum, target)
+	local me = root.Position
+	local them = target.Position
+	local spd = aimbotSpeed()
+	local now = os.clock()
+	if now - VIS.lastClean >= 5 then
+		VIS.lastClean = now
+		for r in pairs(VIS.track) do
+			if not r.Parent then VIS.track[r] = nil end
+		end
+	end
+	local targetVel = visReadVelocity(target, now)
+	local predictPos = them + targetVel * 0.14 + target.CFrame.LookVector * 0.3
+	local direction = predictPos - me
+	local flat = Vector3.new(direction.X, 0, direction.Z)
+	local flatDir = flat.Magnitude > 0.01 and flat.Unit or Vector3.zero
+	local yVel = (them.Y + 3.7 - me.Y) * 19.5 + targetVel.Y * 0.8
+	if hum.FloorMaterial ~= Enum.Material.Air then yVel = math.max(yVel, 13) end
+	yVel = math.clamp(yVel, -70, 110)
+	local desiredVel = Vector3.new(flatDir.X * spd, yVel, flatDir.Z * spd)
+	root.AssemblyLinearVelocity = root.AssemblyLinearVelocity:Lerp(desiredVel, 0.8)
+	local predictTime = math.clamp(targetVel.Magnitude / 150, 0.05, 0.2)
+	local predictedPos = them + targetVel * predictTime
+	if (predictedPos - me).Magnitude > 0.1 then
+		local rx, ry, rz = (root.CFrame:Inverse() * CFrame.lookAt(me, predictedPos)):ToEulerAnglesXYZ()
+		root.AssemblyAngularVelocity = root.CFrame:VectorToWorldSpace(Vector3.new(
+			math.clamp(rx, -2.5, 2.5) * 42,
+			math.clamp(ry, -2.5, 2.5) * 42,
+			math.clamp(rz, -2.5, 2.5) * 42
+		))
+	end
+	return (them - me).Magnitude <= 8
+end
+
+local function syncAimbotButtonVisual(on)
+	on = on == true
+	mobileToggles["AIMBOT"] = on
+	setFrameOn(G.StackBtn_aimbot, on)
+end
+
+stopBatAimbot = function()
+	_G._VezyBatAimbotOn = false
+	syncAimbotButtonVisual(false)
+	pcall(function() _setActionAntiDieSource("aimbot", false) end)
+	if Aim.conn then Aim.conn:Disconnect() Aim.conn = nil end
+	Aim.target, Aim.equipped = nil, false
+	local c = LocalPlayer.Character
+	local h = c and c:FindFirstChildOfClass("Humanoid")
+	local r = c and c:FindFirstChild("HumanoidRootPart")
+	if h then h.AutoRotate = true end
+	if r then r.AssemblyAngularVelocity = Vector3.zero end
+end
+
+startBatAimbot = function()
+	if _G._VezyBatAimbotOn == true and Aim.conn then
+		syncAimbotButtonVisual(true)
+		return
+	end
+	if Aim.conn then
+		Aim.conn:Disconnect()
+		Aim.conn = nil
+	end
+	_G._VezyBatAimbotOn = true
+	syncAimbotButtonVisual(true)
+	pcall(function() _setActionAntiDieSource("aimbot", true) end)
+	Aim.equipped = false
+	Aim.nextTargetScan = 0
+	Aim.nextSwing = 0
+	Aim.conn = RunService.RenderStepped:Connect(function()
+		if not _G._VezyBatAimbotOn then return end
+		local char = LocalPlayer.Character
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		if not root or not hum or hum.Health <= 0 then return end
+
+		if not Aim.equipped then
+			Aim.equipped = true
+			if not char:FindFirstChildOfClass("Tool") then
+				local b = findBatTool()
+				if b then pcall(function() hum:EquipTool(b) end) end
+			end
+		end
+
+		local now = os.clock()
+		if now >= Aim.nextTargetScan then
+			Aim.target = closestEnemyRoot()
+			Aim.nextTargetScan = now + 0.08
+		end
+		local target = Aim.target
+		if not target then
+			if _G._VioletteccAimbotAutoSwing == true and now >= Aim.nextSwing then
+				local idleBat = char:FindFirstChildOfClass("Tool") or findBatTool()
+				if idleBat and idleBat.Parent == char then pcall(function() idleBat:Activate() end) end
+				Aim.nextSwing = now + 0.14
+			end
+			return
+		end
+		hum.AutoRotate = false
+
+		local useBypass = (_G._VezyBatAimbotMode == "old")
+		if useBypass then
+			stepBypass(root, hum, target)
+		else
+			stepNormal(root, hum, target)
+		end
+
+		local bat = char:FindFirstChildOfClass("Tool") or findBatTool()
+		if _G._VioletteccAimbotAutoSwing == true and bat and bat.Parent == char and now >= Aim.nextSwing then
+			pcall(function() bat:Activate() end)
+			Aim.nextSwing = now + 0.14
+		end
+	end)
+end
+
+_G.VezyStartBatAimbot = startBatAimbot
+_G.VezyStopBatAimbot = stopBatAimbot
+_G.VezyStartBatAimbotDispatch = startBatAimbot
+
+if G.TextButton_42 then
+	G.TextButton_42.MouseButton1Click:Connect(function()
+		startRebind("aimbot", G.TextButton_42)
+	end)
+end
+if G.TextButton_43 then
+	local function refreshModeBtn()
+		if _G._VezyBatAimbotMode == "old" then
+			G.TextButton_43.Text = "Bypass"
+		else
+			G.TextButton_43.Text = "Normal"
+			_G._VezyBatAimbotMode = "new"
+		end
+	end
+	refreshModeBtn()
+	G.TextButton_43.MouseButton1Click:Connect(function()
+		if _G._VezyBatAimbotMode == "old" then
+			_G._VezyBatAimbotMode = "new"
+		else
+			_G._VezyBatAimbotMode = "old"
+		end
+		refreshModeBtn()
+		if _G._VezyBatAimbotOn then
+			startBatAimbot() 
+		end
+		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+	end)
+end
+
+UserInputService.InputBegan:Connect(function(inp, gp)
+	if gp and inp.UserInputType == Enum.UserInputType.Keyboard then return end
+	if inp.UserInputType ~= Enum.UserInputType.Keyboard and inp.UserInputType ~= Enum.UserInputType.Gamepad1 then return end
+	if rebinding then return end
+	if bindingMatches("aimbot", inp) then
+		local enabled = not _G._VezyBatAimbotOn
+		if enabled then startBatAimbot() else stopBatAimbot() end
+		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	end
+end)
+
+if G.TextButton_69 then
+	G.TextButton_69.MouseButton1Click:Connect(function()
+		if _G._VezyBatAimbotOn then stopBatAimbot() else startBatAimbot() end
+		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	end)
+end
+
+
+
+_G._VezyBatSpeedEnabled = false
+if G.WaveTogglePill_22 then
+	wireNamedToggle(G.WaveTogglePill_22, false, function(on)
+		_G._VezyBatSpeedEnabled = on
+		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+	end)
+end
+
+
 do
-local ms1=_I(_USK,mini);ms1.Color=C.border;ms1.Transparency=0.08;ms1.Thickness=1.5;local miniDot=_I(_FR,mini);miniDot.Size=_U(0,0,0,0);miniDot.Position=_U(0,0,0,0);miniDot[_BgC]=C.void;miniDot[_BgT]=1;miniDot.Visible=false;miniDot[_BSP]=0;miniDot[_ZI]=21
-_I(_UCR,miniDot)[_CRad]=_UD(1,0);local miniLogo=_I(_IL,mini);miniLogo.Name="CrimsonMiniLogo";miniLogo.AnchorPoint=Vector2.new(0.5,0.5);miniLogo.Size=_U(0,126,0,30);miniLogo.Position=_U(0.5,0,0.5,0);miniLogo[_BgT]=1;miniLogo.Image=LOGO_ID;miniLogo.ImageColor3=_C(255,255,255);miniLogo.ScaleType=Enum.ScaleType.Fit;miniLogo[_ZI]=21;miniLogo[_BSP]=0;_queueImagePreload(miniLogo)
+	local camera = workspace.CurrentCamera
+	local fovEnabled = false
+	local fovValue = 70
+	local draggingFov = false
+	local function setFovValue(value)
+		fovValue = math.clamp(math.floor((tonumber(value) or 70) + 0.5), 70, 120)
+		_G._WaveFovValue = fovValue
+		if G.TextLabel_43 then G.TextLabel_43.Text = tostring(fovValue) end
+		local alpha = (fovValue - 70) / 50
+		if G.Frame_74 then G.Frame_74.Size = UDim2.new(alpha, 0, 1, 0) end
+		if G.Frame_75 then G.Frame_75.Position = UDim2.new(alpha, -6, 0.5, -6) end
+		if fovEnabled and workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = fovValue end
+	end
+	_G._WaveFovSetValue = setFovValue
+	local function setFovEnabled(on)
+		fovEnabled = on == true
+		_G._WaveFovEnabled = fovEnabled
+		if fovEnabled then
+			if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = fovValue end
+		else
+			if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = 70 end
+		end
+	end
+	if G.WaveTogglePill_19 then wireNamedToggle(G.WaveTogglePill_19, false, setFovEnabled) end
+	local function updateFromX(x)
+		if not G.Frame_73 then return end
+		local width = math.max(1, G.Frame_73.AbsoluteSize.X)
+		local alpha = math.clamp((x - G.Frame_73.AbsolutePosition.X) / width, 0, 1)
+		setFovValue(70 + alpha * 50)
+	end
+	if G.TextButton_32 then
+		G.TextButton_32.Activated:Connect(function() end)
+		G.TextButton_32.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				draggingFov = true; updateFromX(input.Position.X)
+			end
+		end)
+	end
+	UserInputService.InputChanged:Connect(function(input)
+		if draggingFov and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then updateFromX(input.Position.X) end
+	end)
+	UserInputService.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then draggingFov = false end
+	end)
+	setFovValue(70)
+	if G.WAVEHubV1.Destroying then G.WAVEHubV1.Destroying:Connect(function() if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = 70 end end) end
 end
-_tc(mini,function()toggleGuiVis()end)
-makeDraggable(mini);resetProgressBar=function()progressPct.Text="";progressFill.Size=_U(0,0,1,0)end
-toggleGuiVis=function()
-_St.guiVisible=not _St.guiVisible
-if _St.guiVisible then
-local saved=root:GetAttribute("_hiddenPos");if saved then local parts={};for v in saved:gmatch("[^,]+")do parts[#parts+1]=tonumber(v)end;if#parts==4 then root.Position=_U(parts[1],parts[2],parts[3],parts[4]) end end;root.Visible=true;root.Active=true;uiScale.Scale=_St.guiScale*0.85;root[_BgT]=1;tw(root,0.22,{BackgroundTransparency=0.02},_ESQ)
-_TS:Create(uiScale,
-_TI(0.28,_ESB,_EDO),
-{Scale=_St.guiScale}
-):Play()
-else
-local p=root.Position
-root:SetAttribute("_hiddenPos",
-string.format("%.4f,%.4f,%.4f,%.4f",
-p.X.Scale,p.X.Offset,p.Y.Scale,p.Y.Offset))
-root.Active=false;tw(root,0.16,{BackgroundTransparency=1},_ESQ)
-local shrink=_TS:Create(uiScale,
-_TI(0.18,_ESQ,_EDN),
-{Scale=_St.guiScale*0.85}
-)
-shrink:Play()
-shrink.Completed:Connect(function()
-if not _St.guiVisible then root.Position=_U(0,-99999,0,-99999);root.Visible=false;uiScale.Scale=_St.guiScale end
-end)
+
+
+do
+	local savedHeadState = nil
+	local function applyHeadless(on)
+		local char = LocalPlayer.Character
+		local head = char and char:FindFirstChild("Head")
+		if not head then return end
+		if on then
+			if not savedHeadState or savedHeadState.head ~= head then
+				savedHeadState = {head = head, transparency = head.Transparency, decals = {}}
+				for _, child in ipairs(head:GetChildren()) do if child:IsA("Decal") or child:IsA("Texture") then savedHeadState.decals[child] = child.Transparency end end
+			end
+			head.Transparency = 1
+			for _, child in ipairs(head:GetChildren()) do if child:IsA("Decal") or child:IsA("Texture") then child.Transparency = 1 end end
+		else
+			if savedHeadState and savedHeadState.head == head then
+				head.Transparency = savedHeadState.transparency
+				for obj, value in pairs(savedHeadState.decals) do if obj and obj.Parent then obj.Transparency = value end end
+			end
+			savedHeadState = nil
+		end
+	end
+	if G.WaveTogglePill_20 then wireNamedToggle(G.WaveTogglePill_20, false, applyHeadless) end
+	LocalPlayer.CharacterAdded:Connect(function(char)
+		task.wait(0.5)
+		if G.WaveTogglePill_20 and G.WaveTogglePill_20:GetAttribute("WaveToggleOn") then applyHeadless(true) end
+	end)
 end
-_apbl()
+
+
+do
+	local bodyLockOn = false
+	local bodyLockRange = 20
+	local bodyLockConn = nil
+	local function setBodyLock(on)
+		bodyLockOn = on == true
+		if bodyLockConn then bodyLockConn:Disconnect(); bodyLockConn = nil end
+		if not bodyLockOn then
+			local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+			if hum then hum.AutoRotate = true end
+			return
+		end
+		bodyLockConn = RunService.Heartbeat:Connect(function()
+			local char = LocalPlayer.Character
+			local root = char and char:FindFirstChild("HumanoidRootPart")
+			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			if not root or not hum or hum.Health <= 0 then return end
+			local target, bestDist = nil, bodyLockRange
+			for _, player in ipairs(Players:GetPlayers()) do
+				if player ~= LocalPlayer and player.Character then
+					local targetRoot = player.Character:FindFirstChild("HumanoidRootPart")
+					local targetHum = player.Character:FindFirstChildOfClass("Humanoid")
+					if targetRoot and targetHum and targetHum.Health > 0 then
+						local distance = (targetRoot.Position - root.Position).Magnitude
+						if distance <= bestDist then target, bestDist = targetRoot, distance end
+					end
+				end
+			end
+			if not target then hum.AutoRotate = true; root.AssemblyAngularVelocity = Vector3.zero; return end
+			hum.AutoRotate = false
+			local offset = target.Position - root.Position
+			local desired = Vector3.new(offset.X, 0, offset.Z)
+			local facing = Vector3.new(root.CFrame.LookVector.X, 0, root.CFrame.LookVector.Z)
+			if desired.Magnitude > 0.01 and facing.Magnitude > 0.01 then
+				local angle = math.acos(math.clamp(facing.Unit:Dot(desired.Unit), -1, 1))
+				local cross = facing.Unit:Cross(desired.Unit)
+				root.AssemblyAngularVelocity = Vector3.new(0, cross.Y * angle * 10, 0)
+			end
+		end)
+	end
+	_G._WaveSetBodyLockRange = function(value)
+		local n = tonumber(value)
+		if n and n >= 1 then bodyLockRange = math.clamp(n, 1, 500); if G.TextBox_7 then G.TextBox_7.Text = tostring(bodyLockRange) end end
+	end
+	if G.WaveTogglePill_9 then wireNamedToggle(G.WaveTogglePill_9, false, setBodyLock) end
+	if G.TextBox_7 then
+		G.TextBox_7.FocusLost:Connect(function()
+			local n = tonumber(G.TextBox_7.Text)
+			if n and n >= 1 then _G._WaveSetBodyLockRange(n) else G.TextBox_7.Text = tostring(bodyLockRange) end
+			if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		end)
+	end
 end
+
+
+do
+	local modes = {"Off", "Both", "Left", "Right"}
+	local modeIndex = 1
+	local assets = {
+		["Left Leg"] = {id = "rbxassetid://139607673", target = "LeftUpperLeg", hide = {"LeftUpperLeg", "LeftLowerLeg", "LeftFoot"}},
+		["Right Leg"] = {id = "rbxassetid://139607718", target = "RightUpperLeg", hide = {"RightUpperLeg", "RightLowerLeg", "RightFoot"}},
+	}
+	local function clearKorblox()
+		local char = LocalPlayer.Character; if not char then return end
+		for _, name in ipairs({"Korblox_LeftLeg", "Korblox_RightLeg"}) do local old = char:FindFirstChild(name); if old then old:Destroy() end end
+		for _, name in ipairs({"LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "RightUpperLeg", "RightLowerLeg", "RightFoot"}) do
+			local limb = char:FindFirstChild(name); if limb and limb:IsA("BasePart") then limb.Transparency = 0; limb.LocalTransparencyModifier = 0 end
+		end
+	end
+	local function attachKorblox(which)
+		local config = assets[which]
+		local char = LocalPlayer.Character
+		local target = char and char:FindFirstChild(config.target)
+		if not target or not target:IsA("BasePart") then return end
+		if which == "Left Leg" then
+			local ok, objects = pcall(function() return game:GetObjects("rbxassetid://139607673") end)
+			if not ok or not objects or not objects[1] then return end
+			local old = char:FindFirstChild("Korblox_LeftLeg")
+			if old then old:Destroy() end
+			for _, d in ipairs(char:GetChildren()) do
+				if d:IsA("CharacterMesh") and d.Name == "Korblox_LeftCharacterMesh" then d:Destroy() end
+			end
+			local model = Instance.new("Model")
+			model.Name = "Korblox_LeftLeg"
+			for _, obj in ipairs(objects) do obj.Parent = model end
+			local parts, meshes = {}, {}
+			for _, obj in ipairs(model:GetDescendants()) do
+				if obj:IsA("BasePart") then table.insert(parts, obj)
+				elseif obj:IsA("CharacterMesh") then table.insert(meshes, obj) end
+			end
+			if #parts == 0 and #meshes == 0 then model:Destroy(); return end
+			for _, name in ipairs({"LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "Left Leg"}) do
+				local limb = char:FindFirstChild(name)
+				if limb and limb:IsA("BasePart") then limb.Transparency = 1; limb.LocalTransparencyModifier = 1 end
+			end
+			model.Parent = char
+			for _, part in ipairs(parts) do
+				local host = char:FindFirstChild(part.Name)
+				if not host or not host:IsA("BasePart") then host = target end
+				part.Anchored = false
+				part.CanCollide = false
+				part.CanTouch = false
+				part.CanQuery = false
+				part.Massless = true
+				part.CFrame = host.CFrame
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = host
+				weld.Part1 = part
+				weld.Parent = part
+			end
+			for _, mesh in ipairs(meshes) do
+				mesh.Name = "Korblox_LeftCharacterMesh"
+				mesh.Parent = char
+			end
+			return
+		end
+		for _, partName in ipairs(config.hide) do
+			local part = char:FindFirstChild(partName)
+			if part and part:IsA("BasePart") then part.Transparency = 1; part.LocalTransparencyModifier = 1 end
+		end
+		local ok, objects = pcall(function() return game:GetObjects(config.id) end)
+		local model = ok and objects and objects[1]
+		local mesh = model and (model:IsA("BasePart") and model or model:FindFirstChildWhichIsA("BasePart", true))
+		if not mesh then if model then pcall(function() model:Destroy() end) end; return end
+		model.Name = which == "Left Leg" and "Korblox_LeftLeg" or "Korblox_RightLeg"
+		mesh.CanCollide = false; mesh.CanTouch = false; mesh.CanQuery = false; mesh.Massless = true; mesh.CFrame = target.CFrame
+		local weld = Instance.new("WeldConstraint"); weld.Part0 = target; weld.Part1 = mesh; weld.Parent = mesh
+		model.Parent = char
+	end
+	local function applyKorblox(mode)
+		clearKorblox()
+		_G._RaVeKorbloxMode = mode
+		if mode == "Both" or mode == "Left" then attachKorblox("Left Leg") end
+		if mode == "Both" or mode == "Right" then attachKorblox("Right Leg") end
+	end
+	_G._RaVeApplyKorblox = applyKorblox
+	_G._WaveSetKorbloxMode = function(mode)
+		for i, candidate in ipairs(modes) do if candidate == mode then modeIndex = i; break end end
+		if G.TextButton_34 then G.TextButton_34.Text = modes[modeIndex] end
+		applyKorblox(modes[modeIndex])
+	end
+	local function applyKorbloxMode()
+		local mode = modes[modeIndex]
+		if G.TextButton_34 then G.TextButton_34.Text = mode end
+		applyKorblox(mode)
+		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+	end
+	if G.TextButton_34 then
+		G.TextButton_34.Text = "Off"
+		G.TextButton_34.Activated:Connect(function() modeIndex = modeIndex % #modes + 1; applyKorbloxMode() end)
+	end
+	LocalPlayer.CharacterAdded:Connect(function() task.wait(0.7); applyKorblox(_G._RaVeKorbloxMode or "Off") end)
 end
-local BASE_BTN,BASE_GAP,COLS=SIDE_BUTTON_BASE_SIZE,SIDE_BUTTON_BASE_GAP,2;local sideStates={}
-applySideButtonLook=function(instant)
-_St.sideButtonLook="purple"
-local inactiveTop=_C(112,76,151);local inactiveBottom=_C(25,14,39);local inactiveStroke=_C(135,100,175)
-local activeTop=_C(205,160,250);local activeBottom=_C(74,35,116);local activeStroke=_C(220,180,255)
-local buttonText=_C(255,255,255)
-for _,def in ipairs(SIDE_DEFS)do
-local ref=_sbr[def.key]
-if ref and ref.frame then
-local on=sideStates[def.key]==true
-local top=on and activeTop or inactiveTop
-local bottom=on and activeBottom or inactiveBottom
-local strokeColor=on and activeStroke or inactiveStroke
-local frame=ref.frame
-local stroke=frame:FindFirstChildOfClass(_USK)
-local corner=frame:FindFirstChildOfClass(_UCR)
-local grad=frame:FindFirstChild("CrimsonSideGradient")
-if not grad then grad=_I("UIGradient",frame);grad.Name="CrimsonSideGradient" end
-grad.Rotation=90
-grad.Color=ColorSequence.new({_CSK(0,top),_CSK(1,bottom)})
-frame.Font=_EGBK;frame[_TST]=1;frame[_BgC]=bottom;frame[_BgT]=0;frame[_TC3]=buttonText
-if corner then corner[_CRad]=_UD(0,10)end
-if stroke then
-stroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;stroke.LineJoinMode=Enum.LineJoinMode.Round
-stroke.Enabled=true;stroke.Thickness=2
-if instant then stroke.Color=strokeColor;stroke.Transparency=0 else tw(stroke,0.12,{Color=strokeColor,Transparency=0})end
+
+
+do
+	local accessorySaved = setmetatable({}, {__mode = "k"})
+	local function setAccessoriesHidden(on)
+		local char = LocalPlayer.Character
+		if not char then return end
+		if on then
+			for _, obj in ipairs(char:GetDescendants()) do
+				if obj:IsA("BasePart") and obj:FindFirstAncestorOfClass("Accessory") then
+					if accessorySaved[obj] == nil then accessorySaved[obj] = obj.LocalTransparencyModifier end
+					obj.LocalTransparencyModifier = 1
+				end
+			end
+		else
+			for obj, value in pairs(accessorySaved) do if obj and obj.Parent then pcall(function() obj.LocalTransparencyModifier = value end) end end
+			table.clear(accessorySaved)
+		end
+	end
+	if G.WaveTogglePill_16 then wireNamedToggle(G.WaveTogglePill_16, false, setAccessoriesHidden) end
+	LocalPlayer.CharacterAdded:Connect(function() task.wait(0.6); if G.WaveTogglePill_16 and G.WaveTogglePill_16:GetAttribute("WaveToggleOn") then setAccessoriesHidden(true) end end)
 end
+
+
+do
+	local savedBg = nil
+	local function setRemoveUiImage(on)
+		if not savedBg then
+			savedBg = {
+				mainImage = G.MenuBgImage and G.MenuBgImage.ImageTransparency or 0,
+				mainBackgroundTransparency = G.MenuBgImage and G.MenuBgImage.BackgroundTransparency or 1,
+				mainColor = G.MenuBgImage and G.MenuBgImage.BackgroundColor3 or Color3.fromRGB(35, 12, 55),
+				panelImage = G.BgImage and G.BgImage.ImageTransparency or 0,
+				panelColor = G.MobileStackPanel and G.MobileStackPanel.BackgroundColor3 or Color3.fromRGB(35, 12, 55),
+			}
+		end
+		if G.MenuBgImage then
+			if on then G.MenuBgImage.ImageTransparency = 1; G.MenuBgImage.BackgroundTransparency = 0; G.MenuBgImage.BackgroundColor3 = Color3.fromRGB(43, 14, 70)
+			else G.MenuBgImage.ImageTransparency = savedBg.mainImage; G.MenuBgImage.BackgroundTransparency = savedBg.mainBackgroundTransparency; G.MenuBgImage.BackgroundColor3 = savedBg.mainColor end
+		end
+		if G.BgImage then G.BgImage.ImageTransparency = on and 1 or savedBg.panelImage end
+		if G.MobileStackPanel then G.MobileStackPanel.BackgroundColor3 = on and Color3.fromRGB(43, 14, 70) or savedBg.panelColor end
+	end
+	if G.WaveTogglePill_30 then wireNamedToggle(G.WaveTogglePill_30, false, setRemoveUiImage) end
 end
+
+
+do
+	local Lighting = game:GetService("Lighting")
+	local savedLighting = nil
+	local function setDarkMode(on)
+		if on then
+			if not savedLighting then
+				savedLighting = {
+					ClockTime = Lighting.ClockTime,
+					Brightness = Lighting.Brightness,
+					Ambient = Lighting.Ambient,
+					OutdoorAmbient = Lighting.OutdoorAmbient,
+					GlobalShadows = Lighting.GlobalShadows,
+				}
+			end
+			Lighting.ClockTime = 0.5
+			Lighting.Brightness = 1
+			Lighting.Ambient = Color3.fromRGB(35, 35, 55)
+			Lighting.OutdoorAmbient = Color3.fromRGB(20, 20, 35)
+			Lighting.GlobalShadows = true
+		else
+			if savedLighting then
+				for property, value in pairs(savedLighting) do pcall(function() Lighting[property] = value end) end
+				savedLighting = nil
+			end
+		end
+	end
+	if G.WaveTogglePill_17 then wireNamedToggle(G.WaveTogglePill_17, false, setDarkMode) end
 end
+
+
+do
+	local e01Gui, e01Track, e01Fill, e01Text
+	local warningConn
+	local function shown(obj)
+		local a = obj
+		while a and a:IsA("GuiObject") do
+			if not a.Visible then return false end
+			a = a.Parent
+		end
+		return not (a and a:IsA("ScreenGui")) or a.Enabled
+	end
+	local function buildE01Warning()
+		if e01Gui and e01Gui.Parent then return end
+		local pg = LocalPlayer:FindFirstChildOfClass("PlayerGui")
+		if not pg then return end
+		e01Gui = Instance.new("BillboardGui")
+		e01Gui.Name = "WaveE01Warn"
+		e01Gui.Size = UDim2.fromOffset(170, 24)
+		e01Gui.StudsOffset = Vector3.new(0, 2.65, 0)
+		e01Gui.SizeOffset = Vector2.new(0, 1.25)
+		e01Gui.AlwaysOnTop = true
+		e01Gui.LightInfluence = 0
+		e01Gui.Enabled = false
+		e01Gui.ResetOnSpawn = false
+		e01Gui.Parent = pg
+		e01Track = Instance.new("Frame")
+		e01Track.Size = UDim2.fromScale(1, 1)
+		e01Track.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+		e01Track.BorderSizePixel = 0
+		e01Track.Parent = e01Gui
+		Instance.new("UICorner", e01Track).CornerRadius = UDim.new(1, 0)
+		e01Fill = Instance.new("Frame")
+		e01Fill.Size = UDim2.fromScale(0, 1)
+		e01Fill.BorderSizePixel = 0
+		e01Fill.Parent = e01Track
+		Instance.new("UICorner", e01Fill).CornerRadius = UDim.new(1, 0)
+		e01Text = Instance.new("TextLabel")
+		e01Text.Size = UDim2.fromScale(1, 1)
+		e01Text.BackgroundTransparency = 1
+		e01Text.Text = "E01 WARN"
+		e01Text.TextColor3 = Color3.new(1, 1, 1)
+		e01Text.TextStrokeTransparency = 0.4
+		e01Text.TextSize = 13
+		e01Text.Font = Enum.Font.GothamBold
+		e01Text.ZIndex = 2
+		e01Text.Parent = e01Track
+	end
+	local function setKickWarning(on)
+		if warningConn then warningConn:Disconnect(); warningConn = nil end
+		if not on then
+			if e01Gui then e01Gui.Enabled = false end
+			return
+		end
+		buildE01Warning()
+		local started
+		warningConn = RunService.Heartbeat:Connect(function()
+			local char = LocalPlayer.Character
+			local head = char and char:FindFirstChild("Head")
+			local stealing = LocalPlayer:GetAttribute("Stealing") == true
+			if not head or not stealing then
+				started = nil
+				if e01Gui then e01Gui.Enabled = false end
+				return
+			end
+			started = started or os.clock()
+			local a = math.clamp((os.clock() - started) / 2.9, 0, 1)
+			if e01Gui then
+				e01Gui.Adornee = head
+				e01Gui.Enabled = true
+				if e01Fill then
+					e01Fill.Size = UDim2.fromScale(a, 1)
+					e01Fill.BackgroundColor3 = Color3.fromRGB(255, 0, 0):Lerp(Color3.fromRGB(0, 255, 0), a)
+				end
+			end
+		end)
+	end
+	if G.WaveTogglePill_7 then wireNamedToggle(G.WaveTogglePill_7, false, setKickWarning) end
 end
-sideDefaultPos=function(i)
-local s=_St.sideButtonScale or 1;local BTN_W=BASE_BTN*s;local BTN_H=BASE_BTN*s;local BTN_GAP=BASE_GAP;local EDGE=14*s;local DEFAULT_Y=0.43;local nonWideCount=0;for _,def in ipairs(SIDE_DEFS)do if not def.wide then nonWideCount=nonWideCount+1 end end;local rows=math.ceil(nonWideCount/COLS);local totalHeight=rows*(BTN_H+BTN_GAP)-BTN_GAP;local gridW=COLS*(BTN_W+BTN_GAP)-BTN_GAP;local def=SIDE_DEFS[i]
-if def and def.wide and def.key=="tpDesync"then
-local wideW=2*BTN_W+BTN_GAP;local yOffset=totalHeight/2+(4*s)
-return _U(1,-(wideW+EDGE),DEFAULT_Y,yOffset)
+
+
+do
+	local stretchOn = false
+	local stretchConn = nil
+	local function setStretch(on)
+		stretchOn = on == true
+		_G._WaveStretchRezEnabled = stretchOn
+		if stretchConn then
+			stretchConn:Disconnect()
+			stretchConn = nil
+		end
+		if stretchOn then
+			local cam = workspace.CurrentCamera
+			if cam then
+				pcall(function()
+					cam.FieldOfView = 90
+				end)
+			end
+			stretchConn = RunService.RenderStepped:Connect(function()
+				if not stretchOn then
+					return
+				end
+				local current = workspace.CurrentCamera
+				if not current then
+					return
+				end
+				pcall(function()
+					current.FieldOfView = 90
+					current.CFrame = current.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0, 1)
+				end)
+			end)
+		else
+			local cam = workspace.CurrentCamera
+			if cam then
+				pcall(function()
+					cam.FieldOfView = 90
+				end)
+			end
+		end
+	end
+	if G.WaveTogglePill_21 then
+		wireNamedToggle(G.WaveTogglePill_21, false, setStretch)
+	end
 end
-local nonWideIdx=0;for j=1,i-1 do if not SIDE_DEFS[j].wide then nonWideIdx=nonWideIdx+1 end end
-if def.wide then
-return _U(1,-(2*BTN_W+BTN_GAP+EDGE),DEFAULT_Y,-BTN_H/2)
+
+do
+	local espEnabled=false; local espConn=nil; local playerAddedConn=nil; local records={}; local tracerGui=nil
+	local function getLocalRoot() local c=LocalPlayer.Character; return c and (c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("UpperTorso") or c:FindFirstChild("Torso") or c:FindFirstChild("Head")) end
+	local function getCamera() return workspace.CurrentCamera end
+	local function makeLine()
+		local line=Instance.new("Frame"); line.Name="WaveTracerLine"; line.AnchorPoint=Vector2.new(0.5,0.5); line.BorderSizePixel=0; line.BackgroundColor3=Color3.fromRGB(170,100,240); line.BackgroundTransparency=0; line.ZIndex=1000; line.Visible=false; line.Parent=tracerGui; return line
+	end
+	local function clearESP()
+		if espConn then espConn:Disconnect(); espConn=nil end
+		if playerAddedConn then playerAddedConn:Disconnect(); playerAddedConn=nil end
+		for _,rec in pairs(records) do pcall(function() if rec.highlight then rec.highlight:Destroy() end; if rec.line then rec.line:Destroy() end end) end
+		table.clear(records)
+		if tracerGui then pcall(function() tracerGui:Destroy() end); tracerGui=nil end
+	end
+	local function create(player)
+		if player==LocalPlayer or records[player] then return end
+		local char=player.Character; if not char then return end
+		local h=Instance.new("Highlight"); h.Name="WaveESPHighlight"; h.Adornee=char; h.FillColor=Color3.fromRGB(150,70,220); h.OutlineColor=Color3.fromRGB(220,180,255); h.FillTransparency=0.82; h.OutlineTransparency=0.08; h.Parent=char
+		local line=makeLine(); records[player]={highlight=h,line=line}
+	end
+	local function recreate(player)
+		local r=records[player]; if r then pcall(function() if r.highlight then r.highlight:Destroy() end; if r.line then r.line:Destroy() end end); records[player]=nil end
+		if espEnabled then task.wait(0.15); create(player) end
+	end
+	local function updateLine(line,a,b,visible)
+		if not line then return end
+		if not visible then line.Visible=false; return end
+		local delta=b-a; local length=delta.Magnitude
+		if length<1 then line.Visible=false; return end
+		line.Position=UDim2.fromOffset((a.X+b.X)*0.5,(a.Y+b.Y)*0.5)
+		line.Size=UDim2.fromOffset(math.max(1,length),2)
+		line.Rotation=math.deg(math.atan2(delta.Y,delta.X))
+		line.Visible=true
+	end
+	local function setESP(on)
+		espEnabled=on==true; _G._WaveESPEnabled=espEnabled; clearESP(); if not espEnabled then return end
+		tracerGui=Instance.new("ScreenGui"); tracerGui.Name="WaveTracerGui"; tracerGui.ResetOnSpawn=false; tracerGui.IgnoreGuiInset=true; tracerGui.DisplayOrder=2147483646; tracerGui.ZIndexBehavior=Enum.ZIndexBehavior.Global; tracerGui.Parent=LocalPlayer:WaitForChild("PlayerGui")
+		for _,plr in ipairs(Players:GetPlayers()) do if plr~=LocalPlayer then create(plr); plr.CharacterAdded:Connect(function() recreate(plr) end) end end
+		playerAddedConn=Players.PlayerAdded:Connect(function(plr) plr.CharacterAdded:Connect(function() recreate(plr) end); if plr.Character then create(plr) end end)
+		espConn=RunService.RenderStepped:Connect(function()
+			if not espEnabled then return end
+			local camera=getCamera(); local root=getLocalRoot(); if not camera or not root then for _,r in pairs(records) do updateLine(r.line,nil,nil,false) end; return end
+			local originPos,originOnScreen=camera:WorldToViewportPoint(root.Position)
+			for plr,r in pairs(records) do
+				local char=plr.Character; local head=char and char:FindFirstChild("Head")
+				if r.highlight and char then r.highlight.Adornee=char; r.highlight.Parent=char end
+				if head then
+					local targetPos,targetOnScreen=camera:WorldToViewportPoint(head.Position)
+					
+					updateLine(r.line,Vector2.new(originPos.X,originPos.Y),Vector2.new(targetPos.X,targetPos.Y),originOnScreen and targetOnScreen and targetPos.Z>0)
+				else updateLine(r.line,nil,nil,false) end
+			end
+		end)
+		_G._WaveESPCleanup=clearESP
+	end
+	if G.WaveTogglePill_15 then wireNamedToggle(G.WaveTogglePill_15,false,setESP) end
 end
-local col=nonWideIdx%COLS;local row=_mf(nonWideIdx/COLS)
-return _U(1,-(gridW+EDGE)+col*(BTN_W+BTN_GAP),DEFAULT_Y,-totalHeight/2+row*(BTN_H+BTN_GAP))
-end
-local sidePosSaveDebounce=nil
-local function saveSidePositions()
-if sidePosSaveDebounce then sidePosSaveDebounce:Disconnect()end
-sidePosSaveDebounce=task.delay(0.5,function()
-_St.sideButtonPositions={};for key,ref in pairs(_sbr)do if ref and ref.frame then local pos=ref.frame.Position;_St.sideButtonPositions[key]=string.format("%.3f,%.3f,%.3f,%.3f",pos.X.Scale,pos.X.Offset,pos.Y.Scale,pos.Y.Offset) end end;_scfg();sidePosSaveDebounce=nil
-end)
-end
-for i,def in ipairs(SIDE_DEFS)do
-local btn=_I(_TB,gui);btn.Name="SideBtn_"..def.key;local initialWidth,initialHeight=getSideButtonSize(def);btn.Size=_U(0,initialWidth,0,initialHeight)
-btn.Position=sideDefaultPos(i);btn[_BgC]=_C(30,18,46);btn[_BSP]=0;btn[_ABC]=false;btn.Text=def.label;btn[_TC3]=_C(255,255,255);btn[_TSz]=def.wide and 13 or 10;btn.Font=_EGBK;btn.TextWrapped=true;btn.LineHeight=0.95;btn.TextYAlignment=Enum.TextYAlignment.Center;btn.TextXAlignment=Enum.TextXAlignment.Center;btn[_TST]=1;btn[_ZI]=15;btn.Visible=_St.sideButtonsVisible;local bCorner=_I(_UCR,btn);bCorner[_CRad]=_UD(0,10);local bStroke=_I(_USK,btn);bStroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;bStroke.LineJoinMode=Enum.LineJoinMode.Round;bStroke.Color=_C(135,100,175);bStroke.Thickness=2;bStroke.Transparency=0;local sideGrad=_I("UIGradient",btn);sideGrad.Name="CrimsonSideGradient";sideGrad.Rotation=90;sideGrad.Color=ColorSequence.new({_CSK(0,_C(112,76,151)),_CSK(1,_C(25,14,39))});sideStates[def.key]=false
-local function setOn(on)
-sideStates[def.key]=on
-if applySideButtonLook then applySideButtonLook(false)end
-end
-_sbr[def.key]={setOn=setOn,frame=btn};local ds,sp,dragging,moved=nil,nil,false,false;local _tpFired=false;local _actCd=false;local dragInput=nil;local dragAll=false;local groupStartPositions=nil;local momentaryColorToken=0
-local function flashMomentaryColor()
-momentaryColorToken=momentaryColorToken+1;local token=momentaryColorToken;setOn(true);task.delay(0.15,function()if token==momentaryColorToken then setOn(false)end end)
-end
-local function doAction()
-if def.key=="tpDown"then if not _tpFired then flashMomentaryColor();doTpDown()end;return end
-if def.key=="tpDesync"then
-_St.desyncAimbotEnabled=not _St.desyncAimbotEnabled;if setDesyncAimbot then setDesyncAimbot(_St.desyncAimbotEnabled)end;if _St.desyncAimbotEnabled then _VH_forceAimbotOff();startDesyncAimbot()else stopDesyncAimbot()end;setOn(_St.desyncAimbotEnabled)
-return
-end
-if def.key=="instaReset"then flashMomentaryColor();instaReset();return end
-if def.key=="drop"then setOn(true);runDropBrainrot();_tw(0.15);setOn(false);return end
-if def.key=="lagger"then
-if _St.laggerMode==1 then
-_VH_speedToNormal()
-else
-_VH_speedToNormal();setLaggerMode(1)
-end
-return
-end
-if def.key=="laggerCarry"then
-if _St.laggerMode==2 then
-_VH_speedToNormal()
-else
-_VH_speedToNormal();setLaggerMode(2)
-end
-return
-end
-local ns=not sideStates[def.key];setOn(ns)
-if def.key=="autoLeft"then
-if ns then _VH_forceAimbotOff();_VH_forceDesyncOff()end;_St.autoLeftEnabled=ns;if setAutoLeft then setAutoLeft(ns)end;if ns then startAutoLeft()else stopAutoLeft()end
-elseif def.key=="autoRight"then
-if ns then _VH_forceAimbotOff();_VH_forceDesyncOff()end;_St.autoRightEnabled=ns;if setAutoRight then setAutoRight(ns)end;if ns then startAutoRight()else stopAutoRight()end
-elseif def.key=="aimbot"then
-_St.autoBatToggled=ns;if setAutoBat then setAutoBat(ns)end;if ns then _VH_forceDesyncOff();startBatAimbot()else stopBatAimbot()end
-elseif def.key=="carrySpeed"then
-if _St.laggerMode==0 and _St.speedToggled then
-_VH_speedToNormal()
-return
-end
-_VH_speedToNormal();_St.speedToggled=true;if modeValLbl then modeValLbl.Text="Carry"end;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(true)end
-end
-end
-local _sideEntry={btn=btn,cd=false,ibFired=false}
-_sideEntry.fire=function()
-if _sideEntry.cd then return end;if not(btn and btn.Parent)then return end;if btn[_AbS].X<=0 or btn[_AbS].Y<=0 then return end
-_sideEntry.cd=true;task.delay(0.3,function()_sideEntry.cd=false;_sideEntry.ibFired=false end)
-_ppop(btn)
-if def.key=="tpDown"then
-flashMomentaryColor();doTpDown();_tpFired=true
-else
-if not _actCd then _actCd=true;task.delay(0.25,function()_actCd=false end) _ts(doAction) end end
-end
-_ti(_treg,_sideEntry)
-btn.InputBegan:Connect(function(inp)
-if inp.UserInputType~=_UIB and inp.UserInputType~=_UIT then return end
-local bp=btn.AbsolutePosition;local bs=btn[_AbS];local bx,by=inp.Position.X,inp.Position.Y
-if not(bx>=bp.X and bx<=bp.X+bs.X and by>=bp.Y and by<=bp.Y+bs.Y)then return end
-if root and root.Visible then
-local rp=root.AbsolutePosition;local rs=root[_AbS];local px,py=inp.Position.X,inp.Position.Y
-if px>=rp.X and px<=rp.X+rs.X and py>=rp.Y and py<=rp.Y+rs.Y then
-return
-end
-end
-dragInput=inp;ds=inp.Position;sp=btn.Position;dragging=true;moved=false;_tpFired=false;dragAll=_St.sideButtonDragMode=="all";groupStartPositions=nil
-if dragAll then groupStartPositions={};for key,ref in pairs(_sbr)do if ref and ref.frame then groupStartPositions[key]=ref.frame.Position end end end
-end)
-UIS.InputChanged:Connect(function(inp)
-if not dragging or not dragInput then return end;local mouseMove=dragInput.UserInputType==_UIB and inp.UserInputType==_UIM;local touchMove=dragInput.UserInputType==_UIT and inp==dragInput;if not(mouseMove or touchMove)then return end;local d=inp.Position-ds;if d.Magnitude>20 then moved=true end;if moved and not _St.sideButtonsLocked then
-if dragAll and groupStartPositions then for key,startPos in pairs(groupStartPositions)do local ref=_sbr[key];if ref and ref.frame then ref.frame.Position=_U(startPos.X.Scale,startPos.X.Offset+d.X,startPos.Y.Scale,startPos.Y.Offset+d.Y)end end
-else btn.Position=_U(sp.X.Scale,sp.X.Offset+d.X,sp.Y.Scale,sp.Y.Offset+d.Y)end
-end
-end)
-local function finishSideDrag(inp)
-if not dragging or not dragInput then return end;local mouseEnd=dragInput.UserInputType==_UIB and inp.UserInputType==_UIB;local touchEnd=dragInput.UserInputType==_UIT and inp==dragInput;if not(mouseEnd or touchEnd)then return end
-dragging=false;dragInput=nil;dragAll=false;groupStartPositions=nil;if moved then saveSidePositions();return end
-local ep=btn.AbsolutePosition;local es=btn[_AbS];local ex,ey=inp.Position.X,inp.Position.Y
-if not(ex>=ep.X and ex<=ep.X+es.X and ey>=ep.Y and ey<=ep.Y+es.Y)then return end
-if _actCd then return end
-_actCd=true;task.delay(0.25,function()_actCd=false end)
-if def.key=="tpDown"then flashMomentaryColor();doTpDown();_tpFired=true else doAction()end
-end
-btn.InputEnded:Connect(finishSideDrag)
-UIS.InputEnded:Connect(finishSideDrag)
-end
-setSideVisible=function(on)
-_St.sideButtonsVisible=on;for _svKey,ref in pairs(_sbr)do if ref and ref.frame then local _hidIndiv=false;for _,hk in ipairs(_St.hiddenSideButtons or{})do if hk==_svKey then _hidIndiv=true;break end end;ref.frame.Visible=on and not _hidIndiv end end
-end
-setSideVisible(_St.sideButtonsVisible);if applySideButtonLook then applySideButtonLook(true)end;if _G._applySideButtonScale then _G._applySideButtonScale() end;local _arv={
-Enabled=false,
-Connection=nil,
-ResetCooldown=0,
+
+local NetBypass = {
+	Enabled = false,
+	Power = 100000,
+	loopTask = nil,
+	remote = nil,
+	payload = nil,
 }
-startAntiRagdoll=function()
-if _arv.Connection then return end;_arv.Enabled=true
-_arv.Connection=game:GetService("RunService").Heartbeat:Connect(function()
-if not _arv.Enabled then return end;local char=LP.Character;if not char then return end;local hum=char:FindFirstChildOfClass(_HM);local root=char:FindFirstChild(_HR);if not hum or not root or hum.Health<=0 then return end;local state=hum:GetState();local now=tick()
-if state==_HST.Physics or state==_HST.Ragdoll or state==_HST.FallingDown then
-if now-_arv.ResetCooldown>0.15 then
-_arv.ResetCooldown=now
-pcall(function()
-hum:ChangeState(_HST.GettingUp);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero;for _,obj in ipairs(char:GetDescendants())do if obj:IsA("Motor6D")then obj.Enabled=true end;if obj:IsA("Constraint")then obj.Enabled=true end end
-workspace.CurrentCamera.CameraSubject=hum;local PM=LP.PlayerScripts:FindFirstChild("PlayerModule");if PM then local CM=require(PM:FindFirstChild("ControlModule"));if CM then CM:Enable()end end;hum.AutoRotate=true;hum.PlatformStand=false;hum.Sit=false
+local function findBlockRemote()
+	local storage = game:FindFirstChild("RobloxReplicatedStorage")
+	if not storage then return nil end
+	local names = {"SetPlayerBlockList", "UpdatePlayerBlockList", "SetBlockList", "UpdateBlockList"}
+	for _, name in ipairs(names) do
+		local r = storage:FindFirstChild(name)
+		if r and r:IsA("RemoteEvent") then return r end
+	end
+	for _, child in ipairs(storage:GetChildren()) do
+		if child:IsA("RemoteEvent") and child.Name:find("Block") then return child end
+	end
+	return nil
+end
+local function buildPayloadV1()
+	local main = {}
+	local nested = {{}}
+	local current = nested[1]
+	for _ = 1, 296 do
+		local new = {}
+		table.insert(current, new)
+		current = new
+	end
+	local maxRep = math.min(math.floor(NetBypass.Power / 298), 10000)
+	for _ = 1, maxRep do
+		table.insert(main, nested)
+	end
+	return main
+end
+local function stopNetBypass()
+	NetBypass.Enabled = false
+	if NetBypass.loopTask then task.cancel(NetBypass.loopTask) NetBypass.loopTask = nil end
+end
+local function startNetBypass()
+	stopNetBypass()
+	NetBypass.Enabled = true
+	NetBypass.payload = buildPayloadV1()
+	NetBypass.loopTask = task.spawn(function()
+		while NetBypass.Enabled do
+			if not NetBypass.remote then
+				NetBypass.remote = findBlockRemote()
+				task.wait(1)
+			else
+				pcall(function() NetBypass.remote:FireServer(NetBypass.payload) end)
+				task.wait(0.125)
+			end
+		end
+	end)
+end
+_G.WAVE_StartBypassV1 = startNetBypass
+_G.WAVE_StopBypassV1 = stopNetBypass
+
+St.autoStealOn = false
+St.autoStealVersion = "Normal"
+St.ragdollStealOn = false
+St.ragdollStealPauseUntil = 0
+St.stealRadius = tonumber(G.TextBox_10 and G.TextBox_10.Text) or 60
+St.stealDuration = tonumber(G.TextBox_11 and G.TextBox_11.Text) or 1.35
+
+local function setStealProgress(p)
+	p = math.clamp(tonumber(p) or 0, 0, 1)
+	if St.ragdollStealOn and St.autoStealOn and tick() < (St.ragdollStealPauseUntil or 0) then
+		p = 0
+	end
+	if Fill and Fill.Parent then
+		Fill.Size = UDim2.new(p, 0, 1, 0)
+	end
+	
+end
+_G.WAVE_SetStealProgress = setStealProgress
+setStealProgress(0)
+
+if G.TextBox_10 then
+	G.TextBox_10.FocusLost:Connect(function()
+		local n = tonumber(G.TextBox_10.Text)
+		if n and n > 0 and n < 500 then
+			St.stealRadius = n
+			G.TextBox_10.Text = tostring(n)
+			setStealProgress(0)
+			if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		else
+			G.TextBox_10.Text = tostring(St.stealRadius)
+		end
+	end)
+end
+if G.TextBox_11 then
+	G.TextBox_11.FocusLost:Connect(function()
+		local n = tonumber(G.TextBox_11.Text)
+		if n and n > 0.05 and n < 10 then
+			St.stealDuration = n
+			G.TextBox_11.Text = string.format("%.2f", n)
+			setStealProgress(0)
+			if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		else
+			G.TextBox_11.Text = string.format("%.2f", St.stealDuration)
+		end
+	end)
+end
+
+local autoStealConn = nil
+local autoStealBusy = false
+
+
+local STOP_AT_HIT_DELAY = 1.3
+local ragdollStealPauseUntil = 0
+local ragdollStealHealthConn
+local ragdollStealStateLatched = false
+local function registerRagdollStealHit()
+	if not (St.ragdollStealOn and St.autoStealOn) then return end
+	local now = tick()
+	ragdollStealPauseUntil = now + STOP_AT_HIT_DELAY
+	St.ragdollStealPauseUntil = ragdollStealPauseUntil
+	ragdollStealStateLatched = true
+	setStealProgress(0)
+end
+local function bindRagdollStealHealth(character)
+	if ragdollStealHealthConn then ragdollStealHealthConn:Disconnect(); ragdollStealHealthConn = nil end
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	if not humanoid then return end
+	local lastHealth = humanoid.Health
+	ragdollStealHealthConn = humanoid.HealthChanged:Connect(function(newHealth)
+		if newHealth < lastHealth then registerRagdollStealHit() end
+		lastHealth = newHealth
+	end)
+end
+LocalPlayer.CharacterAdded:Connect(function(character)
+	ragdollStealPauseUntil = 0
+	St.ragdollStealPauseUntil = 0
+	ragdollStealStateLatched = false
+	task.defer(bindRagdollStealHealth, character)
 end)
+task.defer(bindRagdollStealHealth, LocalPlayer.Character)
+local function isRagdollStealHitState()
+	local character = LocalPlayer.Character
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	if not humanoid or humanoid.Health <= 0 then return false end
+	local serverNow = workspace:GetServerTimeNow()
+	local endTime = LocalPlayer:GetAttribute("RagdollEndTime")
+		or character:GetAttribute("RagdollEndTime") or humanoid:GetAttribute("RagdollEndTime")
+	if type(endTime) == "number" and endTime > serverNow then return true end
+	if LocalPlayer:GetAttribute("Ragdolled") == true or LocalPlayer:GetAttribute("Ragdoll") == true
+		or character:GetAttribute("Ragdolled") == true or character:GetAttribute("Ragdoll") == true
+		or humanoid:GetAttribute("Ragdolled") == true or humanoid:GetAttribute("Ragdoll") == true then
+		return true
+	end
+	local state = humanoid:GetState()
+	return humanoid.PlatformStand or state == Enum.HumanoidStateType.Physics
+		or state == Enum.HumanoidStateType.Ragdoll or state == Enum.HumanoidStateType.FallingDown
 end
+local function waitForRagdollStealClear()
+	if not (St.ragdollStealOn and St.autoStealOn) then return false end
+	if isRagdollStealHitState() and not ragdollStealStateLatched then
+		registerRagdollStealHit()
+	end
+	if ragdollStealPauseUntil <= tick() then
+		if not isRagdollStealHitState() then ragdollStealStateLatched = false end
+		return false
+	end
+	setStealProgress(0)
+	while St.autoStealOn and St.ragdollStealOn and tick() < ragdollStealPauseUntil do
+		setStealProgress(0)
+		task.wait(0.02)
+	end
+	if not St.autoStealOn then return false end
+	if not St.ragdollStealOn then return true end
+	if not isRagdollStealHitState() then ragdollStealStateLatched = false end
+	return true
 end
+
+
+
+
+
+
+local STEAL_MODE = 75              
+local ACTIVATION_RANGE = 9         
+local stealData = setmetatable({}, {__mode = "k"})
+
+local function getStealRoot()
+	local char = LocalPlayer.Character
+	return char and (char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("Torso") or char:FindFirstChild("UpperTorso"))
+end
+
+local function isOwnPlot(plotName)
+	local plots = workspace:FindFirstChild("Plots")
+	local plot = plots and plots:FindFirstChild(plotName)
+	local sign = plot and plot:FindFirstChild("PlotSign")
+	local yourBase = sign and sign:FindFirstChild("YourBase")
+	if yourBase and yourBase:IsA("BillboardGui") then return yourBase.Enabled == true end
+	return false
+end
+
+local function findStealTarget()
+	local root = getStealRoot()
+	local plots = workspace:FindFirstChild("Plots")
+	if not (root and plots) then return nil end
+	local radius = tonumber(St.stealRadius) or 60
+	local best, bestDist = nil, math.huge
+	for _, plot in ipairs(plots:GetChildren()) do
+		if not isOwnPlot(plot.Name) then
+			local podiums = plot:FindFirstChild("AnimalPodiums")
+			if podiums then
+				for _, podium in ipairs(podiums:GetChildren()) do
+					local base = podium:FindFirstChild("Base")
+					local spawnPart = base and base:FindFirstChild("Spawn")
+					if spawnPart then
+						local d = (spawnPart.Position - root.Position).Magnitude
+						if d <= radius and d < bestDist then
+							local attachment = spawnPart:FindFirstChild("PromptAttachment")
+							if attachment then
+								for _, child in ipairs(attachment:GetChildren()) do
+									if child:IsA("ProximityPrompt") and child.ActionText and child.ActionText:find("Steal") then
+										best, bestDist = child, d
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	return best
+end
+
+local function runAutoStealOnce(prompt)
+	if not prompt or not prompt.Parent then return end
+	local data = stealData[prompt]
+	if not data then
+		data = {hold = {}, trigger = {}, ready = true}
+		stealData[prompt] = data
+		if type(getconnections) == "function" then
+			pcall(function()
+				for _, c in ipairs(getconnections(prompt.PromptButtonHoldBegan)) do
+					if c.Function then table.insert(data.hold, c.Function) end
+				end
+				for _, c in ipairs(getconnections(prompt.Triggered)) do
+					if c.Function then table.insert(data.trigger, c.Function) end
+				end
+			end)
+		end
+	end
+	if not data.ready then return end
+
+	data.ready = false
+	autoStealBusy = true
+
+	task.spawn(function()
+		local function finish(progress)
+			setStealProgress(progress or 0)
+			data.ready = true
+			autoStealBusy = false
+		end
+
+		local ok, err = pcall(function()
+			local duration = math.max(0.05, tonumber(St.stealDuration) or 1.4)
+			local ratio = STEAL_MODE / 100
+			local holdTime = ratio * duration
+			local rest = math.max(0.01, duration - holdTime)
+
+			local function runProgressCycle()
+				setStealProgress(0)
+				for _, cb in ipairs(data.hold) do pcall(cb) end
+
+				
+				local startedAt = tick()
+				while St.autoStealOn do
+					if waitForRagdollStealClear() then return "restart" end
+					if not St.autoStealOn then return "stopped" end
+					local elapsed = tick() - startedAt
+					setStealProgress(math.min(elapsed / duration, ratio))
+					if elapsed >= holdTime then break end
+					task.wait()
+				end
+				if not St.autoStealOn then return "stopped" end
+				setStealProgress(ratio)
+
+				
+				local reached = false
+				local waitStart = tick()
+				while St.autoStealOn and tick() - waitStart < 2.99 do
+					if waitForRagdollStealClear() then return "restart" end
+					if not St.autoStealOn then return "stopped" end
+					local root = getStealRoot()
+					local podium = prompt.Parent and prompt.Parent.Parent
+					if root and podium and podium:IsA("BasePart") then
+						local distance = (root.Position - podium.Position).Magnitude
+						if distance <= ACTIVATION_RANGE then reached = true; break end
+						if distance > (tonumber(St.stealRadius) or 60) then return "missed" end
+					end
+					task.wait()
+				end
+				if not reached then return "missed" end
+
+				
+				local phaseStart = tick()
+				while St.autoStealOn do
+					if waitForRagdollStealClear() then return "restart" end
+					if not St.autoStealOn then return "stopped" end
+					local progress = math.min(ratio + (tick() - phaseStart) / rest * (1 - ratio), 1)
+					setStealProgress(progress)
+					if progress >= 1 then break end
+					task.wait()
+				end
+				if not St.autoStealOn then return "stopped" end
+
+				setStealProgress(1)
+				for _, cb in ipairs(data.trigger) do pcall(cb) end
+				if type(fireproximityprompt) == "function" then pcall(fireproximityprompt, prompt, 0) end
+				task.wait(0.05)
+				return "done"
+			end
+
+			while St.autoStealOn do
+				local result = runProgressCycle()
+				if result == "restart" then
+					setStealProgress(0)
+				elseif result == "missed" or result == "done" or result == "stopped" then
+					break
+				else
+					break
+				end
+			end
+			finish(0)
+		end)
+		if not ok then
+			warn("Auto Steal error: " .. tostring(err))
+			finish(0)
+		end
+	end)
+end
+
+local function startAutoSteal()
+	if autoStealConn then return end
+	local acc = 0
+	autoStealConn = RunService.Heartbeat:Connect(function(dt)
+		if not St.autoStealOn or autoStealBusy then return end
+		acc = acc + dt
+		if acc < 0.05 then return end
+		acc = 0
+		local ok, target = pcall(findStealTarget)
+		if ok and target then pcall(runAutoStealOnce, target) end
+	end)
+end
+
+local function stopAutoSteal()
+	St.autoStealOn = false
+	ragdollStealPauseUntil = 0
+	St.ragdollStealPauseUntil = 0
+	ragdollStealStateLatched = false
+	if autoStealConn then autoStealConn:Disconnect() autoStealConn = nil end
+	setStealProgress(0)
+end
+
+wireNamedToggle(G.WaveTogglePill_28, false, function(on)
+	St.ragdollStealOn = on == true
+	if not on then
+		ragdollStealPauseUntil = 0
+		St.ragdollStealPauseUntil = 0
+		ragdollStealStateLatched = false
+	end
 end)
-end
-stopAntiRagdoll=function()
-_arv.Enabled=false;if _arv.Connection then _arv.Connection:Disconnect();_arv.Connection=nil end
-end
-local _batHitNames={bat=true,slap=true,["iron slap"]=true,["gold slap"]=true,["diamond slap"]=true,["emerald slap"]=true,["ruby slap"]=true,["dark matter slap"]=true,["flame slap"]=true,["nuclear slap"]=true,["galaxy slap"]=true,["glitched slap"]=true}
-local _batHitSequence=0;local _batHitTime=0;local _batHitLastTouch=0;local _batHitLastImpact=0;local _batHitLastVelocity=nil;local _batHitConns={};local _batHitBoundParts={}
-local function _isBatHitTool(tool)
-if not(tool and tool:IsA("Tool"))then return false end;local n=tool.Name:lower();return _batHitNames[n]==true or n:find("bat",1,true)~=nil or n:find("slap",1,true)~=nil
-end
-local function _nearbyBatAttacker(root)
-if not root then return false end
-for _,p in ipairs(_PL:GetPlayers())do if p~=LP and p.Character then local enemyRoot=p.Character:FindFirstChild(_HR);if enemyRoot and(enemyRoot.Position-root.Position).Magnitude<=24 then for _,obj in ipairs(p.Character:GetChildren())do if _isBatHitTool(obj)then return true end end end end end
-return false
-end
-local function _recordConfirmedBatHit()
-local now=tick();if now-_batHitTime<0.55 then return end;_batHitTime=now;_batHitSequence=_batHitSequence+1
-if not _St.stopOnHitEnabled then return end
-_St.stealPausedUntil=tick()+1.27
-_St.isStealing=false;_St.stealStartTime=nil;pcall(function()if Conns.progress then Conns.progress:Disconnect();Conns.progress=nil end end);if progressFill then progressFill.Size=_U(0,0,1,0)end;if progressPct then progressPct.Text=""end
-if _G._VH_abortSteal then pcall(_G._VH_abortSteal)end
-end
-local function _clearBatHitCharacterConns()
-for _,conn in ipairs(_batHitConns)do pcall(function()conn:Disconnect()end)end;_batHitConns={};_batHitBoundParts={}
-end
-local function _watchBatHitPart(part,char)
-if not part:IsA("BasePart")or _batHitBoundParts[part]then return end;_batHitBoundParts[part]=true
-_ti(_batHitConns,part.Touched:Connect(function(other)local tool=other and other:FindFirstAncestorOfClass("Tool");if tool and not tool:IsDescendantOf(char)and _isBatHitTool(tool)then _batHitLastTouch=tick()end end))
-end
-local function _bindBatHitDetector(char)
-_clearBatHitCharacterConns();_batHitLastTouch=0;_batHitLastImpact=0;_batHitLastVelocity=nil
-for _,obj in ipairs(char:GetDescendants())do _watchBatHitPart(obj,char)end
-_ti(_batHitConns,char.DescendantAdded:Connect(function(obj)_watchBatHitPart(obj,char)end));local hum=char:FindFirstChildOfClass(_HM)or char:WaitForChild(_HM,5)
-if hum then _ti(_batHitConns,hum.StateChanged:Connect(function(_,newState)
-if newState~=_HST.Physics and newState~=_HST.Ragdoll and newState~=_HST.FallingDown then return end
-_td(function()_tw(0.05);if not hum.Parent then return end;local root=char:FindFirstChild(_HR);local now=tick();local directContact=now-_batHitLastTouch<=0.75;local impact=now-_batHitLastImpact<=0.4 or(root and _readRootVelocity(root).Magnitude>=20);if directContact or(impact and _nearbyBatAttacker(root))then _recordConfirmedBatHit()end end)
-end))end
-end
-if LP.Character then _bindBatHitDetector(LP.Character)end;LP.CharacterAdded:Connect(function(char)_bindBatHitDetector(char)end)
-_RS.Heartbeat:Connect(function()
-local char=LP.Character;local root=char and char:FindFirstChild(_HR);if not root then _batHitLastVelocity=nil;return end;local velocity=_readRootVelocity(root);if _batHitLastVelocity and(velocity-_batHitLastVelocity).Magnitude>=18 then _batHitLastImpact=tick()end;_batHitLastVelocity=velocity
+
+wireNamedToggle(G.WaveTogglePill_29, false, function(on)
+	St.autoStealOn = on
+	if on then startAutoSteal() else stopAutoSteal() end
 end)
+
+St.autoStealVersion = "Normal"
+if G.TextButton_48 then
+	
+	G.TextButton_48.Visible = false
+	G.TextButton_48.Active = false
+end
+
+St.batCounterOn = false
+St.medusaCounterOn = false
+local batCounterDebounce = false
+local medusaCounterDebounce = false
+
+local function findToolByWords(words)
+	local char = LocalPlayer.Character
+	local function scan(container)
+		if not container then return nil end
+		for _, t in ipairs(container:GetChildren()) do
+			if t:IsA("Tool") then
+				local n = t.Name:lower()
+				for _, w in ipairs(words) do
+					if n:find(w) then return t end
+				end
+			end
+		end
+		return nil
+	end
+	return scan(char) or scan(LocalPlayer:FindFirstChild("Backpack"))
+end
+
+local function swingTool(tool)
+	if not tool then return end
+	local char = LocalPlayer.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	if hum and tool.Parent ~= char then
+		pcall(function() hum:EquipTool(tool) end)
+		task.wait(0.05)
+	end
+	pcall(function()
+		tool:Activate()
+		local re = tool:FindFirstChildWhichIsA("RemoteEvent")
+		if re then re:FireServer() end
+	end)
+end
+
+local function isPlayerDown(plr)
+	local char = plr.Character
+	if not char then return false end
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if not hum or hum.Health <= 0 then return true end
+	local st = hum:GetState()
+	return st == Enum.HumanoidStateType.Physics
+		or st == Enum.HumanoidStateType.Ragdoll
+		or st == Enum.HumanoidStateType.FallingDown
+		or st == Enum.HumanoidStateType.Dead
+end
+
+local function nearestDownEnemy(range)
+	local char = LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if not root then return nil end
+	local best, bd = nil, range or 20
+	for _, p in ipairs(Players:GetPlayers()) do
+		if p ~= LocalPlayer and isPlayerDown(p) and p.Character then
+			local r = p.Character:FindFirstChild("HumanoidRootPart")
+			if r then
+				local d = (r.Position - root.Position).Magnitude
+				if d < bd then best, bd = p, d end
+			end
+		end
+	end
+	return best
+end
+
+local batCounterConn = nil
+local function doBatCounterHit(target)
+	if batCounterDebounce or not St.batCounterOn then return end
+	batCounterDebounce = true
+	local bat = findToolByWords({"bat"})
+	local char = LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	local tRoot = target and target.Character and target.Character:FindFirstChild("HumanoidRootPart")
+	if root and tRoot and hum then
+		hum.AutoRotate = false
+		local dir = Vector3.new(tRoot.Position.X - root.Position.X, 0, tRoot.Position.Z - root.Position.Z)
+		if dir.Magnitude > 0.05 then
+			root.CFrame = CFrame.lookAt(root.Position, root.Position + dir.Unit)
+		end
+		swingTool(bat)
+		task.delay(0.08, function() swingTool(bat) end)
+		task.delay(0.16, function() swingTool(bat) end)
+	end
+	task.delay(0.4, function()
+		batCounterDebounce = false
+		local h = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+		if h then h.AutoRotate = true end
+	end)
+end
+
+local batStateConns = {}
+local function hookEnemyForCounter(plr)
+	if plr == LocalPlayer then return end
+	local function onChar(char)
+		task.wait(0.2)
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		if not hum then return end
+		local c = hum.StateChanged:Connect(function(_, new)
+			if not St.batCounterOn and not St.medusaCounterOn then return end
+			if new == Enum.HumanoidStateType.Physics
+				or new == Enum.HumanoidStateType.Ragdoll
+				or new == Enum.HumanoidStateType.FallingDown
+				or new == Enum.HumanoidStateType.Dead then
+				if St.batCounterOn then doBatCounterHit(plr) end
+				if St.medusaCounterOn then
+					task.defer(function()
+						local med = findToolByWords({"medusa", "snake", "gorgon"})
+						swingTool(med)
+						task.delay(0.1, function() swingTool(med) end)
+					end)
+				end
+			end
+		end)
+		table.insert(batStateConns, c)
+	end
+	if plr.Character then task.spawn(onChar, plr.Character) end
+	table.insert(batStateConns, plr.CharacterAdded:Connect(onChar))
+end
+
+local function closestCounterTarget(maxDistance)
+	local char = LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if not root then return nil end
+	local best, bestDist = nil, maxDistance or 22
+	for _, player in ipairs(Players:GetPlayers()) do
+		if player ~= LocalPlayer and player.Character then
+			local targetRoot = player.Character:FindFirstChild("HumanoidRootPart")
+			local targetHum = player.Character:FindFirstChildOfClass("Humanoid")
+			if targetRoot and targetHum and targetHum.Health > 0 then
+				local dist = (targetRoot.Position - root.Position).Magnitude
+				if dist < bestDist then best, bestDist = player, dist end
+			end
+		end
+	end
+	return best
+end
+local function triggerBatCounter()
+	if batCounterDebounce then return end
+	batCounterDebounce = true
+	task.spawn(function()
+		local char = LocalPlayer.Character
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		local victim = closestCounterTarget(22)
+		local victimRoot = victim and victim.Character and victim.Character:FindFirstChild("HumanoidRootPart")
+		local bat = findToolByWords({"bat"})
+		if char and hum and bat then
+			if bat.Parent ~= char then pcall(function() hum:EquipTool(bat) end); task.wait(0.03) end
+			if root and victimRoot then
+				local lookAt = Vector3.new(victimRoot.Position.X, root.Position.Y, victimRoot.Position.Z)
+				if (lookAt - root.Position).Magnitude > 0.01 then pcall(function() root.CFrame = CFrame.lookAt(root.Position, lookAt) end) end
+			end
+			task.wait(0.03)
+			if bat.Parent == char then pcall(function() bat:Activate() end) end
+		end
+		task.wait(0.25)
+		if hum and hum.Parent and not _G._VezyBatAimbotOn then hum.AutoRotate = true end
+		if root and root.Parent then root.AssemblyAngularVelocity = Vector3.zero end
+		batCounterDebounce = false
+	end)
+end
+local function startBatCounter()
+	if batCounterConn then return end
+	local wasRagdolled = false
+	batCounterConn = RunService.Heartbeat:Connect(function()
+		if not St.batCounterOn then wasRagdolled = false; return end
+		local char = LocalPlayer.Character
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		if not hum then wasRagdolled = false; return end
+		local state = hum:GetState()
+		local ragdolled = state == Enum.HumanoidStateType.Physics
+			or state == Enum.HumanoidStateType.Ragdoll
+			or state == Enum.HumanoidStateType.FallingDown
+			or hum.PlatformStand == true
+		if ragdolled and not wasRagdolled then triggerBatCounter() end
+		wasRagdolled = ragdolled
+	end)
+end
+local function stopBatCounter()
+	if batCounterConn then batCounterConn:Disconnect(); batCounterConn = nil end
+	batCounterDebounce = false
+end
+_G.VezyStartBatCounter = function() St.batCounterOn = true; startBatCounter() end
+_G.VezyStopBatCounter = function() St.batCounterOn = false; stopBatCounter() end
+wireNamedToggle(G.WaveTogglePill_26, false, function(on)
+	St.batCounterOn = on
+	if on then startBatCounter() else stopBatCounter() end
+end)
+
+local medusaConn = nil
+local medusaAnchorConns = {}
+local medusaLastUsed = 0
+local function stopMedusaCounter()
+	if medusaConn then medusaConn:Disconnect(); medusaConn = nil end
+	for _, connection in ipairs(medusaAnchorConns) do pcall(function() connection:Disconnect() end) end
+	table.clear(medusaAnchorConns)
+	medusaCounterDebounce = false
+end
+local function findMedusaCounterTool()
+	local char = LocalPlayer.Character
+	local backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
+	for _, container in ipairs({char, backpack}) do
+		if container then
+			for _, tool in ipairs(container:GetChildren()) do
+				if tool:IsA("Tool") then
+					local name = tool.Name:lower()
+					if name:find("medusa") or name:find("head") or name:find("stone") then return tool end
+				end
+			end
+		end
+	end
+	return nil
+end
+local function useMedusaCounter()
+	if medusaCounterDebounce or os.clock() - medusaLastUsed < 25 then return end
+	local char = LocalPlayer.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	local medusa = findMedusaCounterTool()
+	if not char or not hum or not medusa then return end
+	medusaCounterDebounce = true
+	if medusa.Parent ~= char then pcall(function() hum:EquipTool(medusa) end); task.wait(0.03) end
+	if medusa.Parent == char then pcall(function() medusa:Activate() end); medusaLastUsed = os.clock() end
+	medusaCounterDebounce = false
+end
+local function startMedusaCounter()
+	stopMedusaCounter()
+	if not St.medusaCounterOn then return end
+	local char = LocalPlayer.Character
+	if not char then return end
+	local function watchPart(part)
+		if not part:IsA("BasePart") then return end
+		local function check()
+			if St.medusaCounterOn and part.Parent and part.Anchored and part.Transparency >= 0.99 then
+				useMedusaCounter()
+			end
+		end
+		table.insert(medusaAnchorConns, part:GetPropertyChangedSignal("Anchored"):Connect(check))
+		table.insert(medusaAnchorConns, part:GetPropertyChangedSignal("Transparency"):Connect(check))
+		check()
+	end
+	for _, part in ipairs(char:GetDescendants()) do watchPart(part) end
+	medusaConn = char.DescendantAdded:Connect(watchPart)
+end
+wireNamedToggle(G.WaveTogglePill_27, false, function(on)
+	St.medusaCounterOn = on
+	if on then startMedusaCounter() else stopMedusaCounter() end
+end)
+LocalPlayer.CharacterAdded:Connect(function(char)
+	task.wait(0.35)
+	if St.medusaCounterOn then startMedusaCounter() end
+end)
+_G._AdaptStartMedusaCounter = function() St.medusaCounterOn = true; startMedusaCounter() end
+_G._AdaptStopMedusaCounter = function() St.medusaCounterOn = false; stopMedusaCounter() end
+
+St.unwalkOn = false
+St.antiLagOn = false
+St.ragdollTimerOn = false
+St.enemyRagdollTimerOn = false
+
+local unwalkConn = nil
+local function stopAllAnims(char)
+	if not char then return end
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if hum then
+		local animator = hum:FindFirstChildOfClass("Animator")
+		if animator then
+			for _, t in ipairs(animator:GetPlayingAnimationTracks()) do
+				pcall(function() t:Stop(0) end)
+			end
+		end
+	end
+	for _, d in ipairs(char:GetDescendants()) do
+		if d:IsA("AnimationController") then
+			local a = d:FindFirstChildOfClass("Animator")
+			if a then
+				for _, t in ipairs(a:GetPlayingAnimationTracks()) do
+					pcall(function() t:Stop(0) end)
+				end
+			end
+		end
+	end
+end
+
+local function startUnwalk()
+	if unwalkConn then return end
+	unwalkConn = RunService.Heartbeat:Connect(function()
+		if not St.unwalkOn then return end
+		stopAllAnims(LocalPlayer.Character)
+	end)
+	LocalPlayer.CharacterAdded:Connect(function(c)
+		if St.unwalkOn then task.wait(0.3); stopAllAnims(c) end
+	end)
+end
+local function stopUnwalk()
+	if unwalkConn then unwalkConn:Disconnect() unwalkConn = nil end
+end
+
+wireNamedToggle(G.WaveTogglePill_5, false, function(on)
+	St.unwalkOn = on
+	if on then startUnwalk() else stopUnwalk() end
+end)
+
 do
-local _ragCountdownRunning=false
-local function _getRagBillboard()
-local char=LP.Character;if not char then return nil,nil end;local head=char:FindFirstChild("Head");if not head then return nil,nil end;local pGui=LP.PlayerGui;local existing=pGui:FindFirstChild("RagCountdownBillboard");if existing then existing:Destroy()end;local bb=_I("BillboardGui");bb.Name="RagCountdownBillboard";bb.Size=_U(0,84,0,42);bb.StudsOffset=_V3(0,0.5,0);bb.AlwaysOnTop=true
-bb.Adornee=head;bb.Parent=pGui;local lbl=_I(_TL);lbl.Size=_U(1,0,1,0);lbl.AnchorPoint=Vector2.new(0.5,0.5);lbl.Position=_U(0.5,0,0.5,0);lbl[_BgT]=1;lbl.Font=_EGBK;lbl.TextScaled=true;lbl[_TC3]=C.purple;lbl[_TSC]=_C(0,0,0);lbl[_TST]=0;lbl.Text="";lbl.Parent=bb
-return bb,lbl
-end
-local function _ragPunch(lbl,text) if not(lbl and lbl.Parent)then return end;lbl.Text=text end
-local function _startRagCountdown()
-if _ragCountdownRunning then return end;_ragCountdownRunning=true
-_ts(function()
-local bb,lbl=_getRagBillboard();if not bb then _ragCountdownRunning=false;return end;local timeLeft=2.5;local step=0.1;while timeLeft>0 and bb.Parent do _ragPunch(lbl,string.format("%.1f",timeLeft));_tw(step);timeLeft=timeLeft-step end;if bb and bb.Parent then bb:Destroy() end;_ragCountdownRunning=false
-end)
-end
-local _ragSeenBatHit=_batHitSequence
-game:GetService("RunService").Heartbeat:Connect(function()
-if _batHitSequence==_ragSeenBatHit then return end;_ragSeenBatHit=_batHitSequence;_startRagCountdown()
-end)
-end
-local _hic={};local _holdingSpace=false;local _holdingMobile=false;local _jumpTouch=nil
-startHoldInfJump=function()
-if _hic.loop then _hic.loop:Disconnect()end
-_hic.loop=_RS.Heartbeat:Connect(function()
-if not _St.holdInfJumpEnabled then return end
-local char=LP.Character;if not char then return end
-local root=char:FindFirstChild(_HR);local hum=char:FindFirstChildOfClass(_HM);if not root or not hum then return end
-local jumpHeld=UIS:IsKeyDown(_KC.Space)or hum.Jump==true
-local velocity=root.AssemblyLinearVelocity
-if jumpHeld and velocity.Y<35 then root.AssemblyLinearVelocity=_V3(velocity.X,55,velocity.Z)end
-if root.AssemblyLinearVelocity.Y<-120 then local v=root.AssemblyLinearVelocity;root.AssemblyLinearVelocity=_V3(v.X,-120,v.Z)end
-end)
-end
-stopHoldInfJump=function()
-if _hic.loop then _hic.loop:Disconnect();_hic.loop=nil end
-_hic={};_holdingSpace=false;_holdingMobile=false;_jumpTouch=nil
-end
-if _St.infJumpMode=="hold"and _St.holdInfJumpEnabled then startHoldInfJump()end
-do
-local _szc,_stretchFovConn=nil,nil;local function applyStretchFOV(val) local cam=workspace.CurrentCamera;if cam then pcall(function()cam.FieldOfView=val end)end end
-enableStretchRez=function()
-_St.stretchRezEnabled=true;_St.stretchedResEnabled=true;local cam=workspace.CurrentCamera;if not cam then return end;if _szc then _szc:Disconnect()end;if _stretchFovConn then _stretchFovConn:Disconnect()end
-_stretchFovConn=_RS.RenderStepped:Connect(function()
-if _St.stretchRezEnabled then applyStretchFOV(_St.stretchFOV)end
-end)
-_szc=_RS.RenderStepped:Connect(function()
-if not _St.stretchRezEnabled then
-if _szc then _szc:Disconnect();_szc=nil end
-return
-end
-local c=workspace.CurrentCamera;if c then c.CFrame=c.CFrame*_CF(0,0,0,1,0,0,0,0.7,0,0,0,1)end
-end)
-end
-disableStretchRez=function()
-_St.stretchRezEnabled=false;_St.stretchedResEnabled=false;if _szc then _szc:Disconnect();_szc=nil end;if _stretchFovConn then _stretchFovConn:Disconnect();_stretchFovConn=nil end
-pcall(function()workspace.CurrentCamera.FieldOfView=_St.lockedFOV or NORMAL_STRETCH_FOV end)
-end
-setStretchFOV=function(choice) local val;if choice=="Normal"or choice==nil then val=NORMAL_STRETCH_FOV else val=tonumber(choice)end;if not val then return end;_St.stretchFOV=val;if _St.stretchedResEnabled then applyStretchFOV(val)end;if setStretchFOVVisual then setStretchFOVVisual(choice)end end
-end
-do
-local _origLighting={
-Ambient=_LT.Ambient,Brightness=_LT.Brightness,ClockTime=_LT.ClockTime,
-FogColor=_LT.FogColor,FogEnd=_LT.FogEnd,GlobalShadows=_LT.GlobalShadows,
-EnvironmentDiffuseScale=_LT.EnvironmentDiffuseScale,
-EnvironmentSpecularScale=_LT.EnvironmentSpecularScale,
-}
-local _activeColorCorr=nil;local function _clearColorCorr() if _activeColorCorr then pcall(function()_activeColorCorr:Destroy()end);_activeColorCorr=nil end end
-local function _restoreLighting()
-_clearColorCorr()
-pcall(function()
-_LT.Ambient=_origLighting.Ambient;_LT.Brightness=_origLighting.Brightness;_LT.ClockTime=_origLighting.ClockTime;_LT.FogColor=_origLighting.FogColor;_LT.FogEnd=_origLighting.FogEnd;_LT.GlobalShadows=_origLighting.GlobalShadows;_LT.EnvironmentDiffuseScale=_origLighting.EnvironmentDiffuseScale;_LT.EnvironmentSpecularScale=_origLighting.EnvironmentSpecularScale
-end)
-end
-applySky=function(kind)
-if kind==nil or kind=="default"then
-_restoreLighting();_St.activeSky="default";if _ssv then _ssv("default")end
-return
-end
-_clearColorCorr();local cc=_I("ColorCorrectionEffect");cc.Parent=_LT;_activeColorCorr=cc
-if kind=="blue"then
-_LT.Ambient=_C(30,60,120);_LT.FogColor=_C(40,80,160);cc.TintColor=_C(140,180,255);cc.Saturation=0.4;cc.Contrast=0.1
-elseif kind=="night"then
-_LT.ClockTime=0;_LT.Brightness=0.2;_LT.Ambient=_C(20,20,35);cc.TintColor=_C(180,180,220);cc.Saturation=-0.2;cc.Contrast=0.1
-elseif kind=="day"then _LT.ClockTime=14;_LT.Brightness=2;_LT.Ambient=_C(140,140,140);cc.TintColor=_C(255,255,255);cc.Saturation=0.1;cc.Contrast=0 end
-_St.activeSky=kind;if _ssv then _ssv(kind)end
-end
-end
-do
-local removeAccessoriesEnabled=false;local antiLagDescConn=nil;local _al={defB=nil,defC=nil,defA=nil}
+local removeAccessoriesEnabled=false
+local antiLagDescConn=nil
 local function applyAntiLagDerender(obj)
 pcall(function()
 if obj:IsA("Accessory")or obj:IsA("Hat")then obj:Destroy()
@@ -2077,2043 +9162,1155 @@ elseif obj:IsA("ParticleEmitter")or obj:IsA("Trail")or obj:IsA("Beam")or obj:IsA
 elseif obj:IsA("AnimationController")or obj:IsA("Animator")then for _,t in ipairs(obj:GetPlayingAnimationTracks())do pcall(function()t:Stop(0)end)end end
 end)
 end
-enableAntiLag=function()
-removeAccessoriesEnabled=true;_G._VH_antiLag=true;_al.defB=_al.defB or 2;_al.defC=_al.defC or 14;_al.defA=_al.defA or _C(70,70,70);_LT.GlobalShadows=false;_LT.FogEnd=1e10;_LT.Brightness=1;_LT.EnvironmentDiffuseScale=0;_LT.EnvironmentSpecularScale=0
-for _,e in pairs(_LT:GetChildren())do
+local function enableAntiLag()
+removeAccessoriesEnabled=true
+St.antiLagOn=true
+_G._VH_antiLag=true
+game:GetService("Lighting").GlobalShadows=false
+game:GetService("Lighting").FogEnd=1e10
+game:GetService("Lighting").Brightness=1
+game:GetService("Lighting").EnvironmentDiffuseScale=0
+game:GetService("Lighting").EnvironmentSpecularScale=0
+local Lighting=game:GetService("Lighting")
+for _,e in pairs(Lighting:GetChildren())do
 pcall(function()
 if e:IsA("BlurEffect")or e:IsA("SunRaysEffect")or e:IsA("ColorCorrectionEffect")or e:IsA("BloomEffect")or e:IsA("DepthOfFieldEffect")then e.Enabled=false end
 end)
 end
-local _antiLagObjects=workspace:GetDescendants();for i,obj in ipairs(_antiLagObjects)do applyAntiLagDerender(obj);if i%180==0 then _tw()end end;_antiLagObjects=nil;if antiLagDescConn then antiLagDescConn:Disconnect()end
+local antiLagObjects=workspace:GetDescendants()
+for i,obj in ipairs(antiLagObjects)do applyAntiLagDerender(obj);if i%180==0 then task.wait()end end
+antiLagObjects=nil
+if antiLagDescConn then antiLagDescConn:Disconnect()end
 antiLagDescConn=workspace.DescendantAdded:Connect(function(obj)
 if removeAccessoriesEnabled then applyAntiLagDerender(obj)end
 end)
 end
-disableAntiLag=function()
-removeAccessoriesEnabled=false;_G._VH_antiLag=false;if antiLagDescConn then antiLagDescConn:Disconnect();antiLagDescConn=nil end
+local function disableAntiLag()
+removeAccessoriesEnabled=false
+St.antiLagOn=false
+_G._VH_antiLag=false
+if antiLagDescConn then antiLagDescConn:Disconnect();antiLagDescConn=nil end
 pcall(function()
-if _al.defB then _LT.Brightness=_al.defB end;if _al.defC then _LT.ClockTime=_al.defC end;if _al.defA then _LT.OutdoorAmbient=_al.defA end;_LT.ExposureCompensation=0
+local Lighting=game:GetService("Lighting")
+Lighting.ExposureCompensation=0
 end)
 end
+wireNamedToggle(G.WaveTogglePill_13, false, function(on)
+if on then
+	pcall(applyFPSBoost)
+	enableAntiLag()
+else
+	disableAntiLag()
+	pcall(disableFPSBoost)
 end
-do
--- K7 Anti Drop: local root-velocity filtering; replaces the old teleporting void guard.
-do
- if _G._VH_AntiDropCleanup then pcall(_G._VH_AntiDropCleanup)end
- local bridge={closed=false}
--- Anti Drop: local root-velocity filtering, sharing the original engine and Drop BR.
-;(function()
- local state={enabled=false,installed=false,spoofed=Vector3.zero,authorizedUntil=0,lastRequest=-math.huge,error=nil}
- bridge.AntiDropState=state
- _G._SecretAuthorizedDropUntil=0;_G._YZNAuthorizedDropUntil=0
- function bridge.IsDropAuthorized() return _St.dropEnabled or tick()<state.authorizedUntil end
- function bridge.AuthorizeDrop(source)
-  if source~='keybind' and source~='mobile' and source~='gui' then return false end
-  if _St.dropEnabled or tick()-state.lastRequest<.45 then return false end
-  local ok,jumping=pcall(function()
-   if UIS:IsKeyDown(Enum.KeyCode.Space) or UIS:IsKeyDown(Enum.KeyCode.ButtonA) then return true end
-   local character=LP.Character;local humanoid=character and character:FindFirstChildOfClass('Humanoid')
-   return humanoid and humanoid.Jump==true
-  end)
-  if ok and jumping then return false end
-  local character=LP.Character
-  local root=character and character:FindFirstChild('HumanoidRootPart')
-  local humanoid=character and character:FindFirstChildOfClass('Humanoid')
-  if not root or not humanoid or root.Anchored or (humanoid.Health and humanoid.Health<=0) or bridge.closed then return false end
-  state.lastRequest=tick();state.authorizedUntil=tick()+2.5
-  _G._SecretAuthorizedDropUntil=state.authorizedUntil;_G._YZNAuthorizedDropUntil=state.authorizedUntil
-  return true
- end
- local function target(object,key)
-  if key~='AssemblyLinearVelocity' and key~='Velocity' then return false end
-  if not state.enabled or bridge.closed or checkcaller() or bridge.IsDropAuthorized() then return false end
-  return typeof(object)=='Instance' and object:IsA('BasePart') and object.Name=='HumanoidRootPart' and LP.Character~=nil and object:IsDescendantOf(LP.Character)
- end
- function bridge.StartAntiDrop()
-  if state.installed then state.enabled=true;state.error=nil;return true end
-  for _,name in ipairs({'getrawmetatable','setreadonly','newcclosure','checkcaller'}) do
-   local available=name=='getrawmetatable' and getrawmetatable or name=='setreadonly' and setreadonly or name=='newcclosure' and newcclosure or name=='checkcaller' and checkcaller
-   if type(available)~='function' then state.error='Anti Drop requires '..name..' support';state.enabled=false;return false,state.error end
-  end
-  local ok,result=pcall(function()
-   local mt=getrawmetatable(game)
-   local previousIndex,previousNewIndex=mt.__index,mt.__newindex
-   assert(type(previousIndex)=='function' or type(previousIndex)=='table','Unsupported index hook')
-   assert(type(previousNewIndex)=='function' or type(previousNewIndex)=='table','Unsupported newindex hook')
-   local readHook=newcclosure(function(object,key)
-    if (key=='AssemblyLinearVelocity' or key=='Velocity') and target(object,key) then return state.spoofed end
-    if type(previousIndex)=='function' then return previousIndex(object,key) end
-    return previousIndex[key]
-   end)
-   local writeHook=newcclosure(function(object,key,value)
-    if (key=='AssemblyLinearVelocity' or key=='Velocity') and target(object,key) then state.spoofed=value;return end
-    if type(previousNewIndex)=='function' then return previousNewIndex(object,key,value) end
-    previousNewIndex[key]=value
-   end)
-   local changed,err=pcall(function()
-    setreadonly(mt,false);mt.__index=readHook;mt.__newindex=writeHook;setreadonly(mt,true)
-   end)
-   if not changed then
-    pcall(function()
-     setreadonly(mt,false)
-     if mt.__index==readHook then mt.__index=previousIndex end
-     if mt.__newindex==writeHook then mt.__newindex=previousNewIndex end
-     setreadonly(mt,true)
-    end)
-    error(err)
-   end
-   state.mt=mt;state.oldIndex=previousIndex;state.oldNewIndex=previousNewIndex;state.readHook=readHook;state.writeHook=writeHook
-  end)
-  state.installed=ok;state.enabled=ok;state.error=not ok and tostring(result) or nil
-  return ok,state.error
- end
- function bridge.StopAntiDrop()
-  -- Soft-disable: never rip out a newer speed/game hook that chained over this one.
-  state.enabled=false
- end
- function bridge.DestroyAntiDrop()
-  state.enabled=false;state.authorizedUntil=0
-  _G._SecretAuthorizedDropUntil=0;_G._YZNAuthorizedDropUntil=0
-  if not state.installed then return end
-  pcall(function()
-   setreadonly(state.mt,false)
-   if state.mt.__index==state.readHook then state.mt.__index=state.oldIndex end
-   if state.mt.__newindex==state.writeHook then state.mt.__newindex=state.oldNewIndex end
-   setreadonly(state.mt,true)
-  end)
- end
-end)();
+end)
+end
 
 
- _G._VH_AntiDrop=bridge
- _G._VH_AntiDropCleanup=function()
-  bridge.closed=true;bridge.DestroyAntiDrop()
- end
- local ok,err=bridge.StartAntiDrop()
- if not ok then end
+local ragGui = nil
+local ragConn = nil
+local ragSeen = setmetatable({}, {__mode = "k"})
+local function clearRagTimer()
+	if ragGui then pcall(function() ragGui:Destroy() end); ragGui = nil end
+end
+local function showRagTimer(player, seconds)
+	clearRagTimer()
+	local pg = LocalPlayer:FindFirstChildOfClass("PlayerGui")
+	if not pg then return end
+	local duration = math.max(0.1, tonumber(seconds) or 2.6)
+	local sg = Instance.new("ScreenGui")
+	sg.Name = "EnemyRagdollCountdown"
+	sg.ResetOnSpawn = false
+	sg.IgnoreGuiInset = true
+	sg.DisplayOrder = 10020
+	sg.Parent = pg
+	local card = Instance.new("Frame")
+	card.Name = "EnemyRagdollCard"
+	card.AnchorPoint = Vector2.new(0.5, 0)
+	card.Position = UDim2.new(0.5, 0, 0, 76)
+	card.Size = UDim2.fromOffset(260, 66)
+	card.BackgroundColor3 = Color3.fromRGB(19, 20, 27)
+	card.BackgroundTransparency = 0.08
+	card.BorderSizePixel = 0
+	card.Parent = sg
+	Instance.new("UICorner", card).CornerRadius = UDim.new(0, 12)
+	local stroke = Instance.new("UIStroke", card)
+	stroke.Color = Color3.fromRGB(103, 91, 145)
+	stroke.Transparency = 0.2
+	stroke.Thickness = 1
+	local accent = Instance.new("Frame")
+	accent.BorderSizePixel = 0
+	accent.BackgroundColor3 = Color3.fromRGB(173, 132, 255)
+	accent.Size = UDim2.new(0, 3, 1, -18)
+	accent.Position = UDim2.fromOffset(0, 9)
+	accent.Parent = card
+	Instance.new("UICorner", accent).CornerRadius = UDim.new(1, 0)
+	local title = Instance.new("TextLabel")
+	title.BackgroundTransparency = 1
+	title.Position = UDim2.fromOffset(14, 9)
+	title.Size = UDim2.new(1, -78, 0, 18)
+	title.Font = Enum.Font.GothamMedium
+	title.Text = "Ragdoll detected · " .. tostring(player.DisplayName or player.Name)
+	title.TextColor3 = Color3.fromRGB(190, 185, 205)
+	title.TextSize = 12
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	title.TextTruncate = Enum.TextTruncate.AtEnd
+	title.Parent = card
+	local timer = Instance.new("TextLabel")
+	timer.BackgroundTransparency = 1
+	timer.Position = UDim2.fromOffset(14, 27)
+	timer.Size = UDim2.new(1, -28, 0, 26)
+	timer.Font = Enum.Font.GothamBold
+	timer.Text = string.format("%.1fs", duration)
+	timer.TextColor3 = Color3.fromRGB(248, 246, 255)
+	timer.TextSize = 21
+	timer.TextXAlignment = Enum.TextXAlignment.Left
+	timer.Parent = card
+	local track = Instance.new("Frame")
+	track.BorderSizePixel = 0
+	track.BackgroundColor3 = Color3.fromRGB(53, 51, 64)
+	track.Position = UDim2.new(0, 14, 1, -7)
+	track.Size = UDim2.new(1, -28, 0, 2)
+	track.Parent = card
+	local fill = Instance.new("Frame")
+	fill.BorderSizePixel = 0
+	fill.BackgroundColor3 = Color3.fromRGB(173, 132, 255)
+	fill.Size = UDim2.fromScale(1, 1)
+	fill.Parent = track
+	ragGui = sg
+	local expires = os.clock() + duration
+	task.spawn(function()
+		while ragGui == sg and sg.Parent and os.clock() < expires do
+			local remaining = math.max(0, expires - os.clock())
+			timer.Text = string.format("%.1fs", remaining)
+			fill.Size = UDim2.new(math.clamp(remaining / duration, 0, 1), 0, 1, 0)
+			task.wait(0.04)
+		end
+		if ragGui == sg then clearRagTimer() end
+	end)
+end
+local function isEnemyRagdolled(player)
+	local char = player and player.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	if not hum or hum.Health <= 0 then return false end
+	local state = hum:GetState()
+	return state == Enum.HumanoidStateType.Physics or state == Enum.HumanoidStateType.Ragdoll
+		or state == Enum.HumanoidStateType.FallingDown
+end
+local function startEnemyRagdollTimer()
+	if ragConn then return end
+	local acc = 0
+	ragConn = RunService.Heartbeat:Connect(function(dt)
+		if not St.enemyRagdollTimerOn then return end
+		acc += dt
+		if acc < 0.05 then return end
+		acc = 0
+		for _, player in ipairs(Players:GetPlayers()) do
+			if player ~= LocalPlayer then
+				local ragdolled = isEnemyRagdolled(player)
+				if ragdolled and not ragSeen[player] then
+					ragSeen[player] = true
+					showRagTimer(player, 2.6)
+				elseif not ragdolled then
+					ragSeen[player] = nil
+				end
+			end
+		end
+	end)
+end
+local function stopEnemyRagdollTimer()
+	if ragConn then ragConn:Disconnect(); ragConn = nil end
+	table.clear(ragSeen)
+	clearRagTimer()
 end
 
-local _wfConns={};local _dropConn=nil;local function disableOtherCollisions() for _,plr in ipairs(_PL:GetPlayers())do if plr~=LP and plr.Character then for _,part in ipairs(plr.Character:GetChildren())do if part:IsA("BasePart")then part.CanCollide=false end end end end end
-local function runStandDrop()
-if _St.dropEnabled then return end;_St.dropEnabled=true
-local _dropSafe=nil
-do local c=LP.Character;local root=c and c:FindFirstChild(_HR);if root and root.Position.Y>-50 then _dropSafe=root.CFrame end end
-local colConn=_RS.Stepped:Connect(function()
-if not _St.dropEnabled then return end;disableOtherCollisions()
-end)
-_ti(_wfConns,colConn)
-local flingThread=coroutine.create(function()
-while _St.dropEnabled do
-_RS.Heartbeat:Wait();local c=LP.Character;local root=c and c:FindFirstChild(_HR);if not root then break end;local vel=_readRootVelocity(root);_setNamedVectorLinearVelocity(root,"VampireStandDrop",vel*10000+_V3(0,10000,0));_RS.RenderStepped:Wait();if root and root.Parent then _setNamedVectorLinearVelocity(root,"VampireStandDrop",vel)end;_RS.Stepped:Wait();if root and root.Parent then _setNamedVectorLinearVelocity(root,"VampireStandDrop",vel+_V3(0,0.1,0))end
+
+local localRagGui, localRagConn = nil, nil
+local localRagSeen = false
+local localRagLabel = nil
+local localRagBillboard = nil
+local localRagActive = false
+local localRagLocked = false
+local localRagWasTriggered = false
+local localRagStartedAt = 0
+local localRagEndsAt = 0
+local localRagTotal = 2.6
+local localRagGoUntil = 0
+local LOCAL_RAG_HIT_TIME = 2.6
+local LOCAL_RAG_MEDUSA_TIME = 4.5
+
+local function clearLocalRagCountdown()
+	if localRagBillboard then
+		pcall(function() localRagBillboard:Destroy() end)
+	end
+	localRagBillboard = nil
+	localRagGui = nil
+	localRagLabel = nil
+	localRagOverheadLabel = nil
 end
-end)
-_ti(_wfConns,flingThread);coroutine.resume(flingThread)
-task.delay(0.1,function()
-_St.dropEnabled=false
-for _,c in ipairs(_wfConns)do
-if typeof(c)=="RBXScriptConnection"then c:Disconnect()
-elseif type(c)=="thread"then pcall(coroutine.close,c)end
+
+local function buildLocalRagCountdown(character)
+	local head = character and (character:FindFirstChild("Head") or character:WaitForChild("Head", 5))
+	if not head then return nil end
+	clearLocalRagCountdown()
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Name = "WaveRagdollTimerAboveE01"
+	billboard.Adornee = head
+	billboard.Size = UDim2.fromOffset(170, 22)
+	billboard.StudsOffset = Vector3.new(0, 3.35, 0)
+	billboard.SizeOffset = Vector2.new(0, 1.25)
+	billboard.AlwaysOnTop = true
+	billboard.LightInfluence = 0
+	billboard.MaxDistance = 250
+	billboard.Enabled = true
+	billboard.ResetOnSpawn = false
+	billboard.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+	local label = Instance.new("TextLabel")
+	label.Name = "RagdollCountdown"
+	label.Size = UDim2.fromScale(1, 1)
+	label.BackgroundTransparency = 1
+	label.Text = ""
+	label.Font = Enum.Font.GothamBlack
+	label.TextSize = 19
+	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+	label.TextStrokeTransparency = 0
+	label.TextXAlignment = Enum.TextXAlignment.Center
+	label.Parent = billboard
+
+	local gradient = Instance.new("UIGradient")
+	gradient.Name = "RagdollTimerGradient"
+	gradient.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(170, 75, 255)),
+		ColorSequenceKeypoint.new(1, Color3.fromRGB(225, 175, 255))
+	})
+	gradient.Parent = label
+
+	localRagBillboard = billboard
+	localRagGui = billboard
+	localRagLabel = label
+	localRagOverheadLabel = label
+	return label
 end
-_wfConns={}
-_td(function()
-local c=LP.Character;local root=c and c:FindFirstChild(_HR)
-if root then _stopNamedVectorLinearVelocity(root,"VampireStandDrop")end
-if root and _dropSafe and root.Position.Y<-80 then
-root.CFrame=_dropSafe+_V3(0,5,0);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12)
+
+local function localIsMedusa(character)
+	if not character then return false end
+	for _, part in ipairs(character:GetDescendants()) do
+		if part:IsA("BasePart") and part.Anchored
+			and (part.Name == "HumanoidRootPart" or part.Transparency == 1) then
+			return true
+		end
+	end
+	return false
 end
-end)
-end)
+
+local function localHasRagdollMarker(character, humanoid)
+	if not humanoid then return false end
+	local state = humanoid:GetState()
+	if humanoid.PlatformStand
+		or state == Enum.HumanoidStateType.Physics
+		or state == Enum.HumanoidStateType.Ragdoll
+		or state == Enum.HumanoidStateType.FallingDown then
+		return true
+	end
+
+	for _, holder in ipairs({character, humanoid, LocalPlayer}) do
+		if holder then
+			for _, name in ipairs({"Ragdoll", "Ragdolled", "IsRagdolled", "Stun", "Stunned"}) do
+				local attr = holder:GetAttribute(name)
+				if attr == true or (type(attr) == "number" and attr > 0) then
+					return true
+				end
+				local value = holder:FindFirstChild(name, true)
+				if value and value:IsA("BoolValue") and value.Value then
+					return true
+				end
+				if value and (value:IsA("NumberValue") or value:IsA("IntValue")) and value.Value > 0 then
+					return true
+				end
+			end
+		end
+	end
+
+	local endTime = LocalPlayer:GetAttribute("RagdollEndTime")
+		or (character and character:GetAttribute("RagdollEndTime"))
+		or humanoid:GetAttribute("RagdollEndTime")
+	if type(endTime) == "number" and endTime > workspace:GetServerTimeNow() then
+		return true
+	end
+	return false
 end
-local _jumpDropState={active=false}
-local JUMP_HOLD_TIME=0.18
-local JUMP_VELOCITY=155
-local function finishJumpDrop()
-if _dropConn then _dropConn:Disconnect();_dropConn=nil end
-_jumpDropState.active=false;_St.dropEnabled=false;if _sbr.drop then _sbr.drop.setOn(false)end
+
+local function startLocalRagdollCountdown()
+	if localRagConn then return end
+	local acc = 0
+	localRagConn = RunService.Heartbeat:Connect(function(dt)
+		if not St.ragdollTimerOn then return end
+		acc += dt
+		if acc < 0.05 then return end
+		acc = 0
+
+		local character = LocalPlayer.Character
+		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+		local root = character and character:FindFirstChild("HumanoidRootPart")
+		if not character or not humanoid or not root or humanoid.Health <= 0 then
+			localRagActive = false
+			localRagLocked = false
+			localRagWasTriggered = false
+			localRagGoUntil = 0
+			if localRagLabel then localRagLabel.Text = "" end
+			return
+		end
+
+		if not localRagBillboard or not localRagBillboard.Parent
+			or not localRagLabel or not localRagLabel.Parent
+			or localRagBillboard.Adornee ~= character:FindFirstChild("Head") then
+			buildLocalRagCountdown(character)
+		end
+		if not localRagLabel then return end
+
+		local now = os.clock()
+		local medusa = localIsMedusa(character)
+		local triggered = localHasRagdollMarker(character, humanoid) or medusa
+
+		if triggered and not localRagWasTriggered and not localRagActive and not localRagLocked then
+			localRagActive = true
+			localRagTotal = medusa and LOCAL_RAG_MEDUSA_TIME or LOCAL_RAG_HIT_TIME
+			localRagStartedAt = now
+			localRagEndsAt = now + localRagTotal
+			localRagLabel.Text = string.format("%.1f", localRagTotal)
+		elseif localRagActive and medusa and localRagTotal ~= LOCAL_RAG_MEDUSA_TIME then
+			localRagTotal = LOCAL_RAG_MEDUSA_TIME
+			localRagEndsAt = localRagStartedAt + localRagTotal
+		end
+
+		localRagWasTriggered = triggered
+		if not triggered and not localRagActive then
+			localRagLocked = false
+		end
+
+		if localRagActive then
+			local remaining = localRagEndsAt - now
+			if remaining <= 0 then
+				localRagActive = false
+				localRagLocked = true
+				localRagLabel.Text = "GO"
+				localRagGoUntil = now + 0.65
+			else
+				localRagLabel.Text = string.format("%.1f", remaining)
+			end
+		elseif localRagGoUntil > 0 and now >= localRagGoUntil then
+			localRagLabel.Text = ""
+			localRagGoUntil = 0
+		end
+	end)
 end
-local function runJumpDrop()
-if _jumpDropState.active then return end
-_jumpDropState.active=true;_St.dropEnabled=true;if _sbr.drop then _sbr.drop.setOn(true)end
-_G._RaVeDropToken=(_G._RaVeDropToken or 0)+1
-local dropToken=_G._RaVeDropToken
-local char=LP.Character
-local root=char and char:FindFirstChild("HumanoidRootPart")
-if not char or not root then finishJumpDrop();return end
-local rayParams=_G._RaVeDropRayParams
-if not rayParams then
-rayParams=RaycastParams.new();rayParams.FilterType=Enum.RaycastFilterType.Exclude;rayParams.RespectCanCollide=true;_G._RaVeDropRayParams=rayParams
+
+local function stopLocalRagdollCountdown()
+	if localRagConn then
+		localRagConn:Disconnect()
+		localRagConn = nil
+	end
+	localRagSeen = false
+	localRagActive = false
+	localRagLocked = false
+	localRagWasTriggered = false
+	localRagGoUntil = 0
+	clearLocalRagCountdown()
 end
-rayParams.FilterDescendantsInstances={char}
-local initialFloor=workspace:Raycast(root.Position+Vector3.new(0,0.35,0),Vector3.new(0,-2000,0),rayParams)
-if not initialFloor then finishJumpDrop();return end
-local savedRotation=root.CFrame.Rotation
-local savedX,savedZ=root.Position.X,root.Position.Z
-local startedAt=tick()
-_dropConn=_RS.Heartbeat:Connect(function()
-local currentRoot=char and char:FindFirstChild("HumanoidRootPart")
-local humanoid=char and char:FindFirstChildOfClass("Humanoid")
-if dropToken~=_G._RaVeDropToken or not currentRoot or not humanoid or humanoid.Health<=0 then finishJumpDrop();return end
-if tick()-startedAt>=JUMP_HOLD_TIME then
-if _dropConn then _dropConn:Disconnect();_dropConn=nil end
-rayParams.FilterDescendantsInstances={char}
-local rayResult=workspace:Raycast(currentRoot.Position+Vector3.new(0,0.35,0),Vector3.new(0,-2000,0),rayParams)
-local surface=rayResult or initialFloor
-if surface then
-local offset=humanoid.HipHeight+(currentRoot.Size.Y*0.5)+0.20
-currentRoot.CFrame=CFrame.new(savedX,surface.Position.Y+offset,savedZ)*savedRotation
-currentRoot.AssemblyLinearVelocity=Vector3.zero
-currentRoot.AssemblyAngularVelocity=Vector3.zero
+
+if G.WaveTogglePill_6 then
+	wireNamedToggle(G.WaveTogglePill_6, false, function(on)
+		St.ragdollTimerOn = on == true
+		if on then startLocalRagdollCountdown() else stopLocalRagdollCountdown() end
+	end)
 end
-_jumpDropState.active=false;_St.dropEnabled=false;if _sbr.drop then _sbr.drop.setOn(false)end
-return
+if G.WaveTogglePill_8 then
+	wireNamedToggle(G.WaveTogglePill_8, false, function(on)
+		St.enemyRagdollTimerOn = on == true
+		if on then startEnemyRagdollTimer() else stopEnemyRagdollTimer() end
+	end)
 end
-currentRoot.AssemblyLinearVelocity=Vector3.new(0,JUMP_VELOCITY,0)
-end)
+
+local CONFIG_FILE = "vyzecc.json"
+
+local function keyName(kc)
+	if typeof(kc) == "EnumItem" then return kc.Name end
+	return "Unknown"
 end
-runDropBrainrot=function(source)
-if _St.dropEnabled then return end
-local anti=_G._VH_AntiDrop
-if anti and anti.AntiDropState.enabled and not anti.AuthorizeDrop(source or "gui")then return end
-local wasAutoTp=_St.autoTpDownEnabled==true
-if wasAutoTp then _St.autoTpDownEnabled=false end
-task.delay(0.35,function()if wasAutoTp then _St.autoTpDownEnabled=true end end)
-if _St.dropType=="Jump Drop"then runJumpDrop()else runStandDrop()end
+local function keyFromName(name)
+	if type(name) ~= "string" or name == "" or name == "Unknown" then return Enum.KeyCode.Unknown end
+	local ok, v = pcall(function() return Enum.KeyCode[name] end)
+	return (ok and v) or Enum.KeyCode.Unknown
 end
-stopDropBrainrot=function()
-_G._RaVeDropToken=(_G._RaVeDropToken or 0)+1;finishJumpDrop()
-for _,c in ipairs(_wfConns)do
-if typeof(c)=="RBXScriptConnection"then c:Disconnect()
-elseif type(c)=="thread"then pcall(coroutine.close,c)end
+
+local function getToggleConfigKey(pill)
+	if not pill then return nil end
+
+	
+	
+	
+	
+	for key, value in pairs(G) do
+		if value == pill and type(key) == "string" then
+			return "toggle:" .. key
+		end
+	end
+
+	
+	local row = pill.Parent
+	local label = row and row:FindFirstChildWhichIsA("TextLabel")
+	local pageKey = "ui"
+	for name, page in pairs(pages) do
+		if page and pill:IsDescendantOf(page) then
+			pageKey = tostring(name)
+			break
+		end
+	end
+	local labelKey = label and label.Text or "unnamed"
+	return "toggle:" .. pageKey .. ":" .. labelKey
 end
-_wfConns={};local char=LP.Character;local root=char and char:FindFirstChild(_HR);if root then _stopNamedVectorLinearVelocity(root,"VampireStandDrop")end
+
+local function collectConfigTogglePills()
+	local pills = {}
+	for _, obj in ipairs(G.WAVEHubV1:GetDescendants()) do
+		if obj:IsA("Frame") and obj.Name == "WaveTogglePill" then
+			table.insert(pills, obj)
+		end
+	end
+	return pills
 end
-LP.CharacterRemoving:Connect(stopDropBrainrot)
+
+local function resetConfigToggles()
+	for _, pill in ipairs(collectConfigTogglePills()) do
+		setToggleVisual(pill, false)
+		local callback = _waveToggleCallbacks[pill]
+		if callback then
+			local ok, err = pcall(callback, false)
+			if not ok then warn("[WAVE] Toggle reset failed:", getToggleConfigKey(pill), err) end
+		end
+	end
+	
+	pcall(stopBatAimbot)
+	_G._VezyBatSpeedEnabled = false
+	_G._VioletteccAimbotAutoSwing = false
+	pcall(toggleAutoLeft, false)
+	pcall(toggleAutoRight, false)
+	St.autoLeftEnabled = false
+	St.autoRightEnabled = false
+	St.ragdollTimerOn = false
+	St.enemyRagdollTimerOn = false
+	St.ragdollStealOn = false
+	St.autoStealOn = false
+	St.batCounterOn = false
+	St.medusaCounterOn = false
+	St.unwalkOn = false
+	St.antiLagOn = false
+	St.autoCarryOn = false
+	St.antiRagdollEnabled = false
+	St.infJumpEnabled = false
+	St.autoTpDownEnabled = false
+	St.uiLocked = false
+	St.lockUI = false
+	St.unlockButtons = false
+	St.unlockButtonPanel = false
+	St.hideButtons = false
+	St.hideButtonPanel = false
+	St.sideButtonsLocked = false
+	St.sidePanelLocked = false
+	St.sidePanelVisible = false
+	St.speedToggled = false
+	St.laggerMode = 0
+	St.fpsBoostEnabled = false
+	pcall(updateSpeedModeButton)
+	pcall(syncMobileSpeedVisuals)
+	_G._VynxAutoSpeedOn = false
+	_G._VynxAutoTPDownEnabled = false
+	_G._VH_antiLag = false
+	if type(_G._WaveSetKorbloxMode) == "function" then
+		pcall(_G._WaveSetKorbloxMode, "Off")
+	else
+		_G._RaVeKorbloxMode = "Off"
+		if G.TextButton_34 then G.TextButton_34.Text = "Off" end
+		if type(_G._RaVeApplyKorblox) == "function" then pcall(_G._RaVeApplyKorblox, "Off") end
+	end
+	if type(_G.WAVE_SetAnimPack) == "function" then pcall(_G.WAVE_SetAnimPack, "Off") end
+end
+
+local function saveWaveConfig()
+	if not writefile then return false end
+	local uiToggles, toggleStates, uiText = {}, {}, {}
+	for _, obj in ipairs(G.WAVEHubV1:GetDescendants()) do
+		if obj:IsA("Frame") and obj.Name == "WaveTogglePill" then
+			local row = obj.Parent
+			local label = row and row:FindFirstChildWhichIsA("TextLabel")
+			local enabled = obj:GetAttribute("WaveToggleOn") == true
+			if label and label.Text ~= "" then uiToggles[label.Text] = enabled end
+			if row then
+				local stableKey = getToggleConfigKey(obj)
+				if stableKey then toggleStates[stableKey] = enabled end
+				
+				
+				uiToggles[row.Name .. "#" .. (label and label.Text or "toggle")] = enabled
+			end
+		elseif obj:IsA("TextBox") then
+			uiText[obj.Name] = obj.Text
+		end
+	end
+	local uiValues,uiSizes={},{}
+	for _,obj in ipairs(G.WAVEHubV1:GetDescendants()) do
+		if obj:IsA("TextBox") then
+			uiValues[obj.Name]=obj.Text; uiSizes[obj.Name]={x=obj.Size.X.Scale,xo=obj.Size.X.Offset,y=obj.Size.Y.Scale,yo=obj.Size.Y.Offset}
+		end
+	end
+	local sideButtonPositions = {}
+	for _, frame in ipairs(stackFrames) do
+		if frame then
+			local p = frame.Position
+			sideButtonPositions[frame.Name] = {xs=p.X.Scale, xo=p.X.Offset, ys=p.Y.Scale, yo=p.Y.Offset}
+		end
+	end
+	local uiPositions = {}
+	for key, obj in pairs({MobileStackPanel = G.MobileStackPanel, StealBarRoot = StealBarRoot}) do
+		if obj then
+			local p = obj.Position
+			uiPositions[key] = {xs=p.X.Scale, xo=p.X.Offset, ys=p.Y.Scale, yo=p.Y.Offset}
+		end
+	end
+	local data = {
+		configVersion = 5,
+		toggleStates = toggleStates,
+		sideButtonPositions = sideButtonPositions,
+		uiPositions = uiPositions,
+		uiToggles = uiToggles,
+		uiText = uiText,
+		uiValues = uiValues,
+		uiSizes = uiSizes,
+		fovValue = _G._WaveFovValue or 70,
+		stretchFov = _G._VezyStretchFOV or 120,
+		batAimbotOn = _G._VezyBatAimbotOn == true,
+		batSpeedEnabled = _G._VezyBatSpeedEnabled == true,
+		korbloxMode = _G._RaVeKorbloxMode or "Off",
+		bodyLockRange = tonumber(G.TextBox_7 and G.TextBox_7.Text) or 20,
+		normalSpeed = St.normalSpeed,
+		carrySpeed = St.carrySpeed,
+		burstNormalSpeed = St.burstNormalSpeed,
+		burstCarrySpeed = St.burstCarrySpeed,
+		speedToggled = St.speedToggled,
+		laggerMode = St.laggerMode,
+		autoCarryOn = St.autoCarryOn,
+		autoCarryMode = St.autoCarryMode,
+		autoLeftEnabled = St.autoLeftEnabled,
+		autoRightEnabled = St.autoRightEnabled,
+		antiRagdollEnabled = St.antiRagdollEnabled,
+		antiRagdollMode = St.antiRagdollMode,
+		infJumpEnabled = St.infJumpEnabled,
+		dropType = St.dropType,
+		autoTpDownEnabled = St.autoTpDownEnabled,
+		autoTpDownHeight = St.autoTpDownHeight,
+		uiScale = St.guiScale,
+		btnScale = St.sideButtonScale,
+		stealBarScale = St.progressBarSize,
+		openUiButtonScale = St.openUiButtonScale,
+		guiScale = St.guiScale,
+		sideButtonScale = St.sideButtonScale,
+		progressBarSize = St.progressBarSize,
+		lockUI = St.uiLocked == true,
+		headlessOn = G.WaveTogglePill_20 and G.WaveTogglePill_20:GetAttribute("WaveToggleOn") == true or false,
+		stretchRezOn = G.WaveTogglePill_21 and G.WaveTogglePill_21:GetAttribute("WaveToggleOn") == true or false,
+		removeUiBackgroundOn = G.WaveTogglePill_30 and G.WaveTogglePill_30:GetAttribute("WaveToggleOn") == true or false,
+		lockUiOn = G.WaveTogglePill_35 and G.WaveTogglePill_35:GetAttribute("WaveToggleOn") == true or false,
+		unlockButtons = St.unlockButtons,
+		unlockButtonPanel = St.unlockButtonPanel,
+		hideButtons = St.hideButtons,
+		hideButtonPanel = St.hideButtonPanel,
+		keys = {
+			speed={inputType=KeyBindings.speed.inputType.Name,keyCode=keyName(KeyBindings.speed.keyCode),platform=KeyBindings.speed.platform},
+			lagger={inputType=KeyBindings.lagger.inputType.Name,keyCode=keyName(KeyBindings.lagger.keyCode),platform=KeyBindings.lagger.platform},
+			drop={inputType=KeyBindings.drop.inputType.Name,keyCode=keyName(KeyBindings.drop.keyCode),platform=KeyBindings.drop.platform},
+			tpDown={inputType=KeyBindings.tpDown.inputType.Name,keyCode=keyName(KeyBindings.tpDown.keyCode),platform=KeyBindings.tpDown.platform},
+			aimbot={inputType=KeyBindings.aimbot.inputType.Name,keyCode=keyName(KeyBindings.aimbot.keyCode),platform=KeyBindings.aimbot.platform},
+			autoLeft={inputType=KeyBindings.autoLeft.inputType.Name,keyCode=keyName(KeyBindings.autoLeft.keyCode),platform=KeyBindings.autoLeft.platform},
+			autoRight={inputType=KeyBindings.autoRight.inputType.Name,keyCode=keyName(KeyBindings.autoRight.keyCode),platform=KeyBindings.autoRight.platform},
+		},
+		aimbotSpeed = _G._VezyBatAimbotSpeed,
+		aimbotSpeedLagger = _G._VezyBatAimbotSpeedLagger,
+		aimbotMode = _G._VezyBatAimbotMode,
+		autoSwing = _G._VioletteccAimbotAutoSwing,
+		stealRadius = St.stealRadius,
+		stealDuration = St.stealDuration,
+		unwalkOn = St.unwalkOn,
+		kickWarningOn = G.WaveTogglePill_7 and (G.WaveTogglePill_7:GetAttribute("WaveToggleOn") == true) or false,
+		ragdollTimerOn = St.ragdollTimerOn == true,
+		enemyRagdollTimerOn = St.enemyRagdollTimerOn == true,
+		antiLagOn = St.antiLagOn,
+		animPack = (type(_G.WAVE_GetAnimPack) == "function" and _G.WAVE_GetAnimPack()) or "Off",
+		autoStealOn = St.autoStealOn,
+		autoStealVersion = St.autoStealVersion,
+		ragdollStealOn = St.ragdollStealOn == true,
+		batCounterOn = St.batCounterOn,
+		medusaCounterOn = St.medusaCounterOn,
+		antiRagdollEnabled = St.antiRagdollEnabled,
+	}
+	local ok, encoded = pcall(function() return HttpService:JSONEncode(data) end)
+	if ok and encoded then
+		local wrote, writeErr = pcall(writefile, CONFIG_FILE, encoded)
+		if not wrote then warn("[WAVE] Config write failed:", writeErr) end
+		return wrote == true
+	end
+	return false
+end
+
+local function loadWaveConfig()
+	if not (isfile and readfile) then return false end
+	local hasFile = false
+	local fileOk, fileResult = pcall(isfile, CONFIG_FILE)
+	if fileOk and fileResult == true then hasFile = true end
+	if not hasFile then return false end
+	local ok, data = pcall(function() return HttpService:JSONDecode(readfile(CONFIG_FILE)) end)
+	if not ok or type(data) ~= "table" then
+		warn("[WAVE] Config file is invalid or could not be decoded")
+		return false
+	end
+
+	
+	
+	resetConfigToggles()
+	local legacyProfile = (tonumber(data.configVersion) or 0) < 4
+
+	if type(data.sideButtonPositions) == "table" then
+		for name, pos in pairs(data.sideButtonPositions) do
+			local frame = G.WAVEHubV1:FindFirstChild(name, true)
+			if frame and frame:IsA("GuiObject") and type(pos) == "table" then
+				local xs, xo = tonumber(pos.xs), tonumber(pos.xo)
+				local ys, yo = tonumber(pos.ys), tonumber(pos.yo)
+				if xs and xo and ys and yo then
+					frame.Position = UDim2.new(xs, xo, ys, yo)
+				end
+			end
+		end
+	end
+	if type(data.uiPositions) == "table" then
+		for key, obj in pairs({MobileStackPanel = G.MobileStackPanel, StealBarRoot = StealBarRoot}) do
+			local pos = data.uiPositions[key]
+			if obj and type(pos) == "table" then
+				local xs, xo, ys, yo = tonumber(pos.xs), tonumber(pos.xo), tonumber(pos.ys), tonumber(pos.yo)
+				if xs and xo and ys and yo then obj.Position = UDim2.new(xs, xo, ys, yo) end
+			end
+		end
+	end
+	if type(data.uiText) == "table" then
+		for name, value in pairs(data.uiText) do
+			local obj = G.WAVEHubV1:FindFirstChild(name, true)
+			if obj and obj:IsA("TextBox") and type(value) == "string" then obj.Text = value end
+		end
+	end
+	if type(data.uiValues)=="table" then for name,value in pairs(data.uiValues) do local obj=G.WAVEHubV1:FindFirstChild(name,true); if obj and obj:IsA("TextBox") and type(value)=="string" then obj.Text=value end end end
+	if type(data.uiSizes)=="table" then for name,sz in pairs(data.uiSizes) do local obj=G.WAVEHubV1:FindFirstChild(name,true); if obj and type(sz)=="table" then pcall(function() obj.Size=UDim2.new(tonumber(sz.x) or obj.Size.X.Scale,tonumber(sz.xo) or obj.Size.X.Offset,tonumber(sz.y) or obj.Size.Y.Scale,tonumber(sz.yo) or obj.Size.Y.Offset) end) end end end
+	if tonumber(data.fovValue) then
+		_G._WaveFovValue = math.clamp(tonumber(data.fovValue), 70, 120)
+		if _G._WaveFovSetValue then pcall(_G._WaveFovSetValue, _G._WaveFovValue) end
+	end
+	if tonumber(data.stretchFov) then _G._VezyStretchFOV = math.clamp(tonumber(data.stretchFov), 70, 120) end
+	if tonumber(data.bodyLockRange) then
+		if _G._WaveSetBodyLockRange then pcall(_G._WaveSetBodyLockRange, data.bodyLockRange) elseif G.TextBox_7 then G.TextBox_7.Text = tostring(math.clamp(tonumber(data.bodyLockRange), 1, 500)) end
+	end
+	if type(data.korbloxMode) == "string" and G.TextButton_34 then
+		local mode = data.korbloxMode
+		if mode == "Off" or mode == "Both" or mode == "Left" or mode == "Right" then
+			if _G._WaveSetKorbloxMode then pcall(_G._WaveSetKorbloxMode, mode) else G.TextButton_34.Text = mode; _G._RaVeKorbloxMode = mode; if _G._RaVeApplyKorblox then pcall(_G._RaVeApplyKorblox, mode) end end
+		end
+	end
+	if tonumber(data.normalSpeed) then St.normalSpeed = data.normalSpeed; if G.TextBox then G.TextBox.Text = tostring(data.normalSpeed) end end
+	if tonumber(data.carrySpeed) then St.carrySpeed = data.carrySpeed; if G.TextBox_2 then G.TextBox_2.Text = tostring(data.carrySpeed) end end
+	if tonumber(data.burstNormalSpeed) then St.burstNormalSpeed = data.burstNormalSpeed; if G.TextBox_3 then G.TextBox_3.Text = tostring(data.burstNormalSpeed) end end
+	if tonumber(data.burstCarrySpeed) then St.burstCarrySpeed = data.burstCarrySpeed; if G.TextBox_4 then G.TextBox_4.Text = tostring(data.burstCarrySpeed) end end
+	if type(data.speedToggled) == "boolean" then St.speedToggled = data.speedToggled end
+	if data.laggerMode ~= nil then St.laggerMode = data.laggerMode end
+	if type(data.autoCarryMode) == "string" then St.autoCarryMode = data.autoCarryMode; if G.TextButton_9 then G.TextButton_9.Text = data.autoCarryMode end end
+	if type(data.autoStealVersion) == "string" then St.autoStealVersion = data.autoStealVersion end
+	St.unlockButtons = data.unlockButtons == true
+	St.unlockButtonPanel = data.unlockButtonPanel == true
+	St.hideButtons = data.hideButtons == true
+	St.hideButtonPanel = data.hideButtonPanel == true
+
+	if type(data.autoLeftEnabled) == "boolean" then pcall(function() toggleAutoLeft(data.autoLeftEnabled) end) end
+	if type(data.autoRightEnabled) == "boolean" then pcall(function() toggleAutoRight(data.autoRightEnabled) end) end
+	St.antiRagdollMode = "V2"
+	if type(data.dropType) == "string" then
+		St.dropType = data.dropType
+	end
+	if tonumber(data.autoTpDownHeight) then St.autoTpDownHeight = data.autoTpDownHeight; if G.TextBox_6 then G.TextBox_6.Text = tostring(data.autoTpDownHeight) end end
+	if tonumber(data.guiScale or data.uiScale) then applyGuiScale(data.guiScale or data.uiScale) end
+	if tonumber(data.sideButtonScale or data.btnScale) then applyButtonScale(data.sideButtonScale or data.btnScale) end
+	if tonumber(data.progressBarSize or data.stealBarScale) then applyStealBarScale(data.progressBarSize or data.stealBarScale) end
+	if tonumber(data.openUiButtonScale) then applyOpenUiButtonScale(data.openUiButtonScale) end
+	if type(data.lockUI) == "boolean" then St.uiLocked = data.lockUI; St.lockUI = data.lockUI end
+
+	if type(data.keys)=="table" then
+		local function loadBinding(name,saved)
+			if type(saved)=="string" then setBinding(name,Enum.UserInputType.Keyboard,keyFromName(saved),"Keyboard")
+			elseif type(saved)=="table" then
+				local inputType = (saved.inputType == "Gamepad1") and Enum.UserInputType.Gamepad1 or Enum.UserInputType.Keyboard
+				local keyCode = keyFromName(saved.keyCode)
+				setBinding(name, inputType, keyCode, saved.platform or getBindPlatform(inputType))
+			end
+		end
+		loadBinding("speed",data.keys.speed); loadBinding("lagger",data.keys.lagger); loadBinding("drop",data.keys.drop); loadBinding("tpDown",data.keys.tpDown); loadBinding("aimbot",data.keys.aimbot); loadBinding("autoLeft",data.keys.autoLeft); loadBinding("autoRight",data.keys.autoRight)
+		if G.TextButton_5 then G.TextButton_5.Text=bindingText("speed") end; if G.TextButton_6 then G.TextButton_6.Text=bindingText("lagger") end
+		if G.TextButton_15 then G.TextButton_15.Text=bindingText("drop") end; if G.TextButton_16 then G.TextButton_16.Text=bindingText("tpDown"); G.TextButton_16:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad") end
+		if G.TextButton_42 then G.TextButton_42.Text=bindingText("aimbot") end
+		if G.TextButton_10 then G.TextButton_10.Text=bindingText("autoLeft") end
+		if G.TextButton_11 then G.TextButton_11.Text=bindingText("autoRight") end
+	end
+
+	if tonumber(data.aimbotSpeed) then
+		_G._VezyBatAimbotSpeed = data.aimbotSpeed
+		if G.TextBox_8 then G.TextBox_8.Text = tostring(data.aimbotSpeed) end
+	end
+	if tonumber(data.aimbotSpeedLagger) then
+		_G._VezyBatAimbotSpeedLagger = data.aimbotSpeedLagger
+		if G.TextBox_9 then G.TextBox_9.Text = tostring(data.aimbotSpeedLagger) end
+	end
+	if type(data.aimbotMode) == "string" then
+		_G._VezyBatAimbotMode = data.aimbotMode
+		if G.TextButton_43 then
+			G.TextButton_43.Text = (data.aimbotMode == "old") and "Bypass" or "Normal"
+		end
+	end
+	
+	local savedRadius = tonumber(data.stealRadius)
+	if not savedRadius and type(data.uiText) == "table" then savedRadius = tonumber(data.uiText.TextBox_10) end
+	if not savedRadius and type(data.uiValues) == "table" then savedRadius = tonumber(data.uiValues.TextBox_10) end
+	if savedRadius and savedRadius > 0 and savedRadius < 500 then
+		St.stealRadius = savedRadius
+		if G.TextBox_10 then G.TextBox_10.Text = tostring(savedRadius) end
+	end
+
+	local savedDuration = tonumber(data.stealDuration)
+	if not savedDuration and type(data.uiText) == "table" then savedDuration = tonumber(data.uiText.TextBox_11) end
+	if not savedDuration and type(data.uiValues) == "table" then savedDuration = tonumber(data.uiValues.TextBox_11) end
+	if savedDuration and savedDuration > 0.05 and savedDuration < 10 then
+		St.stealDuration = savedDuration
+		if G.TextBox_11 then G.TextBox_11.Text = string.format("%.2f", savedDuration) end
+	end
+	do
+		local savedToggles = type(data.uiToggles) == "table" and data.uiToggles or {}
+		local savedStates = type(data.toggleStates) == "table" and data.toggleStates or {}
+		local legacyEnemyTimer = data.enemyRagdollTimerOn
+		if type(legacyEnemyTimer) ~= "boolean" then legacyEnemyTimer = data.ragdollTimerOn end
+		local legacyToggleValues = {
+			[G.WaveTogglePill] = data.infJumpEnabled,
+			[G.WaveTogglePill_2] = data.autoCarryOn,
+			[G.WaveTogglePill_3] = data.antiRagdollEnabled,
+			[G.WaveTogglePill_4] = data.autoTpDownEnabled,
+			[G.WaveTogglePill_5] = data.unwalkOn,
+			[G.WaveTogglePill_6] = data.ragdollTimerOn,
+			[G.WaveTogglePill_7] = data.kickWarningOn,
+			[G.WaveTogglePill_8] = legacyEnemyTimer,
+			[G.WaveTogglePill_13] = data.antiLagOn,
+			[G.WaveTogglePill_20] = data.headlessOn,
+			[G.WaveTogglePill_21] = data.stretchRezOn,
+			[G.WaveTogglePill_22] = data.batSpeedEnabled,
+			[G.WaveTogglePill_23] = data.autoSwing,
+			[G.WaveTogglePill_26] = data.batCounterOn,
+			[G.WaveTogglePill_27] = data.medusaCounterOn,
+			[G.WaveTogglePill_28] = data.ragdollStealOn,
+			[G.WaveTogglePill_29] = data.autoStealOn,
+			[G.WaveTogglePill_30] = data.removeUiBackgroundOn,
+			[G.WaveTogglePill_35] = data.lockUiOn,
+		}
+		for _, pill in ipairs(collectConfigTogglePills()) do
+			local row = pill.Parent
+			local label = row and row:FindFirstChildWhichIsA("TextLabel")
+			local stableKey = getToggleConfigKey(pill)
+			local wanted
+			if stableKey then wanted = savedStates[stableKey] end
+			
+			
+			if type(wanted) ~= "boolean" and row and label then wanted = savedToggles[row.Name .. "#" .. label.Text] end
+			if type(wanted) ~= "boolean" and label then wanted = savedToggles[label.Text] end
+			if type(wanted) ~= "boolean" then wanted = legacyToggleValues[pill] end
+			if type(wanted) ~= "boolean" then wanted = false end
+
+			
+			
+			if legacyProfile and wanted == true and (pill == G.WaveTogglePill_22
+				or pill == G.WaveTogglePill_23 or pill == G.WaveTogglePill_32) then
+				wanted = false
+			end
+
+			setToggleVisual(pill, wanted)
+			if wanted then
+				local callback = _waveToggleCallbacks[pill]
+				if callback then
+					local called, err = pcall(callback, true)
+					if not called then warn("[WAVE] Toggle restore failed:", row and row.Name, err) end
+				end
+			end
+		end
+	end
+
+	
+	if data.batAimbotOn == true then pcall(startBatAimbot) else pcall(stopBatAimbot) end
+
+	if type(data.animPack) == "string" and data.animPack ~= "" then
+		pcall(function()
+			if type(_G.WAVE_SetAnimPack) == "function" then _G.WAVE_SetAnimPack(data.animPack) end
+		end)
+	end
+	pcall(updateSpeedModeButton)
+	pcall(syncMobileSpeedVisuals)
+	return true
+end
+
+_G.WAVE_SaveConfigNow = saveWaveConfig
+_G.WAVE_LoadConfig = loadWaveConfig
+
+local _waveConfigSaveQueued = false
+_G.WAVE_SaveConfig = function()
+	if _waveConfigSaveQueued then return true end
+	_waveConfigSaveQueued = true
+	task.delay(0.35, function()
+		_waveConfigSaveQueued = false
+		local ok, result = pcall(saveWaveConfig)
+		if not ok or result ~= true then
+			warn("[WAVE] Automatic config save failed:", result)
+		end
+	end)
+	return true
+end
+
+if G.TextButton_60 then G.TextButton_60.Visible = false; G.TextButton_60.Active = false end
+if G.TextButton_70 then G.TextButton_70.Visible = false; G.TextButton_70.Active = false end
+if G.Frame_146 then G.Frame_146.Visible = false; G.Frame_146.Size = UDim2.new(1, 0, 0, 0) end
+
+
+if G.TextButton_59 then
+	local resetBtn = G.TextButton_59
+	local resetBusy = false
+	local idleResetText = resetBtn.Text
+	resetBtn.Activated:Connect(function()
+		if resetBusy then return end
+		resetBusy = true
+		local called, err = pcall(function()
+			resetConfigToggles()
+			local saved = saveWaveConfig()
+			if not saved then error("Could not save reset config") end
+		end)
+		resetBtn.Text = called and "Reset!" or "Reset failed"
+		if not called then warn("[WAVE] Config reset failed:", err) end
+		task.delay(1.4, function()
+			if resetBtn and resetBtn.Parent then
+				resetBtn.Text = idleResetText
+				resetBusy = false
+			end
+		end)
+	end)
+end
+
 do
-local resetRemote=nil;local RESET_GUID="f888ee6e-c86d-46e1-93d7-0639d6635d42"
--- Re-run cleanup: disconnect stale connections and validate cached remote
-if _G.__VR then for _,c in pairs(_G.__VR.conns or {})do pcall(function()c:Disconnect()end)end end
-_G.__VR=_G.__VR or {};_G.__VR.conns={}
--- Validate any cached remote from a previous server
-if _G.__VR.remote then
-local ok=false
-pcall(function()
-local net=game:GetService("ReplicatedStorage"):FindFirstChild("Packages")
-net=net and net:FindFirstChild("Net")
-ok=net~=nil and _G.__VR.remote.Parent==net
-end)
-if ok then resetRemote=_G.__VR.remote
-else _G.__VR.remote=nil;_G.__VR.hooked=false end
+	local saveBtn = G.TextButton_60
+	local saveBusy = false
+	local idleColor, idleText = saveBtn.BackgroundColor3, saveBtn.TextColor3
+	saveBtn.Activated:Connect(function()
+		if saveBusy then return end
+		saveBusy = true
+		local ok = false
+		local called, result = pcall(saveWaveConfig)
+		if called and result == true then ok = true end
+		saveBtn.Text = ok and "Saved!" or "Save failed"
+		saveBtn.BackgroundColor3 = ok and Color3.fromRGB(34, 120, 70) or Color3.fromRGB(150, 40, 50)
+		task.delay(1.4, function()
+			saveBtn.Text = "Save Config"
+			saveBtn.BackgroundColor3 = idleColor
+			saveBtn.TextColor3 = idleText
+			saveBusy = false
+		end)
+	end)
 end
--- Hook once: unhook the moment we capture the remote to avoid taxing every FireServer call
-if not resetRemote and not _G.__VR.hooked then
-_G.__VR.hooked=true
+
+if G.TextButton_70 then
+	local loadBtn = G.TextButton_70
+	local idleColor, idleText = loadBtn.BackgroundColor3, loadBtn.TextColor3
+	loadBtn.Activated:Connect(function()
+		local called, result = pcall(loadWaveConfig)
+		local loaded = called and result == true
+		loadBtn.Text = loaded and "Loaded!" or "Load failed"
+		loadBtn.BackgroundColor3 = loaded and Color3.fromRGB(34, 120, 70) or Color3.fromRGB(150, 40, 50)
+		task.delay(1.4, function()
+			if loadBtn and loadBtn.Parent then
+				loadBtn.Text = "Load Config"
+				loadBtn.BackgroundColor3 = idleColor
+				loadBtn.TextColor3 = idleText
+			end
+		end)
+	end)
+end
+
+G.WAVEHubV1.Destroying:Connect(function()
+	pcall(stopLocalRagdollCountdown)
+	pcall(stopEnemyRagdollTimer)
+	if ragdollStealHealthConn then pcall(function() ragdollStealHealthConn:Disconnect() end); ragdollStealHealthConn = nil end
+	pcall(stopBatAimbot)
+	pcall(stopNetBypass)
+	pcall(stopMedusaCounter)
+	pcall(stopBatCounter)
+	pcall(applyAntiLag, false)
+	if _G._WaveESPCleanup then pcall(_G._WaveESPCleanup) end
+end)
+
+
+end
+
+buildLateSection()
+
+
+local ANIM_PACKS = {
+	["Zombie"] = { idle1="rbxassetid://616158929", idle2="rbxassetid://616160636", walk="rbxassetid://616168032", run="rbxassetid://616163682", jump="rbxassetid://616161997", fall="rbxassetid://616157476", climb="rbxassetid://616156119", swim="rbxassetid://616165109", swimidle="rbxassetid://616166655" },
+	["Ninja"] = { idle1="rbxassetid://656117400", idle2="rbxassetid://656117400", walk="rbxassetid://656121766", run="rbxassetid://656118852", jump="rbxassetid://656117878", fall="rbxassetid://656115606", climb="rbxassetid://656114359", swim="rbxassetid://656117400", swimidle="rbxassetid://656117400" },
+	["Knight"] = { idle1="rbxassetid://657595757", idle2="rbxassetid://657595757", walk="rbxassetid://657552124", run="rbxassetid://657564596", jump="rbxassetid://658409194", fall="rbxassetid://657600338", climb="rbxassetid://658360781", swim="rbxassetid://657595757", swimidle="rbxassetid://657595757" },
+	["Elder"] = { idle1="rbxassetid://845397899", idle2="rbxassetid://845397899", walk="rbxassetid://845403856", run="rbxassetid://845386501", jump="rbxassetid://845398858", fall="rbxassetid://845397673", climb="rbxassetid://845392038", swim="rbxassetid://845397899", swimidle="rbxassetid://845397899" },
+	["Levitate"] = { idle1="rbxassetid://616006778", idle2="rbxassetid://616006778", walk="rbxassetid://616013216", run="rbxassetid://616013216", jump="rbxassetid://616008936", fall="rbxassetid://616005863", climb="rbxassetid://616003713", swim="rbxassetid://616006778", swimidle="rbxassetid://616006778" },
+	["Astronaut"] = { idle1="rbxassetid://891621366", idle2="rbxassetid://891621366", walk="rbxassetid://891636393", run="rbxassetid://891636393", jump="rbxassetid://891627522", fall="rbxassetid://891617961", climb="rbxassetid://891609353", swim="rbxassetid://891621366", swimidle="rbxassetid://891621366" },
+	["Pirate"] = { idle1="rbxassetid://750781874", idle2="rbxassetid://750781874", walk="rbxassetid://750785693", run="rbxassetid://750783738", jump="rbxassetid://750782230", fall="rbxassetid://750780242", climb="rbxassetid://750779899", swim="rbxassetid://750781874", swimidle="rbxassetid://750781874" },
+	["Toy"] = { idle1="rbxassetid://782841498", idle2="rbxassetid://782841498", walk="rbxassetid://782843345", run="rbxassetid://782842708", jump="rbxassetid://782847020", fall="rbxassetid://782846423", climb="rbxassetid://782843869", swim="rbxassetid://782841498", swimidle="rbxassetid://782841498" },
+	["Vampire"] = { idle1="rbxassetid://1083445855", idle2="rbxassetid://1083445855", walk="rbxassetid://1083473930", run="rbxassetid://1083462077", jump="rbxassetid://1083455352", fall="rbxassetid://1083443587", climb="rbxassetid://1083439238", swim="rbxassetid://1083445855", swimidle="rbxassetid://1083445855" },
+	["Werewolf"] = { idle1="rbxassetid://1083195517", idle2="rbxassetid://1083195517", walk="rbxassetid://1083178339", run="rbxassetid://1083216690", jump="rbxassetid://1083218792", fall="rbxassetid://1083189019", climb="rbxassetid://1083182000", swim="rbxassetid://1083195517", swimidle="rbxassetid://1083195517" },
+	["Rthro"] = { idle1="rbxassetid://2510196951", idle2="rbxassetid://2510196951", walk="rbxassetid://2510202577", run="rbxassetid://2510198475", jump="rbxassetid://2510197830", fall="rbxassetid://2510195892", climb="rbxassetid://2510192778", swim="rbxassetid://2510196951", swimidle="rbxassetid://2510196951" },
+	["Stylish"] = { idle1="rbxassetid://616136790", idle2="rbxassetid://616136790", walk="rbxassetid://616146177", run="rbxassetid://616140816", jump="rbxassetid://616139451", fall="rbxassetid://616134815", climb="rbxassetid://616133594", swim="rbxassetid://616136790", swimidle="rbxassetid://616136790" },
+	["Legendary"] = { idle1="rbxassetid://133806214992291", idle2="rbxassetid://94970088341563", walk="rbxassetid://707897309", run="rbxassetid://707861613", jump="rbxassetid://116936326516985", fall="rbxassetid://116936326516985", climb="rbxassetid://116936326516985", swim="rbxassetid://116936326516985", swimidle="rbxassetid://116936326516985" },
+}
+local ANIM_PACK_ORDER = {"Off", "Zombie", "Ninja", "Knight", "Elder", "Levitate", "Astronaut", "Pirate", "Toy", "Vampire", "Werewolf", "Rthro", "Stylish", "Legendary"}
+local currentAnimPack = "Off"
+local originalAnims = nil
+local animHeartbeatConn = nil
+local animSelectorLabel = nil
+
+local function isPackAnimId(id)
+	if type(id) ~= "string" then return false end
+	for _, pack in pairs(ANIM_PACKS) do
+		for _, v in pairs(pack) do
+			if v == id then return true end
+		end
+	end
+	return false
+end
+
+local function saveOriginalAnims(char)
+	local animate = char and char:FindFirstChild("Animate")
+	if not animate then return end
+	local function g(obj) return obj and obj.AnimationId or nil end
+	local ids = {
+		idle1 = g(animate.idle and animate.idle.Animation1),
+		idle2 = g(animate.idle and animate.idle.Animation2),
+		walk = g(animate.walk and animate.walk.WalkAnim),
+		run = g(animate.run and animate.run.RunAnim),
+		jump = g(animate.jump and animate.jump.JumpAnim),
+		fall = g(animate.fall and animate.fall.FallAnim),
+		climb = g(animate.climb and animate.climb.ClimbAnim),
+		swim = g(animate.swim and animate.swim.Swim),
+		swimidle = g(animate.swimidle and animate.swimidle.SwimIdle),
+	}
+	if not isPackAnimId(ids.walk) then originalAnims = ids end
+end
+
+local function applyAnimPack(packName)
+	currentAnimPack = packName or "Off"
+	if animSelectorLabel then animSelectorLabel.Text = currentAnimPack end
+	local char = LocalPlayer.Character
+	if packName == "Off" then
+		if animHeartbeatConn then animHeartbeatConn:Disconnect(); animHeartbeatConn = nil end
+		if originalAnims and char then
+			local animate = char:FindFirstChild("Animate")
+			if animate then
+				local function s(obj, id) if obj and id then obj.AnimationId = id end end
+				s(animate.idle and animate.idle.Animation1, originalAnims.idle1)
+				s(animate.idle and animate.idle.Animation2, originalAnims.idle2)
+				s(animate.walk and animate.walk.WalkAnim, originalAnims.walk)
+				s(animate.run and animate.run.RunAnim, originalAnims.run)
+				s(animate.jump and animate.jump.JumpAnim, originalAnims.jump)
+				s(animate.fall and animate.fall.FallAnim, originalAnims.fall)
+				s(animate.climb and animate.climb.ClimbAnim, originalAnims.climb)
+				s(animate.swim and animate.swim.Swim, originalAnims.swim)
+				s(animate.swimidle and animate.swimidle.SwimIdle, originalAnims.swimidle)
+			end
+		end
+		return
+	end
+	local pack = ANIM_PACKS[packName]
+	if not pack then return end
+	if animHeartbeatConn then animHeartbeatConn:Disconnect() end
+	animHeartbeatConn = RunService.Heartbeat:Connect(function()
+		local c = LocalPlayer.Character
+		if not c then return end
+		local animate = c:FindFirstChild("Animate")
+		if not animate then return end
+		local function s(obj, id) if obj and id then obj.AnimationId = id end end
+		s(animate.idle and animate.idle.Animation1, pack.idle1)
+		s(animate.idle and animate.idle.Animation2, pack.idle2)
+		s(animate.walk and animate.walk.WalkAnim, pack.walk)
+		s(animate.run and animate.run.RunAnim, pack.run)
+		s(animate.jump and animate.jump.JumpAnim, pack.jump)
+		s(animate.fall and animate.fall.FallAnim, pack.fall)
+		s(animate.climb and animate.climb.ClimbAnim, pack.climb)
+		s(animate.swim and animate.swim.Swim, pack.swim)
+		s(animate.swimidle and animate.swimidle.SwimIdle, pack.swimidle)
+	end)
+end
+
+local function startAnimPack(packName)
+	local char = LocalPlayer.Character
+	if char then
+		saveOriginalAnims(char)
+		applyAnimPack(packName)
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		if hum then
+			for _, track in ipairs(hum:GetPlayingAnimationTracks()) do pcall(function() track:Stop(0) end) end
+			pcall(function() hum:ChangeState(Enum.HumanoidStateType.Running) end)
+		end
+	else
+		applyAnimPack(packName)
+	end
+	currentAnimPack = packName
+	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+end
+
+local function cycleAnimPack(dir)
+	local idx = 1
+	for i, name in ipairs(ANIM_PACK_ORDER) do
+		if name == currentAnimPack then idx = i; break end
+	end
+	idx = idx + (dir or 1)
+	if idx < 1 then idx = #ANIM_PACK_ORDER end
+	if idx > #ANIM_PACK_ORDER then idx = 1 end
+	startAnimPack(ANIM_PACK_ORDER[idx])
+end
+
+LocalPlayer.CharacterAdded:Connect(function(char)
+	task.wait(0.6)
+	if currentAnimPack and currentAnimPack ~= "Off" then
+		saveOriginalAnims(char)
+		applyAnimPack(currentAnimPack)
+	end
+end)
+
+
 pcall(function()
-local target=_I("RemoteEvent").FireServer
-local o;o=hookfunction(target,newcclosure(function(self,...)
-if not _G.__VR.remote then
-local nm;pcall(function()nm=self.Name end)
-if type(nm)=="string"and nm:sub(1,3)=="RE/"then
-_G.__VR.remote=self;resetRemote=self
+	if not G.WavePage_Visuals then return end
+	local sep = Instance.new("Frame")
+	sep.BackgroundTransparency = 1
+	sep.BorderSizePixel = 0
+	sep.LayoutOrder = 200
+	sep.Size = UDim2.new(1, 0, 0, 8)
+	sep.Parent = G.WavePage_Visuals
+
+	local header = Instance.new("Frame")
+	header.BackgroundTransparency = 1
+	header.BorderSizePixel = 0
+	header.LayoutOrder = 24
+	header.Size = UDim2.new(1, 0, 0, 0)
+	header.Visible = false
+	header.Parent = G.WavePage_Misc
+	local headerLbl = Instance.new("TextLabel")
+	headerLbl.BackgroundTransparency = 1
+	headerLbl.Position = UDim2.new(0, 8, 0, 0)
+	headerLbl.Size = UDim2.new(1, -14, 1, 0)
+	headerLbl.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+	headerLbl.Text = "ANIMATION"
+	headerLbl.TextColor3 = Color3.fromRGB(160, 80, 220)
+	headerLbl.TextSize = 13
+	headerLbl.TextXAlignment = Enum.TextXAlignment.Left
+	headerLbl.Parent = header
+
+	local row = Instance.new("Frame")
+	row.BackgroundTransparency = 1
+	row.BorderSizePixel = 0
+	row.LayoutOrder = 24
+	row.Size = UDim2.new(1, 0, 0, 40)
+	row.Parent = G.WavePage_Misc
+
+	local nameLbl = Instance.new("TextLabel")
+	nameLbl.BackgroundTransparency = 1
+	nameLbl.Position = UDim2.new(0, 12, 0, 0)
+	nameLbl.Size = UDim2.new(0, 70, 1, 0)
+	nameLbl.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+	nameLbl.Text = "Anim Pack"
+	nameLbl.TextColor3 = Color3.fromRGB(234, 225, 240)
+	nameLbl.TextSize = 11
+	nameLbl.TextXAlignment = Enum.TextXAlignment.Left
+	nameLbl.Parent = row
+
+	local container = Instance.new("Frame")
+	container.BackgroundTransparency = 1
+	container.Position = UDim2.new(1, -150, 0.5, -14)
+	container.Size = UDim2.new(0, 140, 0, 28)
+	container.ZIndex = 8
+	container.Parent = row
+
+	local leftBtn = Instance.new("TextButton")
+	leftBtn.BackgroundColor3 = Color3.fromRGB(28, 12, 48)
+	leftBtn.BorderSizePixel = 0
+	leftBtn.Size = UDim2.new(0, 28, 0, 28)
+	leftBtn.Position = UDim2.new(0, 0, 0, 0)
+	leftBtn.ZIndex = 9
+	leftBtn.AutoButtonColor = false
+	leftBtn.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+	leftBtn.Text = "<"
+	leftBtn.TextColor3 = Color3.fromRGB(249, 240, 255)
+	leftBtn.TextSize = 14
+	leftBtn.Parent = container
+	Instance.new("UICorner", leftBtn).CornerRadius = UDim.new(0, 7)
+
+	animSelectorLabel = Instance.new("TextLabel")
+	animSelectorLabel.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+	animSelectorLabel.BorderSizePixel = 0
+	animSelectorLabel.Position = UDim2.new(0, 32, 0, 0)
+	animSelectorLabel.Size = UDim2.new(0, 76, 0, 28)
+	animSelectorLabel.ZIndex = 9
+	animSelectorLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+	animSelectorLabel.Text = currentAnimPack
+	animSelectorLabel.TextColor3 = Color3.fromRGB(220, 180, 255)
+	animSelectorLabel.TextSize = 11
+	animSelectorLabel.Parent = container
+	Instance.new("UICorner", animSelectorLabel).CornerRadius = UDim.new(0, 7)
+
+	local rightBtn = Instance.new("TextButton")
+	rightBtn.BackgroundColor3 = Color3.fromRGB(28, 12, 48)
+	rightBtn.BorderSizePixel = 0
+	rightBtn.Size = UDim2.new(0, 28, 0, 28)
+	rightBtn.Position = UDim2.new(0, 112, 0, 0)
+	rightBtn.ZIndex = 9
+	rightBtn.AutoButtonColor = false
+	rightBtn.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+	rightBtn.Text = ">"
+	rightBtn.TextColor3 = Color3.fromRGB(249, 240, 255)
+	rightBtn.TextSize = 14
+	rightBtn.Parent = container
+	Instance.new("UICorner", rightBtn).CornerRadius = UDim.new(0, 7)
+
+	leftBtn.MouseButton1Click:Connect(function() cycleAnimPack(-1) end)
+	rightBtn.MouseButton1Click:Connect(function() cycleAnimPack(1) end)
+end)
+
+_G.WAVE_SetAnimPack = startAnimPack
+_G.WAVE_GetAnimPack = function() return currentAnimPack end
+
+
+G.WAVEHubV1.Parent = LocalPlayer:WaitForChild("PlayerGui")
 task.defer(function()
-local restore=restorefunction or(debug and debug.restorefunction)
-if restore then pcall(restore,target)end
-end)
-end
-end
-return o(self,...)
-end))
-end)
-end
--- Fallback: only search ReplicatedStorage.Packages.Net, not the full game tree
-_ts(function()
-_tw(2)
-if resetRemote or _G.__VR.remote then if _G.__VR.remote then resetRemote=_G.__VR.remote end;return end
-pcall(function()
-local net=game:GetService("ReplicatedStorage"):FindFirstChild("Packages")
-net=net and net:FindFirstChild("Net")
-if not net then return end
-for _,d in ipairs(net:GetChildren())do
-if d:IsA("RemoteEvent")and d.Name:sub(1,3)=="RE/"then resetRemote=d;_G.__VR.remote=d;break end
-end
-end)
-end)
--- instaReset: detects by character swap (not Health), fires sparingly, busy-guarded
-local _resetBusy=false
-function instaReset()
-if _resetBusy then return end;_resetBusy=true
-_ts(function()
-if not resetRemote then
-local w=0
-while not resetRemote and w<1.5 do w=w+_tw();if _G.__VR.remote then resetRemote=_G.__VR.remote end end
-end
-if not resetRemote then _resetBusy=false;return end
-local oldChar=LP.Character
-local MAX_FIRES=_G.__VR.maxFires or 6
-local GAP=_G.__VR.gap or 0.06
-for _=1,MAX_FIRES do
-if LP.Character~=oldChar then break end
-pcall(function()resetRemote:FireServer(RESET_GUID,LP,"balloon")end)
-local t=0;while LP.Character==oldChar and t<GAP do t=t+_tw()end
-end
-local t=0;while LP.Character==oldChar and t<5 do t=t+_tw()end
-_resetBusy=false
-end)
-end
-end
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
-doTpDown=function()
-    pcall(function()
-        local character = LocalPlayer.Character
-        if not character then return end
-
-        local root = character:FindFirstChild("HumanoidRootPart")
-        if not root then return end
-
-        local _, yaw = root.CFrame:ToEulerAnglesYXZ()
-
-        root.CFrame =
-            CFrame.new(root.Position.X, -7, root.Position.Z)
-            * CFrame.Angles(0, yaw, 0)
-
-        root.Velocity = Vector3.zero
-    end)
-end
-local MIRROR_TP_DROP_THRESHOLD=3
-local mirrorTPPreviousY={}
-local mirrorTPLastTeleport=0
-
-local function mirrorTPAimbotActive()
-return _St.autoBatToggled==true or _St.desyncAimbotEnabled==true
-end
-
-local function mirrorTPTeleportDown()
-local character=LP.Character
-local rootPart=character and character:FindFirstChild(_HR)
-local humanoid=character and character:FindFirstChildOfClass(_HM)
-
-if not rootPart or not humanoid or humanoid.Health<=0 then
-return
-end
-
-local now=tick()
-if now-mirrorTPLastTeleport<0.08 then
-return
-end
-
-mirrorTPLastTeleport=now
-pcall(function()
-doTpDown()
-end)
-end
-
-_RS.Heartbeat:Connect(function()
-if not _St.mirrorTPDownEnabled or not mirrorTPAimbotActive()then
-table.clear(mirrorTPPreviousY)
-return
-end
-
-for _,player in ipairs(_PL:GetPlayers())do
-if player~=LP and player.Character then
-local enemyRoot=player.Character:FindFirstChild(_HR)
-
-if enemyRoot then
-local currentY=enemyRoot.Position.Y
-local previousY=mirrorTPPreviousY[player.UserId]
-
-if previousY and previousY-currentY>=MIRROR_TP_DROP_THRESHOLD then
-pcall(mirrorTPTeleportDown)
-table.clear(mirrorTPPreviousY)
-return
-end
-
-mirrorTPPreviousY[player.UserId]=currentY
-end
-end
-end
+	local loaded = false
+	if type(_G.WAVE_LoadConfig) == "function" then
+		local ok, result = pcall(_G.WAVE_LoadConfig)
+		loaded = ok and result == true
+		if not ok then warn("[WAVE] Config load failed:", result) end
+	end
+	if not loaded and type(_G.WAVE_SaveConfigNow) == "function" then
+		local ok, err = pcall(_G.WAVE_SaveConfigNow)
+		if not ok then warn("[WAVE] Initial config creation failed:", err) end
+	end
 end)
 
-startAutoTpDown=function()
-if Conns.autoTpDown then
-Conns.autoTpDown:Disconnect()
-Conns.autoTpDown=nil
-end
-Conns.autoTpDown=_RS.Heartbeat:Connect(function()
-if not _St.autoTpDownEnabled then return end
-local c=LP.Character
-local root=c and c:FindFirstChild("HumanoidRootPart")
-if not root then return end
-if root.Position.Y>=math.abs(_St.tpDownHeight)then
-root.CFrame=CFrame.new(root.Position.X,-8.80,root.Position.Z)
-_stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero
-end
-end)
-end
-stopAutoTpDown=function()
-_St.autoTpDownEnabled=false
-if Conns.autoTpDown then
-Conns.autoTpDown:Disconnect()
-Conns.autoTpDown=nil
-end
-end
-end
-do
-local BAT_COUNTER_SLAP_LIST={"Bat","Slap","Iron Slap","Gold Slap","Diamond Slap","Emerald Slap","Ruby Slap","Dark Matter Slap","Flame Slap","Nuclear Slap","Galaxy Slap","Glitched Slap"}
-local function findBatForCounter()
-local c=LP.Character;if not c then return nil end;local bp=LP:FindFirstChildOfClass("Backpack");for _,name in ipairs(BAT_COUNTER_SLAP_LIST)do local t=c:FindFirstChild(name)or(bp and bp:FindFirstChild(name));if t then return t end end
-for _,ch in ipairs(c:GetChildren())do if ch:IsA("Tool")and ch.Name:lower():find("bat")then return ch end end;if bp then for _,ch in ipairs(bp:GetChildren())do if ch:IsA("Tool")and ch.Name:lower():find("bat")then return ch end end end
-return nil
-end
-local function swingBatForCounter(bat,char)
-local hum2=char:FindFirstChildOfClass(_HM)
-if bat.Parent~=char and hum2 then
-pcall(function()hum2:EquipTool(bat)end)
-end
-local remote=bat:FindFirstChildOfClass("RemoteEvent")or bat:FindFirstChildOfClass("RemoteFunction")
-if remote and remote:IsA("RemoteEvent")then
-pcall(function()remote:FireServer()end)
-pcall(function()remote:FireServer()end)
-else
-pcall(function()bat:Activate()end)
-pcall(function()bat:Activate()end)
-end
-end
-local Conns_batCounter=nil
-startBatCounter=function()
-if Conns_batCounter then return end
-local seenHit=_batHitSequence
-Conns_batCounter=game:GetService("RunService").Heartbeat:Connect(function()
-if not _St.batCounterEnabled or _batHitSequence==seenHit then return end
-seenHit=_batHitSequence
-if batCounterDebounce then return end
-local char=LP.Character
-if not char then return end
-batCounterDebounce=true
-_ts(function()
-local bat=findBatForCounter()
-if bat then
-swingBatForCounter(bat,char)
-end
-_tw(0.35)
-batCounterDebounce=false
-end)
-end)
-end
-stopBatCounter=function() if Conns_batCounter then Conns_batCounter:Disconnect();Conns_batCounter=nil end;batCounterDebounce=false end
-end
-do
-local BYPASS_SLAP_LIST={
-"Bat","Slap","Iron Slap","Gold Slap","Diamond Slap",
-"Emerald Slap","Ruby Slap","Dark Matter Slap","Flame Slap",
-"Nuclear Slap","Galaxy Slap","Glitched Slap"
-}
-local bypassHitCD=false;local bypassSwingCD=0.35;local bypassHitDist=8
-local function findBatV1()
-local char=LP.Character;if not char then return nil end;for _,name in ipairs(BYPASS_SLAP_LIST)do local t=char:FindFirstChild(name);if t and t:IsA("Tool")then return t end end;local bp=LP:FindFirstChild("Backpack")
-if bp then
-for _,name in ipairs(BYPASS_SLAP_LIST)do
-local t=bp:FindFirstChild(name)
-if t and t:IsA("Tool")then
-local hum=char:FindFirstChildOfClass(_HM);if hum then pcall(function()hum:EquipTool(t)end)end
-return t
-end
-end
-end
-for _,ch in ipairs(char:GetChildren())do
-if ch:IsA("Tool")and(ch.Name:lower():find("bat")or ch.Name:lower():find("slap"))then
-return ch
-end
-end
-return nil
-end
-local autoSwingLast=0
-
-_RS.Heartbeat:Connect(function()
-if not _St.autoSwingEnabled then return end
-if not _St.autoBatToggled and not _St.desyncAimbotEnabled then return end
-
-local now=tick()
-if now-autoSwingLast<0.08 then return end
-
-local character=LP.Character
-local humanoid=character and character:FindFirstChildOfClass(_HM)
-if not character or not humanoid or humanoid.Health<=0 then return end
-
-local bat=findBatV1()
-if not bat then return end
-
-if bat.Parent~=character then
-pcall(function()
-humanoid:EquipTool(bat)
-end)
-end
-
-autoSwingLast=now
-pcall(function()
-bat:Activate()
-end)
-end)
-
-local function trySwingV1()
-if bypassHitCD then return end;bypassHitCD=true
-pcall(function()
-local char=LP.Character
-if char then
-local bat=findBatV1()
-if bat then
-if bat.Parent~=char then local hum=char:FindFirstChildOfClass(_HM);if hum then pcall(function()hum:EquipTool(bat)end)end end
-pcall(function()bat:Activate()end)
-end
-end
-end)
-task.delay(bypassSwingCD,function()bypassHitCD=false end)
-end
-local function getClosestTargetV1()
-local root=LP.Character and LP.Character:FindFirstChild(_HR);if not root then return nil,_mh end;local closest,minDist=nil,_mh
-for _,plr in ipairs(_PL:GetPlayers())do
-if plr~=LP and plr.Character then
-local tRoot=plr.Character:FindFirstChild(_HR);local hum=plr.Character:FindFirstChildOfClass(_HM);if tRoot and hum and hum.Health>0 then local dist=(tRoot.Position-root.Position).Magnitude;if dist<minDist then minDist=dist;closest=tRoot end end
-end
-end
-return closest,minDist
-end
-local function startBatAimbotV1()
-if Conns.batAimbot then Conns.batAimbot:Disconnect()end;local hum0=LP.Character and LP.Character:FindFirstChildOfClass(_HM);if hum0 then hum0.AutoRotate=false end
-Conns.batAimbot=_RS.RenderStepped:Connect(function(dt)
-if not _St.autoBatToggled then return end;local char=LP.Character;if not char then return end;local root=char:FindFirstChild(_HR);if not root then return end;local hum=char:FindFirstChildOfClass(_HM);if not hum then return end;if not char:FindFirstChildOfClass("Tool")then local bat=findBatV1();if bat then pcall(function()hum:EquipTool(bat)end)end end
-local target,targetDist=getClosestTargetV1();if not target then _setNamedVectorLinearVelocity(root,"VampireBat",Vector3.zero);return end;local myPos=root.Position;local targetPos=target.Position;local direction=targetPos-myPos;local flatDir=_V3(direction.X,0,direction.Z);if flatDir.Magnitude>0 then flatDir=flatDir.Unit else flatDir=Vector3.zero end;local chaseSpeed=_St.autoBatSpeed
-local desiredHeight=targetPos.Y+3.7;local yVel=(desiredHeight-myPos.Y)*19.5;if hum.FloorMaterial~=Enum.Material.Air then yVel=_mx(yVel,13)end;yVel=_mc(yVel,-70,110);local safeHorizontal,wallBlocked=_resolveCollisionHorizontal(root,_V3(flatDir.X*chaseSpeed,0,flatDir.Z*chaseSpeed),dt);local desiredVel=_V3(safeHorizontal.X,yVel,safeHorizontal.Z);local batLV=_getNamedVectorLinearVelocity(root,"VampireBat");if batLV then local nextVelocity=wallBlocked and desiredVel or batLV.VectorVelocity:Lerp(desiredVel,0.8);_setNamedVectorLinearVelocity(root,"VampireBat",nextVelocity)end;local toTarget=targetPos-myPos
-if toTarget.Magnitude>0.1 then
-local goalCF=CFrame.lookAt(myPos,targetPos);local diffCF=root.CFrame:Inverse()*goalCF;local rx,ry,rz=diffCF:ToEulerAnglesXYZ();rx=_mc(rx,-2.5,2.5);ry=_mc(ry,-2.5,2.5);rz=_mc(rz,-2.5,2.5);root.AssemblyAngularVelocity=root.CFrame:VectorToWorldSpace(wallBlocked and _V3(0,ry*42,0)or _V3(rx*42,ry*42,rz*42))
-end
-if _St.autoSwingEnabled and targetDist<=bypassHitDist then trySwingV1()end
-end)
-end
-local function stopBatAimbotV1()
-if Conns.batAimbot then Conns.batAimbot:Disconnect();Conns.batAimbot=nil end;local c=LP.Character;local root=c and c:FindFirstChild(_HR);if root then _stopNamedVectorLinearVelocity(root,"VampireBat");_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end;local hum2=c and c:FindFirstChildOfClass(_HM)
-if hum2 then
-hum2.AutoRotate=true;hum2.PlatformStand=false
-pcall(function()hum2:ChangeState(_HST.GettingUp)end)
-end
-bypassHitCD=false
-end
-local circleLastTargetPos,circleTargetVel;local circleOrigWalkSpeed,circleOrigJumpPower;local circlePredSphere
-local function circleGetNearest()
-local char=LP.Character;if not char then return nil end;local root=char:FindFirstChild(_HR);if not root then return nil end;local myPos=root.Position;local nearest,bestDist=nil,_mh
-for _,p in ipairs(_PL:GetPlayers())do
-if p~=LP and p.Character then
-local oRoot=p.Character:FindFirstChild(_HR);if oRoot then local d=(myPos-oRoot.Position).Magnitude;if d<bestDist then bestDist=d;nearest=p end end
-end
-end
-return nearest
-end
-local function circleCreateSphere()
-if circlePredSphere then circlePredSphere:Destroy()end;circlePredSphere=_I("Part");circlePredSphere.Shape=Enum.PartType.Ball;circlePredSphere.Size=_V3(2,2,2);circlePredSphere.Anchored=true;circlePredSphere.CanCollide=false;circlePredSphere.Material=Enum.Material.Neon;circlePredSphere.Color=_C(0,150,255);circlePredSphere.Transparency=1;circlePredSphere.Parent=workspace
-return circlePredSphere
-end
-local function startBatAimbotV2()
-if Conns.batAimbot then Conns.batAimbot:Disconnect()end;local char=LP.Character;if not char then return end;local hum=char:FindFirstChildOfClass(_HM);local root=char:FindFirstChild(_HR)
-if not hum or not root then return end;circleOrigWalkSpeed=hum.WalkSpeed;circleOrigJumpPower=hum.JumpPower;hum.WalkSpeed=0;hum.JumpPower=0;if not circlePredSphere then circleCreateSphere()end;circleLastTargetPos=nil;circleTargetVel=nil
-Conns.batAimbot=_RS.RenderStepped:Connect(function(dt)
-if not _St.autoBatToggled then return end;local ch=LP.Character;if not ch then return end;local rt=ch:FindFirstChild(_HR);if not rt then return end;local hm=ch:FindFirstChildOfClass(_HM);if not hm then return end;local targetPlr=circleGetNearest();if not targetPlr or not targetPlr.Character then _setNamedVectorLinearVelocity(rt,"VampireBat",Vector3.zero);return end;local tRoot=targetPlr.Character:FindFirstChild(_HR);if not tRoot then _setNamedVectorLinearVelocity(rt,"VampireBat",Vector3.zero);return end
-local tPos=tRoot.Position;local myPos=rt.Position;if circleLastTargetPos then circleTargetVel=(tPos-circleLastTargetPos)/dt end;circleLastTargetPos=tPos;local shiftLock=LP.CameraMode==Enum.CameraMode.LockFirstPerson;hm.AutoRotate=shiftLock;local predictionVelocity=circleTargetVel or Vector3.zero;local predictionAllowed=_readRootVelocity(tRoot).Magnitude<180;local predPos=tPos+(predictionAllowed and predictionVelocity*0.22 or Vector3.zero)
-if not shiftLock then
-local toTarget=predPos-myPos
-if toTarget.Magnitude>0.1 then
-local lookDir=toTarget.Unit;local curLook=rt.CFrame.LookVector;local axis=curLook:Cross(lookDir);local angle=_mas(_mc(axis.Magnitude,-1,1))
-if axis.Magnitude>0.01 then
-rt.AssemblyAngularVelocity=axis.Unit*angle*80
-else
-rt.AssemblyAngularVelocity=Vector3.zero
-end
-end
-else
-rt.AssemblyAngularVelocity=Vector3.zero
-end
-local dir=predPos-myPos
-if dir.Magnitude>1 then
-local wanted=dir.Unit*_St.autoBatSpeed;local safeHorizontal=_resolveCollisionHorizontal(rt,_V3(wanted.X,0,wanted.Z),dt);_setNamedVectorLinearVelocity(rt,"VampireBat",_V3(safeHorizontal.X,wanted.Y,safeHorizontal.Z))
-else
-local batLV=_getNamedVectorLinearVelocity(rt,"VampireBat");_setNamedVectorLinearVelocity(rt,"VampireBat",_V3(0,batLV and batLV.VectorVelocity.Y*0.5 or 0,0))
-end
-local swingDist=(tPos-myPos).Magnitude;if _St.autoSwingEnabled and swingDist<=bypassHitDist then trySwingV1()end
-end)
-end
-local function stopBatAimbotV2()
-if Conns.batAimbot then Conns.batAimbot:Disconnect();Conns.batAimbot=nil end;if circlePredSphere then circlePredSphere:Destroy();circlePredSphere=nil end;local c=LP.Character
-if c then
-local hm=c:FindFirstChildOfClass(_HM);if hm then hm.AutoRotate=true;if circleOrigWalkSpeed then hm.WalkSpeed=circleOrigWalkSpeed end;if circleOrigJumpPower then hm.JumpPower=circleOrigJumpPower end;circleOrigWalkSpeed=nil;circleOrigJumpPower=nil end;local rt=c:FindFirstChild(_HR);if rt then _stopNamedVectorLinearVelocity(rt,"VampireBat");_pulseNamedVectorLinearVelocity(rt,"VampireBrake",Vector3.zero,0.12);rt.AssemblyAngularVelocity=Vector3.zero end
-end
-circleLastTargetPos=nil;circleTargetVel=nil
-end
-local v3Aim={target=nil,lastPosition=nil,velocity=Vector3.zero,intended=Vector3.zero}
-local function startBatAimbotV3()
-if Conns.batAimbot then Conns.batAimbot:Disconnect();Conns.batAimbot=nil end;local char=LP.Character;if not char then return end;local hum=char:FindFirstChildOfClass(_HM);local root=char:FindFirstChild(_HR)
-if not hum or not root then return end
-v3Aim.target=nil;v3Aim.lastPosition=nil;v3Aim.velocity=Vector3.zero;v3Aim.intended=Vector3.zero;hum.AutoRotate=false
-Conns.batAimbot=_RS.RenderStepped:Connect(function(dt)
-if not _St.autoBatToggled then if Conns.batAimbot then Conns.batAimbot:Disconnect();Conns.batAimbot=nil end;return end
-local ch=LP.Character;local rt=ch and ch:FindFirstChild(_HR);local hm=ch and ch:FindFirstChildOfClass(_HM);if not rt or not hm or hm.Health<=0 then return end
-hm.AutoRotate=false
-local targetPlr=circleGetNearest();local tCh=targetPlr and targetPlr.Character;local tRoot=tCh and tCh:FindFirstChild(_HR);local tHum=tCh and tCh:FindFirstChildOfClass(_HM)
-if not tRoot or not tHum or tHum.Health<=0 then v3Aim.target=nil;v3Aim.lastPosition=nil;v3Aim.velocity=Vector3.zero;hm.AutoRotate=true;rt.AssemblyAngularVelocity=Vector3.zero;return end
-if v3Aim.target~=tRoot then v3Aim.target=tRoot;v3Aim.lastPosition=tRoot.Position;v3Aim.velocity=Vector3.zero end
-local safeDt=math.max(tonumber(dt)or 1/60,1/240);local tPos=tRoot.Position;local measured=(tPos-v3Aim.lastPosition)/safeDt
-if measured.Magnitude>150 then measured=measured.Unit*150 end
-local hv=Vector3.new(measured.X,0,measured.Z);if hv.Magnitude>80 then hv=hv.Unit*80;measured=Vector3.new(hv.X,measured.Y,hv.Z)end
-v3Aim.velocity=v3Aim.velocity:Lerp(measured,0.35);v3Aim.lastPosition=tPos
-local motion=v3Aim.velocity;local leadTime=math.clamp(motion.Magnitude/130,0.04,0.12);local hLead=Vector3.new(motion.X,0,motion.Z)*leadTime
-if hLead.Magnitude>4 then hLead=hLead.Unit*4 end
-local predicted=tPos+hLead+Vector3.new(0,math.clamp(motion.Y*leadTime,-2,2),0);local myPos=rt.Position;local toTarget=predicted-myPos
-if toTarget.Magnitude>0.01 then
-local look=rt.CFrame.LookVector;local axis=look:Cross(toTarget.Unit);local angle=math.acos(math.clamp(look:Dot(toTarget.Unit),-1,1))
-if axis.Magnitude<=0.01 and angle>1 then axis=rt.CFrame.UpVector end
-if axis.Magnitude>0.01 then rt.AssemblyAngularVelocity=axis.Unit*math.min(angle*80,120)else rt.AssemblyAngularVelocity=Vector3.zero end
-end
-if toTarget.Magnitude>1 then
-local speed=math.clamp(tonumber(_St.autoBatSpeed)or 58,1,120);local desired=motion+toTarget*10;if desired.Magnitude>speed then desired=desired.Unit*speed end
-rt.AssemblyLinearVelocity=desired;v3Aim.intended=desired
-else
-local y=rt.AssemblyLinearVelocity.Y*0.5;rt.AssemblyLinearVelocity=Vector3.new(0,y,0);v3Aim.intended=Vector3.new(0,y,0)
-end
-local vel=rt.AssemblyLinearVelocity;if math.abs(vel.X)>350 or math.abs(vel.Z)>350 then rt.AssemblyLinearVelocity=v3Aim.intended end
-local swingDist=(tPos-myPos).Magnitude;if _St.autoSwingEnabled and swingDist<=bypassHitDist then trySwingV1()end
-end)
-end
-local function stopBatAimbotV3()
-if Conns.batAimbot then Conns.batAimbot:Disconnect();Conns.batAimbot=nil end
-local function recover()
-local c=LP.Character;if not c then return end;local hm=c:FindFirstChildOfClass(_HM);local rt=c:FindFirstChild(_HR)
-if rt then pcall(function()local y=rt.AssemblyLinearVelocity.Y;if y>40 then y=20 elseif y<-80 then y=-40 end;rt.AssemblyLinearVelocity=Vector3.new(0,y*0.35,0);rt.AssemblyAngularVelocity=Vector3.zero end)end
-if hm then pcall(function()hm.AutoRotate=true;hm.PlatformStand=false;local st=hm:GetState();if st==Enum.HumanoidStateType.Physics or st==Enum.HumanoidStateType.Ragdoll or st==Enum.HumanoidStateType.FallingDown or st==Enum.HumanoidStateType.Flying then hm:ChangeState(Enum.HumanoidStateType.GettingUp)end end)end
-end
-recover();_td(function()_tw();recover()end)
-v3Aim.target=nil;v3Aim.lastPosition=nil;v3Aim.velocity=Vector3.zero;v3Aim.intended=Vector3.zero
-end
-startBatAimbot=function(_droppedAlready)
-if not _droppedAlready and isHoldingBrainrot and isHoldingBrainrot()then
-if _St.safeModeEnabled then _St.autoBatToggled=false;if setAutoBat then setAutoBat(false)end;if _sbr and _sbr.aimbot then _sbr.aimbot.setOn(false)end;return end
-if _St.dropBrainrotMode then if runDropBrainrot then pcall(runDropBrainrot)end;_td(function()_tw(0.22);if _St.autoBatToggled then startBatAimbot(true)end end);return end
-end
-if _St.autoBatVersion=="v3"then
-startBatAimbotV3()
-elseif _St.autoBatVersion=="v2"then
-startBatAimbotV2()
-else
-startBatAimbotV1()
-end
-end
-stopBatAimbot=function()
-if _St.autoBatVersion=="v3"then
-stopBatAimbotV3()
-elseif _St.autoBatVersion=="v2"then
-stopBatAimbotV2()
-else
-stopBatAimbotV1()
-end
-end
-end
-do
-local _desyncCooldown=false
-local function desyncGetBat()
-local char=LP.Character;if not char then return nil end;local tool=char:FindFirstChild("Bat");if tool then return tool end;local bp=LP:FindFirstChild("Backpack");if bp then tool=bp:FindFirstChild("Bat");if tool then tool.Parent=char;return tool end end
-return nil
-end
-local function desyncTryHit()
-if _desyncCooldown then return end;_desyncCooldown=true
-pcall(function()
-local bat=desyncGetBat();if bat then bat:Activate();local ev=bat:FindFirstChildWhichIsA("RemoteEvent");if ev then ev:FireServer()end end
-end)
-task.delay(0.08,function()_desyncCooldown=false end)
-end
-local function desyncGetClosest()
-if not hrp then return nil,_mh end;local cp,cd=nil,_mh
-for _,p in pairs(_PL:GetPlayers())do
-if p~=LP and p.Character then
-local tr=p.Character:FindFirstChild(_HR);if tr and tr.Position.Y>-30 then local d=(hrp.Position-tr.Position).Magnitude;if d<cd then cd=d;cp=p end end
-end
-end
-return cp,cd
-end
-startDesyncAimbot=function(_droppedAlready)
-if not _droppedAlready and isHoldingBrainrot and isHoldingBrainrot()then
-if _St.safeModeEnabled then _St.desyncAimbotEnabled=false;if setDesyncAimbot then setDesyncAimbot(false)end;if _sbr and _sbr.tpDesync then _sbr.tpDesync.setOn(false)end;return end
-if _St.dropBrainrotMode then if runDropBrainrot then pcall(runDropBrainrot)end;_td(function()_tw(0.22);if _St.desyncAimbotEnabled then startDesyncAimbot(true)end end);return end
-end
-if Conns.desyncAimbot then return end
-Conns.desyncAimbot=game:GetService("RunService").Heartbeat:Connect(function()
-if not(_St.desyncAimbotEnabled and h and hrp)then return end;local target=desyncGetClosest()
-local locked=false
-if target and target.Character then
-local tr=target.Character:FindFirstChild(_HR)
-if tr and tr.Position.Y>-30 then
-locked=true
-if sethiddenproperty then
-pcall(function()sethiddenproperty(hrp,"PhysicsRepRootPart",tr)end)
-end
-local targetPos=tr.Position+_V3(0,0.9,0);if(hrp.Position-targetPos).Magnitude>8 then hrp.CFrame=_CF(targetPos)end;local cam=workspace.CurrentCamera;if cam then cam.CFrame=_CF(cam.CFrame.Position,tr.Position)end;desyncTryHit()
-end
-end
-if not locked and sethiddenproperty then
-pcall(function()sethiddenproperty(hrp,"PhysicsRepRootPart",hrp)end)
-end
-end)
-end
-stopDesyncAimbot=function() if Conns.desyncAimbot then Conns.desyncAimbot:Disconnect();Conns.desyncAimbot=nil end;_desyncCooldown=false;if sethiddenproperty and hrp then pcall(function()sethiddenproperty(hrp,"PhysicsRepRootPart",hrp)end)end end
-end
-function _VH_forceAimbotOff() if _St.autoBatToggled then _St.autoBatToggled=false;if setAutoBat then setAutoBat(false)end;if _sbr and _sbr.aimbot then _sbr.aimbot.setOn(false)end;stopBatAimbot() end end
-function _VH_forceDesyncOff() if _St.desyncAimbotEnabled then _St.desyncAimbotEnabled=false;if setDesyncAimbot then setDesyncAimbot(false)end;if _sbr and _sbr.tpDesync then _sbr.tpDesync.setOn(false)end;stopDesyncAimbot() end end
-do
-local function findMedusa()
-local char=LP.Character;if not char then return nil end;for _,tool in ipairs(char:GetChildren())do if tool:IsA("Tool")then local tn=tool.Name:lower();if tn:find("medusa")or tn:find("head")or tn:find("stone")then return tool end end end;local bp2=LP:FindFirstChild("Backpack")
-if bp2 then for _,tool in ipairs(bp2:GetChildren())do
-if tool:IsA("Tool")then local tn=tool.Name:lower();if tn:find("medusa")or tn:find("head")or tn:find("stone")then return tool end end
-end end
-return nil
-end
-local function useMedusaCounter()
-if _St.medusaDebounce then return end;if tick()-_St.medusaLastUsed<MEDUSA_COOLDOWN then return end;local char=LP.Character;if not char then return end;_St.medusaDebounce=true
-local med=findMedusa();if not med then _St.medusaDebounce=false;return end;if med.Parent~=char then local hum2=char:FindFirstChildOfClass(_HM);if hum2 then hum2:EquipTool(med)end end;pcall(function()med:Activate()end) _St.medusaLastUsed=tick();_St.medusaDebounce=false end
-local function onAnchorChanged(part)
-return part:GetPropertyChangedSignal("Anchored"):Connect(function()
-if part.Anchored and part.Transparency==1 then if _St.medusaCounterEnabled then useMedusaCounter()end end
-end)
-end
-setupMedusaCounter=function(char)
-stopMedusaCounter();if not char then return end;for _,part in ipairs(char:GetDescendants())do if part:IsA("BasePart")then _ti(Conns.anchor,onAnchorChanged(part))end end
-_ti(Conns.anchor,char.DescendantAdded:Connect(function(part)
-if part:IsA("BasePart")then _ti(Conns.anchor,onAnchorChanged(part))end
-end))
-end
-stopMedusaCounter=function() for _,c in pairs(Conns.anchor)do pcall(function()c:Disconnect()end)end;Conns.anchor={} end
-end
-local leftWaypoints={
-_V3(-475.25999755859375,-9.140000343322754,92.94999694824219),
-_V3(-485.0200134277344,-7.889999866485596,93.62000274658203),
-_V3(-477.010009765625,-8.930000305175781,93.06999969482422),
-_V3(-475.2699890136719,-6.579999923706055,21.549999237060547),
-}
-local rightWaypoints={
-_V3(-475.2299865722656,-9.010000228881836,28.510000228881836),
-_V3(-485.0299987792969,-7.889999866485596,27.790000915527344),
-_V3(-476.9200134277344,-8.970000267028809,28.030000686645508),
-_V3(-476.17999267578125,-6.099999904632568,97.7300033569336),
-}
-local ARRIVAL_DISTANCE=1;local CHECKPOINT_3_WAIT=0.1
-local _autoFacingHum,_autoFacingRestore=nil,nil;local _autoFacingToken=0
-local function _lockAutoFacing()
-_autoFacingToken=_autoFacingToken+1;local char=LP.Character;local hum=char and char:FindFirstChildOfClass(_HM);if not hum then return end
-if _autoFacingHum~=hum then if _autoFacingHum and _autoFacingHum.Parent and _autoFacingRestore~=nil then _autoFacingHum.AutoRotate=_autoFacingRestore end;_autoFacingHum=hum;_autoFacingRestore=hum.AutoRotate end;hum.AutoRotate=false
-end
-local function _releaseAutoFacing()
-_autoFacingToken=_autoFacingToken+1;local token=_autoFacingToken;local hum=_autoFacingHum;local restore=_autoFacingRestore
-_td(function()
-if token~=_autoFacingToken or hum~=_autoFacingHum then return end
-if hum and hum.Parent then local root=hum.Parent:FindFirstChild(_HR);if root then root.AssemblyAngularVelocity=Vector3.zero end;hum.AutoRotate=(restore==nil)and true or restore end;_autoFacingHum=nil;_autoFacingRestore=nil
-end)
-end
-local _walkLV=nil;local _walkLVRoot=nil
-local function _getWalkLinearVelocity(root)
-    if not _isAliveRoot(root)then return nil end
-    if _walkLVRoot~=root or not(_walkLV and _walkLV.Parent==root) then
-        if _walkLV and _walkLV.Parent then pcall(function()_walkLV.Enabled=false;_walkLV:Destroy()end) end
-        local watt=root:FindFirstChild("VampireWalkAttachment")
-        if not(watt and watt:IsA("Attachment")) then watt=_I("Attachment");watt.Name="VampireWalkAttachment";watt.Parent=root end
-        local wlv=root:FindFirstChild("VampireWalkLinearVelocity")
-        if not(wlv and wlv:IsA("LinearVelocity")) then wlv=_I("LinearVelocity");wlv.Name="VampireWalkLinearVelocity";wlv.Parent=root end
-        wlv.Attachment0=watt;wlv.RelativeTo=Enum.ActuatorRelativeTo.World;wlv.VelocityConstraintMode=Enum.VelocityConstraintMode.Plane;wlv.PrimaryTangentAxis=_V3(1,0,0);wlv.SecondaryTangentAxis=_V3(0,0,1);pcall(function()wlv.ForceLimitsEnabled=false end);wlv.PlaneVelocity=Vector2.zero;wlv.Enabled=true
-        _walkLV=wlv;_walkLVRoot=root
-    end
-    return _walkLV
-end
-local function _checkRoofCollision(root,dt)
-    local char=LP.Character;if not(char and root and root.Parent)then return false end
-    local oldRoofLV=root:FindFirstChild("VampireRoofLinearVelocity");if oldRoofLV then pcall(function()oldRoofLV.Enabled=false;oldRoofLV:Destroy()end)end
-    local oldRoofAttachment=root:FindFirstChild("VampireRoofAttachment");if oldRoofAttachment then pcall(function()oldRoofAttachment:Destroy()end)end
-    _moveCollisionParams.FilterDescendantsInstances={char}
-    local upwardSpeed=math.max(_readRootVelocity(root).Y,0)
-    if upwardSpeed<=0.25 then return false end
-    local frameTime=math.clamp(dt or(1/60),1/240,1/15)
-    local roofDistance=3.05+math.min(upwardSpeed*frameTime,0.9)
-    local roofHit=workspace:Raycast(root.Position,_V3(0,roofDistance,0),_moveCollisionParams)
-    if not roofHit then return false end
-    local hum=char:FindFirstChildOfClass(_HM)
-    if hum then hum.Jump=false end
-    if root:FindFirstChild("VampireInfJumpLinearVelocity")then _stopNamedVectorLinearVelocity(root,"VampireInfJump")end
-    if root:FindFirstChild("VampireStepLinearVelocity")then _stopNamedVectorLinearVelocity(root,"VampireStep")end
-    return true
-end
-local function _stopWalkLinearVelocity(root)
-    if _walkLV and _walkLV.Parent then pcall(function()_walkLV.PlaneVelocity=Vector2.zero;_walkLV.Enabled=false;_walkLV:Destroy()end) end
-    _walkLV=nil;_walkLVRoot=nil
-    if root then local wlv=root:FindFirstChild("VampireWalkLinearVelocity");if wlv then pcall(function()wlv.Enabled=false;wlv:Destroy()end) end end
-end
-local function _resolveAutoWalkHorizontal(root,desiredVelocity,dt)
-    _checkRoofCollision(root,dt)
-    local safeVelocity=_resolveCollisionHorizontal(root,desiredVelocity,dt)
-    return safeVelocity
-end
-local PathWalker={};PathWalker.__index=PathWalker
-function PathWalker.new(waypoints,name)
-local self=setmetatable({},PathWalker);self.waypoints=table.clone(waypoints);self.name=name or"path";self.active=false;self.index=1;self.useCarry=false;self.pauseTime=0;self.connection=nil;self.onComplete=nil
-return self
-end
-function PathWalker:start()
-if self.active then return end;if#self.waypoints==0 then return end;self.active=true;self.index=1;self.useCarry=false;self.pauseTime=0
-self.connection=_RS.RenderStepped:Connect(function(dt)
-if not self.active then return end;local char=LP.Character
-if not char then
-self:stop()
-return
-end
-local root=char:FindFirstChild(_HR);if not root then return end
-if self.index>#self.waypoints then
-self:stop();if self.onComplete then self.onComplete() end
-return
-end
-local target=self.waypoints[self.index];local pos=root.Position;local flatDist=(_V3(target.X-pos.X,0,target.Z-pos.Z)).Magnitude
-if flatDist<=ARRIVAL_DISTANCE then
-if self.index==2 then self.pauseTime=CHECKPOINT_3_WAIT end;self.index=self.index+1;if self.index>2 and not self.useCarry then self.useCarry=true end
-return
-end
-if self.pauseTime>0 then
-self.pauseTime=self.pauseTime-dt;local _pwlv=_getWalkLinearVelocity(root);if _pwlv then _pwlv.PlaneVelocity=Vector2.zero end
-return
-end
-local dir=(target-pos)*_V3(1,0,1);dir=dir.Unit;local speed=(self.useCarry or _St.speedToggled)and _St.carrySpeed or _St.normalSpeed;local moveSpeed=_mn(speed,(flatDist/_mx(dt,1/240))*0.8);local safeVelocity=_resolveAutoWalkHorizontal(root,dir*moveSpeed,dt);local _pwlv=_getWalkLinearVelocity(root);if _pwlv then _pwlv.PlaneVelocity=Vector2.new(safeVelocity.X,safeVelocity.Z) end
-end)
-end
-function PathWalker:stop()
-self.active=false;if self.connection then self.connection:Disconnect();self.connection=nil end;self.index=1;self.useCarry=false;self.pauseTime=0;local char=LP.Character;if char then local root=char:FindFirstChild(_HR);if root then _stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end end
-end
-local leftWalker=PathWalker.new(leftWaypoints,"left");leftWalker.onComplete=function() _St.autoLeftEnabled=false;if setAutoLeft then setAutoLeft(false)end;if _sbr and _sbr.autoLeft then _sbr.autoLeft.setOn(false)end;_releaseAutoFacing() end
-local rightWalker=PathWalker.new(rightWaypoints,"right");rightWalker.onComplete=function() _St.autoRightEnabled=false;if setAutoRight then setAutoRight(false)end;if _sbr and _sbr.autoRight then _sbr.autoRight.setOn(false)end;_releaseAutoFacing() end
-local function velocityWalkTo(targetPos,stopOnArrival,continueIntoNextSegment)
-local conn=nil;local arrived=false
-conn=_RS.RenderStepped:Connect(function(dt)
-if arrived then
-if conn then conn:Disconnect()end
-return
-end
-local char=LP.Character
-if not char then
-if conn then conn:Disconnect()end
-return
-end
-local root=char:FindFirstChild(_HR)
-if not root then
-if conn then conn:Disconnect()end
-return
-end
-local pos=root.Position;local flatDist=(_V3(targetPos.X-pos.X,0,targetPos.Z-pos.Z)).Magnitude
-if flatDist<=ARRIVAL_DISTANCE then
-arrived=true;if continueIntoNextSegment then local transitionLV=_getWalkLinearVelocity(root);if transitionLV then transitionLV.PlaneVelocity=Vector2.zero end else _stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end;if stopOnArrival then stopOnArrival()end;if conn then conn:Disconnect()end
-return
-end
-local dir=(targetPos-pos)*_V3(1,0,1);dir=dir.Unit;local speed
-if _St.laggerMode==2 then
-speed=_St.burstCarrySpeed
-elseif _St.laggerMode==1 then
-speed=_St.burstNormalSpeed
-else
-speed=_St.normalSpeed
-end
-local moveSpeed=_mn(speed,(flatDist/_mx(dt,1/240))*0.8);local safeVelocity=_resolveAutoWalkHorizontal(root,dir*moveSpeed,dt);local _vwlv=_getWalkLinearVelocity(root);if _vwlv then _vwlv.PlaneVelocity=Vector2.new(safeVelocity.X,safeVelocity.Z) end
-end)
-return conn
-end
-local leftConn=nil;local rightConn=nil;local leftPhase=1;local rightPhase=1
-local _savedWalkSpeed=nil
-local function _lockWalk()
-local c=LP.Character;local hum=c and c:FindFirstChildOfClass(_HM);if hum then if _savedWalkSpeed==nil then _savedWalkSpeed=hum.WalkSpeed end;hum.WalkSpeed=0 end
-end
-local function _unlockWalk() local c=LP.Character;local hum=c and c:FindFirstChildOfClass(_HM);if hum and _savedWalkSpeed~=nil then hum.WalkSpeed=_savedWalkSpeed end;_savedWalkSpeed=nil end
-startAutoLeft=function(_droppedAlready)
-if not _droppedAlready and isHoldingBrainrot and isHoldingBrainrot()then
-if _St.safeModeEnabled then _St.autoLeftEnabled=false;if setAutoLeft then setAutoLeft(false)end;if _sbr and _sbr.autoLeft then _sbr.autoLeft.setOn(false)end;return end
-if _St.dropBrainrotMode then if runDropBrainrot then pcall(runDropBrainrot)end;_td(function()_tw(0.22);if _St.autoLeftEnabled then startAutoLeft(true)end end);return end
-end
-_lockWalk();_lockAutoFacing()
-if _St.autoPlayMode=="full"then
-oldStopAutoLeft();if _St.autoRightEnabled then _St.autoRightEnabled=false;if setAutoRight then setAutoRight(false)end;if _sbr and _sbr.autoRight then _sbr.autoRight.setOn(false)end;stopAutoRight() end;leftWalker:start()
-return
-end
-if leftConn then return end;leftPhase=1
-local function stopLeft()
-if leftConn then leftConn:Disconnect();leftConn=nil end;_St.autoLeftEnabled=false;leftPhase=1;if setAutoLeft then setAutoLeft(false)end;if _sbr and _sbr.autoLeft then _sbr.autoLeft.setOn(false)end;local char=LP.Character;if char then local root=char:FindFirstChild(_HR);if root then _stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end end;_releaseAutoFacing()
-end
-local function startPhase1()
-leftConn=velocityWalkTo(_V3(POS.L1.X,0,POS.L1.Z),function()
-leftPhase=2;if leftConn then leftConn:Disconnect()end
-leftConn=velocityWalkTo(_V3(POS.L2.X,0,POS.L2.Z),function()
-stopLeft()
-end)
-end,true)
-end
-startPhase1()
-end
-stopAutoLeft=function()
-if _St.autoPlayMode=="full"then
-leftWalker:stop()
-else
-if leftConn then leftConn:Disconnect();leftConn=nil end;_St.autoLeftEnabled=false;leftPhase=1;local char=LP.Character;if char then local root=char:FindFirstChild(_HR);if root then _stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end end
-end
-if not _St.autoRightEnabled then _unlockWalk();_releaseAutoFacing()end
-end
-startAutoRight=function(_droppedAlready)
-if not _droppedAlready and isHoldingBrainrot and isHoldingBrainrot()then
-if _St.safeModeEnabled then _St.autoRightEnabled=false;if setAutoRight then setAutoRight(false)end;if _sbr and _sbr.autoRight then _sbr.autoRight.setOn(false)end;return end
-if _St.dropBrainrotMode then if runDropBrainrot then pcall(runDropBrainrot)end;_td(function()_tw(0.22);if _St.autoRightEnabled then startAutoRight(true)end end);return end
-end
-_lockWalk();_lockAutoFacing()
-if _St.autoPlayMode=="full"then
-oldStopAutoRight();if _St.autoLeftEnabled then _St.autoLeftEnabled=false;if setAutoLeft then setAutoLeft(false)end;if _sbr and _sbr.autoLeft then _sbr.autoLeft.setOn(false)end;stopAutoLeft() end;rightWalker:start()
-return
-end
-if rightConn then return end;rightPhase=1
-local function stopRight()
-if rightConn then rightConn:Disconnect();rightConn=nil end;_St.autoRightEnabled=false;rightPhase=1;if setAutoRight then setAutoRight(false)end;if _sbr and _sbr.autoRight then _sbr.autoRight.setOn(false)end;local char=LP.Character;if char then local root=char:FindFirstChild(_HR);if root then _stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end end;_releaseAutoFacing()
-end
-local function startPhase1()
-rightConn=velocityWalkTo(_V3(POS.R1.X,0,POS.R1.Z),function()
-rightPhase=2;if rightConn then rightConn:Disconnect()end
-rightConn=velocityWalkTo(_V3(POS.R2.X,0,POS.R2.Z),function()
-stopRight()
-end)
-end,true)
-end
-startPhase1()
-end
-stopAutoRight=function()
-if _St.autoPlayMode=="full"then
-rightWalker:stop()
-else
-if rightConn then rightConn:Disconnect();rightConn=nil end;_St.autoRightEnabled=false;rightPhase=1;local char=LP.Character;if char then local root=char:FindFirstChild(_HR);if root then _stopWalkLinearVelocity(root);_pulseNamedVectorLinearVelocity(root,"VampireBrake",Vector3.zero,0.12);root.AssemblyAngularVelocity=Vector3.zero end end
-end
-if not _St.autoLeftEnabled then _unlockWalk();_releaseAutoFacing()end
-end
-oldStartAutoLeft=function()end;oldStopAutoLeft=function()end;oldStartAutoRight=function()end;oldStopAutoRight=function()end
-do
-local _fps={descConn=nil,lightCache=nil,terrainCache=nil,baseParts={},effectsDisabled={}}
-local function processFPSObj(v)
-pcall(function()
-if v:IsA("Model")then v.LevelOfDetail=Enum.ModelLevelOfDetail.Disabled;v.ModelStreamingMode=Enum.ModelStreamingMode.Nonatomic
-elseif v:IsA("MeshPart")then
-if _fps.baseParts[v]==nil then _fps.baseParts[v]={Material=v.Material,Reflectance=v.Reflectance,CastShadow=v.CastShadow}end;v.CastShadow=false;v.DoubleSided=false;v.RenderFidelity=Enum.RenderFidelity.Performance
-elseif v:IsA("BasePart")then
-if _fps.baseParts[v]==nil then _fps.baseParts[v]={Material=v.Material,Reflectance=v.Reflectance,CastShadow=v.CastShadow}end;v.CastShadow=false;v.Material=Enum.Material.Plastic;v.Reflectance=0
-elseif v:IsA("Fire")or v:IsA("SpotLight")or v:IsA("Smoke")or v:IsA("Sparkles")or v:IsA("ParticleEmitter")or v:IsA("Trail")or v:IsA("Beam")then
-if v.Enabled then _ti(_fps.effectsDisabled,v)end;v.Enabled=false
-elseif v:IsA("Explosion")then v.BlastPressure=1;v.BlastRadius=1
-elseif v:IsA("Attachment")then v.Visible=false end
-end)
-end
-applyFPSBoost=function()
-pcall(function()if setfpscap then setfpscap(99999)end end)
-pcall(function()if set_fps_cap then set_fps_cap(99999)end end)
-pcall(function()if setfflag then setfflag("DFIntTaskSchedulerTargetFps","99999")end end)
-local _fpsObjects=workspace:GetDescendants();for i,v in ipairs(_fpsObjects)do processFPSObj(v);if i%180==0 then _tw()end end;_fpsObjects=nil
-pcall(function()
-local lighting=game:GetService("Lighting");if not _fps.lightCache then _fps.lightCache={GlobalShadows=lighting.GlobalShadows,FogEnd=lighting.FogEnd,Brightness=lighting.Brightness} end
-for _,v in pairs(lighting:GetDescendants())do
-pcall(function()
-if v:IsA("BloomEffect")or v:IsA("BlurEffect")or v:IsA("SunRaysEffect")or v:IsA("DepthOfFieldEffect")or v:IsA("ColorCorrectionEffect")then if v.Enabled then _ti(_fps.effectsDisabled,v)end;v.Enabled=false end
-end)
-end
-lighting.GlobalShadows=false;lighting.FogEnd=9e9;lighting.Brightness=0;local terrain=workspace:FindFirstChildOfClass("Terrain")
-if terrain then
-if not _fps.terrainCache then _fps.terrainCache={WaterReflectance=terrain.WaterReflectance,WaterTransparency=terrain.WaterTransparency,WaterWaveSize=terrain.WaterWaveSize,WaterWaveSpeed=terrain.WaterWaveSpeed} end;terrain.WaterReflectance=0;terrain.WaterTransparency=0.7;terrain.WaterWaveSize=0;terrain.WaterWaveSpeed=0
-end
-end)
-if _fps.descConn then _fps.descConn:Disconnect()end
-_fps.descConn=workspace.DescendantAdded:Connect(function(v)if _St.fpsBoostEnabled then _ts(processFPSObj,v)end end)
-end
-disableFPSBoost=function()
-_St.fpsBoostEnabled=false;if _fps.descConn then _fps.descConn:Disconnect();_fps.descConn=nil end
-for part,info in pairs(_fps.baseParts)do
-pcall(function()
-if part and part.Parent then part.Material=info.Material;part.Reflectance=info.Reflectance;part.CastShadow=info.CastShadow end
-end)
-end
-_fps.baseParts={}
-for _,v in ipairs(_fps.effectsDisabled)do
-pcall(function()if v and v.Parent then v.Enabled=true end end)
-end
-_fps.effectsDisabled={}
-pcall(function()
-local lighting=game:GetService("Lighting");if _fps.lightCache then lighting.GlobalShadows=_fps.lightCache.GlobalShadows;lighting.FogEnd=_fps.lightCache.FogEnd;lighting.Brightness=_fps.lightCache.Brightness;_fps.lightCache=nil end;local terrain=workspace:FindFirstChildOfClass("Terrain")
-if terrain and _fps.terrainCache then terrain.WaterReflectance=_fps.terrainCache.WaterReflectance;terrain.WaterTransparency=_fps.terrainCache.WaterTransparency;terrain.WaterWaveSize=_fps.terrainCache.WaterWaveSize;terrain.WaterWaveSpeed=_fps.terrainCache.WaterWaveSpeed;_fps.terrainCache=nil end
-end)
-end
-end
-_G.AceStealRadii=_G.AceStealRadii or{Normal=62,Semi=9};_G.AceStealRadii.Semi=9
-do
-_G.__AceSetupSemiAutoSteal=function()
-_G.AceSemiSteal=_G.AceSemiSteal or{};local A=_G.AceSemiSteal;if A.conn then pcall(function()A.conn:Disconnect()end);A.conn=nil end;A.enabled=false;A.holdMin=1.3;A.holdMax=2.6;A.entryDelay=0.3;A.cooldown=0.05
-A.primeRange=80;A.radius=9;A.conn=A.conn;A.scanThread=A.scanThread;A.plotSync=A.plotSync or{caches={},connections={}};A.animals=A.animals or{};A.promptCache=A.promptCache or{};A.internalCache=A.internalCache or{};A.state=A.state or{active=false,startTime=0,phase="idle",label="",lastResult="",lastResultTime=0}
-local function barSet(p,label)
-pcall(function()
-if _G.StealBar then _G.StealBar.SetState(label or"STEALING");_G.StealBar.SetProgress(_mc(tonumber(p)or 0,0,1)) end
-end)
-end
-local function barReset()
-pcall(function()
-if _G.StealBar then _G.StealBar.Reset()end
-end)
-end
-local function rootPart()
-local char=LP.Character
-return char and(char:FindFirstChild(_HR)or char:FindFirstChild("UpperTorso"))or nil
-end
-local function splitPath(path)
-if typeof(path)=="table"then return path end;local out={};for part in string.gmatch(tostring(path),"[^%.]+")do _ti(out,tonumber(part)or part) end
-return out
-end
-local function resolvePath(path,root)
-local current,parent,key=root,nil,nil;for _,part in ipairs(splitPath(path))do parent=current;key=part;current=current and current[part]or nil end
-return current,parent,key
-end
-local function applySyncDiff(_chn,packet)
-local cache=A.plotSync.caches[_chn];if typeof(cache)~="table"then return end;local path,action,a,b=packet[1],packet[2],packet[3],packet[4];local current,parent,key=resolvePath(path,cache)
-if action=="Changed"then
-if parent~=nil then parent[key]=a end
-elseif action=="ArrayInsert"then
-if current~=nil then _ti(current,b,a)end
-elseif action=="ArrayRemoved"then
-if current~=nil then _tr(current,b)end
-elseif action=="DictionaryInsert"then
-if current~=nil then current[b]=a end
-elseif action=="DictionaryRemoved"then if current~=nil then current[b]=nil end end
-end
-local function attachPlotChannel(remote,plots,requestData)
-if A.plotSync.connections[remote]then return end;local _chn=tostring(remote.Name);if not plots:FindFirstChild(_chn)then return end
-if requestData and A.plotSync.caches[_chn]==nil then
-local ok,data=pcall(function()return requestData:InvokeServer(_chn)end)
-A.plotSync.caches[_chn]=(ok and typeof(data)=="table")and data or{}
-elseif A.plotSync.caches[_chn]==nil then A.plotSync.caches[_chn]={} end
-A.plotSync.connections[remote]=remote.OnClientEvent:Connect(function(queue)
-for _,packet in ipairs(queue)do applySyncDiff(_chn,packet)end
-end)
-end
-local function ensureSync()
-if A.syncReady then return true end
-local ok=pcall(function()
-local rs=game:GetService("ReplicatedStorage");A.packages=rs:WaitForChild("Packages",10);A.datas=rs:WaitForChild("Datas",10);A.plots=workspace:WaitForChild("Plots",10);if not(A.packages and A.datas and A.plots)then return end;A.animalsData=require(A.datas:WaitForChild("Animals",10));local sync=A.packages:WaitForChild("Synchronizer",10);A.channelFolder=sync:WaitForChild("Channel",10)
-A.routeRemote=sync:WaitForChild("CommunicationRoute",10);A.requestData=sync:FindFirstChild("RequestData");for _,child in ipairs(A.channelFolder:GetChildren())do if child:IsA("RemoteEvent")then attachPlotChannel(child,A.plots,A.requestData)end end
-A.channelFolder.ChildAdded:Connect(function(child)
-if child:IsA("RemoteEvent")then attachPlotChannel(child,A.plots,A.requestData)end
-end)
-A.routeRemote.OnClientEvent:Connect(function(actions)
-for _,action in ipairs(actions)do
-local kind,_chn=action[1],tostring(action[2])
-if A.plots and A.plots:FindFirstChild(_chn)then
-if kind=="ListenerAdded"then
-local remote=A.channelFolder and A.channelFolder:FindFirstChild(_chn);if remote and remote:IsA("RemoteEvent")then attachPlotChannel(remote,A.plots,A.requestData)end
-elseif kind=="ListenerRemoved"then for remote,conn in pairs(A.plotSync.connections)do if tostring(remote.Name)==_chn then pcall(function()conn:Disconnect()end) A.plotSync.connections[remote]=nil;A.plotSync.caches[_chn]=nil;break end end end end
-end
-end)
-A.syncReady=true
-end)
-return ok and A.syncReady==true
-end
-local function getPlotOwner(plot)
-local sign=plot and plot:FindFirstChild("PlotSign");local frame=sign and sign:FindFirstChild("SurfaceGui")and sign.SurfaceGui:FindFirstChild(_FR);local label=frame and frame:FindFirstChild(_TL);if not label or label.Text=="Empty Base"then return nil end
-return label.Text:gsub("'s [Bb]ase$",""):gsub("%s+$","")
-end
-local function isMyBaseAnimal(animalData)
-if not animalData or not animalData.plot or not A.plots then return false end;local plot=A.plots:FindFirstChild(animalData.plot);if not plot then return false end;local sign=plot:FindFirstChild("PlotSign");local yourBase=sign and sign:FindFirstChild("YourBase")
-return yourBase and yourBase:IsA("BillboardGui")and yourBase.Enabled==true
-end
-local function podiumFor(animalData)
-local plot=A.plots and A.plots:FindFirstChild(animalData.plot);local podiums=plot and plot:FindFirstChild("AnimalPodiums")
-return podiums and podiums:FindFirstChild(animalData.slot)or nil
-end
-local function animalPos(animalData)
-local podium=podiumFor(animalData)
-return podium and podium:GetPivot().Position or nil
-end
-local function distToAnimal(animalData)
-local root=rootPart();local pos=animalPos(animalData)
-return root and pos and(root.Position-pos).Magnitude or _mh
-end
-local function findPromptForAnimal(animalData)
-if not animalData then return nil end;local cached=A.promptCache[animalData.uid];if cached and cached.Parent then return cached end;local podium=podiumFor(animalData);local base=podium and podium:FindFirstChild("Base");local spawn=base and base:FindFirstChild("Spawn");local attach=spawn and spawn:FindFirstChild("PromptAttachment");if not attach then return nil end
-for _,prompt in ipairs(attach:GetChildren())do
-if prompt:IsA("ProximityPrompt")then
-A.promptCache[animalData.uid]=prompt
-return prompt
-end
-end
-return nil
-end
-local function scanAllPlots()
-if not ensureSync()then return 0 end;local newCache={}
-for _,plot in ipairs(A.plots:GetChildren())do
-local cache=A.plotSync.caches[plot.Name];local animalList=cache and cache.AnimalList
-if typeof(animalList)=="table"then
-for slot,animalData in pairs(animalList)do
-if type(animalData)=="table"then
-local animalName=animalData.Index;local info=A.animalsData and A.animalsData[animalName]
-if info then
-_ti(newCache,{
-name=info.DisplayName or animalName,
-plot=plot.Name,
-slot=tostring(slot),
-uid=plot.Name.."_"..tostring(slot),
-})
-end
-end
-end
-end
-end
-A.animals=newCache
-return#newCache
-end
-local function pickClosest()
-local root=rootPart();if not root then return nil end;local best,bestDist=nil,_mh;for _,animalData in ipairs(A.animals)do if not isMyBaseAnimal(animalData)then local pos=animalPos(animalData);local dist=pos and(root.Position-pos).Magnitude or _mh;if dist<=(A.primeRange or 80)and dist<bestDist then best,bestDist=animalData,dist end end end
-return best
-end
-local function buildCallbacks(prompt)
-if A.internalCache[prompt]then return end;local data={holdCallbacks={},triggerCallbacks={},ready=true};local okHold,holds=pcall(getconnections,prompt.PromptButtonHoldBegan)
-if okHold and type(holds)=="table"then for _,conn in ipairs(holds)do if type(conn.Function)=="function"then _ti(data.holdCallbacks,conn.Function)end end end;local okTrigger,triggers=pcall(getconnections,prompt.Triggered)
-if okTrigger and type(triggers)=="table"then for _,conn in ipairs(triggers)do if type(conn.Function)=="function"then _ti(data.triggerCallbacks,conn.Function)end end end;if#data.holdCallbacks>0 or#data.triggerCallbacks>0 then A.internalCache[prompt]=data end
-end
-local function executeSemi(prompt,animalData)
-if tick()<_St.stealPausedUntil then return false end
-if not prompt or not prompt.Parent or not animalData then return false end;buildCallbacks(prompt);local data=A.internalCache[prompt];if not data or not data.ready then return false end;data.ready=false;A.state.active=true;A.state.startTime=tick();A.state.phase="holding";A.state.label=animalData.name or"Animal"
-_ts(function()
-local startTime=A.state.startTime;for _,fn in ipairs(data.holdCallbacks)do _ts(function()pcall(fn)end)end;while A.enabled and(A.run==true)and tick()>=_St.stealPausedUntil and tick()-startTime<(A.holdMin or 1.3)do barSet((tick()-startTime)/(A.holdMax or 2.6),"STEALING");_tw() end;A.state.phase="waitingRange";local alreadyInRange=distToAnimal(animalData)<=(tonumber(A.radius)or 10);local fired=false
-while A.enabled and(A.run==true)and tick()>=_St.stealPausedUntil and prompt.Parent do
-local elapsed=tick()-startTime;if elapsed>(A.holdMax or 2.6)then break end;barSet(elapsed/(A.holdMax or 2.6),"STEALING")
-if distToAnimal(animalData)<=(tonumber(A.radius)or 10)then
-if not alreadyInRange then _tw(A.entryDelay or 0.3)end
-if A.enabled and(A.run==true)then for _,fn in ipairs(data.triggerCallbacks)do _ts(function()pcall(fn)end)end;pcall(function()if _G.AutoCarrySpeed and _G.AutoCarrySpeed.WatchPickup then _G.AutoCarrySpeed.WatchPickup(1.25)end end) fired=true end;break end;_tw()
-end
-A.state.lastResult=fired and("Stole "..tostring(A.state.label))or("Missed window: "..tostring(A.state.label));A.state.active=false;A.state.phase="idle";A.state.lastResultTime=tick();if fired then barSet(1,"STEALING")end;_tw(A.cooldown or 0.05);data.ready=true;barReset()
-end)
-return true
-end
-local function ensureScanThread()
-if A.scanThread then return end
-A.scanThread=_ts(function()
-while _G.AceSemiSteal do if A.enabled or(A.run==true)then pcall(scanAllPlots)end;_tw(5) end
-end)
-end
-_G.AceSemiAutoStealSetRadius=function() A.radius=9;_G.AceStealRadii.Semi=9 end;_G.AceSemiAutoStealStop=function() A.run=false;A.enabled=false;if A.conn then A.conn:Disconnect();A.conn=nil end;A.state.active=false;A.state.phase="idle";barReset() end
-_G._VH_abortSteal=function() pcall(function()A.state.active=false;A.state.phase="idle";for _,d in pairs(A.internalCache or{})do if type(d)=="table"then d.ready=true end end;barReset()end);pcall(function()if StealState then StealState.active=false;StealState.phase="idle" end end)end
-_G.AceSemiAutoStealStart=function()
-A.run=true;_G.AceStealRadii.Semi=9;A.radius=9;A.enabled=true;ensureSync();ensureScanThread();pcall(scanAllPlots);if A.conn then A.conn:Disconnect();A.conn=nil end
-A.conn=game:GetService("RunService").Heartbeat:Connect(function()
-if not A.enabled then return end;if(A.run~=true)then _G.AceSemiAutoStealStop();return end;if A.state.active then return end;if tick()<_St.stealPausedUntil then return end;local target=pickClosest();if not target then return end;local prompt=findPromptForAnimal(target);if prompt then executeSemi(prompt,target)end
-end)
-end
-_G.AceSemiAutoStealSync=function()
-if(A.run==true)and Steal.AutoStealEnabled then
-_G.AceSemiAutoStealStart()
-else
-_G.AceSemiAutoStealStop()
-end
-end
-end
-_G.__AceSetupSemiAutoSteal()
-end
-do
-local _RS=game:GetService("ReplicatedStorage");local AnimalsData={};local _plots=workspace:FindFirstChild("Plots")or workspace:WaitForChild("Plots",10);local _syncRemotes=nil;local _plotAnimalSync={caches={},connections={}};local _syncReady=false
-pcall(function()
-local _Packages=_RS:WaitForChild("Packages",10);local _Datas=_RS:WaitForChild("Datas",10);if _Datas then local animMod=_Datas:FindFirstChild("Animals");if animMod then AnimalsData=require(animMod)end end
-if _Packages then
-local folder=_Packages:FindFirstChild("Synchronizer")
-if folder then
-_syncRemotes={
-channelFolder=folder:WaitForChild("Channel",10),
-routeRemote=folder:WaitForChild("CommunicationRoute",10),
-requestData=folder:FindFirstChild("RequestData"),
-}
-if _syncRemotes.channelFolder and _syncRemotes.routeRemote then _syncReady=true end
-end
-end
-end)
-local function _splitSyncPath(path)
-if typeof(path)=="table"then return path end;local out={};for part in string.gmatch(tostring(path),"[^%.]+")do _ti(out,tonumber(part)or part) end
-return out
-end
-local function _resolveSyncPath(path,root)
-local current,parent,key=root,nil,nil;for _,part in ipairs(_splitSyncPath(path))do parent=current;key=part;current=current and current[part]or nil end
-return current,parent,key
-end
-local function _applyPlotSyncDiff(_chn,packet)
-local cache=_plotAnimalSync.caches[_chn];if typeof(cache)~="table"then return end;local path,action,a,b=packet[1],packet[2],packet[3],packet[4];local current,parent,key=_resolveSyncPath(path,cache);if action=="Changed"then if parent~=nil then parent[key]=a end
-elseif action=="ArrayInsert"then if current~=nil then _ti(current,b,a)end
-elseif action=="ArrayRemoved"then if current~=nil then _tr(current,b)end
-elseif action=="DictionaryInsert"then if current~=nil then current[b]=a end
-elseif action=="DictionaryRemoved"then if current~=nil then current[b]=nil end end
-end
-local function _attachPlotChannel(remote)
-if _plotAnimalSync.connections[remote]then return end;local _chn=tostring(remote.Name);if not _plots:FindFirstChild(_chn)then return end
-if _syncRemotes.requestData and _plotAnimalSync.caches[_chn]==nil then
-local ok,data=pcall(function()return _syncRemotes.requestData:InvokeServer(_chn)end)
-_plotAnimalSync.caches[_chn]=(ok and typeof(data)=="table")and data or{}
-elseif _plotAnimalSync.caches[_chn]==nil then _plotAnimalSync.caches[_chn]={} end
-_plotAnimalSync.connections[remote]=remote.OnClientEvent:Connect(function(queue)
-for _,packet in ipairs(queue)do _applyPlotSyncDiff(_chn,packet)end
-end)
-end
-local function _detachPlotChannel(_chn) for remote,conn in pairs(_plotAnimalSync.connections)do if tostring(remote.Name)==tostring(_chn)then conn:Disconnect();_plotAnimalSync.connections[remote]=nil;_plotAnimalSync.caches[tostring(_chn)]=nil;break end end end
-if _syncReady then
-for _,child in ipairs(_syncRemotes.channelFolder:GetChildren())do if child:IsA("RemoteEvent")then _attachPlotChannel(child)end end
-_syncRemotes.channelFolder.ChildAdded:Connect(function(child)
-if child:IsA("RemoteEvent")then _attachPlotChannel(child)end
-end)
-_syncRemotes.routeRemote.OnClientEvent:Connect(function(actions)
-for _,action in ipairs(actions)do
-local kind,_chn=action[1],tostring(action[2]);if not _plots:FindFirstChild(_chn)then continue end
-if kind=="ListenerAdded"then
-local remote=_syncRemotes.channelFolder:FindFirstChild(_chn);if remote and remote:IsA("RemoteEvent")then _attachPlotChannel(remote)end
-elseif kind=="ListenerRemoved"then _detachPlotChannel(_chn) end
-end
-end)
-end
-local function _gpcd(plotName)return _plotAnimalSync.caches[plotName]end;local _allAnimalsCache={};local _PromptMemCache={};local _StealCallbacks={};local StealState={
-active=false,startTime=0,phase="idle",
-label="",lastResult="",lastResultTime=0,
-totalSteals=0,failedSteals=0,
-}
-local function _getPlotOwner(plot)
-local sign=plot:FindFirstChild("PlotSign");local frame=sign and sign:FindFirstChild("SurfaceGui")and sign.SurfaceGui:FindFirstChild(_FR);local label=frame and frame:FindFirstChild(_TL);if not label or label.Text=="Empty Base"then return nil end
-return label.Text:gsub("'s [Bb]ase$",""):gsub("%s+$","")
-end
-local function _imba(animalData)
-if not animalData or not animalData.plot then return false end;local plot=_plots:FindFirstChild(animalData.plot);if not plot then return false end
-return _getPlotOwner(plot)==LP.DisplayName
-end
-local function _findPromptForAnimal(animalData)
-if not animalData then return nil end;local cached=_PromptMemCache[animalData.uid];if cached and cached.Parent then return cached end;local plot=workspace.Plots:FindFirstChild(animalData.plot);if not plot then return nil end;local podiums=plot:FindFirstChild("AnimalPodiums");if not podiums then return nil end;local podium=podiums:FindFirstChild(animalData.slot);if not podium then return nil end
-local base=podium:FindFirstChild("Base");if not base then return nil end;local spawn=base:FindFirstChild("Spawn");if not spawn then return nil end;local attach=spawn:FindFirstChild("PromptAttachment");if not attach then return nil end;for _,p in ipairs(attach:GetChildren())do if p:IsA("ProximityPrompt")then _PromptMemCache[animalData.uid]=p;return p end end
-return nil
-end
-local function _gap(animalData)
-local plot=workspace.Plots:FindFirstChild(animalData.plot);if not plot then return nil end;local podiums=plot:FindFirstChild("AnimalPodiums");if not podiums then return nil end;local podium=podiums:FindFirstChild(animalData.slot);if not podium then return nil end
-return podium:GetPivot().Position
-end
-local function _distToAnimal(animalData)
-local char=LP.Character;if not char then return _mh end;local _hrp=char:FindFirstChild(_HR)or char:FindFirstChild("UpperTorso");if not _hrp then return _mh end;local pos=_gap(animalData)
-return pos and(_hrp.Position-pos).Magnitude or _mh
-end
-local function _pickClosest()
-local char=LP.Character;if not char then return nil end;local _hrp=char:FindFirstChild(_HR)or char:FindFirstChild("UpperTorso");if not _hrp then return nil end;local best,bestDist=nil,_mh
-for _,animalData in ipairs(_allAnimalsCache)do
-if _imba(animalData)then continue end;local pos=_gap(animalData);if not pos then continue end;local dist=(_hrp.Position-pos).Magnitude;if dist>Steal.StealRadius then continue end;if dist<bestDist then bestDist=dist;best=animalData end
-end
-return best
-end
-local function _buildStealCallbacks(prompt)
-if _StealCallbacks[prompt]then return end;local data={holdCallbacks={},triggerCallbacks={},ready=true};local ok1,conns1=pcall(getconnections,prompt.PromptButtonHoldBegan)
-if ok1 and type(conns1)=="table"then for _,conn in ipairs(conns1)do if type(conn.Function)=="function"then _ti(data.holdCallbacks,conn.Function)end end end;local ok2,conns2=pcall(getconnections,prompt.Triggered)
-if ok2 and type(conns2)=="table"then for _,conn in ipairs(conns2)do if type(conn.Function)=="function"then _ti(data.triggerCallbacks,conn.Function)end end end;if(#data.holdCallbacks>0)or(#data.triggerCallbacks>0)then _StealCallbacks[prompt]=data end
-end
-local STEAL_TRIGGER_RANGE=9;local STEAL_ENTRY_DELAY=0.3
-local function _executeStealAsync(prompt,animalData)
-local data=_StealCallbacks[prompt];if not data or not data.ready then return false end;data.ready=false;local label=animalData.name or"Animal";StealState.active=true;StealState.startTime=tick();StealState.phase="holding";StealState.label=label
-_ts(function()
-for _,fn in ipairs(data.holdCallbacks)do _ts(fn)end;_tw(Steal.StealDuration);StealState.phase="waitingRange";local alreadyInRange=_distToAnimal(animalData)<=STEAL_TRIGGER_RANGE;local fired=false
-while true do
-if(tick()-StealState.startTime)>(Steal.StealDuration*2)then break end;if not prompt.Parent then break end;if _distToAnimal(animalData)<=STEAL_TRIGGER_RANGE then if not alreadyInRange then _tw(STEAL_ENTRY_DELAY)end;for _,fn in ipairs(data.triggerCallbacks)do _ts(fn)end;fired=true;break end;_tw()
-end
-if fired then
-StealState.totalSteals = StealState.totalSteals + 1;StealState.lastResult="Stole "..label
-else
-StealState.failedSteals = StealState.failedSteals + 1;StealState.lastResult="Missed: "..label
-end
-StealState.active=false;StealState.phase="idle";StealState.lastResultTime=tick();_tw(0.05);data.ready=true
-end)
-return true
-end
-local function _attemptSteal(prompt,animalData)
-if not prompt or not prompt.Parent then return false end;_buildStealCallbacks(prompt);if not _StealCallbacks[prompt]then return false end
-return _executeStealAsync(prompt,animalData)
-end
-local function _scanAllPlots()
-local newCache={}
-for _,plot in ipairs(_plots:GetChildren())do
-local cache=_gpcd(plot.Name);if not cache then continue end;local animalList=cache.AnimalList;if typeof(animalList)~="table"then continue end
-for slot,animalData in pairs(animalList)do
-if type(animalData)=="table"then
-local animalInfo=AnimalsData[animalData.Index];if not animalInfo then continue end;_ti(newCache,{
-name=animalInfo.DisplayName or animalData.Index,
-plot=plot.Name,
-slot=tostring(slot),
-uid=plot.Name.."_"..tostring(slot),
-})
-end
-end
-end
-_allAnimalsCache=newCache
-end
-local _fillGrad=progressFill and progressFill:FindFirstChildOfClass("UIGradient")
-local function _setBarColor(c1,c2)
-c1=_BAR_RED1;c2=_BAR_RED2;progressFill[_BgC]=c1
-if _fillGrad then
-_fillGrad.Color=ColorSequence.new({
-_CSK(0,c1),
-_CSK(1,c2),
-})
-end
-end
-local _pbLastState=nil
-game:GetService("RunService").Heartbeat:Connect(function()
-if not progressFill or not progressPct then return end;if _St.stealMode=="semi"then return end
-if _St.stealMode=="normal"or _St.stealMode=="normalv2"then
-if _St.isStealing and _St.stealStartTime then
-local prog=_St.stealMode=="normalv2"and(_St.normalV2Progress or 0)or _mc((tick()-_St.stealStartTime)/_mx(Steal.StealDuration,0.01),0,1);progressFill.Size=_U(prog,0,1,0);progressPct.Text="";_setBarColor(_C(196,140,255),_C(85,42,130));_pbLastState="active"
-elseif _pbLastState~="idle"then
-progressFill.Size=_U(0,0,1,0);progressPct.Text="";_pbLastState="idle"
-end
-return
-end
-local active=StealState.active;local justFinished=StealState.lastResultTime>0 and(tick()-StealState.lastResultTime)<1.4
-if not active and not justFinished then
-if _pbLastState~="idle"then progressFill.Size=_U(0,0,1,0);_setBarColor(_C(196,140,255),_C(85,42,130));progressPct.Text="";_pbLastState="idle"end
-return
-end
-_pbLastState="busy"
-if active then
-local rawProg=(tick()-StealState.startTime)/_mx(Steal.StealDuration,0.01);local visualFill
-if rawProg<=1 then
-visualFill=rawProg*0.5;_setBarColor(_C(196,140,255),_C(85,42,130))
-else
-visualFill=_mc(0.5+(rawProg-1)*0.5,0.5,1);_setBarColor(_C(245,220,195),_C(220,190,160))
-end
-progressFill.Size=_U(visualFill,0,1,0);progressPct.Text=""
-elseif justFinished then
-progressFill.Size=_U(1,0,1,0);local ok=string.find(StealState.lastResult,"Stole")~=nil;if ok then _setBarColor(_C(245,220,195),_C(220,190,160))
-else _setBarColor(_C(196,140,255),_C(85,42,130))end
-progressPct.Text=""
-else
-progressFill.Size=_U(0,0,1,0);_setBarColor(_C(196,140,255),_C(85,42,130));progressPct.Text=""
-end
-end)
-_ts(function()while _tw(5)do _scanAllPlots()end end)
-_scanAllPlots()
-local function _nimp(plotName)
-local ct=tick();if Steal.plotCache[plotName]and(ct-(Steal.plotCacheTime[plotName]or 0))<PLOT_CACHE_DURATION then return Steal.plotCache[plotName]end;local _p=workspace:FindFirstChild("Plots");if not _p then Steal.plotCache[plotName]=false;Steal.plotCacheTime[plotName]=ct;return false end
-local plot=_p:FindFirstChild(plotName);if not plot then Steal.plotCache[plotName]=false;Steal.plotCacheTime[plotName]=ct;return false end;local sign=plot:FindFirstChild("PlotSign")
-if sign then local yb=sign:FindFirstChild("YourBase");if yb and yb:IsA("BillboardGui")then local r=yb.Enabled==true;Steal.plotCache[plotName]=r;Steal.plotCacheTime[plotName]=ct;return r end end;Steal.plotCache[plotName]=false;Steal.plotCacheTime[plotName]=ct;return false
-end
-local function _normFindPrompt()
-local char=LP.Character;if not char then return nil end;local _hrp2=char:FindFirstChild(_HR);if not _hrp2 then return nil end;local ct=tick()
-if ct-Steal.promptCacheTime<PROMPT_CACHE_REFRESH and#Steal.cachedPrompts>0 then
-local np,nd=nil,_mh;for _,data in ipairs(Steal.cachedPrompts)do if data.spawn then local dist=(data.spawn.Position-_hrp2.Position).Magnitude;if dist<=Steal.StealRadius and dist<nd then np=data.prompt;nd=dist end end end;if np then return np end
-end
-Steal.cachedPrompts={};Steal.promptCacheTime=ct;local plots2=workspace:FindFirstChild("Plots");if not plots2 then return nil end;local np,nd=nil,_mh
-for _,plot in ipairs(plots2:GetChildren())do
-if _nimp(plot.Name)then continue end;local pods=plot:FindFirstChild("AnimalPodiums");if not pods then continue end
-for _,pod in ipairs(pods:GetChildren())do
-pcall(function()
-local base=pod:FindFirstChild("Base");local sp=base and base:FindFirstChild("Spawn")
-if sp then
-local att=sp:FindFirstChild("PromptAttachment");if att then for _,child in ipairs(att:GetChildren())do if child:IsA("ProximityPrompt")then local dist=(sp.Position-_hrp2.Position).Magnitude;_ti(Steal.cachedPrompts,{prompt=child,spawn=sp});if dist<=Steal.StealRadius and dist<nd then np=child;nd=dist end;break end end end
-end
-end)
-end
-end
-return np
-end
-local function _normExecuteSteal(prompt)
-if tick()<_St.stealPausedUntil then return end
-local ct=tick();if ct-_St.lastStealTick<STEAL_COOLDOWN then return end;if _St.isStealing then return end
-if not Steal.Data[prompt]then
-Steal.Data[prompt]={hold={},trigger={},ready=true}
-pcall(function()
-if getconnections then
-for _,c in ipairs(getconnections(prompt.PromptButtonHoldBegan))do if c.Function then _ti(Steal.Data[prompt].hold,c.Function)end end;for _,c in ipairs(getconnections(prompt.Triggered))do if c.Function then _ti(Steal.Data[prompt].trigger,c.Function)end end
-else Steal.Data[prompt].useFallback=true end
-end)
-end
-local data=Steal.Data[prompt];if not data.ready then return end;data.ready=false;_St.isStealing=true;_St.stealStartTime=ct;_St.lastStealTick=ct;if Conns.progress then Conns.progress:Disconnect()end
-Conns.progress=game:GetService("RunService").Heartbeat:Connect(function()
-if not _St.isStealing then Conns.progress:Disconnect();return end;local prog=_mc((tick()-_St.stealStartTime)/_mx(Steal.StealDuration,0.01),0,1);if progressFill then progressFill.Size=_U(prog,0,1,0)end;if progressPct then progressPct.Text="" end;_setBarColor(_C(196,140,255),_C(85,42,130))
-end)
-_ts(function()
-local ok=false
-pcall(function()
-if not data.useFallback then for _,fn in ipairs(data.hold)do _ts(fn)end;_tw(Steal.StealDuration);for _,fn in ipairs(data.trigger)do _ts(fn)end;ok=true end
-end)
-if not ok and fireproximityprompt then pcall(function()fireproximityprompt(prompt);ok=true end)end
-if not ok then pcall(function()prompt:InputHoldBegin();_tw(Steal.StealDuration);prompt:InputHoldEnd()end)end;if progressFill then progressFill.Size=_U(1,0,1,0)end;if progressPct then progressPct.Text="" end;_tw(_mx(Steal.StealDuration*0.08,0.08))
-if Conns.progress then Conns.progress:Disconnect()end;if progressFill then progressFill.Size=_U(0,0,1,0)end;if progressPct then progressPct.Text=""end;_tw(0.01);data.ready=true;_St.isStealing=false
-end)
-end
-local function _normalV2Distance(prompt)
-local char=LP.Character;local root=char and(char:FindFirstChild(_HR)or char:FindFirstChild("UpperTorso"));if not root or not prompt or not prompt.Parent then return _mh end
-local spawn=prompt.Parent.Parent;if spawn and spawn:IsA("BasePart")then return(root.Position-spawn.Position).Magnitude end
-return _mh
-end
-local function _normalV2ExecuteSteal(prompt)
-if tick()<_St.stealPausedUntil then return end
-local ct=tick();if ct-_St.lastStealTick<STEAL_COOLDOWN then return end;if _St.isStealing then return end
-if not Steal.Data[prompt]then
-Steal.Data[prompt]={hold={},trigger={},ready=true}
-pcall(function()
-if getconnections then
-for _,c in ipairs(getconnections(prompt.PromptButtonHoldBegan))do if c.Function then _ti(Steal.Data[prompt].hold,c.Function)end end;for _,c in ipairs(getconnections(prompt.Triggered))do if c.Function then _ti(Steal.Data[prompt].trigger,c.Function)end end
-else Steal.Data[prompt].useFallback=true end
-end)
-end
-local data=Steal.Data[prompt];if not data.ready then return end;data.ready=false;_St.isStealing=true;_St.stealStartTime=ct;_St.lastStealTick=ct;_St.normalV2Progress=0
-_ts(function()
-local ok=false;local holdStarted=false;local duration=_mx(Steal.StealDuration,0.01);local firstDuration=duration*0.75;local finalDuration=duration*0.25
-pcall(function()
-if not data.useFallback then for _,fn in ipairs(data.hold)do _ts(fn)end else prompt:InputHoldBegin()end;holdStarted=true
-end)
-local phaseStart=tick()
-while Steal.AutoStealEnabled and _St.stealMode=="normalv2"and prompt.Parent and tick()-phaseStart<firstDuration do
-_St.normalV2Progress=_mc((tick()-phaseStart)/duration,0,0.75);game:GetService("RunService").Heartbeat:Wait()
-end
-_St.normalV2Progress=0.75
-local pauseStart=tick();while Steal.AutoStealEnabled and _St.stealMode=="normalv2"and prompt.Parent and _normalV2Distance(prompt)>STEAL_TRIGGER_RANGE and tick()-pauseStart<1.5 do game:GetService("RunService").Heartbeat:Wait()end
-if Steal.AutoStealEnabled and _St.stealMode=="normalv2"and prompt.Parent then
-local resumeStart=tick()
-while Steal.AutoStealEnabled and _St.stealMode=="normalv2"and prompt.Parent and tick()-resumeStart<finalDuration do
-_St.normalV2Progress=_mc(0.75+((tick()-resumeStart)/duration),0.75,1);game:GetService("RunService").Heartbeat:Wait()
-end
-if Steal.AutoStealEnabled and _St.stealMode=="normalv2"and prompt.Parent then
-pcall(function()if not data.useFallback then for _,fn in ipairs(data.trigger)do _ts(fn)end else prompt:InputHoldEnd()end;ok=true end)
-if not ok and fireproximityprompt then pcall(function()fireproximityprompt(prompt);ok=true end)end
-end
-end
-if not ok and data.useFallback and holdStarted then pcall(function()prompt:InputHoldEnd()end)end
-if ok then _St.normalV2Progress=1;if progressFill then progressFill.Size=_U(1,0,1,0)end;if progressPct then progressPct.Text="" end;_tw(_mx(duration*0.08,0.08))end
-if progressFill then progressFill.Size=_U(0,0,1,0)end;if progressPct then progressPct.Text=""end;_tw(0.01);data.ready=true;_St.isStealing=false;_St.normalV2Progress=nil
-end)
-end
-startAutoSteal=function()
-if Conns.autoSteal then pcall(function()Conns.autoSteal:Disconnect()end);Conns.autoSteal=nil end;Steal.AutoStealEnabled=true
-if _St.stealMode~="normal" and _St.stealMode~="normalv2" then _St.stealMode="normal" end
-pcall(function()if _G.AceSemiAutoStealStop then _G.AceSemiAutoStealStop()end end)
-Conns.autoSteal=game:GetService("RunService").Heartbeat:Connect(function()
-if not Steal.AutoStealEnabled or _St.isStealing then return end;if tick()<_St.stealPausedUntil then return end;local p=_normFindPrompt();if p then if _St.stealMode=="normalv2"then _normalV2ExecuteSteal(p)else _normExecuteSteal(p)end end
-end)
-end
-stopAutoSteal=function()
-pcall(function()if _G.AceSemiAutoStealStop then _G.AceSemiAutoStealStop()end end)
-if Conns.autoSteal then Conns.autoSteal:Disconnect();Conns.autoSteal=nil end;Steal.AutoStealEnabled=false;_St.isStealing=false;_St.normalV2Progress=nil;_St.lastStealTick=0;Steal.plotCache={};Steal.plotCacheTime={};Steal.cachedPrompts={};StealState.active=false;StealState.phase="idle";_PromptMemCache={};_StealCallbacks={};if progressFill then progressFill.Size=_U(0,0,1,0)end;if progressPct then progressPct.Text=""end
-end
-end
-local _configLoadInProgress=false
-local _lastSavedConfig=nil
-_scfg=function(silent,forceWrite,previewOnly)
-if _configLoadInProgress and not forceWrite then return false end
-_St.speedChangeMethod="v2";_St.speedChangeMethodSaved="v2";_St.sideButtonDragModeSaved=_St.sideButtonDragMode
-_St.disablePredictionAt180=true;_St.showProgressBar=true;_St.showProgressFPS=true;_St.showProgressPing=true;_St.sideButtonType="square";_St.sideButtonLook="purple"
-if pbFrame then local p=pbFrame.Position;_St.stealBarPos=string.format("%.4f,%.1f,%.4f,%.1f",p.X.Scale,p.X.Offset,p.Y.Scale,p.Y.Offset)end
-local cfg={
-normalSpeed=_St.normalSpeed,carrySpeed=_St.carrySpeed,
-burstNormalSpeed=_St.burstNormalSpeed,burstCarrySpeed=_St.burstCarrySpeed,
-bypassNormalSpeed=_St.bypassNormalSpeed,bypassCarrySpeed=_St.bypassCarrySpeed,
-laggerMode=_St.laggerMode,
-burstPreset=_St.burstPreset,
-autoBat=_St.autoBatToggled,
-autoBatVersion=_St.autoBatVersion,
-autoSwing=_St.autoSwingEnabled,
-batCounter=_St.batCounterEnabled,
-mirrorTPDownEnabled=_St.mirrorTPDownEnabled,
-instaGrab=Steal.AutoStealEnabled,
-infJump=_St.infJumpEnabled,
-holdInfJump=_St.holdInfJumpEnabled,
-infJumpMode=_St.infJumpMode,
-antiRagdollEnabled=_St.antiRagdollEnabled,
-fpsBoost=_St.fpsBoostEnabled,
-antiLag=(_G._VH_antiLag==true),
-medusaCounter=_St.medusaCounterEnabled,
-resetBeforeMed=_St.resetBeforeMedEnabled,instantResetOnDeath=_St.instantResetOnDeathEnabled,
-unwalkEnabled=_St.unwalkEnabled,
-bodyLockEnabled=_St.bodyLockEnabled,
-headlessEnabled=_St.headlessEnabled,
-korbloxEnabled=_St.korbloxEnabled,
-animEnabled=_St.animEnabled,
-autoTpDown=_St.autoTpDownEnabled,
-tpDownHeight=_St.tpDownHeight,
-desyncAimbotEnabled=_St.desyncAimbotEnabled,
-stretchFOV=_St.stretchFOV,
-activeSky=_St.activeSky,
-activeBgImg=_St.activeBgImg,
-favoriteBackgrounds=_St.bgFavorites,
-autoBatSpeed=_St.autoBatSpeed,
-fov=_St.lockedFOV,
-fovControlMode=_St.fovControlMode,
-dropType=_St.dropType,
-stealMode=_St.stealMode,
-semiVersion=_St.semiVersion,
-normalRadius=Steal.NormalRadius,normalDuration=Steal.NormalDuration,
-semiRadius=Steal.SemiRadius,semiDuration=Steal.SemiDuration,
-autoBatKey=Keys.autoBat.Name,speedKey=Keys.speed.Name,
-autoLeftKey=Keys.autoLeft.Name,autoRightKey=Keys.autoRight.Name,
-dropBrainrotKey=Keys.dropBrainrot.Name,tpDownKey=Keys.tpDown.Name,
-guiHideKey=Keys.guiHide.Name,desyncAimbotKey=Keys.desyncAimbot.Name,
-instaResetKey=Keys.instaReset.Name,
-burstKey=Keys.burst.Name,
-laggerKey=Keys.lagger.Name,
-sideButtonsVisible=_St.sideButtonsVisible,
-guiScale=_St.guiScale,
-progressBarSize=_St.progressBarSize,
-stopOnHitEnabled=_St.stopOnHitEnabled,
-sideButtonPositions=_St.sideButtonPositions,
-sideButtonLayoutVersion=SIDE_BUTTON_LAYOUT_VERSION,
-sideButtonScale=_St.sideButtonScale,
-sideButtonDragMode=_St.sideButtonDragModeSaved,
-sideButtonsLocked=_St.sideButtonsLocked,
-hiddenSideButtons=_St.hiddenSideButtons,
-speedChangeMethod=_St.speedChangeMethodSaved,
-stealBarPos=_St.stealBarPos,
-safeModeEnabled=_St.safeModeEnabled,dropBrainrotMode=_St.dropBrainrotMode,
-autoPlayMode=_St.autoPlayMode,
-showIntro=_St.introEnabled,
-lineEspEnabled=_St.lineEspEnabled,
-lineEspColor=_St.lineEspColor,
-selectedAnim=_St.selectedAnim,
-}
-if _St.stealMode=="normal"or _St.stealMode=="normalv2"then
-cfg.normalRadius=Steal.StealRadius;cfg.normalDuration=Steal.StealDuration
-else
-cfg.semiRadius=Steal.StealRadius;cfg.semiDuration=Steal.StealDuration
-end
-local encoded
-local okEnc=pcall(function()encoded=_HS:JSONEncode(cfg)end)
-if not okEnc or not encoded then return previewOnly and nil or false end
-if previewOnly then return encoded end
-if not forceWrite and encoded==_lastSavedConfig then return true end
-local saved=_wfs("CrimsonHubConfig.json",encoded)
-if saved then _lastSavedConfig=encoded end
-return saved
-end
-local function _lcfg()
-local cfg=_earlyConfig
-if type(cfg)~="table"then
-if not _isFileSafe("CrimsonHubConfig.json")then return end;local raw=_rfs("CrimsonHubConfig.json");if not raw then return end
-local ok,decoded=pcall(function()return _HS:JSONDecode(raw)end)
-if not ok or type(decoded)~="table"then return end;cfg=decoded
-end
-if type(cfg.favoriteBackgrounds)=="table"then local favs={};for k,v in pairs(cfg.favoriteBackgrounds)do local id=type(k)=="number"and v or k;local enabled=type(k)=="number"or v==true;if enabled and type(id)=="string"then favs[id]=true end end;_St.bgFavorites=favs;if _G._VH_refreshBgFavorites then _G._VH_refreshBgFavorites(false)end end
-if type(cfg.guiScale)=="number"then _St.guiScale=_mc(cfg.guiScale,0.5,1.5);if type(_G._applyGUIScale)=="function"then _G._applyGUIScale()end;if type(_G._applyGUIScaleLabel)=="function"then _G._applyGUIScaleLabel()end end
-if type(cfg.stopOnHitEnabled)=="boolean"then
-_St.stopOnHitEnabled=cfg.stopOnHitEnabled
-end
-
-if setStopOnHit then
-setStopOnHit(_St.stopOnHitEnabled)
-end
-
-_St.showProgressBar=true;_St.showProgressFPS=true;_St.showProgressPing=true;_apbl();if type(cfg.progressBarSize)=="number"then _St.progressBarSize=_mc(cfg.progressBarSize,0.6,1.4);if type(_G._applyProgressBarSize)=="function"then _G._applyProgressBarSize() end end
-_St.sideButtonType="square";_St.sideButtonLook="purple";applySideButtonType();if applySideButtonLook then applySideButtonLook(true)end
-if cfg.sideButtonDragMode=="one"or cfg.sideButtonDragMode=="all"then _St.sideButtonDragModeSaved=cfg.sideButtonDragMode;_St.sideButtonDragMode=cfg.sideButtonDragMode;if setSideButtonDragModeUI then setSideButtonDragModeUI(cfg.sideButtonDragMode)end end
-if type(cfg.sideButtonScale)=="number"then _St.sideButtonScale=_mc(cfg.sideButtonScale,0.5,1.5);if type(_G._applySideButtonScale)=="function"then _G._applySideButtonScale() end end
-if cfg.sideButtonLayoutVersion==SIDE_BUTTON_LAYOUT_VERSION and type(cfg.sideButtonPositions)=="table"then
-_St.sideButtonPositions=cfg.sideButtonPositions
-for key,posStr in pairs(_St.sideButtonPositions)do
-local ref=_sbr[key];if ref and ref.frame then local parts={};for token in string.gmatch(posStr,"[^,]+")do _ti(parts,tonumber(token)) end;if#parts==4 then ref.frame.Position=_U(parts[1],parts[2],parts[3],parts[4]) end end
-end
-else
-_St.sideButtonPositions={};for i,def in ipairs(SIDE_DEFS)do local ref=_sbr[def.key];if ref and ref.frame then ref.frame.Position=sideDefaultPos(i)end end
-end
-if cfg.sideButtonsLocked~=nil then _St.sideButtonsLocked=cfg.sideButtonsLocked;if setLockButtons then setLockButtons(cfg.sideButtonsLocked)end end;if type(cfg.hiddenSideButtons)=="table"then _St.hiddenSideButtons=cfg.hiddenSideButtons;if _G._VH_mbSetVis then for _,_hbk in ipairs(cfg.hiddenSideButtons)do if _G._VH_mbSetVis[_hbk]then _G._VH_mbSetVis[_hbk](false)end end end end
-local savedInfJumpMode=(cfg.infJumpMode=="click"and"click")or(cfg.infJumpMode=="hold"and"hold")or((cfg.infJump==true and cfg.holdInfJump~=true)and"click"or"hold");if setInfJumpMode then setInfJumpMode(savedInfJumpMode)end
-if type(cfg.normalSpeed)=="number"then _St.normalSpeed=cfg.normalSpeed;if normalBox then normalBox.Text=tostring(cfg.normalSpeed)end end;if type(cfg.carrySpeed)=="number"then _St.carrySpeed=cfg.carrySpeed;if carryBox then carryBox.Text=tostring(cfg.carrySpeed)end end
-if type(cfg.burstNormalSpeed)=="number"then _St.burstNormalSpeed=cfg.burstNormalSpeed;if burstNormalBox then burstNormalBox.Text=tostring(cfg.burstNormalSpeed)end end;if type(cfg.burstCarrySpeed)=="number"then _St.burstCarrySpeed=cfg.burstCarrySpeed;if burstCarryBox then burstCarryBox.Text=tostring(cfg.burstCarrySpeed)end end
-if type(cfg.bypassNormalSpeed)=="number"then _St.bypassNormalSpeed=cfg.bypassNormalSpeed;if bypassNormalBox then bypassNormalBox.Text=tostring(cfg.bypassNormalSpeed)end end;if type(cfg.bypassCarrySpeed)=="number"then _St.bypassCarrySpeed=cfg.bypassCarrySpeed;if bypassCarryBox then bypassCarryBox.Text=tostring(cfg.bypassCarrySpeed)end end
-if type(cfg.laggerMode)=="number"then _St.laggerMode=cfg.laggerMode;if cfg.laggerMode~=0 and setLaggerMode then setLaggerMode(cfg.laggerMode)end end;if cfg.burstPreset=="lagger"or cfg.burstPreset=="bypass"then _St.burstPreset=cfg.burstPreset;if setBurstPreset then setBurstPreset(cfg.burstPreset)end end
-if cfg.autoBatKey and Enum.KeyCode[cfg.autoBatKey]then Keys.autoBat=Enum.KeyCode[cfg.autoBatKey];if autoBatKeyBtn then autoBatKeyBtn.Text=_keyLabel(Keys.autoBat)end end;if cfg.speedKey and Enum.KeyCode[cfg.speedKey]then Keys.speed=Enum.KeyCode[cfg.speedKey];if speedKeyBtn then speedKeyBtn.Text=_keyLabel(Keys.speed)end end
-if cfg.autoLeftKey and Enum.KeyCode[cfg.autoLeftKey]then Keys.autoLeft=Enum.KeyCode[cfg.autoLeftKey];if autoLeftKeyBtn then autoLeftKeyBtn.Text=_keyLabel(Keys.autoLeft)end end;if cfg.autoRightKey and Enum.KeyCode[cfg.autoRightKey]then Keys.autoRight=Enum.KeyCode[cfg.autoRightKey];if autoRightKeyBtn then autoRightKeyBtn.Text=_keyLabel(Keys.autoRight)end end
-if cfg.dropBrainrotKey and Enum.KeyCode[cfg.dropBrainrotKey]then Keys.dropBrainrot=Enum.KeyCode[cfg.dropBrainrotKey];if dropBrainrotKeyBtn then dropBrainrotKeyBtn.Text=_keyLabel(Keys.dropBrainrot)end end
-if cfg.tpDownKey and Enum.KeyCode[cfg.tpDownKey]then Keys.tpDown=Enum.KeyCode[cfg.tpDownKey];if tpDownKeyBtn then tpDownKeyBtn.Text=_keyLabel(Keys.tpDown)end end;if cfg.guiHideKey and Enum.KeyCode[cfg.guiHideKey]then Keys.guiHide=Enum.KeyCode[cfg.guiHideKey];if guiHideKeyBtn then guiHideKeyBtn.Text=_keyLabel(Keys.guiHide)end end
-if cfg.desyncAimbotKey and Enum.KeyCode[cfg.desyncAimbotKey]then Keys.desyncAimbot=Enum.KeyCode[cfg.desyncAimbotKey];if desyncAimbotKeyBtn then desyncAimbotKeyBtn.Text=cfg.desyncAimbotKey end end;if cfg.instaResetKey and Enum.KeyCode[cfg.instaResetKey]then Keys.instaReset=Enum.KeyCode[cfg.instaResetKey];if instaResetKeyBtn then instaResetKeyBtn.Text=cfg.instaResetKey end end;if cfg.burstKey and Enum.KeyCode[cfg.burstKey]then Keys.burst=Enum.KeyCode[cfg.burstKey];if _bkb then _bkb.Text=cfg.burstKey end end
-if cfg.laggerKey and Enum.KeyCode[cfg.laggerKey]then Keys.lagger=Enum.KeyCode[cfg.laggerKey];Keys.burst=Enum.KeyCode[cfg.laggerKey];if _lkb then _lkb.Text=_keyLabel(Keys.lagger)end end;pcall(function()if _refreshGamepadActions then _refreshGamepadActions()end end)
-if type(cfg.autoBatSpeed)=="number"then _St.autoBatSpeed=cfg.autoBatSpeed;if autoBatSpeedBox then autoBatSpeedBox.Text=tostring(cfg.autoBatSpeed)end end;if type(cfg.tpDownHeight)=="number"and cfg.tpDownHeight>=5 and cfg.tpDownHeight<=200 then _St.tpDownHeight=cfg.tpDownHeight;if autoTpHeightBox then autoTpHeightBox.Text=tostring(cfg.tpDownHeight)end end
-if type(cfg.fov)=="number"and cfg.fov>=70 and cfg.fov<=150 then
-_St.lockedFOV=cfg.fov;pcall(function()workspace.CurrentCamera.FieldOfView=cfg.fov end) if fovBox then fovBox.Text=tostring(_mf(cfg.fov))end;if setNormalFOVVisual then setNormalFOVVisual(cfg.fov)end end;if cfg.fovControlMode=="normal"or cfg.fovControlMode=="stretch"then if setFOVControlModeUI then setFOVControlModeUI(cfg.fovControlMode)else _St.fovControlMode=cfg.fovControlMode end end;if cfg.dropType=="Stand Drop"or cfg.dropType=="Jump Drop"then _St.dropType=cfg.dropType;if setDropType then setDropType(cfg.dropType)end end;if type(cfg.normalRadius)=="number"then Steal.NormalRadius=_mf(cfg.normalRadius)end
-if type(cfg.normalDuration)=="number"and cfg.normalDuration>=0.01 and cfg.normalDuration<=5 then Steal.NormalDuration=cfg.normalDuration end;if type(cfg.semiRadius)=="number"then Steal.SemiRadius=_mf(cfg.semiRadius)end;if type(cfg.semiDuration)=="number"and cfg.semiDuration>=0.01 and cfg.semiDuration<=5 then Steal.SemiDuration=cfg.semiDuration end
-if type(cfg.grabRadius)=="number"then Steal.NormalRadius=_mf(cfg.grabRadius);Steal.SemiRadius=_mf(cfg.grabRadius)end;if type(cfg.stealDuration)=="number"then Steal.NormalDuration=cfg.stealDuration;Steal.SemiDuration=cfg.stealDuration end;local wantMode=(cfg.stealMode=="normal"or cfg.stealMode=="normalv2")and cfg.stealMode or"normal"
-if setStealModeUI then setStealModeUI(wantMode,true)else
-_St.stealMode=wantMode;if wantMode=="normal"or wantMode=="normalv2"then Steal.StealRadius=Steal.NormalRadius;Steal.StealDuration=Steal.NormalDuration
-else Steal.StealRadius=Steal.SemiRadius;Steal.StealDuration=Steal.SemiDuration end
-end
-_St.semiVersion="v2";if refreshStealUI then refreshStealUI()end;if cfg.antiRagdollEnabled then _St.antiRagdollEnabled=true;if antiRagToggleSet then antiRagToggleSet(true)end;startAntiRagdoll() end
-if cfg.instaGrab or cfg.autoStealEnabled then Steal.AutoStealEnabled=true;if setInstaGrab then setInstaGrab(true)end;pcall(startAutoSteal)end;if cfg.fpsBoost then _St.fpsBoostEnabled=true;if setFps then setFps(true)end;pcall(applyFPSBoost)end
-if cfg.antiLag then enableAntiLag();if setAntiLagVisual then setAntiLagVisual(true)end end;if cfg.medusaCounter then _St.medusaCounterEnabled=true;if setMedusaCounter then setMedusaCounter(true)end;setupMedusaCounter(LP.Character)end;_St.resetBeforeMedEnabled=false;_St.instantResetOnDeathEnabled=false
-if type(cfg.mirrorTPDownEnabled)=="boolean"then
-_St.mirrorTPDownEnabled=cfg.mirrorTPDownEnabled
-if setMirrorTPDown then
-setMirrorTPDown(_St.mirrorTPDownEnabled)
-end
-end
-
-if cfg.autoBat then _St.autoBatToggled=true;if setAutoBat then setAutoBat(true)end;startBatAimbot()end;if cfg.autoBatVersion=="v1"or cfg.autoBatVersion=="v2"or cfg.autoBatVersion=="v3"then _St.autoBatVersion=cfg.autoBatVersion;if setAimbotVersion then setAimbotVersion(cfg.autoBatVersion)end end
-_St.speedChangeMethod="v2";_St.speedChangeMethodSaved="v2"
-if type(cfg.stealBarPos)=="string"then _St.stealBarPos=cfg.stealBarPos;if _apbl then _apbl(true)end end
-if cfg.safeModeEnabled~=nil then _St.safeModeEnabled=(cfg.safeModeEnabled==true);if setSafeMode then setSafeMode(_St.safeModeEnabled)end end
-if cfg.dropBrainrotMode~=nil then _St.dropBrainrotMode=(cfg.dropBrainrotMode==true);if setDropBrainrotMode then setDropBrainrotMode(_St.dropBrainrotMode)end end
-if cfg.batCounter then _St.batCounterEnabled=true;if setBatCounterVisual then setBatCounterVisual(true)end;startBatCounter()end;if type(cfg.autoSwing)=="boolean"then
-_St.autoSwingEnabled=cfg.autoSwing
-if setAutoSwingVisual then
-setAutoSwingVisual(cfg.autoSwing)
-end
-end
-_St.disablePredictionAt180=true;if cfg.autoTpDown then _St.autoTpDownEnabled=true;if setAutoTpDown then setAutoTpDown(true)end;startAutoTpDown()end
-if cfg.desyncAimbotEnabled then _St.desyncAimbotEnabled=true;if setDesyncAimbot then setDesyncAimbot(true)end;startDesyncAimbot()end
-if cfg.unwalkEnabled then
-if setUnwalkToggle then setUnwalkToggle(true)end
-_ts(function()_tw(0.5);_St.unwalkEnabled=false;startUnwalk()end)
-end
-if cfg.bodyLockEnabled then
-if setBodyLockToggle then setBodyLockToggle(true)end
-_St.bodyLockEnabled=false;if startBodyLock then startBodyLock()end
-end
-if cfg.headlessEnabled then _St.headlessEnabled=true;if setHeadlessToggle then setHeadlessToggle(true)end;if applyHeadlessToChar then applyHeadlessToChar(LP.Character,true)end end
-if cfg.korbloxEnabled then _St.korbloxEnabled=true;if setKorbloxToggle then setKorbloxToggle(true)end;if applyKorbloxToChar then applyKorbloxToChar(LP.Character,true)end end
-if type(cfg.selectedAnim)=="string"and ANIM_PACKS[cfg.selectedAnim]then
-setSelectedAnim(cfg.selectedAnim);if setAnimDropdown then setAnimDropdown(cfg.selectedAnim)end
-elseif cfg.selectedAnim=="None"then _St.selectedAnim="None";if setAnimDropdown then setAnimDropdown("None")end end
-if type(cfg.stretchFOV)=="number"then setStretchFOV(cfg.stretchFOV)end
-if type(cfg.activeSky)=="string"and(cfg.activeSky=="default"or cfg.activeSky=="blue"or cfg.activeSky=="night"or cfg.activeSky=="day")then if applySky then applySky(cfg.activeSky)end else if applySky then applySky("default")end end
-_St.activeBgImg="original";if girlImg then girlImg.Image=_RBX.."138321246448736"end;if setMonoTheme then setMonoTheme("original")end
-if cfg.showIntro~=nil then _St.introEnabled=cfg.showIntro;if _G._VH_setIntroToggle then _G._VH_setIntroToggle(_St.introEnabled)end end;if type(cfg.sideButtonsVisible)=="boolean"then _St.sideButtonsVisible=cfg.sideButtonsVisible;if setSideToggle then setSideToggle(cfg.sideButtonsVisible)end;if type(setSideVisible)=="function"then setSideVisible(cfg.sideButtonsVisible)end end
-if cfg.autoPlayMode=="normal"or cfg.autoPlayMode=="full"then _St.autoPlayMode=cfg.autoPlayMode;if type(setAutoPlayModeUI)=="function"then setAutoPlayModeUI(cfg.autoPlayMode)end end
-_St.lineEspColor="purple";if lineEspColorBtn then lineEspColorBtn[_BgC]=_C(165,75,235);lineEspColorBtn[_TC3]=_C(255,255,255);lineEspColorBtn.Text="PURPLE"end
-if cfg.lineEspEnabled==true then if setLineEsp then setLineEsp(true)end end
-_St.espAuraEnabled=true;_St.espLineEnabled=true
-if _seA then _seA(true)end;if _seL then _seL(true)end
-end
-local function _startConfigAutosave()
-local old=_G._CRIMSON_CONFIG_AUTOSAVE;if type(old)=="table"then old.running=false;for _,conn in ipairs(old.connections or{})do pcall(function()conn:Disconnect()end)end end
-local controller={running=true,connections={}};_G._CRIMSON_CONFIG_AUTOSAVE=controller
-local observed=_scfg(true,false,true);_lastSavedConfig=observed;local dirtyAt=nil
-_ts(function()
-while controller.running and _G._CRIMSON_CONFIG_AUTOSAVE==controller and gui and gui.Parent do
-_tw(0.2);local snapshot=_scfg(true,false,true)
-if snapshot and snapshot~=observed then observed=snapshot;dirtyAt=os.clock()
-elseif dirtyAt and os.clock()-dirtyAt>=0.45 then if _scfg(true)then dirtyAt=nil else dirtyAt=os.clock()end end
-end
-end)
-local function finalSave()if controller.running and _G._CRIMSON_CONFIG_AUTOSAVE==controller then _scfg(true,true)end end
-_ti(controller.connections,_PL.PlayerRemoving:Connect(function(player)if player==LP then finalSave()end end))
-pcall(function()_ti(controller.connections,LP.OnTeleport:Connect(function()finalSave()end))end)
-pcall(function()game:BindToClose(function()finalSave()end)end)
-end
-local function _loadConfigAndStartAutosave()
-_configLoadInProgress=true;local loadedOk=pcall(_lcfg);_configLoadInProgress=false;if loadedOk then _startConfigAutosave()end
-end
-function applyBillboardTheme()
-local titleCol=_C(196,140,255);local speedCol=_C(210,160,255)
-pcall(function()
-if titleLbl and titleLbl.Parent then pcall(function()if titleLbl:IsA("ImageLabel")then titleLbl.ImageColor3=_C(255,255,255)else titleLbl[_TC3]=titleCol end end)end;if speedLbl and speedLbl.Parent then speedLbl[_TC3]=speedCol end
-end)
-end
-setupChar=function(char)
-_tw(0.1);originalAnims=nil;h=char:WaitForChild(_HM,5);hrp=char:WaitForChild(_HR,5);if not h then h=char:FindFirstChildOfClass(_HM)end;if not hrp then hrp=char:FindFirstChild(_HR)end;if h then _St.lastKnownHealth=h.Health end
-_ts(function()
-_tw(0.5);local c=LP.Character;if not c or c~=char then return end;local head=c:WaitForChild("Head",5);if not head then return end;local oldBB=head:FindFirstChild("SpeedBillboard");if oldBB then oldBB:Destroy()end;local bb=_I("BillboardGui",head);bb.Name="SpeedBillboard";bb.Size=_U(0,220,0,58);bb.StudsOffset=_V3(0,2.2,0);bb.AlwaysOnTop=true
-speedBB=bb;titleLbl=_I(_IL,bb);titleLbl.Size=_U(1,0,0.55,0);titleLbl.Position=_U(0,0,0,0);titleLbl[_BgT]=1;titleLbl.Image=_RBX.."75548910103458";titleLbl.ScaleType=Enum.ScaleType.Fit;titleLbl.ImageColor3=_C(255,255,255);speedLbl=_I(_TL,bb);speedLbl.Size=_U(1,0,0.45,0);speedLbl.Position=_U(0,0,0.55,0)
-speedLbl[_BgT]=1;speedLbl.Font=_EGB;speedLbl.TextScaled=true;speedLbl[_TST]=0;local modeSpeed;if _St.laggerMode==1 then modeSpeed=_St.burstNormalSpeed
-elseif _St.laggerMode==2 then modeSpeed=_St.burstCarrySpeed
-else modeSpeed=_St.speedToggled and _St.carrySpeed or _St.normalSpeed end
-speedLbl.Text=string.format("%.1f",modeSpeed);applyBillboardTheme()
-end)
-if _St.antiRagdollEnabled then _tw(0.5);startAntiRagdoll()end;if _St.medusaCounterEnabled then setupMedusaCounter(char)end;if _St.unwalkEnabled then _St.unwalkEnabled=false;_tw(0.3);startUnwalk()end;if _St.selectedAnim~="None"then _St.animEnabled=false;_tw(0.3);setSelectedAnim(_St.selectedAnim)end
-if _St.autoBatToggled then local hum2=char:FindFirstChildOfClass(_HM);if hum2 then hum2.AutoRotate=false end end;if _St.holdInfJumpEnabled then stopHoldInfJump();_tw(0.2);startHoldInfJump()end;if type(setSideVisible)=="function"then setSideVisible(_St.sideButtonsVisible) end
-if _St.headlessEnabled or _St.korbloxEnabled then _tw(0.2);if applyCharterToChar then applyCharterToChar(char)end end
-end
-do
-local _cfg=_earlyConfig
-if type(_cfg)=="table"then
-_St.activeBgImg="original";if girlImg then girlImg.Image=_RBX.."138321246448736"end
-if type(_cfg.sideButtonsVisible)=="boolean"then _St.sideButtonsVisible=_cfg.sideButtonsVisible end
-end
-end
-_St.activeBgImg="original";_St.lineEspColor="purple";if girlImg then girlImg.Image=_RBX.."138321246448736"end;if setMonoTheme then setMonoTheme("original")end
-do
-local function lockBlackOutline(obj)
-local st=obj:FindFirstChildOfClass(_USK)
-if not st then st=_I(_USK,obj);st.Thickness=1 end
-st.Color=C.border
-st:GetPropertyChangedSignal("Color"):Connect(function()if st.Parent and st.Color~=C.border then st.Color=C.border end end)
-end
-for _,obj in ipairs(root:GetDescendants())do
-if obj:IsA("GuiButton")then
-local hasText=obj:IsA(_TB)and obj.Text~=""
-local isTab=obj.Parent==tabStack;local keepTransparent=(not hasText)or obj:GetAttribute("CrimsonTransparentAction")==true
-if isTab then
-local isActive=pages and activePage and tabBtns and(function() for n,b in pairs(tabBtns)do if b==obj then return pages[n]==activePage end end return false end)()
-obj[_BgC]=isActive and C.purple or C.void;obj[_BgT]=0;obj[_TC3]=isActive and C.white or C.dim
-local st=obj:FindFirstChildOfClass(_USK);if st then st.Color=isActive and C.lpurple or C.border;st.Transparency=isActive and 0.05 or 0.48;st.Thickness=isActive and 1.6 or 1.15 end
-elseif keepTransparent then obj[_BgT]=1 else local bc=obj[_BgC];local selected=bc.R>0.45 and bc.R>bc.G*1.4 and bc.R>bc.B*1.3;obj[_BgC]=selected and C.purple or C.void;obj[_BgT]=0 end
-if hasText and not isTab then obj[_TSC]=_C(0,0,0);obj[_TST]=0.48;lockBlackOutline(obj)elseif hasText and isTab then obj[_TSC]=_C(0,0,0);obj[_TST]=0.48 end
-elseif obj:IsA("TextBox")then
-obj[_BgC]=C.dpurple;obj[_BgT]=0.12;obj[_TC3]=C.lpurple;obj[_TSC]=_C(0,0,0);obj[_TST]=0.5;lockBlackOutline(obj)
-end
-end
-end
-local function _styleEntryField(obj)
-if not obj or not obj.Parent then return end
-if obj:IsA("TextBox")then
-obj[_BgC]=C.dpurple;obj[_BgT]=0.04;obj[_TC3]=C.lpurple;obj[_TSC]=_C(0,0,0);obj[_TST]=0.35
-local st=obj:FindFirstChildOfClass(_USK);if st then st.Color=C.purple;st.Transparency=0.05;st.Thickness=1.4 end
-elseif (obj:IsA(_TB) or obj:IsA(_TL)) and (obj:GetAttribute("CrimsonKeybindBox")==true or obj:GetAttribute("CrimsonValueBox")==true)then
-obj[_BgC]=C.dpurple;obj[_BgT]=0.04;obj[_TC3]=C.lpurple
-local st=obj:FindFirstChildOfClass(_USK);if st then st.Color=C.purple;st.Transparency=0.05;st.Thickness=1.4 end
-end
-end
-for _,obj in ipairs(gui:GetDescendants())do _styleEntryField(obj)end
-gui.DescendantAdded:Connect(function(obj)
-if obj:IsA("TextBox")or obj:IsA(_TB)then task.defer(function()_styleEntryField(obj)end)end
-end)
-gui.Enabled=true;root.Visible=true;root.Active=true;_apbl();LP.CharacterAdded:Connect(setupChar)
--- Load all saved settings immediately; character initialization runs separately.
-_loadConfigAndStartAutosave()
-if LP.Character then _ts(function()setupChar(LP.Character)end) end
--- loaded
-do
-local _respawning=false
-local function forceReset(char)
-if _respawning then return end;_respawning=true
-_ts(function()
--- new instaReset handles retries internally; call it once
-if false and _St.instantResetOnDeathEnabled and LP.Character==char and char.Parent then pcall(instaReset)end
-task.delay(0.5,function()_respawning=false end)
-end)
-end
-local function hookHumanoid(char)
-local hum=char:FindFirstChildOfClass(_HM)or char:WaitForChild(_HM,5);if not hum then return end
-hum.Died:Connect(function()
-_cleanupDeadCharacterMotion(char)
-if false and _St.instantResetOnDeathEnabled then forceReset(char)end
-end)
-hum.HealthChanged:Connect(function(hp)
-if hp<=0 then _cleanupDeadCharacterMotion(char);if false and _St.instantResetOnDeathEnabled then forceReset(char)end end
-end)
-hum.StateChanged:Connect(function(_,newState)
-if newState==_HST.Dead then _cleanupDeadCharacterMotion(char);if false and _St.instantResetOnDeathEnabled then forceReset(char)end end
-end)
-end
-if LP.Character then hookHumanoid(LP.Character)end
-LP.CharacterAdded:Connect(function(char)
-_respawning=false;_tw(0.2);hookHumanoid(char)
-end)
-end
-do
-if _G.VX7AntiCollision and type(_G.VX7AntiCollision.Destroy)=="function"then pcall(_G.VX7AntiCollision.Destroy)end
-_G.VX7AntiCollision=nil
-if _G.VHAlwaysOnAntiCollision then pcall(function()_G.VHAlwaysOnAntiCollision:Disconnect()end)end
-
-local Players=game:GetService("Players")
-local RunService=game:GetService("RunService")
-local LP=Players.LocalPlayer
-
--- Anti Fling / Walk Through Players by Relapse (always on)
-_G.VHAlwaysOnAntiCollision=RunService.Stepped:Connect(function()
-for _,p in ipairs(Players:GetPlayers())do
-if p~=LP and p.Character then
-for _,part in ipairs(p.Character:GetChildren())do
-if part:IsA("BasePart")then
-part.CanCollide=false
-end
-end
-end
-end
-end)
-end
--- K7 Anti Drop is installed above; no teleporting void-recovery worker.
-UIS.JumpRequest:Connect(function()
-if not _St.infJumpEnabled or _St.holdInfJumpEnabled then return end;local char=LP.Character;if not char then return end;local root=char:FindFirstChild(_HR);local hum=char:FindFirstChildOfClass(_HM);if root and hum then _tryInfJumpPulse(root,hum,true)end
-end)
-game:GetService("RunService").Heartbeat:Connect(function()
-if not _St.infJumpEnabled or _St.holdInfJumpEnabled then return end;local char=LP.Character;if not char then return end;local root=char:FindFirstChild(_HR);local hum=char:FindFirstChildOfClass(_HM);if root and hum then if hum.FloorMaterial~=Enum.Material.Air then _jumpWasGrounded=true;_lastJumpTime=0;return end;if _jumpWasGrounded then _jumpWasGrounded=false end;local currentY=_readRootVelocity(root).Y;if currentY<-120 then _pulseNamedVerticalLinearVelocity(root,"VampireInfJump",-120,0.08)end end
-end)
--- K7 speed logic: RenderStepped, raw MoveDirection, Y preserved, no WalkSpeed suppression.
--- Uses this hub's existing Normal/Carry/Lagger values and ownership flags.
-if _G._VH_speedControllerCleanup then pcall(_G._VH_speedControllerCleanup)end
-local _speedControllerToken={}
-_G._VH_speedControllerToken=_speedControllerToken
-local _speedRenderConnection,_speedDestroyConnection
-local _speedCleanedRoot=nil
-local _lastDisplayedSpeed=nil
-local function _k7CleanOldSpeedMotor(root)
- if not root or root==_speedCleanedRoot then return end
- _speedCleanedRoot=root
- _St.lastMoveDir=Vector3.zero
- for _,name in ipairs({"VampireSpeedLinearVelocity","VampireSpeedAttachment"})do
-  local object=root:FindFirstChild(name)
-  if object then pcall(function()object:Destroy()end)end
- end
-end
-local function _k7SpeedValue()
- if _St.laggerMode==1 then return _St.burstNormalSpeed end
- if _St.laggerMode==2 then return _St.burstCarrySpeed end
- return _St.speedToggled and _St.carrySpeed or _St.normalSpeed
-end
-local function _k7IsRagdoll(hum)
- local state=hum:GetState()
- return hum.PlatformStand or state==_HST.Physics or state==_HST.Ragdoll or state==_HST.FallingDown
-end
-_speedRenderConnection=_RS.RenderStepped:Connect(function()
- if _G._VH_speedControllerToken~=_speedControllerToken then return end
- local char=LP.Character
- local hum=char and char:FindFirstChildOfClass(_HM)
- local root=char and char:FindFirstChild(_HR)
- if not hum or not root or hum.Health<=0 or root.Anchored then return end
- _k7CleanOldSpeedMotor(root)
- local spd=_k7SpeedValue()
- if speedLbl and spd~=_lastDisplayedSpeed then _lastDisplayedSpeed=spd;speedLbl.Text=string.format("%.1f",spd)end
- if _k7IsRagdoll(hum)then _St.lastMoveDir=Vector3.zero;return end
- if _St.autoBatToggled or _St.desyncAimbotEnabled or _St.autoLeftEnabled or _St.autoRightEnabled or _St.dropEnabled or _St._tpInProgress then return end
- for _,name in ipairs({"VampireBrakeLinearVelocity","VampireBatLinearVelocity","VampireStandDropLinearVelocity"})do
-  local other=root:FindFirstChild(name)
-  if other and other.Enabled then return end
- end
- if type(spd)~="number" or spd~=spd or spd<=0 or spd==math.huge then return end
- local md=hum.MoveDirection
- if md.Magnitude>0 then
-  _St.lastMoveDir=md
-  root.Velocity=_V3(md.X*spd,root.Velocity.Y,md.Z*spd)
- elseif _St.antiRagdollEnabled and _St.lastMoveDir.Magnitude>0 then
-  local held=false
-  for key in pairs(MOVE_KEYS)do if UIS:IsKeyDown(key)then held=true;break end end
-  if held then
-   local last=_St.lastMoveDir
-   root.Velocity=_V3(last.X*spd,root.Velocity.Y,last.Z*spd)
-  end
- end
-end)
-_G._VH_speedControllerCleanup=function()
- if _speedRenderConnection then _speedRenderConnection:Disconnect();_speedRenderConnection=nil end
- if _speedDestroyConnection then _speedDestroyConnection:Disconnect();_speedDestroyConnection=nil end
- if _G._VH_speedControllerToken==_speedControllerToken then _G._VH_speedControllerToken=nil end
- _speedCleanedRoot=nil
-end
-_speedDestroyConnection=gui.Destroying:Connect(function()
- if _G._VH_speedControllerToken~=_speedControllerToken then return end
- _G._VH_speedControllerCleanup()
- if _G._VH_AntiDropCleanup then pcall(_G._VH_AntiDropCleanup)end
-end)
-
-_RS.RenderStepped:Connect(function()
-if _St.stretchedResEnabled then return end;local cam=workspace.CurrentCamera;if cam and _ma(cam.FieldOfView-_St.lockedFOV)>0.01 then cam.FieldOfView=_St.lockedFOV end
-end)
-local _BB_BASE_H=58;local _BB_BASE_OFFSET=2.2;local _BB_STRETCH_FACTOR=1/0.7;local _bbStretched=false
-_RS.RenderStepped:Connect(function()
-if not(speedBB and speedBB.Parent)then return end
-if _St.stretchedResEnabled then
-if not _bbStretched then speedBB.Size=_U(0,220,0,_mf(_BB_BASE_H*_BB_STRETCH_FACTOR));speedBB.StudsOffset=_V3(0,_BB_BASE_OFFSET*_BB_STRETCH_FACTOR,0);_bbStretched=true end
-elseif _bbStretched then speedBB.Size=_U(0,220,0,_BB_BASE_H);speedBB.StudsOffset=_V3(0,_BB_BASE_OFFSET,0);_bbStretched=false end
-end)
-local burstActive=false;local savedNormalSpeed=nil;local savedCarrySpeed=nil;if _St.laggerMode~=0 and setLaggerMode then setLaggerMode(_St.laggerMode)end;if setBurstPreset then setBurstPreset(_St.burstPreset)end;if setStretchFOVVisual then setStretchFOVVisual(_St.stretchFOV)end;if _ssv then _ssv(_St.activeSky)end
-_St.activeBgImg="original";_St.lineEspColor="purple";if girlImg then girlImg.Image=_RBX.."138321246448736"end;if setMonoTheme then setMonoTheme("original")end
-UIS.InputBegan:Connect(function(inp,gp)
-if gp and inp.UserInputType==Enum.UserInputType.Keyboard then return end
--- gamepad always accepted (CAS may also fire; actions are idempotent toggles)
-if not _isTriggerInput(inp)then return end;local kc=inp.KeyCode;if kc==Keys.tpDown then doTpDown()
-elseif kc==Keys.speed then
-if _St.laggerMode~=0 then
-setLaggerMode(0);_St.speedToggled=false;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(false)end;if modeValLbl then modeValLbl.Text="Normal"end
-else
-_St.speedToggled=not _St.speedToggled;if _sbr and _sbr.carrySpeed then _sbr.carrySpeed.setOn(_St.speedToggled)end;modeValLbl.Text=_St.speedToggled and"Carry"or"Normal"
-end
-elseif kc==Keys.autoBat then
-_St.autoBatToggled=not _St.autoBatToggled;setAutoBat(_St.autoBatToggled);if _St.autoBatToggled then _VH_forceDesyncOff();startBatAimbot()else stopBatAimbot()end
-elseif kc==Keys.autoLeft then
-_St.autoLeftEnabled=not _St.autoLeftEnabled;if setAutoLeft then setAutoLeft(_St.autoLeftEnabled)end;if _St.autoLeftEnabled then _VH_forceAimbotOff();_VH_forceDesyncOff();startAutoLeft()else stopAutoLeft()end
-elseif kc==Keys.autoRight then
-_St.autoRightEnabled=not _St.autoRightEnabled;if setAutoRight then setAutoRight(_St.autoRightEnabled)end;if _St.autoRightEnabled then _VH_forceAimbotOff();_VH_forceDesyncOff();startAutoRight()else stopAutoRight()end
-elseif kc==Keys.dropBrainrot then if not _St.dropEnabled then runDropBrainrot()end
-elseif kc==Keys.desyncAimbot then
-_St.desyncAimbotEnabled=not _St.desyncAimbotEnabled;if setDesyncAimbot then setDesyncAimbot(_St.desyncAimbotEnabled)end;if _St.desyncAimbotEnabled then _VH_forceAimbotOff();startDesyncAimbot()else stopDesyncAimbot()end;if _sbr and _sbr.tpDesync then _sbr.tpDesync.setOn(_St.desyncAimbotEnabled)end
-elseif kc==Keys.instaReset then instaReset()
-elseif kc==Keys.guiHide then toggleGuiVis()
-elseif kc==Keys.lagger then
-if burstActive then _St.normalSpeed=savedNormalSpeed or _St.normalSpeed;_St.carrySpeed=savedCarrySpeed or _St.carrySpeed;if normalBox then normalBox.Text=tostring(_St.normalSpeed)end;if carryBox then carryBox.Text=tostring(_St.carrySpeed)end;burstActive=false;_G._VH_burstActive=false end;toggleLaggerMode()
-end
-end)
-pcall(function()if _refreshGamepadActions then _refreshGamepadActions()end end)
-do
-local CARRY_HOLD=0.3;local FLICKER_GRACE=0.12;local SCAN_EVERY=0.1;local lastCarryTrue=-_mh;local lastCdSeen=-_mh;local _accum=0;local SAFE_WEAPON_WORDS={"bat","slap","medusa","head","stone"}
-local function safeIsWeaponName(n)
-n=tostring(n):lower();for _,w in ipairs(SAFE_WEAPON_WORDS)do if n:find(w)then return true end end
-return false
-end
-local SAFE_IGNORE_NAMES={
-["animate"]=true,["animsaves"]=true,["health"]=true,["rig"]=true,
-["body colors"]=true,["bodycolors"]=true,["humanoid"]=true,
-["head"]=true,["torso"]=true,["uppertorso"]=true,["lowertorso"]=true,
-["humanoidrootpart"]=true,
-}
-local function safeIsIgnoredModel(m)
-local n=m.Name:lower();if SAFE_IGNORE_NAMES[n]then return true end;if safeIsWeaponName(n)then return true end;if m:FindFirstChildOfClass(_HM)then return true end;if m:FindFirstChildWhichIsA("Accoutrement",true)then return true end
-return false
-end
-isHoldingBrainrot=function()
-local char=LP.Character;if not char then return false end
-for _,obj in ipairs(char:GetChildren())do
-if obj:IsA("Tool")and not safeIsWeaponName(obj.Name)then
-return true,"tool",obj.Name
-end
-end
-for _,obj in ipairs(char:GetChildren())do
-if obj:IsA("Model")and not safeIsIgnoredModel(obj)and obj:FindFirstChildWhichIsA("BasePart")then
-return true,"model",obj.Name
-end
-end
-local hum=char:FindFirstChildOfClass(_HM);local seated=hum and(hum.Sit or hum.SeatPart~=nil);local root=char:FindFirstChild(_HR)or char.PrimaryPart
-if root and not seated then
-local ok,parts=pcall(function()return root:GetConnectedParts(true)end)
-if ok and parts then
-for _,p in ipairs(parts)do
-if not p:IsDescendantOf(char)and not p:IsA("Seat")and not p:IsA("VehicleSeat")then
-local tool=p:FindFirstAncestorWhichIsA("Tool");local nameForFilter=(tool and tool.Name)or p.Name
-if not safeIsWeaponName(nameForFilter)then
-local om=p:FindFirstAncestorOfClass("Model")
-if not(om and _PL:GetPlayerFromCharacter(om))then
-local label=(om and om.Name)or(tool and tool.Name)or p.Name
-return true,"weld",label
-end
-end
-end
-end
-end
-end
-return false
-end
-local function safeIsTimer()
-local pg=LP:FindFirstChild("PlayerGui");if not pg then return false end;local cam=workspace.CurrentCamera;local vp=(cam and cam.ViewportSize)or Vector2.new(1280,720)
-for _,sg in ipairs(pg:GetChildren())do
-if sg:IsA("ScreenGui")and sg.Enabled then
-for _,d in ipairs(sg:GetDescendants())do
-if(d:IsA(_TL)or d:IsA(_TB))and d.Visible and d.TextTransparency<0.5 then
-local t=(d.Text or""):gsub("%s","")
-if#t>=1 and#t<=5 then
-local isClock=t:match("^0?0:%d%d$")~=nil;local digit=tonumber(t);local isDigit=digit~=nil and digit>=1 and digit<=9
-if isClock or isDigit then
-local sz=d[_AbS];local pos=d.AbsolutePosition;local cx=pos.X+sz.X/2;local cy=pos.Y+sz.Y/2;local centeredX=cx>vp.X*0.20 and cx<vp.X*0.80;local inBandY=cy>vp.Y*0.03 and cy<vp.Y*0.90;local bigEnough=(isClock and sz.Y>=20)or(sz.Y>=50)
-if centeredX and inBandY and bigEnough then
-return true,t
-end
-end
-end
-end
-end
-end
-end
-return false
-end
-_RS.Heartbeat:Connect(function(dt)
-_accum = _accum + dt;if _accum<SCAN_EVERY then return end;_accum=0;local now=os.clock();local needSafety=_St.autoLeftEnabled or _St.autoRightEnabled or _St.autoBatToggled or _St.desyncAimbotEnabled;local holding,source,detail=false,nil,nil
-if needSafety then
-pcall(function()holding,source,detail=isHoldingBrainrot()end) if holding then lastCarryTrue=now end end;local carrying=needSafety and(now-lastCarryTrue)<CARRY_HOLD;local timerOn,timerText=false,nil
-if needSafety then
-pcall(function()timerOn,timerText=safeIsTimer()end) if timerOn then lastCdSeen=now end end;local countdownActive=needSafety and(now-lastCdSeen)<FLICKER_GRACE
-_St.safetyLocked=needSafety and(countdownActive or carrying)
-end)
-end
-_ts(function()
-local joinSound=_I("Sound");joinSound.SoundId=_RBX.."77011934666860";joinSound.Volume=1;joinSound.Parent=game:GetService("SoundService");joinSound:Play();game:GetService("Debris"):AddItem(joinSound,30)
-end)
-local Stats=game:GetService("Stats");local _fpsData={lastTick=tick(),frameCount=0,fps=0,ping=0}
-_RS.RenderStepped:Connect(function()
-_fpsData.frameCount=_fpsData.frameCount+1
-end)
-_ts(function()
-while _tw(0.5)do
-local now=tick();local elapsed=now-_fpsData.lastTick
-if elapsed>0 then
-_fpsData.fps=_mf(_fpsData.frameCount/elapsed);_fpsData.frameCount=0;_fpsData.lastTick=now
-pcall(function()
-_fpsData.ping=_mf(Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
-end)
-if statsLbl and statsLbl.Parent then
-statsLbl.Text=string.format("FPS: %d  |  PING: %d",_fpsData.fps,_fpsData.ping);if _fpsData.fps>=55 then statsLbl[_TC3]=_C(210,160,255)
-elseif _fpsData.fps>=35 then statsLbl[_TC3]=_C(165,75,235)
-else statsLbl[_TC3]=_C(110,40,180)end
-end
-if _prl then _prl.Visible=true;_prl.Text=string.format("FPS %d  |  PING %d ms",_fpsData.fps,_fpsData.ping) end
-end
-end
-end)
-if _G._VH_ESP and _G._VH_ESP.cleanup then pcall(_G._VH_ESP.cleanup)end;_G._VH_ESP={conns={},lineFrames={},profileImages={}};local _cam=workspace.CurrentCamera;local espConns=_G._VH_ESP.conns
-local function _track(c)_ti(espConns,c);return c end;local espGui=_I("ScreenGui")
-espGui.Name="VH_ESP_Layer";espGui.ResetOnSpawn=false;espGui.IgnoreGuiInset=true;espGui.DisplayOrder=999
-pcall(function()espGui.ZIndexBehavior=Enum.ZIndexBehavior.Global end)
-local espParent=(gethui and gethui())or(CoreGui)or game:GetService("CoreGui")
-pcall(function()
-local old=espParent:FindFirstChild("VH_ESP_Layer");if old then old:Destroy()end
-end)
-espGui.Parent=espParent;_G._VH_ESP.gui=espGui
-local function createPlayerAura(player)
-if player==LP then return end;local char=player.Character;if not char then return end;local oldHL=char:FindFirstChild("VampireHighlight")
-if not _St.espAuraEnabled then
-if oldHL then oldHL:Destroy()end
-return
-end
-if oldHL then oldHL.FillColor=C.purple;oldHL.OutlineColor=C.purple;return end;local hl=_I("Highlight");hl.Name="VampireHighlight";hl.FillColor=C.purple;hl.FillTransparency=0.7;hl.OutlineColor=C.purple;hl.OutlineTransparency=0.3;hl.Parent=char
-end
-local function removePlayerAura(player) local char=player and player.Character;if not char then return end;local hl=char:FindFirstChild("VampireHighlight");if hl then hl:Destroy()end end;_seA=function(_) _St.espAuraEnabled=true;for _,pl in ipairs(_PL:GetPlayers())do if pl~=LP then createPlayerAura(pl)end end end
-local profileImages=_G._VH_ESP.profileImages
-local function createPlayerProfile(player)
-if player==LP then return end;_St.espProfileEnabled=true;local char=player.Character;if not char then return end;local head=char:FindFirstChild("Head")or char:FindFirstChild(_HR);if not head then return end;local old=head:FindFirstChild("CrimsonProfileESP");if old then local oldStroke=old:FindFirstChild("CrimsonProfileStroke",true);if oldStroke then oldStroke.Color=C.purple end;return end
-local bb=_I("BillboardGui",head);bb.Name="CrimsonProfileESP";bb.Size=_U(0,35,0,35);bb.StudsOffset=_V3(0,3.65,0);bb.AlwaysOnTop=true;bb.LightInfluence=0;bb.MaxDistance=1200;bb.Enabled=true
-local card=_I(_FR,bb);card.Name="ProfileCard";card.Size=_Us(1,1);card[_BgC]=_C(0,0,0);card[_BgT]=0.08;card[_BSP]=0;card[_ZI]=3;_I(_UCR,card)[_CRad]=_UD(1,0);local profileStroke=_I(_USK,card);profileStroke.Name="CrimsonProfileStroke";profileStroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;profileStroke.Color=C.purple;profileStroke.Thickness=1.5;profileStroke.Transparency=0.04
-local portrait=_I(_IL,card);portrait.Name="EnemyProfilePicture";portrait.Size=_U(1,-4,1,-4);portrait.Position=_U(0,2,0,2);portrait[_BgT]=1;portrait[_BSP]=0;portrait.ScaleType=Enum.ScaleType.Crop;portrait[_ZI]=4;_I(_UCR,portrait)[_CRad]=_UD(1,0);local fallback="rbxthumb://type=AvatarHeadShot&id="..tostring(player.UserId).."&w=150&h=150";portrait.Image=profileImages[player.UserId]or fallback
-if not profileImages[player.UserId]then _ts(function()local ok,img=pcall(function()return _PL:GetUserThumbnailAsync(player.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size150x150)end);if ok and img and img~=""then profileImages[player.UserId]=img;if portrait and portrait.Parent then portrait.Image=img end end end)end
-end
-local function removePlayerProfile(player)local char=player and player.Character;if not char then return end;local head=char:FindFirstChild("Head")or char:FindFirstChild(_HR);local profile=head and head:FindFirstChild("CrimsonProfileESP");if profile then profile:Destroy()end end
-local function setupAura(player)
-if player==LP then return end;if player.Character then _ts(function()createPlayerAura(player);createPlayerProfile(player)end)end
-_track(player.CharacterAdded:Connect(function()_tw(0.3);createPlayerAura(player);createPlayerProfile(player)end))
-end
-for _,pl in ipairs(_PL:GetPlayers())do setupAura(pl)end;_track(_PL.PlayerAdded:Connect(setupAura))
-_track(_PL.PlayerRemoving:Connect(function(pl)removePlayerAura(pl);removePlayerProfile(pl);profileImages[pl.UserId]=nil end))
-_ts(function()
-while _G._VH_ESP and _G._VH_ESP.gui==espGui and _tw(2)do
-_St.espAuraEnabled=true
-_St.espProfileEnabled=true;for _,pl in ipairs(_PL:GetPlayers())do if pl~=LP and pl.Character then if not pl.Character:FindFirstChild("VampireHighlight")then createPlayerAura(pl)end;local head=pl.Character:FindFirstChild("Head")or pl.Character:FindFirstChild(_HR);if head and not head:FindFirstChild("CrimsonProfileESP")then createPlayerProfile(pl)end end end
-end
-end)
-local lineFrames=_G._VH_ESP.lineFrames
-local function _mlf()
-local f=_I(_FR);f.Name="ln";f[_BSP]=0;f.AnchorPoint=Vector2.new(0.5,0.5);f[_BgC]=_C(165,75,235);f.Visible=false;f[_ZI]=1;f.Parent=espGui;_ti(lineFrames,f)
-return f
-end
-local function _hf(pool,n)for i=n+1,#pool do local fr=pool[i];if fr then fr.Visible=false end end end;_seL=function(_) _St.espLineEnabled=true end
-_track(_RS.RenderStepped:Connect(function()
-_St.espLineEnabled=true;_cam=workspace.CurrentCamera or _cam;if not _cam then _hf(lineFrames,0);return end
-local myChar=LP.Character;local myRoot=myChar and myChar:FindFirstChild(_HR);if not myRoot then _hf(lineFrames,0);return end;local vp=_cam.ViewportSize;local mysp=_cam:WorldToViewportPoint(myRoot.Position);local fromX,fromY;if mysp.Z>0 then fromX,fromY=mysp.X,mysp.Y else fromX,fromY=vp.X/2,vp.Y end
-local lineColor=_St.lineEspColor=="white"and _C(235,235,235)or C.purple;local lineIndex=0
-for _,p in ipairs(_PL:GetPlayers())do
-if p~=LP and p.Character then local hrp=p.Character:FindFirstChild(_HR)
-if hrp then
-local sp=_cam:WorldToViewportPoint(hrp.Position);local tx,ty=sp.X,sp.Y;if sp.Z<0 then tx=vp.X-tx;ty=vp.Y-ty end;lineIndex=lineIndex+1;local f=lineFrames[lineIndex]or _mlf();local dx,dy=tx-fromX,ty-fromY;local dist=_msq(dx*dx+dy*dy);if dist==dist and dist>0 then f.Size=_U(0,dist,0,2);f.Position=_U(0,(fromX+tx)/2,0,(fromY+ty)/2);f.Rotation=math.deg(_mat(dy,dx));f[_BgC]=lineColor;f[_BgT]=0;f.Visible=true else f.Visible=false end
-end end end
-_hf(lineFrames,lineIndex)
-end))
-_G._VH_ESP.cleanup=function()
-for _,c in ipairs(_G._VH_ESP.conns or{})do pcall(function()c:Disconnect()end)end;if _G._VH_ESP.gui then pcall(function()_G._VH_ESP.gui:Destroy()end)end;for _,pl in ipairs(_PL:GetPlayers())do local ch=pl.Character;if ch then local hl=ch:FindFirstChild("VampireHighlight");if hl then hl:Destroy()end;local head=ch:FindFirstChild("Head")or ch:FindFirstChild(_HR);local profile=head and head:FindFirstChild("CrimsonProfileESP");if profile then profile:Destroy()end end end;_G._VH_ESP.conns={};_G._VH_ESP.lineFrames={};_G._VH_ESP.profileImages={}
-end
-_ts(function()
-_tw(0.2);if _seA then _seA(true)end;if _seL then _seL(true)end
-end)
-end),function(e)return tostring(e)end)
-if not _startupOK then
-local _msg=tostring(_startupErr)
-pcall(function()warn("[CRIMSON HUB STARTUP ERROR] ".._msg)end)
-pcall(function()
-local _player=game:GetService("Players").LocalPlayer
-local _pg=_player and _player:FindFirstChildOfClass("PlayerGui")
-local _parent=_pg or game:GetService("CoreGui")
-if _parent then
-local _old=_parent:FindFirstChild("CrimsonHub_LoadError");if _old then _old:Destroy()end
-local _sg=Instance.new("ScreenGui");_sg.Name="CrimsonHub_LoadError";_sg.ResetOnSpawn=false;_sg.DisplayOrder=10000;_sg.Parent=_parent
-local _fr=Instance.new("Frame");_fr.Size=UDim2.new(0,420,0,180);_fr.Position=UDim2.new(0.5,-210,0.5,-90);_fr.BackgroundColor3=Color3.fromRGB(18,8,10);_fr.BorderSizePixel=0;_fr.Parent=_sg
-local _cr=Instance.new("UICorner");_cr.CornerRadius=UDim.new(0,12);_cr.Parent=_fr
-local _title=Instance.new("TextLabel");_title.Size=UDim2.new(1,-24,0,32);_title.Position=UDim2.new(0,12,0,8);_title.BackgroundTransparency=1;_title.Font=Enum.Font.GothamBold;_title.TextSize=17;_title.TextColor3=Color3.fromRGB(255,90,100);_title.Text="CRIMSON HUB - ERRORE DI AVVIO";_title.Parent=_fr
-local _body=Instance.new("TextLabel");_body.Size=UDim2.new(1,-24,1,-52);_body.Position=UDim2.new(0,12,0,44);_body.BackgroundTransparency=1;_body.Font=Enum.Font.Code;_body.TextSize=11;_body.TextColor3=Color3.fromRGB(240,230,230);_body.TextWrapped=true;_body.TextXAlignment=Enum.TextXAlignment.Left;_body.TextYAlignment=Enum.TextYAlignment.Top;_body.Text="La GUI si e' fermata durante l'avvio. Errore:\n".._msg;_body.Parent=_fr
-end
-end)
-end
-end)
+return G.WAVEHubV1
