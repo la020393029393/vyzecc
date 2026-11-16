@@ -13,7 +13,7 @@ G.MainOuter.Name = "MainOuter"
 G.MainOuter.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.MainOuter.BorderSizePixel = 0
 G.MainOuter.ClipsDescendants = true
-G.MainOuter.Position = UDim2.new(0, 16, 0, 72)
+G.MainOuter.Position = UDim2.new(0.5, -140, 0.5, -210)
 G.MainOuter.Size = UDim2.new(0, 280, 0, 48)
 G.MainOuter.Visible = false
 G.MainOuter.Parent = G.VYZECCHubV1
@@ -746,6 +746,7 @@ G.TextLabel_12.Text = "Infinite Jump"
 G.TextLabel_12.TextColor3 = Color3.fromRGB(234, 225, 240)
 G.TextLabel_12.TextSize = 11
 G.TextLabel_12.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_12.Size = UDim2.new(1, -150, 1, 0)
 G.TextLabel_12.Parent = G.Frame_20
 
 G.VyzeccTogglePill = Instance.new("Frame")
@@ -757,6 +758,25 @@ G.VyzeccTogglePill.Size = UDim2.new(0, 40, 0, 18)
 G.VyzeccTogglePill.ZIndex = 7
 G.VyzeccTogglePill:SetAttribute("VyzeccToggleOn", false)
 G.VyzeccTogglePill.Parent = G.Frame_20
+
+G.JumpModeBtn = Instance.new("TextButton")
+G.JumpModeBtn.Name = "JumpModeBtn"
+G.JumpModeBtn.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.JumpModeBtn.BorderSizePixel = 0
+G.JumpModeBtn.Position = UDim2.new(1, -118, 0.5, -13)
+G.JumpModeBtn.Size = UDim2.new(0, 56, 0, 26)
+G.JumpModeBtn.ZIndex = 9
+G.JumpModeBtn.AutoButtonColor = false
+G.JumpModeBtn.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.JumpModeBtn.Text = "Hold"
+G.JumpModeBtn.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.JumpModeBtn.TextSize = 11
+G.JumpModeBtn.Parent = G.Frame_20
+Instance.new("UICorner", G.JumpModeBtn).CornerRadius = UDim.new(0, 6)
+local jumpModeStroke = Instance.new("UIStroke")
+jumpModeStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+jumpModeStroke.Color = Color3.fromRGB(42, 18, 70)
+jumpModeStroke.Parent = G.JumpModeBtn
 
 G.UICorner_22 = Instance.new("UICorner")
 G.UICorner_22.CornerRadius = UDim.new(0, 9)
@@ -4920,8 +4940,8 @@ G.VyzeccMiniRestoreButton.Name = "VyzeccMiniRestoreButton"
 G.VyzeccMiniRestoreButton.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.VyzeccMiniRestoreButton.BackgroundTransparency = 0.08
 G.VyzeccMiniRestoreButton.BorderSizePixel = 0
-G.VyzeccMiniRestoreButton.Position = UDim2.new(0, 8, 0.5, -40)
-G.VyzeccMiniRestoreButton.Size = UDim2.new(0, 44, 0, 44)
+G.VyzeccMiniRestoreButton.Position = UDim2.new(0, 10, 0.5, -48)
+G.VyzeccMiniRestoreButton.Size = UDim2.new(0, 64, 0, 64)
 G.VyzeccMiniRestoreButton.ZIndex = 150
 G.VyzeccMiniRestoreButton.Image = "rbxthumb://type=Asset&id=117439302562449&w=420&h=420"
 G.VyzeccMiniRestoreButton.ImageTransparency = 0
@@ -5011,7 +5031,7 @@ G.LogoPreload_customvyzecc.Parent = G.VyzeccLogoPreloadHolder
 
 G.MobileStackPanel = Instance.new("Frame")
 G.MobileStackPanel.Name = "MobileStackPanel"
-G.MobileStackPanel.Active = true
+G.MobileStackPanel.Active = false
 G.MobileStackPanel.BackgroundColor3 = Color3.fromRGB(18, 4, 28)
 G.MobileStackPanel.BorderSizePixel = 0
 G.MobileStackPanel.Position = UDim2.new(1, -170, 0.5, -145)
@@ -5046,6 +5066,7 @@ G.UICorner_134.Parent = G.BgImage
 
 G.BgOverlay = Instance.new("Frame")
 G.BgOverlay.Name = "BgOverlay"
+G.BgOverlay.Active = false
 G.BgOverlay.BackgroundColor3 = Color3.fromRGB(18, 4, 28)
 G.BgOverlay.BackgroundTransparency = 1
 G.BgOverlay.BorderSizePixel = 0
@@ -5059,7 +5080,7 @@ G.UICorner_135.Parent = G.BgOverlay
 
 G.StackBtn_autoLeft = Instance.new("Frame")
 G.StackBtn_autoLeft.Name = "StackBtn_autoLeft"
-G.StackBtn_autoLeft.Active = true
+G.StackBtn_autoLeft.Active = false
 G.StackBtn_autoLeft.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_autoLeft.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_autoLeft.BorderSizePixel = 0
@@ -5094,7 +5115,7 @@ G.TextButton_61.Parent = G.StackBtn_autoLeft
 
 G.StackBtn_autoRight = Instance.new("Frame")
 G.StackBtn_autoRight.Name = "StackBtn_autoRight"
-G.StackBtn_autoRight.Active = true
+G.StackBtn_autoRight.Active = false
 G.StackBtn_autoRight.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_autoRight.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_autoRight.BorderSizePixel = 0
@@ -5129,7 +5150,7 @@ G.TextButton_62.Parent = G.StackBtn_autoRight
 
 G.StackBtn_aimbot = Instance.new("Frame")
 G.StackBtn_aimbot.Name = "StackBtn_aimbot"
-G.StackBtn_aimbot.Active = true
+G.StackBtn_aimbot.Active = false
 G.StackBtn_aimbot.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_aimbot.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_aimbot.BorderSizePixel = 0
@@ -5164,7 +5185,7 @@ G.TextButton_63.Parent = G.StackBtn_aimbot
 
 G.StackBtn_lagger = Instance.new("Frame")
 G.StackBtn_lagger.Name = "StackBtn_lagger"
-G.StackBtn_lagger.Active = true
+G.StackBtn_lagger.Active = false
 G.StackBtn_lagger.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_lagger.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_lagger.BorderSizePixel = 0
@@ -5199,7 +5220,7 @@ G.TextButton_64.Parent = G.StackBtn_lagger
 
 G.StackBtn_drop = Instance.new("Frame")
 G.StackBtn_drop.Name = "StackBtn_drop"
-G.StackBtn_drop.Active = true
+G.StackBtn_drop.Active = false
 G.StackBtn_drop.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_drop.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_drop.BorderSizePixel = 0
@@ -5234,7 +5255,7 @@ G.TextButton_65.Parent = G.StackBtn_drop
 
 G.StackBtn_lagger2 = Instance.new("Frame")
 G.StackBtn_lagger2.Name = "StackBtn_lagger2"
-G.StackBtn_lagger2.Active = true
+G.StackBtn_lagger2.Active = false
 G.StackBtn_lagger2.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_lagger2.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_lagger2.BorderSizePixel = 0
@@ -5269,7 +5290,7 @@ G.TextButton_66.Parent = G.StackBtn_lagger2
 
 G.StackBtn_tpDown = Instance.new("Frame")
 G.StackBtn_tpDown.Name = "StackBtn_tpDown"
-G.StackBtn_tpDown.Active = true
+G.StackBtn_tpDown.Active = false
 G.StackBtn_tpDown.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_tpDown.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_tpDown.BorderSizePixel = 0
@@ -5304,7 +5325,7 @@ G.TextButton_67.Parent = G.StackBtn_tpDown
 
 G.StackBtn_carrySpeed = Instance.new("Frame")
 G.StackBtn_carrySpeed.Name = "StackBtn_carrySpeed"
-G.StackBtn_carrySpeed.Active = true
+G.StackBtn_carrySpeed.Active = false
 G.StackBtn_carrySpeed.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.StackBtn_carrySpeed.BackgroundTransparency = 0.10000000149011612
 G.StackBtn_carrySpeed.BorderSizePixel = 0
@@ -5654,7 +5675,7 @@ local St = {
 	guiScale = tonumber(G.TextBox_12 and G.TextBox_12.Text) or 0.7,
 	sideButtonScale = tonumber(G.TextBox_13 and G.TextBox_13.Text) or 0.7,
 	progressBarSize = tonumber(G.TextBox_14 and G.TextBox_14.Text) or 0.7,
-	openUiButtonScale = tonumber(G.TextBox_16 and G.TextBox_16.Text) or 0.7,
+	openUiButtonScale = tonumber(G.TextBox_16 and G.TextBox_16.Text) or 1.0,
 	uiLocked = false,              
 	sideButtonsLocked = false,     
 	sidePanelLocked = false,       
@@ -6106,7 +6127,13 @@ local function makeDraggable(frame, handle, lockCheck, opts)
 		return Vector2.new(0, 0), (cam and cam.ViewportSize or Vector2.new(1920, 1080))
 	end
 
-	if frame and frame:IsA("GuiObject") then frame.Active = true end
+	if frame and frame:IsA("GuiObject") then
+		if opts.forceActive == false then
+			frame.Active = false
+		else
+			frame.Active = true
+		end
+	end
 	if handle and handle:IsA("GuiObject") then handle.Active = true end
 
 	local function finishDrag()
@@ -6231,9 +6258,21 @@ do
 end
 
 local stealDrag = makeDraggable(StealBarRoot, StealBarRoot, function() return St.uiLocked == true end, {sensitivity = 1, threshold = 6, keepOnScreen = true})
-if G.MobileStackPanel then G.MobileStackPanel.Active = true end
+if G.MobileStackPanel then G.MobileStackPanel.Active = false end
+-- mobile: only real buttons capture touch; empty panel area passes through to jump
+pcall(function()
+	for _, d in ipairs(G.MobileStackPanel:GetDescendants()) do
+		if d:IsA("TextButton") or d:IsA("ImageButton") then
+			d.Active = true
+			d.Selectable = false
+		elseif d:IsA("GuiObject") and (d:IsA("Frame") or d:IsA("ImageLabel") or d:IsA("TextLabel")) then
+			d.Active = false
+		end
+	end
+	G.MobileStackPanel.Active = false
+end)
 
-local panelDrag = makeDraggable(G.MobileStackPanel, G.MobileStackPanel, function() return St.sidePanelLocked == true or St.uiLocked == true end, {sensitivity = 1, threshold = 4, keepOnScreen = true})
+local panelDrag = makeDraggable(G.MobileStackPanel, G.MobileStackPanel, function() return St.sidePanelLocked == true or St.uiLocked == true end, {sensitivity = 1, threshold = 4, keepOnScreen = true, forceActive = false})
 
 
 local buttonDrags = {}
@@ -6254,7 +6293,7 @@ for _, fr in ipairs(stackFrames) do
 		local dragHandle = fr:FindFirstChildWhichIsA("TextButton") or fr
 		
 		local ctrl = makeDraggable(fr, dragHandle, function() return St.uiLocked == true end, {
-			sensitivity = 1, threshold = 8, keepOnScreen = true,
+			sensitivity = 1, threshold = 8, keepOnScreen = true, forceActive = false,
 			onDragStart = function()
 				fr:SetAttribute("_SideButtonWasDragged", true)
 				task.delay(0.6, function()
@@ -6590,8 +6629,6 @@ do
 			gui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 		end
 
-		local cardVisible = true
-
 		local frame = Instance.new("Frame")
 		frame.Name = "PromoterCard"
 		frame.Size = UDim2.new(0, 210, 0, 36)
@@ -6680,42 +6717,9 @@ do
 			end
 		end)
 
-		local mini = Instance.new("TextButton")
-		mini.Name = "PromoterMiniBtn"
-		mini.Size = UDim2.new(0, 28, 0, 28)
-		mini.Position = UDim2.new(0, 8, 0.5, -50)
-		mini.AnchorPoint = Vector2.new(0, 0.5)
-		mini.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-		mini.BorderSizePixel = 0
-		mini.AutoButtonColor = false
-		mini.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-		mini.Text = "D"
-		mini.TextColor3 = Color3.fromRGB(220, 180, 255)
-		mini.TextSize = 13
-		mini.ZIndex = 55
-		mini.Parent = gui
-		Instance.new("UICorner", mini).CornerRadius = UDim.new(0, 8)
-		local miniStroke = Instance.new("UIStroke")
-		miniStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-		miniStroke.Color = Color3.fromRGB(160, 80, 220)
-		miniStroke.Thickness = 1.2
-		miniStroke.Parent = mini
-
-		local function setCardVisible(v)
-			cardVisible = v and true or false
-			frame.Visible = cardVisible
-			mini.BackgroundColor3 = cardVisible and Color3.fromRGB(95, 40, 160) or Color3.fromRGB(18, 8, 28)
-			mini.Text = cardVisible and "D" or "D"
-		end
-		setCardVisible(true)
-
-		mini.Activated:Connect(function()
-			setCardVisible(not cardVisible)
-		end)
-
 		Promoter.gui = gui
 		Promoter.frame = frame
-		Promoter.mini = mini
+		Promoter.mini = nil
 		applySavedPos()
 	end
 
@@ -7098,20 +7102,33 @@ local function _gc()
 	return nil, nil, nil
 end
 
+local _ijLastJump = 0
+local function setMoveLV(root, hx, hz)
+	if not root or not root.Parent then return end
+	local y = root.AssemblyLinearVelocity.Y
+	if _ijLastJump and (os.clock() - _ijLastJump) < 0.12 then
+		y = math.max(y, tonumber(St.jumpPower) or 50)
+	end
+	root.AssemblyLinearVelocity = Vector3.new(hx or 0, y, hz or 0)
+end
+
 local function startMovement()
 	if moveConn then moveConn:Disconnect() moveConn = nil end
-	moveConn = RunService.Heartbeat:Connect(function()
+	local rsEvent = RunService.PreSimulation or RunService.Stepped or RunService.Heartbeat
+	moveConn = rsEvent:Connect(function()
 		if _G._VYZECC_speedControllerToken ~= _speedControllerToken then return end
 		local c, h, r = _gc()
 		if not c or not h or not r then return end
 		if _G._VezyBatAimbotOn then return end
 		local st = h:GetState()
 		if h.PlatformStand or st == Enum.HumanoidStateType.Physics or st == Enum.HumanoidStateType.Ragdoll or st == Enum.HumanoidStateType.FallingDown then
+			St.lastMoveDir = Vector3.zero
 			return
 		end
 		if St.autoLeftEnabled or St.autoRightEnabled then
 			return
 		end
+		if _G.dropActive then return end
 		local dir = h.MoveDirection
 		local speed = getActiveSpeed()
 		if not speed or speed <= 0 then return end
@@ -7120,11 +7137,14 @@ local function startMovement()
 			pcall(function()
 				if r.SetNetworkOwner then r:SetNetworkOwner(LocalPlayer) end
 			end)
-			local u = dir.Unit
-			r.AssemblyLinearVelocity = Vector3.new(u.X * speed, r.AssemblyLinearVelocity.Y, u.Z * speed)
-			St.lastMoveDir = u
+			local flat = Vector3.new(dir.X, 0, dir.Z)
+			if flat.Magnitude > 0.001 then
+				flat = flat.Unit
+				St.lastMoveDir = flat
+				setMoveLV(r, flat.X * speed, flat.Z * speed)
+			end
 		else
-			r.AssemblyLinearVelocity = Vector3.new(0, r.AssemblyLinearVelocity.Y, 0)
+			setMoveLV(r, 0, 0)
 		end
 	end)
 end
@@ -7311,6 +7331,9 @@ St.autoCarryMode = "V1"
 St.antiRagdollEnabled = false
 St.antiRagdollMode = "V2" 
 St.infJumpEnabled = false
+St.infJumpMode = "hold"
+St.jumpPower = 50
+St.holdJumpEnabled = false
 
 _G._VynxAutoSpeedOn = false
 _G._VynxAutoSpeedMode = "On Pick Up"
@@ -7634,20 +7657,90 @@ if G.TextButton_13 then G.TextButton_13.Visible = false end
 local _ijConns = {}
 local _padJumpHeld = false
 
+local _ijCanJump = true
+local _ijTouchHeld = false
+local _ijMobileConns = {}
+
+local function applyJumpVelocity()
+	if not St.infJumpEnabled then return end
+	if not _ijCanJump then return end
+	if _G.dropActive or St._tpInProgress then return end
+	if _G._VezyBatAimbotOn and false then return end
+	local char = LocalPlayer.Character
+	if not char then return end
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	local root = char:FindFirstChild("HumanoidRootPart")
+	if not hum or not root or hum.Health <= 0 then return end
+	_ijCanJump = false
+	_ijLastJump = os.clock()
+	local jp = math.clamp(tonumber(St.jumpPower) or 50, 20, 120)
+	local v = root.AssemblyLinearVelocity
+	root.AssemblyLinearVelocity = Vector3.new(v.X, jp, v.Z)
+	task.delay(0.08, function()
+		_ijCanJump = true
+	end)
+end
+
+local function bindMobileJumpButton(btn)
+	for _, c in ipairs(_ijMobileConns) do pcall(function() c:Disconnect() end) end
+	table.clear(_ijMobileConns)
+	_ijTouchHeld = false
+	if not btn or not btn:IsA("GuiButton") then return end
+	_ijMobileConns[1] = btn.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			_ijTouchHeld = true
+		end
+	end)
+	_ijMobileConns[2] = btn.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			_ijTouchHeld = false
+		end
+	end)
+	_ijMobileConns[3] = btn.AncestryChanged:Connect(function(_, parent)
+		if not parent then _ijTouchHeld = false end
+	end)
+	_ijMobileConns[4] = btn.Activated:Connect(function()
+		if not St.infJumpEnabled then return end
+		if St.infJumpMode ~= "hold" then
+			applyJumpVelocity()
+		end
+	end)
+end
+
+local function findMobileJumpButton()
+	local pg = LocalPlayer:FindFirstChildOfClass("PlayerGui")
+	if not pg then return end
+	local jb = pg:FindFirstChild("JumpButton", true)
+	if jb and jb:IsA("GuiButton") then
+		bindMobileJumpButton(jb)
+	end
+end
+
 local function stopInfJump()
 	for _, c in ipairs(_ijConns) do pcall(function() c:Disconnect() end) end
 	_ijConns = {}
+	for _, c in ipairs(_ijMobileConns) do pcall(function() c:Disconnect() end) end
+	_ijMobileConns = {}
 	_padJumpHeld = false
+	_ijTouchHeld = false
+	_ijCanJump = true
 end
 
 local function startInfJump()
 	stopInfJump()
+	St.infJumpMode = St.infJumpMode or "hold"
+	St.jumpPower = tonumber(St.jumpPower) or 50
 	_ijConns[#_ijConns + 1] = UserInputService.JumpRequest:Connect(function()
 		if not St.infJumpEnabled then return end
+		if St.infJumpMode == "hold" then return end
+		applyJumpVelocity()
 	end)
 	_ijConns[#_ijConns + 1] = UserInputService.InputBegan:Connect(function(input, gp)
 		if input.KeyCode == Enum.KeyCode.Space or input.KeyCode == Enum.KeyCode.ButtonA then
 			_padJumpHeld = true
+			if St.infJumpEnabled and St.infJumpMode ~= "hold" then
+				applyJumpVelocity()
+			end
 		end
 	end)
 	_ijConns[#_ijConns + 1] = UserInputService.InputEnded:Connect(function(input)
@@ -7662,14 +7755,30 @@ local function startInfJump()
 		local root = char:FindFirstChild("HumanoidRootPart")
 		local hum = char:FindFirstChildOfClass("Humanoid")
 		if not root or not hum or hum.Health <= 0 then return end
-		local held = UserInputService:IsKeyDown(Enum.KeyCode.Space) or _padJumpHeld or hum.Jump == true
+		if St.infJumpMode == "hold" then
+			local held = false
+			pcall(function() held = UserInputService:IsKeyDown(Enum.KeyCode.Space) end)
+			if not held then
+				held = _padJumpHeld == true or _ijTouchHeld == true
+			end
+			if held then
+				applyJumpVelocity()
+			end
+		end
 		local velocity = root.AssemblyLinearVelocity
-		if held and velocity.Y < 35 then
-			root.AssemblyLinearVelocity = Vector3.new(velocity.X, 55, velocity.Z)
-		elseif velocity.Y < -120 then
+		if velocity.Y < -120 then
 			root.AssemblyLinearVelocity = Vector3.new(velocity.X, -120, velocity.Z)
 		end
 	end)
+	pcall(findMobileJumpButton)
+	local pg = LocalPlayer:FindFirstChildOfClass("PlayerGui")
+	if pg then
+		_ijConns[#_ijConns + 1] = pg.DescendantAdded:Connect(function(d)
+			if d.Name == "JumpButton" and d:IsA("GuiButton") then
+				bindMobileJumpButton(d)
+			end
+		end)
+	end
 end
 
 wireNamedToggle(G.VyzeccTogglePill, false, function(on)
@@ -7680,6 +7789,23 @@ end)
 if G.Frame_16 then G.Frame_16.Visible = false end
 if G.SizeDropdown then G.SizeDropdown.Visible = false end
 if G.Arrow then G.Arrow.Visible = false end
+if G.JumpModeBtn then
+	G.JumpModeBtn.Text = (St.infJumpMode == "manual") and "Tap" or "Hold"
+	G.JumpModeBtn.MouseButton1Click:Connect(function()
+		if St.infJumpMode == "hold" then
+			St.infJumpMode = "manual"
+			G.JumpModeBtn.Text = "Tap"
+		else
+			St.infJumpMode = "hold"
+			G.JumpModeBtn.Text = "Hold"
+		end
+		if St.infJumpEnabled then
+			stopInfJump()
+			startInfJump()
+		end
+		if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
+	end)
+end
 
 local _antiDieEnabled = false
 local _antiDieConn = nil
@@ -7955,6 +8081,74 @@ local function resolveAimbotSpeedForTp()
 	return math.clamp(tonumber(St.normalSpeed) or 60, 1, 200)
 end
 
+local function getCharacterStandHeight(hum, hrp)
+	local half = 1
+	pcall(function() half = hrp.Size.Y * 0.5 end)
+	if half <= 0 then half = 1 end
+	local stand = half * 3
+	pcall(function()
+		if hum and hum.RigType == Enum.HumanoidRigType.R6 then
+			stand = half * 3
+		elseif hum then
+			stand = half + (hum.HipHeight or half * 2)
+		end
+	end)
+	if stand ~= stand or stand < 1 or stand > 12 then
+		stand = half * 3
+	end
+	return stand + 0.15
+end
+
+local function rayGroundY(char, hrp, hum)
+	local filter = { char }
+	pcall(function()
+		for _, plr in ipairs(Players:GetPlayers()) do
+			if plr ~= LocalPlayer and plr.Character then
+				table.insert(filter, plr.Character)
+			end
+		end
+	end)
+	local params = RaycastParams.new()
+	params.FilterDescendantsInstances = filter
+	params.FilterType = Enum.RaycastFilterType.Exclude
+	params.IgnoreWater = true
+	pcall(function() params.RespectCanCollide = true end)
+	local pos = hrp.Position
+	local half = 1
+	pcall(function() half = hrp.Size.Y * 0.5 end)
+	local scanY = pos.Y - half - 0.1
+	local groundY = nil
+	for _ = 1, 12 do
+		local hit = workspace:Raycast(Vector3.new(pos.X, scanY, pos.Z), Vector3.new(0, -4000, 0), params)
+		if not hit then break end
+		local inst = hit.Instance
+		local skip = false
+		if inst then
+			pcall(function()
+				if inst:IsA("BasePart") and inst.CanCollide == false then
+					skip = true
+				end
+				local model = inst:FindFirstAncestorOfClass("Model")
+				if model and model:FindFirstChildOfClass("Humanoid") then
+					skip = true
+				end
+			end)
+		else
+			skip = true
+		end
+		if skip then
+			if inst then table.insert(filter, inst) end
+			params.FilterDescendantsInstances = filter
+			scanY = hit.Position.Y - 0.05
+		else
+			groundY = hit.Position.Y
+			break
+		end
+	end
+	if not groundY then return -7 end
+	return groundY + getCharacterStandHeight(hum, hrp)
+end
+
 local function runTPDown()
 	setSideButtonState(G.StackBtn_tpDown, true, 0.08)
 	task.delay(0.3, function()
@@ -7965,15 +8159,17 @@ local function runTPDown()
 		if not c then return end
 		local hrp = c:FindFirstChild("HumanoidRootPart")
 		local hum = c:FindFirstChildOfClass("Humanoid")
-		if not hrp then return end
+		if not hrp or not hum then return end
 		local aimbotOn = _G._VezyBatAimbotOn == true
 		St._tpInProgress = true
 		St._tpAimbotKeep = aimbotOn
 		local yaw = select(2, hrp.CFrame:ToEulerAnglesYXZ())
 		local prevVel = hrp.AssemblyLinearVelocity
 		local prevHoriz = Vector3.new(prevVel.X, 0, prevVel.Z)
+		local targetY = rayGroundY(c, hrp, hum)
 
-		hrp.CFrame = CFrame.new(hrp.Position.X, -7.00, hrp.Position.Z) * CFrame.Angles(0, yaw, 0)
+		hrp.CFrame = CFrame.new(hrp.Position.X, targetY, hrp.Position.Z) * CFrame.Angles(0, yaw, 0)
+		pcall(function() hrp.Velocity = Vector3.zero end)
 
 		if aimbotOn then
 			local spd = resolveAimbotSpeedForTp()
@@ -7998,12 +8194,12 @@ local function runTPDown()
 				horiz = horiz.Unit * spd
 			end
 			hrp.AssemblyLinearVelocity = Vector3.new(horiz.X, math.clamp(prevVel.Y, -40, 40), horiz.Z)
-			if hum then
-				pcall(function()
-					hum.PlatformStand = false
-					hum.AutoRotate = false
-				end)
-			end
+			pcall(function()
+				hum.PlatformStand = false
+				hum.AutoRotate = false
+			end)
+		else
+			hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
 		end
 
 		task.delay(0.18, function()
@@ -10882,8 +11078,23 @@ local ANIM_PACKS = {
 	["Rthro"] = { idle1="rbxassetid://2510196951", idle2="rbxassetid://2510196951", walk="rbxassetid://2510202577", run="rbxassetid://2510198475", jump="rbxassetid://2510197830", fall="rbxassetid://2510195892", climb="rbxassetid://2510192778", swim="rbxassetid://2510196951", swimidle="rbxassetid://2510196951" },
 	["Stylish"] = { idle1="rbxassetid://616136790", idle2="rbxassetid://616136790", walk="rbxassetid://616146177", run="rbxassetid://616140816", jump="rbxassetid://616139451", fall="rbxassetid://616134815", climb="rbxassetid://616133594", swim="rbxassetid://616136790", swimidle="rbxassetid://616136790" },
 	["Legendary"] = { idle1="rbxassetid://133806214992291", idle2="rbxassetid://94970088341563", walk="rbxassetid://707897309", run="rbxassetid://707861613", jump="rbxassetid://116936326516985", fall="rbxassetid://116936326516985", climb="rbxassetid://116936326516985", swim="rbxassetid://116936326516985", swimidle="rbxassetid://116936326516985" },
+	["TRYHARD"] = { idle1="rbxassetid://133806214992291", idle2="rbxassetid://94970088341563", walk="rbxassetid://707897309", run="rbxassetid://707861613", jump="rbxassetid://116936326516985", fall="rbxassetid://116936326516985", climb="rbxassetid://116936326516985", swim="rbxassetid://116936326516985", swimidle="rbxassetid://116936326516985" },
+	["Amazon Unboxed"] = { idle1="rbxassetid://98281136301627", idle2="rbxassetid://98281136301627", walk="rbxassetid://90478085024465", run="rbxassetid://134824450619865", jump="rbxassetid://121454505477205", fall="rbxassetid://94788218468396", climb="rbxassetid://121145883950231", swim="rbxassetid://105962919001086", swimidle="rbxassetid://129126268464847" },
+	["Adidas Sports"] = { idle1="rbxassetid://18537376492", idle2="rbxassetid://18537371272", walk="rbxassetid://18537392113", run="rbxassetid://18537384940", jump="rbxassetid://18537380791", fall="rbxassetid://18537367238", climb="rbxassetid://18537387180", swim="rbxassetid://18537389531", swimidle="rbxassetid://18537363391" },
+	["Adidas Community"] = { idle1="rbxassetid://122257458498464", idle2="rbxassetid://102357151005774", walk="rbxassetid://122150855457006", run="rbxassetid://82598234841035", jump="rbxassetid://75290611992385", fall="rbxassetid://98600215928904", climb="rbxassetid://109346520324160", swim="rbxassetid://133308483266208", swimidle="rbxassetid://88763136693023" },
+	["Adidas Aura"] = { idle1="rbxassetid://110211186840347", idle2="rbxassetid://114191137265065", walk="rbxassetid://83842218823011", run="rbxassetid://118320322718866", jump="rbxassetid://109996626521204", fall="rbxassetid://95603166884636", climb="rbxassetid://94922130551805", swim="rbxassetid://134530128383903", swimidle="rbxassetid://97824616490448" },
+	["Wicked Popular"] = { idle1="rbxassetid://118832222982049", idle2="rbxassetid://76049494037641", walk="rbxassetid://92072849924640", run="rbxassetid://72301599441680", jump="rbxassetid://104325245285198", fall="rbxassetid://121152442762481", climb="rbxassetid://113199415118199", swim="rbxassetid://99384245425157", swimidle="rbxassetid://131326830509784" },
+	["Mage"] = { idle1="rbxassetid://10921144709", idle2="rbxassetid://10921145797", walk="rbxassetid://10921152678", run="rbxassetid://10921148209", jump="rbxassetid://10921149743", fall="rbxassetid://10921148939", climb="rbxassetid://10921151661", swim="rbxassetid://10921150788", swimidle="rbxassetid://10921143404" },
+	["Catwalk Glam"] = { idle1="rbxassetid://133806214992291", idle2="rbxassetid://94970088341563", walk="rbxassetid://109168724482748", run="rbxassetid://81024476153754", jump="rbxassetid://116936326516985", fall="rbxassetid://92294537340807", climb="rbxassetid://98854111361360", swim="rbxassetid://134591743181628", swimidle="rbxassetid://119377220967554" },
+	["Wicked Dancing Through Life"] = { idle1="rbxassetid://92849173543269", idle2="rbxassetid://132238900951109", walk="rbxassetid://73718308412641", run="rbxassetid://135515454877967", jump="rbxassetid://78508480717326", fall="rbxassetid://78147885297412", climb="rbxassetid://129183123083281", swim="rbxassetid://110657013921774", swimidle="rbxassetid://129447497744818" },
+	["Superhero"] = { idle1="rbxassetid://10921288909", idle2="rbxassetid://10921290167", walk="rbxassetid://10921298616", run="rbxassetid://10921291831", jump="rbxassetid://10921294559", fall="rbxassetid://10921293373", climb="rbxassetid://10921297391", swim="rbxassetid://10921295495", swimidle="rbxassetid://10921286911" },
+	["No Boundaries"] = { idle1="rbxassetid://18747067405", idle2="rbxassetid://18747063918", walk="rbxassetid://18747074203", run="rbxassetid://18747070484", jump="rbxassetid://18747069148", fall="rbxassetid://18747062535", climb="rbxassetid://18747071682", swim="rbxassetid://18747073181", swimidle="rbxassetid://18747060903" },
+	["NFL"] = { idle1="rbxassetid://92080889861410", idle2="rbxassetid://74451233229259", walk="rbxassetid://110358958299415", run="rbxassetid://117333533048078", jump="rbxassetid://119846112151352", fall="rbxassetid://129773241032", climb="rbxassetid://79090109939093", swim="rbxassetid://132697394189921", swimidle="rbxassetid://134630013742019" },
+	["Robot"] = { idle1="rbxassetid://616088211", idle2="rbxassetid://616089559", walk="rbxassetid://616095330", run="rbxassetid://616091570", jump="rbxassetid://616090535", fall="rbxassetid://616087089", climb="rbxassetid://616094091", swim="rbxassetid://616092998", swimidle="rbxassetid://616086039" },
+	["Bubbly"] = { idle1="rbxassetid://910004836", idle2="rbxassetid://910009958", walk="rbxassetid://910034870", run="rbxassetid://910025107", jump="rbxassetid://910016857", fall="rbxassetid://910001910", climb="rbxassetid://910030921", swim="rbxassetid://910028158", swimidle="rbxassetid://909997997" },
+	["Cartoon"] = { idle1="rbxassetid://742637544", idle2="rbxassetid://742638445", walk="rbxassetid://742640026", run="rbxassetid://742638842", jump="rbxassetid://742637942", fall="rbxassetid://742637151", climb="rbxassetid://742639812", swim="rbxassetid://742639220", swimidle="rbxassetid://742636889" },
 }
-local ANIM_PACK_ORDER = {"Off", "Zombie", "Ninja", "Knight", "Elder", "Levitate", "Astronaut", "Pirate", "Toy", "Vampire", "Werewolf", "Rthro", "Stylish", "Legendary"}
+local ANIM_PACK_ORDER = {"Off", "TRYHARD", "Amazon Unboxed", "Zombie", "Ninja", "Knight", "Elder", "Levitate", "Astronaut", "Pirate", "Toy", "Vampire", "Werewolf", "Rthro", "Stylish", "Adidas Sports", "Adidas Community", "Adidas Aura", "Wicked Popular", "Mage", "Catwalk Glam", "Wicked Dancing Through Life", "Superhero", "No Boundaries", "NFL", "Robot", "Bubbly", "Cartoon", "Legendary"}
 local currentAnimPack = "Off"
 local originalAnims = nil
 local animHeartbeatConn = nil
@@ -11045,49 +11256,51 @@ pcall(function()
 
 	local container = Instance.new("Frame")
 	container.BackgroundTransparency = 1
-	container.Position = UDim2.new(1, -150, 0.5, -14)
-	container.Size = UDim2.new(0, 140, 0, 28)
+	container.ClipsDescendants = true
+	container.Position = UDim2.new(1, -168, 0.5, -14)
+	container.Size = UDim2.new(0, 156, 0, 28)
 	container.ZIndex = 8
 	container.Parent = row
 
 	local leftBtn = Instance.new("TextButton")
 	leftBtn.BackgroundColor3 = Color3.fromRGB(28, 12, 48)
 	leftBtn.BorderSizePixel = 0
-	leftBtn.Size = UDim2.new(0, 28, 0, 28)
+	leftBtn.Size = UDim2.new(0, 24, 0, 28)
 	leftBtn.Position = UDim2.new(0, 0, 0, 0)
 	leftBtn.ZIndex = 9
 	leftBtn.AutoButtonColor = false
 	leftBtn.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
 	leftBtn.Text = "<"
 	leftBtn.TextColor3 = Color3.fromRGB(249, 240, 255)
-	leftBtn.TextSize = 14
+	leftBtn.TextSize = 13
 	leftBtn.Parent = container
 	Instance.new("UICorner", leftBtn).CornerRadius = UDim.new(0, 7)
 
 	animSelectorLabel = Instance.new("TextLabel")
 	animSelectorLabel.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
 	animSelectorLabel.BorderSizePixel = 0
-	animSelectorLabel.Position = UDim2.new(0, 32, 0, 0)
-	animSelectorLabel.Size = UDim2.new(0, 76, 0, 28)
+	animSelectorLabel.Position = UDim2.new(0, 26, 0, 0)
+	animSelectorLabel.Size = UDim2.new(0, 104, 0, 28)
 	animSelectorLabel.ZIndex = 9
 	animSelectorLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
 	animSelectorLabel.Text = currentAnimPack
 	animSelectorLabel.TextColor3 = Color3.fromRGB(220, 180, 255)
-	animSelectorLabel.TextSize = 11
+	animSelectorLabel.TextSize = 10
+	animSelectorLabel.TextTruncate = Enum.TextTruncate.AtEnd
 	animSelectorLabel.Parent = container
 	Instance.new("UICorner", animSelectorLabel).CornerRadius = UDim.new(0, 7)
 
 	local rightBtn = Instance.new("TextButton")
 	rightBtn.BackgroundColor3 = Color3.fromRGB(28, 12, 48)
 	rightBtn.BorderSizePixel = 0
-	rightBtn.Size = UDim2.new(0, 28, 0, 28)
-	rightBtn.Position = UDim2.new(0, 112, 0, 0)
+	rightBtn.Size = UDim2.new(0, 24, 0, 28)
+	rightBtn.Position = UDim2.new(0, 132, 0, 0)
 	rightBtn.ZIndex = 9
 	rightBtn.AutoButtonColor = false
 	rightBtn.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
 	rightBtn.Text = ">"
 	rightBtn.TextColor3 = Color3.fromRGB(249, 240, 255)
-	rightBtn.TextSize = 14
+	rightBtn.TextSize = 13
 	rightBtn.Parent = container
 	Instance.new("UICorner", rightBtn).CornerRadius = UDim.new(0, 7)
 
