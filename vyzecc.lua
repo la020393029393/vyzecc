@@ -1,22 +1,22 @@
 local G = {}
 
-G.WAVEHubV1 = Instance.new("ScreenGui")
-G.WAVEHubV1.Name = "MessageHub"
-G.WAVEHubV1.ResetOnSpawn = false
-G.WAVEHubV1.DisplayOrder = 2147483647
-G.WAVEHubV1.IgnoreGuiInset = true
-G.WAVEHubV1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-G.WAVEHubV1.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+G.VYZECCHubV1 = Instance.new("ScreenGui")
+G.VYZECCHubV1.Name = "MessageHub"
+G.VYZECCHubV1.ResetOnSpawn = false
+G.VYZECCHubV1.DisplayOrder = 2147483647
+G.VYZECCHubV1.IgnoreGuiInset = true
+G.VYZECCHubV1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+G.VYZECCHubV1.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 
 G.MainOuter = Instance.new("Frame")
 G.MainOuter.Name = "MainOuter"
 G.MainOuter.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
 G.MainOuter.BorderSizePixel = 0
 G.MainOuter.ClipsDescendants = true
-G.MainOuter.Position = UDim2.new(0, 28, 0, 42)
+G.MainOuter.Position = UDim2.new(0, 16, 0, 72)
 G.MainOuter.Size = UDim2.new(0, 280, 0, 48)
 G.MainOuter.Visible = false
-G.MainOuter.Parent = G.WAVEHubV1
+G.MainOuter.Parent = G.VYZECCHubV1
 
 G.UIScale = Instance.new("UIScale")
 G.UIScale.Scale = 0.69999998807907104
@@ -78,21 +78,21 @@ G.HeaderFill.Size = UDim2.new(1, 0, 0.5, 0)
 G.HeaderFill.ZIndex = 5
 G.HeaderFill.Parent = G.HeaderBar
 
-G.WaveHeaderLogo = Instance.new("ImageLabel")
-G.WaveHeaderLogo.Name = "WaveHeaderLogo"
-G.WaveHeaderLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G.WaveHeaderLogo.BackgroundTransparency = 1
-G.WaveHeaderLogo.BorderSizePixel = 0
-G.WaveHeaderLogo.Position = UDim2.new(0, 12, 0, 8)
-G.WaveHeaderLogo.Size = UDim2.new(0, 116, 0, 32)
-G.WaveHeaderLogo.ZIndex = 6
-G.WaveHeaderLogo.Image = "rbxassetid://75548910103458"
-G.WaveHeaderLogo.ScaleType = Enum.ScaleType.Fit
-G.WaveHeaderLogo.Parent = G.HeaderBar
+G.VyzeccHeaderLogo = Instance.new("ImageLabel")
+G.VyzeccHeaderLogo.Name = "VyzeccHeaderLogo"
+G.VyzeccHeaderLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+G.VyzeccHeaderLogo.BackgroundTransparency = 1
+G.VyzeccHeaderLogo.BorderSizePixel = 0
+G.VyzeccHeaderLogo.Position = UDim2.new(0, 12, 0, 8)
+G.VyzeccHeaderLogo.Size = UDim2.new(0, 116, 0, 32)
+G.VyzeccHeaderLogo.ZIndex = 6
+G.VyzeccHeaderLogo.Image = "rbxassetid://75548910103458"
+G.VyzeccHeaderLogo.ScaleType = Enum.ScaleType.Fit
+G.VyzeccHeaderLogo.Parent = G.HeaderBar
 
 G.UICorner_5 = Instance.new("UICorner")
 G.UICorner_5.CornerRadius = UDim.new(0, 14)
-G.UICorner_5.Parent = G.WaveHeaderLogo
+G.UICorner_5.Parent = G.VyzeccHeaderLogo
 
 G.TextLabel = Instance.new("TextLabel")
 G.TextLabel.BackgroundTransparency = 1
@@ -135,14 +135,14 @@ G.UICorner_6 = Instance.new("UICorner")
 G.UICorner_6.CornerRadius = UDim.new(0, 2)
 G.UICorner_6.Parent = G.TextButton
 
-G.WaveNavigation = Instance.new("Frame")
-G.WaveNavigation.Name = "WaveNavigation"
-G.WaveNavigation.BackgroundTransparency = 1
-G.WaveNavigation.BorderSizePixel = 0
-G.WaveNavigation.Position = UDim2.new(0, 8, 0, 51)
-G.WaveNavigation.Size = UDim2.new(1, -16, 0, 40)
-G.WaveNavigation.ZIndex = 6
-G.WaveNavigation.Parent = G.MainOuter
+G.VyzeccNavigation = Instance.new("Frame")
+G.VyzeccNavigation.Name = "VyzeccNavigation"
+G.VyzeccNavigation.BackgroundTransparency = 1
+G.VyzeccNavigation.BorderSizePixel = 0
+G.VyzeccNavigation.Position = UDim2.new(0, 8, 0, 51)
+G.VyzeccNavigation.Size = UDim2.new(1, -16, 0, 40)
+G.VyzeccNavigation.ZIndex = 6
+G.VyzeccNavigation.Parent = G.MainOuter
 
 G.UIListLayout = Instance.new("UIListLayout")
 G.UIListLayout.FillDirection = Enum.FillDirection.Horizontal
@@ -150,160 +150,160 @@ G.UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 G.UIListLayout.Padding = UDim.new(0, 4)
 G.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 G.UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-G.UIListLayout.Parent = G.WaveNavigation
+G.UIListLayout.Parent = G.VyzeccNavigation
 
-G.WaveNav_MAIN = Instance.new("TextButton")
-G.WaveNav_MAIN.Name = "WaveNav_MAIN"
-G.WaveNav_MAIN.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
-G.WaveNav_MAIN.BorderSizePixel = 0
-G.WaveNav_MAIN.LayoutOrder = 1
-G.WaveNav_MAIN.Size = UDim2.new(0, 48, 0, 28)
-G.WaveNav_MAIN.ZIndex = 7
-G.WaveNav_MAIN.AutoButtonColor = false
-G.WaveNav_MAIN.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.WaveNav_MAIN.Text = "MAIN"
-G.WaveNav_MAIN.TextColor3 = Color3.fromRGB(249, 240, 255)
-G.WaveNav_MAIN.Parent = G.WaveNavigation
+G.VyzeccNav_MAIN = Instance.new("TextButton")
+G.VyzeccNav_MAIN.Name = "VyzeccNav_MAIN"
+G.VyzeccNav_MAIN.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
+G.VyzeccNav_MAIN.BorderSizePixel = 0
+G.VyzeccNav_MAIN.LayoutOrder = 1
+G.VyzeccNav_MAIN.Size = UDim2.new(0, 48, 0, 28)
+G.VyzeccNav_MAIN.ZIndex = 7
+G.VyzeccNav_MAIN.AutoButtonColor = false
+G.VyzeccNav_MAIN.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.VyzeccNav_MAIN.Text = "MAIN"
+G.VyzeccNav_MAIN.TextColor3 = Color3.fromRGB(249, 240, 255)
+G.VyzeccNav_MAIN.Parent = G.VyzeccNavigation
 
 G.UICorner_7 = Instance.new("UICorner")
 G.UICorner_7.CornerRadius = UDim.new(0, 7)
-G.UICorner_7.Parent = G.WaveNav_MAIN
+G.UICorner_7.Parent = G.VyzeccNav_MAIN
 
 G.UIStroke = Instance.new("UIStroke")
 G.UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke.Color = Color3.fromRGB(160, 80, 220)
 G.UIStroke.Thickness = 1.2000000476837158
-G.UIStroke.Parent = G.WaveNav_MAIN
+G.UIStroke.Parent = G.VyzeccNav_MAIN
 
-G.WaveNav_COMBAT = Instance.new("TextButton")
-G.WaveNav_COMBAT.Name = "WaveNav_COMBAT"
-G.WaveNav_COMBAT.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WaveNav_COMBAT.BackgroundTransparency = 0.2199999988079071
-G.WaveNav_COMBAT.BorderSizePixel = 0
-G.WaveNav_COMBAT.LayoutOrder = 2
-G.WaveNav_COMBAT.Size = UDim2.new(0, 48, 0, 28)
-G.WaveNav_COMBAT.ZIndex = 7
-G.WaveNav_COMBAT.AutoButtonColor = false
-G.WaveNav_COMBAT.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.WaveNav_COMBAT.Text = "COMBAT"
-G.WaveNav_COMBAT.TextColor3 = Color3.fromRGB(150, 100, 200)
-G.WaveNav_COMBAT.Parent = G.WaveNavigation
+G.VyzeccNav_COMBAT = Instance.new("TextButton")
+G.VyzeccNav_COMBAT.Name = "VyzeccNav_COMBAT"
+G.VyzeccNav_COMBAT.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccNav_COMBAT.BackgroundTransparency = 0.2199999988079071
+G.VyzeccNav_COMBAT.BorderSizePixel = 0
+G.VyzeccNav_COMBAT.LayoutOrder = 2
+G.VyzeccNav_COMBAT.Size = UDim2.new(0, 48, 0, 28)
+G.VyzeccNav_COMBAT.ZIndex = 7
+G.VyzeccNav_COMBAT.AutoButtonColor = false
+G.VyzeccNav_COMBAT.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.VyzeccNav_COMBAT.Text = "COMBAT"
+G.VyzeccNav_COMBAT.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.VyzeccNav_COMBAT.Parent = G.VyzeccNavigation
 
 G.UICorner_8 = Instance.new("UICorner")
 G.UICorner_8.CornerRadius = UDim.new(0, 7)
-G.UICorner_8.Parent = G.WaveNav_COMBAT
+G.UICorner_8.Parent = G.VyzeccNav_COMBAT
 
 G.UIStroke_2 = Instance.new("UIStroke")
 G.UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_2.Color = Color3.fromRGB(119, 25, 185)
-G.UIStroke_2.Parent = G.WaveNav_COMBAT
+G.UIStroke_2.Parent = G.VyzeccNav_COMBAT
 
-G.WaveNav_MISC = Instance.new("TextButton")
-G.WaveNav_MISC.Name = "WaveNav_MISC"
-G.WaveNav_MISC.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WaveNav_MISC.BackgroundTransparency = 0.2199999988079071
-G.WaveNav_MISC.BorderSizePixel = 0
-G.WaveNav_MISC.LayoutOrder = 3
-G.WaveNav_MISC.Size = UDim2.new(0, 48, 0, 28)
-G.WaveNav_MISC.ZIndex = 7
-G.WaveNav_MISC.AutoButtonColor = false
-G.WaveNav_MISC.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.WaveNav_MISC.Text = "MISC"
-G.WaveNav_MISC.TextColor3 = Color3.fromRGB(150, 100, 200)
-G.WaveNav_MISC.Parent = G.WaveNavigation
+G.VyzeccNav_MISC = Instance.new("TextButton")
+G.VyzeccNav_MISC.Name = "VyzeccNav_MISC"
+G.VyzeccNav_MISC.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccNav_MISC.BackgroundTransparency = 0.2199999988079071
+G.VyzeccNav_MISC.BorderSizePixel = 0
+G.VyzeccNav_MISC.LayoutOrder = 3
+G.VyzeccNav_MISC.Size = UDim2.new(0, 48, 0, 28)
+G.VyzeccNav_MISC.ZIndex = 7
+G.VyzeccNav_MISC.AutoButtonColor = false
+G.VyzeccNav_MISC.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.VyzeccNav_MISC.Text = "MISC"
+G.VyzeccNav_MISC.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.VyzeccNav_MISC.Parent = G.VyzeccNavigation
 
 G.UICorner_9 = Instance.new("UICorner")
 G.UICorner_9.CornerRadius = UDim.new(0, 7)
-G.UICorner_9.Parent = G.WaveNav_MISC
+G.UICorner_9.Parent = G.VyzeccNav_MISC
 
 G.UIStroke_3 = Instance.new("UIStroke")
 G.UIStroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_3.Color = Color3.fromRGB(119, 25, 185)
-G.UIStroke_3.Parent = G.WaveNav_MISC
+G.UIStroke_3.Parent = G.VyzeccNav_MISC
 
-G.WaveNav_VISUALS = Instance.new("TextButton")
-G.WaveNav_VISUALS.Name = "WaveNav_VISUALS"
-G.WaveNav_VISUALS.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WaveNav_VISUALS.BackgroundTransparency = 0.2199999988079071
-G.WaveNav_VISUALS.BorderSizePixel = 0
-G.WaveNav_VISUALS.LayoutOrder = 4
-G.WaveNav_VISUALS.Size = UDim2.new(0, 48, 0, 28)
-G.WaveNav_VISUALS.ZIndex = 7
-G.WaveNav_VISUALS.AutoButtonColor = false
-G.WaveNav_VISUALS.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.WaveNav_VISUALS.Text = "VISUALS"
-G.WaveNav_VISUALS.TextColor3 = Color3.fromRGB(150, 100, 200)
-G.WaveNav_VISUALS.Parent = G.WaveNavigation
+G.VyzeccNav_VISUALS = Instance.new("TextButton")
+G.VyzeccNav_VISUALS.Name = "VyzeccNav_VISUALS"
+G.VyzeccNav_VISUALS.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccNav_VISUALS.BackgroundTransparency = 0.2199999988079071
+G.VyzeccNav_VISUALS.BorderSizePixel = 0
+G.VyzeccNav_VISUALS.LayoutOrder = 4
+G.VyzeccNav_VISUALS.Size = UDim2.new(0, 48, 0, 28)
+G.VyzeccNav_VISUALS.ZIndex = 7
+G.VyzeccNav_VISUALS.AutoButtonColor = false
+G.VyzeccNav_VISUALS.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.VyzeccNav_VISUALS.Text = "VISUALS"
+G.VyzeccNav_VISUALS.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.VyzeccNav_VISUALS.Parent = G.VyzeccNavigation
 
 G.UICorner_10 = Instance.new("UICorner")
 G.UICorner_10.CornerRadius = UDim.new(0, 7)
-G.UICorner_10.Parent = G.WaveNav_VISUALS
+G.UICorner_10.Parent = G.VyzeccNav_VISUALS
 
 G.UIStroke_4 = Instance.new("UIStroke")
 G.UIStroke_4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_4.Color = Color3.fromRGB(119, 25, 185)
-G.UIStroke_4.Parent = G.WaveNav_VISUALS
+G.UIStroke_4.Parent = G.VyzeccNav_VISUALS
 
-G.WaveNav_CUSTOMIZE = Instance.new("TextButton")
-G.WaveNav_CUSTOMIZE.Name = "WaveNav_CUSTOMIZE"
-G.WaveNav_CUSTOMIZE.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WaveNav_CUSTOMIZE.BackgroundTransparency = 0.2199999988079071
-G.WaveNav_CUSTOMIZE.BorderSizePixel = 0
-G.WaveNav_CUSTOMIZE.LayoutOrder = 5
-G.WaveNav_CUSTOMIZE.Size = UDim2.new(0, 48, 0, 28)
-G.WaveNav_CUSTOMIZE.ZIndex = 7
-G.WaveNav_CUSTOMIZE.AutoButtonColor = false
-G.WaveNav_CUSTOMIZE.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.WaveNav_CUSTOMIZE.Text = "UI"
-G.WaveNav_CUSTOMIZE.TextColor3 = Color3.fromRGB(150, 100, 200)
-G.WaveNav_CUSTOMIZE.Parent = G.WaveNavigation
+G.VyzeccNav_CUSTOMIZE = Instance.new("TextButton")
+G.VyzeccNav_CUSTOMIZE.Name = "VyzeccNav_CUSTOMIZE"
+G.VyzeccNav_CUSTOMIZE.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccNav_CUSTOMIZE.BackgroundTransparency = 0.2199999988079071
+G.VyzeccNav_CUSTOMIZE.BorderSizePixel = 0
+G.VyzeccNav_CUSTOMIZE.LayoutOrder = 5
+G.VyzeccNav_CUSTOMIZE.Size = UDim2.new(0, 48, 0, 28)
+G.VyzeccNav_CUSTOMIZE.ZIndex = 7
+G.VyzeccNav_CUSTOMIZE.AutoButtonColor = false
+G.VyzeccNav_CUSTOMIZE.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.VyzeccNav_CUSTOMIZE.Text = "UI"
+G.VyzeccNav_CUSTOMIZE.TextColor3 = Color3.fromRGB(150, 100, 200)
+G.VyzeccNav_CUSTOMIZE.Parent = G.VyzeccNavigation
 
 G.UICorner_11 = Instance.new("UICorner")
 G.UICorner_11.CornerRadius = UDim.new(0, 7)
-G.UICorner_11.Parent = G.WaveNav_CUSTOMIZE
+G.UICorner_11.Parent = G.VyzeccNav_CUSTOMIZE
 
 G.UIStroke_5 = Instance.new("UIStroke")
 G.UIStroke_5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_5.Color = Color3.fromRGB(119, 25, 185)
-G.UIStroke_5.Parent = G.WaveNav_CUSTOMIZE
+G.UIStroke_5.Parent = G.VyzeccNav_CUSTOMIZE
 
-G.WavePage_Speed = Instance.new("ScrollingFrame")
-G.WavePage_Speed.Name = "WavePage_Speed"
-G.WavePage_Speed.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Speed.BackgroundTransparency = 1
-G.WavePage_Speed.BorderSizePixel = 0
-G.WavePage_Speed.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Speed.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Speed.Visible = false
-G.WavePage_Speed.ZIndex = 3
-G.WavePage_Speed.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Speed.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Speed.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Speed.ScrollBarImageTransparency = 0.5
-G.WavePage_Speed.ScrollBarThickness = 3
-G.WavePage_Speed.Parent = G.MainOuter
+G.VyzeccPage_Speed = Instance.new("ScrollingFrame")
+G.VyzeccPage_Speed.Name = "VyzeccPage_Speed"
+G.VyzeccPage_Speed.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Speed.BackgroundTransparency = 1
+G.VyzeccPage_Speed.BorderSizePixel = 0
+G.VyzeccPage_Speed.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Speed.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Speed.Visible = false
+G.VyzeccPage_Speed.ZIndex = 3
+G.VyzeccPage_Speed.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Speed.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Speed.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Speed.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Speed.ScrollBarThickness = 3
+G.VyzeccPage_Speed.Parent = G.MainOuter
 
 G.UICorner_12 = Instance.new("UICorner")
 G.UICorner_12.CornerRadius = UDim.new(0, 20)
-G.UICorner_12.Parent = G.WavePage_Speed
+G.UICorner_12.Parent = G.VyzeccPage_Speed
 
 G.UIListLayout_2 = Instance.new("UIListLayout")
 G.UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_2.Parent = G.WavePage_Speed
+G.UIListLayout_2.Parent = G.VyzeccPage_Speed
 
 G.UIPadding = Instance.new("UIPadding")
 G.UIPadding.PaddingBottom = UDim.new(0, 12)
 G.UIPadding.PaddingLeft = UDim.new(0, 8)
 G.UIPadding.PaddingRight = UDim.new(0, 8)
 G.UIPadding.PaddingTop = UDim.new(0, 6)
-G.UIPadding.Parent = G.WavePage_Speed
+G.UIPadding.Parent = G.VyzeccPage_Speed
 
 G.Frame = Instance.new("Frame")
 G.Frame.BackgroundTransparency = 1
 G.Frame.BorderSizePixel = 0
 G.Frame.LayoutOrder = 1
 G.Frame.Size = UDim2.new(1, 0, 0, 28)
-G.Frame.Parent = G.WavePage_Speed
+G.Frame.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_2 = Instance.new("TextLabel")
 G.TextLabel_2.BackgroundTransparency = 1
@@ -321,14 +321,14 @@ G.Frame_2.BackgroundTransparency = 1
 G.Frame_2.BorderSizePixel = 0
 G.Frame_2.LayoutOrder = 2
 G.Frame_2.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_2.Parent = G.WavePage_Speed
+G.Frame_2.Parent = G.VyzeccPage_Speed
 
 G.Frame_3 = Instance.new("Frame")
 G.Frame_3.BackgroundTransparency = 1
 G.Frame_3.BorderSizePixel = 0
 G.Frame_3.LayoutOrder = 2
 G.Frame_3.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_3.Parent = G.WavePage_Speed
+G.Frame_3.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_3 = Instance.new("TextLabel")
 G.TextLabel_3.BackgroundTransparency = 1
@@ -374,7 +374,7 @@ G.Frame_5.BackgroundTransparency = 1
 G.Frame_5.BorderSizePixel = 0
 G.Frame_5.LayoutOrder = 3
 G.Frame_5.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_5.Parent = G.WavePage_Speed
+G.Frame_5.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_4 = Instance.new("TextLabel")
 G.TextLabel_4.BackgroundTransparency = 1
@@ -420,7 +420,7 @@ G.Frame_7.BackgroundTransparency = 1
 G.Frame_7.BorderSizePixel = 0
 G.Frame_7.LayoutOrder = 6
 G.Frame_7.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_7.Parent = G.WavePage_Speed
+G.Frame_7.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_5 = Instance.new("TextLabel")
 G.TextLabel_5.BackgroundTransparency = 1
@@ -466,7 +466,7 @@ G.Frame_9.BackgroundTransparency = 1
 G.Frame_9.BorderSizePixel = 0
 G.Frame_9.LayoutOrder = 7
 G.Frame_9.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_9.Parent = G.WavePage_Speed
+G.Frame_9.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_6 = Instance.new("TextLabel")
 G.TextLabel_6.BackgroundTransparency = 1
@@ -512,14 +512,14 @@ G.Frame_11.BackgroundTransparency = 1
 G.Frame_11.BorderSizePixel = 0
 G.Frame_11.LayoutOrder = 7
 G.Frame_11.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_11.Parent = G.WavePage_Speed
+G.Frame_11.Parent = G.VyzeccPage_Speed
 
 G.Frame_12 = Instance.new("Frame")
 G.Frame_12.BackgroundTransparency = 1
 G.Frame_12.BorderSizePixel = 0
 G.Frame_12.LayoutOrder = 5
 G.Frame_12.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_12.Parent = G.WavePage_Speed
+G.Frame_12.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_7 = Instance.new("TextLabel")
 G.TextLabel_7.BackgroundTransparency = 1
@@ -557,14 +557,14 @@ G.Frame_13.BackgroundTransparency = 1
 G.Frame_13.BorderSizePixel = 0
 G.Frame_13.LayoutOrder = 9
 G.Frame_13.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_13.Parent = G.WavePage_Speed
+G.Frame_13.Parent = G.VyzeccPage_Speed
 
 G.Frame_14 = Instance.new("Frame")
 G.Frame_14.BackgroundTransparency = 1
 G.Frame_14.BorderSizePixel = 0
 G.Frame_14.LayoutOrder = 9
 G.Frame_14.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_14.Parent = G.WavePage_Speed
+G.Frame_14.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_8 = Instance.new("TextLabel")
 G.TextLabel_8.BackgroundTransparency = 1
@@ -602,7 +602,7 @@ G.Frame_15.BackgroundTransparency = 1
 G.Frame_15.BorderSizePixel = 0
 G.Frame_15.LayoutOrder = 11
 G.Frame_15.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_15.Parent = G.WavePage_Speed
+G.Frame_15.Parent = G.VyzeccPage_Speed
 
 G.Frame_16 = Instance.new("Frame")
 G.Frame_16.BackgroundTransparency = 1
@@ -611,7 +611,7 @@ G.Frame_16.ClipsDescendants = true
 G.Frame_16.LayoutOrder = 26
 G.Frame_16.Size = UDim2.new(1, 0, 0, 34)
 G.Frame_16.Visible = false
-G.Frame_16.Parent = G.WavePage_Speed
+G.Frame_16.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_9 = Instance.new("TextLabel")
 G.TextLabel_9.BackgroundTransparency = 1
@@ -649,14 +649,14 @@ G.Frame_17.BackgroundTransparency = 1
 G.Frame_17.BorderSizePixel = 0
 G.Frame_17.LayoutOrder = 13
 G.Frame_17.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_17.Parent = G.WavePage_Speed
+G.Frame_17.Parent = G.VyzeccPage_Speed
 
 G.Frame_18 = Instance.new("Frame")
 G.Frame_18.BackgroundTransparency = 1
 G.Frame_18.BorderSizePixel = 0
 G.Frame_18.LayoutOrder = 4
 G.Frame_18.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_18.Parent = G.WavePage_Speed
+G.Frame_18.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_10 = Instance.new("TextLabel")
 G.TextLabel_10.BackgroundTransparency = 1
@@ -695,7 +695,7 @@ G.Frame_19.BackgroundTransparency = 1
 G.Frame_19.BorderSizePixel = 0
 G.Frame_19.LayoutOrder = 8
 G.Frame_19.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_19.Parent = G.WavePage_Speed
+G.Frame_19.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_11 = Instance.new("TextLabel")
 G.TextLabel_11.BackgroundTransparency = 1
@@ -735,7 +735,7 @@ G.Frame_20.BackgroundTransparency = 1
 G.Frame_20.BorderSizePixel = 0
 G.Frame_20.LayoutOrder = 25
 G.Frame_20.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_20.Parent = G.WavePage_Speed
+G.Frame_20.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_12 = Instance.new("TextLabel")
 G.TextLabel_12.BackgroundTransparency = 1
@@ -748,37 +748,37 @@ G.TextLabel_12.TextSize = 11
 G.TextLabel_12.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_12.Parent = G.Frame_20
 
-G.WaveTogglePill = Instance.new("Frame")
-G.WaveTogglePill.Name = "WaveTogglePill"
-G.WaveTogglePill.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill.BorderSizePixel = 0
-G.WaveTogglePill.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill.ZIndex = 7
-G.WaveTogglePill:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill.Parent = G.Frame_20
+G.VyzeccTogglePill = Instance.new("Frame")
+G.VyzeccTogglePill.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill.BorderSizePixel = 0
+G.VyzeccTogglePill.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill.ZIndex = 7
+G.VyzeccTogglePill:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill.Parent = G.Frame_20
 
 G.UICorner_22 = Instance.new("UICorner")
 G.UICorner_22.CornerRadius = UDim.new(0, 9)
-G.UICorner_22.Parent = G.WaveTogglePill
+G.UICorner_22.Parent = G.VyzeccTogglePill
 
 G.UIStroke_15 = Instance.new("UIStroke")
 G.UIStroke_15.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_15.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_15.Parent = G.WaveTogglePill
+G.UIStroke_15.Parent = G.VyzeccTogglePill
 
-G.WaveToggleDot = Instance.new("Frame")
-G.WaveToggleDot.Name = "WaveToggleDot"
-G.WaveToggleDot.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot.BorderSizePixel = 0
-G.WaveToggleDot.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot.ZIndex = 8
-G.WaveToggleDot.Parent = G.WaveTogglePill
+G.VyzeccToggleDot = Instance.new("Frame")
+G.VyzeccToggleDot.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot.BorderSizePixel = 0
+G.VyzeccToggleDot.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot.ZIndex = 8
+G.VyzeccToggleDot.Parent = G.VyzeccTogglePill
 
 G.UICorner_23 = Instance.new("UICorner")
 G.UICorner_23.CornerRadius = UDim.new(0, 6)
-G.UICorner_23.Parent = G.WaveToggleDot
+G.UICorner_23.Parent = G.VyzeccToggleDot
 
 G.TextButton_7 = Instance.new("TextButton")
 G.TextButton_7.BackgroundTransparency = 1
@@ -786,7 +786,7 @@ G.TextButton_7.BorderSizePixel = 0
 G.TextButton_7.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_7.ZIndex = 9
 G.TextButton_7.Text = ""
-G.TextButton_7.Parent = G.WaveTogglePill
+G.TextButton_7.Parent = G.VyzeccTogglePill
 
 G.SizeDropdown = Instance.new("TextButton")
 G.SizeDropdown.Name = "SizeDropdown"
@@ -825,7 +825,7 @@ G.Frame_21.BackgroundTransparency = 1
 G.Frame_21.BorderSizePixel = 0
 G.Frame_21.LayoutOrder = 17
 G.Frame_21.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_21.Parent = G.WavePage_Speed
+G.Frame_21.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_13 = Instance.new("TextLabel")
 G.TextLabel_13.BackgroundTransparency = 1
@@ -843,7 +843,7 @@ G.Frame_22.BackgroundTransparency = 1
 G.Frame_22.BorderSizePixel = 0
 G.Frame_22.LayoutOrder = 18
 G.Frame_22.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_22.Parent = G.WavePage_Speed
+G.Frame_22.Parent = G.VyzeccPage_Speed
 
 G.Frame_23 = Instance.new("Frame")
 G.Frame_23.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -851,7 +851,7 @@ G.Frame_23.BackgroundTransparency = 1
 G.Frame_23.BorderSizePixel = 0
 G.Frame_23.LayoutOrder = 19
 G.Frame_23.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_23.Parent = G.WavePage_Speed
+G.Frame_23.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_14 = Instance.new("TextLabel")
 G.TextLabel_14.BackgroundTransparency = 1
@@ -864,37 +864,37 @@ G.TextLabel_14.TextSize = 11
 G.TextLabel_14.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_14.Parent = G.Frame_23
 
-G.WaveTogglePill_2 = Instance.new("Frame")
-G.WaveTogglePill_2.Name = "WaveTogglePill"
-G.WaveTogglePill_2.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_2.BorderSizePixel = 0
-G.WaveTogglePill_2.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_2.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_2.ZIndex = 7
-G.WaveTogglePill_2:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_2.Parent = G.Frame_23
+G.VyzeccTogglePill_2 = Instance.new("Frame")
+G.VyzeccTogglePill_2.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_2.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_2.BorderSizePixel = 0
+G.VyzeccTogglePill_2.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_2.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_2.ZIndex = 7
+G.VyzeccTogglePill_2:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_2.Parent = G.Frame_23
 
 G.UICorner_25 = Instance.new("UICorner")
 G.UICorner_25.CornerRadius = UDim.new(0, 9)
-G.UICorner_25.Parent = G.WaveTogglePill_2
+G.UICorner_25.Parent = G.VyzeccTogglePill_2
 
 G.UIStroke_17 = Instance.new("UIStroke")
 G.UIStroke_17.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_17.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_17.Parent = G.WaveTogglePill_2
+G.UIStroke_17.Parent = G.VyzeccTogglePill_2
 
-G.WaveToggleDot_2 = Instance.new("Frame")
-G.WaveToggleDot_2.Name = "WaveToggleDot"
-G.WaveToggleDot_2.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_2.BorderSizePixel = 0
-G.WaveToggleDot_2.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_2.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_2.ZIndex = 8
-G.WaveToggleDot_2.Parent = G.WaveTogglePill_2
+G.VyzeccToggleDot_2 = Instance.new("Frame")
+G.VyzeccToggleDot_2.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_2.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_2.BorderSizePixel = 0
+G.VyzeccToggleDot_2.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_2.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_2.ZIndex = 8
+G.VyzeccToggleDot_2.Parent = G.VyzeccTogglePill_2
 
 G.UICorner_26 = Instance.new("UICorner")
 G.UICorner_26.CornerRadius = UDim.new(0, 6)
-G.UICorner_26.Parent = G.WaveToggleDot_2
+G.UICorner_26.Parent = G.VyzeccToggleDot_2
 
 G.TextButton_8 = Instance.new("TextButton")
 G.TextButton_8.BackgroundTransparency = 1
@@ -902,7 +902,7 @@ G.TextButton_8.BorderSizePixel = 0
 G.TextButton_8.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_8.ZIndex = 9
 G.TextButton_8.Text = ""
-G.TextButton_8.Parent = G.WaveTogglePill_2
+G.TextButton_8.Parent = G.VyzeccTogglePill_2
 
 G.TextButton_9 = Instance.new("TextButton")
 G.TextButton_9.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
@@ -930,7 +930,7 @@ G.Frame_24.BackgroundTransparency = 1
 G.Frame_24.BorderSizePixel = 0
 G.Frame_24.LayoutOrder = 20
 G.Frame_24.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_24.Parent = G.WavePage_Speed
+G.Frame_24.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_15 = Instance.new("TextLabel")
 G.TextLabel_15.BackgroundTransparency = 1
@@ -969,7 +969,7 @@ G.Frame_25.BackgroundTransparency = 1
 G.Frame_25.BorderSizePixel = 0
 G.Frame_25.LayoutOrder = 21
 G.Frame_25.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_25.Parent = G.WavePage_Speed
+G.Frame_25.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_16 = Instance.new("TextLabel")
 G.TextLabel_16.BackgroundTransparency = 1
@@ -1008,7 +1008,7 @@ G.Frame_26.BackgroundTransparency = 1
 G.Frame_26.BorderSizePixel = 0
 G.Frame_26.LayoutOrder = 22
 G.Frame_26.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_26.Parent = G.WavePage_Speed
+G.Frame_26.Parent = G.VyzeccPage_Speed
 
 G.Frame_27 = Instance.new("Frame")
 G.Frame_27.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1016,7 +1016,7 @@ G.Frame_27.BackgroundTransparency = 1
 G.Frame_27.BorderSizePixel = 0
 G.Frame_27.LayoutOrder = 28
 G.Frame_27.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_27.Parent = G.WavePage_Speed
+G.Frame_27.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_17 = Instance.new("TextLabel")
 G.TextLabel_17.BackgroundTransparency = 1
@@ -1029,37 +1029,37 @@ G.TextLabel_17.TextSize = 11
 G.TextLabel_17.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_17.Parent = G.Frame_27
 
-G.WaveTogglePill_3 = Instance.new("Frame")
-G.WaveTogglePill_3.Name = "WaveTogglePill"
-G.WaveTogglePill_3.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_3.BorderSizePixel = 0
-G.WaveTogglePill_3.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_3.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_3.ZIndex = 7
-G.WaveTogglePill_3:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_3.Parent = G.Frame_27
+G.VyzeccTogglePill_3 = Instance.new("Frame")
+G.VyzeccTogglePill_3.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_3.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_3.BorderSizePixel = 0
+G.VyzeccTogglePill_3.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_3.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_3.ZIndex = 7
+G.VyzeccTogglePill_3:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_3.Parent = G.Frame_27
 
 G.UICorner_30 = Instance.new("UICorner")
 G.UICorner_30.CornerRadius = UDim.new(0, 9)
-G.UICorner_30.Parent = G.WaveTogglePill_3
+G.UICorner_30.Parent = G.VyzeccTogglePill_3
 
 G.UIStroke_21 = Instance.new("UIStroke")
 G.UIStroke_21.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_21.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_21.Parent = G.WaveTogglePill_3
+G.UIStroke_21.Parent = G.VyzeccTogglePill_3
 
-G.WaveToggleDot_3 = Instance.new("Frame")
-G.WaveToggleDot_3.Name = "WaveToggleDot"
-G.WaveToggleDot_3.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_3.BorderSizePixel = 0
-G.WaveToggleDot_3.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_3.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_3.ZIndex = 8
-G.WaveToggleDot_3.Parent = G.WaveTogglePill_3
+G.VyzeccToggleDot_3 = Instance.new("Frame")
+G.VyzeccToggleDot_3.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_3.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_3.BorderSizePixel = 0
+G.VyzeccToggleDot_3.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_3.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_3.ZIndex = 8
+G.VyzeccToggleDot_3.Parent = G.VyzeccTogglePill_3
 
 G.UICorner_31 = Instance.new("UICorner")
 G.UICorner_31.CornerRadius = UDim.new(0, 6)
-G.UICorner_31.Parent = G.WaveToggleDot_3
+G.UICorner_31.Parent = G.VyzeccToggleDot_3
 
 G.TextButton_12 = Instance.new("TextButton")
 G.TextButton_12.BackgroundTransparency = 1
@@ -1067,7 +1067,7 @@ G.TextButton_12.BorderSizePixel = 0
 G.TextButton_12.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_12.ZIndex = 9
 G.TextButton_12.Text = ""
-G.TextButton_12.Parent = G.WaveTogglePill_3
+G.TextButton_12.Parent = G.VyzeccTogglePill_3
 
 G.TextButton_13 = Instance.new("TextButton")
 G.TextButton_13.BackgroundColor3 = Color3.fromRGB(95, 40, 160)
@@ -1095,7 +1095,7 @@ G.Frame_28.BackgroundTransparency = 1
 G.Frame_28.BorderSizePixel = 0
 G.Frame_28.LayoutOrder = 24
 G.Frame_28.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_28.Parent = G.WavePage_Speed
+G.Frame_28.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_18 = Instance.new("TextLabel")
 G.TextLabel_18.BackgroundTransparency = 1
@@ -1155,14 +1155,14 @@ G.Frame_29.BackgroundTransparency = 1
 G.Frame_29.BorderSizePixel = 0
 G.Frame_29.LayoutOrder = 25
 G.Frame_29.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_29.Parent = G.WavePage_Speed
+G.Frame_29.Parent = G.VyzeccPage_Speed
 
 G.Frame_30 = Instance.new("Frame")
 G.Frame_30.BackgroundTransparency = 1
 G.Frame_30.BorderSizePixel = 0
 G.Frame_30.LayoutOrder = 26
 G.Frame_30.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_30.Parent = G.WavePage_Speed
+G.Frame_30.Parent = G.VyzeccPage_Speed
 
 G.Frame_31 = Instance.new("Frame")
 G.Frame_31.BackgroundTransparency = 1
@@ -1171,7 +1171,7 @@ G.Frame_31.ClipsDescendants = true
 G.Frame_31.LayoutOrder = 27
 G.Frame_31.Size = UDim2.new(1, 0, 0, 38)
 G.Frame_31.Visible = false
-G.Frame_31.Parent = G.WavePage_Speed
+G.Frame_31.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_19 = Instance.new("TextLabel")
 G.TextLabel_19.BackgroundTransparency = 1
@@ -1217,14 +1217,14 @@ G.Frame_33.BackgroundTransparency = 1
 G.Frame_33.BorderSizePixel = 0
 G.Frame_33.LayoutOrder = 75
 G.Frame_33.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_33.Parent = G.WavePage_Speed
+G.Frame_33.Parent = G.VyzeccPage_Speed
 
 G.Frame_34 = Instance.new("Frame")
 G.Frame_34.BackgroundTransparency = 1
 G.Frame_34.BorderSizePixel = 0
 G.Frame_34.LayoutOrder = 1008
 G.Frame_34.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_34.Parent = G.WavePage_Speed
+G.Frame_34.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_20 = Instance.new("TextLabel")
 G.TextLabel_20.BackgroundTransparency = 1
@@ -1242,7 +1242,7 @@ G.Frame_35.BackgroundTransparency = 1
 G.Frame_35.BorderSizePixel = 0
 G.Frame_35.LayoutOrder = 1009
 G.Frame_35.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_35.Parent = G.WavePage_Speed
+G.Frame_35.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_21 = Instance.new("TextLabel")
 G.TextLabel_21.BackgroundTransparency = 1
@@ -1283,7 +1283,7 @@ G.Frame_36.BackgroundTransparency = 1
 G.Frame_36.BorderSizePixel = 0
 G.Frame_36.LayoutOrder = 1010
 G.Frame_36.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_36.Parent = G.WavePage_Speed
+G.Frame_36.Parent = G.VyzeccPage_Speed
 
 G.TextLabel_22 = Instance.new("TextLabel")
 G.TextLabel_22.BackgroundTransparency = 1
@@ -1324,37 +1324,37 @@ G.UIStroke_27.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_27.Color = Color3.fromRGB(45, 20, 75)
 G.UIStroke_27.Parent = G.Frame_37
 
-G.WaveTogglePill_4 = Instance.new("Frame")
-G.WaveTogglePill_4.Name = "WaveTogglePill"
-G.WaveTogglePill_4.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_4.BorderSizePixel = 0
-G.WaveTogglePill_4.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_4.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_4.ZIndex = 7
-G.WaveTogglePill_4:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_4.Parent = G.Frame_36
+G.VyzeccTogglePill_4 = Instance.new("Frame")
+G.VyzeccTogglePill_4.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_4.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_4.BorderSizePixel = 0
+G.VyzeccTogglePill_4.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_4.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_4.ZIndex = 7
+G.VyzeccTogglePill_4:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_4.Parent = G.Frame_36
 
 G.UICorner_38 = Instance.new("UICorner")
 G.UICorner_38.CornerRadius = UDim.new(0, 9)
-G.UICorner_38.Parent = G.WaveTogglePill_4
+G.UICorner_38.Parent = G.VyzeccTogglePill_4
 
 G.UIStroke_28 = Instance.new("UIStroke")
 G.UIStroke_28.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_28.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_28.Parent = G.WaveTogglePill_4
+G.UIStroke_28.Parent = G.VyzeccTogglePill_4
 
-G.WaveToggleDot_4 = Instance.new("Frame")
-G.WaveToggleDot_4.Name = "WaveToggleDot"
-G.WaveToggleDot_4.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_4.BorderSizePixel = 0
-G.WaveToggleDot_4.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_4.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_4.ZIndex = 8
-G.WaveToggleDot_4.Parent = G.WaveTogglePill_4
+G.VyzeccToggleDot_4 = Instance.new("Frame")
+G.VyzeccToggleDot_4.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_4.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_4.BorderSizePixel = 0
+G.VyzeccToggleDot_4.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_4.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_4.ZIndex = 8
+G.VyzeccToggleDot_4.Parent = G.VyzeccTogglePill_4
 
 G.UICorner_39 = Instance.new("UICorner")
 G.UICorner_39.CornerRadius = UDim.new(0, 6)
-G.UICorner_39.Parent = G.WaveToggleDot_4
+G.UICorner_39.Parent = G.VyzeccToggleDot_4
 
 G.TextButton_17 = Instance.new("TextButton")
 G.TextButton_17.BackgroundTransparency = 1
@@ -1362,61 +1362,61 @@ G.TextButton_17.BorderSizePixel = 0
 G.TextButton_17.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_17.ZIndex = 9
 G.TextButton_17.Text = ""
-G.TextButton_17.Parent = G.WaveTogglePill_4
+G.TextButton_17.Parent = G.VyzeccTogglePill_4
 
-G.WavePage_Movement = Instance.new("ScrollingFrame")
-G.WavePage_Movement.Name = "WavePage_Movement"
-G.WavePage_Movement.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Movement.BackgroundTransparency = 1
-G.WavePage_Movement.BorderSizePixel = 0
-G.WavePage_Movement.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Movement.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Movement.Visible = false
-G.WavePage_Movement.ZIndex = 3
-G.WavePage_Movement.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Movement.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Movement.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Movement.ScrollBarImageTransparency = 0.5
-G.WavePage_Movement.ScrollBarThickness = 3
-G.WavePage_Movement.Parent = G.MainOuter
+G.VyzeccPage_Movement = Instance.new("ScrollingFrame")
+G.VyzeccPage_Movement.Name = "VyzeccPage_Movement"
+G.VyzeccPage_Movement.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Movement.BackgroundTransparency = 1
+G.VyzeccPage_Movement.BorderSizePixel = 0
+G.VyzeccPage_Movement.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Movement.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Movement.Visible = false
+G.VyzeccPage_Movement.ZIndex = 3
+G.VyzeccPage_Movement.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Movement.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Movement.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Movement.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Movement.ScrollBarThickness = 3
+G.VyzeccPage_Movement.Parent = G.MainOuter
 
 G.UIListLayout_3 = Instance.new("UIListLayout")
 G.UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_3.Parent = G.WavePage_Movement
+G.UIListLayout_3.Parent = G.VyzeccPage_Movement
 
 G.UIPadding_2 = Instance.new("UIPadding")
 G.UIPadding_2.PaddingBottom = UDim.new(0, 12)
 G.UIPadding_2.PaddingLeft = UDim.new(0, 8)
 G.UIPadding_2.PaddingRight = UDim.new(0, 8)
 G.UIPadding_2.PaddingTop = UDim.new(0, 6)
-G.UIPadding_2.Parent = G.WavePage_Movement
+G.UIPadding_2.Parent = G.VyzeccPage_Movement
 
-G.WavePage_Misc = Instance.new("ScrollingFrame")
-G.WavePage_Misc.Name = "WavePage_Misc"
-G.WavePage_Misc.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Misc.BackgroundTransparency = 1
-G.WavePage_Misc.BorderSizePixel = 0
-G.WavePage_Misc.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Misc.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Misc.Visible = false
-G.WavePage_Misc.ZIndex = 3
-G.WavePage_Misc.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Misc.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Misc.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Misc.ScrollBarImageTransparency = 0.5
-G.WavePage_Misc.ScrollBarThickness = 3
-G.WavePage_Misc.Parent = G.MainOuter
+G.VyzeccPage_Misc = Instance.new("ScrollingFrame")
+G.VyzeccPage_Misc.Name = "VyzeccPage_Misc"
+G.VyzeccPage_Misc.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Misc.BackgroundTransparency = 1
+G.VyzeccPage_Misc.BorderSizePixel = 0
+G.VyzeccPage_Misc.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Misc.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Misc.Visible = false
+G.VyzeccPage_Misc.ZIndex = 3
+G.VyzeccPage_Misc.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Misc.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Misc.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Misc.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Misc.ScrollBarThickness = 3
+G.VyzeccPage_Misc.Parent = G.MainOuter
 
 G.UIListLayout_4 = Instance.new("UIListLayout")
 G.UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_4.Parent = G.WavePage_Misc
+G.UIListLayout_4.Parent = G.VyzeccPage_Misc
 
 G.UIPadding_3 = Instance.new("UIPadding")
 G.UIPadding_3.PaddingBottom = UDim.new(0, 12)
 G.UIPadding_3.PaddingLeft = UDim.new(0, 8)
 G.UIPadding_3.PaddingRight = UDim.new(0, 8)
 G.UIPadding_3.PaddingTop = UDim.new(0, 6)
-G.UIPadding_3.Parent = G.WavePage_Misc
+G.UIPadding_3.Parent = G.VyzeccPage_Misc
 
 G.Frame_38 = Instance.new("Frame")
 G.Frame_38.BackgroundTransparency = 1
@@ -1424,7 +1424,7 @@ G.Frame_38.BorderSizePixel = 0
 G.Frame_38.LayoutOrder = 19
 G.Frame_38.Visible = true
 G.Frame_38.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_38.Parent = G.WavePage_Misc
+G.Frame_38.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_23 = Instance.new("TextLabel")
 G.TextLabel_23.BackgroundTransparency = 1
@@ -1442,7 +1442,7 @@ G.Frame_39.BackgroundTransparency = 1
 G.Frame_39.BorderSizePixel = 0
 G.Frame_39.LayoutOrder = 28
 G.Frame_39.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_39.Parent = G.WavePage_Misc
+G.Frame_39.Parent = G.VyzeccPage_Misc
 
 G.Frame_40 = Instance.new("Frame")
 G.Frame_40.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1450,7 +1450,7 @@ G.Frame_40.BackgroundTransparency = 1
 G.Frame_40.BorderSizePixel = 0
 G.Frame_40.LayoutOrder = 23
 G.Frame_40.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_40.Parent = G.WavePage_Misc
+G.Frame_40.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_24 = Instance.new("TextLabel")
 G.TextLabel_24.BackgroundTransparency = 1
@@ -1463,37 +1463,37 @@ G.TextLabel_24.TextSize = 11
 G.TextLabel_24.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_24.Parent = G.Frame_40
 
-G.WaveTogglePill_5 = Instance.new("Frame")
-G.WaveTogglePill_5.Name = "WaveTogglePill"
-G.WaveTogglePill_5.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_5.BorderSizePixel = 0
-G.WaveTogglePill_5.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_5.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_5.ZIndex = 7
-G.WaveTogglePill_5:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_5.Parent = G.Frame_40
+G.VyzeccTogglePill_5 = Instance.new("Frame")
+G.VyzeccTogglePill_5.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_5.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_5.BorderSizePixel = 0
+G.VyzeccTogglePill_5.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_5.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_5.ZIndex = 7
+G.VyzeccTogglePill_5:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_5.Parent = G.Frame_40
 
 G.UICorner_40 = Instance.new("UICorner")
 G.UICorner_40.CornerRadius = UDim.new(0, 9)
-G.UICorner_40.Parent = G.WaveTogglePill_5
+G.UICorner_40.Parent = G.VyzeccTogglePill_5
 
 G.UIStroke_29 = Instance.new("UIStroke")
 G.UIStroke_29.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_29.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_29.Parent = G.WaveTogglePill_5
+G.UIStroke_29.Parent = G.VyzeccTogglePill_5
 
-G.WaveToggleDot_5 = Instance.new("Frame")
-G.WaveToggleDot_5.Name = "WaveToggleDot"
-G.WaveToggleDot_5.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_5.BorderSizePixel = 0
-G.WaveToggleDot_5.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_5.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_5.ZIndex = 8
-G.WaveToggleDot_5.Parent = G.WaveTogglePill_5
+G.VyzeccToggleDot_5 = Instance.new("Frame")
+G.VyzeccToggleDot_5.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_5.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_5.BorderSizePixel = 0
+G.VyzeccToggleDot_5.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_5.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_5.ZIndex = 8
+G.VyzeccToggleDot_5.Parent = G.VyzeccTogglePill_5
 
 G.UICorner_41 = Instance.new("UICorner")
 G.UICorner_41.CornerRadius = UDim.new(0, 6)
-G.UICorner_41.Parent = G.WaveToggleDot_5
+G.UICorner_41.Parent = G.VyzeccToggleDot_5
 
 G.TextButton_18 = Instance.new("TextButton")
 G.TextButton_18.BackgroundTransparency = 1
@@ -1501,35 +1501,35 @@ G.TextButton_18.BorderSizePixel = 0
 G.TextButton_18.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_18.ZIndex = 9
 G.TextButton_18.Text = ""
-G.TextButton_18.Parent = G.WaveTogglePill_5
+G.TextButton_18.Parent = G.VyzeccTogglePill_5
 
 G.Frame_41 = Instance.new("Frame")
 G.Frame_41.BackgroundTransparency = 1
 G.Frame_41.BorderSizePixel = 0
 G.Frame_41.LayoutOrder = 30
 G.Frame_41.Size = UDim2.new(1, 0, 0, 6)
-G.Frame_41.Parent = G.WavePage_Misc
+G.Frame_41.Parent = G.VyzeccPage_Misc
 
 G.Frame_42 = Instance.new("Frame")
 G.Frame_42.BackgroundTransparency = 1
 G.Frame_42.BorderSizePixel = 0
 G.Frame_42.LayoutOrder = 32
 G.Frame_42.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_42.Parent = G.WavePage_Misc
+G.Frame_42.Parent = G.VyzeccPage_Misc
 
 G.Frame_43 = Instance.new("Frame")
 G.Frame_43.BackgroundTransparency = 1
 G.Frame_43.BorderSizePixel = 0
 G.Frame_43.LayoutOrder = 50
 G.Frame_43.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_43.Parent = G.WavePage_Misc
+G.Frame_43.Parent = G.VyzeccPage_Misc
 
 G.Frame_44 = Instance.new("Frame")
 G.Frame_44.BackgroundTransparency = 1
 G.Frame_44.BorderSizePixel = 0
 G.Frame_44.LayoutOrder = 34
 G.Frame_44.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_44.Parent = G.WavePage_Misc
+G.Frame_44.Parent = G.VyzeccPage_Misc
 
 G.Frame_45 = Instance.new("Frame")
 G.Frame_45.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1537,7 +1537,7 @@ G.Frame_45.BackgroundTransparency = 1
 G.Frame_45.BorderSizePixel = 0
 G.Frame_45.LayoutOrder = 6
 G.Frame_45.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_45.Parent = G.WavePage_Misc
+G.Frame_45.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_25 = Instance.new("TextLabel")
 G.TextLabel_25.BackgroundTransparency = 1
@@ -1550,37 +1550,37 @@ G.TextLabel_25.TextSize = 11
 G.TextLabel_25.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_25.Parent = G.Frame_45
 
-G.WaveTogglePill_6 = Instance.new("Frame")
-G.WaveTogglePill_6.Name = "WaveTogglePill"
-G.WaveTogglePill_6.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_6.BorderSizePixel = 0
-G.WaveTogglePill_6.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_6.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_6.ZIndex = 7
-G.WaveTogglePill_6:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_6.Parent = G.Frame_45
+G.VyzeccTogglePill_6 = Instance.new("Frame")
+G.VyzeccTogglePill_6.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_6.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_6.BorderSizePixel = 0
+G.VyzeccTogglePill_6.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_6.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_6.ZIndex = 7
+G.VyzeccTogglePill_6:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_6.Parent = G.Frame_45
 
 G.UICorner_42 = Instance.new("UICorner")
 G.UICorner_42.CornerRadius = UDim.new(0, 9)
-G.UICorner_42.Parent = G.WaveTogglePill_6
+G.UICorner_42.Parent = G.VyzeccTogglePill_6
 
 G.UIStroke_30 = Instance.new("UIStroke")
 G.UIStroke_30.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_30.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_30.Parent = G.WaveTogglePill_6
+G.UIStroke_30.Parent = G.VyzeccTogglePill_6
 
-G.WaveToggleDot_6 = Instance.new("Frame")
-G.WaveToggleDot_6.Name = "WaveToggleDot"
-G.WaveToggleDot_6.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_6.BorderSizePixel = 0
-G.WaveToggleDot_6.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_6.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_6.ZIndex = 8
-G.WaveToggleDot_6.Parent = G.WaveTogglePill_6
+G.VyzeccToggleDot_6 = Instance.new("Frame")
+G.VyzeccToggleDot_6.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_6.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_6.BorderSizePixel = 0
+G.VyzeccToggleDot_6.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_6.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_6.ZIndex = 8
+G.VyzeccToggleDot_6.Parent = G.VyzeccTogglePill_6
 
 G.UICorner_43 = Instance.new("UICorner")
 G.UICorner_43.CornerRadius = UDim.new(0, 6)
-G.UICorner_43.Parent = G.WaveToggleDot_6
+G.UICorner_43.Parent = G.VyzeccToggleDot_6
 
 G.TextButton_19 = Instance.new("TextButton")
 G.TextButton_19.BackgroundTransparency = 1
@@ -1588,21 +1588,21 @@ G.TextButton_19.BorderSizePixel = 0
 G.TextButton_19.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_19.ZIndex = 9
 G.TextButton_19.Text = ""
-G.TextButton_19.Parent = G.WaveTogglePill_6
+G.TextButton_19.Parent = G.VyzeccTogglePill_6
 
 G.Frame_46 = Instance.new("Frame")
 G.Frame_46.BackgroundTransparency = 1
 G.Frame_46.BorderSizePixel = 0
 G.Frame_46.LayoutOrder = 45
 G.Frame_46.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_46.Parent = G.WavePage_Misc
+G.Frame_46.Parent = G.VyzeccPage_Misc
 
 G.Frame_47 = Instance.new("Frame")
 G.Frame_47.BackgroundTransparency = 1
 G.Frame_47.BorderSizePixel = 0
 G.Frame_47.LayoutOrder = 37
 G.Frame_47.Size = UDim2.new(1, 0, 0, 6)
-G.Frame_47.Parent = G.WavePage_Misc
+G.Frame_47.Parent = G.VyzeccPage_Misc
 
 G.Frame_48 = Instance.new("Frame")
 G.Frame_48.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1610,7 +1610,7 @@ G.Frame_48.BackgroundTransparency = 1
 G.Frame_48.BorderSizePixel = 0
 G.Frame_48.LayoutOrder = 8
 G.Frame_48.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_48.Parent = G.WavePage_Misc
+G.Frame_48.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_26 = Instance.new("TextLabel")
 G.TextLabel_26.BackgroundTransparency = 1
@@ -1623,37 +1623,37 @@ G.TextLabel_26.TextSize = 11
 G.TextLabel_26.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_26.Parent = G.Frame_48
 
-G.WaveTogglePill_7 = Instance.new("Frame")
-G.WaveTogglePill_7.Name = "WaveTogglePill"
-G.WaveTogglePill_7.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_7.BorderSizePixel = 0
-G.WaveTogglePill_7.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_7.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_7.ZIndex = 7
-G.WaveTogglePill_7:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_7.Parent = G.Frame_48
+G.VyzeccTogglePill_7 = Instance.new("Frame")
+G.VyzeccTogglePill_7.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_7.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_7.BorderSizePixel = 0
+G.VyzeccTogglePill_7.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_7.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_7.ZIndex = 7
+G.VyzeccTogglePill_7:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_7.Parent = G.Frame_48
 
 G.UICorner_44 = Instance.new("UICorner")
 G.UICorner_44.CornerRadius = UDim.new(0, 9)
-G.UICorner_44.Parent = G.WaveTogglePill_7
+G.UICorner_44.Parent = G.VyzeccTogglePill_7
 
 G.UIStroke_31 = Instance.new("UIStroke")
 G.UIStroke_31.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_31.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_31.Parent = G.WaveTogglePill_7
+G.UIStroke_31.Parent = G.VyzeccTogglePill_7
 
-G.WaveToggleDot_7 = Instance.new("Frame")
-G.WaveToggleDot_7.Name = "WaveToggleDot"
-G.WaveToggleDot_7.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_7.BorderSizePixel = 0
-G.WaveToggleDot_7.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_7.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_7.ZIndex = 8
-G.WaveToggleDot_7.Parent = G.WaveTogglePill_7
+G.VyzeccToggleDot_7 = Instance.new("Frame")
+G.VyzeccToggleDot_7.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_7.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_7.BorderSizePixel = 0
+G.VyzeccToggleDot_7.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_7.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_7.ZIndex = 8
+G.VyzeccToggleDot_7.Parent = G.VyzeccTogglePill_7
 
 G.UICorner_45 = Instance.new("UICorner")
 G.UICorner_45.CornerRadius = UDim.new(0, 6)
-G.UICorner_45.Parent = G.WaveToggleDot_7
+G.UICorner_45.Parent = G.VyzeccToggleDot_7
 
 G.TextButton_20 = Instance.new("TextButton")
 G.TextButton_20.BackgroundTransparency = 1
@@ -1661,21 +1661,21 @@ G.TextButton_20.BorderSizePixel = 0
 G.TextButton_20.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_20.ZIndex = 9
 G.TextButton_20.Text = ""
-G.TextButton_20.Parent = G.WaveTogglePill_7
+G.TextButton_20.Parent = G.VyzeccTogglePill_7
 
 G.Frame_49 = Instance.new("Frame")
 G.Frame_49.BackgroundTransparency = 1
 G.Frame_49.BorderSizePixel = 0
 G.Frame_49.LayoutOrder = 39
 G.Frame_49.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_49.Parent = G.WavePage_Misc
+G.Frame_49.Parent = G.VyzeccPage_Misc
 
 G.Frame_50 = Instance.new("Frame")
 G.Frame_50.BackgroundTransparency = 1
 G.Frame_50.BorderSizePixel = 0
 G.Frame_50.LayoutOrder = 48
 G.Frame_50.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_50.Parent = G.WavePage_Misc
+G.Frame_50.Parent = G.VyzeccPage_Misc
 
 G.Frame_51 = Instance.new("Frame")
 G.Frame_51.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1683,7 +1683,7 @@ G.Frame_51.BackgroundTransparency = 1
 G.Frame_51.BorderSizePixel = 0
 G.Frame_51.LayoutOrder = 7
 G.Frame_51.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_51.Parent = G.WavePage_Misc
+G.Frame_51.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_27 = Instance.new("TextLabel")
 G.TextLabel_27.BackgroundTransparency = 1
@@ -1696,37 +1696,37 @@ G.TextLabel_27.TextSize = 11
 G.TextLabel_27.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_27.Parent = G.Frame_51
 
-G.WaveTogglePill_8 = Instance.new("Frame")
-G.WaveTogglePill_8.Name = "WaveTogglePill"
-G.WaveTogglePill_8.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_8.BorderSizePixel = 0
-G.WaveTogglePill_8.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_8.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_8.ZIndex = 7
-G.WaveTogglePill_8:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_8.Parent = G.Frame_51
+G.VyzeccTogglePill_8 = Instance.new("Frame")
+G.VyzeccTogglePill_8.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_8.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_8.BorderSizePixel = 0
+G.VyzeccTogglePill_8.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_8.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_8.ZIndex = 7
+G.VyzeccTogglePill_8:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_8.Parent = G.Frame_51
 
 G.UICorner_46 = Instance.new("UICorner")
 G.UICorner_46.CornerRadius = UDim.new(0, 9)
-G.UICorner_46.Parent = G.WaveTogglePill_8
+G.UICorner_46.Parent = G.VyzeccTogglePill_8
 
 G.UIStroke_32 = Instance.new("UIStroke")
 G.UIStroke_32.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_32.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_32.Parent = G.WaveTogglePill_8
+G.UIStroke_32.Parent = G.VyzeccTogglePill_8
 
-G.WaveToggleDot_8 = Instance.new("Frame")
-G.WaveToggleDot_8.Name = "WaveToggleDot"
-G.WaveToggleDot_8.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_8.BorderSizePixel = 0
-G.WaveToggleDot_8.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_8.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_8.ZIndex = 8
-G.WaveToggleDot_8.Parent = G.WaveTogglePill_8
+G.VyzeccToggleDot_8 = Instance.new("Frame")
+G.VyzeccToggleDot_8.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_8.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_8.BorderSizePixel = 0
+G.VyzeccToggleDot_8.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_8.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_8.ZIndex = 8
+G.VyzeccToggleDot_8.Parent = G.VyzeccTogglePill_8
 
 G.UICorner_47 = Instance.new("UICorner")
 G.UICorner_47.CornerRadius = UDim.new(0, 6)
-G.UICorner_47.Parent = G.WaveToggleDot_8
+G.UICorner_47.Parent = G.VyzeccToggleDot_8
 
 G.TextButton_21 = Instance.new("TextButton")
 G.TextButton_21.BackgroundTransparency = 1
@@ -1734,21 +1734,21 @@ G.TextButton_21.BorderSizePixel = 0
 G.TextButton_21.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_21.ZIndex = 9
 G.TextButton_21.Text = ""
-G.TextButton_21.Parent = G.WaveTogglePill_8
+G.TextButton_21.Parent = G.VyzeccTogglePill_8
 
 G.Frame_52 = Instance.new("Frame")
 G.Frame_52.BackgroundTransparency = 1
 G.Frame_52.BorderSizePixel = 0
 G.Frame_52.LayoutOrder = 42
 G.Frame_52.Size = UDim2.new(1, 0, 0, 4)
-G.Frame_52.Parent = G.WavePage_Misc
+G.Frame_52.Parent = G.VyzeccPage_Misc
 
 G.Frame_53 = Instance.new("Frame")
 G.Frame_53.BackgroundTransparency = 1
 G.Frame_53.BorderSizePixel = 0
 G.Frame_53.LayoutOrder = 3
 G.Frame_53.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_53.Parent = G.WavePage_Misc
+G.Frame_53.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_28 = Instance.new("TextLabel")
 G.TextLabel_28.BackgroundTransparency = 1
@@ -1767,7 +1767,7 @@ G.Frame_54.BackgroundTransparency = 1
 G.Frame_54.BorderSizePixel = 0
 G.Frame_54.LayoutOrder = 4
 G.Frame_54.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_54.Parent = G.WavePage_Misc
+G.Frame_54.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_29 = Instance.new("TextLabel")
 G.TextLabel_29.BackgroundTransparency = 1
@@ -1808,37 +1808,37 @@ G.UIStroke_33.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_33.Color = Color3.fromRGB(45, 20, 75)
 G.UIStroke_33.Parent = G.Frame_55
 
-G.WaveTogglePill_9 = Instance.new("Frame")
-G.WaveTogglePill_9.Name = "WaveTogglePill"
-G.WaveTogglePill_9.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_9.BorderSizePixel = 0
-G.WaveTogglePill_9.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_9.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_9.ZIndex = 7
-G.WaveTogglePill_9:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_9.Parent = G.Frame_54
+G.VyzeccTogglePill_9 = Instance.new("Frame")
+G.VyzeccTogglePill_9.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_9.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_9.BorderSizePixel = 0
+G.VyzeccTogglePill_9.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_9.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_9.ZIndex = 7
+G.VyzeccTogglePill_9:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_9.Parent = G.Frame_54
 
 G.UICorner_49 = Instance.new("UICorner")
 G.UICorner_49.CornerRadius = UDim.new(0, 9)
-G.UICorner_49.Parent = G.WaveTogglePill_9
+G.UICorner_49.Parent = G.VyzeccTogglePill_9
 
 G.UIStroke_34 = Instance.new("UIStroke")
 G.UIStroke_34.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_34.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_34.Parent = G.WaveTogglePill_9
+G.UIStroke_34.Parent = G.VyzeccTogglePill_9
 
-G.WaveToggleDot_9 = Instance.new("Frame")
-G.WaveToggleDot_9.Name = "WaveToggleDot"
-G.WaveToggleDot_9.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_9.BorderSizePixel = 0
-G.WaveToggleDot_9.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_9.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_9.ZIndex = 8
-G.WaveToggleDot_9.Parent = G.WaveTogglePill_9
+G.VyzeccToggleDot_9 = Instance.new("Frame")
+G.VyzeccToggleDot_9.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_9.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_9.BorderSizePixel = 0
+G.VyzeccToggleDot_9.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_9.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_9.ZIndex = 8
+G.VyzeccToggleDot_9.Parent = G.VyzeccTogglePill_9
 
 G.UICorner_50 = Instance.new("UICorner")
 G.UICorner_50.CornerRadius = UDim.new(0, 6)
-G.UICorner_50.Parent = G.WaveToggleDot_9
+G.UICorner_50.Parent = G.VyzeccToggleDot_9
 
 G.TextButton_22 = Instance.new("TextButton")
 G.TextButton_22.BackgroundTransparency = 1
@@ -1846,7 +1846,7 @@ G.TextButton_22.BorderSizePixel = 0
 G.TextButton_22.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_22.ZIndex = 9
 G.TextButton_22.Text = ""
-G.TextButton_22.Parent = G.WaveTogglePill_9
+G.TextButton_22.Parent = G.VyzeccTogglePill_9
 
 G.Frame_56 = Instance.new("Frame")
 G.Frame_56.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1855,7 +1855,7 @@ G.Frame_56.BorderSizePixel = 0
 G.Frame_56.LayoutOrder = 20
 G.Frame_56.Size = UDim2.new(1, 0, 0, 40)
 G.Frame_56.Visible = false
-G.Frame_56.Parent = G.WavePage_Misc
+G.Frame_56.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_30 = Instance.new("TextLabel")
 G.TextLabel_30.BackgroundTransparency = 1
@@ -1868,37 +1868,37 @@ G.TextLabel_30.TextSize = 11
 G.TextLabel_30.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_30.Parent = G.Frame_56
 
-G.WaveTogglePill_10 = Instance.new("Frame")
-G.WaveTogglePill_10.Name = "WaveTogglePill"
-G.WaveTogglePill_10.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_10.BorderSizePixel = 0
-G.WaveTogglePill_10.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_10.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_10.ZIndex = 7
-G.WaveTogglePill_10:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_10.Parent = G.Frame_56
+G.VyzeccTogglePill_10 = Instance.new("Frame")
+G.VyzeccTogglePill_10.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_10.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_10.BorderSizePixel = 0
+G.VyzeccTogglePill_10.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_10.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_10.ZIndex = 7
+G.VyzeccTogglePill_10:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_10.Parent = G.Frame_56
 
 G.UICorner_51 = Instance.new("UICorner")
 G.UICorner_51.CornerRadius = UDim.new(0, 9)
-G.UICorner_51.Parent = G.WaveTogglePill_10
+G.UICorner_51.Parent = G.VyzeccTogglePill_10
 
 G.UIStroke_35 = Instance.new("UIStroke")
 G.UIStroke_35.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_35.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_35.Parent = G.WaveTogglePill_10
+G.UIStroke_35.Parent = G.VyzeccTogglePill_10
 
-G.WaveToggleDot_10 = Instance.new("Frame")
-G.WaveToggleDot_10.Name = "WaveToggleDot"
-G.WaveToggleDot_10.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_10.BorderSizePixel = 0
-G.WaveToggleDot_10.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_10.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_10.ZIndex = 8
-G.WaveToggleDot_10.Parent = G.WaveTogglePill_10
+G.VyzeccToggleDot_10 = Instance.new("Frame")
+G.VyzeccToggleDot_10.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_10.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_10.BorderSizePixel = 0
+G.VyzeccToggleDot_10.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_10.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_10.ZIndex = 8
+G.VyzeccToggleDot_10.Parent = G.VyzeccTogglePill_10
 
 G.UICorner_52 = Instance.new("UICorner")
 G.UICorner_52.CornerRadius = UDim.new(0, 6)
-G.UICorner_52.Parent = G.WaveToggleDot_10
+G.UICorner_52.Parent = G.VyzeccToggleDot_10
 
 G.TextButton_23 = Instance.new("TextButton")
 G.TextButton_23.BackgroundTransparency = 1
@@ -1906,7 +1906,7 @@ G.TextButton_23.BorderSizePixel = 0
 G.TextButton_23.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_23.ZIndex = 9
 G.TextButton_23.Text = ""
-G.TextButton_23.Parent = G.WaveTogglePill_10
+G.TextButton_23.Parent = G.VyzeccTogglePill_10
 
 G.Frame_57 = Instance.new("Frame")
 G.Frame_57.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1915,7 +1915,7 @@ G.Frame_57.BorderSizePixel = 0
 G.Frame_57.LayoutOrder = 21
 G.Frame_57.Size = UDim2.new(1, 0, 0, 40)
 G.Frame_57.Visible = false
-G.Frame_57.Parent = G.WavePage_Misc
+G.Frame_57.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_31 = Instance.new("TextLabel")
 G.TextLabel_31.BackgroundTransparency = 1
@@ -1928,37 +1928,37 @@ G.TextLabel_31.TextSize = 11
 G.TextLabel_31.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_31.Parent = G.Frame_57
 
-G.WaveTogglePill_11 = Instance.new("Frame")
-G.WaveTogglePill_11.Name = "WaveTogglePill"
-G.WaveTogglePill_11.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_11.BorderSizePixel = 0
-G.WaveTogglePill_11.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_11.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_11.ZIndex = 7
-G.WaveTogglePill_11:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_11.Parent = G.Frame_57
+G.VyzeccTogglePill_11 = Instance.new("Frame")
+G.VyzeccTogglePill_11.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_11.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_11.BorderSizePixel = 0
+G.VyzeccTogglePill_11.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_11.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_11.ZIndex = 7
+G.VyzeccTogglePill_11:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_11.Parent = G.Frame_57
 
 G.UICorner_53 = Instance.new("UICorner")
 G.UICorner_53.CornerRadius = UDim.new(0, 9)
-G.UICorner_53.Parent = G.WaveTogglePill_11
+G.UICorner_53.Parent = G.VyzeccTogglePill_11
 
 G.UIStroke_36 = Instance.new("UIStroke")
 G.UIStroke_36.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_36.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_36.Parent = G.WaveTogglePill_11
+G.UIStroke_36.Parent = G.VyzeccTogglePill_11
 
-G.WaveToggleDot_11 = Instance.new("Frame")
-G.WaveToggleDot_11.Name = "WaveToggleDot"
-G.WaveToggleDot_11.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_11.BorderSizePixel = 0
-G.WaveToggleDot_11.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_11.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_11.ZIndex = 8
-G.WaveToggleDot_11.Parent = G.WaveTogglePill_11
+G.VyzeccToggleDot_11 = Instance.new("Frame")
+G.VyzeccToggleDot_11.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_11.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_11.BorderSizePixel = 0
+G.VyzeccToggleDot_11.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_11.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_11.ZIndex = 8
+G.VyzeccToggleDot_11.Parent = G.VyzeccTogglePill_11
 
 G.UICorner_54 = Instance.new("UICorner")
 G.UICorner_54.CornerRadius = UDim.new(0, 6)
-G.UICorner_54.Parent = G.WaveToggleDot_11
+G.UICorner_54.Parent = G.VyzeccToggleDot_11
 
 G.TextButton_24 = Instance.new("TextButton")
 G.TextButton_24.BackgroundTransparency = 1
@@ -1966,7 +1966,7 @@ G.TextButton_24.BorderSizePixel = 0
 G.TextButton_24.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_24.ZIndex = 9
 G.TextButton_24.Text = ""
-G.TextButton_24.Parent = G.WaveTogglePill_11
+G.TextButton_24.Parent = G.VyzeccTogglePill_11
 
 G.Frame_58 = Instance.new("Frame")
 G.Frame_58.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -1975,7 +1975,7 @@ G.Frame_58.BorderSizePixel = 0
 G.Frame_58.LayoutOrder = 22
 G.Frame_58.Size = UDim2.new(1, 0, 0, 40)
 G.Frame_58.Visible = false
-G.Frame_58.Parent = G.WavePage_Misc
+G.Frame_58.Parent = G.VyzeccPage_Misc
 
 G.TextLabel_32 = Instance.new("TextLabel")
 G.TextLabel_32.BackgroundTransparency = 1
@@ -1988,37 +1988,37 @@ G.TextLabel_32.TextSize = 11
 G.TextLabel_32.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_32.Parent = G.Frame_58
 
-G.WaveTogglePill_12 = Instance.new("Frame")
-G.WaveTogglePill_12.Name = "WaveTogglePill"
-G.WaveTogglePill_12.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_12.BorderSizePixel = 0
-G.WaveTogglePill_12.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_12.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_12.ZIndex = 7
-G.WaveTogglePill_12:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_12.Parent = G.Frame_58
+G.VyzeccTogglePill_12 = Instance.new("Frame")
+G.VyzeccTogglePill_12.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_12.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_12.BorderSizePixel = 0
+G.VyzeccTogglePill_12.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_12.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_12.ZIndex = 7
+G.VyzeccTogglePill_12:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_12.Parent = G.Frame_58
 
 G.UICorner_55 = Instance.new("UICorner")
 G.UICorner_55.CornerRadius = UDim.new(0, 9)
-G.UICorner_55.Parent = G.WaveTogglePill_12
+G.UICorner_55.Parent = G.VyzeccTogglePill_12
 
 G.UIStroke_37 = Instance.new("UIStroke")
 G.UIStroke_37.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_37.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_37.Parent = G.WaveTogglePill_12
+G.UIStroke_37.Parent = G.VyzeccTogglePill_12
 
-G.WaveToggleDot_12 = Instance.new("Frame")
-G.WaveToggleDot_12.Name = "WaveToggleDot"
-G.WaveToggleDot_12.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_12.BorderSizePixel = 0
-G.WaveToggleDot_12.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_12.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_12.ZIndex = 8
-G.WaveToggleDot_12.Parent = G.WaveTogglePill_12
+G.VyzeccToggleDot_12 = Instance.new("Frame")
+G.VyzeccToggleDot_12.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_12.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_12.BorderSizePixel = 0
+G.VyzeccToggleDot_12.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_12.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_12.ZIndex = 8
+G.VyzeccToggleDot_12.Parent = G.VyzeccTogglePill_12
 
 G.UICorner_56 = Instance.new("UICorner")
 G.UICorner_56.CornerRadius = UDim.new(0, 6)
-G.UICorner_56.Parent = G.WaveToggleDot_12
+G.UICorner_56.Parent = G.VyzeccToggleDot_12
 
 G.TextButton_25 = Instance.new("TextButton")
 G.TextButton_25.BackgroundTransparency = 1
@@ -2026,41 +2026,41 @@ G.TextButton_25.BorderSizePixel = 0
 G.TextButton_25.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_25.ZIndex = 9
 G.TextButton_25.Text = ""
-G.TextButton_25.Parent = G.WaveTogglePill_12
+G.TextButton_25.Parent = G.VyzeccTogglePill_12
 
-G.WavePage_Visuals = Instance.new("ScrollingFrame")
-G.WavePage_Visuals.Name = "WavePage_Visuals"
-G.WavePage_Visuals.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Visuals.BackgroundTransparency = 1
-G.WavePage_Visuals.BorderSizePixel = 0
-G.WavePage_Visuals.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Visuals.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Visuals.Visible = false
-G.WavePage_Visuals.ZIndex = 3
-G.WavePage_Visuals.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Visuals.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Visuals.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Visuals.ScrollBarImageTransparency = 0.5
-G.WavePage_Visuals.ScrollBarThickness = 3
-G.WavePage_Visuals.Parent = G.MainOuter
+G.VyzeccPage_Visuals = Instance.new("ScrollingFrame")
+G.VyzeccPage_Visuals.Name = "VyzeccPage_Visuals"
+G.VyzeccPage_Visuals.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Visuals.BackgroundTransparency = 1
+G.VyzeccPage_Visuals.BorderSizePixel = 0
+G.VyzeccPage_Visuals.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Visuals.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Visuals.Visible = false
+G.VyzeccPage_Visuals.ZIndex = 3
+G.VyzeccPage_Visuals.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Visuals.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Visuals.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Visuals.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Visuals.ScrollBarThickness = 3
+G.VyzeccPage_Visuals.Parent = G.MainOuter
 
 G.UIListLayout_5 = Instance.new("UIListLayout")
 G.UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_5.Parent = G.WavePage_Visuals
+G.UIListLayout_5.Parent = G.VyzeccPage_Visuals
 
 G.UIPadding_4 = Instance.new("UIPadding")
 G.UIPadding_4.PaddingBottom = UDim.new(0, 12)
 G.UIPadding_4.PaddingLeft = UDim.new(0, 8)
 G.UIPadding_4.PaddingRight = UDim.new(0, 8)
 G.UIPadding_4.PaddingTop = UDim.new(0, 6)
-G.UIPadding_4.Parent = G.WavePage_Visuals
+G.UIPadding_4.Parent = G.VyzeccPage_Visuals
 
 G.Frame_59 = Instance.new("Frame")
 G.Frame_59.BackgroundTransparency = 1
 G.Frame_59.BorderSizePixel = 0
 G.Frame_59.LayoutOrder = 1
 G.Frame_59.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_59.Parent = G.WavePage_Visuals
+G.Frame_59.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_33 = Instance.new("TextLabel")
 G.TextLabel_33.BackgroundTransparency = 1
@@ -2078,7 +2078,7 @@ G.Frame_60.BackgroundTransparency = 1
 G.Frame_60.BorderSizePixel = 0
 G.Frame_60.LayoutOrder = 52
 G.Frame_60.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_60.Parent = G.WavePage_Visuals
+G.Frame_60.Parent = G.VyzeccPage_Visuals
 
 G.Frame_61 = Instance.new("Frame")
 G.Frame_61.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2086,7 +2086,7 @@ G.Frame_61.BackgroundTransparency = 1
 G.Frame_61.BorderSizePixel = 0
 G.Frame_61.LayoutOrder = 2
 G.Frame_61.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_61.Parent = G.WavePage_Visuals
+G.Frame_61.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_34 = Instance.new("TextLabel")
 G.TextLabel_34.BackgroundTransparency = 1
@@ -2099,39 +2099,39 @@ G.TextLabel_34.TextSize = 11
 G.TextLabel_34.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_34.Parent = G.Frame_61
 
-G.WaveTogglePill_13 = Instance.new("Frame")
-G.WaveTogglePill_13.Name = "WaveTogglePill"
-G.WaveTogglePill_13.BackgroundColor3 = Color3.fromRGB(125, 24, 195)
-G.WaveTogglePill_13.BorderSizePixel = 0
-G.WaveTogglePill_13.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_13.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_13.ZIndex = 7
-G.WaveTogglePill_13:SetAttribute("WaveStyledOn", false)
-G.WaveTogglePill_13:SetAttribute("WaveStyledTheme", "default")
-G.WaveTogglePill_13:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_13.Parent = G.Frame_61
+G.VyzeccTogglePill_13 = Instance.new("Frame")
+G.VyzeccTogglePill_13.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_13.BackgroundColor3 = Color3.fromRGB(125, 24, 195)
+G.VyzeccTogglePill_13.BorderSizePixel = 0
+G.VyzeccTogglePill_13.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_13.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_13.ZIndex = 7
+G.VyzeccTogglePill_13:SetAttribute("VyzeccStyledOn", false)
+G.VyzeccTogglePill_13:SetAttribute("VyzeccStyledTheme", "default")
+G.VyzeccTogglePill_13:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_13.Parent = G.Frame_61
 
 G.UICorner_57 = Instance.new("UICorner")
 G.UICorner_57.CornerRadius = UDim.new(0, 9)
-G.UICorner_57.Parent = G.WaveTogglePill_13
+G.UICorner_57.Parent = G.VyzeccTogglePill_13
 
 G.UIStroke_38 = Instance.new("UIStroke")
 G.UIStroke_38.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_38.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_38.Parent = G.WaveTogglePill_13
+G.UIStroke_38.Parent = G.VyzeccTogglePill_13
 
-G.WaveToggleDot_13 = Instance.new("Frame")
-G.WaveToggleDot_13.Name = "WaveToggleDot"
-G.WaveToggleDot_13.BackgroundColor3 = Color3.fromRGB(249, 240, 255)
-G.WaveToggleDot_13.BorderSizePixel = 0
-G.WaveToggleDot_13.Position = UDim2.new(1, -15, 0.5, -6)
-G.WaveToggleDot_13.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_13.ZIndex = 8
-G.WaveToggleDot_13.Parent = G.WaveTogglePill_13
+G.VyzeccToggleDot_13 = Instance.new("Frame")
+G.VyzeccToggleDot_13.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_13.BackgroundColor3 = Color3.fromRGB(249, 240, 255)
+G.VyzeccToggleDot_13.BorderSizePixel = 0
+G.VyzeccToggleDot_13.Position = UDim2.new(1, -15, 0.5, -6)
+G.VyzeccToggleDot_13.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_13.ZIndex = 8
+G.VyzeccToggleDot_13.Parent = G.VyzeccTogglePill_13
 
 G.UICorner_58 = Instance.new("UICorner")
 G.UICorner_58.CornerRadius = UDim.new(0, 6)
-G.UICorner_58.Parent = G.WaveToggleDot_13
+G.UICorner_58.Parent = G.VyzeccToggleDot_13
 
 G.TextButton_26 = Instance.new("TextButton")
 G.TextButton_26.BackgroundTransparency = 1
@@ -2139,7 +2139,7 @@ G.TextButton_26.BorderSizePixel = 0
 G.TextButton_26.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_26.ZIndex = 9
 G.TextButton_26.Text = ""
-G.TextButton_26.Parent = G.WaveTogglePill_13
+G.TextButton_26.Parent = G.VyzeccTogglePill_13
 
 G.Frame_62 = Instance.new("Frame")
 G.Frame_62.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2147,7 +2147,7 @@ G.Frame_62.BackgroundTransparency = 1
 G.Frame_62.BorderSizePixel = 0
 G.Frame_62.LayoutOrder = 3
 G.Frame_62.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_62.Parent = G.WavePage_Visuals
+G.Frame_62.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_35 = Instance.new("TextLabel")
 G.TextLabel_35.BackgroundTransparency = 1
@@ -2160,37 +2160,37 @@ G.TextLabel_35.TextSize = 11
 G.TextLabel_35.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_35.Parent = G.Frame_62
 
-G.WaveTogglePill_14 = Instance.new("Frame")
-G.WaveTogglePill_14.Name = "WaveTogglePill"
-G.WaveTogglePill_14.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_14.BorderSizePixel = 0
-G.WaveTogglePill_14.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_14.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_14.ZIndex = 7
-G.WaveTogglePill_14:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_14.Parent = G.Frame_62
+G.VyzeccTogglePill_14 = Instance.new("Frame")
+G.VyzeccTogglePill_14.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_14.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_14.BorderSizePixel = 0
+G.VyzeccTogglePill_14.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_14.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_14.ZIndex = 7
+G.VyzeccTogglePill_14:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_14.Parent = G.Frame_62
 
 G.UICorner_59 = Instance.new("UICorner")
 G.UICorner_59.CornerRadius = UDim.new(0, 9)
-G.UICorner_59.Parent = G.WaveTogglePill_14
+G.UICorner_59.Parent = G.VyzeccTogglePill_14
 
 G.UIStroke_39 = Instance.new("UIStroke")
 G.UIStroke_39.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_39.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_39.Parent = G.WaveTogglePill_14
+G.UIStroke_39.Parent = G.VyzeccTogglePill_14
 
-G.WaveToggleDot_14 = Instance.new("Frame")
-G.WaveToggleDot_14.Name = "WaveToggleDot"
-G.WaveToggleDot_14.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_14.BorderSizePixel = 0
-G.WaveToggleDot_14.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_14.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_14.ZIndex = 8
-G.WaveToggleDot_14.Parent = G.WaveTogglePill_14
+G.VyzeccToggleDot_14 = Instance.new("Frame")
+G.VyzeccToggleDot_14.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_14.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_14.BorderSizePixel = 0
+G.VyzeccToggleDot_14.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_14.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_14.ZIndex = 8
+G.VyzeccToggleDot_14.Parent = G.VyzeccTogglePill_14
 
 G.UICorner_60 = Instance.new("UICorner")
 G.UICorner_60.CornerRadius = UDim.new(0, 6)
-G.UICorner_60.Parent = G.WaveToggleDot_14
+G.UICorner_60.Parent = G.VyzeccToggleDot_14
 
 G.TextButton_27 = Instance.new("TextButton")
 G.TextButton_27.BackgroundTransparency = 1
@@ -2198,14 +2198,14 @@ G.TextButton_27.BorderSizePixel = 0
 G.TextButton_27.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_27.ZIndex = 9
 G.TextButton_27.Text = ""
-G.TextButton_27.Parent = G.WaveTogglePill_14
+G.TextButton_27.Parent = G.VyzeccTogglePill_14
 
 G.Frame_63 = Instance.new("Frame")
 G.Frame_63.BackgroundTransparency = 1
 G.Frame_63.BorderSizePixel = 0
 G.Frame_63.LayoutOrder = 10004
 G.Frame_63.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_63.Parent = G.WavePage_Visuals
+G.Frame_63.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_36 = Instance.new("TextLabel")
 G.TextLabel_36.BackgroundTransparency = 1
@@ -2223,14 +2223,14 @@ G.Frame_64.BackgroundTransparency = 1
 G.Frame_64.BorderSizePixel = 0
 G.Frame_64.LayoutOrder = 56
 G.Frame_64.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_64.Parent = G.WavePage_Visuals
+G.Frame_64.Parent = G.VyzeccPage_Visuals
 
 G.Frame_65 = Instance.new("Frame")
 G.Frame_65.BackgroundTransparency = 1
 G.Frame_65.BorderSizePixel = 0
 G.Frame_65.LayoutOrder = 7
 G.Frame_65.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_65.Parent = G.WavePage_Visuals
+G.Frame_65.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_37 = Instance.new("TextLabel")
 G.TextLabel_37.BackgroundTransparency = 1
@@ -2248,7 +2248,7 @@ G.Frame_66.BackgroundTransparency = 1
 G.Frame_66.BorderSizePixel = 0
 G.Frame_66.LayoutOrder = 58
 G.Frame_66.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_66.Parent = G.WavePage_Visuals
+G.Frame_66.Parent = G.VyzeccPage_Visuals
 
 G.Frame_67 = Instance.new("Frame")
 G.Frame_67.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2256,7 +2256,7 @@ G.Frame_67.BackgroundTransparency = 1
 G.Frame_67.BorderSizePixel = 0
 G.Frame_67.LayoutOrder = 8
 G.Frame_67.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_67.Parent = G.WavePage_Visuals
+G.Frame_67.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_38 = Instance.new("TextLabel")
 G.TextLabel_38.BackgroundTransparency = 1
@@ -2269,37 +2269,37 @@ G.TextLabel_38.TextSize = 11
 G.TextLabel_38.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_38.Parent = G.Frame_67
 
-G.WaveTogglePill_15 = Instance.new("Frame")
-G.WaveTogglePill_15.Name = "WaveTogglePill"
-G.WaveTogglePill_15.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_15.BorderSizePixel = 0
-G.WaveTogglePill_15.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_15.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_15.ZIndex = 7
-G.WaveTogglePill_15:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_15.Parent = G.Frame_67
+G.VyzeccTogglePill_15 = Instance.new("Frame")
+G.VyzeccTogglePill_15.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_15.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_15.BorderSizePixel = 0
+G.VyzeccTogglePill_15.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_15.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_15.ZIndex = 7
+G.VyzeccTogglePill_15:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_15.Parent = G.Frame_67
 
 G.UICorner_61 = Instance.new("UICorner")
 G.UICorner_61.CornerRadius = UDim.new(0, 9)
-G.UICorner_61.Parent = G.WaveTogglePill_15
+G.UICorner_61.Parent = G.VyzeccTogglePill_15
 
 G.UIStroke_40 = Instance.new("UIStroke")
 G.UIStroke_40.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_40.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_40.Parent = G.WaveTogglePill_15
+G.UIStroke_40.Parent = G.VyzeccTogglePill_15
 
-G.WaveToggleDot_15 = Instance.new("Frame")
-G.WaveToggleDot_15.Name = "WaveToggleDot"
-G.WaveToggleDot_15.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_15.BorderSizePixel = 0
-G.WaveToggleDot_15.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_15.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_15.ZIndex = 8
-G.WaveToggleDot_15.Parent = G.WaveTogglePill_15
+G.VyzeccToggleDot_15 = Instance.new("Frame")
+G.VyzeccToggleDot_15.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_15.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_15.BorderSizePixel = 0
+G.VyzeccToggleDot_15.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_15.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_15.ZIndex = 8
+G.VyzeccToggleDot_15.Parent = G.VyzeccTogglePill_15
 
 G.UICorner_62 = Instance.new("UICorner")
 G.UICorner_62.CornerRadius = UDim.new(0, 6)
-G.UICorner_62.Parent = G.WaveToggleDot_15
+G.UICorner_62.Parent = G.VyzeccToggleDot_15
 
 G.TextButton_28 = Instance.new("TextButton")
 G.TextButton_28.BackgroundTransparency = 1
@@ -2307,7 +2307,7 @@ G.TextButton_28.BorderSizePixel = 0
 G.TextButton_28.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_28.ZIndex = 9
 G.TextButton_28.Text = ""
-G.TextButton_28.Parent = G.WaveTogglePill_15
+G.TextButton_28.Parent = G.VyzeccTogglePill_15
 
 G.Frame_68 = Instance.new("Frame")
 G.Frame_68.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2315,7 +2315,7 @@ G.Frame_68.BackgroundTransparency = 1
 G.Frame_68.BorderSizePixel = 0
 G.Frame_68.LayoutOrder = 6
 G.Frame_68.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_68.Parent = G.WavePage_Visuals
+G.Frame_68.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_39 = Instance.new("TextLabel")
 G.TextLabel_39.BackgroundTransparency = 1
@@ -2328,37 +2328,37 @@ G.TextLabel_39.TextSize = 11
 G.TextLabel_39.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_39.Parent = G.Frame_68
 
-G.WaveTogglePill_16 = Instance.new("Frame")
-G.WaveTogglePill_16.Name = "WaveTogglePill"
-G.WaveTogglePill_16.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_16.BorderSizePixel = 0
-G.WaveTogglePill_16.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_16.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_16.ZIndex = 7
-G.WaveTogglePill_16:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_16.Parent = G.Frame_68
+G.VyzeccTogglePill_16 = Instance.new("Frame")
+G.VyzeccTogglePill_16.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_16.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_16.BorderSizePixel = 0
+G.VyzeccTogglePill_16.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_16.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_16.ZIndex = 7
+G.VyzeccTogglePill_16:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_16.Parent = G.Frame_68
 
 G.UICorner_63 = Instance.new("UICorner")
 G.UICorner_63.CornerRadius = UDim.new(0, 9)
-G.UICorner_63.Parent = G.WaveTogglePill_16
+G.UICorner_63.Parent = G.VyzeccTogglePill_16
 
 G.UIStroke_41 = Instance.new("UIStroke")
 G.UIStroke_41.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_41.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_41.Parent = G.WaveTogglePill_16
+G.UIStroke_41.Parent = G.VyzeccTogglePill_16
 
-G.WaveToggleDot_16 = Instance.new("Frame")
-G.WaveToggleDot_16.Name = "WaveToggleDot"
-G.WaveToggleDot_16.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_16.BorderSizePixel = 0
-G.WaveToggleDot_16.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_16.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_16.ZIndex = 8
-G.WaveToggleDot_16.Parent = G.WaveTogglePill_16
+G.VyzeccToggleDot_16 = Instance.new("Frame")
+G.VyzeccToggleDot_16.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_16.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_16.BorderSizePixel = 0
+G.VyzeccToggleDot_16.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_16.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_16.ZIndex = 8
+G.VyzeccToggleDot_16.Parent = G.VyzeccTogglePill_16
 
 G.UICorner_64 = Instance.new("UICorner")
 G.UICorner_64.CornerRadius = UDim.new(0, 6)
-G.UICorner_64.Parent = G.WaveToggleDot_16
+G.UICorner_64.Parent = G.VyzeccToggleDot_16
 
 G.TextButton_29 = Instance.new("TextButton")
 G.TextButton_29.BackgroundTransparency = 1
@@ -2366,7 +2366,7 @@ G.TextButton_29.BorderSizePixel = 0
 G.TextButton_29.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_29.ZIndex = 9
 G.TextButton_29.Text = ""
-G.TextButton_29.Parent = G.WaveTogglePill_16
+G.TextButton_29.Parent = G.VyzeccTogglePill_16
 
 G.Frame_69 = Instance.new("Frame")
 G.Frame_69.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2374,7 +2374,7 @@ G.Frame_69.BackgroundTransparency = 1
 G.Frame_69.BorderSizePixel = 0
 G.Frame_69.LayoutOrder = 4
 G.Frame_69.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_69.Parent = G.WavePage_Visuals
+G.Frame_69.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_40 = Instance.new("TextLabel")
 G.TextLabel_40.BackgroundTransparency = 1
@@ -2387,37 +2387,37 @@ G.TextLabel_40.TextSize = 11
 G.TextLabel_40.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_40.Parent = G.Frame_69
 
-G.WaveTogglePill_17 = Instance.new("Frame")
-G.WaveTogglePill_17.Name = "WaveTogglePill"
-G.WaveTogglePill_17.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_17.BorderSizePixel = 0
-G.WaveTogglePill_17.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_17.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_17.ZIndex = 7
-G.WaveTogglePill_17:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_17.Parent = G.Frame_69
+G.VyzeccTogglePill_17 = Instance.new("Frame")
+G.VyzeccTogglePill_17.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_17.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_17.BorderSizePixel = 0
+G.VyzeccTogglePill_17.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_17.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_17.ZIndex = 7
+G.VyzeccTogglePill_17:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_17.Parent = G.Frame_69
 
 G.UICorner_65 = Instance.new("UICorner")
 G.UICorner_65.CornerRadius = UDim.new(0, 9)
-G.UICorner_65.Parent = G.WaveTogglePill_17
+G.UICorner_65.Parent = G.VyzeccTogglePill_17
 
 G.UIStroke_42 = Instance.new("UIStroke")
 G.UIStroke_42.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_42.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_42.Parent = G.WaveTogglePill_17
+G.UIStroke_42.Parent = G.VyzeccTogglePill_17
 
-G.WaveToggleDot_17 = Instance.new("Frame")
-G.WaveToggleDot_17.Name = "WaveToggleDot"
-G.WaveToggleDot_17.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_17.BorderSizePixel = 0
-G.WaveToggleDot_17.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_17.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_17.ZIndex = 8
-G.WaveToggleDot_17.Parent = G.WaveTogglePill_17
+G.VyzeccToggleDot_17 = Instance.new("Frame")
+G.VyzeccToggleDot_17.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_17.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_17.BorderSizePixel = 0
+G.VyzeccToggleDot_17.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_17.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_17.ZIndex = 8
+G.VyzeccToggleDot_17.Parent = G.VyzeccTogglePill_17
 
 G.UICorner_66 = Instance.new("UICorner")
 G.UICorner_66.CornerRadius = UDim.new(0, 6)
-G.UICorner_66.Parent = G.WaveToggleDot_17
+G.UICorner_66.Parent = G.VyzeccToggleDot_17
 
 G.TextButton_30 = Instance.new("TextButton")
 G.TextButton_30.BackgroundTransparency = 1
@@ -2425,7 +2425,7 @@ G.TextButton_30.BorderSizePixel = 0
 G.TextButton_30.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_30.ZIndex = 9
 G.TextButton_30.Text = ""
-G.TextButton_30.Parent = G.WaveTogglePill_17
+G.TextButton_30.Parent = G.VyzeccTogglePill_17
 
 G.Frame_70 = Instance.new("Frame")
 G.Frame_70.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2434,50 +2434,50 @@ G.Frame_70.BorderSizePixel = 0
 G.Frame_70.LayoutOrder = 5
 G.Frame_70.Size = UDim2.new(1, 0, 0, 40)
 G.Frame_70.Visible = false
-G.Frame_70.Parent = G.WavePage_Visuals
+G.Frame_70.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_41 = Instance.new("TextLabel")
 G.TextLabel_41.BackgroundTransparency = 1
 G.TextLabel_41.Position = UDim2.new(0, 12, 0, 0)
 G.TextLabel_41.Size = UDim2.new(1, -64, 1, 0)
 G.TextLabel_41.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.TextLabel_41.Text = "Wave Mode"
+G.TextLabel_41.Text = "Vyzecc Mode"
 G.TextLabel_41.TextColor3 = Color3.fromRGB(234, 225, 240)
 G.TextLabel_41.TextSize = 11
 G.TextLabel_41.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_41.Parent = G.Frame_70
 
-G.WaveTogglePill_18 = Instance.new("Frame")
-G.WaveTogglePill_18.Name = "WaveTogglePill"
-G.WaveTogglePill_18.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_18.BorderSizePixel = 0
-G.WaveTogglePill_18.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_18.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_18.ZIndex = 7
-G.WaveTogglePill_18:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_18.Parent = G.Frame_70
+G.VyzeccTogglePill_18 = Instance.new("Frame")
+G.VyzeccTogglePill_18.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_18.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_18.BorderSizePixel = 0
+G.VyzeccTogglePill_18.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_18.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_18.ZIndex = 7
+G.VyzeccTogglePill_18:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_18.Parent = G.Frame_70
 
 G.UICorner_67 = Instance.new("UICorner")
 G.UICorner_67.CornerRadius = UDim.new(0, 9)
-G.UICorner_67.Parent = G.WaveTogglePill_18
+G.UICorner_67.Parent = G.VyzeccTogglePill_18
 
 G.UIStroke_43 = Instance.new("UIStroke")
 G.UIStroke_43.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_43.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_43.Parent = G.WaveTogglePill_18
+G.UIStroke_43.Parent = G.VyzeccTogglePill_18
 
-G.WaveToggleDot_18 = Instance.new("Frame")
-G.WaveToggleDot_18.Name = "WaveToggleDot"
-G.WaveToggleDot_18.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_18.BorderSizePixel = 0
-G.WaveToggleDot_18.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_18.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_18.ZIndex = 8
-G.WaveToggleDot_18.Parent = G.WaveTogglePill_18
+G.VyzeccToggleDot_18 = Instance.new("Frame")
+G.VyzeccToggleDot_18.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_18.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_18.BorderSizePixel = 0
+G.VyzeccToggleDot_18.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_18.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_18.ZIndex = 8
+G.VyzeccToggleDot_18.Parent = G.VyzeccTogglePill_18
 
 G.UICorner_68 = Instance.new("UICorner")
 G.UICorner_68.CornerRadius = UDim.new(0, 6)
-G.UICorner_68.Parent = G.WaveToggleDot_18
+G.UICorner_68.Parent = G.VyzeccToggleDot_18
 
 G.TextButton_31 = Instance.new("TextButton")
 G.TextButton_31.BackgroundTransparency = 1
@@ -2485,21 +2485,21 @@ G.TextButton_31.BorderSizePixel = 0
 G.TextButton_31.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_31.ZIndex = 9
 G.TextButton_31.Text = ""
-G.TextButton_31.Parent = G.WaveTogglePill_18
+G.TextButton_31.Parent = G.VyzeccTogglePill_18
 
 G.Frame_71 = Instance.new("Frame")
 G.Frame_71.BackgroundTransparency = 1
 G.Frame_71.BorderSizePixel = 0
 G.Frame_71.LayoutOrder = 63
 G.Frame_71.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_71.Parent = G.WavePage_Visuals
+G.Frame_71.Parent = G.VyzeccPage_Visuals
 
 G.Frame_72 = Instance.new("Frame")
 G.Frame_72.BackgroundTransparency = 1
 G.Frame_72.BorderSizePixel = 0
 G.Frame_72.LayoutOrder = 10002
 G.Frame_72.Size = UDim2.new(1, 0, 0, 36)
-G.Frame_72.Parent = G.WavePage_Visuals
+G.Frame_72.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_42 = Instance.new("TextLabel")
 G.TextLabel_42.BackgroundTransparency = 1
@@ -2569,7 +2569,7 @@ G.Frame_76.BackgroundTransparency = 1
 G.Frame_76.BorderSizePixel = 0
 G.Frame_76.LayoutOrder = 65
 G.Frame_76.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_76.Parent = G.WavePage_Visuals
+G.Frame_76.Parent = G.VyzeccPage_Visuals
 
 G.Frame_77 = Instance.new("Frame")
 G.Frame_77.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2577,7 +2577,7 @@ G.Frame_77.BackgroundTransparency = 1
 G.Frame_77.BorderSizePixel = 0
 G.Frame_77.LayoutOrder = 10001
 G.Frame_77.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_77.Parent = G.WavePage_Visuals
+G.Frame_77.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_44 = Instance.new("TextLabel")
 G.TextLabel_44.BackgroundTransparency = 1
@@ -2590,37 +2590,37 @@ G.TextLabel_44.TextSize = 11
 G.TextLabel_44.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_44.Parent = G.Frame_77
 
-G.WaveTogglePill_19 = Instance.new("Frame")
-G.WaveTogglePill_19.Name = "WaveTogglePill"
-G.WaveTogglePill_19.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_19.BorderSizePixel = 0
-G.WaveTogglePill_19.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_19.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_19.ZIndex = 7
-G.WaveTogglePill_19:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_19.Parent = G.Frame_77
+G.VyzeccTogglePill_19 = Instance.new("Frame")
+G.VyzeccTogglePill_19.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_19.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_19.BorderSizePixel = 0
+G.VyzeccTogglePill_19.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_19.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_19.ZIndex = 7
+G.VyzeccTogglePill_19:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_19.Parent = G.Frame_77
 
 G.UICorner_72 = Instance.new("UICorner")
 G.UICorner_72.CornerRadius = UDim.new(0, 9)
-G.UICorner_72.Parent = G.WaveTogglePill_19
+G.UICorner_72.Parent = G.VyzeccTogglePill_19
 
 G.UIStroke_44 = Instance.new("UIStroke")
 G.UIStroke_44.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_44.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_44.Parent = G.WaveTogglePill_19
+G.UIStroke_44.Parent = G.VyzeccTogglePill_19
 
-G.WaveToggleDot_19 = Instance.new("Frame")
-G.WaveToggleDot_19.Name = "WaveToggleDot"
-G.WaveToggleDot_19.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_19.BorderSizePixel = 0
-G.WaveToggleDot_19.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_19.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_19.ZIndex = 8
-G.WaveToggleDot_19.Parent = G.WaveTogglePill_19
+G.VyzeccToggleDot_19 = Instance.new("Frame")
+G.VyzeccToggleDot_19.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_19.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_19.BorderSizePixel = 0
+G.VyzeccToggleDot_19.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_19.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_19.ZIndex = 8
+G.VyzeccToggleDot_19.Parent = G.VyzeccTogglePill_19
 
 G.UICorner_73 = Instance.new("UICorner")
 G.UICorner_73.CornerRadius = UDim.new(0, 6)
-G.UICorner_73.Parent = G.WaveToggleDot_19
+G.UICorner_73.Parent = G.VyzeccToggleDot_19
 
 G.TextButton_33 = Instance.new("TextButton")
 G.TextButton_33.BackgroundTransparency = 1
@@ -2628,14 +2628,14 @@ G.TextButton_33.BorderSizePixel = 0
 G.TextButton_33.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_33.ZIndex = 9
 G.TextButton_33.Text = ""
-G.TextButton_33.Parent = G.WaveTogglePill_19
+G.TextButton_33.Parent = G.VyzeccTogglePill_19
 
 G.Frame_78 = Instance.new("Frame")
 G.Frame_78.BackgroundTransparency = 1
 G.Frame_78.BorderSizePixel = 0
 G.Frame_78.LayoutOrder = 10006
 G.Frame_78.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_78.Parent = G.WavePage_Visuals
+G.Frame_78.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_45 = Instance.new("TextLabel")
 G.TextLabel_45.BackgroundTransparency = 1
@@ -2675,7 +2675,7 @@ G.Frame_79.BackgroundTransparency = 1
 G.Frame_79.BorderSizePixel = 0
 G.Frame_79.LayoutOrder = 10005
 G.Frame_79.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_79.Parent = G.WavePage_Visuals
+G.Frame_79.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_46 = Instance.new("TextLabel")
 G.TextLabel_46.BackgroundTransparency = 1
@@ -2688,37 +2688,37 @@ G.TextLabel_46.TextSize = 11
 G.TextLabel_46.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_46.Parent = G.Frame_79
 
-G.WaveTogglePill_20 = Instance.new("Frame")
-G.WaveTogglePill_20.Name = "WaveTogglePill"
-G.WaveTogglePill_20.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_20.BorderSizePixel = 0
-G.WaveTogglePill_20.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_20.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_20.ZIndex = 7
-G.WaveTogglePill_20:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_20.Parent = G.Frame_79
+G.VyzeccTogglePill_20 = Instance.new("Frame")
+G.VyzeccTogglePill_20.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_20.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_20.BorderSizePixel = 0
+G.VyzeccTogglePill_20.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_20.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_20.ZIndex = 7
+G.VyzeccTogglePill_20:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_20.Parent = G.Frame_79
 
 G.UICorner_75 = Instance.new("UICorner")
 G.UICorner_75.CornerRadius = UDim.new(0, 9)
-G.UICorner_75.Parent = G.WaveTogglePill_20
+G.UICorner_75.Parent = G.VyzeccTogglePill_20
 
 G.UIStroke_46 = Instance.new("UIStroke")
 G.UIStroke_46.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_46.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_46.Parent = G.WaveTogglePill_20
+G.UIStroke_46.Parent = G.VyzeccTogglePill_20
 
-G.WaveToggleDot_20 = Instance.new("Frame")
-G.WaveToggleDot_20.Name = "WaveToggleDot"
-G.WaveToggleDot_20.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_20.BorderSizePixel = 0
-G.WaveToggleDot_20.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_20.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_20.ZIndex = 8
-G.WaveToggleDot_20.Parent = G.WaveTogglePill_20
+G.VyzeccToggleDot_20 = Instance.new("Frame")
+G.VyzeccToggleDot_20.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_20.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_20.BorderSizePixel = 0
+G.VyzeccToggleDot_20.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_20.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_20.ZIndex = 8
+G.VyzeccToggleDot_20.Parent = G.VyzeccTogglePill_20
 
 G.UICorner_76 = Instance.new("UICorner")
 G.UICorner_76.CornerRadius = UDim.new(0, 6)
-G.UICorner_76.Parent = G.WaveToggleDot_20
+G.UICorner_76.Parent = G.VyzeccToggleDot_20
 
 G.TextButton_35 = Instance.new("TextButton")
 G.TextButton_35.BackgroundTransparency = 1
@@ -2726,21 +2726,21 @@ G.TextButton_35.BorderSizePixel = 0
 G.TextButton_35.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_35.ZIndex = 9
 G.TextButton_35.Text = ""
-G.TextButton_35.Parent = G.WaveTogglePill_20
+G.TextButton_35.Parent = G.VyzeccTogglePill_20
 
 G.Frame_80 = Instance.new("Frame")
 G.Frame_80.BackgroundTransparency = 1
 G.Frame_80.BorderSizePixel = 0
 G.Frame_80.LayoutOrder = 69
 G.Frame_80.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_80.Parent = G.WavePage_Visuals
+G.Frame_80.Parent = G.VyzeccPage_Visuals
 
 G.Frame_81 = Instance.new("Frame")
 G.Frame_81.BackgroundTransparency = 1
 G.Frame_81.BorderSizePixel = 0
 G.Frame_81.LayoutOrder = 70
 G.Frame_81.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_81.Parent = G.WavePage_Visuals
+G.Frame_81.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_47 = Instance.new("TextLabel")
 G.TextLabel_47.BackgroundTransparency = 1
@@ -2758,7 +2758,7 @@ G.Frame_82.BackgroundTransparency = 1
 G.Frame_82.BorderSizePixel = 0
 G.Frame_82.LayoutOrder = 71
 G.Frame_82.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_82.Parent = G.WavePage_Visuals
+G.Frame_82.Parent = G.VyzeccPage_Visuals
 
 G.Frame_83 = Instance.new("Frame")
 G.Frame_83.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -2766,7 +2766,7 @@ G.Frame_83.BackgroundTransparency = 1
 G.Frame_83.BorderSizePixel = 0
 G.Frame_83.LayoutOrder = 72
 G.Frame_83.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_83.Parent = G.WavePage_Visuals
+G.Frame_83.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_48 = Instance.new("TextLabel")
 G.TextLabel_48.BackgroundTransparency = 1
@@ -2832,7 +2832,7 @@ G.Frame_84.BackgroundTransparency = 1
 G.Frame_84.BorderSizePixel = 0
 G.Frame_84.LayoutOrder = 73
 G.Frame_84.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_84.Parent = G.WavePage_Visuals
+G.Frame_84.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_49 = Instance.new("TextLabel")
 G.TextLabel_49.BackgroundTransparency = 1
@@ -2902,7 +2902,7 @@ G.Frame_85.BackgroundTransparency = 1
 G.Frame_85.BorderSizePixel = 0
 G.Frame_85.LayoutOrder = 10003
 G.Frame_85.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_85.Parent = G.WavePage_Visuals
+G.Frame_85.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_50 = Instance.new("TextLabel")
 G.TextLabel_50.BackgroundTransparency = 1
@@ -2915,37 +2915,37 @@ G.TextLabel_50.TextSize = 11
 G.TextLabel_50.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_50.Parent = G.Frame_85
 
-G.WaveTogglePill_21 = Instance.new("Frame")
-G.WaveTogglePill_21.Name = "WaveTogglePill"
-G.WaveTogglePill_21.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_21.BorderSizePixel = 0
-G.WaveTogglePill_21.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_21.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_21.ZIndex = 7
-G.WaveTogglePill_21:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_21.Parent = G.Frame_85
+G.VyzeccTogglePill_21 = Instance.new("Frame")
+G.VyzeccTogglePill_21.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_21.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_21.BorderSizePixel = 0
+G.VyzeccTogglePill_21.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_21.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_21.ZIndex = 7
+G.VyzeccTogglePill_21:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_21.Parent = G.Frame_85
 
 G.UICorner_79 = Instance.new("UICorner")
 G.UICorner_79.CornerRadius = UDim.new(0, 9)
-G.UICorner_79.Parent = G.WaveTogglePill_21
+G.UICorner_79.Parent = G.VyzeccTogglePill_21
 
 G.UIStroke_49 = Instance.new("UIStroke")
 G.UIStroke_49.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_49.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_49.Parent = G.WaveTogglePill_21
+G.UIStroke_49.Parent = G.VyzeccTogglePill_21
 
-G.WaveToggleDot_21 = Instance.new("Frame")
-G.WaveToggleDot_21.Name = "WaveToggleDot"
-G.WaveToggleDot_21.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_21.BorderSizePixel = 0
-G.WaveToggleDot_21.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_21.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_21.ZIndex = 8
-G.WaveToggleDot_21.Parent = G.WaveTogglePill_21
+G.VyzeccToggleDot_21 = Instance.new("Frame")
+G.VyzeccToggleDot_21.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_21.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_21.BorderSizePixel = 0
+G.VyzeccToggleDot_21.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_21.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_21.ZIndex = 8
+G.VyzeccToggleDot_21.Parent = G.VyzeccTogglePill_21
 
 G.UICorner_80 = Instance.new("UICorner")
 G.UICorner_80.CornerRadius = UDim.new(0, 6)
-G.UICorner_80.Parent = G.WaveToggleDot_21
+G.UICorner_80.Parent = G.VyzeccToggleDot_21
 
 G.TextButton_38 = Instance.new("TextButton")
 G.TextButton_38.BackgroundTransparency = 1
@@ -2953,14 +2953,14 @@ G.TextButton_38.BorderSizePixel = 0
 G.TextButton_38.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_38.ZIndex = 9
 G.TextButton_38.Text = ""
-G.TextButton_38.Parent = G.WaveTogglePill_21
+G.TextButton_38.Parent = G.VyzeccTogglePill_21
 
 G.Frame_86 = Instance.new("Frame")
 G.Frame_86.BackgroundTransparency = 1
 G.Frame_86.BorderSizePixel = 0
 G.Frame_86.LayoutOrder = 10000
 G.Frame_86.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_86.Parent = G.WavePage_Visuals
+G.Frame_86.Parent = G.VyzeccPage_Visuals
 
 G.TextLabel_51 = Instance.new("TextLabel")
 G.TextLabel_51.BackgroundTransparency = 1
@@ -2973,66 +2973,66 @@ G.TextLabel_51.TextSize = 13
 G.TextLabel_51.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_51.Parent = G.Frame_86
 
-G.WavePage_Steal = Instance.new("ScrollingFrame")
-G.WavePage_Steal.Name = "WavePage_Steal"
-G.WavePage_Steal.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Steal.BackgroundTransparency = 1
-G.WavePage_Steal.BorderSizePixel = 0
-G.WavePage_Steal.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Steal.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Steal.Visible = false
-G.WavePage_Steal.ZIndex = 3
-G.WavePage_Steal.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Steal.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Steal.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Steal.ScrollBarImageTransparency = 0.5
-G.WavePage_Steal.ScrollBarThickness = 3
-G.WavePage_Steal.Parent = G.MainOuter
+G.VyzeccPage_Steal = Instance.new("ScrollingFrame")
+G.VyzeccPage_Steal.Name = "VyzeccPage_Steal"
+G.VyzeccPage_Steal.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Steal.BackgroundTransparency = 1
+G.VyzeccPage_Steal.BorderSizePixel = 0
+G.VyzeccPage_Steal.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Steal.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Steal.Visible = false
+G.VyzeccPage_Steal.ZIndex = 3
+G.VyzeccPage_Steal.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Steal.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Steal.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Steal.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Steal.ScrollBarThickness = 3
+G.VyzeccPage_Steal.Parent = G.MainOuter
 
 G.UIListLayout_6 = Instance.new("UIListLayout")
 G.UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_6.Parent = G.WavePage_Steal
+G.UIListLayout_6.Parent = G.VyzeccPage_Steal
 
 G.UIPadding_5 = Instance.new("UIPadding")
 G.UIPadding_5.PaddingBottom = UDim.new(0, 12)
 G.UIPadding_5.PaddingLeft = UDim.new(0, 8)
 G.UIPadding_5.PaddingRight = UDim.new(0, 8)
 G.UIPadding_5.PaddingTop = UDim.new(0, 6)
-G.UIPadding_5.Parent = G.WavePage_Steal
+G.UIPadding_5.Parent = G.VyzeccPage_Steal
 
-G.WavePage_Combat = Instance.new("ScrollingFrame")
-G.WavePage_Combat.Name = "WavePage_Combat"
-G.WavePage_Combat.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Combat.BackgroundTransparency = 1
-G.WavePage_Combat.BorderSizePixel = 0
-G.WavePage_Combat.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Combat.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Combat.Visible = false
-G.WavePage_Combat.ZIndex = 3
-G.WavePage_Combat.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Combat.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Combat.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Combat.ScrollBarImageTransparency = 0.5
-G.WavePage_Combat.ScrollBarThickness = 3
-G.WavePage_Combat.Parent = G.MainOuter
+G.VyzeccPage_Combat = Instance.new("ScrollingFrame")
+G.VyzeccPage_Combat.Name = "VyzeccPage_Combat"
+G.VyzeccPage_Combat.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Combat.BackgroundTransparency = 1
+G.VyzeccPage_Combat.BorderSizePixel = 0
+G.VyzeccPage_Combat.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Combat.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Combat.Visible = false
+G.VyzeccPage_Combat.ZIndex = 3
+G.VyzeccPage_Combat.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Combat.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Combat.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Combat.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Combat.ScrollBarThickness = 3
+G.VyzeccPage_Combat.Parent = G.MainOuter
 
 G.UIListLayout_7 = Instance.new("UIListLayout")
 G.UIListLayout_7.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_7.Parent = G.WavePage_Combat
+G.UIListLayout_7.Parent = G.VyzeccPage_Combat
 
 G.UIPadding_6 = Instance.new("UIPadding")
 G.UIPadding_6.PaddingBottom = UDim.new(0, 12)
 G.UIPadding_6.PaddingLeft = UDim.new(0, 8)
 G.UIPadding_6.PaddingRight = UDim.new(0, 8)
 G.UIPadding_6.PaddingTop = UDim.new(0, 6)
-G.UIPadding_6.Parent = G.WavePage_Combat
+G.UIPadding_6.Parent = G.VyzeccPage_Combat
 
 G.Frame_87 = Instance.new("Frame")
 G.Frame_87.BackgroundTransparency = 1
 G.Frame_87.BorderSizePixel = 0
 G.Frame_87.LayoutOrder = 1
 G.Frame_87.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_87.Parent = G.WavePage_Combat
+G.Frame_87.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_52 = Instance.new("TextLabel")
 G.TextLabel_52.BackgroundTransparency = 1
@@ -3050,7 +3050,7 @@ G.Frame_88.BackgroundTransparency = 1
 G.Frame_88.BorderSizePixel = 0
 G.Frame_88.LayoutOrder = 81
 G.Frame_88.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_88.Parent = G.WavePage_Combat
+G.Frame_88.Parent = G.VyzeccPage_Combat
 
 G.Frame_89 = Instance.new("Frame")
 G.Frame_89.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -3058,7 +3058,7 @@ G.Frame_89.BackgroundTransparency = 1
 G.Frame_89.BorderSizePixel = 0
 G.Frame_89.LayoutOrder = 6
 G.Frame_89.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_89.Parent = G.WavePage_Combat
+G.Frame_89.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_53 = Instance.new("TextLabel")
 G.TextLabel_53.BackgroundTransparency = 1
@@ -3071,37 +3071,37 @@ G.TextLabel_53.TextSize = 11
 G.TextLabel_53.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_53.Parent = G.Frame_89
 
-G.WaveTogglePill_22 = Instance.new("Frame")
-G.WaveTogglePill_22.Name = "WaveTogglePill"
-G.WaveTogglePill_22.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_22.BorderSizePixel = 0
-G.WaveTogglePill_22.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_22.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_22.ZIndex = 7
-G.WaveTogglePill_22:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_22.Parent = G.Frame_89
+G.VyzeccTogglePill_22 = Instance.new("Frame")
+G.VyzeccTogglePill_22.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_22.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_22.BorderSizePixel = 0
+G.VyzeccTogglePill_22.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_22.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_22.ZIndex = 7
+G.VyzeccTogglePill_22:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_22.Parent = G.Frame_89
 
 G.UICorner_81 = Instance.new("UICorner")
 G.UICorner_81.CornerRadius = UDim.new(0, 9)
-G.UICorner_81.Parent = G.WaveTogglePill_22
+G.UICorner_81.Parent = G.VyzeccTogglePill_22
 
 G.UIStroke_50 = Instance.new("UIStroke")
 G.UIStroke_50.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_50.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_50.Parent = G.WaveTogglePill_22
+G.UIStroke_50.Parent = G.VyzeccTogglePill_22
 
-G.WaveToggleDot_22 = Instance.new("Frame")
-G.WaveToggleDot_22.Name = "WaveToggleDot"
-G.WaveToggleDot_22.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_22.BorderSizePixel = 0
-G.WaveToggleDot_22.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_22.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_22.ZIndex = 8
-G.WaveToggleDot_22.Parent = G.WaveTogglePill_22
+G.VyzeccToggleDot_22 = Instance.new("Frame")
+G.VyzeccToggleDot_22.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_22.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_22.BorderSizePixel = 0
+G.VyzeccToggleDot_22.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_22.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_22.ZIndex = 8
+G.VyzeccToggleDot_22.Parent = G.VyzeccTogglePill_22
 
 G.UICorner_82 = Instance.new("UICorner")
 G.UICorner_82.CornerRadius = UDim.new(0, 6)
-G.UICorner_82.Parent = G.WaveToggleDot_22
+G.UICorner_82.Parent = G.VyzeccToggleDot_22
 
 G.TextButton_39 = Instance.new("TextButton")
 G.TextButton_39.BackgroundTransparency = 1
@@ -3109,7 +3109,7 @@ G.TextButton_39.BorderSizePixel = 0
 G.TextButton_39.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_39.ZIndex = 9
 G.TextButton_39.Text = ""
-G.TextButton_39.Parent = G.WaveTogglePill_22
+G.TextButton_39.Parent = G.VyzeccTogglePill_22
 
 G.SizeDropdown_2 = Instance.new("TextButton")
 G.SizeDropdown_2.Name = "SizeDropdown"
@@ -3148,7 +3148,7 @@ G.Frame_90.ClipsDescendants = true
 G.Frame_90.LayoutOrder = 7
 G.Frame_90.Size = UDim2.new(1, 0, 0, 38)
 G.Frame_90.Visible = false
-G.Frame_90.Parent = G.WavePage_Combat
+G.Frame_90.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_54 = Instance.new("TextLabel")
 G.TextLabel_54.BackgroundTransparency = 1
@@ -3196,7 +3196,7 @@ G.Frame_92.ClipsDescendants = true
 G.Frame_92.LayoutOrder = 8
 G.Frame_92.Size = UDim2.new(1, 0, 0, 38)
 G.Frame_92.Visible = false
-G.Frame_92.Parent = G.WavePage_Combat
+G.Frame_92.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_55 = Instance.new("TextLabel")
 G.TextLabel_55.BackgroundTransparency = 1
@@ -3243,7 +3243,7 @@ G.Frame_94.BackgroundTransparency = 1
 G.Frame_94.BorderSizePixel = 0
 G.Frame_94.LayoutOrder = 9
 G.Frame_94.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_94.Parent = G.WavePage_Combat
+G.Frame_94.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_56 = Instance.new("TextLabel")
 G.TextLabel_56.BackgroundTransparency = 1
@@ -3256,37 +3256,37 @@ G.TextLabel_56.TextSize = 11
 G.TextLabel_56.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_56.Parent = G.Frame_94
 
-G.WaveTogglePill_23 = Instance.new("Frame")
-G.WaveTogglePill_23.Name = "WaveTogglePill"
-G.WaveTogglePill_23.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_23.BorderSizePixel = 0
-G.WaveTogglePill_23.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_23.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_23.ZIndex = 7
-G.WaveTogglePill_23:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_23.Parent = G.Frame_94
+G.VyzeccTogglePill_23 = Instance.new("Frame")
+G.VyzeccTogglePill_23.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_23.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_23.BorderSizePixel = 0
+G.VyzeccTogglePill_23.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_23.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_23.ZIndex = 7
+G.VyzeccTogglePill_23:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_23.Parent = G.Frame_94
 
 G.UICorner_86 = Instance.new("UICorner")
 G.UICorner_86.CornerRadius = UDim.new(0, 9)
-G.UICorner_86.Parent = G.WaveTogglePill_23
+G.UICorner_86.Parent = G.VyzeccTogglePill_23
 
 G.UIStroke_54 = Instance.new("UIStroke")
 G.UIStroke_54.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_54.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_54.Parent = G.WaveTogglePill_23
+G.UIStroke_54.Parent = G.VyzeccTogglePill_23
 
-G.WaveToggleDot_23 = Instance.new("Frame")
-G.WaveToggleDot_23.Name = "WaveToggleDot"
-G.WaveToggleDot_23.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_23.BorderSizePixel = 0
-G.WaveToggleDot_23.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_23.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_23.ZIndex = 8
-G.WaveToggleDot_23.Parent = G.WaveTogglePill_23
+G.VyzeccToggleDot_23 = Instance.new("Frame")
+G.VyzeccToggleDot_23.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_23.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_23.BorderSizePixel = 0
+G.VyzeccToggleDot_23.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_23.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_23.ZIndex = 8
+G.VyzeccToggleDot_23.Parent = G.VyzeccTogglePill_23
 
 G.UICorner_87 = Instance.new("UICorner")
 G.UICorner_87.CornerRadius = UDim.new(0, 6)
-G.UICorner_87.Parent = G.WaveToggleDot_23
+G.UICorner_87.Parent = G.VyzeccToggleDot_23
 
 G.TextButton_40 = Instance.new("TextButton")
 G.TextButton_40.BackgroundTransparency = 1
@@ -3294,7 +3294,7 @@ G.TextButton_40.BorderSizePixel = 0
 G.TextButton_40.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_40.ZIndex = 9
 G.TextButton_40.Text = ""
-G.TextButton_40.Parent = G.WaveTogglePill_23
+G.TextButton_40.Parent = G.VyzeccTogglePill_23
 
 G.Frame_95 = Instance.new("Frame")
 G.Frame_95.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -3303,7 +3303,7 @@ G.Frame_95.BorderSizePixel = 0
 G.Frame_95.LayoutOrder = 86
 G.Frame_95.Size = UDim2.new(1, 0, 0, 40)
 G.Frame_95.Visible = false
-G.Frame_95.Parent = G.WavePage_Combat
+G.Frame_95.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_57 = Instance.new("TextLabel")
 G.TextLabel_57.BackgroundTransparency = 1
@@ -3316,37 +3316,37 @@ G.TextLabel_57.TextSize = 11
 G.TextLabel_57.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_57.Parent = G.Frame_95
 
-G.WaveTogglePill_24 = Instance.new("Frame")
-G.WaveTogglePill_24.Name = "WaveTogglePill"
-G.WaveTogglePill_24.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_24.BorderSizePixel = 0
-G.WaveTogglePill_24.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_24.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_24.ZIndex = 7
-G.WaveTogglePill_24:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_24.Parent = G.Frame_95
+G.VyzeccTogglePill_24 = Instance.new("Frame")
+G.VyzeccTogglePill_24.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_24.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_24.BorderSizePixel = 0
+G.VyzeccTogglePill_24.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_24.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_24.ZIndex = 7
+G.VyzeccTogglePill_24:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_24.Parent = G.Frame_95
 
 G.UICorner_88 = Instance.new("UICorner")
 G.UICorner_88.CornerRadius = UDim.new(0, 9)
-G.UICorner_88.Parent = G.WaveTogglePill_24
+G.UICorner_88.Parent = G.VyzeccTogglePill_24
 
 G.UIStroke_55 = Instance.new("UIStroke")
 G.UIStroke_55.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_55.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_55.Parent = G.WaveTogglePill_24
+G.UIStroke_55.Parent = G.VyzeccTogglePill_24
 
-G.WaveToggleDot_24 = Instance.new("Frame")
-G.WaveToggleDot_24.Name = "WaveToggleDot"
-G.WaveToggleDot_24.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_24.BorderSizePixel = 0
-G.WaveToggleDot_24.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_24.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_24.ZIndex = 8
-G.WaveToggleDot_24.Parent = G.WaveTogglePill_24
+G.VyzeccToggleDot_24 = Instance.new("Frame")
+G.VyzeccToggleDot_24.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_24.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_24.BorderSizePixel = 0
+G.VyzeccToggleDot_24.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_24.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_24.ZIndex = 8
+G.VyzeccToggleDot_24.Parent = G.VyzeccTogglePill_24
 
 G.UICorner_89 = Instance.new("UICorner")
 G.UICorner_89.CornerRadius = UDim.new(0, 6)
-G.UICorner_89.Parent = G.WaveToggleDot_24
+G.UICorner_89.Parent = G.VyzeccToggleDot_24
 
 G.TextButton_41 = Instance.new("TextButton")
 G.TextButton_41.BackgroundTransparency = 1
@@ -3354,14 +3354,14 @@ G.TextButton_41.BorderSizePixel = 0
 G.TextButton_41.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_41.ZIndex = 9
 G.TextButton_41.Text = ""
-G.TextButton_41.Parent = G.WaveTogglePill_24
+G.TextButton_41.Parent = G.VyzeccTogglePill_24
 
 G.Frame_96 = Instance.new("Frame")
 G.Frame_96.BackgroundTransparency = 1
 G.Frame_96.BorderSizePixel = 0
 G.Frame_96.LayoutOrder = 5
 G.Frame_96.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_96.Parent = G.WavePage_Combat
+G.Frame_96.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_58 = Instance.new("TextLabel")
 G.TextLabel_58.BackgroundTransparency = 1
@@ -3422,7 +3422,7 @@ G.Frame_97.BorderSizePixel = 0
 G.Frame_97.LayoutOrder = 1007
 G.Frame_97.Size = UDim2.new(1, 0, 0, 40)
 G.Frame_97.Visible = false
-G.Frame_97.Parent = G.WavePage_Combat
+G.Frame_97.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_59 = Instance.new("TextLabel")
 G.TextLabel_59.BackgroundTransparency = 1
@@ -3435,37 +3435,37 @@ G.TextLabel_59.TextSize = 11
 G.TextLabel_59.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_59.Parent = G.Frame_97
 
-G.WaveTogglePill_25 = Instance.new("Frame")
-G.WaveTogglePill_25.Name = "WaveTogglePill"
-G.WaveTogglePill_25.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_25.BorderSizePixel = 0
-G.WaveTogglePill_25.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_25.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_25.ZIndex = 7
-G.WaveTogglePill_25:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_25.Parent = G.Frame_97
+G.VyzeccTogglePill_25 = Instance.new("Frame")
+G.VyzeccTogglePill_25.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_25.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_25.BorderSizePixel = 0
+G.VyzeccTogglePill_25.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_25.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_25.ZIndex = 7
+G.VyzeccTogglePill_25:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_25.Parent = G.Frame_97
 
 G.UICorner_92 = Instance.new("UICorner")
 G.UICorner_92.CornerRadius = UDim.new(0, 9)
-G.UICorner_92.Parent = G.WaveTogglePill_25
+G.UICorner_92.Parent = G.VyzeccTogglePill_25
 
 G.UIStroke_58 = Instance.new("UIStroke")
 G.UIStroke_58.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_58.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_58.Parent = G.WaveTogglePill_25
+G.UIStroke_58.Parent = G.VyzeccTogglePill_25
 
-G.WaveToggleDot_25 = Instance.new("Frame")
-G.WaveToggleDot_25.Name = "WaveToggleDot"
-G.WaveToggleDot_25.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_25.BorderSizePixel = 0
-G.WaveToggleDot_25.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_25.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_25.ZIndex = 8
-G.WaveToggleDot_25.Parent = G.WaveTogglePill_25
+G.VyzeccToggleDot_25 = Instance.new("Frame")
+G.VyzeccToggleDot_25.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_25.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_25.BorderSizePixel = 0
+G.VyzeccToggleDot_25.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_25.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_25.ZIndex = 8
+G.VyzeccToggleDot_25.Parent = G.VyzeccTogglePill_25
 
 G.UICorner_93 = Instance.new("UICorner")
 G.UICorner_93.CornerRadius = UDim.new(0, 6)
-G.UICorner_93.Parent = G.WaveToggleDot_25
+G.UICorner_93.Parent = G.VyzeccToggleDot_25
 
 G.TextButton_44 = Instance.new("TextButton")
 G.TextButton_44.BackgroundTransparency = 1
@@ -3473,28 +3473,28 @@ G.TextButton_44.BorderSizePixel = 0
 G.TextButton_44.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_44.ZIndex = 9
 G.TextButton_44.Text = ""
-G.TextButton_44.Parent = G.WaveTogglePill_25
+G.TextButton_44.Parent = G.VyzeccTogglePill_25
 
 G.Frame_98 = Instance.new("Frame")
 G.Frame_98.BackgroundTransparency = 1
 G.Frame_98.BorderSizePixel = 0
 G.Frame_98.LayoutOrder = 98
 G.Frame_98.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_98.Parent = G.WavePage_Combat
+G.Frame_98.Parent = G.VyzeccPage_Combat
 
 G.Frame_99 = Instance.new("Frame")
 G.Frame_99.BackgroundTransparency = 1
 G.Frame_99.BorderSizePixel = 0
 G.Frame_99.LayoutOrder = 91
 G.Frame_99.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_99.Parent = G.WavePage_Combat
+G.Frame_99.Parent = G.VyzeccPage_Combat
 
 G.Frame_100 = Instance.new("Frame")
 G.Frame_100.BackgroundTransparency = 1
 G.Frame_100.BorderSizePixel = 0
 G.Frame_100.LayoutOrder = 1000
 G.Frame_100.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_100.Parent = G.WavePage_Combat
+G.Frame_100.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_60 = Instance.new("TextLabel")
 G.TextLabel_60.BackgroundTransparency = 1
@@ -3512,7 +3512,7 @@ G.Frame_101.BackgroundTransparency = 1
 G.Frame_101.BorderSizePixel = 0
 G.Frame_101.LayoutOrder = 93
 G.Frame_101.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_101.Parent = G.WavePage_Combat
+G.Frame_101.Parent = G.VyzeccPage_Combat
 
 G.Frame_102 = Instance.new("Frame")
 G.Frame_102.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -3520,7 +3520,7 @@ G.Frame_102.BackgroundTransparency = 1
 G.Frame_102.BorderSizePixel = 0
 G.Frame_102.LayoutOrder = 1001
 G.Frame_102.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_102.Parent = G.WavePage_Combat
+G.Frame_102.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_61 = Instance.new("TextLabel")
 G.TextLabel_61.BackgroundTransparency = 1
@@ -3533,37 +3533,37 @@ G.TextLabel_61.TextSize = 11
 G.TextLabel_61.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_61.Parent = G.Frame_102
 
-G.WaveTogglePill_26 = Instance.new("Frame")
-G.WaveTogglePill_26.Name = "WaveTogglePill"
-G.WaveTogglePill_26.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_26.BorderSizePixel = 0
-G.WaveTogglePill_26.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_26.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_26.ZIndex = 7
-G.WaveTogglePill_26:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_26.Parent = G.Frame_102
+G.VyzeccTogglePill_26 = Instance.new("Frame")
+G.VyzeccTogglePill_26.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_26.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_26.BorderSizePixel = 0
+G.VyzeccTogglePill_26.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_26.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_26.ZIndex = 7
+G.VyzeccTogglePill_26:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_26.Parent = G.Frame_102
 
 G.UICorner_94 = Instance.new("UICorner")
 G.UICorner_94.CornerRadius = UDim.new(0, 9)
-G.UICorner_94.Parent = G.WaveTogglePill_26
+G.UICorner_94.Parent = G.VyzeccTogglePill_26
 
 G.UIStroke_59 = Instance.new("UIStroke")
 G.UIStroke_59.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_59.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_59.Parent = G.WaveTogglePill_26
+G.UIStroke_59.Parent = G.VyzeccTogglePill_26
 
-G.WaveToggleDot_26 = Instance.new("Frame")
-G.WaveToggleDot_26.Name = "WaveToggleDot"
-G.WaveToggleDot_26.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_26.BorderSizePixel = 0
-G.WaveToggleDot_26.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_26.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_26.ZIndex = 8
-G.WaveToggleDot_26.Parent = G.WaveTogglePill_26
+G.VyzeccToggleDot_26 = Instance.new("Frame")
+G.VyzeccToggleDot_26.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_26.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_26.BorderSizePixel = 0
+G.VyzeccToggleDot_26.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_26.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_26.ZIndex = 8
+G.VyzeccToggleDot_26.Parent = G.VyzeccTogglePill_26
 
 G.UICorner_95 = Instance.new("UICorner")
 G.UICorner_95.CornerRadius = UDim.new(0, 6)
-G.UICorner_95.Parent = G.WaveToggleDot_26
+G.UICorner_95.Parent = G.VyzeccToggleDot_26
 
 G.TextButton_45 = Instance.new("TextButton")
 G.TextButton_45.BackgroundTransparency = 1
@@ -3571,7 +3571,7 @@ G.TextButton_45.BorderSizePixel = 0
 G.TextButton_45.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_45.ZIndex = 9
 G.TextButton_45.Text = ""
-G.TextButton_45.Parent = G.WaveTogglePill_26
+G.TextButton_45.Parent = G.VyzeccTogglePill_26
 
 G.Frame_103 = Instance.new("Frame")
 G.Frame_103.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -3579,7 +3579,7 @@ G.Frame_103.BackgroundTransparency = 1
 G.Frame_103.BorderSizePixel = 0
 G.Frame_103.LayoutOrder = 1002
 G.Frame_103.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_103.Parent = G.WavePage_Combat
+G.Frame_103.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_62 = Instance.new("TextLabel")
 G.TextLabel_62.BackgroundTransparency = 1
@@ -3592,37 +3592,37 @@ G.TextLabel_62.TextSize = 11
 G.TextLabel_62.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_62.Parent = G.Frame_103
 
-G.WaveTogglePill_27 = Instance.new("Frame")
-G.WaveTogglePill_27.Name = "WaveTogglePill"
-G.WaveTogglePill_27.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_27.BorderSizePixel = 0
-G.WaveTogglePill_27.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_27.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_27.ZIndex = 7
-G.WaveTogglePill_27:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_27.Parent = G.Frame_103
+G.VyzeccTogglePill_27 = Instance.new("Frame")
+G.VyzeccTogglePill_27.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_27.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_27.BorderSizePixel = 0
+G.VyzeccTogglePill_27.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_27.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_27.ZIndex = 7
+G.VyzeccTogglePill_27:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_27.Parent = G.Frame_103
 
 G.UICorner_96 = Instance.new("UICorner")
 G.UICorner_96.CornerRadius = UDim.new(0, 9)
-G.UICorner_96.Parent = G.WaveTogglePill_27
+G.UICorner_96.Parent = G.VyzeccTogglePill_27
 
 G.UIStroke_60 = Instance.new("UIStroke")
 G.UIStroke_60.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_60.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_60.Parent = G.WaveTogglePill_27
+G.UIStroke_60.Parent = G.VyzeccTogglePill_27
 
-G.WaveToggleDot_27 = Instance.new("Frame")
-G.WaveToggleDot_27.Name = "WaveToggleDot"
-G.WaveToggleDot_27.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_27.BorderSizePixel = 0
-G.WaveToggleDot_27.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_27.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_27.ZIndex = 8
-G.WaveToggleDot_27.Parent = G.WaveTogglePill_27
+G.VyzeccToggleDot_27 = Instance.new("Frame")
+G.VyzeccToggleDot_27.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_27.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_27.BorderSizePixel = 0
+G.VyzeccToggleDot_27.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_27.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_27.ZIndex = 8
+G.VyzeccToggleDot_27.Parent = G.VyzeccTogglePill_27
 
 G.UICorner_97 = Instance.new("UICorner")
 G.UICorner_97.CornerRadius = UDim.new(0, 6)
-G.UICorner_97.Parent = G.WaveToggleDot_27
+G.UICorner_97.Parent = G.VyzeccToggleDot_27
 
 G.TextButton_46 = Instance.new("TextButton")
 G.TextButton_46.BackgroundTransparency = 1
@@ -3630,14 +3630,14 @@ G.TextButton_46.BorderSizePixel = 0
 G.TextButton_46.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_46.ZIndex = 9
 G.TextButton_46.Text = ""
-G.TextButton_46.Parent = G.WaveTogglePill_27
+G.TextButton_46.Parent = G.VyzeccTogglePill_27
 
 G.Frame_104 = Instance.new("Frame")
 G.Frame_104.BackgroundTransparency = 1
 G.Frame_104.BorderSizePixel = 0
 G.Frame_104.LayoutOrder = 96
 G.Frame_104.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_104.Parent = G.WavePage_Combat
+G.Frame_104.Parent = G.VyzeccPage_Combat
 
 G.Frame_105 = Instance.new("Frame")
 G.Frame_105.BackgroundTransparency = 1
@@ -3645,7 +3645,7 @@ G.Frame_105.BorderSizePixel = 0
 G.Frame_105.LayoutOrder = 1006
 G.Frame_105.Size = UDim2.new(1, 0, 0, 28)
 G.Frame_105.Visible = false
-G.Frame_105.Parent = G.WavePage_Combat
+G.Frame_105.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_63 = Instance.new("TextLabel")
 G.TextLabel_63.BackgroundTransparency = 1
@@ -3663,7 +3663,7 @@ G.Frame_106.BackgroundTransparency = 1
 G.Frame_106.BorderSizePixel = 0
 G.Frame_106.LayoutOrder = 903
 G.Frame_106.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_106.Parent = G.WavePage_Combat
+G.Frame_106.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_64 = Instance.new("TextLabel")
 G.TextLabel_64.BackgroundTransparency = 1
@@ -3709,7 +3709,7 @@ G.Frame_108.BackgroundTransparency = 1
 G.Frame_108.BorderSizePixel = 0
 G.Frame_108.LayoutOrder = 904
 G.Frame_108.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_108.Parent = G.WavePage_Combat
+G.Frame_108.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_65 = Instance.new("TextLabel")
 G.TextLabel_65.BackgroundTransparency = 1
@@ -3756,7 +3756,7 @@ G.Frame_110.BackgroundTransparency = 1
 G.Frame_110.BorderSizePixel = 0
 G.Frame_110.LayoutOrder = 902
 G.Frame_110.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_110.Parent = G.WavePage_Combat
+G.Frame_110.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_66 = Instance.new("TextLabel")
 G.TextLabel_66.BackgroundTransparency = 1
@@ -3769,37 +3769,37 @@ G.TextLabel_66.TextSize = 11
 G.TextLabel_66.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_66.Parent = G.Frame_110
 
-G.WaveTogglePill_28 = Instance.new("Frame")
-G.WaveTogglePill_28.Name = "WaveTogglePill"
-G.WaveTogglePill_28.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_28.BorderSizePixel = 0
-G.WaveTogglePill_28.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_28.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_28.ZIndex = 7
-G.WaveTogglePill_28:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_28.Parent = G.Frame_110
+G.VyzeccTogglePill_28 = Instance.new("Frame")
+G.VyzeccTogglePill_28.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_28.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_28.BorderSizePixel = 0
+G.VyzeccTogglePill_28.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_28.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_28.ZIndex = 7
+G.VyzeccTogglePill_28:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_28.Parent = G.Frame_110
 
 G.UICorner_100 = Instance.new("UICorner")
 G.UICorner_100.CornerRadius = UDim.new(0, 9)
-G.UICorner_100.Parent = G.WaveTogglePill_28
+G.UICorner_100.Parent = G.VyzeccTogglePill_28
 
 G.UIStroke_63 = Instance.new("UIStroke")
 G.UIStroke_63.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_63.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_63.Parent = G.WaveTogglePill_28
+G.UIStroke_63.Parent = G.VyzeccTogglePill_28
 
-G.WaveToggleDot_28 = Instance.new("Frame")
-G.WaveToggleDot_28.Name = "WaveToggleDot"
-G.WaveToggleDot_28.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_28.BorderSizePixel = 0
-G.WaveToggleDot_28.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_28.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_28.ZIndex = 8
-G.WaveToggleDot_28.Parent = G.WaveTogglePill_28
+G.VyzeccToggleDot_28 = Instance.new("Frame")
+G.VyzeccToggleDot_28.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_28.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_28.BorderSizePixel = 0
+G.VyzeccToggleDot_28.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_28.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_28.ZIndex = 8
+G.VyzeccToggleDot_28.Parent = G.VyzeccTogglePill_28
 
 G.UICorner_101 = Instance.new("UICorner")
 G.UICorner_101.CornerRadius = UDim.new(0, 6)
-G.UICorner_101.Parent = G.WaveToggleDot_28
+G.UICorner_101.Parent = G.VyzeccToggleDot_28
 
 G.TextButton_47 = Instance.new("TextButton")
 G.TextButton_47.BackgroundTransparency = 1
@@ -3807,14 +3807,14 @@ G.TextButton_47.BorderSizePixel = 0
 G.TextButton_47.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_47.ZIndex = 9
 G.TextButton_47.Text = ""
-G.TextButton_47.Parent = G.WaveTogglePill_28
+G.TextButton_47.Parent = G.VyzeccTogglePill_28
 
 G.Frame_111 = Instance.new("Frame")
 G.Frame_111.BackgroundTransparency = 1
 G.Frame_111.BorderSizePixel = 0
 G.Frame_111.LayoutOrder = 900
 G.Frame_111.Size = UDim2.new(1, 0, 0, 22)
-G.Frame_111.Parent = G.WavePage_Combat
+G.Frame_111.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_67 = Instance.new("TextLabel")
 G.TextLabel_67.BackgroundTransparency = 1
@@ -3833,7 +3833,7 @@ G.Frame_112.BackgroundTransparency = 1
 G.Frame_112.BorderSizePixel = 0
 G.Frame_112.LayoutOrder = 901
 G.Frame_112.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_112.Parent = G.WavePage_Combat
+G.Frame_112.Parent = G.VyzeccPage_Combat
 
 G.TextLabel_68 = Instance.new("TextLabel")
 G.TextLabel_68.BackgroundTransparency = 1
@@ -3852,7 +3852,7 @@ G.TextButton_48.BorderSizePixel = 0
 G.TextButton_48.Position = UDim2.new(1, -128, 0.5, -12)
 G.TextButton_48.Size = UDim2.new(0, 58, 0, 24)
 G.TextButton_48.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
-G.TextButton_48.Text = "Normal"
+G.TextButton_48.Text = "75"
 G.TextButton_48.TextColor3 = Color3.fromRGB(249, 240, 255)
 G.TextButton_48.TextSize = 10
 G.TextButton_48.Parent = G.Frame_112
@@ -3866,37 +3866,37 @@ G.UIStroke_64.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_64.Color = Color3.fromRGB(42, 18, 70)
 G.UIStroke_64.Parent = G.TextButton_48
 
-G.WaveTogglePill_29 = Instance.new("Frame")
-G.WaveTogglePill_29.Name = "WaveTogglePill"
-G.WaveTogglePill_29.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_29.BorderSizePixel = 0
-G.WaveTogglePill_29.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_29.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_29.ZIndex = 7
-G.WaveTogglePill_29:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_29.Parent = G.Frame_112
+G.VyzeccTogglePill_29 = Instance.new("Frame")
+G.VyzeccTogglePill_29.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_29.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_29.BorderSizePixel = 0
+G.VyzeccTogglePill_29.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_29.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_29.ZIndex = 7
+G.VyzeccTogglePill_29:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_29.Parent = G.Frame_112
 
 G.UICorner_103 = Instance.new("UICorner")
 G.UICorner_103.CornerRadius = UDim.new(0, 9)
-G.UICorner_103.Parent = G.WaveTogglePill_29
+G.UICorner_103.Parent = G.VyzeccTogglePill_29
 
 G.UIStroke_65 = Instance.new("UIStroke")
 G.UIStroke_65.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_65.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_65.Parent = G.WaveTogglePill_29
+G.UIStroke_65.Parent = G.VyzeccTogglePill_29
 
-G.WaveToggleDot_29 = Instance.new("Frame")
-G.WaveToggleDot_29.Name = "WaveToggleDot"
-G.WaveToggleDot_29.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_29.BorderSizePixel = 0
-G.WaveToggleDot_29.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_29.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_29.ZIndex = 8
-G.WaveToggleDot_29.Parent = G.WaveTogglePill_29
+G.VyzeccToggleDot_29 = Instance.new("Frame")
+G.VyzeccToggleDot_29.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_29.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_29.BorderSizePixel = 0
+G.VyzeccToggleDot_29.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_29.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_29.ZIndex = 8
+G.VyzeccToggleDot_29.Parent = G.VyzeccTogglePill_29
 
 G.UICorner_104 = Instance.new("UICorner")
 G.UICorner_104.CornerRadius = UDim.new(0, 6)
-G.UICorner_104.Parent = G.WaveToggleDot_29
+G.UICorner_104.Parent = G.VyzeccToggleDot_29
 
 G.TextButton_49 = Instance.new("TextButton")
 G.TextButton_49.BackgroundTransparency = 1
@@ -3904,41 +3904,41 @@ G.TextButton_49.BorderSizePixel = 0
 G.TextButton_49.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_49.ZIndex = 9
 G.TextButton_49.Text = ""
-G.TextButton_49.Parent = G.WaveTogglePill_29
+G.TextButton_49.Parent = G.VyzeccTogglePill_29
 
-G.WavePage_Interface = Instance.new("ScrollingFrame")
-G.WavePage_Interface.Name = "WavePage_Interface"
-G.WavePage_Interface.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WavePage_Interface.BackgroundTransparency = 1
-G.WavePage_Interface.BorderSizePixel = 0
-G.WavePage_Interface.Position = UDim2.new(0, 3, 0, 92)
-G.WavePage_Interface.Size = UDim2.new(1, -3, 1, -92)
-G.WavePage_Interface.Visible = false
-G.WavePage_Interface.ZIndex = 3
-G.WavePage_Interface.AutomaticCanvasSize = Enum.AutomaticSize.Y
-G.WavePage_Interface.CanvasSize = UDim2.new(0, 0, 0, 0)
-G.WavePage_Interface.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
-G.WavePage_Interface.ScrollBarImageTransparency = 0.5
-G.WavePage_Interface.ScrollBarThickness = 3
-G.WavePage_Interface.Parent = G.MainOuter
+G.VyzeccPage_Interface = Instance.new("ScrollingFrame")
+G.VyzeccPage_Interface.Name = "VyzeccPage_Interface"
+G.VyzeccPage_Interface.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccPage_Interface.BackgroundTransparency = 1
+G.VyzeccPage_Interface.BorderSizePixel = 0
+G.VyzeccPage_Interface.Position = UDim2.new(0, 3, 0, 92)
+G.VyzeccPage_Interface.Size = UDim2.new(1, -3, 1, -92)
+G.VyzeccPage_Interface.Visible = false
+G.VyzeccPage_Interface.ZIndex = 3
+G.VyzeccPage_Interface.AutomaticCanvasSize = Enum.AutomaticSize.Y
+G.VyzeccPage_Interface.CanvasSize = UDim2.new(0, 0, 0, 0)
+G.VyzeccPage_Interface.ScrollBarImageColor3 = Color3.fromRGB(160, 80, 220)
+G.VyzeccPage_Interface.ScrollBarImageTransparency = 0.5
+G.VyzeccPage_Interface.ScrollBarThickness = 3
+G.VyzeccPage_Interface.Parent = G.MainOuter
 
 G.UIListLayout_8 = Instance.new("UIListLayout")
 G.UIListLayout_8.SortOrder = Enum.SortOrder.LayoutOrder
-G.UIListLayout_8.Parent = G.WavePage_Interface
+G.UIListLayout_8.Parent = G.VyzeccPage_Interface
 
 G.UIPadding_7 = Instance.new("UIPadding")
 G.UIPadding_7.PaddingBottom = UDim.new(0, 12)
 G.UIPadding_7.PaddingLeft = UDim.new(0, 8)
 G.UIPadding_7.PaddingRight = UDim.new(0, 8)
 G.UIPadding_7.PaddingTop = UDim.new(0, 6)
-G.UIPadding_7.Parent = G.WavePage_Interface
+G.UIPadding_7.Parent = G.VyzeccPage_Interface
 
 G.Frame_116 = Instance.new("Frame")
 G.Frame_116.BackgroundTransparency = 1
 G.Frame_116.BorderSizePixel = 0
 G.Frame_116.LayoutOrder = 3
 G.Frame_116.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_116.Parent = G.WavePage_Interface
+G.Frame_116.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_70 = Instance.new("TextLabel")
 G.TextLabel_70.BackgroundTransparency = 1
@@ -3956,7 +3956,7 @@ G.Frame_117.BackgroundTransparency = 1
 G.Frame_117.BorderSizePixel = 0
 G.Frame_117.LayoutOrder = 104
 G.Frame_117.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_117.Parent = G.WavePage_Interface
+G.Frame_117.Parent = G.VyzeccPage_Interface
 
 G.ButtonsHeader = Instance.new("Frame")
 G.ButtonsHeader.Name = "ButtonsHeader"
@@ -3964,7 +3964,7 @@ G.ButtonsHeader.BackgroundTransparency = 1
 G.ButtonsHeader.BorderSizePixel = 0
 G.ButtonsHeader.LayoutOrder = 100
 G.ButtonsHeader.Size = UDim2.new(1, 0, 0, 28)
-G.ButtonsHeader.Parent = G.WavePage_Interface
+G.ButtonsHeader.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_71 = Instance.new("TextLabel")
 G.TextLabel_71.BackgroundTransparency = 1
@@ -3982,7 +3982,7 @@ G.Frame_118.BackgroundTransparency = 1
 G.Frame_118.BorderSizePixel = 0
 G.Frame_118.LayoutOrder = 4
 G.Frame_118.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_118.Parent = G.WavePage_Interface
+G.Frame_118.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_72 = Instance.new("TextLabel")
 G.TextLabel_72.BackgroundTransparency = 1
@@ -4060,7 +4060,7 @@ G.Frame_120.ClipsDescendants = true
 G.Frame_120.LayoutOrder = 5
 G.Frame_120.Size = UDim2.new(1, 0, 0, 38)
 G.Frame_120.Visible = false
-G.Frame_120.Parent = G.WavePage_Interface
+G.Frame_120.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_73 = Instance.new("TextLabel")
 G.TextLabel_73.BackgroundTransparency = 1
@@ -4108,7 +4108,7 @@ G.Frame_122.ClipsDescendants = true
 G.Frame_122.LayoutOrder = 6
 G.Frame_122.Size = UDim2.new(1, 0, 0, 38)
 G.Frame_122.Visible = false
-G.Frame_122.Parent = G.WavePage_Interface
+G.Frame_122.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_74 = Instance.new("TextLabel")
 G.TextLabel_74.BackgroundTransparency = 1
@@ -4155,7 +4155,7 @@ G.Frame_124.BorderSizePixel = 0
 G.Frame_124.ClipsDescendants = true
 G.Frame_124.LayoutOrder = 7
 G.Frame_124.Size = UDim2.new(1, 0, 0, 38)
-G.Frame_124.Parent = G.WavePage_Interface
+G.Frame_124.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_76 = Instance.new("TextLabel")
 G.TextLabel_76.BackgroundTransparency = 1
@@ -4202,7 +4202,7 @@ G.Frame_125.BackgroundTransparency = 1
 G.Frame_125.BorderSizePixel = 0
 G.Frame_125.LayoutOrder = 8
 G.Frame_125.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_125.Parent = G.WavePage_Interface
+G.Frame_125.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_75 = Instance.new("TextLabel")
 G.TextLabel_75.BackgroundTransparency = 1
@@ -4215,37 +4215,37 @@ G.TextLabel_75.TextSize = 11
 G.TextLabel_75.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_75.Parent = G.Frame_125
 
-G.WaveTogglePill_30 = Instance.new("Frame")
-G.WaveTogglePill_30.Name = "WaveTogglePill"
-G.WaveTogglePill_30.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_30.BorderSizePixel = 0
-G.WaveTogglePill_30.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_30.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_30.ZIndex = 7
-G.WaveTogglePill_30:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_30.Parent = G.Frame_125
+G.VyzeccTogglePill_30 = Instance.new("Frame")
+G.VyzeccTogglePill_30.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_30.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_30.BorderSizePixel = 0
+G.VyzeccTogglePill_30.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_30.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_30.ZIndex = 7
+G.VyzeccTogglePill_30:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_30.Parent = G.Frame_125
 
 G.UICorner_117 = Instance.new("UICorner")
 G.UICorner_117.CornerRadius = UDim.new(0, 9)
-G.UICorner_117.Parent = G.WaveTogglePill_30
+G.UICorner_117.Parent = G.VyzeccTogglePill_30
 
 G.UIStroke_78 = Instance.new("UIStroke")
 G.UIStroke_78.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_78.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_78.Parent = G.WaveTogglePill_30
+G.UIStroke_78.Parent = G.VyzeccTogglePill_30
 
-G.WaveToggleDot_30 = Instance.new("Frame")
-G.WaveToggleDot_30.Name = "WaveToggleDot"
-G.WaveToggleDot_30.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_30.BorderSizePixel = 0
-G.WaveToggleDot_30.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_30.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_30.ZIndex = 8
-G.WaveToggleDot_30.Parent = G.WaveTogglePill_30
+G.VyzeccToggleDot_30 = Instance.new("Frame")
+G.VyzeccToggleDot_30.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_30.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_30.BorderSizePixel = 0
+G.VyzeccToggleDot_30.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_30.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_30.ZIndex = 8
+G.VyzeccToggleDot_30.Parent = G.VyzeccTogglePill_30
 
 G.UICorner_118 = Instance.new("UICorner")
 G.UICorner_118.CornerRadius = UDim.new(0, 6)
-G.UICorner_118.Parent = G.WaveToggleDot_30
+G.UICorner_118.Parent = G.VyzeccToggleDot_30
 
 G.TextButton_52 = Instance.new("TextButton")
 G.TextButton_52.BackgroundTransparency = 1
@@ -4253,21 +4253,21 @@ G.TextButton_52.BorderSizePixel = 0
 G.TextButton_52.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_52.ZIndex = 9
 G.TextButton_52.Text = ""
-G.TextButton_52.Parent = G.WaveTogglePill_30
+G.TextButton_52.Parent = G.VyzeccTogglePill_30
 
 G.Frame_126 = Instance.new("Frame")
 G.Frame_126.BackgroundTransparency = 1
 G.Frame_126.BorderSizePixel = 0
 G.Frame_126.LayoutOrder = 111
 G.Frame_126.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_126.Parent = G.WavePage_Interface
+G.Frame_126.Parent = G.VyzeccPage_Interface
 
 G.Frame_127 = Instance.new("Frame")
 G.Frame_127.BackgroundTransparency = 1
 G.Frame_127.BorderSizePixel = 0
 G.Frame_127.LayoutOrder = 112
 G.Frame_127.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_127.Parent = G.WavePage_Interface
+G.Frame_127.Parent = G.VyzeccPage_Interface
 
 G.Frame_128 = Instance.new("Frame")
 G.Frame_128.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4275,7 +4275,7 @@ G.Frame_128.BackgroundTransparency = 1
 G.Frame_128.BorderSizePixel = 0
 G.Frame_128.LayoutOrder = 101
 G.Frame_128.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_128.Parent = G.WavePage_Interface
+G.Frame_128.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_76 = Instance.new("TextLabel")
 G.TextLabel_76.BackgroundTransparency = 1
@@ -4288,37 +4288,37 @@ G.TextLabel_76.TextSize = 11
 G.TextLabel_76.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_76.Parent = G.Frame_128
 
-G.WaveTogglePill_31 = Instance.new("Frame")
-G.WaveTogglePill_31.Name = "WaveTogglePill"
-G.WaveTogglePill_31.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_31.BorderSizePixel = 0
-G.WaveTogglePill_31.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_31.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_31.ZIndex = 7
-G.WaveTogglePill_31:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_31.Parent = G.Frame_128
+G.VyzeccTogglePill_31 = Instance.new("Frame")
+G.VyzeccTogglePill_31.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_31.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_31.BorderSizePixel = 0
+G.VyzeccTogglePill_31.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_31.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_31.ZIndex = 7
+G.VyzeccTogglePill_31:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_31.Parent = G.Frame_128
 
 G.UICorner_119 = Instance.new("UICorner")
 G.UICorner_119.CornerRadius = UDim.new(0, 9)
-G.UICorner_119.Parent = G.WaveTogglePill_31
+G.UICorner_119.Parent = G.VyzeccTogglePill_31
 
 G.UIStroke_79 = Instance.new("UIStroke")
 G.UIStroke_79.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_79.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_79.Parent = G.WaveTogglePill_31
+G.UIStroke_79.Parent = G.VyzeccTogglePill_31
 
-G.WaveToggleDot_31 = Instance.new("Frame")
-G.WaveToggleDot_31.Name = "WaveToggleDot"
-G.WaveToggleDot_31.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_31.BorderSizePixel = 0
-G.WaveToggleDot_31.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_31.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_31.ZIndex = 8
-G.WaveToggleDot_31.Parent = G.WaveTogglePill_31
+G.VyzeccToggleDot_31 = Instance.new("Frame")
+G.VyzeccToggleDot_31.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_31.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_31.BorderSizePixel = 0
+G.VyzeccToggleDot_31.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_31.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_31.ZIndex = 8
+G.VyzeccToggleDot_31.Parent = G.VyzeccTogglePill_31
 
 G.UICorner_120 = Instance.new("UICorner")
 G.UICorner_120.CornerRadius = UDim.new(0, 6)
-G.UICorner_120.Parent = G.WaveToggleDot_31
+G.UICorner_120.Parent = G.VyzeccToggleDot_31
 
 G.TextButton_53 = Instance.new("TextButton")
 G.TextButton_53.BackgroundTransparency = 1
@@ -4326,14 +4326,14 @@ G.TextButton_53.BorderSizePixel = 0
 G.TextButton_53.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_53.ZIndex = 9
 G.TextButton_53.Text = ""
-G.TextButton_53.Parent = G.WaveTogglePill_31
+G.TextButton_53.Parent = G.VyzeccTogglePill_31
 
 G.Frame_129 = Instance.new("Frame")
 G.Frame_129.BackgroundTransparency = 1
 G.Frame_129.BorderSizePixel = 0
 G.Frame_129.LayoutOrder = 114
 G.Frame_129.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_129.Parent = G.WavePage_Interface
+G.Frame_129.Parent = G.VyzeccPage_Interface
 
 G.Frame_130 = Instance.new("Frame")
 G.Frame_130.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4341,7 +4341,7 @@ G.Frame_130.BackgroundTransparency = 1
 G.Frame_130.BorderSizePixel = 0
 G.Frame_130.LayoutOrder = 102
 G.Frame_130.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_130.Parent = G.WavePage_Interface
+G.Frame_130.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_77 = Instance.new("TextLabel")
 G.TextLabel_77.BackgroundTransparency = 1
@@ -4354,37 +4354,37 @@ G.TextLabel_77.TextSize = 11
 G.TextLabel_77.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_77.Parent = G.Frame_130
 
-G.WaveTogglePill_32 = Instance.new("Frame")
-G.WaveTogglePill_32.Name = "WaveTogglePill"
-G.WaveTogglePill_32.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_32.BorderSizePixel = 0
-G.WaveTogglePill_32.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_32.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_32.ZIndex = 7
-G.WaveTogglePill_32:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_32.Parent = G.Frame_130
+G.VyzeccTogglePill_32 = Instance.new("Frame")
+G.VyzeccTogglePill_32.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_32.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_32.BorderSizePixel = 0
+G.VyzeccTogglePill_32.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_32.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_32.ZIndex = 7
+G.VyzeccTogglePill_32:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_32.Parent = G.Frame_130
 
 G.UICorner_121 = Instance.new("UICorner")
 G.UICorner_121.CornerRadius = UDim.new(0, 9)
-G.UICorner_121.Parent = G.WaveTogglePill_32
+G.UICorner_121.Parent = G.VyzeccTogglePill_32
 
 G.UIStroke_80 = Instance.new("UIStroke")
 G.UIStroke_80.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_80.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_80.Parent = G.WaveTogglePill_32
+G.UIStroke_80.Parent = G.VyzeccTogglePill_32
 
-G.WaveToggleDot_32 = Instance.new("Frame")
-G.WaveToggleDot_32.Name = "WaveToggleDot"
-G.WaveToggleDot_32.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_32.BorderSizePixel = 0
-G.WaveToggleDot_32.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_32.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_32.ZIndex = 8
-G.WaveToggleDot_32.Parent = G.WaveTogglePill_32
+G.VyzeccToggleDot_32 = Instance.new("Frame")
+G.VyzeccToggleDot_32.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_32.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_32.BorderSizePixel = 0
+G.VyzeccToggleDot_32.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_32.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_32.ZIndex = 8
+G.VyzeccToggleDot_32.Parent = G.VyzeccTogglePill_32
 
 G.UICorner_122 = Instance.new("UICorner")
 G.UICorner_122.CornerRadius = UDim.new(0, 6)
-G.UICorner_122.Parent = G.WaveToggleDot_32
+G.UICorner_122.Parent = G.VyzeccToggleDot_32
 
 G.TextButton_54 = Instance.new("TextButton")
 G.TextButton_54.BackgroundTransparency = 1
@@ -4392,14 +4392,14 @@ G.TextButton_54.BorderSizePixel = 0
 G.TextButton_54.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_54.ZIndex = 9
 G.TextButton_54.Text = ""
-G.TextButton_54.Parent = G.WaveTogglePill_32
+G.TextButton_54.Parent = G.VyzeccTogglePill_32
 
 G.Frame_131 = Instance.new("Frame")
 G.Frame_131.BackgroundTransparency = 1
 G.Frame_131.BorderSizePixel = 0
 G.Frame_131.LayoutOrder = 116
 G.Frame_131.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_131.Parent = G.WavePage_Interface
+G.Frame_131.Parent = G.VyzeccPage_Interface
 
 G.Frame_132 = Instance.new("Frame")
 G.Frame_132.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4407,7 +4407,7 @@ G.Frame_132.BackgroundTransparency = 1
 G.Frame_132.BorderSizePixel = 0
 G.Frame_132.LayoutOrder = 103
 G.Frame_132.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_132.Parent = G.WavePage_Interface
+G.Frame_132.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_78 = Instance.new("TextLabel")
 G.TextLabel_78.BackgroundTransparency = 1
@@ -4420,37 +4420,37 @@ G.TextLabel_78.TextSize = 11
 G.TextLabel_78.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_78.Parent = G.Frame_132
 
-G.WaveTogglePill_33 = Instance.new("Frame")
-G.WaveTogglePill_33.Name = "WaveTogglePill"
-G.WaveTogglePill_33.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_33.BorderSizePixel = 0
-G.WaveTogglePill_33.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_33.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_33.ZIndex = 7
-G.WaveTogglePill_33:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_33.Parent = G.Frame_132
+G.VyzeccTogglePill_33 = Instance.new("Frame")
+G.VyzeccTogglePill_33.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_33.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_33.BorderSizePixel = 0
+G.VyzeccTogglePill_33.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_33.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_33.ZIndex = 7
+G.VyzeccTogglePill_33:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_33.Parent = G.Frame_132
 
 G.UICorner_123 = Instance.new("UICorner")
 G.UICorner_123.CornerRadius = UDim.new(0, 9)
-G.UICorner_123.Parent = G.WaveTogglePill_33
+G.UICorner_123.Parent = G.VyzeccTogglePill_33
 
 G.UIStroke_81 = Instance.new("UIStroke")
 G.UIStroke_81.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_81.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_81.Parent = G.WaveTogglePill_33
+G.UIStroke_81.Parent = G.VyzeccTogglePill_33
 
-G.WaveToggleDot_33 = Instance.new("Frame")
-G.WaveToggleDot_33.Name = "WaveToggleDot"
-G.WaveToggleDot_33.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_33.BorderSizePixel = 0
-G.WaveToggleDot_33.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_33.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_33.ZIndex = 8
-G.WaveToggleDot_33.Parent = G.WaveTogglePill_33
+G.VyzeccToggleDot_33 = Instance.new("Frame")
+G.VyzeccToggleDot_33.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_33.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_33.BorderSizePixel = 0
+G.VyzeccToggleDot_33.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_33.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_33.ZIndex = 8
+G.VyzeccToggleDot_33.Parent = G.VyzeccTogglePill_33
 
 G.UICorner_124 = Instance.new("UICorner")
 G.UICorner_124.CornerRadius = UDim.new(0, 6)
-G.UICorner_124.Parent = G.WaveToggleDot_33
+G.UICorner_124.Parent = G.VyzeccToggleDot_33
 
 G.TextButton_55 = Instance.new("TextButton")
 G.TextButton_55.BackgroundTransparency = 1
@@ -4458,14 +4458,14 @@ G.TextButton_55.BorderSizePixel = 0
 G.TextButton_55.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_55.ZIndex = 9
 G.TextButton_55.Text = ""
-G.TextButton_55.Parent = G.WaveTogglePill_33
+G.TextButton_55.Parent = G.VyzeccTogglePill_33
 
 G.Frame_133 = Instance.new("Frame")
 G.Frame_133.BackgroundTransparency = 1
 G.Frame_133.BorderSizePixel = 0
 G.Frame_133.LayoutOrder = 118
 G.Frame_133.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_133.Parent = G.WavePage_Interface
+G.Frame_133.Parent = G.VyzeccPage_Interface
 
 G.Frame_134 = Instance.new("Frame")
 G.Frame_134.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4473,7 +4473,7 @@ G.Frame_134.BackgroundTransparency = 1
 G.Frame_134.BorderSizePixel = 0
 G.Frame_134.LayoutOrder = 104
 G.Frame_134.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_134.Parent = G.WavePage_Interface
+G.Frame_134.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_79 = Instance.new("TextLabel")
 G.TextLabel_79.BackgroundTransparency = 1
@@ -4486,37 +4486,37 @@ G.TextLabel_79.TextSize = 11
 G.TextLabel_79.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_79.Parent = G.Frame_134
 
-G.WaveTogglePill_34 = Instance.new("Frame")
-G.WaveTogglePill_34.Name = "WaveTogglePill"
-G.WaveTogglePill_34.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_34.BorderSizePixel = 0
-G.WaveTogglePill_34.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_34.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_34.ZIndex = 7
-G.WaveTogglePill_34:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_34.Parent = G.Frame_134
+G.VyzeccTogglePill_34 = Instance.new("Frame")
+G.VyzeccTogglePill_34.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_34.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_34.BorderSizePixel = 0
+G.VyzeccTogglePill_34.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_34.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_34.ZIndex = 7
+G.VyzeccTogglePill_34:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_34.Parent = G.Frame_134
 
 G.UICorner_125 = Instance.new("UICorner")
 G.UICorner_125.CornerRadius = UDim.new(0, 9)
-G.UICorner_125.Parent = G.WaveTogglePill_34
+G.UICorner_125.Parent = G.VyzeccTogglePill_34
 
 G.UIStroke_82 = Instance.new("UIStroke")
 G.UIStroke_82.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_82.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_82.Parent = G.WaveTogglePill_34
+G.UIStroke_82.Parent = G.VyzeccTogglePill_34
 
-G.WaveToggleDot_34 = Instance.new("Frame")
-G.WaveToggleDot_34.Name = "WaveToggleDot"
-G.WaveToggleDot_34.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_34.BorderSizePixel = 0
-G.WaveToggleDot_34.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_34.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_34.ZIndex = 8
-G.WaveToggleDot_34.Parent = G.WaveTogglePill_34
+G.VyzeccToggleDot_34 = Instance.new("Frame")
+G.VyzeccToggleDot_34.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_34.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_34.BorderSizePixel = 0
+G.VyzeccToggleDot_34.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_34.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_34.ZIndex = 8
+G.VyzeccToggleDot_34.Parent = G.VyzeccTogglePill_34
 
 G.UICorner_126 = Instance.new("UICorner")
 G.UICorner_126.CornerRadius = UDim.new(0, 6)
-G.UICorner_126.Parent = G.WaveToggleDot_34
+G.UICorner_126.Parent = G.VyzeccToggleDot_34
 
 G.TextButton_56 = Instance.new("TextButton")
 G.TextButton_56.BackgroundTransparency = 1
@@ -4524,14 +4524,14 @@ G.TextButton_56.BorderSizePixel = 0
 G.TextButton_56.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_56.ZIndex = 9
 G.TextButton_56.Text = ""
-G.TextButton_56.Parent = G.WaveTogglePill_34
+G.TextButton_56.Parent = G.VyzeccTogglePill_34
 
 G.Frame_135 = Instance.new("Frame")
 G.Frame_135.BackgroundTransparency = 1
 G.Frame_135.BorderSizePixel = 0
 G.Frame_135.LayoutOrder = 120
 G.Frame_135.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_135.Parent = G.WavePage_Interface
+G.Frame_135.Parent = G.VyzeccPage_Interface
 
 G.Frame_136 = Instance.new("Frame")
 G.Frame_136.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4539,7 +4539,7 @@ G.Frame_136.BackgroundTransparency = 1
 G.Frame_136.BorderSizePixel = 0
 G.Frame_136.LayoutOrder = 8
 G.Frame_136.Size = UDim2.new(1, 0, 0, 40)
-G.Frame_136.Parent = G.WavePage_Interface
+G.Frame_136.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_80 = Instance.new("TextLabel")
 G.TextLabel_80.BackgroundTransparency = 1
@@ -4552,37 +4552,37 @@ G.TextLabel_80.TextSize = 11
 G.TextLabel_80.TextXAlignment = Enum.TextXAlignment.Left
 G.TextLabel_80.Parent = G.Frame_136
 
-G.WaveTogglePill_35 = Instance.new("Frame")
-G.WaveTogglePill_35.Name = "WaveTogglePill"
-G.WaveTogglePill_35.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
-G.WaveTogglePill_35.BorderSizePixel = 0
-G.WaveTogglePill_35.Position = UDim2.new(1, -54, 0.5, -9)
-G.WaveTogglePill_35.Size = UDim2.new(0, 40, 0, 18)
-G.WaveTogglePill_35.ZIndex = 7
-G.WaveTogglePill_35:SetAttribute("WaveToggleOn", false)
-G.WaveTogglePill_35.Parent = G.Frame_136
+G.VyzeccTogglePill_35 = Instance.new("Frame")
+G.VyzeccTogglePill_35.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_35.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_35.BorderSizePixel = 0
+G.VyzeccTogglePill_35.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_35.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_35.ZIndex = 7
+G.VyzeccTogglePill_35:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_35.Parent = G.Frame_136
 
 G.UICorner_127 = Instance.new("UICorner")
 G.UICorner_127.CornerRadius = UDim.new(0, 9)
-G.UICorner_127.Parent = G.WaveTogglePill_35
+G.UICorner_127.Parent = G.VyzeccTogglePill_35
 
 G.UIStroke_83 = Instance.new("UIStroke")
 G.UIStroke_83.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 G.UIStroke_83.Color = Color3.fromRGB(55, 25, 90)
-G.UIStroke_83.Parent = G.WaveTogglePill_35
+G.UIStroke_83.Parent = G.VyzeccTogglePill_35
 
-G.WaveToggleDot_35 = Instance.new("Frame")
-G.WaveToggleDot_35.Name = "WaveToggleDot"
-G.WaveToggleDot_35.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
-G.WaveToggleDot_35.BorderSizePixel = 0
-G.WaveToggleDot_35.Position = UDim2.new(0, 3, 0.5, -6)
-G.WaveToggleDot_35.Size = UDim2.new(0, 12, 0, 12)
-G.WaveToggleDot_35.ZIndex = 8
-G.WaveToggleDot_35.Parent = G.WaveTogglePill_35
+G.VyzeccToggleDot_35 = Instance.new("Frame")
+G.VyzeccToggleDot_35.Name = "VyzeccToggleDot"
+G.VyzeccToggleDot_35.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+G.VyzeccToggleDot_35.BorderSizePixel = 0
+G.VyzeccToggleDot_35.Position = UDim2.new(0, 3, 0.5, -6)
+G.VyzeccToggleDot_35.Size = UDim2.new(0, 12, 0, 12)
+G.VyzeccToggleDot_35.ZIndex = 8
+G.VyzeccToggleDot_35.Parent = G.VyzeccTogglePill_35
 
 G.UICorner_128 = Instance.new("UICorner")
 G.UICorner_128.CornerRadius = UDim.new(0, 6)
-G.UICorner_128.Parent = G.WaveToggleDot_35
+G.UICorner_128.Parent = G.VyzeccToggleDot_35
 
 G.TextButton_57 = Instance.new("TextButton")
 G.TextButton_57.BackgroundTransparency = 1
@@ -4590,9 +4590,63 @@ G.TextButton_57.BorderSizePixel = 0
 G.TextButton_57.Size = UDim2.new(1, 0, 1, 0)
 G.TextButton_57.ZIndex = 9
 G.TextButton_57.Text = ""
-G.TextButton_57.Parent = G.WaveTogglePill_35
+G.TextButton_57.Parent = G.VyzeccTogglePill_35
 
+G.Frame_PromoterMode = Instance.new("Frame")
+G.Frame_PromoterMode.Name = "Frame_PromoterMode"
+G.Frame_PromoterMode.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
+G.Frame_PromoterMode.BackgroundTransparency = 1
+G.Frame_PromoterMode.BorderSizePixel = 0
+G.Frame_PromoterMode.LayoutOrder = 9
+G.Frame_PromoterMode.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_PromoterMode.Parent = G.VyzeccPage_Interface
 
+G.TextLabel_PromoterMode = Instance.new("TextLabel")
+G.TextLabel_PromoterMode.BackgroundTransparency = 1
+G.TextLabel_PromoterMode.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_PromoterMode.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_PromoterMode.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_PromoterMode.Text = "Promoter Mode"
+G.TextLabel_PromoterMode.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_PromoterMode.TextSize = 11
+G.TextLabel_PromoterMode.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_PromoterMode.Parent = G.Frame_PromoterMode
+
+G.VyzeccTogglePill_Promoter = Instance.new("Frame")
+G.VyzeccTogglePill_Promoter.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_Promoter.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_Promoter.BorderSizePixel = 0
+G.VyzeccTogglePill_Promoter.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_Promoter.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_Promoter.ZIndex = 7
+G.VyzeccTogglePill_Promoter:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_Promoter.Parent = G.Frame_PromoterMode
+
+local promoterCorner = Instance.new("UICorner")
+promoterCorner.CornerRadius = UDim.new(0, 9)
+promoterCorner.Parent = G.VyzeccTogglePill_Promoter
+local promoterStroke = Instance.new("UIStroke")
+promoterStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+promoterStroke.Color = Color3.fromRGB(55, 25, 90)
+promoterStroke.Parent = G.VyzeccTogglePill_Promoter
+local promoterDot = Instance.new("Frame")
+promoterDot.Name = "VyzeccToggleDot"
+promoterDot.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+promoterDot.BorderSizePixel = 0
+promoterDot.Position = UDim2.new(0, 3, 0.5, -6)
+promoterDot.Size = UDim2.new(0, 12, 0, 12)
+promoterDot.ZIndex = 8
+promoterDot.Parent = G.VyzeccTogglePill_Promoter
+local promoterDotCorner = Instance.new("UICorner")
+promoterDotCorner.CornerRadius = UDim.new(0, 6)
+promoterDotCorner.Parent = promoterDot
+local promoterBtn = Instance.new("TextButton")
+promoterBtn.BackgroundTransparency = 1
+promoterBtn.BorderSizePixel = 0
+promoterBtn.Size = UDim2.new(1, 0, 1, 0)
+promoterBtn.ZIndex = 9
+promoterBtn.Text = ""
+promoterBtn.Parent = G.VyzeccTogglePill_Promoter
 
 G.Frame_137 = Instance.new("Frame")
 G.Frame_137.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4600,7 +4654,7 @@ G.Frame_137.BackgroundTransparency = 1
 G.Frame_137.BorderSizePixel = 0
 G.Frame_137.LayoutOrder = 105
 G.Frame_137.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_137.Parent = G.WavePage_Interface
+G.Frame_137.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_81 = Instance.new("TextLabel")
 G.TextLabel_81.BackgroundTransparency = 1
@@ -4638,7 +4692,7 @@ G.Frame_138.BackgroundTransparency = 1
 G.Frame_138.BorderSizePixel = 0
 G.Frame_138.LayoutOrder = 123
 G.Frame_138.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_138.Parent = G.WavePage_Interface
+G.Frame_138.Parent = G.VyzeccPage_Interface
 
 G.Frame_139 = Instance.new("Frame")
 G.Frame_139.BackgroundColor3 = Color3.fromRGB(22, 10, 38)
@@ -4646,7 +4700,7 @@ G.Frame_139.BackgroundTransparency = 1
 G.Frame_139.BorderSizePixel = 0
 G.Frame_139.LayoutOrder = 107
 G.Frame_139.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_139.Parent = G.WavePage_Interface
+G.Frame_139.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_82 = Instance.new("TextLabel")
 G.TextLabel_82.BackgroundTransparency = 1
@@ -4684,14 +4738,14 @@ G.Frame_140.BackgroundTransparency = 1
 G.Frame_140.BorderSizePixel = 0
 G.Frame_140.LayoutOrder = 125
 G.Frame_140.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_140.Parent = G.WavePage_Interface
+G.Frame_140.Parent = G.VyzeccPage_Interface
 
 G.Frame_141 = Instance.new("Frame")
 G.Frame_141.BackgroundTransparency = 1
 G.Frame_141.BorderSizePixel = 0
 G.Frame_141.LayoutOrder = 106
 G.Frame_141.Size = UDim2.new(1, 0, 0, 28)
-G.Frame_141.Parent = G.WavePage_Interface
+G.Frame_141.Parent = G.VyzeccPage_Interface
 
 G.TextLabel_83 = Instance.new("TextLabel")
 G.TextLabel_83.BackgroundTransparency = 1
@@ -4709,14 +4763,14 @@ G.Frame_142.BackgroundTransparency = 1
 G.Frame_142.BorderSizePixel = 0
 G.Frame_142.LayoutOrder = 127
 G.Frame_142.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_142.Parent = G.WavePage_Interface
+G.Frame_142.Parent = G.VyzeccPage_Interface
 
 G.Frame_143 = Instance.new("Frame")
 G.Frame_143.BackgroundTransparency = 1
 G.Frame_143.BorderSizePixel = 0
 G.Frame_143.LayoutOrder = 108
 G.Frame_143.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_143.Parent = G.WavePage_Interface
+G.Frame_143.Parent = G.VyzeccPage_Interface
 
 G.Frame_144 = Instance.new("Frame")
 G.Frame_144.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
@@ -4754,14 +4808,14 @@ G.Frame_145.BackgroundTransparency = 1
 G.Frame_145.BorderSizePixel = 0
 G.Frame_145.LayoutOrder = 129
 G.Frame_145.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_145.Parent = G.WavePage_Interface
+G.Frame_145.Parent = G.VyzeccPage_Interface
 
 G.Frame_146 = Instance.new("Frame")
 G.Frame_146.BackgroundTransparency = 1
 G.Frame_146.BorderSizePixel = 0
 G.Frame_146.LayoutOrder = 109
 G.Frame_146.Size = UDim2.new(1, 0, 0, 34)
-G.Frame_146.Parent = G.WavePage_Interface
+G.Frame_146.Parent = G.VyzeccPage_Interface
 
 G.TextButton_60 = Instance.new("TextButton")
 G.TextButton_60.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
@@ -4828,7 +4882,7 @@ G.Frame_147.BackgroundTransparency = 1
 G.Frame_147.BorderSizePixel = 0
 G.Frame_147.LayoutOrder = 131
 G.Frame_147.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_147.Parent = G.WavePage_Interface
+G.Frame_147.Parent = G.VyzeccPage_Interface
 
 G.Frame_148 = Instance.new("Frame")
 G.Frame_148.AutomaticSize = Enum.AutomaticSize.Y
@@ -4836,7 +4890,7 @@ G.Frame_148.BackgroundTransparency = 1
 G.Frame_148.BorderSizePixel = 0
 G.Frame_148.LayoutOrder = 110
 G.Frame_148.Size = UDim2.new(1, 0, 0, 0)
-G.Frame_148.Parent = G.WavePage_Interface
+G.Frame_148.Parent = G.VyzeccPage_Interface
 
 G.UIListLayout_10 = Instance.new("UIListLayout")
 G.UIListLayout_10.Padding = UDim.new(0, 4)
@@ -4859,50 +4913,50 @@ G.Frame_149.BackgroundTransparency = 1
 G.Frame_149.BorderSizePixel = 0
 G.Frame_149.LayoutOrder = 133
 G.Frame_149.Size = UDim2.new(1, 0, 0, 2)
-G.Frame_149.Parent = G.WavePage_Interface
+G.Frame_149.Parent = G.VyzeccPage_Interface
 
-G.WaveMiniRestoreButton = Instance.new("ImageButton")
-G.WaveMiniRestoreButton.Name = "WaveMiniRestoreButton"
-G.WaveMiniRestoreButton.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
-G.WaveMiniRestoreButton.BackgroundTransparency = 0.08
-G.WaveMiniRestoreButton.BorderSizePixel = 0
-G.WaveMiniRestoreButton.Position = UDim2.new(0, 98, 0, 68)
-G.WaveMiniRestoreButton.Size = UDim2.new(0, 52, 0, 52)
-G.WaveMiniRestoreButton.ZIndex = 150
-G.WaveMiniRestoreButton.Image = "rbxthumb://type=Asset&id=117439302562449&w=420&h=420"
-G.WaveMiniRestoreButton.ImageTransparency = 0
-G.WaveMiniRestoreButton.ScaleType = Enum.ScaleType.Fit
-G.WaveMiniRestoreButton.AutoButtonColor = false
-G.WaveMiniRestoreButton.Parent = G.WAVEHubV1
+G.VyzeccMiniRestoreButton = Instance.new("ImageButton")
+G.VyzeccMiniRestoreButton.Name = "VyzeccMiniRestoreButton"
+G.VyzeccMiniRestoreButton.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+G.VyzeccMiniRestoreButton.BackgroundTransparency = 0.08
+G.VyzeccMiniRestoreButton.BorderSizePixel = 0
+G.VyzeccMiniRestoreButton.Position = UDim2.new(0, 8, 0.5, -40)
+G.VyzeccMiniRestoreButton.Size = UDim2.new(0, 44, 0, 44)
+G.VyzeccMiniRestoreButton.ZIndex = 150
+G.VyzeccMiniRestoreButton.Image = "rbxthumb://type=Asset&id=117439302562449&w=420&h=420"
+G.VyzeccMiniRestoreButton.ImageTransparency = 0
+G.VyzeccMiniRestoreButton.ScaleType = Enum.ScaleType.Fit
+G.VyzeccMiniRestoreButton.AutoButtonColor = false
+G.VyzeccMiniRestoreButton.Parent = G.VYZECCHubV1
 
-G.WaveMiniRestoreCorner = Instance.new("UICorner")
-G.WaveMiniRestoreCorner.CornerRadius = UDim.new(0, 12)
-G.WaveMiniRestoreCorner.Parent = G.WaveMiniRestoreButton
+G.VyzeccMiniRestoreCorner = Instance.new("UICorner")
+G.VyzeccMiniRestoreCorner.CornerRadius = UDim.new(0, 12)
+G.VyzeccMiniRestoreCorner.Parent = G.VyzeccMiniRestoreButton
 
-G.WaveMiniRestoreStroke = Instance.new("UIStroke")
-G.WaveMiniRestoreStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-G.WaveMiniRestoreStroke.Color = Color3.fromRGB(126, 20, 200)
-G.WaveMiniRestoreStroke.Thickness = 1.5
-G.WaveMiniRestoreStroke.Parent = G.WaveMiniRestoreButton
+G.VyzeccMiniRestoreStroke = Instance.new("UIStroke")
+G.VyzeccMiniRestoreStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+G.VyzeccMiniRestoreStroke.Color = Color3.fromRGB(126, 20, 200)
+G.VyzeccMiniRestoreStroke.Thickness = 1.5
+G.VyzeccMiniRestoreStroke.Parent = G.VyzeccMiniRestoreButton
 
-G.WAVEMiniRestoreScale = Instance.new("UIScale")
-G.WAVEMiniRestoreScale.Name = "WAVEMiniRestoreScale"
-G.WAVEMiniRestoreScale.Scale = 0.7
-G.WAVEMiniRestoreScale.Parent = G.WaveMiniRestoreButton
+G.VYZECCMiniRestoreScale = Instance.new("UIScale")
+G.VYZECCMiniRestoreScale.Name = "VYZECCMiniRestoreScale"
+G.VYZECCMiniRestoreScale.Scale = 0.7
+G.VYZECCMiniRestoreScale.Parent = G.VyzeccMiniRestoreButton
 
-G.WaveMiniRestoreTitle = Instance.new("TextLabel")
-G.WaveMiniRestoreTitle.Name = "WaveMiniRestoreTitle"
-G.WaveMiniRestoreTitle.BackgroundTransparency = 1
-G.WaveMiniRestoreTitle.Visible = false
-G.WaveMiniRestoreTitle.Parent = G.WAVEHubV1
+G.VyzeccMiniRestoreTitle = Instance.new("TextLabel")
+G.VyzeccMiniRestoreTitle.Name = "VyzeccMiniRestoreTitle"
+G.VyzeccMiniRestoreTitle.BackgroundTransparency = 1
+G.VyzeccMiniRestoreTitle.Visible = false
+G.VyzeccMiniRestoreTitle.Parent = G.VYZECCHubV1
 
-G.WaveLogoPreloadHolder = Instance.new("Frame")
-G.WaveLogoPreloadHolder.Name = "WaveLogoPreloadHolder"
-G.WaveLogoPreloadHolder.BackgroundTransparency = 1
-G.WaveLogoPreloadHolder.Position = UDim2.new(1, 20, 1, 20)
-G.WaveLogoPreloadHolder.Size = UDim2.new(0, 1, 0, 1)
-G.WaveLogoPreloadHolder.Visible = false
-G.WaveLogoPreloadHolder.Parent = G.WAVEHubV1
+G.VyzeccLogoPreloadHolder = Instance.new("Frame")
+G.VyzeccLogoPreloadHolder.Name = "VyzeccLogoPreloadHolder"
+G.VyzeccLogoPreloadHolder.BackgroundTransparency = 1
+G.VyzeccLogoPreloadHolder.Position = UDim2.new(1, 20, 1, 20)
+G.VyzeccLogoPreloadHolder.Size = UDim2.new(0, 1, 0, 1)
+G.VyzeccLogoPreloadHolder.Visible = false
+G.VyzeccLogoPreloadHolder.Parent = G.VYZECCHubV1
 
 G.LogoPreload_default = Instance.new("ImageLabel")
 G.LogoPreload_default.Name = "LogoPreload_default"
@@ -4910,7 +4964,7 @@ G.LogoPreload_default.BackgroundTransparency = 1
 G.LogoPreload_default.Size = UDim2.new(0, 64, 0, 64)
 G.LogoPreload_default.Visible = false
 G.LogoPreload_default.Image = "rbxthumb://type=Asset&id=75548910103458&w=420&h=420"
-G.LogoPreload_default.Parent = G.WaveLogoPreloadHolder
+G.LogoPreload_default.Parent = G.VyzeccLogoPreloadHolder
 
 G.LogoPreload_kira = Instance.new("ImageLabel")
 G.LogoPreload_kira.Name = "LogoPreload_kira"
@@ -4918,7 +4972,7 @@ G.LogoPreload_kira.BackgroundTransparency = 1
 G.LogoPreload_kira.Size = UDim2.new(0, 64, 0, 64)
 G.LogoPreload_kira.Visible = false
 G.LogoPreload_kira.Image = "rbxthumb://type=Asset&id=125547726098040&w=420&h=420"
-G.LogoPreload_kira.Parent = G.WaveLogoPreloadHolder
+G.LogoPreload_kira.Parent = G.VyzeccLogoPreloadHolder
 
 G.LogoPreload_dio = Instance.new("ImageLabel")
 G.LogoPreload_dio.Name = "LogoPreload_dio"
@@ -4926,34 +4980,34 @@ G.LogoPreload_dio.BackgroundTransparency = 1
 G.LogoPreload_dio.Size = UDim2.new(0, 64, 0, 64)
 G.LogoPreload_dio.Visible = false
 G.LogoPreload_dio.Image = "rbxthumb://type=Asset&id=125749412993183&w=420&h=420"
-G.LogoPreload_dio.Parent = G.WaveLogoPreloadHolder
+G.LogoPreload_dio.Parent = G.VyzeccLogoPreloadHolder
 
 G.LogoPreload_kingcrimson = Instance.new("ImageLabel")
 G.LogoPreload_kingcrimson.Name = "LogoPreload_kingcrimson"
 G.LogoPreload_kingcrimson.BackgroundTransparency = 1
 G.LogoPreload_kingcrimson.Size = UDim2.new(0, 64, 0, 64)
 G.LogoPreload_kingcrimson.Visible = false
-G.LogoPreload_kingcrimson.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/wave_king_crimson_minilogo.png"
-G.LogoPreload_kingcrimson:SetAttribute("WaveImageRequest", "https://files.catbox.moe/lxi4pf.png")
-G.LogoPreload_kingcrimson.Parent = G.WaveLogoPreloadHolder
+G.LogoPreload_kingcrimson.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/vyzecc_king_crimson_minilogo.png"
+G.LogoPreload_kingcrimson:SetAttribute("VyzeccImageRequest", "https://files.catbox.moe/lxi4pf.png")
+G.LogoPreload_kingcrimson.Parent = G.VyzeccLogoPreloadHolder
 
 G.LogoPreload_t636k9 = Instance.new("ImageLabel")
 G.LogoPreload_t636k9.Name = "LogoPreload_t636k9"
 G.LogoPreload_t636k9.BackgroundTransparency = 1
 G.LogoPreload_t636k9.Size = UDim2.new(0, 64, 0, 64)
 G.LogoPreload_t636k9.Visible = false
-G.LogoPreload_t636k9.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/wave_t636k9_minilogo.png"
-G.LogoPreload_t636k9:SetAttribute("WaveImageRequest", "https://files.catbox.moe/q7tes7.png")
-G.LogoPreload_t636k9.Parent = G.WaveLogoPreloadHolder
+G.LogoPreload_t636k9.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/vyzecc_t636k9_minilogo.png"
+G.LogoPreload_t636k9:SetAttribute("VyzeccImageRequest", "https://files.catbox.moe/q7tes7.png")
+G.LogoPreload_t636k9.Parent = G.VyzeccLogoPreloadHolder
 
-G.LogoPreload_customwave = Instance.new("ImageLabel")
-G.LogoPreload_customwave.Name = "LogoPreload_customwave"
-G.LogoPreload_customwave.BackgroundTransparency = 1
-G.LogoPreload_customwave.Size = UDim2.new(0, 64, 0, 64)
-G.LogoPreload_customwave.Visible = false
-G.LogoPreload_customwave.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/wave_custom_minilogo_v3.png"
-G.LogoPreload_customwave:SetAttribute("WaveImageRequest", "https://files.catbox.moe/b2w3ck.png")
-G.LogoPreload_customwave.Parent = G.WaveLogoPreloadHolder
+G.LogoPreload_customvyzecc = Instance.new("ImageLabel")
+G.LogoPreload_customvyzecc.Name = "LogoPreload_customvyzecc"
+G.LogoPreload_customvyzecc.BackgroundTransparency = 1
+G.LogoPreload_customvyzecc.Size = UDim2.new(0, 64, 0, 64)
+G.LogoPreload_customvyzecc.Visible = false
+G.LogoPreload_customvyzecc.Image = "rbxasset://5a9ca42d5ed939bad79ba73d52810774/vyzecc_custom_minilogo_v3.png"
+G.LogoPreload_customvyzecc:SetAttribute("VyzeccImageRequest", "https://files.catbox.moe/b2w3ck.png")
+G.LogoPreload_customvyzecc.Parent = G.VyzeccLogoPreloadHolder
 
 G.MobileStackPanel = Instance.new("Frame")
 G.MobileStackPanel.Name = "MobileStackPanel"
@@ -4963,7 +5017,7 @@ G.MobileStackPanel.BorderSizePixel = 0
 G.MobileStackPanel.Position = UDim2.new(1, -170, 0.5, -145)
 G.MobileStackPanel.Size = UDim2.new(0, 154, 0, 290)
 G.MobileStackPanel.ZIndex = 10
-G.MobileStackPanel.Parent = G.WAVEHubV1
+G.MobileStackPanel.Parent = G.VYZECCHubV1
 
 G.UICorner_133 = Instance.new("UICorner")
 G.UICorner_133.CornerRadius = UDim.new(0, 18)
@@ -4983,7 +5037,7 @@ G.BgImage.Image = "rbxassetid://96235452296851"
 G.BgImage.ImageTransparency = 1
 G.BgImage.Visible = false
 G.BgImage.ScaleType = Enum.ScaleType.Crop
-G.BgImage:SetAttribute("WaveAppliedPanelSrc", "rbxthumb://type=Asset&id=139548602866176&w=420&h=420")
+G.BgImage:SetAttribute("VyzeccAppliedPanelSrc", "rbxthumb://type=Asset&id=139548602866176&w=420&h=420")
 G.BgImage.Parent = G.MobileStackPanel
 
 G.UICorner_134 = Instance.new("UICorner")
@@ -5283,10 +5337,10 @@ G.TextButton_68.ZIndex = 20
 G.TextButton_68.Text = ""
 G.TextButton_68.Parent = G.StackBtn_carrySpeed
 
-G.WAVEButtonScale = Instance.new("UIScale")
-G.WAVEButtonScale.Name = "WAVEButtonScale"
-G.WAVEButtonScale.Scale = 0.69999998807907104
-G.WAVEButtonScale.Parent = G.MobileStackPanel
+G.VYZECCButtonScale = Instance.new("UIScale")
+G.VYZECCButtonScale.Name = "VYZECCButtonScale"
+G.VYZECCButtonScale.Scale = 0.69999998807907104
+G.VYZECCButtonScale.Parent = G.MobileStackPanel
 
 local StealBarRoot = Instance.new("Frame")
 StealBarRoot.Name = "StealBarRoot"
@@ -5296,7 +5350,7 @@ StealBarRoot.BorderSizePixel = 0
 StealBarRoot.Position = UDim2.new(0.5, 0, 1, -100)
 StealBarRoot.Size = UDim2.new(0, 315, 0, 53)
 StealBarRoot.ZIndex = 50
-StealBarRoot.Parent = G.WAVEHubV1
+StealBarRoot.Parent = G.VYZECCHubV1
 
 local StealUICorner = Instance.new("UICorner")
 StealUICorner.CornerRadius = UDim.new(0, 10)
@@ -5467,7 +5521,7 @@ do
 		if not head or not root or not character.Parent then return end
 
 		local billboard = Instance.new("BillboardGui")
-		billboard.Name = "WaveLocalSpeedDisplay"
+		billboard.Name = "VyzeccLocalSpeedDisplay"
 		billboard.Adornee = head
 		billboard.AlwaysOnTop = true
 		billboard.LightInfluence = 0
@@ -5546,7 +5600,7 @@ do
 		task.defer(attachSpeedDisplay, LocalPlayer.Character)
 	end
 
-	G.WAVEHubV1.Destroying:Connect(function()
+	G.VYZECCHubV1.Destroying:Connect(function()
 		removeSpeedDisplay()
 		if characterConn then
 			characterConn:Disconnect()
@@ -5566,7 +5620,7 @@ G.MainOuter.Size = UDim2.new(0, 280, 0, 420)
 G.MainOuter.ClipsDescendants = true
 G.MainOuter.Active = true
 
-for _, page in pairs({G.WavePage_Speed, G.WavePage_Combat, G.WavePage_Misc, G.WavePage_Visuals, G.WavePage_Interface, G.WavePage_Steal, G.WavePage_Movement}) do
+for _, page in pairs({G.VyzeccPage_Speed, G.VyzeccPage_Combat, G.VyzeccPage_Misc, G.VyzeccPage_Visuals, G.VyzeccPage_Interface, G.VyzeccPage_Steal, G.VyzeccPage_Movement}) do
 	if page then page.Visible = false end
 end
 
@@ -5706,17 +5760,81 @@ end
 
 
 
+local _noPlayerCollAcc = 0
+local function noPlayerCollision()
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr ~= LocalPlayer then
+			local c = plr.Character
+			if c then
+				for _, d in ipairs(c:GetDescendants()) do
+					if d:IsA("BasePart") and d.CanCollide then
+						d.CanCollide = false
+					end
+				end
+			end
+		end
+	end
+end
+
+local function noCollideCarried()
+	local char = LocalPlayer.Character
+	if not char then return end
+	for _, child in ipairs(char:GetChildren()) do
+		if child:IsA("Model") then
+			for _, d in ipairs(child:GetDescendants()) do
+				if d:IsA("BasePart") then
+					d.CanCollide = false
+				end
+			end
+		end
+	end
+	for _, name in ipairs({"Carrying", "IsCarrying", "Grabbed", "Holding", "StealHold", "HasGrab"}) do
+		local obj = char:FindFirstChild(name)
+		if obj and obj:IsA("ObjectValue") and obj.Value and obj.Value:IsA("Model") then
+			for _, d in ipairs(obj.Value:GetDescendants()) do
+				if d:IsA("BasePart") then
+					d.CanCollide = false
+				end
+			end
+		end
+	end
+end
+
+local function applyNoCollisions()
+	noCollideCarried()
+	_noPlayerCollAcc += 1
+	if _noPlayerCollAcc >= 3 then
+		_noPlayerCollAcc = 0
+		noPlayerCollision()
+	end
+end
+
+local function getActiveSpeed()
+	if St.autoLeftEnabled or St.autoRightEnabled then
+		return math.max(1, tonumber(St.normalSpeed) or 60)
+	end
+	if St.laggerMode == 1 then
+		return math.max(1, tonumber(St.burstNormalSpeed) or 15)
+	end
+	if St.laggerMode == 2 then
+		return math.max(1, tonumber(St.burstCarrySpeed) or 10)
+	end
+	if St.speedToggled then
+		return math.max(1, tonumber(St.carrySpeed) or 30)
+	end
+	return math.max(1, tonumber(St.normalSpeed) or 60)
+end
+
 local function autoPathSpeed()
-    local speed = (St.laggerMode == 1) and St.burstNormalSpeed or St.normalSpeed
-    return math.max(1, tonumber(speed) or 60)
+	return getActiveSpeed()
 end
 
 local function autoSpeed()
-    return autoPathSpeed()
+	return getActiveSpeed()
 end
 
 local function autoCarrySpeed()
-    return math.max(1, tonumber(St.carrySpeed) or 30)
+	return math.max(1, tonumber(St.carrySpeed) or 30)
 end
 
 local function autoStop(which)
@@ -5774,6 +5892,7 @@ local function autoStartLeft()
         if not AutoPath.L or not St.autoLeftEnabled then return end
         local root, hum = autoRootHumanoid()
         if not root or not hum or hum.Health <= 0 then return end
+        applyNoCollisions()
         local spd = autoPathSpeed()
 
         if AutoPath.phaseL == 1 then
@@ -5806,10 +5925,9 @@ local function autoStartLeft()
                 if (facePos - root.Position).Magnitude > 0.01 then
                     pcall(function() root.CFrame = CFrame.new(root.Position, facePos) end)
                 end
-                St._autoCarryHandoff = true
-                task.delay(2, function()
-                    if St then St._autoCarryHandoff = false end
-                end)
+                if St.autoCarryOn then
+                    St.speedToggled = true
+                end
                 autoTryRouteSteal()
                 autoStop("L")
                 return
@@ -5843,6 +5961,7 @@ local function autoStartRight()
         if not AutoPath.R or not St.autoRightEnabled then return end
         local root, hum = autoRootHumanoid()
         if not root or not hum or hum.Health <= 0 then return end
+        applyNoCollisions()
         local spd = autoPathSpeed()
 
         if AutoPath.phaseR == 1 then
@@ -5874,10 +5993,9 @@ local function autoStartRight()
                 if (facePos - root.Position).Magnitude > 0.01 then
                     pcall(function() root.CFrame = CFrame.new(root.Position, facePos) end)
                 end
-                St._autoCarryHandoff = true
-                task.delay(2, function()
-                    if St then St._autoCarryHandoff = false end
-                end)
+                if St.autoCarryOn then
+                    St.speedToggled = true
+                end
                 autoTryRouteSteal()
                 autoStop("R")
                 return
@@ -5934,21 +6052,21 @@ for _, hiddenRow in ipairs({G.Frame_128, G.Frame_129, G.Frame_130, G.Frame_131, 
 end
 
 local pages = {
-	MAIN     = G.WavePage_Speed,
-	COMBAT   = G.WavePage_Combat,
-	MISC     = G.WavePage_Misc,
-	VISUALS  = G.WavePage_Visuals,
-	UI       = G.WavePage_Interface,
-	STEAL    = G.WavePage_Steal,
-	MOVEMENT = G.WavePage_Movement,
+	MAIN     = G.VyzeccPage_Speed,
+	COMBAT   = G.VyzeccPage_Combat,
+	MISC     = G.VyzeccPage_Misc,
+	VISUALS  = G.VyzeccPage_Visuals,
+	UI       = G.VyzeccPage_Interface,
+	STEAL    = G.VyzeccPage_Steal,
+	MOVEMENT = G.VyzeccPage_Movement,
 }
 
 local navButtons = {
-	MAIN    = {btn = G.WaveNav_MAIN,      stroke = G.UIStroke},
-	COMBAT  = {btn = G.WaveNav_COMBAT,    stroke = G.UIStroke_2},
-	MISC    = {btn = G.WaveNav_MISC,      stroke = G.UIStroke_3},
-	VISUALS = {btn = G.WaveNav_VISUALS,   stroke = G.UIStroke_4},
-	UI      = {btn = G.WaveNav_CUSTOMIZE, stroke = G.UIStroke_5},
+	MAIN    = {btn = G.VyzeccNav_MAIN,      stroke = G.UIStroke},
+	COMBAT  = {btn = G.VyzeccNav_COMBAT,    stroke = G.UIStroke_2},
+	MISC    = {btn = G.VyzeccNav_MISC,      stroke = G.UIStroke_3},
+	VISUALS = {btn = G.VyzeccNav_VISUALS,   stroke = G.UIStroke_4},
+	UI      = {btn = G.VyzeccNav_CUSTOMIZE, stroke = G.UIStroke_5},
 }
 
 local dragControllers = {}
@@ -6099,6 +6217,18 @@ end
 
 
 local mainDrag = makeDraggable(G.MainOuter, G.HeaderBar, function() return St.uiLocked == true end, {sensitivity = 1, threshold = 0})
+-- persist main hub position
+do
+	local lastSave = 0
+	G.MainOuter:GetPropertyChangedSignal("Position"):Connect(function()
+		local now = os.clock()
+		if now - lastSave < 0.35 then return end
+		lastSave = now
+		if type(_G.VYZECC_SaveConfig) == "function" then
+			task.defer(function() pcall(_G.VYZECC_SaveConfig) end)
+		end
+	end)
+end
 
 local stealDrag = makeDraggable(StealBarRoot, StealBarRoot, function() return St.uiLocked == true end, {sensitivity = 1, threshold = 6, keepOnScreen = true})
 if G.MobileStackPanel then G.MobileStackPanel.Active = true end
@@ -6142,7 +6272,7 @@ panelDrag.setEnabled(false)
 local function applyOpenUiButtonScale(v)
 	v = math.clamp(tonumber(v) or St.openUiButtonScale, 0.4, 1.6)
 	St.openUiButtonScale = v
-	if G.WAVEMiniRestoreScale then G.WAVEMiniRestoreScale.Scale = v end
+	if G.VYZECCMiniRestoreScale then G.VYZECCMiniRestoreScale.Scale = v end
 	if G.TextBox_16 then G.TextBox_16.Text = string.format("%.2f", v) end
 end
 
@@ -6156,7 +6286,7 @@ end
 local function applyButtonScale(v)
 	v = math.clamp(tonumber(v) or St.sideButtonScale, 0.4, 1.6)
 	St.sideButtonScale = v
-	if G.WAVEButtonScale then G.WAVEButtonScale.Scale = v end
+	if G.VYZECCButtonScale then G.VYZECCButtonScale.Scale = v end
 	if G.TextBox_13 then G.TextBox_13.Text = string.format("%.2f", v) end
 	if G.TextButton_ButtonUI then G.TextButton_ButtonUI.Text = tostring(math.floor(v * 100 + 0.5)) .. "%" end
 end
@@ -6175,8 +6305,8 @@ applyButtonScale(St.sideButtonScale)
 applyStealBarScale(St.progressBarSize)
 applyOpenUiButtonScale(St.openUiButtonScale)
 
-G.WaveMiniRestoreButton.Visible = false
-G.WaveMiniRestoreTitle.Visible = false
+G.VyzeccMiniRestoreButton.Visible = false
+G.VyzeccMiniRestoreTitle.Visible = false
 
 local function setMinimized(state)
 	isMinimized = state
@@ -6188,12 +6318,12 @@ local function setMinimized(state)
 			G.MainOuter.Visible = false
 			G.MainOuter.BackgroundTransparency = 0
 		end)
-		G.WaveMiniRestoreButton.Visible = true
-		G.WaveMiniRestoreTitle.Visible = true
+		G.VyzeccMiniRestoreButton.Visible = true
+		G.VyzeccMiniRestoreTitle.Visible = true
 		G.TextButton.Text = "+"
-		if G.WAVEMiniRestoreScale then
-			G.WAVEMiniRestoreScale.Scale = 0.4
-			TweenService:Create(G.WAVEMiniRestoreScale, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
+		if G.VYZECCMiniRestoreScale then
+			G.VYZECCMiniRestoreScale.Scale = 0.4
+			TweenService:Create(G.VYZECCMiniRestoreScale, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
 		end
 	else
 		G.MainOuter.Visible = true
@@ -6201,8 +6331,8 @@ local function setMinimized(state)
 		TweenService:Create(G.MainOuter, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 			BackgroundTransparency = 0
 		}):Play()
-		G.WaveMiniRestoreButton.Visible = false
-		G.WaveMiniRestoreTitle.Visible = false
+		G.VyzeccMiniRestoreButton.Visible = false
+		G.VyzeccMiniRestoreTitle.Visible = false
 		G.TextButton.Text = "-"
 	end
 end
@@ -6210,10 +6340,10 @@ end
 G.TextButton.MouseButton1Click:Connect(function()
 	setMinimized(not isMinimized)
 end)
-G.WaveMiniRestoreButton.MouseButton1Click:Connect(function()
+G.VyzeccMiniRestoreButton.MouseButton1Click:Connect(function()
 	setMinimized(false)
 end)
-G.WaveMiniRestoreTitle.InputBegan:Connect(function(input)
+G.VyzeccMiniRestoreTitle.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 		setMinimized(false)
 	end
@@ -6234,7 +6364,7 @@ local function selectPage(pageName)
 	end
 	for name, data in pairs(navButtons) do
 		local selected = (name == pageName)
-		if pageChanged or not data.btn:GetAttribute("WaveNavStyled") then
+		if pageChanged or not data.btn:GetAttribute("VyzeccNavStyled") then
 			TweenService:Create(data.btn, TweenInfo.new(0.15), {
 				BackgroundColor3 = selected and Color3.fromRGB(95, 40, 160) or Color3.fromRGB(18, 8, 28),
 				BackgroundTransparency = selected and 0 or 0.22,
@@ -6246,22 +6376,22 @@ local function selectPage(pageName)
 					Thickness = selected and 1.4 or 1
 				}):Play()
 			end
-			data.btn:SetAttribute("WaveNavStyled", true)
+			data.btn:SetAttribute("VyzeccNavStyled", true)
 		end
 	end
 end
 
-G.WaveNav_MAIN.MouseButton1Click:Connect(function() selectPage("MAIN") end)
-G.WaveNav_COMBAT.MouseButton1Click:Connect(function() selectPage("COMBAT") end)
-G.WaveNav_MISC.MouseButton1Click:Connect(function() selectPage("MISC") end)
-G.WaveNav_VISUALS.MouseButton1Click:Connect(function() selectPage("VISUALS") end)
-G.WaveNav_CUSTOMIZE.MouseButton1Click:Connect(function() selectPage("UI") end)
+G.VyzeccNav_MAIN.MouseButton1Click:Connect(function() selectPage("MAIN") end)
+G.VyzeccNav_COMBAT.MouseButton1Click:Connect(function() selectPage("COMBAT") end)
+G.VyzeccNav_MISC.MouseButton1Click:Connect(function() selectPage("MISC") end)
+G.VyzeccNav_VISUALS.MouseButton1Click:Connect(function() selectPage("VISUALS") end)
+G.VyzeccNav_CUSTOMIZE.MouseButton1Click:Connect(function() selectPage("UI") end)
 selectPage("MAIN")
 
 local function setToggleVisual(pill, on)
-	local dot = pill:FindFirstChild("WaveToggleDot")
+	local dot = pill:FindFirstChild("VyzeccToggleDot")
 	if not dot then return end
-	pill:SetAttribute("WaveToggleOn", on)
+	pill:SetAttribute("VyzeccToggleOn", on)
 	local pillColor = on and Color3.fromRGB(110, 50, 180) or Color3.fromRGB(24, 12, 40)
 	local dotColor = on and Color3.fromRGB(249, 240, 255) or Color3.fromRGB(40, 20, 70)
 	local stroke = pill:FindFirstChildOfClass("UIStroke")
@@ -6276,32 +6406,32 @@ local function setToggleVisual(pill, on)
 	end
 end
 
-local _waveToggleCallbacks = setmetatable({}, {__mode = "k"})
-local _waveToggleConnections = setmetatable({}, {__mode = "k"})
-local _waveToggleFallbackConnections = setmetatable({}, {__mode = "k"})
+local _vyzeccToggleCallbacks = setmetatable({}, {__mode = "k"})
+local _vyzeccToggleConnections = setmetatable({}, {__mode = "k"})
+local _vyzeccToggleFallbackConnections = setmetatable({}, {__mode = "k"})
 local function wireNamedToggle(pill, initial, onChange)
 	if not pill then return end
-	if _waveToggleFallbackConnections[pill] then
-		pcall(function() _waveToggleFallbackConnections[pill]:Disconnect() end)
-		_waveToggleFallbackConnections[pill] = nil
+	if _vyzeccToggleFallbackConnections[pill] then
+		pcall(function() _vyzeccToggleFallbackConnections[pill]:Disconnect() end)
+		_vyzeccToggleFallbackConnections[pill] = nil
 	end
-	_waveToggleCallbacks[pill] = onChange
+	_vyzeccToggleCallbacks[pill] = onChange
 	local btn = pill:FindFirstChildOfClass("TextButton")
-	if initial ~= nil and pill:GetAttribute("WaveToggleInitialized") ~= true then
+	if initial ~= nil and pill:GetAttribute("VyzeccToggleInitialized") ~= true then
 		setToggleVisual(pill, initial)
-		pill:SetAttribute("WaveToggleInitialized", true)
+		pill:SetAttribute("VyzeccToggleInitialized", true)
 	end
-	if btn and not _waveToggleConnections[pill] then
-		_waveToggleConnections[pill] = btn.Activated:Connect(function()
-			local cur = pill:GetAttribute("WaveToggleOn") == true
+	if btn and not _vyzeccToggleConnections[pill] then
+		_vyzeccToggleConnections[pill] = btn.Activated:Connect(function()
+			local cur = pill:GetAttribute("VyzeccToggleOn") == true
 			local nxt = not cur
 			setToggleVisual(pill, nxt)
-			local callback = _waveToggleCallbacks[pill]
+			local callback = _vyzeccToggleCallbacks[pill]
 			if callback then
 				local ok, err = pcall(callback, nxt)
 				if not ok then warn("Toggle callback failed: " .. tostring(err)) end
 			end
-			if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+			if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 		end)
 	end
 end
@@ -6311,21 +6441,26 @@ do
 local _fps={descConn=nil,lightCache=nil,terrainCache=nil,baseParts={},effectsDisabled={},meshParts={},models={},attachments={}}
 local function processFPSObj(v)
 pcall(function()
-if v:IsA("Model")then
+local lpChar = LocalPlayer.Character
+if lpChar and v:IsDescendantOf(lpChar) then return end
+if v:IsA("Model") then
 if _fps.models[v]==nil then _fps.models[v]={LevelOfDetail=v.LevelOfDetail,ModelStreamingMode=v.ModelStreamingMode} end
-v.LevelOfDetail=Enum.ModelLevelOfDetail.Disabled;v.ModelStreamingMode=Enum.ModelStreamingMode.Nonatomic
-elseif v:IsA("MeshPart")then
-if _fps.meshParts[v]==nil then _fps.meshParts[v]={Material=v.Material,Reflectance=v.Reflectance,CastShadow=v.CastShadow,DoubleSided=v.DoubleSided,RenderFidelity=v.RenderFidelity}end
-v.CastShadow=false;v.DoubleSided=false;v.RenderFidelity=Enum.RenderFidelity.Performance
-elseif v:IsA("BasePart")then
-if _fps.baseParts[v]==nil then _fps.baseParts[v]={Material=v.Material,Reflectance=v.Reflectance,CastShadow=v.CastShadow}end
-v.CastShadow=false;v.Material=Enum.Material.Plastic;v.Reflectance=0
-elseif v:IsA("Fire")or v:IsA("SpotLight")or v:IsA("Smoke")or v:IsA("Sparkles")or v:IsA("ParticleEmitter")or v:IsA("Trail")or v:IsA("Beam")then
-if v.Enabled then table.insert(_fps.effectsDisabled,v)end;v.Enabled=false
-elseif v:IsA("Explosion")then v.BlastPressure=1;v.BlastRadius=1
-elseif v:IsA("Attachment")then
-if _fps.attachments[v]==nil then _fps.attachments[v]=v.Visible end
-v.Visible=false
+v.LevelOfDetail=Enum.ModelLevelOfDetail.Disabled
+v.ModelStreamingMode=Enum.ModelStreamingMode.Nonatomic
+elseif v:IsA("MeshPart") then
+if _fps.meshParts[v]==nil then _fps.meshParts[v]={CastShadow=v.CastShadow,DoubleSided=v.DoubleSided,RenderFidelity=v.RenderFidelity} end
+v.CastShadow=false
+v.DoubleSided=false
+pcall(function() v.RenderFidelity=Enum.RenderFidelity.Performance end)
+elseif v:IsA("BasePart") then
+if _fps.baseParts[v]==nil then _fps.baseParts[v]={CastShadow=v.CastShadow} end
+v.CastShadow=false
+elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") or v:IsA("ParticleEmitter") or v:IsA("Trail") or v:IsA("Beam") then
+if v.Enabled then table.insert(_fps.effectsDisabled,v) end
+v.Enabled=false
+elseif v:IsA("Explosion") then
+v.BlastPressure=1
+v.BlastRadius=1
 end
 end)
 end
@@ -6340,11 +6475,30 @@ end)
 end
 lighting.GlobalShadows=false;lighting.FogEnd=9e9;lighting.Brightness=0;local terrain=workspace:FindFirstChildOfClass("Terrain")
 if terrain then
-if not _fps.terrainCache then _fps.terrainCache={WaterReflectance=terrain.WaterReflectance,WaterTransparency=terrain.WaterTransparency,WaterWaveSize=terrain.WaterWaveSize,WaterWaveSpeed=terrain.WaterWaveSpeed} end;terrain.WaterReflectance=0;terrain.WaterTransparency=0.7;terrain.WaterWaveSize=0;terrain.WaterWaveSpeed=0
+if not _fps.terrainCache then _fps.terrainCache={WaterReflectance=terrain.WaterReflectance,WaterTransparency=terrain.WaterTransparency,WaterVyzeccSize=terrain.WaterVyzeccSize,WaterVyzeccSpeed=terrain.WaterVyzeccSpeed} end;terrain.WaterReflectance=0;terrain.WaterTransparency=0.7;terrain.WaterVyzeccSize=0;terrain.WaterVyzeccSpeed=0
 end
 end)
 if _fps.descConn then _fps.descConn:Disconnect()end
-_fps.descConn=workspace.DescendantAdded:Connect(function(v)if St.fpsBoostEnabled then task.spawn(processFPSObj,v)end end)
+_fps._descQueue={}
+_fps._descScheduled=false
+local function flushFpsQueue()
+_fps._descScheduled=false
+if not St.fpsBoostEnabled then _fps._descQueue={} return end
+local q=_fps._descQueue
+_fps._descQueue={}
+for i,v in ipairs(q) do
+if v and v.Parent then processFPSObj(v) end
+if i%40==0 then task.wait() end
+end
+end
+_fps.descConn=workspace.DescendantAdded:Connect(function(v)
+if not St.fpsBoostEnabled then return end
+table.insert(_fps._descQueue,v)
+if not _fps._descScheduled then
+_fps._descScheduled=true
+task.defer(flushFpsQueue)
+end
+end)
 end
 local function disableFPSBoost()
 St.fpsBoostEnabled=false;if _fps.descConn then _fps.descConn:Disconnect();_fps.descConn=nil end
@@ -6357,14 +6511,248 @@ for _,v in ipairs(_fps.effectsDisabled)do pcall(function()if v and v.Parent then
 _fps.effectsDisabled={}
 pcall(function()
 local lighting=game:GetService("Lighting");if _fps.lightCache then lighting.GlobalShadows=_fps.lightCache.GlobalShadows;lighting.FogEnd=_fps.lightCache.FogEnd;lighting.Brightness=_fps.lightCache.Brightness;_fps.lightCache=nil end;local terrain=workspace:FindFirstChildOfClass("Terrain")
-if terrain and _fps.terrainCache then terrain.WaterReflectance=_fps.terrainCache.WaterReflectance;terrain.WaterTransparency=_fps.terrainCache.WaterTransparency;terrain.WaterWaveSize=_fps.terrainCache.WaterWaveSize;terrain.WaterWaveSpeed=_fps.terrainCache.WaterWaveSpeed;_fps.terrainCache=nil end
+if terrain and _fps.terrainCache then terrain.WaterReflectance=_fps.terrainCache.WaterReflectance;terrain.WaterTransparency=_fps.terrainCache.WaterTransparency;terrain.WaterVyzeccSize=_fps.terrainCache.WaterVyzeccSize;terrain.WaterVyzeccSpeed=_fps.terrainCache.WaterVyzeccSpeed;_fps.terrainCache=nil end
 end)
 end
 
 if G.Frame_62 then G.Frame_62.Visible = false end
 end
 
-wireNamedToggle(G.WaveTogglePill_35, false, function(on)
+
+do
+	local Promoter = {
+		enabled = false,
+		locked = false,
+		gui = nil,
+		frame = nil,
+		position = UDim2.new(0.5, -105, 0, 10),
+	}
+	St.promoterModeOn = false
+	St.promoterLocked = false
+	St.promoterPosition = { xs = 0.5, xo = -105, ys = 0, yo = 10 }
+
+	local function savePromoterPos()
+		if not Promoter.frame then return end
+		local p = Promoter.frame.Position
+		St.promoterPosition = {
+			xs = p.X.Scale, xo = p.X.Offset,
+			ys = p.Y.Scale, yo = p.Y.Offset,
+		}
+		Promoter.position = p
+		if type(_G.VYZECC_SaveConfig) == "function" then
+			task.defer(function() pcall(_G.VYZECC_SaveConfig) end)
+		end
+	end
+
+	local function applySavedPos()
+		local pos = St.promoterPosition
+		if type(pos) == "table" then
+			local xs = tonumber(pos.xs)
+			local xo = tonumber(pos.xo)
+			local ys = tonumber(pos.ys)
+			local yo = tonumber(pos.yo)
+			if xs and xo and ys and yo then
+				-- migra vecchia pos al centro schermo verso alto-centro
+				if ys == 0.5 and (yo == -18 or yo == -48 or yo == -105) then
+					ys, yo = 0, 10
+				end
+				Promoter.position = UDim2.new(xs, xo, ys, yo)
+				St.promoterPosition = { xs = xs, xo = xo, ys = ys, yo = yo }
+			end
+		else
+			Promoter.position = UDim2.new(0.5, -105, 0, 10)
+			St.promoterPosition = { xs = 0.5, xo = -105, ys = 0, yo = 10 }
+		end
+		if Promoter.frame then
+			Promoter.frame.Position = Promoter.position
+		end
+	end
+
+	local function destroyPromoterGui()
+		if Promoter.gui then
+			pcall(function() Promoter.gui:Destroy() end)
+		end
+		Promoter.gui, Promoter.frame, Promoter.mini = nil, nil, nil
+	end
+
+	local function createPromoterGui()
+		destroyPromoterGui()
+		local gui = Instance.new("ScreenGui")
+		gui.Name = "VyzeccPromoterMode"
+		gui.ResetOnSpawn = false
+		gui.IgnoreGuiInset = true
+		gui.DisplayOrder = 2147483646
+		gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		pcall(function()
+			gui.Parent = game:GetService("CoreGui")
+		end)
+		if not gui.Parent then
+			gui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+		end
+
+		local cardVisible = true
+
+		local frame = Instance.new("Frame")
+		frame.Name = "PromoterCard"
+		frame.Size = UDim2.new(0, 210, 0, 36)
+		applySavedPos()
+		frame.Position = Promoter.position
+		frame.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+		frame.BorderSizePixel = 0
+		frame.Active = true
+		frame.ClipsDescendants = true
+		frame.ZIndex = 50
+		frame.Parent = gui
+		Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 10)
+
+		local stroke = Instance.new("UIStroke")
+		stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		stroke.Color = Color3.fromRGB(160, 80, 220)
+		stroke.Thickness = 1.2
+		stroke.Parent = frame
+
+		local discord = Instance.new("TextLabel")
+		discord.BackgroundTransparency = 1
+		discord.Position = UDim2.new(0, 10, 0, 0)
+		discord.Size = UDim2.new(1, -48, 1, 0)
+		discord.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+		discord.Text = "discord.gg/XNByTnwf25"
+		discord.TextColor3 = Color3.fromRGB(249, 240, 255)
+		discord.TextSize = 13
+		discord.TextXAlignment = Enum.TextXAlignment.Left
+		discord.TextYAlignment = Enum.TextYAlignment.Center
+		discord.ZIndex = 51
+		discord.Parent = frame
+
+		local lockBtn = Instance.new("TextButton")
+		lockBtn.Name = "LockBtn"
+		lockBtn.Size = UDim2.new(0, 34, 0, 22)
+		lockBtn.Position = UDim2.new(1, -38, 0.5, -11)
+		lockBtn.BackgroundColor3 = Color3.fromRGB(28, 12, 48)
+		lockBtn.BorderSizePixel = 0
+		lockBtn.AutoButtonColor = false
+		lockBtn.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+		lockBtn.Text = Promoter.locked and "L" or "U"
+		lockBtn.TextColor3 = Color3.fromRGB(249, 240, 255)
+		lockBtn.TextSize = 11
+		lockBtn.ZIndex = 52
+		lockBtn.Parent = frame
+		Instance.new("UICorner", lockBtn).CornerRadius = UDim.new(0, 6)
+
+		local function refreshLockVisual()
+			lockBtn.Text = Promoter.locked and "L" or "U"
+			lockBtn.BackgroundColor3 = Promoter.locked and Color3.fromRGB(95, 40, 160) or Color3.fromRGB(28, 12, 48)
+		end
+		refreshLockVisual()
+
+		lockBtn.Activated:Connect(function()
+			Promoter.locked = not Promoter.locked
+			St.promoterLocked = Promoter.locked
+			refreshLockVisual()
+			savePromoterPos()
+		end)
+
+		local dragging, dragStart, startPos = false, nil, nil
+		frame.InputBegan:Connect(function(input)
+			if Promoter.locked then return end
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = frame.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						if dragging then
+							dragging = false
+							savePromoterPos()
+						end
+					end
+				end)
+			end
+		end)
+		UserInputService.InputChanged:Connect(function(input)
+			if not dragging or Promoter.locked then return end
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				local delta = input.Position - dragStart
+				frame.Position = UDim2.new(
+					startPos.X.Scale, startPos.X.Offset + delta.X,
+					startPos.Y.Scale, startPos.Y.Offset + delta.Y
+				)
+			end
+		end)
+
+		local mini = Instance.new("TextButton")
+		mini.Name = "PromoterMiniBtn"
+		mini.Size = UDim2.new(0, 28, 0, 28)
+		mini.Position = UDim2.new(0, 8, 0.5, -50)
+		mini.AnchorPoint = Vector2.new(0, 0.5)
+		mini.BackgroundColor3 = Color3.fromRGB(18, 8, 28)
+		mini.BorderSizePixel = 0
+		mini.AutoButtonColor = false
+		mini.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+		mini.Text = "D"
+		mini.TextColor3 = Color3.fromRGB(220, 180, 255)
+		mini.TextSize = 13
+		mini.ZIndex = 55
+		mini.Parent = gui
+		Instance.new("UICorner", mini).CornerRadius = UDim.new(0, 8)
+		local miniStroke = Instance.new("UIStroke")
+		miniStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		miniStroke.Color = Color3.fromRGB(160, 80, 220)
+		miniStroke.Thickness = 1.2
+		miniStroke.Parent = mini
+
+		local function setCardVisible(v)
+			cardVisible = v and true or false
+			frame.Visible = cardVisible
+			mini.BackgroundColor3 = cardVisible and Color3.fromRGB(95, 40, 160) or Color3.fromRGB(18, 8, 28)
+			mini.Text = cardVisible and "D" or "D"
+		end
+		setCardVisible(true)
+
+		mini.Activated:Connect(function()
+			setCardVisible(not cardVisible)
+		end)
+
+		Promoter.gui = gui
+		Promoter.frame = frame
+		Promoter.mini = mini
+		applySavedPos()
+	end
+
+local function setPromoterMode(on)
+		on = on == true
+		Promoter.enabled = on
+		St.promoterModeOn = on
+		Promoter.locked = St.promoterLocked == true
+		if on then
+			createPromoterGui()
+		else
+			if Promoter.frame then
+				savePromoterPos()
+			end
+			destroyPromoterGui()
+		end
+		if type(_G.VYZECC_SaveConfig) == "function" then
+			task.defer(function() pcall(_G.VYZECC_SaveConfig) end)
+		end
+	end
+
+	_G.VYZECC_SetPromoterMode = setPromoterMode
+	_G.VYZECC_ApplyPromoterPos = applySavedPos
+	_G.VYZECC_GetPromoterState = function()
+		return {
+			on = St.promoterModeOn == true,
+			locked = St.promoterLocked == true,
+			position = St.promoterPosition,
+		}
+	end
+
+	if G.VyzeccTogglePill_Promoter then
+		wireNamedToggle(G.VyzeccTogglePill_Promoter, false, setPromoterMode)
+	end
+end
+
+wireNamedToggle(G.VyzeccTogglePill_35, false, function(on)
 	
 	
 	St.uiLocked = on == true
@@ -6376,7 +6764,7 @@ St.sideButtonsLocked = false
 St.sidePanelLocked = false
 for _, ctrl in pairs(buttonDrags) do ctrl.setEnabled(true) end
 
-local hidePanelPill = G.WaveTogglePill_32
+local hidePanelPill = G.VyzeccTogglePill_32
 local function setSidePanelBackgroundVisible(visible)
 	local show = visible == true
 	if G.MobileStackPanel then
@@ -6394,7 +6782,7 @@ local function setSidePanelBackgroundVisible(visible)
 end
 
 St.sidePanelVisible = false
-if hidePanelPill then hidePanelPill:SetAttribute("WaveToggleOn", false) end
+if hidePanelPill then hidePanelPill:SetAttribute("VyzeccToggleOn", false) end
 setSidePanelBackgroundVisible(false)
 
 if G.TextButton_58 then
@@ -6434,7 +6822,7 @@ bindScaleBox(G.TextBox_14, applyStealBarScale)
 bindScaleBox(G.TextBox_16, applyOpenUiButtonScale)
 
 local function saveInterfaceScaleBoxes()
-	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 end
 for _, box in ipairs({G.TextBox_12, G.TextBox_13, G.TextBox_14, G.TextBox_16}) do
 	if box then
@@ -6500,7 +6888,7 @@ local function setLaggerMode(mode)
 	updateSpeedModeButton()
 	updateLaggerModeButton()
 	syncMobileSpeedVisuals()
-	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 end
 
 local function toggleLaggerMode()
@@ -6523,7 +6911,7 @@ local function toggleSpeedMode()
 	end
 	updateSpeedModeButton()
 	syncMobileSpeedVisuals()
-	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 end
 
 local function setFrameOn(frame, on)
@@ -6568,7 +6956,7 @@ local function bindSpeedBox(box, key)
 		else
 			box.Text = tostring(math.floor(St[key] or 0))
 		end
-		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+		if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 	end)
 end
 
@@ -6609,7 +6997,7 @@ local function startRebind(which,btn)
 		else
 			setBinding(which,input.UserInputType,input.KeyCode,getBindPlatform(input.UserInputType))
 			if btn then btn.Text=bindingText(which); btn.TextColor3=Color3.fromRGB(150,100,200) end
-			if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+			if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 		end
 
 		rebinding=nil
@@ -6635,9 +7023,9 @@ if G.TextButton_6 then G.TextButton_6.Text=bindingText("lagger"); G.TextButton_6
 if G.TextButton_10 then G.TextButton_10.Text=bindingText("autoLeft"); G.TextButton_10:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad"); G.TextButton_10.MouseButton1Click:Connect(function() startRebind("autoLeft",G.TextButton_10) end) end
 if G.TextButton_11 then G.TextButton_11.Text=bindingText("autoRight"); G.TextButton_11:SetAttribute("BindTypes","Keyboard / PlayStation / Xbox / Gamepad"); G.TextButton_11.MouseButton1Click:Connect(function() startRebind("autoRight",G.TextButton_11) end) end
 
-if _G._WAVE_speedControllerCleanup then pcall(_G._WAVE_speedControllerCleanup) end
+if _G._VYZECC_speedControllerCleanup then pcall(_G._VYZECC_speedControllerCleanup) end
 local _speedControllerToken = {}
-_G._WAVE_speedControllerToken = _speedControllerToken
+_G._VYZECC_speedControllerToken = _speedControllerToken
 
 local HIJACK = _G._VelHijackStore
 if type(HIJACK) ~= "table" then
@@ -6649,9 +7037,7 @@ HIJACK.v = Vector3.zero
 _G._VioletteccFakeSpeed = tonumber(_G._VioletteccFakeSpeed) or 16
 
 _G._VioletteccGetSpeed = function()
-	if St.laggerMode == 1 then return St.burstNormalSpeed end
-	if St.laggerMode == 2 then return St.burstCarrySpeed end
-	return St.speedToggled and St.carrySpeed or St.normalSpeed
+	return getActiveSpeed()
 end
 
 if not _G._VelHijackInstalled then
@@ -6714,49 +7100,26 @@ end
 
 local function startMovement()
 	if moveConn then moveConn:Disconnect() moveConn = nil end
-	moveConn = RunService.PreSimulation:Connect(function()
-		if _G._WAVE_speedControllerToken ~= _speedControllerToken then return end
+	moveConn = RunService.Heartbeat:Connect(function()
+		if _G._VYZECC_speedControllerToken ~= _speedControllerToken then return end
 		local c, h, r = _gc()
 		if not c or not h or not r then return end
 		if _G._VezyBatAimbotOn then return end
 		local st = h:GetState()
 		if h.PlatformStand or st == Enum.HumanoidStateType.Physics or st == Enum.HumanoidStateType.Ragdoll or st == Enum.HumanoidStateType.FallingDown then
-			local ragSpeed = St.laggerMode == 2 and St.burstCarrySpeed or St.burstNormalSpeed
-			local rs = math.max(0, tonumber(ragSpeed) or 0)
-			local dir = h.MoveDirection
-			if dir.Magnitude > 0.05 and rs > 0 then
-				local u = dir.Unit
-				r.AssemblyLinearVelocity = Vector3.new(u.X * rs, r.AssemblyLinearVelocity.Y, u.Z * rs)
-			else
-				r.AssemblyLinearVelocity = Vector3.new(0, r.AssemblyLinearVelocity.Y, 0)
-			end
+			return
+		end
+		if St.autoLeftEnabled or St.autoRightEnabled then
 			return
 		end
 		local dir = h.MoveDirection
-		if St.autoLeftEnabled or St.autoRightEnabled then
-			
-			return
-		end
+		local speed = getActiveSpeed()
+		if not speed or speed <= 0 then return end
 		if dir.Magnitude > 0.05 then
-			pcall(function() if r.SetNetworkOwner then r:SetNetworkOwner(LocalPlayer) end end)
-			local speed
-			local carryActive = St.speedToggled or LocalPlayer:GetAttribute("Stealing") == true
-			if St._autoCarryHandoff and carryActive then
-				speed = math.max(1, tonumber(St.carrySpeed) or 30)
-			elseif St.laggerMode == 1 then
-				speed = math.max(1, tonumber(St.burstNormalSpeed) or 15)
-			elseif St.laggerMode == 2 then
-				speed = math.max(1, tonumber(St.burstCarrySpeed) or 10)
-			elseif carryActive then
-				speed = math.max(1, tonumber(St.carrySpeed) or 30)
-			else
-				speed = math.max(1, tonumber(St.normalSpeed) or 60)
-			end
-			
-			
-			if St.autoLeftEnabled or St.autoRightEnabled then
-				
-			end
+			applyNoCollisions()
+			pcall(function()
+				if r.SetNetworkOwner then r:SetNetworkOwner(LocalPlayer) end
+			end)
 			local u = dir.Unit
 			r.AssemblyLinearVelocity = Vector3.new(u.X * speed, r.AssemblyLinearVelocity.Y, u.Z * speed)
 			St.lastMoveDir = u
@@ -6773,16 +7136,16 @@ end
 
 startMovement()
 
-_G._WAVE_speedControllerCleanup = function()
+_G._VYZECC_speedControllerCleanup = function()
 	stopMovement()
-	if _G._WAVE_speedControllerToken == _speedControllerToken then
-		_G._WAVE_speedControllerToken = nil
+	if _G._VYZECC_speedControllerToken == _speedControllerToken then
+		_G._VYZECC_speedControllerToken = nil
 	end
 end
 
-G.WAVEHubV1.Destroying:Connect(function()
-	if _G._WAVE_speedControllerToken == _speedControllerToken then
-		_G._WAVE_speedControllerCleanup()
+G.VYZECCHubV1.Destroying:Connect(function()
+	if _G._VYZECC_speedControllerToken == _speedControllerToken then
+		_G._VYZECC_speedControllerCleanup()
 	end
 end)
 
@@ -6799,7 +7162,7 @@ UserInputService.InputBegan:Connect(function(inp, gp)
 		end
 		updateSpeedModeButton()
 		syncMobileSpeedVisuals()
-		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+		if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 	elseif bindingMatches("lagger", inp) then
 		toggleLaggerMode()
 	end
@@ -6849,7 +7212,7 @@ for _, data in ipairs(stackBtns) do
 				if on then setLaggerMode(2) else setLaggerMode(0) end
 			end
 
-			if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+			if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 			if data.name ~= "AUTO LEFT" and data.name ~= "AUTO RIGHT" and data.name ~= "DROP BR" and data.name ~= "TP DOWN" then
 				local targetColor = on and Color3.fromRGB(126, 20, 200) or Color3.fromRGB(18, 8, 28)
 				TweenService:Create(data.frame, TweenInfo.new(0.18, Enum.EasingStyle.Quad), {
@@ -7143,7 +7506,7 @@ _G.AutoCarrySpeed = {
 	Disable = disableAutoCarrySpeed,
 }
 
-wireNamedToggle(G.WaveTogglePill_2, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_2, false, function(on)
 	St.autoCarryOn = on
 	_G._VynxAutoSpeedOn = on
 	if on then startAutoSpeed() else stopAutoSpeed() end
@@ -7259,7 +7622,7 @@ end)
 _G._VioletteccStartAntiRagdoll = arStart
 _G._VioletteccStopAntiRagdoll = arStop
 
-wireNamedToggle(G.WaveTogglePill_3, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_3, false, function(on)
 	St.antiRagdollEnabled = on
 	if on then arStart() else arStop() end
 end)
@@ -7309,7 +7672,7 @@ local function startInfJump()
 	end)
 end
 
-wireNamedToggle(G.WaveTogglePill, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill, false, function(on)
 	St.infJumpEnabled = on
 	if on then startInfJump() else stopInfJump() end
 end)
@@ -7318,43 +7681,190 @@ if G.Frame_16 then G.Frame_16.Visible = false end
 if G.SizeDropdown then G.SizeDropdown.Visible = false end
 if G.Arrow then G.Arrow.Visible = false end
 
-local _actionAntiDie = { drop = false, aimbot = false, tpDown = false }
-local _actionAntiDieEnabled = false
-local _actionAntiDieConn = nil
-local _actionAntiDieCharConn = nil
-local function _setActionAntiDieSource(name, on)
-	_actionAntiDie[name] = on == true
-	local want = _actionAntiDie.drop or _actionAntiDie.aimbot or _actionAntiDie.tpDown
-	if want == _actionAntiDieEnabled then return end
-	_actionAntiDieEnabled = want
-	if _actionAntiDieConn then _actionAntiDieConn:Disconnect(); _actionAntiDieConn = nil end
-	if _actionAntiDieCharConn then _actionAntiDieCharConn:Disconnect(); _actionAntiDieCharConn = nil end
-	local function protect(char)
-		local hum = char and char:FindFirstChildOfClass("Humanoid")
+local _antiDieEnabled = false
+local _antiDieConn = nil
+local _antiDieCharConn = nil
+local _antiDieDeathConns = {}
+local function setAntiDieEnabled(on)
+	on = on == true
+	if _antiDieEnabled == on then return end
+
+	_antiDieEnabled = on
+
+	local function clearDeathConns()
+		for _, c in ipairs(_antiDieDeathConns) do
+			pcall(function() c:Disconnect() end)
+		end
+		table.clear(_antiDieDeathConns)
+	end
+
+	if _antiDieConn then
+		pcall(function() _antiDieConn:Disconnect() end)
+		_antiDieConn = nil
+	end
+	if _antiDieCharConn then
+		pcall(function() _antiDieCharConn:Disconnect() end)
+		_antiDieCharConn = nil
+	end
+	clearDeathConns()
+
+	local function restoreHumanoid(hum)
 		if not hum then return end
 		pcall(function()
-			hum.BreakJointsOnDeath = false
-			hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
-			if hum.Health <= 0 then hum.Health = hum.MaxHealth end
+			hum:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
+			hum.BreakJointsOnDeath = true
+			if hum.MaxHealth ~= hum.MaxHealth or hum.MaxHealth > 1e9 then
+				hum.MaxHealth = 100
+			elseif hum.MaxHealth <= 0 then
+				hum.MaxHealth = 100
+			end
+			local mh = hum.MaxHealth
+			if mh ~= mh or mh > 1e6 then
+				hum.MaxHealth = 100
+				mh = 100
+			end
+			hum.Health = math.clamp(hum.Health > 1e6 and mh or hum.Health, 0, mh)
+			if hum.Health > mh or hum.Health ~= hum.Health then
+				hum.Health = mh
+			end
+		end)
+		pcall(function()
+			hum.MaxHealth = 100
+			hum.Health = 100
+			hum:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
+			hum.BreakJointsOnDeath = true
 		end)
 	end
-	if want then
-		protect(LocalPlayer.Character)
-		_actionAntiDieCharConn = LocalPlayer.CharacterAdded:Connect(function(char)
-			task.wait(0.05)
-			if _actionAntiDieEnabled then protect(char) end
+
+	local function protectChar(char)
+		if not char or not _antiDieEnabled then return end
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		if not hum then
+			hum = char:FindFirstChild("Humanoid")
+		end
+		if not hum then return end
+
+		pcall(function()
+			hum.MaxHealth = math.huge
+			hum.Health = math.huge
+			hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+			hum.BreakJointsOnDeath = false
 		end)
-		_actionAntiDieConn = RunService.Heartbeat:Connect(function()
-			if not _actionAntiDieEnabled then return end
+
+		local sc = hum.StateChanged:Connect(function(_, newState)
+			if not _antiDieEnabled then return end
+			if newState == Enum.HumanoidStateType.Dead then
+				pcall(function()
+					hum.Health = math.huge
+					hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+				end)
+			end
+		end)
+		table.insert(_antiDieDeathConns, sc)
+
+		local hc = hum:GetPropertyChangedSignal("Health"):Connect(function()
+			if not _antiDieEnabled then return end
+			if hum.Health < hum.MaxHealth then
+				pcall(function()
+					hum.Health = math.huge
+				end)
+			end
+		end)
+		table.insert(_antiDieDeathConns, hc)
+	end
+
+	if on then
+		protectChar(LocalPlayer.Character)
+
+		_antiDieCharConn = LocalPlayer.CharacterAdded:Connect(function(char)
+			if not _antiDieEnabled then return end
+			task.wait(0.1)
+			if not _antiDieEnabled then return end
+			clearDeathConns()
+			protectChar(char)
+		end)
+
+		_antiDieConn = RunService.Heartbeat:Connect(function()
+			if not _antiDieEnabled then return end
 			local char = LocalPlayer.Character
 			local hum = char and char:FindFirstChildOfClass("Humanoid")
-			if not hum then return end
-			if hum.BreakJointsOnDeath then hum.BreakJointsOnDeath = false end
-			if hum:GetStateEnabled(Enum.HumanoidStateType.Dead) then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false) end
-			if hum.Health <= 0 then hum.Health = hum.MaxHealth end
+			if not hum or not hum.Parent then return end
+			pcall(function()
+				if hum.Health < hum.MaxHealth then
+					hum.Health = math.huge
+				end
+				if hum:GetStateEnabled(Enum.HumanoidStateType.Dead) then
+					hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+				end
+				if hum.BreakJointsOnDeath then
+					hum.BreakJointsOnDeath = false
+				end
+			end)
 		end)
+	else
+		local char = LocalPlayer.Character
+		if char then
+			restoreHumanoid(char:FindFirstChildOfClass("Humanoid"))
+		end
 	end
 end
+
+G.Frame_AntiDie = Instance.new("Frame")
+G.Frame_AntiDie.Name = "Frame_AntiDie"
+G.Frame_AntiDie.BackgroundTransparency = 1
+G.Frame_AntiDie.BorderSizePixel = 0
+G.Frame_AntiDie.LayoutOrder = 9
+G.Frame_AntiDie.Size = UDim2.new(1, 0, 0, 40)
+G.Frame_AntiDie.Parent = G.VyzeccPage_Misc
+
+G.TextLabel_AntiDie = Instance.new("TextLabel")
+G.TextLabel_AntiDie.BackgroundTransparency = 1
+G.TextLabel_AntiDie.Position = UDim2.new(0, 12, 0, 0)
+G.TextLabel_AntiDie.Size = UDim2.new(1, -64, 1, 0)
+G.TextLabel_AntiDie.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy, Enum.FontStyle.Normal)
+G.TextLabel_AntiDie.Text = "Anti Die"
+G.TextLabel_AntiDie.TextColor3 = Color3.fromRGB(234, 225, 240)
+G.TextLabel_AntiDie.TextSize = 11
+G.TextLabel_AntiDie.TextXAlignment = Enum.TextXAlignment.Left
+G.TextLabel_AntiDie.Parent = G.Frame_AntiDie
+
+G.VyzeccTogglePill_AntiDie = Instance.new("Frame")
+G.VyzeccTogglePill_AntiDie.Name = "VyzeccTogglePill"
+G.VyzeccTogglePill_AntiDie.BackgroundColor3 = Color3.fromRGB(24, 12, 40)
+G.VyzeccTogglePill_AntiDie.BorderSizePixel = 0
+G.VyzeccTogglePill_AntiDie.Position = UDim2.new(1, -54, 0.5, -9)
+G.VyzeccTogglePill_AntiDie.Size = UDim2.new(0, 40, 0, 18)
+G.VyzeccTogglePill_AntiDie.ZIndex = 7
+G.VyzeccTogglePill_AntiDie:SetAttribute("VyzeccToggleOn", false)
+G.VyzeccTogglePill_AntiDie.Parent = G.Frame_AntiDie
+
+local antiDieCorner = Instance.new("UICorner")
+antiDieCorner.CornerRadius = UDim.new(0, 9)
+antiDieCorner.Parent = G.VyzeccTogglePill_AntiDie
+local antiDieStroke = Instance.new("UIStroke")
+antiDieStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+antiDieStroke.Color = Color3.fromRGB(55, 25, 90)
+antiDieStroke.Parent = G.VyzeccTogglePill_AntiDie
+local antiDieDot = Instance.new("Frame")
+antiDieDot.Name = "VyzeccToggleDot"
+antiDieDot.BackgroundColor3 = Color3.fromRGB(40, 20, 70)
+antiDieDot.BorderSizePixel = 0
+antiDieDot.Position = UDim2.new(0, 3, 0.5, -6)
+antiDieDot.Size = UDim2.new(0, 12, 0, 12)
+antiDieDot.ZIndex = 8
+antiDieDot.Parent = G.VyzeccTogglePill_AntiDie
+local antiDieDotCorner = Instance.new("UICorner")
+antiDieDotCorner.CornerRadius = UDim.new(0, 6)
+antiDieDotCorner.Parent = antiDieDot
+local antiDieButton = Instance.new("TextButton")
+antiDieButton.BackgroundTransparency = 1
+antiDieButton.BorderSizePixel = 0
+antiDieButton.Size = UDim2.new(1, 0, 1, 0)
+antiDieButton.ZIndex = 9
+antiDieButton.Text = ""
+antiDieButton.Parent = G.VyzeccTogglePill_AntiDie
+
+wireNamedToggle(G.VyzeccTogglePill_AntiDie, false, setAntiDieEnabled)
 
 St.dropType = "Jump Drop" 
 St.dropKey = Enum.KeyCode.X
@@ -7372,11 +7882,9 @@ local function runDropBrainrot()
 	Drop.active = true
 	_G.dropActive = true
 	_G.IsDropping = true
-	_setActionAntiDieSource("drop", true)
 	setSideButtonState(G.StackBtn_drop, true, 0.08)
 	task.delay(0.3, function()
 		setSideButtonState(G.StackBtn_drop, false, 0.12)
-		_setActionAntiDieSource("drop", false)
 	end)
 	local startY = root.Position.Y
 	local startedAt = tick()
@@ -7391,7 +7899,6 @@ local function runDropBrainrot()
 			Drop.active = false
 			_G.dropActive = false
 			_G.IsDropping = false
-			_setActionAntiDieSource("drop", false)
 			return
 		end
 
@@ -7404,7 +7911,6 @@ local function runDropBrainrot()
 			Drop.active = false
 			_G.dropActive = false
 			_G.IsDropping = false
-			_setActionAntiDieSource("drop", false)
 			return
 		end
 
@@ -7436,22 +7942,74 @@ St.autoTpDownHeight = tonumber(G.TextBox_6 and G.TextBox_6.Text) or 20
 _G._VynxAutoTPDownEnabled = false
 _G._VynxAutoTPDownHeightTrigger = St.autoTpDownHeight
 
+local function resolveAimbotSpeedForTp()
+	if _G._VezyBatSpeedEnabled then
+		if St.laggerMode ~= 0 then
+			return math.clamp(tonumber(_G._VezyBatAimbotSpeedLagger) or 40, 1, 200)
+		end
+		return math.clamp(tonumber(_G._VezyBatAimbotSpeed) or 58, 1, 200)
+	end
+	if St.laggerMode == 1 or St.laggerMode == 2 then
+		return math.clamp(tonumber(St.burstNormalSpeed) or 15, 1, 200)
+	end
+	return math.clamp(tonumber(St.normalSpeed) or 60, 1, 200)
+end
+
 local function runTPDown()
-	_setActionAntiDieSource("tpDown", true)
 	setSideButtonState(G.StackBtn_tpDown, true, 0.08)
 	task.delay(0.3, function()
 		setSideButtonState(G.StackBtn_tpDown, false, 0.12)
-		_setActionAntiDieSource("tpDown", false)
 	end)
 	pcall(function()
 		local c = LocalPlayer.Character
 		if not c then return end
 		local hrp = c:FindFirstChild("HumanoidRootPart")
+		local hum = c:FindFirstChildOfClass("Humanoid")
 		if not hrp then return end
+		local aimbotOn = _G._VezyBatAimbotOn == true
 		St._tpInProgress = true
-		hrp.CFrame = CFrame.new(hrp.Position.X, -7.00, hrp.Position.Z)
-			* CFrame.Angles(0, select(2, hrp.CFrame:ToEulerAnglesYXZ()), 0)
-		task.delay(0.1, function() St._tpInProgress = false end)
+		St._tpAimbotKeep = aimbotOn
+		local yaw = select(2, hrp.CFrame:ToEulerAnglesYXZ())
+		local prevVel = hrp.AssemblyLinearVelocity
+		local prevHoriz = Vector3.new(prevVel.X, 0, prevVel.Z)
+
+		hrp.CFrame = CFrame.new(hrp.Position.X, -7.00, hrp.Position.Z) * CFrame.Angles(0, yaw, 0)
+
+		if aimbotOn then
+			local spd = resolveAimbotSpeedForTp()
+			local horiz = prevHoriz
+			if horiz.Magnitude < 1 then
+				local best, bestDist = nil, 120
+				for _, p in ipairs(Players:GetPlayers()) do
+					if p ~= LocalPlayer and p.Character then
+						local tr = p.Character:FindFirstChild("HumanoidRootPart")
+						local hm = p.Character:FindFirstChildOfClass("Humanoid")
+						if tr and hm and hm.Health > 0 then
+							local d = (tr.Position - hrp.Position).Magnitude
+							if d < bestDist then best, bestDist = tr, d end
+						end
+					end
+				end
+				if best then
+					local flat = Vector3.new(best.Position.X - hrp.Position.X, 0, best.Position.Z - hrp.Position.Z)
+					if flat.Magnitude > 0.05 then horiz = flat.Unit * spd end
+				end
+			else
+				horiz = horiz.Unit * spd
+			end
+			hrp.AssemblyLinearVelocity = Vector3.new(horiz.X, math.clamp(prevVel.Y, -40, 40), horiz.Z)
+			if hum then
+				pcall(function()
+					hum.PlatformStand = false
+					hum.AutoRotate = false
+				end)
+			end
+		end
+
+		task.delay(0.18, function()
+			St._tpInProgress = false
+			St._tpAimbotKeep = false
+		end)
 	end)
 end
 
@@ -7477,7 +8035,7 @@ if G.TextBox_6 then
 	end)
 end
 
-wireNamedToggle(G.WaveTogglePill_4, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_4, false, function(on)
 	St.autoTpDownEnabled = on
 	_G._VynxAutoTPDownEnabled = on
 end)
@@ -7524,32 +8082,32 @@ end
 
 local function buildLateSection()
 local specialPills = {
-	[G.WaveTogglePill] = true,
-	[G.WaveTogglePill_5] = true,
-	[G.WaveTogglePill_2] = true,
-	[G.WaveTogglePill_3] = true,
-	[G.WaveTogglePill_4] = true,
-	[G.WaveTogglePill_22] = true,
-	[G.WaveTogglePill_23] = true,
-	[G.WaveTogglePill_24] = true,
-	[G.WaveTogglePill_25] = true,
-	[G.WaveTogglePill_26] = true,
-	[G.WaveTogglePill_27] = true,
-	[G.WaveTogglePill_29] = true,
-	[G.WaveTogglePill_31] = true,
-	[G.WaveTogglePill_32] = true,
-	[G.WaveTogglePill_33] = true,
-	[G.WaveTogglePill_34] = true,
-	[G.WaveTogglePill_35] = true,
+	[G.VyzeccTogglePill] = true,
+	[G.VyzeccTogglePill_5] = true,
+	[G.VyzeccTogglePill_2] = true,
+	[G.VyzeccTogglePill_3] = true,
+	[G.VyzeccTogglePill_4] = true,
+	[G.VyzeccTogglePill_22] = true,
+	[G.VyzeccTogglePill_23] = true,
+	[G.VyzeccTogglePill_24] = true,
+	[G.VyzeccTogglePill_25] = true,
+	[G.VyzeccTogglePill_26] = true,
+	[G.VyzeccTogglePill_27] = true,
+	[G.VyzeccTogglePill_29] = true,
+	[G.VyzeccTogglePill_31] = true,
+	[G.VyzeccTogglePill_32] = true,
+	[G.VyzeccTogglePill_33] = true,
+	[G.VyzeccTogglePill_34] = true,
+	[G.VyzeccTogglePill_35] = true,
 }
 
 local toggleCount = 0
-for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
-	if desc.Name == "WaveTogglePill" and desc:IsA("Frame") and not specialPills[desc] then
+for _, desc in ipairs(G.VYZECCHubV1:GetDescendants()) do
+	if desc.Name == "VyzeccTogglePill" and desc:IsA("Frame") and not specialPills[desc] then
 		local clickBtn = desc:FindFirstChildOfClass("TextButton")
 		if clickBtn then
 			toggleCount = toggleCount + 1
-			setToggleVisual(desc, desc:GetAttribute("WaveToggleOn") == true)
+			setToggleVisual(desc, desc:GetAttribute("VyzeccToggleOn") == true)
 			
 			
 			
@@ -7559,7 +8117,7 @@ for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
 end
 
 local textBoxCount = 0
-for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
+for _, desc in ipairs(G.VYZECCHubV1:GetDescendants()) do
 	if desc:IsA("TextBox") then
 		textBoxCount = textBoxCount + 1
 		desc.ClearTextOnFocus = false
@@ -7568,11 +8126,11 @@ for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
 end
 
 local extraBtnCount = 0
-for _, desc in ipairs(G.WAVEHubV1:GetDescendants()) do
+for _, desc in ipairs(G.VYZECCHubV1:GetDescendants()) do
 	if desc:IsA("TextButton") then
-		if desc.Parent and desc.Parent.Name == "WaveTogglePill" then
+		if desc.Parent and desc.Parent.Name == "VyzeccTogglePill" then
 		elseif desc.Parent == G.HeaderBar then
-		elseif desc.Name:match("^WaveNav_") then
+		elseif desc.Name:match("^VyzeccNav_") then
 		else
 			extraBtnCount = extraBtnCount + 1
 			desc.MouseButton1Down:Connect(function()
@@ -7619,7 +8177,7 @@ local function setBatSpeedOpen(on)
 	if G.Arrow_2 then
 		G.Arrow_2.Text = batSpeedOpen and "▲" or "▼"
 	end
-	local page = G.WavePage_Combat
+	local page = G.VyzeccPage_Combat
 	if page then
 		local lay = page:FindFirstChildOfClass("UIListLayout")
 		if lay then
@@ -7641,8 +8199,8 @@ local function toggleBatSpeedOpen()
 	setBatSpeedOpen(not batSpeedOpen)
 end
 
-if G.WaveTogglePill_22 then
-	setToggleVisual(G.WaveTogglePill_22, false)
+if G.VyzeccTogglePill_22 then
+	setToggleVisual(G.VyzeccTogglePill_22, false)
 end
 
 if G.SizeDropdown_2 then
@@ -7664,7 +8222,7 @@ if G.TextBox_8 then
 		else
 			G.TextBox_8.Text = tostring(_G._VezyBatAimbotSpeed or 58)
 		end
-		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 	end)
 end
 if G.TextBox_9 then
@@ -7676,13 +8234,13 @@ if G.TextBox_9 then
 		else
 			G.TextBox_9.Text = tostring(_G._VezyBatAimbotSpeedLagger or 40)
 		end
-		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 	end)
 end
 
-wireNamedToggle(G.WaveTogglePill_23, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_23, false, function(on)
 	_G._VioletteccAimbotAutoSwing = on and true or false
-	if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+	if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 end)
 
 local Aim = { conn = nil, target = nil, equipped = false, nextTargetScan = 0, nextSwing = 0 }
@@ -7690,30 +8248,48 @@ if G.TextButton_42 then G.TextButton_42.Text = bindingText("aimbot"); G.TextButt
 if G.TextButton_42 then G.TextButton_42.MouseButton1Click:Connect(function() startRebind("aimbot", G.TextButton_42) end) end
 
 local function aimbotSpeed()
-	
-	
-	if St.laggerMode ~= 0 then
-		return math.clamp(tonumber(_G._VezyBatAimbotSpeedLagger) or 40, 1, 200)
+	if _G._VezyBatSpeedEnabled then
+		if St.laggerMode ~= 0 then
+			return math.clamp(tonumber(_G._VezyBatAimbotSpeedLagger) or 40, 1, 200)
+		end
+		return math.clamp(tonumber(_G._VezyBatAimbotSpeed) or 58, 1, 200)
 	end
-	return math.clamp(tonumber(_G._VezyBatAimbotSpeed) or 58, 1, 200)
+	if St.laggerMode == 1 or St.laggerMode == 2 then
+		return math.clamp(tonumber(St.burstNormalSpeed) or 15, 1, 200)
+	end
+	return math.clamp(tonumber(St.normalSpeed) or 60, 1, 200)
+end
+
+local function isBatTool(tool)
+	return tool and tool:IsA("Tool") and tool.Name:lower():find("bat", 1, true) ~= nil
 end
 
 local function findBatTool()
 	local char = LocalPlayer.Character
-	if not char then return nil end
-	for _, t in ipairs(char:GetChildren()) do
-		if t:IsA("Tool") and (t.Name:lower():find("bat") or t.Name:lower():find("medusa")) then
-			return t
+	if char then
+		for _, tool in ipairs(char:GetChildren()) do
+			if isBatTool(tool) then return tool end
 		end
 	end
-	local bp = LocalPlayer:FindFirstChild("Backpack")
-	if bp then
-		for _, t in ipairs(bp:GetChildren()) do
-			if t:IsA("Tool") and (t.Name:lower():find("bat") or t.Name:lower():find("medusa")) then
-				return t
-			end
+	local backpack = LocalPlayer:FindFirstChild("Backpack")
+	if backpack then
+		for _, tool in ipairs(backpack:GetChildren()) do
+			if isBatTool(tool) then return tool end
 		end
 	end
+	return nil
+end
+
+local function equipBatTool(humanoid, character)
+	local bat = findBatTool()
+	if not bat then return nil end
+	if bat.Parent ~= character then
+		pcall(function()
+			humanoid:UnequipTools()
+			humanoid:EquipTool(bat)
+		end)
+	end
+	if bat.Parent == character then return bat end
 	return nil
 end
 
@@ -7745,6 +8321,9 @@ local function stepNormal(root, hum, target)
 	local vertical = (targetPosition.Y + 3.7 - root.Position.Y) * 19.5 + targetVelocity.Y * 0.8
 	if hum.FloorMaterial ~= Enum.Material.Air then vertical = math.max(vertical, 13) end
 	vertical = math.clamp(vertical, -70, 110)
+	if St._tpInProgress or St._tpAimbotKeep then
+		vertical = math.clamp(root.AssemblyLinearVelocity.Y, -35, 55)
+	end
 	local speed = aimbotSpeed()
 	root.AssemblyLinearVelocity = root.AssemblyLinearVelocity:Lerp(
 		Vector3.new(flat.X * speed, vertical, flat.Z * speed), 0.8
@@ -7817,6 +8396,9 @@ local function stepBypass(root, hum, target)
 	local yVel = (them.Y + 3.7 - me.Y) * 19.5 + targetVel.Y * 0.8
 	if hum.FloorMaterial ~= Enum.Material.Air then yVel = math.max(yVel, 13) end
 	yVel = math.clamp(yVel, -70, 110)
+	if St._tpInProgress or St._tpAimbotKeep then
+		yVel = math.clamp(root.AssemblyLinearVelocity.Y, -35, 55)
+	end
 	local desiredVel = Vector3.new(flatDir.X * spd, yVel, flatDir.Z * spd)
 	root.AssemblyLinearVelocity = root.AssemblyLinearVelocity:Lerp(desiredVel, 0.8)
 	local predictTime = math.clamp(targetVel.Magnitude / 150, 0.05, 0.2)
@@ -7841,7 +8423,6 @@ end
 stopBatAimbot = function()
 	_G._VezyBatAimbotOn = false
 	syncAimbotButtonVisual(false)
-	pcall(function() _setActionAntiDieSource("aimbot", false) end)
 	if Aim.conn then Aim.conn:Disconnect() Aim.conn = nil end
 	Aim.target, Aim.equipped = nil, false
 	local c = LocalPlayer.Character
@@ -7862,7 +8443,6 @@ startBatAimbot = function()
 	end
 	_G._VezyBatAimbotOn = true
 	syncAimbotButtonVisual(true)
-	pcall(function() _setActionAntiDieSource("aimbot", true) end)
 	Aim.equipped = false
 	Aim.nextTargetScan = 0
 	Aim.nextSwing = 0
@@ -7873,13 +8453,8 @@ startBatAimbot = function()
 		local root = char and char:FindFirstChild("HumanoidRootPart")
 		if not root or not hum or hum.Health <= 0 then return end
 
-		if not Aim.equipped then
-			Aim.equipped = true
-			if not char:FindFirstChildOfClass("Tool") then
-				local b = findBatTool()
-				if b then pcall(function() hum:EquipTool(b) end) end
-			end
-		end
+		local equippedBat = equipBatTool(hum, char)
+		Aim.equipped = equippedBat ~= nil
 
 		local now = os.clock()
 		if now >= Aim.nextTargetScan then
@@ -7889,13 +8464,14 @@ startBatAimbot = function()
 		local target = Aim.target
 		if not target then
 			if _G._VioletteccAimbotAutoSwing == true and now >= Aim.nextSwing then
-				local idleBat = char:FindFirstChildOfClass("Tool") or findBatTool()
-				if idleBat and idleBat.Parent == char then pcall(function() idleBat:Activate() end) end
+				local idleBat = equipBatTool(hum, char)
+				if idleBat then pcall(function() idleBat:Activate() end) end
 				Aim.nextSwing = now + 0.14
 			end
 			return
 		end
 		hum.AutoRotate = false
+		if hum.PlatformStand then hum.PlatformStand = false end
 
 		local useBypass = (_G._VezyBatAimbotMode == "old")
 		if useBypass then
@@ -7904,7 +8480,7 @@ startBatAimbot = function()
 			stepNormal(root, hum, target)
 		end
 
-		local bat = char:FindFirstChildOfClass("Tool") or findBatTool()
+		local bat = equipBatTool(hum, char)
 		if _G._VioletteccAimbotAutoSwing == true and bat and bat.Parent == char and now >= Aim.nextSwing then
 			pcall(function() bat:Activate() end)
 			Aim.nextSwing = now + 0.14
@@ -7941,7 +8517,7 @@ if G.TextButton_43 then
 		if _G._VezyBatAimbotOn then
 			startBatAimbot() 
 		end
-		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 	end)
 end
 
@@ -7952,24 +8528,24 @@ UserInputService.InputBegan:Connect(function(inp, gp)
 	if bindingMatches("aimbot", inp) then
 		local enabled = not _G._VezyBatAimbotOn
 		if enabled then startBatAimbot() else stopBatAimbot() end
-		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+		if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 	end
 end)
 
 if G.TextButton_69 then
 	G.TextButton_69.MouseButton1Click:Connect(function()
 		if _G._VezyBatAimbotOn then stopBatAimbot() else startBatAimbot() end
-		if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+		if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 	end)
 end
 
 
 
 _G._VezyBatSpeedEnabled = false
-if G.WaveTogglePill_22 then
-	wireNamedToggle(G.WaveTogglePill_22, false, function(on)
+if G.VyzeccTogglePill_22 then
+	wireNamedToggle(G.VyzeccTogglePill_22, false, function(on)
 		_G._VezyBatSpeedEnabled = on
-		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 	end)
 end
 
@@ -7981,24 +8557,24 @@ do
 	local draggingFov = false
 	local function setFovValue(value)
 		fovValue = math.clamp(math.floor((tonumber(value) or 70) + 0.5), 70, 120)
-		_G._WaveFovValue = fovValue
+		_G._VyzeccFovValue = fovValue
 		if G.TextLabel_43 then G.TextLabel_43.Text = tostring(fovValue) end
 		local alpha = (fovValue - 70) / 50
 		if G.Frame_74 then G.Frame_74.Size = UDim2.new(alpha, 0, 1, 0) end
 		if G.Frame_75 then G.Frame_75.Position = UDim2.new(alpha, -6, 0.5, -6) end
 		if fovEnabled and workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = fovValue end
 	end
-	_G._WaveFovSetValue = setFovValue
+	_G._VyzeccFovSetValue = setFovValue
 	local function setFovEnabled(on)
 		fovEnabled = on == true
-		_G._WaveFovEnabled = fovEnabled
+		_G._VyzeccFovEnabled = fovEnabled
 		if fovEnabled then
 			if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = fovValue end
 		else
 			if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = 70 end
 		end
 	end
-	if G.WaveTogglePill_19 then wireNamedToggle(G.WaveTogglePill_19, false, setFovEnabled) end
+	if G.VyzeccTogglePill_19 then wireNamedToggle(G.VyzeccTogglePill_19, false, setFovEnabled) end
 	local function updateFromX(x)
 		if not G.Frame_73 then return end
 		local width = math.max(1, G.Frame_73.AbsoluteSize.X)
@@ -8020,7 +8596,7 @@ do
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then draggingFov = false end
 	end)
 	setFovValue(70)
-	if G.WAVEHubV1.Destroying then G.WAVEHubV1.Destroying:Connect(function() if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = 70 end end) end
+	if G.VYZECCHubV1.Destroying then G.VYZECCHubV1.Destroying:Connect(function() if workspace.CurrentCamera then workspace.CurrentCamera.FieldOfView = 70 end end) end
 end
 
 
@@ -8045,10 +8621,10 @@ do
 			savedHeadState = nil
 		end
 	end
-	if G.WaveTogglePill_20 then wireNamedToggle(G.WaveTogglePill_20, false, applyHeadless) end
+	if G.VyzeccTogglePill_20 then wireNamedToggle(G.VyzeccTogglePill_20, false, applyHeadless) end
 	LocalPlayer.CharacterAdded:Connect(function(char)
 		task.wait(0.5)
-		if G.WaveTogglePill_20 and G.WaveTogglePill_20:GetAttribute("WaveToggleOn") then applyHeadless(true) end
+		if G.VyzeccTogglePill_20 and G.VyzeccTogglePill_20:GetAttribute("VyzeccToggleOn") then applyHeadless(true) end
 	end)
 end
 
@@ -8093,16 +8669,16 @@ do
 			end
 		end)
 	end
-	_G._WaveSetBodyLockRange = function(value)
+	_G._VyzeccSetBodyLockRange = function(value)
 		local n = tonumber(value)
 		if n and n >= 1 then bodyLockRange = math.clamp(n, 1, 500); if G.TextBox_7 then G.TextBox_7.Text = tostring(bodyLockRange) end end
 	end
-	if G.WaveTogglePill_9 then wireNamedToggle(G.WaveTogglePill_9, false, setBodyLock) end
+	if G.VyzeccTogglePill_9 then wireNamedToggle(G.VyzeccTogglePill_9, false, setBodyLock) end
 	if G.TextBox_7 then
 		G.TextBox_7.FocusLost:Connect(function()
 			local n = tonumber(G.TextBox_7.Text)
-			if n and n >= 1 then _G._WaveSetBodyLockRange(n) else G.TextBox_7.Text = tostring(bodyLockRange) end
-			if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+			if n and n >= 1 then _G._VyzeccSetBodyLockRange(n) else G.TextBox_7.Text = tostring(bodyLockRange) end
+			if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 		end)
 	end
 end
@@ -8189,7 +8765,7 @@ do
 		if mode == "Both" or mode == "Right" then attachKorblox("Right Leg") end
 	end
 	_G._RaVeApplyKorblox = applyKorblox
-	_G._WaveSetKorbloxMode = function(mode)
+	_G._VyzeccSetKorbloxMode = function(mode)
 		for i, candidate in ipairs(modes) do if candidate == mode then modeIndex = i; break end end
 		if G.TextButton_34 then G.TextButton_34.Text = modes[modeIndex] end
 		applyKorblox(modes[modeIndex])
@@ -8198,7 +8774,7 @@ do
 		local mode = modes[modeIndex]
 		if G.TextButton_34 then G.TextButton_34.Text = mode end
 		applyKorblox(mode)
-		if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+		if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 	end
 	if G.TextButton_34 then
 		G.TextButton_34.Text = "Off"
@@ -8225,8 +8801,8 @@ do
 			table.clear(accessorySaved)
 		end
 	end
-	if G.WaveTogglePill_16 then wireNamedToggle(G.WaveTogglePill_16, false, setAccessoriesHidden) end
-	LocalPlayer.CharacterAdded:Connect(function() task.wait(0.6); if G.WaveTogglePill_16 and G.WaveTogglePill_16:GetAttribute("WaveToggleOn") then setAccessoriesHidden(true) end end)
+	if G.VyzeccTogglePill_16 then wireNamedToggle(G.VyzeccTogglePill_16, false, setAccessoriesHidden) end
+	LocalPlayer.CharacterAdded:Connect(function() task.wait(0.6); if G.VyzeccTogglePill_16 and G.VyzeccTogglePill_16:GetAttribute("VyzeccToggleOn") then setAccessoriesHidden(true) end end)
 end
 
 
@@ -8249,7 +8825,7 @@ do
 		if G.BgImage then G.BgImage.ImageTransparency = on and 1 or savedBg.panelImage end
 		if G.MobileStackPanel then G.MobileStackPanel.BackgroundColor3 = on and Color3.fromRGB(43, 14, 70) or savedBg.panelColor end
 	end
-	if G.WaveTogglePill_30 then wireNamedToggle(G.WaveTogglePill_30, false, setRemoveUiImage) end
+	if G.VyzeccTogglePill_30 then wireNamedToggle(G.VyzeccTogglePill_30, false, setRemoveUiImage) end
 end
 
 
@@ -8279,7 +8855,7 @@ do
 			end
 		end
 	end
-	if G.WaveTogglePill_17 then wireNamedToggle(G.WaveTogglePill_17, false, setDarkMode) end
+	if G.VyzeccTogglePill_17 then wireNamedToggle(G.VyzeccTogglePill_17, false, setDarkMode) end
 end
 
 
@@ -8299,7 +8875,7 @@ do
 		local pg = LocalPlayer:FindFirstChildOfClass("PlayerGui")
 		if not pg then return end
 		e01Gui = Instance.new("BillboardGui")
-		e01Gui.Name = "WaveE01Warn"
+		e01Gui.Name = "VyzeccE01Warn"
 		e01Gui.Size = UDim2.fromOffset(170, 24)
 		e01Gui.StudsOffset = Vector3.new(0, 2.65, 0)
 		e01Gui.SizeOffset = Vector2.new(0, 1.25)
@@ -8359,7 +8935,7 @@ do
 			end
 		end)
 	end
-	if G.WaveTogglePill_7 then wireNamedToggle(G.WaveTogglePill_7, false, setKickWarning) end
+	if G.VyzeccTogglePill_7 then wireNamedToggle(G.VyzeccTogglePill_7, false, setKickWarning) end
 end
 
 
@@ -8368,7 +8944,7 @@ do
 	local stretchConn = nil
 	local function setStretch(on)
 		stretchOn = on == true
-		_G._WaveStretchRezEnabled = stretchOn
+		_G._VyzeccStretchRezEnabled = stretchOn
 		if stretchConn then
 			stretchConn:Disconnect()
 			stretchConn = nil
@@ -8402,8 +8978,8 @@ do
 			end
 		end
 	end
-	if G.WaveTogglePill_21 then
-		wireNamedToggle(G.WaveTogglePill_21, false, setStretch)
+	if G.VyzeccTogglePill_21 then
+		wireNamedToggle(G.VyzeccTogglePill_21, false, setStretch)
 	end
 end
 
@@ -8412,7 +8988,7 @@ do
 	local function getLocalRoot() local c=LocalPlayer.Character; return c and (c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("UpperTorso") or c:FindFirstChild("Torso") or c:FindFirstChild("Head")) end
 	local function getCamera() return workspace.CurrentCamera end
 	local function makeLine()
-		local line=Instance.new("Frame"); line.Name="WaveTracerLine"; line.AnchorPoint=Vector2.new(0.5,0.5); line.BorderSizePixel=0; line.BackgroundColor3=Color3.fromRGB(170,100,240); line.BackgroundTransparency=0; line.ZIndex=1000; line.Visible=false; line.Parent=tracerGui; return line
+		local line=Instance.new("Frame"); line.Name="VyzeccTracerLine"; line.AnchorPoint=Vector2.new(0.5,0.5); line.BorderSizePixel=0; line.BackgroundColor3=Color3.fromRGB(170,100,240); line.BackgroundTransparency=0; line.ZIndex=1000; line.Visible=false; line.Parent=tracerGui; return line
 	end
 	local function clearESP()
 		if espConn then espConn:Disconnect(); espConn=nil end
@@ -8424,7 +9000,7 @@ do
 	local function create(player)
 		if player==LocalPlayer or records[player] then return end
 		local char=player.Character; if not char then return end
-		local h=Instance.new("Highlight"); h.Name="WaveESPHighlight"; h.Adornee=char; h.FillColor=Color3.fromRGB(150,70,220); h.OutlineColor=Color3.fromRGB(220,180,255); h.FillTransparency=0.82; h.OutlineTransparency=0.08; h.Parent=char
+		local h=Instance.new("Highlight"); h.Name="VyzeccESPHighlight"; h.Adornee=char; h.FillColor=Color3.fromRGB(150,70,220); h.OutlineColor=Color3.fromRGB(220,180,255); h.FillTransparency=0.82; h.OutlineTransparency=0.08; h.Parent=char
 		local line=makeLine(); records[player]={highlight=h,line=line}
 	end
 	local function recreate(player)
@@ -8442,8 +9018,8 @@ do
 		line.Visible=true
 	end
 	local function setESP(on)
-		espEnabled=on==true; _G._WaveESPEnabled=espEnabled; clearESP(); if not espEnabled then return end
-		tracerGui=Instance.new("ScreenGui"); tracerGui.Name="WaveTracerGui"; tracerGui.ResetOnSpawn=false; tracerGui.IgnoreGuiInset=true; tracerGui.DisplayOrder=2147483646; tracerGui.ZIndexBehavior=Enum.ZIndexBehavior.Global; tracerGui.Parent=LocalPlayer:WaitForChild("PlayerGui")
+		espEnabled=on==true; _G._VyzeccESPEnabled=espEnabled; clearESP(); if not espEnabled then return end
+		tracerGui=Instance.new("ScreenGui"); tracerGui.Name="VyzeccTracerGui"; tracerGui.ResetOnSpawn=false; tracerGui.IgnoreGuiInset=true; tracerGui.DisplayOrder=2147483646; tracerGui.ZIndexBehavior=Enum.ZIndexBehavior.Global; tracerGui.Parent=LocalPlayer:WaitForChild("PlayerGui")
 		for _,plr in ipairs(Players:GetPlayers()) do if plr~=LocalPlayer then create(plr); plr.CharacterAdded:Connect(function() recreate(plr) end) end end
 		playerAddedConn=Players.PlayerAdded:Connect(function(plr) plr.CharacterAdded:Connect(function() recreate(plr) end); if plr.Character then create(plr) end end)
 		espConn=RunService.RenderStepped:Connect(function()
@@ -8460,9 +9036,9 @@ do
 				else updateLine(r.line,nil,nil,false) end
 			end
 		end)
-		_G._WaveESPCleanup=clearESP
+		_G._VyzeccESPCleanup=clearESP
 	end
-	if G.WaveTogglePill_15 then wireNamedToggle(G.WaveTogglePill_15,false,setESP) end
+	if G.VyzeccTogglePill_15 then wireNamedToggle(G.VyzeccTogglePill_15,false,setESP) end
 end
 
 local NetBypass = {
@@ -8520,11 +9096,11 @@ local function startNetBypass()
 		end
 	end)
 end
-_G.WAVE_StartBypassV1 = startNetBypass
-_G.WAVE_StopBypassV1 = stopNetBypass
+_G.VYZECC_StartBypassV1 = startNetBypass
+_G.VYZECC_StopBypassV1 = stopNetBypass
 
 St.autoStealOn = false
-St.autoStealVersion = "Normal"
+St.autoStealVersion = "75"
 St.ragdollStealOn = false
 St.ragdollStealPauseUntil = 0
 St.stealRadius = tonumber(G.TextBox_10 and G.TextBox_10.Text) or 60
@@ -8540,7 +9116,7 @@ local function setStealProgress(p)
 	end
 	
 end
-_G.WAVE_SetStealProgress = setStealProgress
+_G.VYZECC_SetStealProgress = setStealProgress
 setStealProgress(0)
 
 if G.TextBox_10 then
@@ -8550,7 +9126,7 @@ if G.TextBox_10 then
 			St.stealRadius = n
 			G.TextBox_10.Text = tostring(n)
 			setStealProgress(0)
-			if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+			if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 		else
 			G.TextBox_10.Text = tostring(St.stealRadius)
 		end
@@ -8563,7 +9139,7 @@ if G.TextBox_11 then
 			St.stealDuration = n
 			G.TextBox_11.Text = string.format("%.2f", n)
 			setStealProgress(0)
-			if _G.WAVE_SaveConfig then pcall(_G.WAVE_SaveConfig) end
+			if _G.VYZECC_SaveConfig then pcall(_G.VYZECC_SaveConfig) end
 		else
 			G.TextBox_11.Text = string.format("%.2f", St.stealDuration)
 		end
@@ -8645,9 +9221,50 @@ end
 
 
 
-local STEAL_MODE = 75              
-local ACTIVATION_RANGE = 9         
+local STOP_TIME_MODES = {75, 80, 85, 90}
+local stopTimeModeIdx = 1
+local STEAL_MODE = STOP_TIME_MODES[stopTimeModeIdx]
+local ACTIVATION_RANGE = 9
 local stealData = setmetatable({}, {__mode = "k"})
+local autoStealGeneration = 0
+local isStealing = false
+local autoStealStartedAt = 0
+
+local function setStopTimeMode(mode)
+	local n = tonumber(mode)
+	if not n then
+		local s = tostring(mode or "")
+		if s == "V1" then n = 75
+		elseif s == "V2" then n = 80
+		elseif s == "Normal" then n = 75
+		else n = 75 end
+	end
+	local idx = 1
+	for i, v in ipairs(STOP_TIME_MODES) do
+		if v == n then idx = i; break end
+	end
+	stopTimeModeIdx = idx
+	STEAL_MODE = STOP_TIME_MODES[stopTimeModeIdx]
+	St.autoStealVersion = tostring(STEAL_MODE)
+	if G.TextButton_48 then
+		G.TextButton_48.Text = tostring(STEAL_MODE)
+		G.TextButton_48.Visible = true
+		G.TextButton_48.Active = true
+	end
+end
+
+local function cycleStopTimeMode()
+	stopTimeModeIdx = stopTimeModeIdx % #STOP_TIME_MODES + 1
+	setStopTimeMode(STOP_TIME_MODES[stopTimeModeIdx])
+	if type(_G.VYZECC_SaveConfig) == "function" then
+		task.defer(function() pcall(_G.VYZECC_SaveConfig) end)
+	end
+end
+
+local function getAutoStealStopTime(duration)
+	duration = math.max(0.05, tonumber(duration) or tonumber(St.stealDuration) or 1.35)
+	return duration * (STEAL_MODE / 100)
+end
 
 local function getStealRoot()
 	local char = LocalPlayer.Character
@@ -8666,9 +9283,9 @@ end
 local function findStealTarget()
 	local root = getStealRoot()
 	local plots = workspace:FindFirstChild("Plots")
-	if not (root and plots) then return nil end
+	if not (root and plots) then return nil, nil end
 	local radius = tonumber(St.stealRadius) or 60
-	local best, bestDist = nil, math.huge
+	local best, bestDist, bestName = nil, math.huge, nil
 	for _, plot in ipairs(plots:GetChildren()) do
 		if not isOwnPlot(plot.Name) then
 			local podiums = plot:FindFirstChild("AnimalPodiums")
@@ -8683,7 +9300,7 @@ local function findStealTarget()
 							if attachment then
 								for _, child in ipairs(attachment:GetChildren()) do
 									if child:IsA("ProximityPrompt") and child.ActionText and child.ActionText:find("Steal") then
-										best, bestDist = child, d
+										best, bestDist, bestName = child, d, podium.Name
 									end
 								end
 							end
@@ -8693,11 +9310,12 @@ local function findStealTarget()
 			end
 		end
 	end
-	return best
+	return best, bestName
 end
 
-local function runAutoStealOnce(prompt)
+local function runAutoStealOnce(prompt, podName)
 	if not prompt or not prompt.Parent then return end
+	if isStealing or autoStealBusy then return end
 	local data = stealData[prompt]
 	if not data then
 		data = {hold = {}, trigger = {}, ready = true}
@@ -8717,74 +9335,120 @@ local function runAutoStealOnce(prompt)
 
 	data.ready = false
 	autoStealBusy = true
+	isStealing = true
+	local generation = autoStealGeneration
+	autoStealStartedAt = tick()
 
 	task.spawn(function()
 		local function finish(progress)
 			setStealProgress(progress or 0)
 			data.ready = true
 			autoStealBusy = false
+			if generation == autoStealGeneration then
+				isStealing = false
+				autoStealStartedAt = 0
+			end
+		end
+
+		local function stillActive()
+			return generation == autoStealGeneration and St.autoStealOn and isStealing
+		end
+
+		local function promptDistance()
+			if not prompt.Parent then return nil end
+			local root = getStealRoot()
+			local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+			if not root or not hum or hum.Health <= 0 then return nil end
+			local parent = prompt.Parent
+			local part = parent:IsA("BasePart") and parent or parent.Parent
+			if not part or not part:IsA("BasePart") then return nil end
+			return (root.Position - part.Position).Magnitude
+		end
+
+		local function valid()
+			if not stillActive() then return false end
+			local d = promptDistance()
+			local radius = tonumber(St.stealRadius) or 60
+			return d ~= nil and d <= radius
 		end
 
 		local ok, err = pcall(function()
-			local duration = math.max(0.05, tonumber(St.stealDuration) or 1.4)
-			local ratio = STEAL_MODE / 100
-			local holdTime = ratio * duration
-			local rest = math.max(0.01, duration - holdTime)
+			local duration = math.max(0.05, tonumber(St.stealDuration) or 1.35)
+			local stopTime = getAutoStealStopTime(duration)
+			local stopProgress = math.clamp(stopTime / duration, 0, 1)
 
 			local function runProgressCycle()
 				setStealProgress(0)
-				for _, cb in ipairs(data.hold) do pcall(cb) end
+				for _, cb in ipairs(data.hold) do task.spawn(function() pcall(cb) end) end
 
-				
 				local startedAt = tick()
-				while St.autoStealOn do
+				while stillActive() do
 					if waitForRagdollStealClear() then return "restart" end
-					if not St.autoStealOn then return "stopped" end
+					if not stillActive() then return "stopped" end
+					if not valid() then return "missed" end
 					local elapsed = tick() - startedAt
-					setStealProgress(math.min(elapsed / duration, ratio))
-					if elapsed >= holdTime then break end
+					setStealProgress(math.min(elapsed / duration, stopProgress))
+					if elapsed >= stopTime then break end
 					task.wait()
 				end
-				if not St.autoStealOn then return "stopped" end
-				setStealProgress(ratio)
+				if not stillActive() then return "stopped" end
+				if not valid() then return "missed" end
+				setStealProgress(stopProgress)
 
-				
 				local reached = false
-				local waitStart = tick()
-				while St.autoStealOn and tick() - waitStart < 2.99 do
+				local deadline = tick() + math.max(2.99 - stopTime - math.max(duration - stopTime, 0), 0.05)
+				while stillActive() do
 					if waitForRagdollStealClear() then return "restart" end
-					if not St.autoStealOn then return "stopped" end
-					local root = getStealRoot()
-					local podium = prompt.Parent and prompt.Parent.Parent
-					if root and podium and podium:IsA("BasePart") then
-						local distance = (root.Position - podium.Position).Magnitude
-						if distance <= ACTIVATION_RANGE then reached = true; break end
-						if distance > (tonumber(St.stealRadius) or 60) then return "missed" end
+					if not stillActive() then return "stopped" end
+					local d = promptDistance()
+					if d and d <= ACTIVATION_RANGE then
+						reached = true
+						break
 					end
+					if not d or d > (tonumber(St.stealRadius) or 60) then return "missed" end
+					if tick() >= deadline then break end
 					task.wait()
 				end
 				if not reached then return "missed" end
+				if not stillActive() then return "stopped" end
 
-				
-				local phaseStart = tick()
-				while St.autoStealOn do
+				local fillStart = tick()
+				local fillDuration = math.max(duration - stopTime, 0.05)
+				while stillActive() do
 					if waitForRagdollStealClear() then return "restart" end
-					if not St.autoStealOn then return "stopped" end
-					local progress = math.min(ratio + (tick() - phaseStart) / rest * (1 - ratio), 1)
-					setStealProgress(progress)
-					if progress >= 1 then break end
+					if not stillActive() then return "stopped" end
+					if not valid() then return "missed" end
+					local fp = math.clamp((tick() - fillStart) / fillDuration, 0, 1)
+					setStealProgress(stopProgress + fp * (1 - stopProgress))
+					if fp >= 1 then break end
 					task.wait()
 				end
-				if not St.autoStealOn then return "stopped" end
+				if not stillActive() then return "stopped" end
+				if not valid() then return "missed" end
 
 				setStealProgress(1)
-				for _, cb in ipairs(data.trigger) do pcall(cb) end
-				if type(fireproximityprompt) == "function" then pcall(fireproximityprompt, prompt, 0) end
-				task.wait(0.05)
+				for _, cb in ipairs(data.trigger) do task.spawn(function() pcall(cb) end) end
+				local remote = game:GetService("ReplicatedStorage"):FindFirstChild("StealAnimal")
+				if remote and remote:IsA("RemoteEvent") and podName then
+					pcall(function() remote:FireServer(podName) end)
+				end
+				if #data.trigger == 0 then
+					if type(fireproximityprompt) == "function" then
+						pcall(fireproximityprompt, prompt)
+					else
+						pcall(function()
+							prompt:InputHoldBegin()
+							prompt:InputHoldEnd()
+						end)
+					end
+				elseif type(fireproximityprompt) == "function" then
+					pcall(fireproximityprompt, prompt, 0)
+				end
+				task.wait(0.12)
 				return "done"
 			end
 
-			while St.autoStealOn do
+			while stillActive() do
 				local result = runProgressCycle()
 				if result == "restart" then
 					setStealProgress(0)
@@ -8797,7 +9461,7 @@ local function runAutoStealOnce(prompt)
 			finish(0)
 		end)
 		if not ok then
-			warn("Auto Steal error: " .. tostring(err))
+			warn("[VYZECC Auto Steal] " .. tostring(err))
 			finish(0)
 		end
 	end)
@@ -8805,27 +9469,53 @@ end
 
 local function startAutoSteal()
 	if autoStealConn then return end
+	St.autoStealOn = true
 	local acc = 0
 	autoStealConn = RunService.Heartbeat:Connect(function(dt)
-		if not St.autoStealOn or autoStealBusy then return end
+		if not St.autoStealOn then return end
+		if isStealing or autoStealBusy then
+			if autoStealStartedAt > 0 and (tick() - autoStealStartedAt) > 6 then
+				autoStealGeneration = autoStealGeneration + 1
+				isStealing = false
+				autoStealBusy = false
+				autoStealStartedAt = 0
+				for _, data in pairs(stealData) do
+					if type(data) == "table" then data.ready = true end
+				end
+				setStealProgress(0)
+			end
+			return
+		end
 		acc = acc + dt
 		if acc < 0.05 then return end
 		acc = 0
-		local ok, target = pcall(findStealTarget)
-		if ok and target then pcall(runAutoStealOnce, target) end
+		local target, podName = nil, nil
+		local ok = pcall(function()
+			target, podName = findStealTarget()
+		end)
+		if ok and target then
+			pcall(runAutoStealOnce, target, podName)
+		end
 	end)
 end
 
 local function stopAutoSteal()
 	St.autoStealOn = false
+	autoStealGeneration = autoStealGeneration + 1
+	isStealing = false
+	autoStealBusy = false
+	autoStealStartedAt = 0
 	ragdollStealPauseUntil = 0
 	St.ragdollStealPauseUntil = 0
 	ragdollStealStateLatched = false
-	if autoStealConn then autoStealConn:Disconnect() autoStealConn = nil end
+	if autoStealConn then autoStealConn:Disconnect(); autoStealConn = nil end
+	for _, data in pairs(stealData) do
+		if type(data) == "table" then data.ready = true end
+	end
 	setStealProgress(0)
 end
 
-wireNamedToggle(G.WaveTogglePill_28, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_28, false, function(on)
 	St.ragdollStealOn = on == true
 	if not on then
 		ragdollStealPauseUntil = 0
@@ -8834,17 +9524,20 @@ wireNamedToggle(G.WaveTogglePill_28, false, function(on)
 	end
 end)
 
-wireNamedToggle(G.WaveTogglePill_29, false, function(on)
-	St.autoStealOn = on
+wireNamedToggle(G.VyzeccTogglePill_29, false, function(on)
 	if on then startAutoSteal() else stopAutoSteal() end
 end)
 
-St.autoStealVersion = "Normal"
+setStopTimeMode(St.autoStealVersion or "75")
 if G.TextButton_48 then
-	
-	G.TextButton_48.Visible = false
-	G.TextButton_48.Active = false
+	G.TextButton_48.Visible = true
+	G.TextButton_48.Active = true
+	G.TextButton_48.Text = tostring(STEAL_MODE)
+	G.TextButton_48.Activated:Connect(function()
+		cycleStopTimeMode()
+	end)
 end
+
 
 St.batCounterOn = false
 St.medusaCounterOn = false
@@ -9032,7 +9725,7 @@ local function stopBatCounter()
 end
 _G.VezyStartBatCounter = function() St.batCounterOn = true; startBatCounter() end
 _G.VezyStopBatCounter = function() St.batCounterOn = false; stopBatCounter() end
-wireNamedToggle(G.WaveTogglePill_26, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_26, false, function(on)
 	St.batCounterOn = on
 	if on then startBatCounter() else stopBatCounter() end
 end)
@@ -9091,7 +9784,7 @@ local function startMedusaCounter()
 	for _, part in ipairs(char:GetDescendants()) do watchPart(part) end
 	medusaConn = char.DescendantAdded:Connect(watchPart)
 end
-wireNamedToggle(G.WaveTogglePill_27, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_27, false, function(on)
 	St.medusaCounterOn = on
 	if on then startMedusaCounter() else stopMedusaCounter() end
 end)
@@ -9145,7 +9838,7 @@ local function stopUnwalk()
 	if unwalkConn then unwalkConn:Disconnect() unwalkConn = nil end
 end
 
-wireNamedToggle(G.WaveTogglePill_5, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_5, false, function(on)
 	St.unwalkOn = on
 	if on then startUnwalk() else stopUnwalk() end
 end)
@@ -9155,11 +9848,19 @@ local removeAccessoriesEnabled=false
 local antiLagDescConn=nil
 local function applyAntiLagDerender(obj)
 pcall(function()
-if obj:IsA("Accessory")or obj:IsA("Hat")then obj:Destroy()
-elseif obj:IsA("BasePart")then obj.Material=Enum.Material.Plastic;obj.Reflectance=0;obj.CastShadow=false
-elseif obj:IsA("Decal")or obj:IsA("Texture")then obj.Transparency=1
-elseif obj:IsA("ParticleEmitter")or obj:IsA("Trail")or obj:IsA("Beam")or obj:IsA("Fire")or obj:IsA("Smoke")or obj:IsA("Sparkles")then obj.Enabled=false
-elseif obj:IsA("AnimationController")or obj:IsA("Animator")then for _,t in ipairs(obj:GetPlayingAnimationTracks())do pcall(function()t:Stop(0)end)end end
+local lpChar = LocalPlayer.Character
+if lpChar and obj:IsDescendantOf(lpChar) then return end
+if obj:IsA("Accessory") or obj:IsA("Hat") then
+	if obj.Parent and obj.Parent:IsA("Model") and Players:GetPlayerFromCharacter(obj.Parent) then
+		obj:Destroy()
+	end
+elseif obj:IsA("BasePart") then
+	obj.CastShadow = false
+elseif obj:IsA("Decal") or obj:IsA("Texture") then
+	obj.Transparency = 1
+elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Beam") or obj:IsA("Fire") or obj:IsA("Smoke") or obj:IsA("Sparkles") then
+	obj.Enabled = false
+end
 end)
 end
 local function enableAntiLag()
@@ -9181,8 +9882,25 @@ local antiLagObjects=workspace:GetDescendants()
 for i,obj in ipairs(antiLagObjects)do applyAntiLagDerender(obj);if i%180==0 then task.wait()end end
 antiLagObjects=nil
 if antiLagDescConn then antiLagDescConn:Disconnect()end
+local _alQueue={}
+local _alSched=false
+local function flushAntiLagQueue()
+_alSched=false
+if not removeAccessoriesEnabled then _alQueue={} return end
+local q=_alQueue
+_alQueue={}
+for i,obj in ipairs(q) do
+if obj and obj.Parent then applyAntiLagDerender(obj) end
+if i%50==0 then task.wait() end
+end
+end
 antiLagDescConn=workspace.DescendantAdded:Connect(function(obj)
-if removeAccessoriesEnabled then applyAntiLagDerender(obj)end
+if not removeAccessoriesEnabled then return end
+table.insert(_alQueue,obj)
+if not _alSched then
+_alSched=true
+task.defer(flushAntiLagQueue)
+end
 end)
 end
 local function disableAntiLag()
@@ -9195,7 +9913,7 @@ local Lighting=game:GetService("Lighting")
 Lighting.ExposureCompensation=0
 end)
 end
-wireNamedToggle(G.WaveTogglePill_13, false, function(on)
+wireNamedToggle(G.VyzeccTogglePill_13, false, function(on)
 if on then
 	pcall(applyFPSBoost)
 	enableAntiLag()
@@ -9355,7 +10073,7 @@ local function buildLocalRagCountdown(character)
 	clearLocalRagCountdown()
 
 	local billboard = Instance.new("BillboardGui")
-	billboard.Name = "WaveRagdollTimerAboveE01"
+	billboard.Name = "VyzeccRagdollTimerAboveE01"
 	billboard.Adornee = head
 	billboard.Size = UDim2.fromOffset(170, 22)
 	billboard.StudsOffset = Vector3.new(0, 3.35, 0)
@@ -9521,14 +10239,14 @@ local function stopLocalRagdollCountdown()
 	clearLocalRagCountdown()
 end
 
-if G.WaveTogglePill_6 then
-	wireNamedToggle(G.WaveTogglePill_6, false, function(on)
+if G.VyzeccTogglePill_6 then
+	wireNamedToggle(G.VyzeccTogglePill_6, false, function(on)
 		St.ragdollTimerOn = on == true
 		if on then startLocalRagdollCountdown() else stopLocalRagdollCountdown() end
 	end)
 end
-if G.WaveTogglePill_8 then
-	wireNamedToggle(G.WaveTogglePill_8, false, function(on)
+if G.VyzeccTogglePill_8 then
+	wireNamedToggle(G.VyzeccTogglePill_8, false, function(on)
 		St.enemyRagdollTimerOn = on == true
 		if on then startEnemyRagdollTimer() else stopEnemyRagdollTimer() end
 	end)
@@ -9575,8 +10293,8 @@ end
 
 local function collectConfigTogglePills()
 	local pills = {}
-	for _, obj in ipairs(G.WAVEHubV1:GetDescendants()) do
-		if obj:IsA("Frame") and obj.Name == "WaveTogglePill" then
+	for _, obj in ipairs(G.VYZECCHubV1:GetDescendants()) do
+		if obj:IsA("Frame") and obj.Name == "VyzeccTogglePill" then
 			table.insert(pills, obj)
 		end
 	end
@@ -9586,10 +10304,10 @@ end
 local function resetConfigToggles()
 	for _, pill in ipairs(collectConfigTogglePills()) do
 		setToggleVisual(pill, false)
-		local callback = _waveToggleCallbacks[pill]
+		local callback = _vyzeccToggleCallbacks[pill]
 		if callback then
 			local ok, err = pcall(callback, false)
-			if not ok then warn("[WAVE] Toggle reset failed:", getToggleConfigKey(pill), err) end
+			if not ok then warn("[VYZECC] Toggle reset failed:", getToggleConfigKey(pill), err) end
 		end
 	end
 	
@@ -9624,29 +10342,31 @@ local function resetConfigToggles()
 	St.speedToggled = false
 	St.laggerMode = 0
 	St.fpsBoostEnabled = false
+	pcall(setAntiDieEnabled, false)
+	if G.VyzeccTogglePill_AntiDie then setToggleVisual(G.VyzeccTogglePill_AntiDie, false) end
 	pcall(updateSpeedModeButton)
 	pcall(syncMobileSpeedVisuals)
 	_G._VynxAutoSpeedOn = false
 	_G._VynxAutoTPDownEnabled = false
 	_G._VH_antiLag = false
-	if type(_G._WaveSetKorbloxMode) == "function" then
-		pcall(_G._WaveSetKorbloxMode, "Off")
+	if type(_G._VyzeccSetKorbloxMode) == "function" then
+		pcall(_G._VyzeccSetKorbloxMode, "Off")
 	else
 		_G._RaVeKorbloxMode = "Off"
 		if G.TextButton_34 then G.TextButton_34.Text = "Off" end
 		if type(_G._RaVeApplyKorblox) == "function" then pcall(_G._RaVeApplyKorblox, "Off") end
 	end
-	if type(_G.WAVE_SetAnimPack) == "function" then pcall(_G.WAVE_SetAnimPack, "Off") end
+	if type(_G.VYZECC_SetAnimPack) == "function" then pcall(_G.VYZECC_SetAnimPack, "Off") end
 end
 
-local function saveWaveConfig()
+local function saveVyzeccConfig()
 	if not writefile then return false end
 	local uiToggles, toggleStates, uiText = {}, {}, {}
-	for _, obj in ipairs(G.WAVEHubV1:GetDescendants()) do
-		if obj:IsA("Frame") and obj.Name == "WaveTogglePill" then
+	for _, obj in ipairs(G.VYZECCHubV1:GetDescendants()) do
+		if obj:IsA("Frame") and obj.Name == "VyzeccTogglePill" then
 			local row = obj.Parent
 			local label = row and row:FindFirstChildWhichIsA("TextLabel")
-			local enabled = obj:GetAttribute("WaveToggleOn") == true
+			local enabled = obj:GetAttribute("VyzeccToggleOn") == true
 			if label and label.Text ~= "" then uiToggles[label.Text] = enabled end
 			if row then
 				local stableKey = getToggleConfigKey(obj)
@@ -9660,7 +10380,7 @@ local function saveWaveConfig()
 		end
 	end
 	local uiValues,uiSizes={},{}
-	for _,obj in ipairs(G.WAVEHubV1:GetDescendants()) do
+	for _,obj in ipairs(G.VYZECCHubV1:GetDescendants()) do
 		if obj:IsA("TextBox") then
 			uiValues[obj.Name]=obj.Text; uiSizes[obj.Name]={x=obj.Size.X.Scale,xo=obj.Size.X.Offset,y=obj.Size.Y.Scale,yo=obj.Size.Y.Offset}
 		end
@@ -9673,14 +10393,36 @@ local function saveWaveConfig()
 		end
 	end
 	local uiPositions = {}
-	for key, obj in pairs({MobileStackPanel = G.MobileStackPanel, StealBarRoot = StealBarRoot}) do
+	for key, obj in pairs({
+		MobileStackPanel = G.MobileStackPanel,
+		StealBarRoot = StealBarRoot,
+		MainOuter = G.MainOuter,
+		VyzeccMiniRestoreButton = G.VyzeccMiniRestoreButton,
+	}) do
 		if obj then
 			local p = obj.Position
 			uiPositions[key] = {xs=p.X.Scale, xo=p.X.Offset, ys=p.Y.Scale, yo=p.Y.Offset}
 		end
 	end
+	if type(St.promoterPosition) == "table" then
+		uiPositions.PromoterCard = {
+			xs = tonumber(St.promoterPosition.xs) or 0.5,
+			xo = tonumber(St.promoterPosition.xo) or -105,
+			ys = tonumber(St.promoterPosition.ys) or 0,
+			yo = tonumber(St.promoterPosition.yo) or 10,
+		}
+	end
+	local sideToggleStates = {
+		["AUTO LEFT"] = AutoPath.L == true,
+		["AUTO RIGHT"] = AutoPath.R == true,
+		["AIMBOT"] = _G._VezyBatAimbotOn == true,
+		["CARRY SPEED"] = St.laggerMode == 0 and St.speedToggled == true,
+		["LAGGER NORMAL"] = St.laggerMode == 1,
+		["LAGGER CARRY"] = St.laggerMode == 2,
+	}
 	local data = {
-		configVersion = 5,
+		configVersion = 6,
+		sideToggleStates = sideToggleStates,
 		toggleStates = toggleStates,
 		sideButtonPositions = sideButtonPositions,
 		uiPositions = uiPositions,
@@ -9688,7 +10430,7 @@ local function saveWaveConfig()
 		uiText = uiText,
 		uiValues = uiValues,
 		uiSizes = uiSizes,
-		fovValue = _G._WaveFovValue or 70,
+		fovValue = _G._VyzeccFovValue or 70,
 		stretchFov = _G._VezyStretchFOV or 120,
 		batAimbotOn = _G._VezyBatAimbotOn == true,
 		batSpeedEnabled = _G._VezyBatSpeedEnabled == true,
@@ -9718,10 +10460,10 @@ local function saveWaveConfig()
 		sideButtonScale = St.sideButtonScale,
 		progressBarSize = St.progressBarSize,
 		lockUI = St.uiLocked == true,
-		headlessOn = G.WaveTogglePill_20 and G.WaveTogglePill_20:GetAttribute("WaveToggleOn") == true or false,
-		stretchRezOn = G.WaveTogglePill_21 and G.WaveTogglePill_21:GetAttribute("WaveToggleOn") == true or false,
-		removeUiBackgroundOn = G.WaveTogglePill_30 and G.WaveTogglePill_30:GetAttribute("WaveToggleOn") == true or false,
-		lockUiOn = G.WaveTogglePill_35 and G.WaveTogglePill_35:GetAttribute("WaveToggleOn") == true or false,
+		headlessOn = G.VyzeccTogglePill_20 and G.VyzeccTogglePill_20:GetAttribute("VyzeccToggleOn") == true or false,
+		stretchRezOn = G.VyzeccTogglePill_21 and G.VyzeccTogglePill_21:GetAttribute("VyzeccToggleOn") == true or false,
+		removeUiBackgroundOn = G.VyzeccTogglePill_30 and G.VyzeccTogglePill_30:GetAttribute("VyzeccToggleOn") == true or false,
+		lockUiOn = G.VyzeccTogglePill_35 and G.VyzeccTogglePill_35:GetAttribute("VyzeccToggleOn") == true or false,
 		unlockButtons = St.unlockButtons,
 		unlockButtonPanel = St.unlockButtonPanel,
 		hideButtons = St.hideButtons,
@@ -9742,28 +10484,32 @@ local function saveWaveConfig()
 		stealRadius = St.stealRadius,
 		stealDuration = St.stealDuration,
 		unwalkOn = St.unwalkOn,
-		kickWarningOn = G.WaveTogglePill_7 and (G.WaveTogglePill_7:GetAttribute("WaveToggleOn") == true) or false,
+		kickWarningOn = G.VyzeccTogglePill_7 and (G.VyzeccTogglePill_7:GetAttribute("VyzeccToggleOn") == true) or false,
+		antiDieOn = G.VyzeccTogglePill_AntiDie and G.VyzeccTogglePill_AntiDie:GetAttribute("VyzeccToggleOn") == true or false,
 		ragdollTimerOn = St.ragdollTimerOn == true,
 		enemyRagdollTimerOn = St.enemyRagdollTimerOn == true,
 		antiLagOn = St.antiLagOn,
-		animPack = (type(_G.WAVE_GetAnimPack) == "function" and _G.WAVE_GetAnimPack()) or "Off",
+		animPack = (type(_G.VYZECC_GetAnimPack) == "function" and _G.VYZECC_GetAnimPack()) or "Off",
 		autoStealOn = St.autoStealOn,
 		autoStealVersion = St.autoStealVersion,
 		ragdollStealOn = St.ragdollStealOn == true,
 		batCounterOn = St.batCounterOn,
 		medusaCounterOn = St.medusaCounterOn,
 		antiRagdollEnabled = St.antiRagdollEnabled,
+		promoterModeOn = St.promoterModeOn == true,
+		promoterLocked = St.promoterLocked == true,
+		promoterPosition = St.promoterPosition,
 	}
 	local ok, encoded = pcall(function() return HttpService:JSONEncode(data) end)
 	if ok and encoded then
 		local wrote, writeErr = pcall(writefile, CONFIG_FILE, encoded)
-		if not wrote then warn("[WAVE] Config write failed:", writeErr) end
+		if not wrote then warn("[VYZECC] Config write failed:", writeErr) end
 		return wrote == true
 	end
 	return false
 end
 
-local function loadWaveConfig()
+local function loadVyzeccConfig()
 	if not (isfile and readfile) then return false end
 	local hasFile = false
 	local fileOk, fileResult = pcall(isfile, CONFIG_FILE)
@@ -9771,7 +10517,7 @@ local function loadWaveConfig()
 	if not hasFile then return false end
 	local ok, data = pcall(function() return HttpService:JSONDecode(readfile(CONFIG_FILE)) end)
 	if not ok or type(data) ~= "table" then
-		warn("[WAVE] Config file is invalid or could not be decoded")
+		warn("[VYZECC] Config file is invalid or could not be decoded")
 		return false
 	end
 
@@ -9782,7 +10528,7 @@ local function loadWaveConfig()
 
 	if type(data.sideButtonPositions) == "table" then
 		for name, pos in pairs(data.sideButtonPositions) do
-			local frame = G.WAVEHubV1:FindFirstChild(name, true)
+			local frame = G.VYZECCHubV1:FindFirstChild(name, true)
 			if frame and frame:IsA("GuiObject") and type(pos) == "table" then
 				local xs, xo = tonumber(pos.xs), tonumber(pos.xo)
 				local ys, yo = tonumber(pos.ys), tonumber(pos.yo)
@@ -9793,34 +10539,69 @@ local function loadWaveConfig()
 		end
 	end
 	if type(data.uiPositions) == "table" then
-		for key, obj in pairs({MobileStackPanel = G.MobileStackPanel, StealBarRoot = StealBarRoot}) do
+		for key, obj in pairs({
+			MobileStackPanel = G.MobileStackPanel,
+			StealBarRoot = StealBarRoot,
+			MainOuter = G.MainOuter,
+			VyzeccMiniRestoreButton = G.VyzeccMiniRestoreButton,
+		}) do
 			local pos = data.uiPositions[key]
 			if obj and type(pos) == "table" then
 				local xs, xo, ys, yo = tonumber(pos.xs), tonumber(pos.xo), tonumber(pos.ys), tonumber(pos.yo)
 				if xs and xo and ys and yo then obj.Position = UDim2.new(xs, xo, ys, yo) end
 			end
 		end
+		if type(data.uiPositions.PromoterCard) == "table" then
+			local pos = data.uiPositions.PromoterCard
+			St.promoterPosition = {
+				xs = tonumber(pos.xs) or 0.5,
+				xo = tonumber(pos.xo) or -105,
+				ys = tonumber(pos.ys) or 0,
+				yo = tonumber(pos.yo) or 10,
+			}
+		end
+	end
+	if type(data.promoterPosition) == "table" then
+		St.promoterPosition = {
+			xs = tonumber(data.promoterPosition.xs) or 0.5,
+			xo = tonumber(data.promoterPosition.xo) or -105,
+			ys = tonumber(data.promoterPosition.ys) or 0,
+			yo = tonumber(data.promoterPosition.yo) or 10,
+		}
+	end
+	if type(data.promoterLocked) == "boolean" then
+		St.promoterLocked = data.promoterLocked
+	end
+	if type(data.promoterModeOn) == "boolean" and data.promoterModeOn then
+		task.defer(function()
+			if G.VyzeccTogglePill_Promoter then
+				setToggleVisual(G.VyzeccTogglePill_Promoter, true)
+			end
+			if type(_G.VYZECC_SetPromoterMode) == "function" then
+				pcall(_G.VYZECC_SetPromoterMode, true)
+			end
+		end)
 	end
 	if type(data.uiText) == "table" then
 		for name, value in pairs(data.uiText) do
-			local obj = G.WAVEHubV1:FindFirstChild(name, true)
+			local obj = G.VYZECCHubV1:FindFirstChild(name, true)
 			if obj and obj:IsA("TextBox") and type(value) == "string" then obj.Text = value end
 		end
 	end
-	if type(data.uiValues)=="table" then for name,value in pairs(data.uiValues) do local obj=G.WAVEHubV1:FindFirstChild(name,true); if obj and obj:IsA("TextBox") and type(value)=="string" then obj.Text=value end end end
-	if type(data.uiSizes)=="table" then for name,sz in pairs(data.uiSizes) do local obj=G.WAVEHubV1:FindFirstChild(name,true); if obj and type(sz)=="table" then pcall(function() obj.Size=UDim2.new(tonumber(sz.x) or obj.Size.X.Scale,tonumber(sz.xo) or obj.Size.X.Offset,tonumber(sz.y) or obj.Size.Y.Scale,tonumber(sz.yo) or obj.Size.Y.Offset) end) end end end
+	if type(data.uiValues)=="table" then for name,value in pairs(data.uiValues) do local obj=G.VYZECCHubV1:FindFirstChild(name,true); if obj and obj:IsA("TextBox") and type(value)=="string" then obj.Text=value end end end
+	if type(data.uiSizes)=="table" then for name,sz in pairs(data.uiSizes) do local obj=G.VYZECCHubV1:FindFirstChild(name,true); if obj and type(sz)=="table" then pcall(function() obj.Size=UDim2.new(tonumber(sz.x) or obj.Size.X.Scale,tonumber(sz.xo) or obj.Size.X.Offset,tonumber(sz.y) or obj.Size.Y.Scale,tonumber(sz.yo) or obj.Size.Y.Offset) end) end end end
 	if tonumber(data.fovValue) then
-		_G._WaveFovValue = math.clamp(tonumber(data.fovValue), 70, 120)
-		if _G._WaveFovSetValue then pcall(_G._WaveFovSetValue, _G._WaveFovValue) end
+		_G._VyzeccFovValue = math.clamp(tonumber(data.fovValue), 70, 120)
+		if _G._VyzeccFovSetValue then pcall(_G._VyzeccFovSetValue, _G._VyzeccFovValue) end
 	end
 	if tonumber(data.stretchFov) then _G._VezyStretchFOV = math.clamp(tonumber(data.stretchFov), 70, 120) end
 	if tonumber(data.bodyLockRange) then
-		if _G._WaveSetBodyLockRange then pcall(_G._WaveSetBodyLockRange, data.bodyLockRange) elseif G.TextBox_7 then G.TextBox_7.Text = tostring(math.clamp(tonumber(data.bodyLockRange), 1, 500)) end
+		if _G._VyzeccSetBodyLockRange then pcall(_G._VyzeccSetBodyLockRange, data.bodyLockRange) elseif G.TextBox_7 then G.TextBox_7.Text = tostring(math.clamp(tonumber(data.bodyLockRange), 1, 500)) end
 	end
 	if type(data.korbloxMode) == "string" and G.TextButton_34 then
 		local mode = data.korbloxMode
 		if mode == "Off" or mode == "Both" or mode == "Left" or mode == "Right" then
-			if _G._WaveSetKorbloxMode then pcall(_G._WaveSetKorbloxMode, mode) else G.TextButton_34.Text = mode; _G._RaVeKorbloxMode = mode; if _G._RaVeApplyKorblox then pcall(_G._RaVeApplyKorblox, mode) end end
+			if _G._VyzeccSetKorbloxMode then pcall(_G._VyzeccSetKorbloxMode, mode) else G.TextButton_34.Text = mode; _G._RaVeKorbloxMode = mode; if _G._RaVeApplyKorblox then pcall(_G._RaVeApplyKorblox, mode) end end
 		end
 	end
 	if tonumber(data.normalSpeed) then St.normalSpeed = data.normalSpeed; if G.TextBox then G.TextBox.Text = tostring(data.normalSpeed) end end
@@ -9830,7 +10611,10 @@ local function loadWaveConfig()
 	if type(data.speedToggled) == "boolean" then St.speedToggled = data.speedToggled end
 	if data.laggerMode ~= nil then St.laggerMode = data.laggerMode end
 	if type(data.autoCarryMode) == "string" then St.autoCarryMode = data.autoCarryMode; if G.TextButton_9 then G.TextButton_9.Text = data.autoCarryMode end end
-	if type(data.autoStealVersion) == "string" then St.autoStealVersion = data.autoStealVersion end
+	if type(data.autoStealVersion) == "string" then
+		St.autoStealVersion = data.autoStealVersion
+		if type(setStopTimeMode) == "function" then pcall(setStopTimeMode, data.autoStealVersion) end
+	end
 	St.unlockButtons = data.unlockButtons == true
 	St.unlockButtonPanel = data.unlockButtonPanel == true
 	St.hideButtons = data.hideButtons == true
@@ -9902,25 +10686,26 @@ local function loadWaveConfig()
 		local legacyEnemyTimer = data.enemyRagdollTimerOn
 		if type(legacyEnemyTimer) ~= "boolean" then legacyEnemyTimer = data.ragdollTimerOn end
 		local legacyToggleValues = {
-			[G.WaveTogglePill] = data.infJumpEnabled,
-			[G.WaveTogglePill_2] = data.autoCarryOn,
-			[G.WaveTogglePill_3] = data.antiRagdollEnabled,
-			[G.WaveTogglePill_4] = data.autoTpDownEnabled,
-			[G.WaveTogglePill_5] = data.unwalkOn,
-			[G.WaveTogglePill_6] = data.ragdollTimerOn,
-			[G.WaveTogglePill_7] = data.kickWarningOn,
-			[G.WaveTogglePill_8] = legacyEnemyTimer,
-			[G.WaveTogglePill_13] = data.antiLagOn,
-			[G.WaveTogglePill_20] = data.headlessOn,
-			[G.WaveTogglePill_21] = data.stretchRezOn,
-			[G.WaveTogglePill_22] = data.batSpeedEnabled,
-			[G.WaveTogglePill_23] = data.autoSwing,
-			[G.WaveTogglePill_26] = data.batCounterOn,
-			[G.WaveTogglePill_27] = data.medusaCounterOn,
-			[G.WaveTogglePill_28] = data.ragdollStealOn,
-			[G.WaveTogglePill_29] = data.autoStealOn,
-			[G.WaveTogglePill_30] = data.removeUiBackgroundOn,
-			[G.WaveTogglePill_35] = data.lockUiOn,
+			[G.VyzeccTogglePill_AntiDie] = data.antiDieOn,
+			[G.VyzeccTogglePill] = data.infJumpEnabled,
+			[G.VyzeccTogglePill_2] = data.autoCarryOn,
+			[G.VyzeccTogglePill_3] = data.antiRagdollEnabled,
+			[G.VyzeccTogglePill_4] = data.autoTpDownEnabled,
+			[G.VyzeccTogglePill_5] = data.unwalkOn,
+			[G.VyzeccTogglePill_6] = data.ragdollTimerOn,
+			[G.VyzeccTogglePill_7] = data.kickWarningOn,
+			[G.VyzeccTogglePill_8] = legacyEnemyTimer,
+			[G.VyzeccTogglePill_13] = data.antiLagOn,
+			[G.VyzeccTogglePill_20] = data.headlessOn,
+			[G.VyzeccTogglePill_21] = data.stretchRezOn,
+			[G.VyzeccTogglePill_22] = data.batSpeedEnabled,
+			[G.VyzeccTogglePill_23] = data.autoSwing,
+			[G.VyzeccTogglePill_26] = data.batCounterOn,
+			[G.VyzeccTogglePill_27] = data.medusaCounterOn,
+			[G.VyzeccTogglePill_28] = data.ragdollStealOn,
+			[G.VyzeccTogglePill_29] = data.autoStealOn,
+			[G.VyzeccTogglePill_30] = data.removeUiBackgroundOn,
+			[G.VyzeccTogglePill_35] = data.lockUiOn,
 		}
 		for _, pill in ipairs(collectConfigTogglePills()) do
 			local row = pill.Parent
@@ -9937,28 +10722,43 @@ local function loadWaveConfig()
 
 			
 			
-			if legacyProfile and wanted == true and (pill == G.WaveTogglePill_22
-				or pill == G.WaveTogglePill_23 or pill == G.WaveTogglePill_32) then
+			if legacyProfile and wanted == true and (pill == G.VyzeccTogglePill_22
+				or pill == G.VyzeccTogglePill_23 or pill == G.VyzeccTogglePill_32) then
 				wanted = false
 			end
 
 			setToggleVisual(pill, wanted)
 			if wanted then
-				local callback = _waveToggleCallbacks[pill]
+				local callback = _vyzeccToggleCallbacks[pill]
 				if callback then
 					local called, err = pcall(callback, true)
-					if not called then warn("[WAVE] Toggle restore failed:", row and row.Name, err) end
+					if not called then warn("[VYZECC] Toggle restore failed:", row and row.Name, err) end
 				end
 			end
 		end
 	end
 
 	
-	if data.batAimbotOn == true then pcall(startBatAimbot) else pcall(stopBatAimbot) end
+	local sideStates = type(data.sideToggleStates) == "table" and data.sideToggleStates or {}
+	local savedAimbot = sideStates["AIMBOT"]
+	if type(savedAimbot) ~= "boolean" then savedAimbot = data.batAimbotOn == true end
+	if savedAimbot then pcall(startBatAimbot) else pcall(stopBatAimbot) end
+	mobileToggles["AIMBOT"] = savedAimbot
+	if G.StackBtn_aimbot then setFrameOn(G.StackBtn_aimbot, savedAimbot) end
+	if type(sideStates["AUTO LEFT"]) == "boolean" then pcall(toggleAutoLeft, sideStates["AUTO LEFT"]) end
+	if type(sideStates["AUTO RIGHT"]) == "boolean" then pcall(toggleAutoRight, sideStates["AUTO RIGHT"]) end
+	if type(sideStates["LAGGER NORMAL"]) == "boolean" or type(sideStates["LAGGER CARRY"]) == "boolean" then
+		local wantedMode = sideStates["LAGGER CARRY"] and 2 or (sideStates["LAGGER NORMAL"] and 1 or 0)
+		pcall(setLaggerMode, wantedMode)
+	end
+	if type(sideStates["CARRY SPEED"]) == "boolean" and St.laggerMode == 0 then
+		St.speedToggled = sideStates["CARRY SPEED"]
+	end
+	pcall(syncMobileSpeedVisuals)
 
 	if type(data.animPack) == "string" and data.animPack ~= "" then
 		pcall(function()
-			if type(_G.WAVE_SetAnimPack) == "function" then _G.WAVE_SetAnimPack(data.animPack) end
+			if type(_G.VYZECC_SetAnimPack) == "function" then _G.VYZECC_SetAnimPack(data.animPack) end
 		end)
 	end
 	pcall(updateSpeedModeButton)
@@ -9966,18 +10766,18 @@ local function loadWaveConfig()
 	return true
 end
 
-_G.WAVE_SaveConfigNow = saveWaveConfig
-_G.WAVE_LoadConfig = loadWaveConfig
+_G.VYZECC_SaveConfigNow = saveVyzeccConfig
+_G.VYZECC_LoadConfig = loadVyzeccConfig
 
-local _waveConfigSaveQueued = false
-_G.WAVE_SaveConfig = function()
-	if _waveConfigSaveQueued then return true end
-	_waveConfigSaveQueued = true
+local _vyzeccConfigSaveQueued = false
+_G.VYZECC_SaveConfig = function()
+	if _vyzeccConfigSaveQueued then return true end
+	_vyzeccConfigSaveQueued = true
 	task.delay(0.35, function()
-		_waveConfigSaveQueued = false
-		local ok, result = pcall(saveWaveConfig)
+		_vyzeccConfigSaveQueued = false
+		local ok, result = pcall(saveVyzeccConfig)
 		if not ok or result ~= true then
-			warn("[WAVE] Automatic config save failed:", result)
+			warn("[VYZECC] Automatic config save failed:", result)
 		end
 	end)
 	return true
@@ -9997,11 +10797,11 @@ if G.TextButton_59 then
 		resetBusy = true
 		local called, err = pcall(function()
 			resetConfigToggles()
-			local saved = saveWaveConfig()
+			local saved = saveVyzeccConfig()
 			if not saved then error("Could not save reset config") end
 		end)
 		resetBtn.Text = called and "Reset!" or "Reset failed"
-		if not called then warn("[WAVE] Config reset failed:", err) end
+		if not called then warn("[VYZECC] Config reset failed:", err) end
 		task.delay(1.4, function()
 			if resetBtn and resetBtn.Parent then
 				resetBtn.Text = idleResetText
@@ -10019,7 +10819,7 @@ do
 		if saveBusy then return end
 		saveBusy = true
 		local ok = false
-		local called, result = pcall(saveWaveConfig)
+		local called, result = pcall(saveVyzeccConfig)
 		if called and result == true then ok = true end
 		saveBtn.Text = ok and "Saved!" or "Save failed"
 		saveBtn.BackgroundColor3 = ok and Color3.fromRGB(34, 120, 70) or Color3.fromRGB(150, 40, 50)
@@ -10036,7 +10836,7 @@ if G.TextButton_70 then
 	local loadBtn = G.TextButton_70
 	local idleColor, idleText = loadBtn.BackgroundColor3, loadBtn.TextColor3
 	loadBtn.Activated:Connect(function()
-		local called, result = pcall(loadWaveConfig)
+		local called, result = pcall(loadVyzeccConfig)
 		local loaded = called and result == true
 		loadBtn.Text = loaded and "Loaded!" or "Load failed"
 		loadBtn.BackgroundColor3 = loaded and Color3.fromRGB(34, 120, 70) or Color3.fromRGB(150, 40, 50)
@@ -10050,7 +10850,7 @@ if G.TextButton_70 then
 	end)
 end
 
-G.WAVEHubV1.Destroying:Connect(function()
+G.VYZECCHubV1.Destroying:Connect(function()
 	pcall(stopLocalRagdollCountdown)
 	pcall(stopEnemyRagdollTimer)
 	if ragdollStealHealthConn then pcall(function() ragdollStealHealthConn:Disconnect() end); ragdollStealHealthConn = nil end
@@ -10059,7 +10859,7 @@ G.WAVEHubV1.Destroying:Connect(function()
 	pcall(stopMedusaCounter)
 	pcall(stopBatCounter)
 	pcall(applyAntiLag, false)
-	if _G._WaveESPCleanup then pcall(_G._WaveESPCleanup) end
+	if _G._VyzeccESPCleanup then pcall(_G._VyzeccESPCleanup) end
 end)
 
 
@@ -10175,7 +10975,7 @@ local function startAnimPack(packName)
 		applyAnimPack(packName)
 	end
 	currentAnimPack = packName
-	if _G.WAVE_SaveConfig then task.defer(function() pcall(_G.WAVE_SaveConfig) end) end
+	if _G.VYZECC_SaveConfig then task.defer(function() pcall(_G.VYZECC_SaveConfig) end) end
 end
 
 local function cycleAnimPack(dir)
@@ -10199,13 +10999,13 @@ end)
 
 
 pcall(function()
-	if not G.WavePage_Visuals then return end
+	if not G.VyzeccPage_Visuals then return end
 	local sep = Instance.new("Frame")
 	sep.BackgroundTransparency = 1
 	sep.BorderSizePixel = 0
 	sep.LayoutOrder = 200
 	sep.Size = UDim2.new(1, 0, 0, 8)
-	sep.Parent = G.WavePage_Visuals
+	sep.Parent = G.VyzeccPage_Visuals
 
 	local header = Instance.new("Frame")
 	header.BackgroundTransparency = 1
@@ -10213,7 +11013,7 @@ pcall(function()
 	header.LayoutOrder = 24
 	header.Size = UDim2.new(1, 0, 0, 0)
 	header.Visible = false
-	header.Parent = G.WavePage_Misc
+	header.Parent = G.VyzeccPage_Misc
 	local headerLbl = Instance.new("TextLabel")
 	headerLbl.BackgroundTransparency = 1
 	headerLbl.Position = UDim2.new(0, 8, 0, 0)
@@ -10230,7 +11030,7 @@ pcall(function()
 	row.BorderSizePixel = 0
 	row.LayoutOrder = 24
 	row.Size = UDim2.new(1, 0, 0, 40)
-	row.Parent = G.WavePage_Misc
+	row.Parent = G.VyzeccPage_Misc
 
 	local nameLbl = Instance.new("TextLabel")
 	nameLbl.BackgroundTransparency = 1
@@ -10295,22 +11095,22 @@ pcall(function()
 	rightBtn.MouseButton1Click:Connect(function() cycleAnimPack(1) end)
 end)
 
-_G.WAVE_SetAnimPack = startAnimPack
-_G.WAVE_GetAnimPack = function() return currentAnimPack end
+_G.VYZECC_SetAnimPack = startAnimPack
+_G.VYZECC_GetAnimPack = function() return currentAnimPack end
 
 
-G.WAVEHubV1.Parent = LocalPlayer:WaitForChild("PlayerGui")
+G.VYZECCHubV1.Parent = LocalPlayer:WaitForChild("PlayerGui")
 task.defer(function()
 	local loaded = false
-	if type(_G.WAVE_LoadConfig) == "function" then
-		local ok, result = pcall(_G.WAVE_LoadConfig)
+	if type(_G.VYZECC_LoadConfig) == "function" then
+		local ok, result = pcall(_G.VYZECC_LoadConfig)
 		loaded = ok and result == true
-		if not ok then warn("[WAVE] Config load failed:", result) end
+		if not ok then warn("[VYZECC] Config load failed:", result) end
 	end
-	if not loaded and type(_G.WAVE_SaveConfigNow) == "function" then
-		local ok, err = pcall(_G.WAVE_SaveConfigNow)
-		if not ok then warn("[WAVE] Initial config creation failed:", err) end
+	if not loaded and type(_G.VYZECC_SaveConfigNow) == "function" then
+		local ok, err = pcall(_G.VYZECC_SaveConfigNow)
+		if not ok then warn("[VYZECC] Initial config creation failed:", err) end
 	end
 end)
 
-return G.WAVEHubV1
+return G.VYZECCHubV1
